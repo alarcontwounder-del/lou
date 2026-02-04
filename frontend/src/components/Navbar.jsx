@@ -97,18 +97,6 @@ export const Navbar = () => {
           >
             {t('nav.contact')}
           </button>
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
-            data-testid="nav-offers"
-          >
-            {t('nav.offers')}
-          </button>
-          <button
-            onClick={() => scrollToSection('contact')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
-            data-testid="nav-contact"
-          >
-            {t('nav.contact')}
-          </button>
 
           {/* Language Selector */}
           <DropdownMenu>
