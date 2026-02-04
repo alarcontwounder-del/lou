@@ -1,0 +1,131 @@
+import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+
+export const Footer = () => {
+  const { t } = useLanguage();
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-brand-green text-white py-16" data-testid="footer">
+      <div className="container-custom">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <h3 className="font-heading text-3xl mb-4">Mallorca Golf</h3>
+            <p className="text-white/70 max-w-md mb-6">
+              {t('footer.tagline')}
+            </p>
+            {/* Social Links */}
+            <div className="flex gap-4">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
+                data-testid="social-instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
+                data-testid="social-facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
+                data-testid="social-linkedin"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
+                data-testid="social-twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-medium text-lg mb-4">{t('footer.quickLinks')}</h4>
+            <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => scrollToSection('hero')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('nav.home')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('courses')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('nav.courses')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('offers')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('nav.offers')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('nav.contact')}
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-medium text-lg mb-4">{t('footer.contactInfo')}</h4>
+            <ul className="space-y-3 text-white/70">
+              <li>+34 971 123 456</li>
+              <li>info@mallorcagolf.com</li>
+              <li>Palma de Mallorca, Spain</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/50 text-sm">
+            © {currentYear} Mallorca Golf Exclusive. {t('footer.rights')}
+          </p>
+          <div className="flex gap-6 text-sm text-white/50">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

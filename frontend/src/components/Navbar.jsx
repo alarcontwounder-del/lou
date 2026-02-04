@@ -1,0 +1,203 @@
+import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
+
+const languages = [
+  { code: 'en', label: 'EN', flag: '🇬🇧' },
+  { code: 'de', label: 'DE', flag: '🇩🇪' },
+  { code: 'fr', label: 'FR', flag: '🇫🇷' },
+  { code: 'se', label: 'SE', flag: '🇸🇪' },
+];
+
+export const Navbar = () => {
+  const { language, changeLanguage, t } = useLanguage();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const currentLang = languages.find(l => l.code === language);
+
+  return (
+    <nav
+      data-testid="navbar"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-4'
+          : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="container-custom flex items-center justify-between">
+        {/* Logo */}
+        <a
+          href="#hero"
+          onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
+          className={`font-heading text-2xl font-semibold tracking-tight transition-colors duration-300 ${
+            isScrolled ? 'text-brand-green' : 'text-white'
+          }`}
+          data-testid="logo"
+        >
+          Mallorca Golf
+        </a>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          <button
+            onClick={() => scrollToSection('about')}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            data-testid="nav-about"
+          >
+            {t('nav.home')}
+          </button>
+          <button
+            onClick={() => scrollToSection('courses')}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            data-testid="nav-courses"
+          >
+            {t('nav.courses')}
+          </button>
+          <button
+            onClick={() => scrollToSection('offers')}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            data-testid="nav-offers"
+          >
+            {t('nav.offers')}
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            data-testid="nav-contact"
+          >
+            {t('nav.contact')}
+          </button>
+
+          {/* Language Selector */}
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={`flex items-center gap-1 px-3 py-2 rounded-full border transition-colors duration-300 ${
+                isScrolled
+                  ? 'border-stone-200 text-stone-700 hover:border-brand-green'
+                  : 'border-white/30 text-white hover:border-white'
+              }`}
+              data-testid="language-selector"
+            >
+              <span className="text-sm font-medium">{currentLang?.label}</span>
+              <ChevronDown className="w-4 h-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-white">
+              {languages.map((lang) => (
+                <DropdownMenuItem
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`cursor-pointer ${language === lang.code ? 'bg-brand-sand/20' : ''}`}
+                  data-testid={`lang-${lang.code}`}
+                >
+                  <span className="mr-2">{lang.flag}</span>
+                  {lang.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Book CTA */}
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+            className="btn-primary text-sm"
+            data-testid="nav-book-btn"
+          >
+            {t('nav.book')}
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className={`md:hidden p-2 ${isScrolled ? 'text-brand-green' : 'text-white'}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          data-testid="mobile-menu-btn"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-6 px-6 animate-slide-in-right"
+          data-testid="mobile-menu"
+        >
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('nav.home')}
+            </button>
+            <button
+              onClick={() => scrollToSection('courses')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('nav.courses')}
+            </button>
+            <button
+              onClick={() => scrollToSection('offers')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('nav.offers')}
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('nav.contact')}
+            </button>
+            
+            {/* Mobile Language Selector */}
+            <div className="flex gap-2 py-2 border-t border-stone-100 mt-2">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                    language === lang.code
+                      ? 'bg-brand-green text-white'
+                      : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="btn-primary mt-2 text-center"
+            >
+              {t('nav.book')}
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};

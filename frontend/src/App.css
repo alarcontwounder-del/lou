@@ -1,34 +1,232 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Main App Styles */
+
+/* Hero section styles */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 60, 52, 0.3) 0%,
+    rgba(26, 60, 52, 0.5) 50%,
+    rgba(26, 60, 52, 0.7) 100%
+  );
 }
 
-.App-link {
-    color: #61dafb;
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.7s ease-out;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #1A3C34;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: rgba(26, 60, 52, 0.9);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid #1A3C34;
+  color: #1A3C34;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #1A3C34;
+  color: white;
+}
+
+/* Input styles for contact form */
+.input-underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #d6d3d1;
+  padding: 1rem 0;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-underline:focus {
+  border-color: #1A3C34;
+}
+
+.input-underline::placeholder {
+  color: #a8a29e;
+}
+
+/* Section spacing */
+.section-padding {
+  padding: 6rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 8rem 3rem;
+  }
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Bento grid layout */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .bento-tall {
+    grid-row: span 2;
+  }
+}
+
+/* Deal badge */
+.deal-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #C17C54;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 10;
+}
+
+/* Language selector */
+.lang-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #57534E;
+  transition: color 0.3s ease;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+  color: #1A3C34;
+}
+
+.lang-btn.active {
+  border-bottom: 2px solid #1A3C34;
+}
+
+/* Nav styles */
+.nav-link {
+  position: relative;
+  color: white;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #D4C5A9;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Price styles */
+.price-original {
+  text-decoration: line-through;
+  color: #a8a29e;
+}
+
+.price-offer {
+  color: #1A3C34;
+  font-weight: 600;
+}
+
+/* Responsive container */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding: 0 3rem;
+  }
 }
