@@ -197,7 +197,19 @@ export const translations = {
       restaurants: "Gastronomie",
       from: "À partir de",
       save: "Économisez",
-      viewDeal: "Voir l'Offre"
+      viewDeal: "Voir l'Offre",
+      bookHotel: "Réserver"
+    },
+    hotels: {
+      subtitle: "Hôtels Partenaires",
+      title: "Hébergements de Luxe",
+      description: "Séjournez dans les meilleurs hôtels de Majorque avec des forfaits golf exclusifs et des tarifs spéciaux."
+    },
+    restaurants: {
+      subtitle: "Restaurants & Bars",
+      title: "Expériences Gastronomiques",
+      description: "Découvrez une cuisine méditerranéenne exceptionnelle dans nos restaurants partenaires avec des offres exclusives.",
+      reserve: "Réserver une Table"
     },
     contact: {
       subtitle: "Contactez-Nous",
