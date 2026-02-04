@@ -277,7 +277,19 @@ export const translations = {
       restaurants: "Fin Dining",
       from: "Från",
       save: "Spara",
-      viewDeal: "Se Erbjudande"
+      viewDeal: "Se Erbjudande",
+      bookHotel: "Boka Nu"
+    },
+    hotels: {
+      subtitle: "Hotellpartners",
+      title: "Lyxboende",
+      description: "Bo på Mallorcas finaste hotell med exklusiva golfpaket och specialpriser för våra kunder."
+    },
+    restaurants: {
+      subtitle: "Restauranger & Barer",
+      title: "Kulinariska Upplevelser",
+      description: "Upptäck exceptionell medelhavskök på våra partnerrestauranger med exklusiva erbjudanden.",
+      reserve: "Reservera Bord"
     },
     contact: {
       subtitle: "Kontakta Oss",
