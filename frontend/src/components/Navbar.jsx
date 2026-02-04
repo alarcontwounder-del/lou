@@ -128,8 +128,9 @@ export const Navbar = () => {
 
           {/* Book CTA */}
           <a
-            href="#contact"
-            onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+            href="https://golfinmallorca.greenfee365.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary text-sm"
             data-testid="nav-book-btn"
           >
