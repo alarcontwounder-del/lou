@@ -168,10 +168,16 @@ export const Navbar = () => {
               {t('nav.courses')}
             </button>
             <button
-              onClick={() => scrollToSection('offers')}
+              onClick={() => scrollToSection('hotels')}
               className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
             >
-              {t('nav.offers')}
+              {t('offers.hotels')}
+            </button>
+            <button
+              onClick={() => scrollToSection('restaurants')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('restaurants.subtitle')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
@@ -197,12 +203,14 @@ export const Navbar = () => {
               ))}
             </div>
 
-            <button
-              onClick={() => scrollToSection('contact')}
+            <a
+              href="https://golfinmallorca.greenfee365.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary mt-2 text-center"
             >
               {t('nav.book')}
-            </button>
+            </a>
           </div>
         </div>
       )}
