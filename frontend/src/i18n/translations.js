@@ -37,7 +37,19 @@ export const translations = {
       restaurants: "Fine Dining",
       from: "From",
       save: "Save",
-      viewDeal: "View Deal"
+      viewDeal: "View Deal",
+      bookHotel: "Book Now"
+    },
+    hotels: {
+      subtitle: "Hotel Partners",
+      title: "Luxury Accommodations",
+      description: "Stay at Mallorca's finest hotels with exclusive golf packages and special rates for our clients."
+    },
+    restaurants: {
+      subtitle: "Restaurants & Bars",
+      title: "Fine Dining Experiences",
+      description: "Discover exceptional Mediterranean cuisine at our partner restaurants with exclusive offers.",
+      reserve: "Reserve Table"
     },
     contact: {
       subtitle: "Get in Touch",
