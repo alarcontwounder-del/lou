@@ -5,7 +5,8 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { GolfCourses } from './components/GolfCourses';
-import { PartnerOffers } from './components/PartnerOffers';
+import { HotelPartners } from './components/HotelPartners';
+import { RestaurantPartners } from './components/RestaurantPartners';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Toaster } from './components/ui/sonner';
@@ -19,7 +20,8 @@ function App() {
           <Hero />
           <About />
           <GolfCourses />
-          <PartnerOffers />
+          <HotelPartners />
+          <RestaurantPartners />
           <Contact />
         </main>
         <Footer />
