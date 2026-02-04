@@ -87,6 +87,44 @@ export const Footer = () => {
               </li>
               <li>
                 <button
+                  onClick={() => scrollToSection('hotels')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('offers.hotels')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('restaurants')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('restaurants.subtitle')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  {t('nav.contact')}
+                </button>
+              </li>
+              <li>
+                <a
+                  href="https://golfinmallorca.greenfee365.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-sand hover:text-white transition-colors font-medium"
+                >
+                  {t('hero.bookTeeTime')}
+                </a>
+              </li>
+            </ul>
+          </div>
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => scrollToSection('offers')}
                   className="text-white/70 hover:text-white transition-colors"
                 >
