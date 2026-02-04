@@ -53,13 +53,16 @@ export const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up stagger-4">
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="btn-primary text-base"
-                data-testid="hero-cta-primary"
+              <a
+                href="https://golfinmallorca.greenfee365.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-base inline-flex items-center justify-center gap-2"
+                data-testid="hero-book-tee-time"
               >
-                {t('hero.cta')}
-              </button>
+                {t('hero.bookTeeTime')}
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
               <button
                 onClick={() => scrollToSection('courses')}
                 className="btn-secondary border-white/50 text-white hover:bg-white hover:text-brand-green"

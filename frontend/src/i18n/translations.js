@@ -11,6 +11,7 @@ export const translations = {
       subtitle: "Exclusive Golf Experiences",
       title: "Discover Mallorca's Finest Golf",
       description: "Your gateway to premium golf courses, luxury accommodations, and unforgettable Mediterranean experiences.",
+      bookTeeTime: "Book Tee Time",
       cta: "Start Your Journey",
       ctaSecondary: "View Courses"
     },
@@ -78,6 +79,7 @@ export const translations = {
       subtitle: "Exklusive Golf-Erlebnisse",
       title: "Entdecken Sie Mallorcas Besten Golf",
       description: "Ihr Tor zu Premium-Golfplätzen, Luxusunterkünften und unvergesslichen mediterranen Erlebnissen.",
+      bookTeeTime: "Abschlagzeit Buchen",
       cta: "Starten Sie Ihre Reise",
       ctaSecondary: "Plätze Ansehen"
     },
@@ -145,6 +147,7 @@ export const translations = {
       subtitle: "Expériences Golf Exclusives",
       title: "Découvrez le Meilleur Golf de Majorque",
       description: "Votre passerelle vers des parcours de golf premium, des hébergements de luxe et des expériences méditerranéennes inoubliables.",
+      bookTeeTime: "Réserver un Départ",
       cta: "Commencez Votre Voyage",
       ctaSecondary: "Voir les Parcours"
     },
@@ -212,6 +215,7 @@ export const translations = {
       subtitle: "Exklusiva Golfupplevelser",
       title: "Upptäck Mallorcas Bästa Golf",
       description: "Din port till premiumgolfbanor, lyxboende och oförglömliga Medelhavsupplevelser.",
+      bookTeeTime: "Boka Tee Time",
       cta: "Börja Din Resa",
       ctaSecondary: "Se Banor"
     },
