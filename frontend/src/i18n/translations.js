@@ -117,7 +117,19 @@ export const translations = {
       restaurants: "Fine Dining",
       from: "Ab",
       save: "Sparen Sie",
-      viewDeal: "Angebot Ansehen"
+      viewDeal: "Angebot Ansehen",
+      bookHotel: "Jetzt Buchen"
+    },
+    hotels: {
+      subtitle: "Hotel Partner",
+      title: "Luxusunterkünfte",
+      description: "Übernachten Sie in Mallorcas besten Hotels mit exklusiven Golf-Paketen und Sonderpreisen für unsere Kunden."
+    },
+    restaurants: {
+      subtitle: "Restaurants & Bars",
+      title: "Kulinarische Erlebnisse",
+      description: "Entdecken Sie außergewöhnliche mediterrane Küche in unseren Partner-Restaurants mit exklusiven Angeboten.",
+      reserve: "Tisch Reservieren"
     },
     contact: {
       subtitle: "Kontaktieren Sie Uns",
