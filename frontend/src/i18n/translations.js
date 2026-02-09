@@ -26,6 +26,7 @@ export const translations = {
     courses: {
       subtitle: "Golf Courses",
       title: "World-Class Courses Await",
+      description: "Book tee times at 13 premium golf courses across Mallorca with instant confirmation.",
       holes: "Holes",
       par: "Par",
       from: "From",
