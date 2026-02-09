@@ -86,6 +86,12 @@ export const GolfCourses = () => {
                     <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.par')}</span>
                     <p className="text-xl font-semibold text-brand-green">{course.par}</p>
                   </div>
+                  {course.price_from && (
+                    <div>
+                      <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.from')}</span>
+                      <p className="text-xl font-semibold text-brand-terracotta">€{course.price_from}</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Features */}
