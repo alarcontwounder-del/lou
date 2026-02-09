@@ -28,6 +28,7 @@ export const translations = {
       title: "World-Class Courses Await",
       holes: "Holes",
       par: "Par",
+      from: "From",
       bookNow: "Book Tee Time"
     },
     offers: {
