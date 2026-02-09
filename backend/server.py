@@ -688,6 +688,58 @@ async def get_contact_inquiries():
             inq['created_at'] = datetime.fromisoformat(inq['created_at'])
     return inquiries
 
+# Blog endpoints
+@api_router.get("/blog", response_model=List[dict])
+async def get_blog_posts(category: Optional[str] = None):
+    posts = BLOG_POSTS
+    if category:
+        posts = [p for p in posts if p["category"] == category]
+    return sorted(posts, key=lambda x: x["created_at"], reverse=True)
+
+@api_router.get("/blog/{slug}", response_model=dict)
+async def get_blog_post(slug: str):
+    for post in BLOG_POSTS:
+        if post["slug"] == slug:
+            return post
+    raise HTTPException(status_code=404, detail="Blog post not found")
+
+# Review endpoints
+@api_router.get("/reviews", response_model=List[dict])
+async def get_reviews():
+    # Get approved reviews from database
+    db_reviews = await db.reviews.find({"approved": True}, {"_id": 0}).to_list(100)
+    # Combine with sample reviews
+    all_reviews = SAMPLE_REVIEWS + db_reviews
+    return sorted(all_reviews, key=lambda x: x["created_at"], reverse=True)
+
+@api_router.post("/reviews", response_model=dict)
+async def create_review(review: ClientReviewCreate):
+    review_obj = ClientReview(**review.model_dump())
+    doc = review_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.reviews.insert_one(doc)
+    return {"message": "Review submitted successfully. It will appear after approval.", "id": review_obj.id}
+
+@api_router.get("/reviews/stats", response_model=dict)
+async def get_review_stats():
+    # Get all approved reviews
+    db_reviews = await db.reviews.find({"approved": True}, {"_id": 0}).to_list(100)
+    all_reviews = SAMPLE_REVIEWS + db_reviews
+    
+    if not all_reviews:
+        return {"average_rating": 0, "total_reviews": 0, "rating_distribution": {}}
+    
+    total = len(all_reviews)
+    avg = sum(r["rating"] for r in all_reviews) / total
+    distribution = {i: len([r for r in all_reviews if r["rating"] == i]) for i in range(1, 6)}
+    
+    return {
+        "average_rating": round(avg, 1),
+        "total_reviews": total,
+        "rating_distribution": distribution
+    }
+
 # Include the router in the main app
 app.include_router(api_router)
 
