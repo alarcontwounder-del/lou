@@ -108,6 +108,7 @@ export const translations = {
     courses: {
       subtitle: "Golfplätze",
       title: "Weltklasse-Plätze Erwarten Sie",
+      description: "Buchen Sie Abschlagzeiten auf 13 Premium-Golfplätzen auf Mallorca mit sofortiger Bestätigung.",
       holes: "Löcher",
       par: "Par",
       from: "Ab",
