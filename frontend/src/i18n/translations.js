@@ -109,6 +109,7 @@ export const translations = {
       title: "Weltklasse-Plätze Erwarten Sie",
       holes: "Löcher",
       par: "Par",
+      from: "Ab",
       bookNow: "Abschlagzeit Buchen"
     },
     offers: {
