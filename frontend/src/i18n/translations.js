@@ -190,6 +190,7 @@ export const translations = {
       title: "Des Parcours de Classe Mondiale",
       holes: "Trous",
       par: "Par",
+      from: "À partir de",
       bookNow: "Réserver un Départ"
     },
     offers: {
