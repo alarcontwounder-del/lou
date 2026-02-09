@@ -71,7 +71,7 @@ class PartnerOffer(BaseModel):
 GOLF_COURSES = [
     {
         "id": "son-gual",
-        "name": "Son Gual Golf",
+        "name": "Golf Son Gual Mallorca",
         "description": {
             "en": "One of Europe's finest courses, Son Gual offers a world-class championship experience with stunning Mediterranean views.",
             "de": "Einer der besten Plätze Europas bietet Son Gual ein erstklassiges Championship-Erlebnis mit atemberaubendem Mittelmeerblick.",
@@ -81,12 +81,13 @@ GOLF_COURSES = [
         "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800",
         "holes": 18,
         "par": 72,
+        "price_from": 85,
         "features": ["Championship Course", "Practice Range", "Pro Shop", "Restaurant"],
-        "booking_url": "https://www.songual.com"
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-son-gual-mallorca"
     },
     {
         "id": "alcanada",
-        "name": "Alcanada Golf Club",
+        "name": "Golf Alcanada",
         "description": {
             "en": "Nestled along the coast with breathtaking views of the lighthouse, Alcanada is a true gem of Mediterranean golf.",
             "de": "An der Küste gelegen mit atemberaubendem Blick auf den Leuchtturm, ist Alcanada ein wahres Juwel des mediterranen Golfs.",
@@ -96,12 +97,13 @@ GOLF_COURSES = [
         "image": "https://images.unsplash.com/photo-1571928917219-478ae39b64ca?w=800",
         "holes": 18,
         "par": 72,
+        "price_from": 115,
         "features": ["Ocean Views", "Clubhouse", "Golf Academy", "Spa"],
-        "booking_url": "https://www.alcanadagolfclub.com"
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-alcanada"
     },
     {
         "id": "golf-santa-ponsa",
-        "name": "Golf Santa Ponsa",
+        "name": "Golf Santa Ponsa I",
         "description": {
             "en": "Three exceptional courses set amidst pine forests, Santa Ponsa has hosted major European Tour events.",
             "de": "Drei außergewöhnliche Plätze inmitten von Pinienwäldern, Santa Ponsa war Gastgeber bedeutender European Tour Events.",
@@ -111,8 +113,9 @@ GOLF_COURSES = [
         "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800",
         "holes": 18,
         "par": 72,
+        "price_from": 66,
         "features": ["3 Courses", "Tournament Host", "Driving Range", "Golf School"],
-        "booking_url": "https://www.golfsantaponsa.com"
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-santa-ponsa"
     },
     {
         "id": "son-muntaner",
