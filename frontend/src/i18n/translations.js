@@ -271,6 +271,7 @@ export const translations = {
       title: "Världsklassbanor Väntar",
       holes: "Hål",
       par: "Par",
+      from: "Från",
       bookNow: "Boka Tee Time"
     },
     offers: {
