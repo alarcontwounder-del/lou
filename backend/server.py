@@ -129,8 +129,9 @@ GOLF_COURSES = [
         "image": "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
         "holes": 18,
         "par": 72,
+        "price_from": 51,
         "features": ["Mountain Views", "Technical Design", "Wellness Center", "Fine Dining"],
-        "booking_url": "https://www.arabellaspanishgolf.com"
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-muntaner-golf"
     }
 ]
 
