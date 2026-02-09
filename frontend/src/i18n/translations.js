@@ -190,6 +190,7 @@ export const translations = {
     courses: {
       subtitle: "Parcours de Golf",
       title: "Des Parcours de Classe Mondiale",
+      description: "Réservez des départs sur 13 parcours de golf premium à Majorque avec confirmation instantanée.",
       holes: "Trous",
       par: "Par",
       from: "À partir de",
