@@ -272,6 +272,7 @@ export const translations = {
     courses: {
       subtitle: "Golfbanor",
       title: "Världsklassbanor Väntar",
+      description: "Boka tee times på 13 premiumbanaor på Mallorca med omedelbar bekräftelse.",
       holes: "Hål",
       par: "Par",
       from: "Från",
