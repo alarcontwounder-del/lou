@@ -70,36 +70,157 @@ class PartnerOffer(BaseModel):
 # Static data for golf courses
 GOLF_COURSES = [
     {
-        "id": "son-gual",
-        "name": "Golf Son Gual Mallorca",
-        "description": {
-            "en": "One of Europe's finest courses, Son Gual offers a world-class championship experience with stunning Mediterranean views.",
-            "de": "Einer der besten Plätze Europas bietet Son Gual ein erstklassiges Championship-Erlebnis mit atemberaubendem Mittelmeerblick.",
-            "fr": "L'un des meilleurs parcours d'Europe, Son Gual offre une expérience de championnat de classe mondiale avec des vues méditerranéennes époustouflantes.",
-            "se": "En av Europas finaste banor, Son Gual erbjuder en världsklassig mästerskapsupplevelse med fantastisk Medelhavsutsikt."
-        },
-        "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800",
-        "holes": 18,
-        "par": 72,
-        "price_from": 85,
-        "features": ["Championship Course", "Practice Range", "Pro Shop", "Restaurant"],
-        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-son-gual-mallorca"
-    },
-    {
-        "id": "alcanada",
+        "id": "golf-alcanada",
         "name": "Golf Alcanada",
         "description": {
-            "en": "Nestled along the coast with breathtaking views of the lighthouse, Alcanada is a true gem of Mediterranean golf.",
-            "de": "An der Küste gelegen mit atemberaubendem Blick auf den Leuchtturm, ist Alcanada ein wahres Juwel des mediterranen Golfs.",
-            "fr": "Niché le long de la côte avec des vues imprenables sur le phare, Alcanada est un véritable joyau du golf méditerranéen.",
-            "se": "Belägen längs kusten med hisnande utsikt över fyren, Alcanada är en sann pärla inom Medelhavsgolf."
+            "en": "Nestled along the coast with breathtaking views of the iconic lighthouse, Alcanada is a true gem of Mediterranean golf.",
+            "de": "An der Küste gelegen mit atemberaubendem Blick auf den ikonischen Leuchtturm, ist Alcanada ein wahres Juwel des mediterranen Golfs.",
+            "fr": "Niché le long de la côte avec des vues imprenables sur le phare emblématique, Alcanada est un véritable joyau du golf méditerranéen.",
+            "se": "Belägen längs kusten med hisnande utsikt över den ikoniska fyren, Alcanada är en sann pärla inom Medelhavsgolf."
         },
         "image": "https://images.unsplash.com/photo-1571928917219-478ae39b64ca?w=800",
         "holes": 18,
         "par": 72,
         "price_from": 115,
-        "features": ["Ocean Views", "Clubhouse", "Golf Academy", "Spa"],
+        "location": "Alcúdia",
+        "features": ["Ocean Views", "Lighthouse Views", "Golf Academy", "Restaurant"],
         "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-alcanada"
+    },
+    {
+        "id": "golf-son-gual",
+        "name": "Golf Son Gual Mallorca",
+        "description": {
+            "en": "One of Europe's finest courses, Son Gual offers a world-class championship experience with stunning Mediterranean views.",
+            "de": "Einer der besten Plätze Europas bietet Son Gual ein erstklassiges Championship-Erlebnis mit atemberaubendem Mittelmeerblick.",
+            "fr": "L'un des meilleurs parcours d'Europe, Son Gual offre une expérience de championnat de classe mondiale.",
+            "se": "En av Europas finaste banor, Son Gual erbjuder en världsklassig mästerskapsupplevelse."
+        },
+        "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 85,
+        "location": "Palma de Mallorca",
+        "features": ["Championship Course", "Practice Range", "Pro Shop", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-son-gual-mallorca"
+    },
+    {
+        "id": "pula-golf-resort",
+        "name": "Pula Golf Resort",
+        "description": {
+            "en": "A beautiful resort course surrounded by natural beauty, offering a relaxed yet challenging golfing experience.",
+            "de": "Ein wunderschöner Resort-Platz umgeben von natürlicher Schönheit, bietet ein entspanntes aber anspruchsvolles Golferlebnis.",
+            "fr": "Un magnifique parcours de resort entouré de beauté naturelle, offrant une expérience de golf détendue mais stimulante.",
+            "se": "En vacker resortbana omgiven av naturlig skönhet, erbjuder en avslappnad men utmanande golfupplevelse."
+        },
+        "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 74,
+        "location": "Son Servera",
+        "features": ["Resort Course", "Practice Facilities", "Clubhouse", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/pula-golf-resort"
+    },
+    {
+        "id": "son-vida-golf",
+        "name": "Son Vida Golf",
+        "description": {
+            "en": "The oldest course in Mallorca, Son Vida offers a classic golfing experience with panoramic views of Palma Bay.",
+            "de": "Der älteste Platz auf Mallorca, Son Vida bietet ein klassisches Golferlebnis mit Panoramablick auf die Bucht von Palma.",
+            "fr": "Le plus ancien parcours de Majorque, Son Vida offre une expérience de golf classique avec vue panoramique sur la baie de Palma.",
+            "se": "Den äldsta banan på Mallorca, Son Vida erbjuder en klassisk golfupplevelse med panoramautsikt över Palmabukten."
+        },
+        "image": "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 47,
+        "location": "Palma de Mallorca",
+        "features": ["Historic Course", "Bay Views", "Luxury Hotel", "Fine Dining"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-vida-golf"
+    },
+    {
+        "id": "son-muntaner-golf",
+        "name": "Son Muntaner Golf",
+        "description": {
+            "en": "A challenging course designed by Kurt Rossknecht, featuring dramatic elevation changes and mountain views.",
+            "de": "Ein anspruchsvoller Platz von Kurt Rossknecht mit dramatischen Höhenunterschieden und Bergblicken.",
+            "fr": "Un parcours challenging conçu par Kurt Rossknecht, avec des changements d'élévation dramatiques.",
+            "se": "En utmanande bana designad av Kurt Rossknecht, med dramatiska höjdskillnader och bergsutsikt."
+        },
+        "image": "https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 51,
+        "location": "Palma de Mallorca",
+        "features": ["Mountain Views", "Technical Design", "Wellness Center", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-muntaner-golf"
+    },
+    {
+        "id": "son-quint-golf",
+        "name": "Son Quint Golf",
+        "description": {
+            "en": "A modern course with excellent facilities, Son Quint offers spectacular views and a memorable round.",
+            "de": "Ein moderner Platz mit hervorragenden Einrichtungen, Son Quint bietet spektakuläre Aussichten und eine unvergessliche Runde.",
+            "fr": "Un parcours moderne avec d'excellentes installations, Son Quint offre des vues spectaculaires.",
+            "se": "En modern bana med utmärkta faciliteter, Son Quint erbjuder spektakulära utsikter och en minnesvärd runda."
+        },
+        "image": "https://images.unsplash.com/photo-1600005082646-9cbc484dc498?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 58,
+        "location": "Palma de Mallorca",
+        "features": ["Modern Design", "Practice Range", "Pro Shop", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-quint-golf"
+    },
+    {
+        "id": "son-antem-east",
+        "name": "Son Antem Resort East Course",
+        "description": {
+            "en": "Part of the renowned Son Antem complex, this course offers a perfect blend of challenge and playability.",
+            "de": "Teil des renommierten Son Antem Komplexes, bietet dieser Platz eine perfekte Mischung aus Herausforderung und Spielbarkeit.",
+            "fr": "Faisant partie du célèbre complexe Son Antem, ce parcours offre un mélange parfait de défi et de jouabilité.",
+            "se": "En del av det berömda Son Antem-komplexet, denna bana erbjuder en perfekt blandning av utmaning och spelbarhet."
+        },
+        "image": "https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 54,
+        "location": "Llucmajor",
+        "features": ["Resort Course", "Marriott Hotel", "Spa", "Multiple Restaurants"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-antem-resort-course"
+    },
+    {
+        "id": "son-antem-west",
+        "name": "Son Antem West Championship Course",
+        "description": {
+            "en": "The championship course at Son Antem, designed for serious golfers seeking a premium challenge.",
+            "de": "Der Championship-Platz in Son Antem, für anspruchsvolle Golfer konzipiert, die eine Premium-Herausforderung suchen.",
+            "fr": "Le parcours championship de Son Antem, conçu pour les golfeurs exigeants recherchant un défi premium.",
+            "se": "Mästerskapsbanan på Son Antem, designad för seriösa golfare som söker en premium utmaning."
+        },
+        "image": "https://images.unsplash.com/photo-1611374243147-44a702c2d44c?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 59,
+        "location": "Llucmajor",
+        "features": ["Championship Course", "Tournament Ready", "Practice Facilities", "Clubhouse"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-antem-championship-course"
+    },
+    {
+        "id": "capdepera-golf",
+        "name": "Capdepera Golf",
+        "description": {
+            "en": "Located in the beautiful northeast of Mallorca, Capdepera offers stunning coastal views and excellent conditions.",
+            "de": "Im wunderschönen Nordosten Mallorcas gelegen, bietet Capdepera atemberaubende Küstenaussichten und hervorragende Bedingungen.",
+            "fr": "Situé dans le magnifique nord-est de Majorque, Capdepera offre des vues côtières époustouflantes.",
+            "se": "Belägen i den vackra nordöstra delen av Mallorca, Capdepera erbjuder fantastisk kustutsikt och utmärkta förhållanden."
+        },
+        "image": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800",
+        "holes": 18,
+        "par": 72,
+        "price_from": 59,
+        "location": "Capdepera",
+        "features": ["Coastal Views", "Well Maintained", "Driving Range", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/capdepera-golf"
     },
     {
         "id": "golf-santa-ponsa",
@@ -110,28 +231,64 @@ GOLF_COURSES = [
             "fr": "Trois parcours exceptionnels au milieu des forêts de pins, Santa Ponsa a accueilli des événements majeurs du Tour Européen.",
             "se": "Tre exceptionella banor mitt i tallskogar, Santa Ponsa har varit värd för stora European Tour-evenemang."
         },
-        "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800",
+        "image": "https://images.unsplash.com/photo-1633683914580-3e54c3c0dc2c?w=800",
         "holes": 18,
         "par": 72,
         "price_from": 66,
-        "features": ["3 Courses", "Tournament Host", "Driving Range", "Golf School"],
+        "location": "Santa Ponsa",
+        "features": ["3 Courses", "European Tour Venue", "Driving Range", "Golf School"],
         "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-santa-ponsa"
     },
     {
-        "id": "son-muntaner",
-        "name": "Son Muntaner Golf",
+        "id": "golf-son-servera",
+        "name": "Golf Son Servera",
         "description": {
-            "en": "A challenging course designed by Kurt Rossknecht, featuring dramatic elevation changes and mountain views.",
-            "de": "Ein anspruchsvoller Platz von Kurt Rossknecht mit dramatischen Höhenunterschieden und Bergblicken.",
-            "fr": "Un parcours challenging conçu par Kurt Rossknecht, avec des changements d'élévation dramatiques et des vues sur les montagnes.",
-            "se": "En utmanande bana designad av Kurt Rossknecht, med dramatiska höjdskillnader och bergsutsikt."
+            "en": "A traditional Mallorcan course with beautiful views and a welcoming atmosphere for all skill levels.",
+            "de": "Ein traditioneller mallorquinischer Platz mit wunderschönen Aussichten und einer einladenden Atmosphäre für alle Spielstärken.",
+            "fr": "Un parcours majorquin traditionnel avec de belles vues et une atmosphère accueillante pour tous les niveaux.",
+            "se": "En traditionell mallorkinsk bana med vacker utsikt och en välkomnande atmosfär för alla nivåer."
         },
-        "image": "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
+        "image": "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?w=800",
         "holes": 18,
         "par": 72,
-        "price_from": 51,
-        "features": ["Mountain Views", "Technical Design", "Wellness Center", "Fine Dining"],
-        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/son-muntaner-golf"
+        "price_from": 73,
+        "location": "Son Servera",
+        "features": ["Traditional Course", "Scenic Views", "Clubhouse", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-son-servera"
+    },
+    {
+        "id": "vall-dor-golf",
+        "name": "Vall D'Or Golf",
+        "description": {
+            "en": "A picturesque course in the east of Mallorca, Vall d'Or offers a unique golfing experience amid natural beauty.",
+            "de": "Ein malerischer Platz im Osten Mallorcas, Vall d'Or bietet ein einzigartiges Golferlebnis inmitten natürlicher Schönheit.",
+            "fr": "Un parcours pittoresque à l'est de Majorque, Vall d'Or offre une expérience de golf unique au milieu de la nature.",
+            "se": "En pittoresk bana i östra Mallorca, Vall d'Or erbjuder en unik golfupplevelse mitt i naturlig skönhet."
+        },
+        "image": "https://images.unsplash.com/photo-1584704135557-d1e28d637b5a?w=800",
+        "holes": 18,
+        "par": 71,
+        "price_from": 81,
+        "location": "Porto Colom",
+        "features": ["Scenic Course", "Natural Setting", "Practice Area", "Clubhouse"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/vall-dor-golf"
+    },
+    {
+        "id": "real-golf-bendinat",
+        "name": "Real Golf De Bendinat",
+        "description": {
+            "en": "An exclusive club near Palma, Bendinat offers a challenging layout with Mediterranean Sea views.",
+            "de": "Ein exklusiver Club in der Nähe von Palma, Bendinat bietet ein anspruchsvolles Layout mit Blick auf das Mittelmeer.",
+            "fr": "Un club exclusif près de Palma, Bendinat offre un parcours challengeant avec vue sur la Méditerranée.",
+            "se": "En exklusiv klubb nära Palma, Bendinat erbjuder en utmanande layout med utsikt över Medelhavet."
+        },
+        "image": "https://images.unsplash.com/photo-1609889928035-9acefdfbeac2?w=800",
+        "holes": 18,
+        "par": 70,
+        "price_from": 65,
+        "location": "Bendinat",
+        "features": ["Exclusive Club", "Sea Views", "Historic Course", "Fine Dining"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/real-golf-de-bendinat"
     }
 ]
 
