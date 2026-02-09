@@ -470,6 +470,192 @@ PARTNER_OFFERS = [
     }
 ]
 
+# Static blog posts
+BLOG_POSTS = [
+    {
+        "id": "best-time-golf-mallorca",
+        "slug": "best-time-golf-mallorca",
+        "title": {
+            "en": "The Best Time to Play Golf in Mallorca",
+            "de": "Die beste Zeit zum Golfspielen auf Mallorca",
+            "fr": "Le meilleur moment pour jouer au golf à Majorque",
+            "se": "Bästa tiden att spela golf på Mallorca"
+        },
+        "excerpt": {
+            "en": "Discover when to visit Mallorca for the perfect golfing conditions and avoid the crowds.",
+            "de": "Entdecken Sie, wann Sie Mallorca besuchen sollten, um perfekte Golfbedingungen zu genießen.",
+            "fr": "Découvrez quand visiter Majorque pour des conditions de golf parfaites.",
+            "se": "Upptäck när du ska besöka Mallorca för perfekta golfförhållanden."
+        },
+        "content": {
+            "en": "Mallorca enjoys over 300 days of sunshine per year, making it an ideal golf destination almost year-round. However, the best time to play golf in Mallorca is during spring (March to May) and autumn (September to November). During these months, you'll experience pleasant temperatures between 18-25°C, minimal rainfall, and fewer tourists on the courses. The summer months can be quite hot, with temperatures often exceeding 30°C, while winter offers mild conditions but occasional rain. Spring brings the island to life with blooming almond trees and vibrant landscapes, creating a stunning backdrop for your round. Autumn provides similar weather with the added benefit of harvesting season, offering wonderful culinary experiences after your game.",
+            "de": "Mallorca genießt über 300 Sonnentage pro Jahr und ist damit fast das ganze Jahr über ein ideales Golfziel. Die beste Zeit zum Golfspielen auf Mallorca ist jedoch im Frühling (März bis Mai) und Herbst (September bis November)...",
+            "fr": "Majorque bénéficie de plus de 300 jours de soleil par an, ce qui en fait une destination de golf idéale presque toute l'année...",
+            "se": "Mallorca har över 300 soldagar per år, vilket gör det till en idealisk golfdestination nästan året runt..."
+        },
+        "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800",
+        "author": "Maria Santos",
+        "category": "travel-tips",
+        "tags": ["weather", "planning", "seasons"],
+        "published": True,
+        "created_at": "2024-12-15T10:00:00Z"
+    },
+    {
+        "id": "top-5-courses-beginners",
+        "slug": "top-5-courses-beginners",
+        "title": {
+            "en": "Top 5 Golf Courses in Mallorca for Beginners",
+            "de": "Top 5 Golfplätze auf Mallorca für Anfänger",
+            "fr": "Top 5 des parcours de golf à Majorque pour débutants",
+            "se": "Topp 5 golfbanor på Mallorca för nybörjare"
+        },
+        "excerpt": {
+            "en": "New to golf? These beginner-friendly courses offer the perfect introduction to Mallorca's golf scene.",
+            "de": "Neu beim Golf? Diese anfängerfreundlichen Plätze bieten die perfekte Einführung.",
+            "fr": "Nouveau au golf? Ces parcours adaptés aux débutants offrent une introduction parfaite.",
+            "se": "Ny på golf? Dessa nybörjarvänliga banor erbjuder den perfekta introduktionen."
+        },
+        "content": {
+            "en": "If you're new to golf or still building your confidence on the course, Mallorca offers several welcoming options. Son Vida Golf stands out as the most beginner-friendly course, with its forgiving fairways and helpful staff. The course offers excellent practice facilities and lessons from PGA-certified professionals. Son Quint Golf provides another great option with its modern design and less intimidating layout. Pula Golf Resort offers a relaxed atmosphere perfect for those still learning the game. Golf Son Servera welcomes players of all levels with its traditional layout and patient staff. Finally, Son Antem East Course provides a resort setting where beginners can feel comfortable while enjoying quality facilities.",
+            "de": "Wenn Sie neu beim Golf sind oder noch Vertrauen auf dem Platz aufbauen, bietet Mallorca mehrere einladende Optionen...",
+            "fr": "Si vous êtes nouveau au golf ou encore en train de prendre confiance sur le parcours, Majorque offre plusieurs options accueillantes...",
+            "se": "Om du är ny på golf eller fortfarande bygger ditt självförtroende på banan, erbjuder Mallorca flera välkomnande alternativ..."
+        },
+        "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800",
+        "author": "Carlos Martinez",
+        "category": "course-guides",
+        "tags": ["beginners", "courses", "tips"],
+        "published": True,
+        "created_at": "2024-12-10T14:30:00Z"
+    },
+    {
+        "id": "golf-and-gastronomy-mallorca",
+        "slug": "golf-and-gastronomy-mallorca",
+        "title": {
+            "en": "Golf & Gastronomy: The Perfect Mallorca Pairing",
+            "de": "Golf & Gastronomie: Die perfekte Mallorca-Kombination",
+            "fr": "Golf & Gastronomie: L'accord parfait à Majorque",
+            "se": "Golf & Gastronomi: Den perfekta Mallorca-kombinationen"
+        },
+        "excerpt": {
+            "en": "Combine world-class golf with Michelin-starred dining for the ultimate Mallorca experience.",
+            "de": "Kombinieren Sie Weltklasse-Golf mit Michelin-Sterne-Dining für das ultimative Mallorca-Erlebnis.",
+            "fr": "Combinez golf de classe mondiale et gastronomie étoilée Michelin pour l'expérience ultime.",
+            "se": "Kombinera golf i världsklass med Michelin-stjärnig matlagning för den ultimata Mallorca-upplevelsen."
+        },
+        "content": {
+            "en": "Mallorca is not just a golf paradise—it's also a culinary destination with 8 Michelin-starred restaurants. After a morning round at Golf Alcanada, head to Es Fum for contemporary Mediterranean cuisine. If you're playing at Son Vida, the nearby Zaranda offers two Michelin stars and breathtaking views. For a more casual experience, the clubhouse restaurants at Son Gual and Santa Ponsa serve excellent local dishes. Don't miss the traditional Mallorcan cuisine: tumbet, sobrassada, and ensaimadas are must-tries. Many of our hotel partners offer special golf-and-dine packages that combine green fees with reservations at top restaurants.",
+            "de": "Mallorca ist nicht nur ein Golfparadies – es ist auch ein kulinarisches Ziel mit 8 Michelin-Sterne-Restaurants...",
+            "fr": "Majorque n'est pas seulement un paradis du golf, c'est aussi une destination culinaire avec 8 restaurants étoilés Michelin...",
+            "se": "Mallorca är inte bara ett golfparadis – det är också en kulinarisk destination med 8 Michelin-stjärniga restauranger..."
+        },
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+        "author": "Elena Rossi",
+        "category": "lifestyle",
+        "tags": ["food", "restaurants", "experiences"],
+        "published": True,
+        "created_at": "2024-12-05T09:15:00Z"
+    },
+    {
+        "id": "championship-courses-mallorca",
+        "slug": "championship-courses-mallorca",
+        "title": {
+            "en": "Championship Golf: Mallorca's Most Challenging Courses",
+            "de": "Championship-Golf: Mallorcas anspruchsvollste Plätze",
+            "fr": "Golf Championship: Les parcours les plus difficiles de Majorque",
+            "se": "Championship Golf: Mallorcas mest utmanande banor"
+        },
+        "excerpt": {
+            "en": "Ready for a challenge? Discover the courses that test even the most experienced golfers.",
+            "de": "Bereit für eine Herausforderung? Entdecken Sie die Plätze, die selbst erfahrene Golfer testen.",
+            "fr": "Prêt pour un défi? Découvrez les parcours qui testent même les golfeurs les plus expérimentés.",
+            "se": "Redo för en utmaning? Upptäck banorna som testar även de mest erfarna golfarna."
+        },
+        "content": {
+            "en": "For experienced golfers seeking a true test of their skills, Mallorca delivers world-class championship courses. Golf Son Gual, designed by Thomas Himmel, is widely considered one of Europe's finest courses with its immaculate conditioning and strategic design. Golf Alcanada challenges players with its coastal winds and stunning but demanding layout around the historic lighthouse. Son Antem West Championship Course offers tournament-ready conditions and has hosted European Tour qualifying events. The technical Son Muntaner Golf demands precision with its elevation changes and narrow fairways. These courses reward strategic thinking and punish errant shots—exactly what serious golfers crave.",
+            "de": "Für erfahrene Golfer, die einen echten Test ihrer Fähigkeiten suchen, bietet Mallorca Weltklasse-Championship-Plätze...",
+            "fr": "Pour les golfeurs expérimentés à la recherche d'un véritable test de leurs compétences, Majorque offre des parcours championship de classe mondiale...",
+            "se": "För erfarna golfare som söker ett verkligt test av sina färdigheter, levererar Mallorca mästerskapsbanor i världsklass..."
+        },
+        "image": "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
+        "author": "James Thompson",
+        "category": "course-guides",
+        "tags": ["championship", "advanced", "challenge"],
+        "published": True,
+        "created_at": "2024-11-28T11:00:00Z"
+    }
+]
+
+# Sample approved reviews (seeded data)
+SAMPLE_REVIEWS = [
+    {
+        "id": "review-1",
+        "name": "Hans Mueller",
+        "country": "germany",
+        "rating": 5,
+        "title": "Unforgettable golf experience!",
+        "comment": "Booked 3 rounds through Mallorca Golf and everything was perfectly organized. Son Gual was absolutely stunning and the booking process was seamless. Will definitely use this service again!",
+        "course_played": "Golf Son Gual Mallorca",
+        "approved": True,
+        "created_at": "2024-12-01T10:00:00Z"
+    },
+    {
+        "id": "review-2",
+        "name": "Erik Lindqvist",
+        "country": "sweden",
+        "rating": 5,
+        "title": "Perfect service for our golf trip",
+        "comment": "Our group of 8 had an amazing week in Mallorca. The team helped us book 4 different courses and arranged everything including transfers. Highly recommended for Swedish golfers!",
+        "course_played": "Golf Alcanada",
+        "approved": True,
+        "created_at": "2024-11-25T14:30:00Z"
+    },
+    {
+        "id": "review-3",
+        "name": "Pierre Dubois",
+        "country": "france",
+        "rating": 4,
+        "title": "Excellent courses, great value",
+        "comment": "Played at Santa Ponsa and Bendinat. Both courses were in excellent condition. The prices were competitive and the multilingual support made everything easy.",
+        "course_played": "Golf Santa Ponsa I",
+        "approved": True,
+        "created_at": "2024-11-20T09:15:00Z"
+    },
+    {
+        "id": "review-4",
+        "name": "Thomas Braun",
+        "country": "switzerland",
+        "rating": 5,
+        "title": "Best golf concierge in Mallorca",
+        "comment": "As a frequent visitor to Mallorca, I've tried many booking services. This is by far the best. Personal attention, great course recommendations, and excellent partner hotels.",
+        "course_played": "Son Muntaner Golf",
+        "approved": True,
+        "created_at": "2024-11-15T16:45:00Z"
+    },
+    {
+        "id": "review-5",
+        "name": "Sarah Williams",
+        "country": "uk",
+        "rating": 5,
+        "title": "Wonderful golf holiday",
+        "comment": "My husband and I spent a week golfing in Mallorca. The course recommendations were spot on and the hotel partnership saved us money. The Alcanada lighthouse views were breathtaking!",
+        "course_played": "Golf Alcanada",
+        "approved": True,
+        "created_at": "2024-11-10T11:20:00Z"
+    },
+    {
+        "id": "review-6",
+        "name": "Klaus Hoffmann",
+        "country": "germany",
+        "rating": 4,
+        "title": "Great variety of courses",
+        "comment": "Played 5 different courses in one week. Each one was unique and well-maintained. The online booking system is very easy to use. Only minor issue was a tee time change, but they handled it professionally.",
+        "course_played": "Pula Golf Resort",
+        "approved": True,
+        "created_at": "2024-11-05T08:30:00Z"
+    }
+]
+
 # Routes
 @api_router.get("/")
 async def root():
