@@ -67,6 +67,42 @@ class PartnerOffer(BaseModel):
     discount_percent: Optional[int] = None
     contact_url: str
 
+# Blog Post Models
+class BlogPost(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    slug: str
+    title: dict  # Multi-language
+    excerpt: dict  # Multi-language
+    content: dict  # Multi-language
+    image: str
+    author: str
+    category: str
+    tags: List[str] = []
+    published: bool = True
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+# Client Review Models
+class ClientReview(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    country: str
+    rating: int = Field(ge=1, le=5)
+    title: str
+    comment: str
+    course_played: Optional[str] = None
+    approved: bool = False
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ClientReviewCreate(BaseModel):
+    name: str
+    country: str
+    rating: int = Field(ge=1, le=5)
+    title: str
+    comment: str
+    course_played: Optional[str] = None
+
 # Static data for golf courses
 GOLF_COURSES = [
     {
