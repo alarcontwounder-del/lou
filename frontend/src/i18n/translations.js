@@ -301,6 +301,35 @@ export const translations = {
       contactInfo: "Infos Contact",
       followUs: "Suivez-Nous",
       rights: "Tous droits réservés."
+    },
+    blog: {
+      subtitle: "Blog Golf",
+      title: "Conseils & Perspectives",
+      description: "Conseils d'experts, guides de parcours et astuces pour votre expérience golf à Majorque.",
+      readMore: "Lire la Suite",
+      categories: {
+        travelTips: "Conseils Voyage",
+        courseGuides: "Guides Parcours",
+        lifestyle: "Lifestyle"
+      }
+    },
+    reviews: {
+      subtitle: "Avis Clients",
+      title: "Ce Que Disent Nos Golfeurs",
+      reviewsCount: "avis",
+      leaveReview: "Partagez Votre Expérience",
+      yourRating: "Votre Note",
+      yourName: "Votre Nom",
+      yourCountry: "Votre Pays",
+      coursePlayed: "Parcours Joué (optionnel)",
+      reviewTitle: "Titre de l'Avis",
+      yourReview: "Parlez-nous de votre expérience...",
+      submit: "Soumettre l'Avis",
+      submitSuccess: "Merci! Votre avis apparaîtra après approbation.",
+      moderationNote: "Les avis sont modérés avant publication.",
+      shareExperience: "Joué à Majorque?",
+      shareDescription: "Aidez d'autres golfeurs en partageant votre expérience.",
+      writeReview: "Écrire un Avis"
     }
   },
   se: {
