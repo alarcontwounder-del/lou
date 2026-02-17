@@ -7,6 +7,8 @@ import { About } from './components/About';
 import { GolfCourses } from './components/GolfCourses';
 import { HotelPartners } from './components/HotelPartners';
 import { RestaurantPartners } from './components/RestaurantPartners';
+import { Reviews } from './components/Reviews';
+import { Blog } from './components/Blog';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Toaster } from './components/ui/sonner';
@@ -22,6 +24,8 @@ function App() {
           <GolfCourses />
           <HotelPartners />
           <RestaurantPartners />
+          <Reviews />
+          <Blog />
           <Contact />
         </main>
         <Footer />
