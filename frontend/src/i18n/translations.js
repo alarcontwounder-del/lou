@@ -412,6 +412,35 @@ export const translations = {
       contactInfo: "Kontaktinfo",
       followUs: "Följ Oss",
       rights: "Alla rättigheter förbehållna."
+    },
+    blog: {
+      subtitle: "Golfblogg",
+      title: "Tips & Insikter",
+      description: "Expertråd, banguider och insidertips för din Mallorca-golfupplevelse.",
+      readMore: "Läs Mer",
+      categories: {
+        travelTips: "Resetips",
+        courseGuides: "Banguider",
+        lifestyle: "Livsstil"
+      }
+    },
+    reviews: {
+      subtitle: "Kundrecensioner",
+      title: "Vad Våra Golfare Säger",
+      reviewsCount: "recensioner",
+      leaveReview: "Dela Din Upplevelse",
+      yourRating: "Din Betyg",
+      yourName: "Ditt Namn",
+      yourCountry: "Ditt Land",
+      coursePlayed: "Spelad Bana (valfritt)",
+      reviewTitle: "Recensionstitel",
+      yourReview: "Berätta om din upplevelse...",
+      submit: "Skicka Recension",
+      submitSuccess: "Tack! Din recension visas efter godkännande.",
+      moderationNote: "Recensioner modereras innan publicering.",
+      shareExperience: "Spelat på Mallorca?",
+      shareDescription: "Hjälp andra golfare genom att dela din upplevelse.",
+      writeReview: "Skriv en Recension"
     }
   }
 };
