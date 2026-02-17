@@ -79,6 +79,35 @@ export const translations = {
       contactInfo: "Contact Info",
       followUs: "Follow Us",
       rights: "All rights reserved."
+    },
+    blog: {
+      subtitle: "Golf Blog",
+      title: "Tips & Insights",
+      description: "Expert advice, course guides, and insider tips for your Mallorca golf experience.",
+      readMore: "Read More",
+      categories: {
+        travelTips: "Travel Tips",
+        courseGuides: "Course Guides",
+        lifestyle: "Lifestyle"
+      }
+    },
+    reviews: {
+      subtitle: "Client Reviews",
+      title: "What Our Golfers Say",
+      reviewsCount: "reviews",
+      leaveReview: "Share Your Experience",
+      yourRating: "Your Rating",
+      yourName: "Your Name",
+      yourCountry: "Your Country",
+      coursePlayed: "Course Played (optional)",
+      reviewTitle: "Review Title",
+      yourReview: "Tell us about your experience...",
+      submit: "Submit Review",
+      submitSuccess: "Thank you! Your review will appear after approval.",
+      moderationNote: "Reviews are moderated before publishing.",
+      shareExperience: "Played in Mallorca?",
+      shareDescription: "Help other golfers by sharing your experience with our courses and services.",
+      writeReview: "Write a Review"
     }
   },
   de: {
