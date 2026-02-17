@@ -163,12 +163,6 @@ export const Navbar = () => {
         >
           <div className="flex flex-col gap-4">
             <button
-              onClick={() => scrollToSection('about')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
-            >
-              {t('nav.home')}
-            </button>
-            <button
               onClick={() => scrollToSection('courses')}
               className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
             >
@@ -185,6 +179,18 @@ export const Navbar = () => {
               className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
             >
               {t('restaurants.subtitle')}
+            </button>
+            <button
+              onClick={() => scrollToSection('reviews')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('reviews.subtitle')}
+            </button>
+            <button
+              onClick={() => scrollToSection('blog')}
+              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+            >
+              {t('blog.subtitle')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
