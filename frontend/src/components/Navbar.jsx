@@ -61,14 +61,7 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <button
-            onClick={() => scrollToSection('about')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
-            data-testid="nav-about"
-          >
-            {t('nav.home')}
-          </button>
+        <div className="hidden md:flex items-center gap-5">
           <button
             onClick={() => scrollToSection('courses')}
             className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
@@ -89,6 +82,20 @@ export const Navbar = () => {
             data-testid="nav-restaurants"
           >
             {t('restaurants.subtitle')}
+          </button>
+          <button
+            onClick={() => scrollToSection('reviews')}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            data-testid="nav-reviews"
+          >
+            {t('reviews.subtitle')}
+          </button>
+          <button
+            onClick={() => scrollToSection('blog')}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            data-testid="nav-blog"
+          >
+            {t('blog.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
