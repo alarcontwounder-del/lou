@@ -625,75 +625,7 @@ BLOG_POSTS = [
     }
 ]
 
-# Sample approved reviews (seeded data)
-SAMPLE_REVIEWS = [
-    {
-        "id": "review-1",
-        "name": "Hans Mueller",
-        "country": "germany",
-        "rating": 5,
-        "title": "Unforgettable golf experience!",
-        "comment": "Booked 3 rounds through Mallorca Golf and everything was perfectly organized. Son Gual was absolutely stunning and the booking process was seamless. Will definitely use this service again!",
-        "course_played": "Golf Son Gual Mallorca",
-        "approved": True,
-        "created_at": "2024-12-01T10:00:00Z"
-    },
-    {
-        "id": "review-2",
-        "name": "Erik Lindqvist",
-        "country": "sweden",
-        "rating": 5,
-        "title": "Perfect service for our golf trip",
-        "comment": "Our group of 8 had an amazing week in Mallorca. The team helped us book 4 different courses and arranged everything including transfers. Highly recommended for Swedish golfers!",
-        "course_played": "Golf Alcanada",
-        "approved": True,
-        "created_at": "2024-11-25T14:30:00Z"
-    },
-    {
-        "id": "review-3",
-        "name": "Pierre Dubois",
-        "country": "france",
-        "rating": 4,
-        "title": "Excellent courses, great value",
-        "comment": "Played at Santa Ponsa and Bendinat. Both courses were in excellent condition. The prices were competitive and the multilingual support made everything easy.",
-        "course_played": "Golf Santa Ponsa I",
-        "approved": True,
-        "created_at": "2024-11-20T09:15:00Z"
-    },
-    {
-        "id": "review-4",
-        "name": "Thomas Braun",
-        "country": "switzerland",
-        "rating": 5,
-        "title": "Best golf concierge in Mallorca",
-        "comment": "As a frequent visitor to Mallorca, I've tried many booking services. This is by far the best. Personal attention, great course recommendations, and excellent partner hotels.",
-        "course_played": "Son Muntaner Golf",
-        "approved": True,
-        "created_at": "2024-11-15T16:45:00Z"
-    },
-    {
-        "id": "review-5",
-        "name": "Sarah Williams",
-        "country": "uk",
-        "rating": 5,
-        "title": "Wonderful golf holiday",
-        "comment": "My husband and I spent a week golfing in Mallorca. The course recommendations were spot on and the hotel partnership saved us money. The Alcanada lighthouse views were breathtaking!",
-        "course_played": "Golf Alcanada",
-        "approved": True,
-        "created_at": "2024-11-10T11:20:00Z"
-    },
-    {
-        "id": "review-6",
-        "name": "Klaus Hoffmann",
-        "country": "germany",
-        "rating": 4,
-        "title": "Great variety of courses",
-        "comment": "Played 5 different courses in one week. Each one was unique and well-maintained. The online booking system is very easy to use. Only minor issue was a tee time change, but they handled it professionally.",
-        "course_played": "Pula Golf Resort",
-        "approved": True,
-        "created_at": "2024-11-05T08:30:00Z"
-    }
-]
+# Sample approved reviews (seeded data) - OLD FORMAT REMOVED, using REVIEWS_DATA above
 
 # Routes
 @api_router.get("/")
