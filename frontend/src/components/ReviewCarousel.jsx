@@ -145,6 +145,7 @@ export const ReviewCarousel = () => {
   const [loading, setLoading] = useState(true);
   const [platformFilter, setPlatformFilter] = useState('All');
   const [regionFilter, setRegionFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -170,7 +171,12 @@ export const ReviewCarousel = () => {
   const filteredReviews = reviews.filter((review) => {
     const platformMatch = platformFilter === 'All' || review.platform === platformFilter;
     const regionMatch = regionFilter === 'All' || countryRegions[review.country] === regionFilter;
-    return platformMatch && regionMatch;
+    const searchMatch = searchQuery === '' || 
+      review.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      review.platform.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      review.user_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      review.review_text.toLowerCase().includes(searchQuery.toLowerCase());
+    return platformMatch && regionMatch && searchMatch;
   });
 
   if (loading) {
