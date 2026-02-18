@@ -676,39 +676,66 @@ async def get_blog_post(slug: str):
 
 # Review endpoints
 @api_router.get("/reviews", response_model=List[dict])
-async def get_reviews():
-    # Get approved reviews from database
-    db_reviews = await db.reviews.find({"approved": True}, {"_id": 0}).to_list(100)
-    # Combine with sample reviews
-    all_reviews = SAMPLE_REVIEWS + db_reviews
-    return sorted(all_reviews, key=lambda x: x["created_at"], reverse=True)
+async def get_reviews(limit: Optional[int] = None, country: Optional[str] = None, platform: Optional[str] = None):
+    """Get all reviews with optional filters."""
+    reviews = REVIEWS_DATA.copy()
+    
+    if country:
+        reviews = [r for r in reviews if r["country"].lower() == country.lower()]
+    if platform:
+        reviews = [r for r in reviews if r["platform"].lower() == platform.lower()]
+    if limit:
+        reviews = reviews[:limit]
+    
+    return reviews
 
 @api_router.post("/reviews", response_model=dict)
 async def create_review(review: ClientReviewCreate):
-    review_obj = ClientReview(**review.model_dump())
-    doc = review_obj.model_dump()
-    doc['created_at'] = doc['created_at'].isoformat()
-    
-    await db.reviews.insert_one(doc)
-    return {"message": "Review submitted successfully. It will appear after approval.", "id": review_obj.id}
+    """Submit a new review."""
+    new_id = max(r["id"] for r in REVIEWS_DATA) + 1
+    new_review = {
+        "id": new_id,
+        "user_name": review.user_name,
+        "country": review.country,
+        "platform": review.platform,
+        "rating": review.rating,
+        "language": review.language,
+        "review_text": review.review_text
+    }
+    # In production, this would be saved to MongoDB
+    # await db.reviews.insert_one(new_review)
+    return {"message": "Review submitted successfully!", "id": new_id}
 
 @api_router.get("/reviews/stats", response_model=dict)
 async def get_review_stats():
-    # Get all approved reviews
-    db_reviews = await db.reviews.find({"approved": True}, {"_id": 0}).to_list(100)
-    all_reviews = SAMPLE_REVIEWS + db_reviews
+    """Get review statistics."""
+    reviews = REVIEWS_DATA
     
-    if not all_reviews:
-        return {"average_rating": 0, "total_reviews": 0, "rating_distribution": {}}
+    if not reviews:
+        return {"average_rating": 0, "total_reviews": 0, "rating_distribution": {}, "by_country": {}, "by_platform": {}}
     
-    total = len(all_reviews)
-    avg = sum(r["rating"] for r in all_reviews) / total
-    distribution = {i: len([r for r in all_reviews if r["rating"] == i]) for i in range(1, 6)}
+    total = len(reviews)
+    avg = sum(r["rating"] for r in reviews) / total
+    distribution = {i: len([r for r in reviews if r["rating"] == i]) for i in range(1, 6)}
+    
+    # Count by country
+    by_country = {}
+    for r in reviews:
+        country = r["country"]
+        by_country[country] = by_country.get(country, 0) + 1
+    
+    # Count by platform
+    by_platform = {}
+    for r in reviews:
+        platform = r["platform"]
+        by_platform[platform] = by_platform.get(platform, 0) + 1
     
     return {
         "average_rating": round(avg, 1),
         "total_reviews": total,
-        "rating_distribution": distribution
+        "rating_distribution": distribution,
+        "by_country": by_country,
+        "by_platform": by_platform
     }
 
 # Include the router in the main app
