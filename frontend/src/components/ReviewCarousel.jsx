@@ -18,16 +18,16 @@ const countryFlags = {
   'Spain': '🇪🇸',
 };
 
-// Platform colors
-const platformColors = {
-  'Google Reviews': '#4285F4',
-  'Trustpilot': '#00B67A',
-  'TripAdvisor': '#34E0A1',
-  'Yelp': '#FF1A1A',
-  'Capterra': '#FF9D28',
-  'G2': '#FF492C',
-  'Angi': '#FF6153',
-  'Product Hunt': '#DA552F',
+// Platform colors and backgrounds
+const platformStyles = {
+  'Google Reviews': { color: '#4285F4', bg: 'bg-blue-50/50', border: 'border-blue-100' },
+  'Trustpilot': { color: '#00B67A', bg: 'bg-emerald-50/50', border: 'border-emerald-100' },
+  'TripAdvisor': { color: '#34E0A1', bg: 'bg-green-50/50', border: 'border-green-100' },
+  'Yelp': { color: '#FF1A1A', bg: 'bg-red-50/50', border: 'border-red-100' },
+  'Capterra': { color: '#FF9D28', bg: 'bg-orange-50/50', border: 'border-orange-100' },
+  'G2': { color: '#FF492C', bg: 'bg-rose-50/50', border: 'border-rose-100' },
+  'Angi': { color: '#FF6153', bg: 'bg-red-50/40', border: 'border-red-100' },
+  'Product Hunt': { color: '#DA552F', bg: 'bg-orange-50/40', border: 'border-orange-100' },
 };
 
 // Star rating display
@@ -53,14 +53,14 @@ const StarRating = ({ rating, size = 'sm' }) => {
 const CarouselCard = ({ review, isCenter }) => {
   const [showTranslation, setShowTranslation] = useState(false);
   const flag = countryFlags[review.country] || '🌍';
-  const platformColor = platformColors[review.platform] || '#666';
+  const platform = platformStyles[review.platform] || { color: '#666', bg: 'bg-stone-50', border: 'border-stone-100' };
   const isEnglish = review.language === 'EN';
   
   const displayText = showTranslation ? review.review_text_en : review.review_text;
 
   return (
     <div
-      className={`flex-shrink-0 w-[320px] md:w-[380px] bg-white rounded-xl shadow-lg border border-stone-100 p-6 transition-all duration-500 ${
+      className={`flex-shrink-0 w-[320px] md:w-[380px] rounded-xl shadow-lg border-2 p-6 transition-all duration-500 ${platform.bg} ${platform.border} ${
         isCenter ? 'scale-105 shadow-xl z-10' : 'scale-95 opacity-80'
       }`}
       data-testid={`carousel-card-${review.id}`}
@@ -80,7 +80,7 @@ const CarouselCard = ({ review, isCenter }) => {
       {/* Platform badge */}
       <div 
         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-white mb-4"
-        style={{ backgroundColor: platformColor }}
+        style={{ backgroundColor: platform.color }}
       >
         <span>★</span>
         {review.platform}
@@ -88,7 +88,7 @@ const CarouselCard = ({ review, isCenter }) => {
 
       {/* Review text with quote */}
       <div className="relative mb-4">
-        <Quote className="absolute -top-2 -left-1 w-6 h-6 text-brand-sand/30" />
+        <Quote className="absolute -top-2 -left-1 w-6 h-6 text-stone-300/50" />
         <p className="text-stone-700 text-sm leading-relaxed pl-5 min-h-[80px]">
           "{displayText}"
         </p>
@@ -101,7 +101,7 @@ const CarouselCard = ({ review, isCenter }) => {
           className={`flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full transition-all ${
             showTranslation 
               ? 'bg-brand-green text-white' 
-              : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+              : 'bg-white/80 text-stone-600 hover:bg-white shadow-sm'
           }`}
           data-testid={`translate-btn-${review.id}`}
         >
@@ -111,7 +111,7 @@ const CarouselCard = ({ review, isCenter }) => {
       )}
 
       {/* Language indicator */}
-      <div className="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between">
+      <div className="mt-3 pt-3 border-t border-stone-200/50 flex items-center justify-between">
         <span className="text-xs text-stone-400">
           {showTranslation ? 'Translated from' : 'Original'}: {review.language}
         </span>
