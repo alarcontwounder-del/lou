@@ -18,9 +18,21 @@ const countryRegions = {
 
 // Avatar colors
 const avatarColors = [
-  'bg-blue-500', 'bg-emerald-500', 'bg-purple-500', 'bg-rose-500',
+  'bg-blue-500', 'bg-emerald-500', 'bg-violet-500', 'bg-rose-500',
   'bg-amber-500', 'bg-cyan-500', 'bg-indigo-500', 'bg-teal-500',
 ];
+
+// Platform badge styles
+const platformBadges = {
+  'Google Reviews': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Google' },
+  'Trustpilot': { bg: 'bg-emerald-100', text: 'text-emerald-700', label: 'Trustpilot' },
+  'TripAdvisor': { bg: 'bg-green-100', text: 'text-green-700', label: 'TripAdvisor' },
+  'Yelp': { bg: 'bg-red-100', text: 'text-red-700', label: 'Yelp' },
+  'Capterra': { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Capterra' },
+  'G2': { bg: 'bg-rose-100', text: 'text-rose-700', label: 'G2' },
+  'Angi': { bg: 'bg-red-100', text: 'text-red-600', label: 'Angi' },
+  'Product Hunt': { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Product Hunt' },
+};
 
 // Get initials
 const getInitials = (name) => {
@@ -30,41 +42,19 @@ const getInitials = (name) => {
     : name.substring(0, 2).toUpperCase();
 };
 
-// Platform Logo
-const PlatformLogo = ({ platform }) => {
-  const styles = {
-    'Google Reviews': { icon: 'G', color: 'text-blue-500' },
-    'Trustpilot': { icon: '★', color: 'text-emerald-500' },
-    'TripAdvisor': { icon: '●', color: 'text-green-500' },
-    'Yelp': { icon: 'Y', color: 'text-red-500' },
-    'Capterra': { icon: 'C', color: 'text-orange-500' },
-    'G2': { icon: 'G2', color: 'text-rose-500' },
-    'Angi': { icon: 'A', color: 'text-red-400' },
-    'Product Hunt': { icon: '▲', color: 'text-orange-600' },
-  };
-  const style = styles[platform] || { icon: '•', color: 'text-stone-400' };
-  
-  return (
-    <div className="flex items-center gap-1.5">
-      <span className={`font-bold text-sm ${style.color}`}>{style.icon}</span>
-      <span className="text-xs text-stone-400">{platform}</span>
-    </div>
-  );
-};
-
-// Star Rating
+// Star Rating with Lucide icons
 const StarRating = ({ rating }) => (
   <div className="flex gap-0.5">
     {[1, 2, 3, 4, 5].map((star) => (
       <Star
         key={star}
-        className={`w-4 h-4 ${star <= rating ? 'fill-yellow-400 text-yellow-400' : 'fill-stone-200 text-stone-200'}`}
+        className={`w-4 h-4 ${star <= rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`}
       />
     ))}
   </div>
 );
 
-// Review Card
+// Review Card - The Atomic Unit
 const ReviewCard = ({ review, index }) => {
   const [showTranslation, setShowTranslation] = useState(false);
   const flag = countryFlags[review.country] || '🌍';
@@ -72,63 +62,71 @@ const ReviewCard = ({ review, index }) => {
   const avatarColor = avatarColors[index % avatarColors.length];
   const isEnglish = review.language === 'EN';
   const displayText = showTranslation ? review.review_text_en : review.review_text;
+  const badge = platformBadges[review.platform] || { bg: 'bg-slate-100', text: 'text-slate-600', label: review.platform };
   const isTrustpilot = review.platform === 'Trustpilot';
 
   return (
     <div
-      className="bg-white border border-stone-200 rounded-xl p-5 hover:shadow-lg hover:border-stone-300 hover:-translate-y-1 transition-all duration-300"
+      className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative"
       data-testid={`review-card-${review.id}`}
     >
-      {/* Header: Avatar + User Info with Flag */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className={`w-11 h-11 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-sm relative`}>
-            {initials}
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <p className="font-semibold text-stone-900">{review.user_name}</p>
-              <span className="text-lg">{flag}</span>
-            </div>
-            <p className="text-xs text-stone-400">{review.country}</p>
-          </div>
+      {/* Platform Badge - Top Right */}
+      <div className={`absolute top-4 right-4 ${badge.bg} ${badge.text} text-xs font-semibold px-2.5 py-1 rounded-full`}>
+        {badge.label}
+      </div>
+
+      {/* Header - Flexbox Layout */}
+      <div className="flex items-center gap-4 mb-4 pr-20">
+        {/* Avatar - Rounded Full */}
+        <div className={`w-12 h-12 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0`}>
+          {initials}
         </div>
-        {/* Verified Badge for Trustpilot */}
+        {/* User Info */}
+        <div>
+          <div className="flex items-center gap-2">
+            <p className="font-bold text-slate-900">{review.user_name}</p>
+            <span className="text-base">{flag}</span>
+          </div>
+          <p className="text-sm text-slate-400">
+            {review.age && `${review.age} · `}{review.country}
+          </p>
+        </div>
+      </div>
+
+      {/* Rating Row */}
+      <div className="flex items-center gap-3 mb-4">
+        <StarRating rating={review.rating} />
         {isTrustpilot && (
-          <div className="flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-medium px-2 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
             </svg>
             Verified
-          </div>
+          </span>
         )}
       </div>
 
-      {/* Rating + Platform */}
-      <div className="flex items-center justify-between mb-4 pb-4 border-b border-stone-100">
-        <StarRating rating={review.rating} />
-        <PlatformLogo platform={review.platform} />
-      </div>
-
-      {/* Review Text */}
-      <p className="text-stone-700 text-sm leading-relaxed mb-4">
+      {/* Body - Review Text */}
+      <p className="text-slate-700 text-base leading-relaxed mb-5">
         "{displayText}"
       </p>
 
-      {/* Translate Button - Show only for non-English */}
+      {/* Footer - Translate Button */}
       {!isEnglish && (
-        <button
-          onClick={() => setShowTranslation(!showTranslation)}
-          className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full transition-all ${
-            showTranslation 
-              ? 'bg-brand-green text-white' 
-              : 'bg-stone-100 text-stone-600 hover:bg-brand-green hover:text-white'
-          }`}
-          data-testid={`translate-btn-${review.id}`}
-        >
-          <Languages className="w-3.5 h-3.5" />
-          {showTranslation ? 'Show Original' : 'Show Translation'}
-        </button>
+        <div className="pt-4 border-t border-slate-100">
+          <button
+            onClick={() => setShowTranslation(!showTranslation)}
+            className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all ${
+              showTranslation 
+                ? 'bg-slate-900 text-white' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`}
+            data-testid={`translate-btn-${review.id}`}
+          >
+            <Languages className="w-4 h-4" />
+            {showTranslation ? 'Show Original' : 'Show Translation'}
+          </button>
+        </div>
       )}
     </div>
   );
@@ -140,11 +138,11 @@ const FilterPill = ({ label, active, onClick, count }) => (
     onClick={onClick}
     className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
       active
-        ? 'bg-brand-green text-white shadow-md'
-        : 'bg-white text-stone-600 border border-stone-200 hover:border-brand-green hover:text-brand-green'
+        ? 'bg-slate-900 text-white shadow-md'
+        : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-400'
     }`}
   >
-    {label} {count !== undefined && <span className="ml-1 opacity-70">({count})</span>}
+    {label} {count !== undefined && <span className="ml-1 opacity-60">({count})</span>}
   </button>
 );
 
@@ -191,109 +189,112 @@ export const ReviewCarousel = () => {
 
   if (loading) {
     return (
-      <section id="reviews" className="py-16 md:py-24 bg-stone-50">
-        <div className="max-w-7xl mx-auto px-4 text-center">Loading reviews...</div>
+      <section id="reviews" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 text-center text-slate-500">Loading reviews...</div>
       </section>
     );
   }
 
   return (
-    <section id="reviews" className="py-16 md:py-24 bg-stone-50" data-testid="reviews-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="reviews" className="py-20 bg-slate-50" data-testid="reviews-section">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-brand-terracotta text-xs font-bold uppercase tracking-[0.3em] mb-4">
+        {/* Section Header */}
+        <div className="text-center mb-14">
+          <p className="text-amber-600 text-xs font-bold uppercase tracking-[0.3em] mb-4">
             Trusted by Golfers Worldwide
           </p>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-stone-900 mb-4">
-            The easiest way to book your next round.
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-5 leading-tight">
+            The easiest way to book<br className="hidden sm:block" /> your next round.
           </h2>
-          <p className="text-stone-500 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
             Join thousands of players across Europe and the US who save time and money.
           </p>
           
           {/* Stats */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
             <div className="flex items-center gap-2">
               <StarRating rating={5} />
-              <span className="text-xl font-bold text-stone-900">{stats.average_rating}</span>
+              <span className="text-2xl font-bold text-slate-900">{stats.average_rating}</span>
             </div>
-            <span className="hidden sm:inline text-stone-300">•</span>
-            <span className="text-stone-600">{stats.total_reviews} verified reviews</span>
+            <span className="text-slate-300 text-2xl">·</span>
+            <span className="text-slate-600 text-lg">{stats.total_reviews} verified reviews</span>
           </div>
           
-          {/* Country flags summary */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
+          {/* Country Summary */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-5">
             {Object.entries(stats.by_country || {}).map(([country, count]) => (
-              <span key={country} className="inline-flex items-center gap-1 text-sm bg-white px-2 py-1 rounded-full border border-stone-200">
+              <span key={country} className="inline-flex items-center gap-1.5 text-sm bg-white border border-slate-200 px-3 py-1.5 rounded-full">
                 <span>{countryFlags[country]}</span>
-                <span className="text-stone-500">{count}</span>
+                <span className="text-slate-600 font-medium">{count}</span>
               </span>
             ))}
           </div>
         </div>
 
-        {/* Filter Bar */}
-        <div className="mb-10 space-y-4">
+        {/* Search & Filters */}
+        <div className="mb-12 space-y-5">
           {/* Search Bar */}
-          <div className="relative max-w-md mx-auto mb-6">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+          <div className="relative max-w-lg mx-auto">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
               type="text"
               placeholder="Search by country, platform, or keyword..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-10 py-3 rounded-full border border-stone-200 bg-white text-stone-700 placeholder-stone-400 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all"
+              className="w-full pl-14 pr-12 py-4 rounded-2xl border border-slate-200 bg-white text-slate-700 placeholder-slate-400 focus:outline-none focus:border-slate-400 focus:ring-4 focus:ring-slate-100 transition-all text-base"
               data-testid="review-search"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             )}
           </div>
 
-          {/* Platform Filters */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div className="flex items-center gap-1 text-stone-400 mr-2 flex-shrink-0">
-              <Filter className="w-4 h-4" />
-              <span className="text-xs font-medium uppercase tracking-wide">Platform:</span>
+          {/* Filter Pills */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-center">
+            {/* Platform */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full sm:w-auto justify-start sm:justify-center">
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide flex-shrink-0 flex items-center gap-1">
+                <Filter className="w-3.5 h-3.5" /> Platform:
+              </span>
+              <div className="flex gap-2">
+                {platforms.slice(0, 5).map((platform) => (
+                  <FilterPill
+                    key={platform}
+                    label={platform === 'All' ? 'All' : platform.replace(' Reviews', '')}
+                    active={platformFilter === platform}
+                    onClick={() => setPlatformFilter(platform)}
+                  />
+                ))}
+              </div>
             </div>
-            {platforms.map((platform) => (
-              <FilterPill
-                key={platform}
-                label={platform === 'All' ? 'All Platforms' : platform}
-                active={platformFilter === platform}
-                onClick={() => setPlatformFilter(platform)}
-                count={platform === 'All' ? undefined : stats.by_platform[platform]}
-              />
-            ))}
-          </div>
-          
-          {/* Region Filters */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div className="flex items-center gap-1 text-stone-400 mr-2 flex-shrink-0">
-              <span className="text-xs font-medium uppercase tracking-wide ml-5">Region:</span>
+            
+            {/* Region */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide flex-shrink-0">Region:</span>
+              <div className="flex gap-2">
+                {regions.map((region) => (
+                  <FilterPill
+                    key={region}
+                    label={region}
+                    active={regionFilter === region}
+                    onClick={() => setRegionFilter(region)}
+                  />
+                ))}
+              </div>
             </div>
-            {regions.map((region) => (
-              <FilterPill
-                key={region}
-                label={region === 'All' ? 'All Regions' : region}
-                active={regionFilter === region}
-                onClick={() => setRegionFilter(region)}
-              />
-            ))}
           </div>
         </div>
 
-        {/* 3-Column Masonry Grid */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+        {/* 3-Column Masonry Grid - Single column on mobile */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
           {filteredReviews.map((review, index) => (
-            <div key={review.id} className="break-inside-avoid">
+            <div key={review.id} className="break-inside-avoid mb-6">
               <ReviewCard review={review} index={index} />
             </div>
           ))}
@@ -301,15 +302,16 @@ export const ReviewCarousel = () => {
 
         {/* Empty State */}
         {filteredReviews.length === 0 && (
-          <div className="text-center py-16 text-stone-400">
-            <p className="text-lg">No reviews match your filters.</p>
-            <p className="text-sm mt-2">Try adjusting your selection.</p>
+          <div className="text-center py-20">
+            <div className="text-6xl mb-4">🔍</div>
+            <p className="text-xl text-slate-600 font-medium">No reviews match your filters</p>
+            <p className="text-slate-400 mt-2">Try adjusting your search or filters</p>
           </div>
         )}
         
-        {/* Results count */}
+        {/* Results Count */}
         {filteredReviews.length > 0 && (
-          <p className="text-center text-sm text-stone-400 mt-8">
+          <p className="text-center text-sm text-slate-400 mt-10">
             Showing {filteredReviews.length} of {reviews.length} reviews
           </p>
         )}
