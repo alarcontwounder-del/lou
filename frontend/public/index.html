@@ -3,25 +3,148 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="A product of emergent.sh" />
+        <meta name="theme-color" content="#1A3C34" />
+        <meta name="description" content="Premium golf booking service in Mallorca, Spain. Book tee times at 13 top golf courses, luxury hotels, and fine dining. Services in English, German, French, Swedish for golfers from Germany, Sweden, Switzerland, UK, France." />
+        <meta name="keywords" content="Mallorca golf, golf courses Mallorca, tee time booking, golf Spain, Son Gual, Alcanada, Santa Ponsa, golf holidays Mallorca" />
+        <meta name="author" content="Mallorca Golf Exclusive" />
+        <meta name="robots" content="index, follow" />
+        
+        <!-- Open Graph / Social Media -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Mallorca Golf Exclusive - Premium Golf Booking Service" />
+        <meta property="og:description" content="Book tee times at 13 premium golf courses in Mallorca. Luxury hotel packages and fine dining experiences included." />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="de_DE" />
+        <meta property="og:locale:alternate" content="fr_FR" />
+        <meta property="og:locale:alternate" content="sv_SE" />
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mallorca Golf Exclusive" />
+        <meta name="twitter:description" content="Premium golf booking in Mallorca. 13 courses, luxury hotels, fine dining." />
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
-        <!--
-        manifest.json provides metadata used when your web app is installed on a
-        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-        -->
-        <!--
-        Notice the use of %PUBLIC_URL% in the tags above.
-        It will be replaced with the URL of the `public` folder during the build.
-        Only files inside the `public` folder can be referenced from the HTML.
-
-        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-        work correctly both with client-side routing and a non-root public URL.
-        Learn how to configure a non-root public URL by running `npm run build`.
-        -->
-        <title>Emergent | Fullstack App</title>
+        
+        <title>Mallorca Golf Exclusive - Premium Golf Booking Service in Mallorca</title>
+        
+        <!-- JSON-LD Structured Data for AI & Search Engines -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            "name": "Mallorca Golf Exclusive",
+            "description": "Premium golf booking service in Mallorca, Spain. We connect European golfers with 13 top courses, luxury hotels, and fine dining experiences.",
+            "url": "https://mallorcagolf.com",
+            "telephone": "+34-971-123-456",
+            "email": "info@mallorcagolf.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Palma de Mallorca",
+                "addressRegion": "Balearic Islands",
+                "addressCountry": "ES"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "39.5696",
+                "longitude": "2.6502"
+            },
+            "areaServed": ["Germany", "Sweden", "Switzerland", "United Kingdom", "France"],
+            "knowsLanguage": ["en", "de", "fr", "sv"],
+            "priceRange": "€€€",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.7",
+                "reviewCount": "6"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Golf Courses in Mallorca",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "SportsActivityLocation",
+                            "name": "Golf Alcanada",
+                            "description": "Coastal course with lighthouse views",
+                            "address": "Alcúdia, Mallorca"
+                        },
+                        "price": "115",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "SportsActivityLocation",
+                            "name": "Golf Son Gual Mallorca",
+                            "description": "Championship course, one of Europe's best",
+                            "address": "Palma de Mallorca"
+                        },
+                        "price": "85",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "SportsActivityLocation",
+                            "name": "Son Vida Golf",
+                            "description": "Mallorca's oldest course with Palma Bay views",
+                            "address": "Palma de Mallorca"
+                        },
+                        "price": "47",
+                        "priceCurrency": "EUR"
+                    }
+                ]
+            },
+            "sameAs": [
+                "https://golfinmallorca.greenfee365.com"
+            ]
+        }
+        </script>
+        
+        <!-- FAQ Schema for AI -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What are the best golf courses in Mallorca?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The top golf courses in Mallorca include Golf Son Gual (championship course from €85), Golf Alcanada (coastal with lighthouse views from €115), Golf Santa Ponsa (European Tour venue from €66), and Son Vida Golf (oldest course from €47)."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "When is the best time to play golf in Mallorca?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The best time to play golf in Mallorca is during spring (March to May) and autumn (September to November) when temperatures are pleasant (18-25°C) with minimal rainfall. Summer can exceed 30°C."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How much does it cost to play golf in Mallorca?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Green fees in Mallorca range from €47 (Son Vida Golf) to €115 (Golf Alcanada). Most courses are priced between €50-85 per round. We offer 13 courses to suit all budgets."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How can I book a tee time in Mallorca?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You can book tee times directly through our partner platform at golfinmallorca.greenfee365.com for instant confirmation at all 13 Mallorca golf courses."
+                    }
+                }
+            ]
+        }
+        </script>
+        
         <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
         <!--
         These two scripts have been added for the Visual Edits, please do not edit or remove them
