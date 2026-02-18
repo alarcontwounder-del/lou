@@ -207,6 +207,7 @@ export const translations = {
       subtitle: "Kundenbewertungen",
       title: "Was Unsere Golfer Sagen",
       reviewsCount: "Bewertungen",
+      loadMore: "Mehr Bewertungen Laden",
       leaveReview: "Teilen Sie Ihre Erfahrung",
       yourRating: "Ihre Bewertung",
       yourName: "Ihr Name",
