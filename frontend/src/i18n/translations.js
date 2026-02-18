@@ -431,6 +431,7 @@ export const translations = {
       subtitle: "Kundrecensioner",
       title: "Vad Våra Golfare Säger",
       reviewsCount: "recensioner",
+      loadMore: "Ladda Fler Recensioner",
       leaveReview: "Dela Din Upplevelse",
       yourRating: "Din Betyg",
       yourName: "Ditt Namn",
