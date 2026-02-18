@@ -1,0 +1,52 @@
+# Mallorca Golf Exclusive
+
+> Premium golf booking service in Mallorca, Spain. We help golfers from Germany, Sweden, Switzerland, UK, and France book tee times at 13 top golf courses, luxury hotel accommodations, and fine dining experiences. Languages: English, German, French, Swedish.
+
+## About
+Mallorca Golf Exclusive is your premier golf concierge service with over 20 years of experience connecting European golfers with Mallorca's finest courses and exclusive partners.
+
+## Golf Courses
+We offer online tee time booking for these Mallorca golf courses:
+
+- [Golf Alcanada](https://golfinmallorca.greenfee365.com/golf-course/golf-alcanada): Premium coastal course with lighthouse views. From €115.
+- [Golf Son Gual Mallorca](https://golfinmallorca.greenfee365.com/golf-course/golf-son-gual-mallorca): Championship course, one of Europe's best. From €85.
+- [Pula Golf Resort](https://golfinmallorca.greenfee365.com/golf-course/pula-golf-resort): Beautiful resort course. From €74.
+- [Son Vida Golf](https://golfinmallorca.greenfee365.com/golf-course/son-vida-golf): Mallorca's oldest course with Palma Bay views. From €47.
+- [Son Muntaner Golf](https://golfinmallorca.greenfee365.com/golf-course/son-muntaner-golf): Challenging technical course. From €51.
+- [Son Quint Golf](https://golfinmallorca.greenfee365.com/golf-course/son-quint-golf): Modern course with spectacular views. From €58.
+- [Son Antem Resort East](https://golfinmallorca.greenfee365.com/golf-course/son-antem-resort-course): Resort course at Marriott. From €54.
+- [Son Antem West Championship](https://golfinmallorca.greenfee365.com/golf-course/son-antem-championship-course): Tournament-ready championship course. From €59.
+- [Capdepera Golf](https://golfinmallorca.greenfee365.com/golf-course/capdepera-golf): Northeast Mallorca coastal course. From €59.
+- [Golf Santa Ponsa I](https://golfinmallorca.greenfee365.com/golf-course/golf-santa-ponsa): European Tour venue. From €66.
+- [Golf Son Servera](https://golfinmallorca.greenfee365.com/golf-course/golf-son-servera): Traditional Mallorcan course. From €73.
+- [Vall D'Or Golf](https://golfinmallorca.greenfee365.com/golf-course/vall-dor-golf): Scenic eastern course. From €81.
+- [Real Golf De Bendinat](https://golfinmallorca.greenfee365.com/golf-course/real-golf-de-bendinat): Exclusive club near Palma. From €65.
+
+## Services
+- Online tee time booking via Greenfee365
+- Luxury hotel partnerships with exclusive golf packages
+- Fine dining restaurant reservations
+- Multi-language support (EN, DE, FR, SE)
+- Personalized golf trip planning
+
+## Hotel Partners
+- St. Regis Mardavall: Luxury beachfront resort with golf packages
+- Belmond La Residencia: Mountain luxury in Deià
+- Cap Rocat: Exclusive fortress retreat
+
+## Restaurant Partners
+- Es Fum: Michelin-starred Mediterranean cuisine
+- Zaranda: Two Michelin stars
+- Bens d'Avall: Cliffside dining in Deià
+
+## Contact
+- Location: Palma de Mallorca, Spain
+- Phone: +34 971 123 456
+- Email: info@mallorcagolf.com
+
+## Booking
+Book tee times directly: https://golfinmallorca.greenfee365.com
+
+## Optional
+- [Golf Blog](/blog): Tips, course guides, and travel advice
+- [Client Reviews](/reviews): Testimonials from golfers
