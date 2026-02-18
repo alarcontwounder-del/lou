@@ -319,6 +319,7 @@ export const translations = {
       subtitle: "Avis Clients",
       title: "Ce Que Disent Nos Golfeurs",
       reviewsCount: "avis",
+      loadMore: "Charger Plus d'Avis",
       leaveReview: "Partagez Votre Expérience",
       yourRating: "Votre Note",
       yourName: "Votre Nom",
