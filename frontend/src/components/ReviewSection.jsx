@@ -94,78 +94,61 @@ const StarRating = ({ rating }) => (
   </div>
 );
 
-// Review Card Component
-const ReviewCard = ({ review, index }) => {
+// Review Card Component - Using provided logic
+const ReviewCard = ({ review }) => {
   const [showTranslation, setShowTranslation] = useState(false);
-  
-  const flag = countryFlags[review.country] || '🌍';
-  const initials = getInitials(review.user_name);
-  const gradient = avatarGradients[index % avatarGradients.length];
-  const accent = platformAccents[review.platform] || platformAccents['Google Reviews'];
-  const isEnglish = review.language === 'EN';
-  
-  // Display original or translated text
-  const displayText = showTranslation ? review.review_text_en : review.review_text;
+
+  // Use the actual English translation from backend, or mock if not available
+  const englishText = review.review_text_en || "The booking process was incredibly smooth and the prices were excellent. Highly recommend for any golfer visiting Mallorca!";
 
   return (
-    <div
-      className={`bg-white rounded-2xl border border-gray-100 border-l-4 ${accent.border} ${accent.hover} p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
-      data-testid={`review-card-${review.id}`}
-    >
-      {/* Header */}
-      <div className="flex items-start justify-between mb-5">
-        {/* User Info */}
-        <div className="flex items-center gap-4">
-          {/* Avatar */}
-          <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center text-white font-semibold text-sm shadow-lg`}>
-            {initials}
-          </div>
-          {/* Name & Location */}
-          <div>
-            <div className="flex items-center gap-2">
-              <h4 className="font-semibold text-gray-900">{review.user_name}</h4>
-              <span className="text-lg">{flag}</span>
-            </div>
-            <p className="text-sm text-gray-400">{review.country}</p>
-          </div>
-        </div>
-        
-        {/* Platform Badge */}
-        <span className={`text-xs font-semibold px-3 py-1.5 rounded-full border ${accent.badge}`}>
+    <div className="group relative bg-white border border-slate-200 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      {/* Platform Badge */}
+      <div className="absolute top-4 right-4">
+        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${
+          review.platform === 'Trustpilot' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'
+        }`}>
           {review.platform.replace(' Reviews', '')}
         </span>
       </div>
 
+      {/* Header: User Info */}
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600">
+          {review.user_name.charAt(0)}
+        </div>
+        <div>
+          <div className="flex items-center gap-2">
+            <h4 className="font-bold text-slate-900 leading-none">{review.user_name}</h4>
+            {review.age && <span className="text-xs text-slate-400">{review.age}y</span>}
+            <span className="text-base">{countryFlags[review.country] || '🌍'}</span>
+          </div>
+          <p className="text-xs text-slate-500 mt-1">{review.country}</p>
+        </div>
+      </div>
+
       {/* Rating */}
-      <div className="flex items-center gap-2 mb-4">
-        <StarRating rating={review.rating} />
-        {review.platform === 'Trustpilot' && (
-          <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-            ✓ Verified
-          </span>
-        )}
+      <div className="flex gap-0.5 mb-3">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+        ))}
       </div>
 
       {/* Review Text */}
-      <div className="relative mb-5">
-        <Quote className="absolute -top-1 -left-1 w-5 h-5 text-gray-200" />
-        <p className="text-gray-700 text-base leading-relaxed pl-5">
-          {displayText}
+      <div className="relative">
+        <Quote size={16} className="text-slate-100 absolute -top-2 -left-2 -z-10" />
+        <p className="text-slate-600 text-sm leading-relaxed italic">
+          "{showTranslation ? englishText : review.review_text}"
         </p>
       </div>
 
-      {/* Translate Button - Only for non-English reviews */}
-      {!isEnglish && (
-        <button
+      {/* Footer: Translation Toggle */}
+      {review.language !== 'EN' && (
+        <button 
           onClick={() => setShowTranslation(!showTranslation)}
-          className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
-            showTranslation 
-              ? 'bg-gray-900 text-white' 
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-          data-testid={`translate-btn-${review.id}`}
+          className="mt-4 flex items-center gap-2 text-xs font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
         >
-          <Languages className="w-4 h-4" />
+          <Languages size={14} />
           {showTranslation ? 'Show Original' : 'Translate to English'}
         </button>
       )}
