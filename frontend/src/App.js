@@ -7,7 +7,7 @@ import { About } from './components/About';
 import { GolfCourses } from './components/GolfCourses';
 import { HotelPartners } from './components/HotelPartners';
 import { RestaurantPartners } from './components/RestaurantPartners';
-import { Reviews } from './components/Reviews';
+import { ReviewCarousel } from './components/ReviewCarousel';
 import { Blog } from './components/Blog';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -24,7 +24,7 @@ function App() {
           <GolfCourses />
           <HotelPartners />
           <RestaurantPartners />
-          <Reviews />
+          <ReviewCarousel />
           <Blog />
           <Contact />
         </main>
