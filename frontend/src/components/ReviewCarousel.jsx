@@ -226,6 +226,27 @@ export const ReviewCarousel = () => {
 
         {/* Filter Bar */}
         <div className="mb-10 space-y-4">
+          {/* Search Bar */}
+          <div className="relative max-w-md mx-auto mb-6">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+            <input
+              type="text"
+              placeholder="Search by country, platform, or keyword..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-10 py-3 rounded-full border border-stone-200 bg-white text-stone-700 placeholder-stone-400 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all"
+              data-testid="review-search"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+
           {/* Platform Filters */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
             <div className="flex items-center gap-1 text-stone-400 mr-2 flex-shrink-0">
@@ -259,10 +280,12 @@ export const ReviewCarousel = () => {
           </div>
         </div>
 
-        {/* Responsive Review Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* 3-Column Masonry Grid */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
           {filteredReviews.map((review, index) => (
-            <ReviewCard key={review.id} review={review} index={index} />
+            <div key={review.id} className="break-inside-avoid">
+              <ReviewCard review={review} index={index} />
+            </div>
           ))}
         </div>
 
