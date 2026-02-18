@@ -72,26 +72,36 @@ const ReviewCard = ({ review, index }) => {
   const avatarColor = avatarColors[index % avatarColors.length];
   const isEnglish = review.language === 'EN';
   const displayText = showTranslation ? review.review_text_en : review.review_text;
+  const isTrustpilot = review.platform === 'Trustpilot';
 
   return (
     <div
-      className="bg-white border border-stone-200 rounded-xl p-5 hover:shadow-lg hover:border-stone-300 transition-all duration-300"
+      className="bg-white border border-stone-200 rounded-xl p-5 hover:shadow-lg hover:border-stone-300 hover:-translate-y-1 transition-all duration-300"
       data-testid={`review-card-${review.id}`}
     >
-      {/* Header: Avatar + User Info + Flag */}
+      {/* Header: Avatar + User Info with Flag */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className={`w-11 h-11 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-sm`}>
+          <div className={`w-11 h-11 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-sm relative`}>
             {initials}
           </div>
           <div>
-            <p className="font-semibold text-stone-900">{review.user_name}</p>
+            <div className="flex items-center gap-2">
+              <p className="font-semibold text-stone-900">{review.user_name}</p>
+              <span className="text-lg">{flag}</span>
+            </div>
             <p className="text-xs text-stone-400">{review.country}</p>
           </div>
         </div>
-        <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-lg shadow-inner">
-          {flag}
-        </div>
+        {/* Verified Badge for Trustpilot */}
+        {isTrustpilot && (
+          <div className="flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-medium px-2 py-1 rounded-full">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+            Verified
+          </div>
+        )}
       </div>
 
       {/* Rating + Platform */}
@@ -105,7 +115,7 @@ const ReviewCard = ({ review, index }) => {
         "{displayText}"
       </p>
 
-      {/* Translate Button */}
+      {/* Translate Button - Show only for non-English */}
       {!isEnglish && (
         <button
           onClick={() => setShowTranslation(!showTranslation)}
@@ -117,7 +127,7 @@ const ReviewCard = ({ review, index }) => {
           data-testid={`translate-btn-${review.id}`}
         >
           <Languages className="w-3.5 h-3.5" />
-          {showTranslation ? 'Show original' : 'Translate to English'}
+          {showTranslation ? 'Show Original' : 'Show Translation'}
         </button>
       )}
     </div>
