@@ -22,10 +22,10 @@ const avatarColors = [
   'bg-emerald-600', 'bg-stone-600', 'bg-teal-600',
 ];
 
-// Platform badge styles (premium subtle colors)
+// Platform badge styles (with exact color requirements)
 const platformBadges = {
-  'Google Reviews': { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', label: 'Google' },
-  'Trustpilot': { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', label: 'Trustpilot' },
+  'Google Reviews': { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200', label: 'Google' },
+  'Trustpilot': { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-200', label: 'Trustpilot' },
   'TripAdvisor': { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', label: 'TripAdvisor' },
   'Yelp': { bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200', label: 'Yelp' },
   'Capterra': { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', label: 'Capterra' },
