@@ -9,6 +9,7 @@ import { HotelPartners } from './components/HotelPartners';
 import { RestaurantPartners } from './components/RestaurantPartners';
 import { ReviewCarousel } from './components/ReviewCarousel';
 import { Blog } from './components/Blog';
+import { Newsletter } from './components/Newsletter';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Toaster } from './components/ui/sonner';
@@ -28,6 +29,7 @@ function App() {
           <Blog />
           <Contact />
         </main>
+        <Newsletter />
         <Footer />
         <Toaster position="bottom-right" />
       </div>
