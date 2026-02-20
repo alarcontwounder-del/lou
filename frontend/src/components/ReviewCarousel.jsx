@@ -42,14 +42,6 @@ const getInitials = (name) => {
     : name.substring(0, 2).toUpperCase();
 };
 
-// Get initials from name
-const getInitials = (name) => {
-  const parts = name.split(' ');
-  return parts.length >= 2 
-    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
-    : name.substring(0, 2).toUpperCase();
-};
-
 // Star Rating with Lucide icons (Gold/Yellow for premium feel)
 const StarRating = ({ rating }) => (
   <div className="flex gap-0.5">
