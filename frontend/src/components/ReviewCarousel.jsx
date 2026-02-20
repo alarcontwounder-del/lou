@@ -42,13 +42,21 @@ const getInitials = (name) => {
     : name.substring(0, 2).toUpperCase();
 };
 
-// Star Rating with Lucide icons
+// Get initials from name
+const getInitials = (name) => {
+  const parts = name.split(' ');
+  return parts.length >= 2 
+    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+    : name.substring(0, 2).toUpperCase();
+};
+
+// Star Rating with Lucide icons (Gold/Yellow for premium feel)
 const StarRating = ({ rating }) => (
   <div className="flex gap-0.5">
     {[1, 2, 3, 4, 5].map((star) => (
       <Star
         key={star}
-        className={`w-4 h-4 ${star <= rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`}
+        className={`w-4 h-4 ${star <= rating ? 'fill-yellow-400 text-yellow-400' : 'fill-stone-200 text-stone-200'}`}
       />
     ))}
   </div>
