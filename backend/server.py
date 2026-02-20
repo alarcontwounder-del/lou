@@ -44,6 +44,21 @@ class ContactInquiryCreate(BaseModel):
     message: str
     inquiry_type: str = "general"
 
+# Newsletter Models
+class NewsletterSubscription(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    email: EmailStr
+    name: str
+    country: str
+    subscribed_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    is_active: bool = True
+
+class NewsletterSubscriptionCreate(BaseModel):
+    email: EmailStr
+    name: str
+    country: str
+
 class GolfCourse(BaseModel):
     id: str
     name: str
