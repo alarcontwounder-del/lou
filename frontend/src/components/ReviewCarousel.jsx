@@ -152,14 +152,16 @@ const FilterPill = ({ label, active, onClick, count }) => (
   </button>
 );
 
-// Main Component
+// Main Component - Enhanced Premium Reviews Section
 export const ReviewCarousel = () => {
   const [reviews, setReviews] = useState([]);
   const [stats, setStats] = useState({ average_rating: 0, total_reviews: 0, by_platform: {}, by_country: {} });
   const [loading, setLoading] = useState(true);
   const [platformFilter, setPlatformFilter] = useState('All');
-  const [regionFilter, setRegionFilter] = useState('All');
+  const [countryFilter, setCountryFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isPlatformDropdownOpen, setIsPlatformDropdownOpen] = useState(false);
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -180,124 +182,177 @@ export const ReviewCarousel = () => {
   }, []);
 
   const platforms = ['All', ...Object.keys(stats.by_platform || {})];
-  const regions = ['All', 'Europe', 'USA'];
+  const countries = ['All', ...Object.keys(stats.by_country || {})];
 
   const filteredReviews = reviews.filter((review) => {
     const platformMatch = platformFilter === 'All' || review.platform === platformFilter;
-    const regionMatch = regionFilter === 'All' || countryRegions[review.country] === regionFilter;
+    const countryMatch = countryFilter === 'All' || review.country === countryFilter;
     const searchMatch = searchQuery === '' || 
       review.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
       review.platform.toLowerCase().includes(searchQuery.toLowerCase()) ||
       review.user_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       review.review_text.toLowerCase().includes(searchQuery.toLowerCase());
-    return platformMatch && regionMatch && searchMatch;
+    return platformMatch && countryMatch && searchMatch;
   });
 
   if (loading) {
     return (
-      <section id="reviews" className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 text-center text-slate-500">Loading reviews...</div>
+      <section id="reviews" className="py-20 bg-brand-cream">
+        <div className="max-w-7xl mx-auto px-6 text-center text-stone-500">Loading reviews...</div>
       </section>
     );
   }
 
   return (
-    <section id="reviews" className="py-20 bg-slate-50" data-testid="reviews-section">
+    <section id="reviews" className="py-20 bg-brand-cream" data-testid="reviews-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Section Header - Premium Luxury Style */}
         <div className="text-center mb-14">
-          <p className="text-amber-600 text-xs font-bold uppercase tracking-[0.3em] mb-4">
+          <p className="text-brand-terracotta text-xs font-bold uppercase tracking-[0.3em] mb-4">
             Trusted by Golfers Worldwide
           </p>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-5 leading-tight">
-            The easiest way to book<br className="hidden sm:block" /> your next round.
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-stone-900 mb-5 leading-tight">
+            What Golfers are Saying
           </h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
-            Join thousands of players across Europe and the US who save time and money.
+          <p className="text-stone-600 text-lg max-w-2xl mx-auto">
+            Join thousands of players across Europe and the US who save time and money booking their perfect round.
           </p>
           
-          {/* Stats */}
+          {/* Stats Row with Gold Stars */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
             <div className="flex items-center gap-2">
               <StarRating rating={5} />
-              <span className="text-2xl font-bold text-slate-900">{stats.average_rating}</span>
+              <span className="text-2xl font-bold text-stone-900">{stats.average_rating}</span>
             </div>
-            <span className="text-slate-300 text-2xl">·</span>
-            <span className="text-slate-600 text-lg">{stats.total_reviews} verified reviews</span>
+            <span className="text-stone-300 text-2xl">·</span>
+            <span className="text-stone-600 text-lg">{stats.total_reviews} verified reviews</span>
           </div>
           
-          {/* Country Summary */}
+          {/* Country Summary with Flags */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-5">
             {Object.entries(stats.by_country || {}).map(([country, count]) => (
-              <span key={country} className="inline-flex items-center gap-1.5 text-sm bg-white border border-slate-200 px-3 py-1.5 rounded-full">
+              <span key={country} className="inline-flex items-center gap-1.5 text-sm bg-white border border-stone-200 px-3 py-1.5 rounded-full shadow-sm">
                 <span>{countryFlags[country]}</span>
-                <span className="text-slate-600 font-medium">{count}</span>
+                <span className="text-stone-600 font-medium">{count}</span>
               </span>
             ))}
           </div>
         </div>
 
-        {/* Search & Filters */}
+        {/* Search & Filter Bar */}
         <div className="mb-12 space-y-5">
           {/* Search Bar */}
-          <div className="relative max-w-lg mx-auto">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+          <div className="relative max-w-2xl mx-auto">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
             <input
               type="text"
               placeholder="Search by country, platform, or keyword..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-12 py-4 rounded-2xl border border-slate-200 bg-white text-slate-700 placeholder-slate-400 focus:outline-none focus:border-slate-400 focus:ring-4 focus:ring-slate-100 transition-all text-base"
+              className="w-full pl-14 pr-12 py-4 rounded-xl border border-stone-200 bg-white text-stone-700 placeholder-stone-400 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all text-base shadow-sm"
               data-testid="review-search"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             )}
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-center">
-            {/* Platform */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full sm:w-auto justify-start sm:justify-center">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide flex-shrink-0 flex items-center gap-1">
-                <Filter className="w-3.5 h-3.5" /> Platform:
-              </span>
-              <div className="flex gap-2">
-                {platforms.slice(0, 5).map((platform) => (
-                  <FilterPill
-                    key={platform}
-                    label={platform === 'All' ? 'All' : platform.replace(' Reviews', '')}
-                    active={platformFilter === platform}
-                    onClick={() => setPlatformFilter(platform)}
-                  />
-                ))}
-              </div>
+          {/* Filter Dropdowns - Side by Side */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-center max-w-2xl mx-auto">
+            {/* Platform Dropdown */}
+            <div className="relative flex-1">
+              <button
+                onClick={() => {
+                  setIsPlatformDropdownOpen(!isPlatformDropdownOpen);
+                  setIsCountryDropdownOpen(false);
+                }}
+                className="w-full px-5 py-3 rounded-xl border border-stone-200 bg-white text-left flex items-center justify-between gap-2 hover:border-brand-green transition-all shadow-sm"
+                data-testid="platform-filter"
+              >
+                <span className="flex items-center gap-2">
+                  <Filter className="w-4 h-4 text-stone-400" />
+                  <span className="text-stone-700 font-medium">
+                    {platformFilter === 'All' ? 'All Platforms' : platformFilter.replace(' Reviews', '')}
+                  </span>
+                </span>
+                <ChevronDown className={`w-4 h-4 text-stone-400 transition-transform ${isPlatformDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isPlatformDropdownOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-stone-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+                  {platforms.map((platform) => (
+                    <button
+                      key={platform}
+                      onClick={() => {
+                        setPlatformFilter(platform);
+                        setIsPlatformDropdownOpen(false);
+                      }}
+                      className={`w-full px-5 py-3 text-left hover:bg-stone-50 transition-colors ${
+                        platformFilter === platform ? 'bg-stone-50 font-semibold text-brand-green' : 'text-stone-700'
+                      }`}
+                    >
+                      {platform === 'All' ? 'All Platforms' : platform.replace(' Reviews', '')}
+                      {platform !== 'All' && stats.by_platform[platform] && (
+                        <span className="ml-2 text-xs text-stone-400">({stats.by_platform[platform]})</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-            
-            {/* Region */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide flex-shrink-0">Region:</span>
-              <div className="flex gap-2">
-                {regions.map((region) => (
-                  <FilterPill
-                    key={region}
-                    label={region}
-                    active={regionFilter === region}
-                    onClick={() => setRegionFilter(region)}
-                  />
-                ))}
-              </div>
+
+            {/* Country Dropdown */}
+            <div className="relative flex-1">
+              <button
+                onClick={() => {
+                  setIsCountryDropdownOpen(!isCountryDropdownOpen);
+                  setIsPlatformDropdownOpen(false);
+                }}
+                className="w-full px-5 py-3 rounded-xl border border-stone-200 bg-white text-left flex items-center justify-between gap-2 hover:border-brand-green transition-all shadow-sm"
+                data-testid="country-filter"
+              >
+                <span className="flex items-center gap-2">
+                  <span>{countryFilter !== 'All' ? countryFlags[countryFilter] : '🌍'}</span>
+                  <span className="text-stone-700 font-medium truncate">
+                    {countryFilter === 'All' ? 'All Countries' : countryFilter}
+                  </span>
+                </span>
+                <ChevronDown className={`w-4 h-4 text-stone-400 transition-transform ${isCountryDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isCountryDropdownOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-stone-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+                  {countries.map((country) => (
+                    <button
+                      key={country}
+                      onClick={() => {
+                        setCountryFilter(country);
+                        setIsCountryDropdownOpen(false);
+                      }}
+                      className={`w-full px-5 py-3 text-left flex items-center gap-3 hover:bg-stone-50 transition-colors ${
+                        countryFilter === country ? 'bg-stone-50 font-semibold text-brand-green' : 'text-stone-700'
+                      }`}
+                    >
+                      <span>{country !== 'All' ? countryFlags[country] : '🌍'}</span>
+                      <span className="flex-1">{country === 'All' ? 'All Countries' : country}</span>
+                      {country !== 'All' && stats.by_country[country] && (
+                        <span className="text-xs text-stone-400">({stats.by_country[country]})</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* 3-Column Masonry Grid - Single column on mobile */}
+        {/* 3-Column Masonry Grid (as per master plan) */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
           {filteredReviews.map((review, index) => (
             <div key={review.id} className="break-inside-avoid mb-6">
@@ -310,14 +365,14 @@ export const ReviewCarousel = () => {
         {filteredReviews.length === 0 && (
           <div className="text-center py-20">
             <div className="text-6xl mb-4">🔍</div>
-            <p className="text-xl text-slate-600 font-medium">No reviews match your filters</p>
-            <p className="text-slate-400 mt-2">Try adjusting your search or filters</p>
+            <p className="text-xl text-stone-600 font-medium">No reviews match your filters</p>
+            <p className="text-stone-400 mt-2">Try adjusting your search or filters</p>
           </div>
         )}
         
         {/* Results Count */}
         {filteredReviews.length > 0 && (
-          <p className="text-center text-sm text-slate-400 mt-10">
+          <p className="text-center text-sm text-stone-400 mt-10">
             Showing {filteredReviews.length} of {reviews.length} reviews
           </p>
         )}
