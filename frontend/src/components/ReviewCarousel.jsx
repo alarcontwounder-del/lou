@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Languages, Filter, Search, X, User } from 'lucide-react';
+import { Star, Languages, Filter, Search, X, User, Quote, ChevronDown } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -10,28 +10,28 @@ const countryFlags = {
   'France': '🇫🇷', 'Sweden': '🇸🇪', 'Norway': '🇳🇴', 'Switzerland': '🇨🇭',
 };
 
-// Region mapping
+// Region mapping (kept for potential use)
 const countryRegions = {
   'Germany': 'Europe', 'UK': 'Europe', 'Italy': 'Europe', 'France': 'Europe',
   'Sweden': 'Europe', 'Norway': 'Europe', 'Switzerland': 'Europe', 'US': 'USA',
 };
 
-// Avatar colors
+// Premium avatar colors (warm, sophisticated)
 const avatarColors = [
-  'bg-blue-500', 'bg-emerald-500', 'bg-violet-500', 'bg-rose-500',
-  'bg-amber-500', 'bg-cyan-500', 'bg-indigo-500', 'bg-teal-500',
+  'bg-brand-green', 'bg-brand-terracotta', 'bg-amber-600', 
+  'bg-emerald-600', 'bg-stone-600', 'bg-teal-600',
 ];
 
-// Platform badge styles
+// Platform badge styles (premium subtle colors)
 const platformBadges = {
-  'Google Reviews': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Google' },
-  'Trustpilot': { bg: 'bg-emerald-100', text: 'text-emerald-700', label: 'Trustpilot' },
-  'TripAdvisor': { bg: 'bg-green-100', text: 'text-green-700', label: 'TripAdvisor' },
-  'Yelp': { bg: 'bg-red-100', text: 'text-red-700', label: 'Yelp' },
-  'Capterra': { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Capterra' },
-  'G2': { bg: 'bg-rose-100', text: 'text-rose-700', label: 'G2' },
-  'Angi': { bg: 'bg-red-100', text: 'text-red-600', label: 'Angi' },
-  'Product Hunt': { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Product Hunt' },
+  'Google Reviews': { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', label: 'Google' },
+  'Trustpilot': { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', label: 'Trustpilot' },
+  'TripAdvisor': { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', label: 'TripAdvisor' },
+  'Yelp': { bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200', label: 'Yelp' },
+  'Capterra': { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', label: 'Capterra' },
+  'G2': { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border-rose-200', label: 'G2' },
+  'Angi': { bg: 'bg-red-50', text: 'text-red-600', border: 'border-red-200', label: 'Angi' },
+  'Product Hunt': { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', label: 'Product Hunt' },
 };
 
 // Get initials
