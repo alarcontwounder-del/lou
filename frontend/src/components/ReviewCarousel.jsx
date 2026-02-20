@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Star, Languages, Filter, Search, X, User, Quote, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Star, Languages, Filter, Search, X, User, Quote, ChevronDown, ArrowRight } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
