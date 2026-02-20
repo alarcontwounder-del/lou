@@ -62,7 +62,7 @@ const StarRating = ({ rating }) => (
   </div>
 );
 
-// Review Card - The Atomic Unit
+// Review Card - Enhanced Premium Version with all Master Plan features
 const ReviewCard = ({ review, index }) => {
   const [showTranslation, setShowTranslation] = useState(false);
   const flag = countryFlags[review.country] || '🌍';
@@ -70,69 +70,67 @@ const ReviewCard = ({ review, index }) => {
   const avatarColor = avatarColors[index % avatarColors.length];
   const isEnglish = review.language === 'EN';
   const displayText = showTranslation ? review.review_text_en : review.review_text;
-  const badge = platformBadges[review.platform] || { bg: 'bg-slate-100', text: 'text-slate-600', label: review.platform };
-  const isTrustpilot = review.platform === 'Trustpilot';
+  const badge = platformBadges[review.platform] || { bg: 'bg-stone-100', text: 'text-stone-600', border: 'border-stone-200', label: review.platform };
 
   return (
     <div
-      className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative"
+      className="bg-white border border-stone-200 rounded-lg p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
       data-testid={`review-card-${review.id}`}
     >
-      {/* Platform Badge - Top Right */}
-      <div className={`absolute top-4 right-4 ${badge.bg} ${badge.text} text-xs font-semibold px-2.5 py-1 rounded-full`}>
+      {/* Quote Icon - Subtle decorative element */}
+      <Quote className="absolute top-4 right-4 w-8 h-8 text-brand-sand/20 group-hover:text-brand-sand/40 transition-colors" />
+
+      {/* Platform Badge */}
+      <div className={`${badge.bg} ${badge.text} border ${badge.border} text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4`}>
         {badge.label}
       </div>
 
-      {/* Header - Flexbox Layout */}
-      <div className="flex items-center gap-4 mb-4 pr-20">
-        {/* Avatar - Rounded Full */}
-        <div className={`w-12 h-12 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0`}>
-          {initials}
-        </div>
-        {/* User Info */}
-        <div>
-          <div className="flex items-center gap-2">
-            <p className="font-bold text-slate-900">{review.user_name}</p>
-            <span className="text-base">{flag}</span>
+      {/* Header - Circular avatar with flag + user info */}
+      <div className="flex items-center gap-3 mb-4">
+        {/* Circular Avatar with Initials */}
+        <div className="relative flex-shrink-0">
+          <div className={`w-12 h-12 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-md`}>
+            {initials}
           </div>
-          <p className="text-sm text-slate-400">
+          {/* Circular Flag Badge */}
+          <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white flex items-center justify-center shadow-sm border border-stone-100">
+            <span className="text-xs">{flag}</span>
+          </div>
+        </div>
+        
+        {/* User Info with Age */}
+        <div className="flex-1">
+          <p className="font-bold text-stone-900 leading-tight">{review.user_name}</p>
+          <p className="text-sm text-stone-500">
             {review.age && `${review.age} · `}{review.country}
           </p>
         </div>
       </div>
 
-      {/* Rating Row */}
-      <div className="flex items-center gap-3 mb-4">
+      {/* Gold 5-Star Rating */}
+      <div className="flex items-center gap-2 mb-4">
         <StarRating rating={review.rating} />
-        {isTrustpilot && (
-          <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-            </svg>
-            Verified
-          </span>
-        )}
       </div>
 
-      {/* Body - Review Text */}
-      <p className="text-slate-700 text-base leading-relaxed mb-5">
+      {/* Review Text - Italic Serif Font (as per master plan) */}
+      <p className="text-stone-700 text-base leading-relaxed mb-4 italic font-serif">
         "{displayText}"
       </p>
 
-      {/* Footer - Translate Button */}
+      {/* Translation Toggle Button (for non-EN reviews) */}
       {!isEnglish && (
-        <div className="pt-4 border-t border-slate-100">
+        <div className="pt-4 border-t border-stone-100">
           <button
             onClick={() => setShowTranslation(!showTranslation)}
             className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all ${
               showTranslation 
-                ? 'bg-slate-900 text-white' 
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                ? 'bg-brand-green text-white shadow-sm' 
+                : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
             }`}
             data-testid={`translate-btn-${review.id}`}
           >
             <Languages className="w-4 h-4" />
-            {showTranslation ? 'Show Original' : 'Show Translation'}
+            {showTranslation ? 'Show Original' : 'Translate to English'}
           </button>
         </div>
       )}
