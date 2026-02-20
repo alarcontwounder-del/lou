@@ -54,9 +54,12 @@ const StarRating = ({ rating }) => (
   </div>
 );
 
-// Review Card - Enhanced Premium Version with all Master Plan features
+// Review Card - Enhanced with Scroll Animation
 const ReviewCard = ({ review, index }) => {
   const [showTranslation, setShowTranslation] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+  
   const flag = countryFlags[review.country] || '🌍';
   const initials = getInitials(review.user_name);
   const avatarColor = avatarColors[index % avatarColors.length];
@@ -64,9 +67,36 @@ const ReviewCard = ({ review, index }) => {
   const displayText = showTranslation ? review.review_text_en : review.review_text;
   const badge = platformBadges[review.platform] || { bg: 'bg-stone-100', text: 'text-stone-600', border: 'border-stone-200', label: review.platform };
 
+  // Intersection Observer for fade-in animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
-      className="bg-white border border-stone-200 rounded-lg p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
+      ref={cardRef}
+      className={`bg-white border border-stone-200 rounded-lg p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 relative group ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+      style={{ transitionDelay: `${index * 50}ms` }}
       data-testid={`review-card-${review.id}`}
     >
       {/* Quote Icon - Subtle decorative element */}
