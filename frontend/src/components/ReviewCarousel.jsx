@@ -398,6 +398,42 @@ export const ReviewCarousel = () => {
             Showing {filteredReviews.length} of {reviews.length} reviews
           </p>
         )}
+
+        {/* Booking CTA Section - Gradient Card */}
+        <div className="mt-20 mb-10">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 p-12 md:p-16 text-center shadow-2xl">
+            {/* Subtle pattern overlay */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+                backgroundSize: '32px 32px'
+              }}></div>
+            </div>
+            
+            {/* Content */}
+            <div className="relative z-10">
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+                Ready to hit the green?
+              </h2>
+              <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                Book your perfect tee time at Mallorca's finest golf courses. Instant confirmation guaranteed.
+              </p>
+              <a
+                href="https://golfinmallorca.greenfee365.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-white text-emerald-700 font-bold text-lg px-10 py-5 rounded-full hover:bg-stone-50 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                data-testid="booking-cta-button"
+              >
+                Book My Tee Time Now
+                <ArrowRight className="w-5 h-5" />
+              </a>
+              <p className="text-white/70 text-sm mt-6">
+                🏌️ Trusted by thousands of golfers worldwide
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
