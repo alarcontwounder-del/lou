@@ -146,13 +146,14 @@ const ReviewCard = ({ review, index }) => {
             onClick={() => setShowTranslation(!showTranslation)}
             className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all ${
               showTranslation 
-                ? 'bg-brand-green text-white shadow-sm' 
+                ? 'bg-emerald-700 text-white shadow-sm hover:bg-emerald-800' 
                 : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
             }`}
+            style={{ backgroundColor: showTranslation ? '#064e3b' : undefined }}
             data-testid={`translate-btn-${review.id}`}
           >
             <Languages className="w-4 h-4" />
-            {showTranslation ? 'Show Original' : 'Translate to English'}
+            {showTranslation ? 'Show Original' : 'See Translation'}
           </button>
         </div>
       )}
