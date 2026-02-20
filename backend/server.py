@@ -744,6 +744,29 @@ async def get_contact_inquiries():
             inq['created_at'] = datetime.fromisoformat(inq['created_at'])
     return inquiries
 
+# Newsletter endpoints
+@api_router.post("/newsletter", response_model=NewsletterSubscription)
+async def subscribe_newsletter(subscription: NewsletterSubscriptionCreate):
+    # Check if email already exists
+    existing = await db.newsletter_subscriptions.find_one({"email": subscription.email})
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already subscribed")
+    
+    subscription_obj = NewsletterSubscription(**subscription.model_dump())
+    doc = subscription_obj.model_dump()
+    doc['subscribed_at'] = doc['subscribed_at'].isoformat()
+    
+    await db.newsletter_subscriptions.insert_one(doc)
+    return subscription_obj
+
+@api_router.get("/newsletter", response_model=List[NewsletterSubscription])
+async def get_newsletter_subscriptions():
+    subscriptions = await db.newsletter_subscriptions.find({"is_active": True}, {"_id": 0}).to_list(1000)
+    for sub in subscriptions:
+        if isinstance(sub['subscribed_at'], str):
+            sub['subscribed_at'] = datetime.fromisoformat(sub['subscribed_at'])
+    return subscriptions
+
 # Blog endpoints
 @api_router.get("/blog", response_model=List[dict])
 async def get_blog_posts(category: Optional[str] = None):
