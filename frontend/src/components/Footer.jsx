@@ -20,7 +20,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="font-heading text-3xl mb-4">Golf in Mallorca</h3>
+            <h3 className="font-heading text-3xl mb-4">Golfinmallorca.com</h3>
             <p className="text-white/70 max-w-md mb-6">
               The leading golf agency in Mallorca since 2003. Only exclusive operator based on the island specializing in all types of golf services.
             </p>
