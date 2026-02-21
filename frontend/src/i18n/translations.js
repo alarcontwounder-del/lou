@@ -242,7 +242,7 @@ export const translations = {
     about: {
       subtitle: "À Propos",
       title: "Votre Concierge Golf Premier à Majorque",
-      description: "Avec plus de deux décennies d'expérience, nous connectons les golfeurs exigeants de toute l'Europe aux parcours les plus prestigieux et aux partenaires exclusifs de Majorque.",
+      description: "L'agence de golf leader à Majorque depuis 2003. En tant que seul opérateur exclusif basé sur l'île, nous sommes spécialisés dans tous types de services de golf.",
       point1: "Sélection de parcours championship",
       point2: "Partenariats hôtels & restaurants exclusifs",
       point3: "Service personnalisé dans votre langue"
