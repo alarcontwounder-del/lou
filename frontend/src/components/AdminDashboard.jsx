@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Mail, Phone, MapPin, Users, MessageSquare, Calendar, Download, LogOut } from 'lucide-react';
+import { X, Mail, Phone, MapPin, Users, MessageSquare, Download, LogOut, Search, Trash2, AlertCircle } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -9,6 +9,9 @@ export const AdminDashboard = ({ onClose, user }) => {
   const [contacts, setContacts] = useState([]);
   const [subscribers, setSubscribers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -39,10 +42,39 @@ export const AdminDashboard = ({ onClose, user }) => {
     }
   };
 
+  const handleDeleteContact = async (contactId) => {
+    setDeleting(true);
+    try {
+      await axios.delete(`${BACKEND_URL}/api/contact/${contactId}`, { withCredentials: true });
+      setContacts(contacts.filter(c => c.id !== contactId));
+      setDeleteConfirm(null);
+    } catch (error) {
+      console.error('Delete error:', error);
+      alert('Failed to delete contact');
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  const handleDeleteSubscriber = async (subscriberId) => {
+    setDeleting(true);
+    try {
+      await axios.delete(`${BACKEND_URL}/api/newsletter/${subscriberId}`, { withCredentials: true });
+      setSubscribers(subscribers.filter(s => s.id !== subscriberId));
+      setDeleteConfirm(null);
+    } catch (error) {
+      console.error('Delete error:', error);
+      alert('Failed to delete subscriber');
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   const exportToCSV = (data, filename) => {
+    if (data.length === 0) return;
     const csv = [
       Object.keys(data[0]).join(','),
-      ...data.map(row => Object.values(row).join(','))
+      ...data.map(row => Object.values(row).map(v => `"${v}"`).join(','))
     ].join('\n');
     
     const blob = new Blob([csv], { type: 'text/csv' });
@@ -52,6 +84,28 @@ export const AdminDashboard = ({ onClose, user }) => {
     a.download = filename;
     a.click();
   };
+
+  // Filter contacts based on search term
+  const filteredContacts = contacts.filter(contact => {
+    const term = searchTerm.toLowerCase();
+    return (
+      contact.name?.toLowerCase().includes(term) ||
+      contact.email?.toLowerCase().includes(term) ||
+      contact.country?.toLowerCase().includes(term) ||
+      contact.message?.toLowerCase().includes(term) ||
+      contact.inquiry_type?.toLowerCase().includes(term)
+    );
+  });
+
+  // Filter subscribers based on search term
+  const filteredSubscribers = subscribers.filter(sub => {
+    const term = searchTerm.toLowerCase();
+    return (
+      sub.name?.toLowerCase().includes(term) ||
+      sub.email?.toLowerCase().includes(term) ||
+      sub.country?.toLowerCase().includes(term)
+    );
+  });
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -76,12 +130,14 @@ export const AdminDashboard = ({ onClose, user }) => {
               onClick={handleLogout}
               className="p-2 hover:bg-white/20 rounded-lg transition-colors"
               title="Logout"
+              data-testid="logout-btn"
             >
               <LogOut className="w-5 h-5 text-white" />
             </button>
             <button
               onClick={onClose}
               className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+              data-testid="close-dashboard-btn"
             >
               <X className="w-6 h-6 text-white" />
             </button>
@@ -92,12 +148,13 @@ export const AdminDashboard = ({ onClose, user }) => {
         <div className="border-b border-stone-200 bg-stone-50">
           <div className="flex">
             <button
-              onClick={() => setActiveTab('contacts')}
+              onClick={() => { setActiveTab('contacts'); setSearchTerm(''); }}
               className={`flex-1 px-6 py-4 font-medium transition-colors ${
                 activeTab === 'contacts'
                   ? 'border-b-2 border-emerald-600 text-emerald-600 bg-white'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
+              data-testid="contacts-tab"
             >
               <div className="flex items-center justify-center gap-2">
                 <MessageSquare className="w-5 h-5" />
@@ -105,12 +162,13 @@ export const AdminDashboard = ({ onClose, user }) => {
               </div>
             </button>
             <button
-              onClick={() => setActiveTab('subscribers')}
+              onClick={() => { setActiveTab('subscribers'); setSearchTerm(''); }}
               className={`flex-1 px-6 py-4 font-medium transition-colors ${
                 activeTab === 'subscribers'
                   ? 'border-b-2 border-emerald-600 text-emerald-600 bg-white'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
+              data-testid="subscribers-tab"
             >
               <div className="flex items-center justify-center gap-2">
                 <Mail className="w-5 h-5" />
@@ -131,27 +189,55 @@ export const AdminDashboard = ({ onClose, user }) => {
             <>
               {activeTab === 'contacts' && (
                 <div>
-                  <div className="flex justify-between items-center mb-6">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                     <h3 className="text-xl font-bold text-stone-900">Contact Inquiries</h3>
-                    <button
-                      onClick={() => exportToCSV(contacts, 'contacts.csv')}
-                      className="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors text-sm font-medium"
-                    >
-                      <Download className="w-4 h-4" />
-                      Export CSV
-                    </button>
+                    <div className="flex items-center gap-3 w-full sm:w-auto">
+                      {/* Search Input */}
+                      <div className="relative flex-1 sm:flex-none">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-stone-400" />
+                        <input
+                          type="text"
+                          placeholder="Search contacts..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="pl-10 pr-4 py-2 border border-stone-200 rounded-lg text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          data-testid="search-contacts"
+                        />
+                      </div>
+                      <button
+                        onClick={() => exportToCSV(filteredContacts, 'contacts.csv')}
+                        disabled={filteredContacts.length === 0}
+                        className="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        data-testid="export-contacts-btn"
+                      >
+                        <Download className="w-4 h-4" />
+                        Export
+                      </button>
+                    </div>
                   </div>
                   
-                  {contacts.length === 0 ? (
+                  {filteredContacts.length === 0 ? (
                     <div className="text-center py-20">
                       <MessageSquare className="w-16 h-16 text-stone-300 mx-auto mb-4" />
-                      <p className="text-stone-500">No contact inquiries yet</p>
+                      <p className="text-stone-500">
+                        {searchTerm ? 'No contacts match your search' : 'No contact inquiries yet'}
+                      </p>
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      {contacts.map((contact) => (
-                        <div key={contact.id} className="bg-white border border-stone-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                          <div className="flex justify-between items-start mb-4">
+                      {filteredContacts.map((contact) => (
+                        <div key={contact.id} className="bg-white border border-stone-200 rounded-lg p-6 hover:shadow-md transition-shadow relative group">
+                          {/* Delete Button */}
+                          <button
+                            onClick={() => setDeleteConfirm({ type: 'contact', id: contact.id, name: contact.name })}
+                            className="absolute top-4 right-4 p-2 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                            title="Delete contact"
+                            data-testid={`delete-contact-${contact.id}`}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                          
+                          <div className="flex justify-between items-start mb-4 pr-10">
                             <div>
                               <h4 className="font-bold text-lg text-stone-900">{contact.name}</h4>
                               <p className="text-sm text-stone-500">
@@ -192,27 +278,55 @@ export const AdminDashboard = ({ onClose, user }) => {
 
               {activeTab === 'subscribers' && (
                 <div>
-                  <div className="flex justify-between items-center mb-6">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                     <h3 className="text-xl font-bold text-stone-900">Newsletter Subscribers</h3>
-                    <button
-                      onClick={() => exportToCSV(subscribers, 'subscribers.csv')}
-                      className="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors text-sm font-medium"
-                    >
-                      <Download className="w-4 h-4" />
-                      Export CSV
-                    </button>
+                    <div className="flex items-center gap-3 w-full sm:w-auto">
+                      {/* Search Input */}
+                      <div className="relative flex-1 sm:flex-none">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-stone-400" />
+                        <input
+                          type="text"
+                          placeholder="Search subscribers..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="pl-10 pr-4 py-2 border border-stone-200 rounded-lg text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          data-testid="search-subscribers"
+                        />
+                      </div>
+                      <button
+                        onClick={() => exportToCSV(filteredSubscribers, 'subscribers.csv')}
+                        disabled={filteredSubscribers.length === 0}
+                        className="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        data-testid="export-subscribers-btn"
+                      >
+                        <Download className="w-4 h-4" />
+                        Export
+                      </button>
+                    </div>
                   </div>
                   
-                  {subscribers.length === 0 ? (
+                  {filteredSubscribers.length === 0 ? (
                     <div className="text-center py-20">
                       <Mail className="w-16 h-16 text-stone-300 mx-auto mb-4" />
-                      <p className="text-stone-500">No newsletter subscribers yet</p>
+                      <p className="text-stone-500">
+                        {searchTerm ? 'No subscribers match your search' : 'No newsletter subscribers yet'}
+                      </p>
                     </div>
                   ) : (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {subscribers.map((sub) => (
-                        <div key={sub.id} className="bg-white border border-stone-200 rounded-lg p-5 hover:shadow-md transition-shadow">
-                          <div className="flex items-start justify-between mb-3">
+                      {filteredSubscribers.map((sub) => (
+                        <div key={sub.id} className="bg-white border border-stone-200 rounded-lg p-5 hover:shadow-md transition-shadow relative group">
+                          {/* Delete Button */}
+                          <button
+                            onClick={() => setDeleteConfirm({ type: 'subscriber', id: sub.id, name: sub.name })}
+                            className="absolute top-3 right-3 p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                            title="Delete subscriber"
+                            data-testid={`delete-subscriber-${sub.id}`}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                          
+                          <div className="flex items-start justify-between mb-3 pr-8">
                             <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold">
                               {sub.name.charAt(0).toUpperCase()}
                             </div>
@@ -262,6 +376,57 @@ export const AdminDashboard = ({ onClose, user }) => {
           </div>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {deleteConfirm && (
+        <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6 animate-in fade-in zoom-in duration-200">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                <AlertCircle className="w-5 h-5 text-red-600" />
+              </div>
+              <h3 className="text-lg font-bold text-stone-900">Confirm Delete</h3>
+            </div>
+            <p className="text-stone-600 mb-6">
+              Are you sure you want to delete <strong>{deleteConfirm.name}</strong>? This action cannot be undone.
+            </p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setDeleteConfirm(null)}
+                disabled={deleting}
+                className="px-4 py-2 text-stone-700 hover:bg-stone-100 rounded-lg transition-colors font-medium"
+                data-testid="cancel-delete-btn"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  if (deleteConfirm.type === 'contact') {
+                    handleDeleteContact(deleteConfirm.id);
+                  } else {
+                    handleDeleteSubscriber(deleteConfirm.id);
+                  }
+                }}
+                disabled={deleting}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium flex items-center gap-2 disabled:opacity-50"
+                data-testid="confirm-delete-btn"
+              >
+                {deleting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Deleting...
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className="w-4 h-4" />
+                    Delete
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
