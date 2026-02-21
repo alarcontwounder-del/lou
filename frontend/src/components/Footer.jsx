@@ -20,49 +20,14 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="font-heading text-3xl mb-4">Mallorca Golf</h3>
+            <h3 className="font-heading text-3xl mb-4">Golf in Mallorca</h3>
             <p className="text-white/70 max-w-md mb-6">
-              {t('footer.tagline')}
+              The leading golf agency in Mallorca since 2003. Only exclusive operator based on the island specializing in all types of golf services.
             </p>
-            {/* Social Links */}
-            <div className="flex gap-4">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
-                data-testid="social-instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
-                data-testid="social-facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
-                data-testid="social-linkedin"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"
-                data-testid="social-twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
+            {/* Social Links - To be added later */}
+            <p className="text-white/50 text-sm">
+              Website: <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-sand hover:text-white transition-colors">golfinmallorca.com</a>
+            </p>
           </div>
 
           {/* Quick Links */}
