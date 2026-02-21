@@ -10,7 +10,7 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - Redirect to external booking platform: https://golfinmallorca.greenfee365.com
 - Premium reviews section with filters and translations
 - Partner offers (Hotels & Restaurants)
-- Admin Dashboard for viewing contacts & subscribers
+- Admin Dashboard for viewing, searching, and managing contacts & subscribers
 
 ## Brand: Golfinmallorca.com
 - **Established:** 2003
@@ -24,12 +24,7 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - **Email Service:** Resend (transactional emails)
 - **Authentication:** Emergent Google OAuth
 
-## User Personas
-1. **International Golfers** - Wealthy tourists from DE, SE, CH, UK, FR
-2. **Travel Planners** - Planning golf trips to Mallorca
-3. **Site Admin** - Manages contacts & subscribers via dashboard
-
-## Core Requirements
+## Core Requirements - ALL COMPLETE
 
 ### Implemented Features (Feb 2025)
 - [x] Hero section with "Book Tee Time" CTA
@@ -37,14 +32,16 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - [x] Golf courses showcase (13 courses with details and booking links)
 - [x] Hotel Partners section (3 luxury hotels)
 - [x] Restaurants & Bars section (3 Michelin-starred restaurants)
-- [x] **Premium Reviews Section** - Masonry grid, filters, translations, animations
-- [x] **Newsletter Subscription** - With Resend welcome emails
-- [x] **Contact Form** - With Resend notification emails
+- [x] Premium Reviews Section - Masonry grid, filters, translations, animations
+- [x] Newsletter Subscription - With Resend welcome emails
+- [x] Contact Form - With Resend notification emails
 - [x] Blog section with travel tips
 - [x] Responsive design
 - [x] External booking redirects to greenfee365.com
-- [x] **Resend Email Integration** - Contact notifications + Newsletter welcome emails
-- [x] **Admin Dashboard** - View contacts & subscribers with Emergent Google OAuth
+- [x] Resend Email Integration - Contact notifications + Newsletter welcome emails
+- [x] Admin Dashboard with Emergent Google OAuth
+- [x] **Search/Filter Functionality** - Search contacts and subscribers by name, email, country
+- [x] **Delete Functionality** - Delete contacts and subscribers with confirmation modal
 
 ## Backend API Endpoints
 | Endpoint | Method | Description | Auth |
@@ -56,8 +53,10 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 | `/api/blog` | GET | List blog posts | - |
 | `/api/contact` | POST | Submit contact inquiry (sends email) | - |
 | `/api/contact` | GET | List inquiries | - |
+| `/api/contact/{id}` | DELETE | Delete contact inquiry | Cookie/Bearer |
 | `/api/newsletter` | POST | Subscribe to newsletter (sends email) | - |
 | `/api/newsletter` | GET | List subscribers | - |
+| `/api/newsletter/{id}` | DELETE | Delete subscriber | Cookie/Bearer |
 | `/api/auth/session` | POST | Exchange session_id for user data | - |
 | `/api/auth/me` | GET | Get current authenticated user | Cookie/Bearer |
 | `/api/auth/logout` | POST | Logout user | Cookie |
@@ -76,27 +75,28 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 | Unsplash | ACTIVE | Stock images |
 | Lucide React | ACTIVE | Icons |
 
-## Resend Email Configuration
-- **API Key:** Stored in `/app/backend/.env`
-- **Sender:** `onboarding@resend.dev` (test mode)
-- **Status:** Working in test mode
-- **Production:** Verify domain at resend.com/domains, update SENDER_EMAIL
+## Admin Dashboard Features
+1. **Contact Inquiries Tab**
+   - View all contact form submissions
+   - Search by name, email, country, message, inquiry type
+   - Delete contacts with confirmation
+   - Export to CSV
 
-## Emergent Auth Configuration
-- **Flow:** Click admin button → Google OAuth → Callback with session_id → Exchange for user data → Session cookie set
-- **Session Duration:** 7 days
-- **Protected Routes:** Admin Dashboard modal
+2. **Newsletter Subscribers Tab**
+   - View all newsletter subscribers
+   - Search by name, email, country
+   - Delete subscribers with confirmation
+   - Export to CSV
 
-## P0/P1/P2 Remaining Tasks
+3. **Stats Footer**
+   - Total contacts count
+   - Total subscribers count
+   - Today's contacts count
 
-### P0 (Critical) - COMPLETE
-- ~~Resend Email Integration~~ DONE (Feb 21, 2025)
-- ~~Admin Dashboard~~ DONE (Feb 21, 2025)
-
-### P1 (Important)
+## P1 (Remaining)
 - [ ] Save to GitHub - Use "Save to GitHub" button in UI
 
-### P2 (Nice to Have)
+## P2 (Future/Backlog)
 - [ ] Hero video replacement (user looking for video file)
 - [ ] Social media links in footer (user deferred)
 - [ ] Weather widget
@@ -107,16 +107,16 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 ├── backend/
 │   ├── .env                 # MONGO_URL, RESEND_API_KEY, SENDER_EMAIL
 │   ├── requirements.txt     # FastAPI, Motor, Resend, httpx
-│   └── server.py            # FastAPI with email & auth integration
+│   └── server.py            # FastAPI with email, auth & delete endpoints
 ├── frontend/
 │   ├── .env                 # REACT_APP_BACKEND_URL
 │   ├── src/
 │   │   ├── App.js           # Main app with React Router & auth flow
 │   │   ├── components/
-│   │   │   ├── AdminDashboard.jsx  # Admin modal for contacts/subscribers
+│   │   │   ├── AdminDashboard.jsx  # Admin modal with search & delete
 │   │   │   ├── AuthCallback.jsx    # Handles OAuth callback
 │   │   │   ├── Navbar.jsx          # With admin button
-│   │   │   ├── sections/           # Hero, Reviews, Newsletter, Contact, etc.
+│   │   │   ├── sections/           # Hero, Reviews, Newsletter, Contact
 │   │   │   └── ui/                 # Shadcn components
 │   │   └── locales/         # en.json, de.json, fr.json, sv.json
 │   └── package.json
@@ -125,7 +125,8 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 ```
 
 ## Testing Status
-- **Backend APIs:** Verified via curl
-- **Email Integration:** Verified - sends successfully to verified email
-- **Admin Dashboard:** Verified with test session - displays contacts & subscribers
-- **Google OAuth Flow:** Verified - redirects correctly to Emergent Auth
+- Backend APIs: Verified via curl
+- Email Integration: Verified - sends successfully to verified email
+- Admin Dashboard: Verified with test session
+- Search Functionality: Implemented and working
+- Delete Functionality: Backend verified, frontend implemented
