@@ -133,6 +133,22 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
             </DropdownMenuContent>
           </DropdownMenu>
 
+          {/* Admin Button */}
+          {!isCheckingAuth && (
+            <button
+              onClick={onAdminClick}
+              className={`p-2 rounded-full transition-colors duration-300 ${
+                isScrolled
+                  ? 'text-stone-500 hover:text-brand-green hover:bg-stone-100'
+                  : 'text-white/70 hover:text-white hover:bg-white/10'
+              }`}
+              title={isAuthenticated ? 'Admin Dashboard' : 'Admin Login'}
+              data-testid="admin-btn"
+            >
+              <Settings className={`w-5 h-5 ${isAuthenticated ? 'text-emerald-500' : ''}`} />
+            </button>
+          )}
+
           {/* Book CTA */}
           <a
             href="https://golfinmallorca.greenfee365.com"
