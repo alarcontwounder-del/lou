@@ -718,6 +718,107 @@ BLOG_POSTS = [
 
 # Sample approved reviews (seeded data) - OLD FORMAT REMOVED, using REVIEWS_DATA above
 
+# Email helper functions
+async def send_contact_notification_email(inquiry: ContactInquiryCreate):
+    """Send notification email to admin when new contact inquiry is received."""
+    html_content = f"""
+    <html>
+    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
+            <h2 style="color: #0a5f38; margin-bottom: 20px;">New Contact Inquiry - Golfinmallorca.com</h2>
+            <p style="color: #333;"><strong>Name:</strong> {inquiry.name}</p>
+            <p style="color: #333;"><strong>Email:</strong> {inquiry.email}</p>
+            <p style="color: #333;"><strong>Phone:</strong> {inquiry.phone or 'Not provided'}</p>
+            <p style="color: #333;"><strong>Country:</strong> {inquiry.country}</p>
+            <p style="color: #333;"><strong>Inquiry Type:</strong> {inquiry.inquiry_type}</p>
+            <hr style="border: 1px solid #eee; margin: 20px 0;">
+            <p style="color: #333;"><strong>Message:</strong></p>
+            <p style="color: #555; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">{inquiry.message}</p>
+            <hr style="border: 1px solid #eee; margin: 20px 0;">
+            <p style="color: #888; font-size: 12px;">This email was sent automatically from Golfinmallorca.com contact form.</p>
+        </div>
+    </body>
+    </html>
+    """
+    
+    params = {
+        "from": SENDER_EMAIL,
+        "to": ["contact@golfinmallorca.com"],
+        "subject": f"New Contact Inquiry from {inquiry.name} - Golfinmallorca.com",
+        "html": html_content
+    }
+    
+    try:
+        await asyncio.to_thread(resend.Emails.send, params)
+        logger.info(f"Contact notification email sent for inquiry from {inquiry.email}")
+    except Exception as e:
+        logger.error(f"Failed to send contact notification email: {str(e)}")
+
+async def send_newsletter_welcome_email(name: str, email: str):
+    """Send welcome email to new newsletter subscriber."""
+    html_content = f"""
+    <html>
+    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="color: #0a5f38; margin: 0;">Golfinmallorca.com</h1>
+                <p style="color: #666; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+            </div>
+            
+            <h2 style="color: #0a5f38;">Welcome to Our Newsletter, {name}!</h2>
+            
+            <p style="color: #333; line-height: 1.6;">
+                Thank you for subscribing to the Golfinmallorca.com newsletter! You've joined an exclusive community of golf enthusiasts who appreciate the finest courses and experiences Mallorca has to offer.
+            </p>
+            
+            <p style="color: #333; line-height: 1.6;">
+                As a subscriber, you'll receive:
+            </p>
+            
+            <ul style="color: #333; line-height: 1.8;">
+                <li>Exclusive deals on green fees at premium courses</li>
+                <li>Early access to golf & hotel packages</li>
+                <li>Insider tips on the best courses and restaurants</li>
+                <li>Seasonal offers and special promotions</li>
+            </ul>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://golfinmallorca.greenfee365.com" style="background-color: #0a5f38; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">Book Your Tee Time</a>
+            </div>
+            
+            <p style="color: #333; line-height: 1.6;">
+                We're excited to help you plan your next golfing adventure in Mallorca!
+            </p>
+            
+            <p style="color: #333;">
+                Best regards,<br>
+                <strong>The Golfinmallorca.com Team</strong>
+            </p>
+            
+            <hr style="border: 1px solid #eee; margin: 30px 0;">
+            
+            <p style="color: #888; font-size: 12px; text-align: center;">
+                Since 2003, we've been connecting golfers with the finest courses in Mallorca.<br>
+                Contact us: contact@golfinmallorca.com | +34 871 555 365
+            </p>
+        </div>
+    </body>
+    </html>
+    """
+    
+    params = {
+        "from": SENDER_EMAIL,
+        "to": [email],
+        "subject": "Welcome to Golfinmallorca.com Newsletter!",
+        "html": html_content
+    }
+    
+    try:
+        await asyncio.to_thread(resend.Emails.send, params)
+        logger.info(f"Welcome newsletter email sent to {email}")
+    except Exception as e:
+        logger.error(f"Failed to send welcome newsletter email: {str(e)}")
+
 # Routes
 @api_router.get("/")
 async def root():
