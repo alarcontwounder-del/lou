@@ -1,76 +1,111 @@
-# Mallorca Golf Exclusive - PRD
+# Golfinmallorca.com - Product Requirements Document
 
 ## Original Problem Statement
-Build a website to promote golf booking services in Mallorca. Services target clients from Germany, Sweden, Switzerland, UK, and France. Features include:
-- Multi-language support with language selector (EN, DE, FR, SE)
-- Contact/inquiry forms
+Build a premium luxury golf website for Golfinmallorca.com to promote golf booking services in Mallorca. The site targets affluent golfers from Germany, Sweden, Switzerland, UK, France, and beyond.
+
+**Key Features:**
+- Multi-language support (EN, DE, FR, SE)
+- Contact/inquiry forms with email notifications
+- Newsletter subscription with welcome emails
 - Redirect to external booking platform: https://golfinmallorca.greenfee365.com
-- Partner offers with separate sections for Hotels and Restaurants/Bars
+- Premium reviews section with filters and translations
+- Partner offers (Hotels & Restaurants)
+
+## Brand: Golfinmallorca.com
+- **Established:** 2003
+- **Contact:** contact@golfinmallorca.com | +34 871 555 365
+- **Theme:** Organic & Earthy Luxury (Deep Emerald Green #0a5f38, Sand, Terracotta)
 
 ## Architecture
-- **Frontend**: React with Tailwind CSS + Shadcn UI components
-- **Backend**: FastAPI with MongoDB
-- **Styling**: Organic & Earthy Luxury theme (Deep Emerald Green, Sand, Terracotta)
-- **Typography**: Playfair Display (headings) + Manrope (body)
+- **Frontend:** React + Tailwind CSS + Shadcn UI + i18next
+- **Backend:** FastAPI + Motor (async MongoDB)
+- **Database:** MongoDB
+- **Email Service:** Resend (transactional emails)
 
 ## User Personas
-1. **International Golfers** - Wealthy tourists from DE, SE, CH, UK, FR seeking premium golf experiences
+1. **International Golfers** - Wealthy tourists from DE, SE, CH, UK, FR
 2. **Travel Planners** - Planning golf trips to Mallorca
 
-## Core Requirements (Static)
-- [x] Hero section with "Book Tee Time" button → External booking site
+## Core Requirements
+
+### Implemented Features (Feb 2025)
+- [x] Hero section with "Book Tee Time" CTA
 - [x] Multi-language support (EN, DE, FR, SE) with instant switching
-- [x] Golf courses showcase (4 courses with details and booking links)
-- [x] Hotel Partners section (3 luxury hotels with booking buttons)
-- [x] Restaurants & Bars section (3 restaurants with reservation buttons)
-- [x] Contact/inquiry form with country selection
-- [x] Responsive design for mobile users
+- [x] Golf courses showcase (13 courses with details and booking links)
+- [x] Hotel Partners section (3 luxury hotels)
+- [x] Restaurants & Bars section (3 Michelin-starred restaurants)
+- [x] **Premium Reviews Section** - Masonry grid, filters, translations, animations
+- [x] **Newsletter Subscription** - With Resend welcome emails
+- [x] **Contact Form** - With Resend notification emails
+- [x] Blog section with travel tips
+- [x] Responsive design
 - [x] External booking redirects to greenfee365.com
+- [x] **Resend Email Integration** - Contact notifications + Newsletter welcome emails
 
-## What's Been Implemented (Dec 2025)
-- Full landing page with all sections
-- Language context provider with 4 languages
-- Navigation with smooth scroll to sections
-- Hero section with external booking CTA
-- About section highlighting services
-- Golf courses bento grid layout
-- **Separate Hotels section** with 3 partner cards
-- **Separate Restaurants & Bars section** with 3 partner cards
-- Contact form with country selector
-- Footer with social links and booking link
-- Backend APIs for courses, offers, and contact inquiries
-- Premium "Organic Luxury" design aesthetic
+## Backend API Endpoints
+| Endpoint | Method | Description | Email |
+|----------|--------|-------------|-------|
+| `/api/golf-courses` | GET | List all golf courses | - |
+| `/api/partner-offers` | GET | List partner offers | - |
+| `/api/reviews` | GET | List reviews (with filters) | - |
+| `/api/reviews/stats` | GET | Review statistics | - |
+| `/api/blog` | GET | List blog posts | - |
+| `/api/contact` | POST | Submit contact inquiry | Sends notification to admin |
+| `/api/contact` | GET | List inquiries | - |
+| `/api/newsletter` | POST | Subscribe to newsletter | Sends welcome email to subscriber |
+| `/api/newsletter` | GET | List subscribers | - |
 
-## External Booking Integration
-- **Tee Time Booking**: https://golfinmallorca.greenfee365.com
-- Accessible via: Hero CTA button, Nav "Book Now" button, Footer link
+## Database Schema
+- **contact_inquiries:** name, email, phone, country, message, inquiry_type, created_at
+- **newsletter_subscribers:** name, email, country, subscribed_at, is_active
 
-## Backend Endpoints
-- `GET /api/golf-courses` - List all golf courses
-- `GET /api/partner-offers` - List partner offers (filter by type)
-- `POST /api/contact` - Submit contact inquiry
-- `GET /api/contact` - List inquiries
+## 3rd Party Integrations
+| Service | Status | Notes |
+|---------|--------|-------|
+| Resend | ACTIVE | Test mode - verify domain for production |
+| Unsplash | ACTIVE | Stock images |
+| Lucide React | ACTIVE | Icons |
 
-## Test Results (Iteration 1)
-- Backend: 80% (4/5 tests - minor CORS preflight issue, non-blocking)
-- Frontend: 95% (14/15 features working)
-- All core functionality verified and working
+## Resend Email Configuration
+- **API Key:** Stored in `/app/backend/.env`
+- **Sender:** `onboarding@resend.dev` (test mode)
+- **Status:** Working in test mode
+- **Production:** Verify domain at resend.com/domains, update SENDER_EMAIL
 
-## P0/P1/P2 Features Remaining
-### P0 (Critical) - None
+## P0/P1/P2 Remaining Tasks
+
+### P0 (Critical) - COMPLETE
+- ~~Resend Email Integration~~ DONE (Feb 2025)
 
 ### P1 (Important)
-- Admin dashboard to manage inquiries
-- Email notifications for new inquiries
-- Newsletter subscription
+- [ ] Admin Dashboard (view contacts & subscribers) - User chose Emergent Google Auth
+- [ ] Save to GitHub
 
 ### P2 (Nice to Have)
-- Blog/News section
-- Weather widget for Mallorca
-- Customer testimonials section
-- Course availability calendar integration
+- [ ] Hero video replacement (user looking for video file)
+- [ ] Social media links in footer (user deferred)
+- [ ] Weather widget
 
-## Next Tasks
-1. Add email notification integration for contact inquiries
-2. Consider adding analytics tracking
-3. Add testimonials section
+## File Structure
+```
+/app
+├── backend/
+│   ├── .env                 # MONGO_URL, RESEND_API_KEY, SENDER_EMAIL
+│   ├── requirements.txt
+│   └── server.py            # FastAPI with email integration
+├── frontend/
+│   ├── .env                 # REACT_APP_BACKEND_URL
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── sections/    # Hero, Reviews, Newsletter, Contact, etc.
+│   │   │   └── ui/          # Shadcn components
+│   │   └── locales/         # en.json, de.json, fr.json, sv.json
+│   └── package.json
+└── memory/
+    └── PRD.md
+```
+
+## Testing Status
+- **Backend APIs:** Verified via curl
+- **Email Integration:** Verified - sends successfully to verified email
+- **Frontend:** Visual verification via screenshots
