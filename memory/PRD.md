@@ -10,6 +10,7 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - Redirect to external booking platform: https://golfinmallorca.greenfee365.com
 - Premium reviews section with filters and translations
 - Partner offers (Hotels & Restaurants)
+- Admin Dashboard for viewing contacts & subscribers
 
 ## Brand: Golfinmallorca.com
 - **Established:** 2003
@@ -17,14 +18,16 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - **Theme:** Organic & Earthy Luxury (Deep Emerald Green #0a5f38, Sand, Terracotta)
 
 ## Architecture
-- **Frontend:** React + Tailwind CSS + Shadcn UI + i18next
-- **Backend:** FastAPI + Motor (async MongoDB)
+- **Frontend:** React + Tailwind CSS + Shadcn UI + i18next + React Router
+- **Backend:** FastAPI + Motor (async MongoDB) + Resend (email) + Emergent Auth
 - **Database:** MongoDB
 - **Email Service:** Resend (transactional emails)
+- **Authentication:** Emergent Google OAuth
 
 ## User Personas
 1. **International Golfers** - Wealthy tourists from DE, SE, CH, UK, FR
 2. **Travel Planners** - Planning golf trips to Mallorca
+3. **Site Admin** - Manages contacts & subscribers via dashboard
 
 ## Core Requirements
 
@@ -41,28 +44,35 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - [x] Responsive design
 - [x] External booking redirects to greenfee365.com
 - [x] **Resend Email Integration** - Contact notifications + Newsletter welcome emails
+- [x] **Admin Dashboard** - View contacts & subscribers with Emergent Google OAuth
 
 ## Backend API Endpoints
-| Endpoint | Method | Description | Email |
-|----------|--------|-------------|-------|
+| Endpoint | Method | Description | Auth |
+|----------|--------|-------------|------|
 | `/api/golf-courses` | GET | List all golf courses | - |
 | `/api/partner-offers` | GET | List partner offers | - |
 | `/api/reviews` | GET | List reviews (with filters) | - |
 | `/api/reviews/stats` | GET | Review statistics | - |
 | `/api/blog` | GET | List blog posts | - |
-| `/api/contact` | POST | Submit contact inquiry | Sends notification to admin |
+| `/api/contact` | POST | Submit contact inquiry (sends email) | - |
 | `/api/contact` | GET | List inquiries | - |
-| `/api/newsletter` | POST | Subscribe to newsletter | Sends welcome email to subscriber |
+| `/api/newsletter` | POST | Subscribe to newsletter (sends email) | - |
 | `/api/newsletter` | GET | List subscribers | - |
+| `/api/auth/session` | POST | Exchange session_id for user data | - |
+| `/api/auth/me` | GET | Get current authenticated user | Cookie/Bearer |
+| `/api/auth/logout` | POST | Logout user | Cookie |
 
 ## Database Schema
-- **contact_inquiries:** name, email, phone, country, message, inquiry_type, created_at
-- **newsletter_subscribers:** name, email, country, subscribed_at, is_active
+- **users:** user_id, email, name, picture, created_at
+- **user_sessions:** user_id, session_token, expires_at, created_at
+- **contact_inquiries:** id, name, email, phone, country, message, inquiry_type, created_at
+- **newsletter_subscribers:** id, name, email, country, subscribed_at, is_active
 
 ## 3rd Party Integrations
 | Service | Status | Notes |
 |---------|--------|-------|
 | Resend | ACTIVE | Test mode - verify domain for production |
+| Emergent Auth | ACTIVE | Google OAuth for admin access |
 | Unsplash | ACTIVE | Stock images |
 | Lucide React | ACTIVE | Icons |
 
@@ -72,14 +82,19 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 - **Status:** Working in test mode
 - **Production:** Verify domain at resend.com/domains, update SENDER_EMAIL
 
+## Emergent Auth Configuration
+- **Flow:** Click admin button → Google OAuth → Callback with session_id → Exchange for user data → Session cookie set
+- **Session Duration:** 7 days
+- **Protected Routes:** Admin Dashboard modal
+
 ## P0/P1/P2 Remaining Tasks
 
 ### P0 (Critical) - COMPLETE
-- ~~Resend Email Integration~~ DONE (Feb 2025)
+- ~~Resend Email Integration~~ DONE (Feb 21, 2025)
+- ~~Admin Dashboard~~ DONE (Feb 21, 2025)
 
 ### P1 (Important)
-- [ ] Admin Dashboard (view contacts & subscribers) - User chose Emergent Google Auth
-- [ ] Save to GitHub
+- [ ] Save to GitHub - Use "Save to GitHub" button in UI
 
 ### P2 (Nice to Have)
 - [ ] Hero video replacement (user looking for video file)
@@ -91,14 +106,18 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 /app
 ├── backend/
 │   ├── .env                 # MONGO_URL, RESEND_API_KEY, SENDER_EMAIL
-│   ├── requirements.txt
-│   └── server.py            # FastAPI with email integration
+│   ├── requirements.txt     # FastAPI, Motor, Resend, httpx
+│   └── server.py            # FastAPI with email & auth integration
 ├── frontend/
 │   ├── .env                 # REACT_APP_BACKEND_URL
 │   ├── src/
+│   │   ├── App.js           # Main app with React Router & auth flow
 │   │   ├── components/
-│   │   │   ├── sections/    # Hero, Reviews, Newsletter, Contact, etc.
-│   │   │   └── ui/          # Shadcn components
+│   │   │   ├── AdminDashboard.jsx  # Admin modal for contacts/subscribers
+│   │   │   ├── AuthCallback.jsx    # Handles OAuth callback
+│   │   │   ├── Navbar.jsx          # With admin button
+│   │   │   ├── sections/           # Hero, Reviews, Newsletter, Contact, etc.
+│   │   │   └── ui/                 # Shadcn components
 │   │   └── locales/         # en.json, de.json, fr.json, sv.json
 │   └── package.json
 └── memory/
@@ -108,4 +127,5 @@ Build a premium luxury golf website for Golfinmallorca.com to promote golf booki
 ## Testing Status
 - **Backend APIs:** Verified via curl
 - **Email Integration:** Verified - sends successfully to verified email
-- **Frontend:** Visual verification via screenshots
+- **Admin Dashboard:** Verified with test session - displays contacts & subscribers
+- **Google OAuth Flow:** Verified - redirects correctly to Emergent Auth
