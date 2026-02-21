@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Settings } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ const languages = [
   { code: 'se', label: 'SE', flag: '🇸🇪' },
 ];
 
-export const Navbar = () => {
+export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
   const { language, changeLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
