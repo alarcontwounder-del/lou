@@ -57,7 +57,7 @@ export const Navbar = () => {
           }`}
           data-testid="logo"
         >
-          Mallorca Golf
+          Golf in Mallorca
         </a>
 
         {/* Desktop Navigation */}
