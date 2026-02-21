@@ -841,6 +841,10 @@ async def create_contact_inquiry(inquiry: ContactInquiryCreate):
     doc['created_at'] = doc['created_at'].isoformat()
     
     await db.contact_inquiries.insert_one(doc)
+    
+    # Send notification email to admin (non-blocking)
+    asyncio.create_task(send_contact_notification_email(inquiry))
+    
     return inquiry_obj
 
 @api_router.get("/contact", response_model=List[ContactInquiry])
@@ -864,6 +868,10 @@ async def subscribe_newsletter(subscription: NewsletterSubscriptionCreate):
     doc['subscribed_at'] = doc['subscribed_at'].isoformat()
     
     await db.newsletter_subscriptions.insert_one(doc)
+    
+    # Send welcome email to subscriber (non-blocking)
+    asyncio.create_task(send_newsletter_welcome_email(subscription.name, subscription.email))
+    
     return subscription_obj
 
 @api_router.get("/newsletter", response_model=List[NewsletterSubscription])
