@@ -18,7 +18,7 @@ export const Hero = () => {
       <div
         className="hero-bg"
         style={{
-          backgroundImage: `url('https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG')`,
+          backgroundImage: `url('https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/2ox10u7g_4031807808_4672471f49_o%20copia%20copy.jpg')`,
         }}
       />
       <div className="hero-overlay" />
