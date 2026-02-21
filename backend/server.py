@@ -1053,6 +1053,32 @@ async def get_newsletter_subscriptions():
             sub['subscribed_at'] = datetime.fromisoformat(sub['subscribed_at'])
     return subscriptions
 
+@api_router.delete("/newsletter/{subscriber_id}")
+async def delete_newsletter_subscriber(subscriber_id: str, request: Request):
+    """Delete a newsletter subscriber (admin only)."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    result = await db.newsletter_subscriptions.delete_one({"id": subscriber_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Subscriber not found")
+    
+    return {"message": "Subscriber deleted successfully"}
+
+@api_router.delete("/contact/{contact_id}")
+async def delete_contact_inquiry(contact_id: str, request: Request):
+    """Delete a contact inquiry (admin only)."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    result = await db.contact_inquiries.delete_one({"id": contact_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Contact inquiry not found")
+    
+    return {"message": "Contact inquiry deleted successfully"}
+
 # Blog endpoints
 @api_router.get("/blog", response_model=List[dict])
 async def get_blog_posts(category: Optional[str] = None):
