@@ -186,7 +186,7 @@ export const translations = {
       }
     },
     footer: {
-      tagline: "Premium Golf-Erlebnisse auf Mallorca seit 2005",
+      tagline: "Die führende Golfargentur auf Mallorca seit 2003",
       quickLinks: "Schnelllinks",
       contactInfo: "Kontaktinfo",
       followUs: "Folgen Sie Uns",
