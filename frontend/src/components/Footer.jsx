@@ -101,7 +101,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/50 text-sm">
-            © {currentYear} Mallorca Golf Exclusive. {t('footer.rights')}
+            © {currentYear} Golf in Mallorca. {t('footer.rights')}
           </p>
           <div className="flex gap-6 text-sm text-white/50">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
