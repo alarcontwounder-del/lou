@@ -354,7 +354,7 @@ export const translations = {
     about: {
       subtitle: "Om Oss",
       title: "Din Premier Golfconcierge på Mallorca",
-      description: "Med över två decenniers erfarenhet kopplar vi samman krävande golfare från hela Europa med Mallorcas mest prestigefyllda banor och exklusiva partners.",
+      description: "Den ledande golfbyrån på Mallorca sedan 2003. Som den enda exklusiva operatören baserad på ön specialiserar vi oss på alla typer av golftjänster.",
       point1: "Utvalt urval av mästerskapsbanor",
       point2: "Exklusiva hotell- & restaurangpartnerskap",
       point3: "Personlig service på ditt språk"
