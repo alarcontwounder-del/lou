@@ -130,7 +130,7 @@ export const translations = {
     about: {
       subtitle: "Über Uns",
       title: "Ihr Premier Golf-Concierge auf Mallorca",
-      description: "Mit über zwei Jahrzehnten Erfahrung verbinden wir anspruchsvolle Golfer aus ganz Europa mit Mallorcas prestigeträchtigsten Plätzen und exklusiven Partnern.",
+      description: "Die führende Golfargentur auf Mallorca seit 2003. Als einziger exklusiver Betreiber mit Sitz auf der Insel sind wir auf alle Arten von Golfdienstleistungen spezialisiert.",
       point1: "Kuratierte Auswahl an Championship-Plätzen",
       point2: "Exklusive Hotel- & Restaurant-Partnerschaften",
       point3: "Persönlicher Service in Ihrer Sprache"
