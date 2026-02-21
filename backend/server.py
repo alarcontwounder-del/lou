@@ -840,6 +840,156 @@ async def send_newsletter_welcome_email(name: str, email: str):
     except Exception as e:
         logger.error(f"Failed to send welcome newsletter email: {str(e)}")
 
+# Auth helper function
+async def get_current_user(request: Request) -> Optional[User]:
+    """Get current user from session token in cookie or Authorization header."""
+    session_token = request.cookies.get("session_token")
+    
+    if not session_token:
+        auth_header = request.headers.get("Authorization")
+        if auth_header and auth_header.startswith("Bearer "):
+            session_token = auth_header[7:]
+    
+    if not session_token:
+        return None
+    
+    session_doc = await db.user_sessions.find_one(
+        {"session_token": session_token},
+        {"_id": 0}
+    )
+    
+    if not session_doc:
+        return None
+    
+    # Check expiry with timezone awareness
+    expires_at = session_doc["expires_at"]
+    if isinstance(expires_at, str):
+        expires_at = datetime.fromisoformat(expires_at)
+    if expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=timezone.utc)
+    if expires_at < datetime.now(timezone.utc):
+        return None
+    
+    user_doc = await db.users.find_one(
+        {"user_id": session_doc["user_id"]},
+        {"_id": 0}
+    )
+    
+    if not user_doc:
+        return None
+    
+    if isinstance(user_doc.get('created_at'), str):
+        user_doc['created_at'] = datetime.fromisoformat(user_doc['created_at'])
+    
+    return User(**user_doc)
+
+# Auth Routes
+@api_router.post("/auth/session")
+async def exchange_session(request: SessionIdRequest, response: Response):
+    """Exchange session_id from Emergent Auth for user data and set session cookie."""
+    try:
+        async with httpx.AsyncClient() as client:
+            auth_response = await client.get(
+                "https://demobackend.emergentagent.com/auth/v1/env/oauth/session-data",
+                headers={"X-Session-ID": request.session_id}
+            )
+            
+            if auth_response.status_code != 200:
+                raise HTTPException(status_code=401, detail="Invalid session")
+            
+            auth_data = auth_response.json()
+        
+        # Check if user exists
+        existing_user = await db.users.find_one(
+            {"email": auth_data["email"]},
+            {"_id": 0}
+        )
+        
+        if existing_user:
+            user_id = existing_user["user_id"]
+            # Update user data
+            await db.users.update_one(
+                {"user_id": user_id},
+                {"$set": {
+                    "name": auth_data["name"],
+                    "picture": auth_data.get("picture")
+                }}
+            )
+        else:
+            # Create new user
+            user_id = f"user_{uuid.uuid4().hex[:12]}"
+            user_doc = {
+                "user_id": user_id,
+                "email": auth_data["email"],
+                "name": auth_data["name"],
+                "picture": auth_data.get("picture"),
+                "created_at": datetime.now(timezone.utc).isoformat()
+            }
+            await db.users.insert_one(user_doc)
+        
+        # Create session
+        session_token = auth_data.get("session_token", f"session_{uuid.uuid4().hex}")
+        expires_at = datetime.now(timezone.utc) + timedelta(days=7)
+        
+        session_doc = {
+            "user_id": user_id,
+            "session_token": session_token,
+            "expires_at": expires_at.isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        
+        # Remove old sessions for this user
+        await db.user_sessions.delete_many({"user_id": user_id})
+        await db.user_sessions.insert_one(session_doc)
+        
+        # Set httpOnly cookie
+        response.set_cookie(
+            key="session_token",
+            value=session_token,
+            httponly=True,
+            secure=True,
+            samesite="none",
+            path="/",
+            max_age=7 * 24 * 60 * 60  # 7 days
+        )
+        
+        user = await db.users.find_one({"user_id": user_id}, {"_id": 0})
+        if isinstance(user.get('created_at'), str):
+            user['created_at'] = datetime.fromisoformat(user['created_at'])
+        
+        return User(**user)
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Auth session exchange error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Authentication failed")
+
+@api_router.get("/auth/me")
+async def get_me(request: Request):
+    """Get current authenticated user."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    return user
+
+@api_router.post("/auth/logout")
+async def logout(request: Request, response: Response):
+    """Logout user and clear session."""
+    session_token = request.cookies.get("session_token")
+    
+    if session_token:
+        await db.user_sessions.delete_many({"session_token": session_token})
+    
+    response.delete_cookie(
+        key="session_token",
+        path="/",
+        secure=True,
+        samesite="none"
+    )
+    
+    return {"message": "Logged out successfully"}
+
 # Routes
 @api_router.get("/")
 async def root():
