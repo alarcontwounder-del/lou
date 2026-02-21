@@ -298,7 +298,7 @@ export const translations = {
       }
     },
     footer: {
-      tagline: "Expériences golf premium à Majorque depuis 2005",
+      tagline: "L'agence de golf leader à Majorque depuis 2003",
       quickLinks: "Liens Rapides",
       contactInfo: "Infos Contact",
       followUs: "Suivez-Nous",
