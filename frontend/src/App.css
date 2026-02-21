@@ -20,12 +20,12 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(26, 60, 52, 0.4) 0%,
-    rgba(26, 60, 52, 0.6) 40%,
-    rgba(26, 60, 52, 0.8) 100%
+    rgba(26, 60, 52, 0.15) 0%,
+    rgba(26, 60, 52, 0.25) 40%,
+    rgba(26, 60, 52, 0.45) 100%
   );
-  /* Add dramatic vignette effect */
-  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.4);
+  /* Subtle vignette effect */
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.2);
 }
 
 /* Card hover effects */
