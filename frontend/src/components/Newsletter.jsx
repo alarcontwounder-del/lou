@@ -145,8 +145,7 @@ export const Newsletter = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-lg px-8 py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
-                style={{ backgroundColor: '#064e3b' }}
+                className="w-full bg-stone-800 hover:bg-stone-900 text-white font-semibold text-base px-6 py-4 rounded-full transition-all duration-300 hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
                 data-testid="newsletter-submit"
               >
                 {isLoading ? (
