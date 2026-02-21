@@ -29,7 +29,7 @@ export const Hero = () => {
           <div className="max-w-3xl">
             {/* Subtitle */}
             <p
-              className="text-brand-sand text-sm uppercase tracking-[0.3em] mb-6 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+              className="text-white text-sm uppercase tracking-[0.3em] mb-6 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] font-semibold"
               data-testid="hero-subtitle"
             >
               {t('hero.subtitle')}
