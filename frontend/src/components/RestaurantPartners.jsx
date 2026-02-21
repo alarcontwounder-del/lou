@@ -8,12 +8,12 @@ const API = `${BACKEND_URL}/api`;
 
 const RestaurantCard = ({ restaurant, language, t }) => (
   <div
-    className="flip-card h-[480px]"
+    className="flip-card"
     data-testid={`restaurant-card-${restaurant.id}`}
   >
     <div className="flip-card-inner">
       {/* Front of Card */}
-      <div className="flip-card-front bg-white border border-stone-100 shadow-sm">
+      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-lg">
         {/* Discount Badge */}
         {restaurant.discount_percent && (
           <div className="absolute top-4 right-4 z-10 bg-brand-terracotta text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -22,7 +22,7 @@ const RestaurantCard = ({ restaurant, language, t }) => (
         )}
 
         {/* Image */}
-        <div className="h-48 overflow-hidden">
+        <div className="h-48 overflow-hidden rounded-t-lg">
           <img
             src={restaurant.image}
             alt={restaurant.name}
@@ -47,7 +47,7 @@ const RestaurantCard = ({ restaurant, language, t }) => (
 
           {/* Pricing */}
           {restaurant.offer_price && (
-            <div className="flex items-baseline gap-2 mb-4">
+            <div className="flex items-baseline gap-2 mb-3">
               <span className="text-xs uppercase tracking-wider text-stone-400">{t('offers.from')}</span>
               <span className="text-xl font-semibold text-stone-800">
                 €{restaurant.offer_price}
@@ -66,7 +66,7 @@ const RestaurantCard = ({ restaurant, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back" style={{ background: 'linear-gradient(135deg, #9a5d4c 0%, #7a4d3c 100%)' }}>
+      <div className="flip-card-back rounded-lg" style={{ background: 'linear-gradient(135deg, #9a5d4c 0%, #7a4d3c 100%)' }}>
         <h3 className="font-heading text-2xl mb-6">{restaurant.name}</h3>
         
         <div className="space-y-4">
