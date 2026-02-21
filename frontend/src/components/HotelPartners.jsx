@@ -69,11 +69,11 @@ const HotelCard = ({ hotel, language, t }) => (
         href={hotel.contact_url}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full btn-primary inline-flex items-center justify-center gap-2 text-sm"
+        className="inline-flex items-center justify-center gap-2 bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-stone-800 transition-all shadow-sm hover:shadow-md"
         data-testid={`hotel-book-${hotel.id}`}
       >
         {t('offers.bookHotel')}
-        <ExternalLink className="w-4 h-4" />
+        <ExternalLink className="w-3.5 h-3.5" />
       </a>
     </div>
   </div>
