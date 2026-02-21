@@ -190,7 +190,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Phone</p>
-                  <p className="text-stone-900 font-medium">+34 971 123 456</p>
+                  <p className="text-stone-900 font-medium">+34 620 987 575</p>
                 </div>
               </div>
 
@@ -200,7 +200,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Email</p>
-                  <p className="text-stone-900 font-medium">info@mallorcagolf.com</p>
+                  <p className="text-stone-900 font-medium">Contact@golfinmallorca.com</p>
                 </div>
               </div>
 
@@ -210,7 +210,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Address</p>
-                  <p className="text-stone-900 font-medium">Palma de Mallorca, Spain</p>
+                  <p className="text-stone-900 font-medium">Palma de Mallorca, IB, Spain</p>
                 </div>
               </div>
             </div>
