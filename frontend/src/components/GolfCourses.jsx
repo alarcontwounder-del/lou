@@ -77,7 +77,7 @@ const CourseCard = ({ course, language, t, isLarge }) => (
         href={course.booking_url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-brand-green/90 transition-colors"
+        className="inline-flex items-center gap-2 bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-stone-800 transition-all shadow-sm hover:shadow-md"
         data-testid={`course-book-${course.id}`}
       >
         {t('courses.bookNow')}
