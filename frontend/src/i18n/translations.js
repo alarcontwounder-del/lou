@@ -74,7 +74,7 @@ export const translations = {
       }
     },
     footer: {
-      tagline: "Premium golf experiences in Mallorca since 2005",
+      tagline: "The leading golf agency in Mallorca since 2003",
       quickLinks: "Quick Links",
       contactInfo: "Contact Info",
       followUs: "Follow Us",
