@@ -410,7 +410,7 @@ export const translations = {
       }
     },
     footer: {
-      tagline: "Premiumgolfupplevelser på Mallorca sedan 2005",
+      tagline: "Den ledande golfbyrån på Mallorca sedan 2003",
       quickLinks: "Snabblänkar",
       contactInfo: "Kontaktinfo",
       followUs: "Följ Oss",
