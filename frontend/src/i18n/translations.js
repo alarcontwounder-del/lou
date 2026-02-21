@@ -18,7 +18,7 @@ export const translations = {
     about: {
       subtitle: "About Us",
       title: "Your Premier Golf Concierge in Mallorca",
-      description: "With over two decades of experience, we connect discerning golfers from across Europe with Mallorca's most prestigious courses and exclusive partners.",
+      description: "The leading golf agency in Mallorca since 2003. As the only exclusive operator based on the island, we specialize in all types of golf services connecting discerning golfers with Mallorca's most prestigious courses.",
       point1: "Curated selection of championship courses",
       point2: "Exclusive hotel & restaurant partnerships",
       point3: "Personalized service in your language"
