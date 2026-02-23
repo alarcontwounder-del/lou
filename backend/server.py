@@ -648,8 +648,7 @@ BLOG_POSTS = [
             "fr": "Majorque bénéficie de plus de 300 jours de soleil par an, ce qui en fait une destination de golf idéale presque toute l'année...",
             "se": "Mallorca har över 300 soldagar per år, vilket gör det till en idealisk golfdestination nästan året runt..."
         },
-        "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800",
-        "author": "Maria Santos",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-son-gual-mallorca/golf-son-gual-mallorca",
         "category": "travel-tips",
         "tags": ["weather", "planning", "seasons"],
         "published": True,
