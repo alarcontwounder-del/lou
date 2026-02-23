@@ -350,7 +350,7 @@ GOLF_COURSES = [
             "fr": "Un parcours moderne avec d'excellentes installations, Son Quint offre des vues spectaculaires.",
             "se": "En modern bana med utmärkta faciliteter, Son Quint erbjuder spektakulära utsikter och en minnesvärd runda."
         },
-        "image": "https://images.pexels.com/photos/31803613/pexels-photo-31803613.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/son-quint-golf/son-quint-golf",
         "holes": 18,
         "par": 72,
         "price_from": 58,
