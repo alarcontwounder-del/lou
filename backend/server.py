@@ -933,14 +933,14 @@ async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
     html_content = f"""
     <html>
-    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #FFFFE3;">
         <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #0a5f38; margin: 0;">Golfinmallorca.com</h1>
-                <p style="color: #666; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+                <h1 style="color: #808034; margin: 0;">Golfinmallorca.com</h1>
+                <p style="color: #723480; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
             </div>
             
-            <h2 style="color: #0a5f38;">Welcome to Our Newsletter, {name}!</h2>
+            <h2 style="color: #808034;">Welcome to Our Newsletter, {name}!</h2>
             
             <p style="color: #333; line-height: 1.6;">
                 Thank you for subscribing to the Golfinmallorca.com newsletter! You've joined an exclusive community of golf enthusiasts who appreciate the finest courses and experiences Mallorca has to offer.
@@ -958,7 +958,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
             </ul>
             
             <div style="text-align: center; margin: 30px 0;">
-                <a href="https://golfinmallorca.greenfee365.com" style="background-color: #0a5f38; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">Book Your Tee Time</a>
+                <a href="https://golfinmallorca.greenfee365.com" style="background-color: #808034; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">Book Your Tee Time</a>
             </div>
             
             <p style="color: #333; line-height: 1.6;">
@@ -970,7 +970,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
                 <strong>The Golfinmallorca.com Team</strong>
             </p>
             
-            <hr style="border: 1px solid #eee; margin: 30px 0;">
+            <hr style="border: 1px solid #DBD4FF; margin: 30px 0;">
             
             <p style="color: #888; font-size: 12px; text-align: center;">
                 Since 2003, we've been connecting golfers with the finest courses in Mallorca.<br>
