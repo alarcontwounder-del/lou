@@ -514,7 +514,7 @@ PARTNER_OFFERS = [
             "fr": "Niché dans les montagnes de Deià, cet hôtel emblématique offre un luxe et une tranquillité incomparables.",
             "se": "Beläget i Deià-bergen erbjuder detta ikoniska hotell oöverträffad lyx och lugn."
         },
-        "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
+        "image": "https://img.belmond.com/image/upload/w_800,h_600,c_fill/photos/lrs/lrs-ext01.jpg",
         "location": "Deià",
         "deal": {
             "en": "Exclusive: Golf Shuttle + Spa Access",
