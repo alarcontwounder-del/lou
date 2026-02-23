@@ -418,7 +418,7 @@ GOLF_COURSES = [
             "fr": "Trois parcours exceptionnels au milieu des forêts de pins, Santa Ponsa a accueilli des événements majeurs du Tour Européen.",
             "se": "Tre exceptionella banor mitt i tallskogar, Santa Ponsa har varit värd för stora European Tour-evenemang."
         },
-        "image": "https://images.pexels.com/photos/5384079/pexels-photo-5384079.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-santa-ponsa/golf-santa-ponsa",
         "holes": 18,
         "par": 72,
         "price_from": 66,
