@@ -140,7 +140,7 @@ export const Blog = () => {
             onClick={closePost}
           />
           
-          <div className="relative bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             <button
               onClick={closePost}
               className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 transition-colors"
@@ -149,7 +149,7 @@ export const Blog = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="aspect-video">
+            <div className="aspect-video rounded-t-2xl overflow-hidden">
               <img
                 src={selectedPost.image}
                 alt={getTitle(selectedPost)}
