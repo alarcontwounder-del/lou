@@ -9,10 +9,10 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          green: '#1A3C34',
-          sand: '#D4C5A9',
-          terracotta: '#C17C54',
-          cream: '#FAFAF9',
+          green: '#808034',
+          sand: '#DBD4FF',
+          terracotta: '#723480',
+          cream: '#FFFFE3',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
