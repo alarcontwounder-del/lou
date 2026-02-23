@@ -265,7 +265,7 @@ GOLF_COURSES = [
             "fr": "Niché le long de la côte avec des vues imprenables sur le phare emblématique, Alcanada est un véritable joyau du golf méditerranéen.",
             "se": "Belägen längs kusten med hisnande utsikt över den ikoniska fyren, Alcanada är en sann pärla inom Medelhavsgolf."
         },
-        "image": "https://images.unsplash.com/photo-1571928917219-478ae39b64ca?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-alcanada/golf-alcanada",
         "holes": 18,
         "par": 72,
         "price_from": 115,
