@@ -704,7 +704,7 @@ BLOG_POSTS = [
             "fr": "Majorque n'est pas seulement un paradis du golf, c'est aussi une destination culinaire avec 8 restaurants étoilés Michelin...",
             "se": "Mallorca är inte bara ett golfparadis – det är också en kulinarisk destination med 8 Michelin-stjärniga restauranger..."
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+        "image": "/api/static/images/blog-gastronomy.jpg",
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["food", "restaurants", "experiences"],
