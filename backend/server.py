@@ -452,7 +452,7 @@ GOLF_COURSES = [
             "fr": "Un parcours pittoresque à l'est de Majorque, Vall d'Or offre une expérience de golf unique au milieu de la nature.",
             "se": "En pittoresk bana i östra Mallorca, Vall d'Or erbjuder en unik golfupplevelse mitt i naturlig skönhet."
         },
-        "image": "https://images.unsplash.com/photo-1584704135557-d1e28d637b5a?w=800",
+        "image": "https://images.pexels.com/photos/29445693/pexels-photo-29445693.jpeg?auto=compress&cs=tinysrgb&w=800",
         "holes": 18,
         "par": 71,
         "price_from": 81,
