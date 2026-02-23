@@ -649,6 +649,7 @@ BLOG_POSTS = [
             "se": "Mallorca har över 300 soldagar per år, vilket gör det till en idealisk golfdestination nästan året runt..."
         },
         "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-son-gual-mallorca/golf-son-gual-mallorca",
+        "author": "Maria Santos",
         "category": "travel-tips",
         "tags": ["weather", "planning", "seasons"],
         "published": True,
