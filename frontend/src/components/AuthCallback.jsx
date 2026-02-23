@@ -51,7 +51,7 @@ export const AuthCallback = () => {
   return (
     <div className="min-h-screen bg-brand-cream flex items-center justify-center">
       <div className="text-center">
-        <div className="w-16 h-16 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <div className="w-16 h-16 border-4 border-brand-green border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
         <p className="text-stone-600">Authenticating...</p>
       </div>
     </div>

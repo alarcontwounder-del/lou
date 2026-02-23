@@ -37,7 +37,7 @@ export const Newsletter = () => {
       // Success toast
       toast.success('Welcome to the club! Check your email for exclusive deals.', {
         duration: 5000,
-        icon: <CheckCircle className="w-5 h-5 text-emerald-600" />
+        icon: <CheckCircle className="w-5 h-5 text-brand-green" />
       });
 
       // Reset form
@@ -59,7 +59,7 @@ export const Newsletter = () => {
       
       <section className="py-20 relative overflow-hidden" data-testid="newsletter-section">
         {/* Premium Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-green via-brand-green/90 to-brand-terracotta"></div>
         
         {/* Subtle Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -96,7 +96,7 @@ export const Newsletter = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 transition-all text-stone-700 placeholder-stone-400"
+                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all text-stone-700 placeholder-stone-400"
                     data-testid="newsletter-name"
                     required
                   />
@@ -110,7 +110,7 @@ export const Newsletter = () => {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 transition-all text-stone-700 placeholder-stone-400"
+                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all text-stone-700 placeholder-stone-400"
                     data-testid="newsletter-email"
                     required
                   />
@@ -123,7 +123,7 @@ export const Newsletter = () => {
                 <select
                   value={formData.country}
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 transition-all text-stone-700 appearance-none bg-white cursor-pointer"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all text-stone-700 appearance-none bg-white cursor-pointer"
                   data-testid="newsletter-country"
                   required
                 >

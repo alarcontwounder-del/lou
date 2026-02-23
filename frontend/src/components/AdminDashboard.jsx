@@ -111,7 +111,7 @@ export const AdminDashboard = ({ onClose, user }) => {
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-brand-green to-brand-green/90 p-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
               <Users className="w-6 h-6 text-white" />
@@ -151,7 +151,7 @@ export const AdminDashboard = ({ onClose, user }) => {
               onClick={() => { setActiveTab('contacts'); setSearchTerm(''); }}
               className={`flex-1 px-6 py-4 font-medium transition-colors ${
                 activeTab === 'contacts'
-                  ? 'border-b-2 border-emerald-600 text-emerald-600 bg-white'
+                  ? 'border-b-2 border-brand-green text-brand-green bg-white'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
               data-testid="contacts-tab"
@@ -165,7 +165,7 @@ export const AdminDashboard = ({ onClose, user }) => {
               onClick={() => { setActiveTab('subscribers'); setSearchTerm(''); }}
               className={`flex-1 px-6 py-4 font-medium transition-colors ${
                 activeTab === 'subscribers'
-                  ? 'border-b-2 border-emerald-600 text-emerald-600 bg-white'
+                  ? 'border-b-2 border-brand-green text-brand-green bg-white'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
               data-testid="subscribers-tab"
@@ -182,7 +182,7 @@ export const AdminDashboard = ({ onClose, user }) => {
         <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 200px)' }}>
           {loading ? (
             <div className="text-center py-20">
-              <div className="w-12 h-12 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+              <div className="w-12 h-12 border-4 border-brand-green border-t-transparent rounded-full animate-spin mx-auto"></div>
               <p className="text-stone-500 mt-4">Loading data...</p>
             </div>
           ) : (
@@ -200,7 +200,7 @@ export const AdminDashboard = ({ onClose, user }) => {
                           placeholder="Search contacts..."
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          className="pl-10 pr-4 py-2 border border-stone-200 rounded-lg text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="pl-10 pr-4 py-2 border border-stone-200 rounded-lg text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent"
                           data-testid="search-contacts"
                         />
                       </div>
@@ -244,14 +244,14 @@ export const AdminDashboard = ({ onClose, user }) => {
                                 {new Date(contact.created_at).toLocaleString()}
                               </p>
                             </div>
-                            <span className="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">
+                            <span className="px-3 py-1 bg-brand-cream text-brand-green text-xs font-medium rounded-full">
                               {contact.inquiry_type}
                             </span>
                           </div>
                           <div className="grid md:grid-cols-3 gap-4 mb-4">
                             <div className="flex items-center gap-2 text-sm">
                               <Mail className="w-4 h-4 text-stone-400" />
-                              <a href={`mailto:${contact.email}`} className="text-emerald-600 hover:underline">
+                              <a href={`mailto:${contact.email}`} className="text-brand-green hover:underline">
                                 {contact.email}
                               </a>
                             </div>
@@ -289,7 +289,7 @@ export const AdminDashboard = ({ onClose, user }) => {
                           placeholder="Search subscribers..."
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          className="pl-10 pr-4 py-2 border border-stone-200 rounded-lg text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="pl-10 pr-4 py-2 border border-stone-200 rounded-lg text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent"
                           data-testid="search-subscribers"
                         />
                       </div>
@@ -327,11 +327,11 @@ export const AdminDashboard = ({ onClose, user }) => {
                           </button>
                           
                           <div className="flex items-start justify-between mb-3 pr-8">
-                            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold">
+                            <div className="w-10 h-10 bg-gradient-to-br from-brand-green to-brand-green/80 rounded-full flex items-center justify-center text-white font-bold">
                               {sub.name.charAt(0).toUpperCase()}
                             </div>
                             <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                              sub.is_active ? 'bg-emerald-50 text-emerald-700' : 'bg-stone-100 text-stone-500'
+                              sub.is_active ? 'bg-brand-cream text-brand-green' : 'bg-stone-100 text-stone-500'
                             }`}>
                               {sub.is_active ? 'Active' : 'Inactive'}
                             </span>
@@ -356,15 +356,15 @@ export const AdminDashboard = ({ onClose, user }) => {
         <div className="border-t border-stone-200 bg-stone-50 px-6 py-4">
           <div className="flex justify-around text-center">
             <div>
-              <p className="text-2xl font-bold text-emerald-600">{contacts.length}</p>
+              <p className="text-2xl font-bold text-brand-green">{contacts.length}</p>
               <p className="text-xs text-stone-500 uppercase tracking-wide">Total Contacts</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-teal-600">{subscribers.length}</p>
+              <p className="text-2xl font-bold text-brand-green/90">{subscribers.length}</p>
               <p className="text-xs text-stone-500 uppercase tracking-wide">Subscribers</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-cyan-600">
+              <p className="text-2xl font-bold text-brand-terracotta">
                 {contacts.filter(c => {
                   const date = new Date(c.created_at);
                   const today = new Date();

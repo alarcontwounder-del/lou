@@ -145,7 +145,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
               title={isAuthenticated ? 'Admin Dashboard' : 'Admin Login'}
               data-testid="admin-btn"
             >
-              <Settings className={`w-5 h-5 ${isAuthenticated ? 'text-emerald-500' : ''}`} />
+              <Settings className={`w-5 h-5 ${isAuthenticated ? 'text-brand-green' : ''}`} />
             </button>
           )}
 
@@ -241,7 +241,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
                 }}
                 className="flex items-center gap-2 text-left py-2 text-stone-700 hover:text-brand-green font-medium border-t border-stone-100 mt-2 pt-4"
               >
-                <Settings className={`w-5 h-5 ${isAuthenticated ? "text-emerald-500" : ""}`} />
+                <Settings className={`w-5 h-5 ${isAuthenticated ? "text-brand-green" : ""}`} />
                 {isAuthenticated ? "Admin Dashboard" : "Admin Login"}
               </button>
             )}
