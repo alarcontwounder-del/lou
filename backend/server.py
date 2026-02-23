@@ -676,7 +676,7 @@ BLOG_POSTS = [
             "fr": "Si vous êtes nouveau au golf ou encore en train de prendre confiance sur le parcours, Majorque offre plusieurs options accueillantes...",
             "se": "Om du är ny på golf eller fortfarande bygger ditt självförtroende på banan, erbjuder Mallorca flera välkomnande alternativ..."
         },
-        "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/son-vida-golf/son-vida-golf",
         "author": "Carlos Martinez",
         "category": "course-guides",
         "tags": ["beginners", "courses", "tips"],
