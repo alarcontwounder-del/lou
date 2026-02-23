@@ -83,7 +83,7 @@ export const Blog = () => {
           {posts.map((post) => (
             <article
               key={post.id}
-              className="card-hover bg-white border border-stone-100 overflow-hidden group"
+              className="card-hover bg-white border border-stone-100 rounded-2xl overflow-hidden group"
               data-testid={'blog-card-' + post.slug}
             >
               <div className="img-zoom aspect-[16/10]">
