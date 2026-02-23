@@ -282,7 +282,7 @@ GOLF_COURSES = [
             "fr": "L'un des meilleurs parcours d'Europe, Son Gual offre une expérience de championnat de classe mondiale.",
             "se": "En av Europas finaste banor, Son Gual erbjuder en världsklassig mästerskapsupplevelse."
         },
-        "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-son-gual-mallorca/golf-son-gual-mallorca",
         "holes": 18,
         "par": 72,
         "price_from": 85,
