@@ -537,7 +537,7 @@ PARTNER_OFFERS = [
             "fr": "Une ancienne forteresse militaire transformée en refuge exclusif avec plage privée.",
             "se": "En före detta militärfästning omvandlad till en exklusiv tillflyktsort med privat strand."
         },
-        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+        "image": "https://www.hilton.com/im/en/PMICRLX/20953216/pmicrlx-67254726-sentinels-view-3000x2000.jpg?impolicy=crop&cw=3000&ch=2000&gravity=NorthWest&xposition=0&yposition=0&rw=800&rh=600",
         "location": "Cala Blava",
         "deal": {
             "en": "Golf Experience: Private transfers included",
