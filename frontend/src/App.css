@@ -53,7 +53,7 @@
 
 /* Button styles */
 .btn-primary {
-  background-color: #3d5a4c;
+  background-color: #0a5f38;
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
@@ -65,14 +65,14 @@
 }
 
 .btn-primary:hover {
-  background-color: #2d4a3c;
+  background-color: #084a2b;
   transform: translateY(-1px);
   box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary {
-  border: 1px solid #3d5a4c;
-  color: #3d5a4c;
+  border: 1px solid #0a5f38;
+  color: #0a5f38;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   font-weight: 500;
@@ -81,7 +81,7 @@
 }
 
 .btn-secondary:hover {
-  background-color: #3d5a4c;
+  background-color: #0a5f38;
   color: white;
 }
 
