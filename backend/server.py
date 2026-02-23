@@ -732,7 +732,7 @@ BLOG_POSTS = [
             "fr": "Pour les golfeurs expérimentés à la recherche d'un véritable test de leurs compétences, Majorque offre des parcours championship de classe mondiale...",
             "se": "För erfarna golfare som söker ett verkligt test av sina färdigheter, levererar Mallorca mästerskapsbanor i världsklass..."
         },
-        "image": "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/son-antem-championship-course/son-antem-championship-course",
         "author": "James Thompson",
         "category": "course-guides",
         "tags": ["championship", "advanced", "challenge"],
