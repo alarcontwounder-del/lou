@@ -66,7 +66,7 @@ const HotelCard = ({ hotel, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-lg">
+      <div className="flip-card-back rounded-2xl">
         <h3 className="font-heading text-2xl mb-6">{hotel.name}</h3>
         
         <div className="space-y-4">
