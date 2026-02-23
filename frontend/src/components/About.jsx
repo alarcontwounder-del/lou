@@ -43,8 +43,8 @@ export const About = () => {
             <div className="relative">
               <div className="aspect-[4/5] img-zoom rounded-sm overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1505794718076-13e166c01a33?crop=entropy&cs=srgb&fm=jpg&w=800"
-                  alt="Golfer silhouette at sunset"
+                  src="/api/static/images/about-golf.jpg"
+                  alt="Golf Alcanada course in Mallorca"
                   className="w-full h-full object-cover"
                   data-testid="about-image"
                 />
