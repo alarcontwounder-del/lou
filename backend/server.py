@@ -435,7 +435,7 @@ GOLF_COURSES = [
             "fr": "Un parcours majorquin traditionnel avec de belles vues et une atmosphère accueillante pour tous les niveaux.",
             "se": "En traditionell mallorkinsk bana med vacker utsikt och en välkomnande atmosfär för alla nivåer."
         },
-        "image": "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-son-servera/golf-son-servera",
         "holes": 18,
         "par": 72,
         "price_from": 73,
