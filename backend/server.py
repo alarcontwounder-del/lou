@@ -469,7 +469,7 @@ GOLF_COURSES = [
             "fr": "Un club exclusif près de Palma, Bendinat offre un parcours challengeant avec vue sur la Méditerranée.",
             "se": "En exklusiv klubb nära Palma, Bendinat erbjuder en utmanande layout med utsikt över Medelhavet."
         },
-        "image": "https://images.unsplash.com/photo-1609889928035-9acefdfbeac2?w=800",
+        "image": "https://images.pexels.com/photos/12385697/pexels-photo-12385697.jpeg?auto=compress&cs=tinysrgb&w=800",
         "holes": 18,
         "par": 70,
         "price_from": 65,
