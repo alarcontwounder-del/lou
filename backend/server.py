@@ -384,7 +384,7 @@ GOLF_COURSES = [
             "fr": "Le parcours championship de Son Antem, conçu pour les golfeurs exigeants recherchant un défi premium.",
             "se": "Mästerskapsbanan på Son Antem, designad för seriösa golfare som söker en premium utmaning."
         },
-        "image": "https://images.unsplash.com/photo-1611374243147-44a702c2d44c?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/son-antem-championship-course/son-antem-championship-course",
         "holes": 18,
         "par": 72,
         "price_from": 59,
