@@ -401,7 +401,7 @@ GOLF_COURSES = [
             "fr": "Situé dans le magnifique nord-est de Majorque, Capdepera offre des vues côtières époustouflantes.",
             "se": "Belägen i den vackra nordöstra delen av Mallorca, Capdepera erbjuder fantastisk kustutsikt och utmärkta förhållanden."
         },
-        "image": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/capdepera-golf/capdepera-golf",
         "holes": 18,
         "par": 72,
         "price_from": 59,
