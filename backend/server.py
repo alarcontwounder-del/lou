@@ -367,7 +367,7 @@ GOLF_COURSES = [
             "fr": "Faisant partie du célèbre complexe Son Antem, ce parcours offre un mélange parfait de défi et de jouabilité.",
             "se": "En del av det berömda Son Antem-komplexet, denna bana erbjuder en perfekt blandning av utmaning och spelbarhet."
         },
-        "image": "https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/son-antem-resort-course/son-antem-resort-course",
         "holes": 18,
         "par": 72,
         "price_from": 54,
