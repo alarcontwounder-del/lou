@@ -405,7 +405,7 @@ export const ReviewCarousel = () => {
                 href="https://golfinmallorca.greenfee365.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-emerald-700 font-bold text-lg px-10 py-5 rounded-full hover:bg-stone-50 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                className="inline-flex items-center gap-3 bg-white text-brand-green font-bold text-lg px-10 py-5 rounded-full hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
                 data-testid="booking-cta-button"
               >
                 Book My Tee Time Now
