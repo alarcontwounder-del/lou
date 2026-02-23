@@ -62,7 +62,7 @@ const CourseCard = ({ course, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-lg" style={{ background: 'linear-gradient(135deg, #2d4a3c 0%, #1a3c34 100%)' }}>
+      <div className="flip-card-back rounded-2xl" style={{ background: 'linear-gradient(135deg, #2d4a3c 0%, #1a3c34 100%)' }}>
         <h3 className="font-heading text-2xl mb-5">{course.name}</h3>
         
         <div className="space-y-3">
