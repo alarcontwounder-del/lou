@@ -560,7 +560,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne contemporaine aux influences asiatiques.",
             "se": "Michelinstjärnig restaurang med samtida medelhavskök med asiatiska influenser."
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
         "location": "Costa d'en Blanes",
         "deal": {
             "en": "Golfer's Menu: 6-course tasting + wine pairing",
