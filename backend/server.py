@@ -606,7 +606,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant en bord de falaise avec vue panoramique sur la mer, spécialisé dans les fruits de mer méditerranéens frais.",
             "se": "Klippmiddag med panoramautsikt över havet, specialiserad på färska medelhavsskaldjur."
         },
-        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
         "location": "Deià",
         "deal": {
             "en": "Sunset Menu: 4 courses + local wine",
