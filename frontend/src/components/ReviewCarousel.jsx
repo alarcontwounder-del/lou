@@ -11,7 +11,7 @@ const countryFlags = {
 
 const avatarColors = [
   'bg-brand-green', 'bg-brand-terracotta', 'bg-amber-600',
-  'bg-emerald-600', 'bg-stone-600', 'bg-teal-600',
+  'bg-brand-green/80', 'bg-stone-600', 'bg-brand-terracotta/80',
 ];
 
 const platformBadges = {
