@@ -316,7 +316,7 @@ GOLF_COURSES = [
             "fr": "Le plus ancien parcours de Majorque, Son Vida offre une expérience de golf classique avec vue panoramique sur la baie de Palma.",
             "se": "Den äldsta banan på Mallorca, Son Vida erbjuder en klassisk golfupplevelse med panoramautsikt över Palmabukten."
         },
-        "image": "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/son-vida-golf/son-vida-golf",
         "holes": 18,
         "par": 72,
         "price_from": 47,
