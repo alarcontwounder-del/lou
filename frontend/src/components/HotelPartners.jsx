@@ -13,25 +13,25 @@ const HotelCard = ({ hotel, language, t }) => (
   >
     <div className="flip-card-inner">
       {/* Front of Card */}
-      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-lg">
+      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
         {/* Discount Badge */}
         {hotel.discount_percent && (
-          <div className="absolute top-4 right-4 z-10 bg-brand-terracotta text-white text-xs font-bold px-3 py-1.5 rounded-full">
+          <div className="absolute top-6 right-6 z-10 bg-brand-terracotta text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {hotel.discount_percent}%
           </div>
         )}
 
-        {/* Image */}
-        <div className="h-48 overflow-hidden rounded-t-lg">
+        {/* Image - Vertical with rounded edges */}
+        <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
             src={hotel.image}
             alt={hotel.name}
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
           />
         </div>
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-5 pt-4">
           <div className="flex items-center gap-2 text-stone-400 text-xs mb-2">
             <MapPin className="w-3.5 h-3.5" />
             <span>{hotel.location}</span>
