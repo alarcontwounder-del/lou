@@ -13,13 +13,13 @@ const CourseCard = ({ course, language, t }) => (
   >
     <div className="flip-card-inner">
       {/* Front of Card */}
-      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-lg">
-        {/* Image */}
-        <div className="h-48 overflow-hidden rounded-t-lg relative">
+      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
+        {/* Image - Vertical/Portrait orientation */}
+        <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
             src={course.image}
             alt={course.name}
-            className="w-full h-full object-cover transition-transform duration-500"
+            className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
           />
           {/* Price Badge */}
           {course.price_from && (
@@ -30,7 +30,7 @@ const CourseCard = ({ course, language, t }) => (
         </div>
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-5 pt-4">
           <div className="flex items-center gap-2 text-stone-400 text-xs mb-2">
             <MapPin className="w-3.5 h-3.5" />
             <span>{course.location}</span>
