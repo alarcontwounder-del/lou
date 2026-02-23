@@ -299,7 +299,7 @@ GOLF_COURSES = [
             "fr": "Un magnifique parcours de resort entouré de beauté naturelle, offrant une expérience de golf détendue mais stimulante.",
             "se": "En vacker resortbana omgiven av naturlig skönhet, erbjuder en avslappnad men utmanande golfupplevelse."
         },
-        "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/pula-golf-resort/pula-golf-resort",
         "holes": 18,
         "par": 72,
         "price_from": 74,
