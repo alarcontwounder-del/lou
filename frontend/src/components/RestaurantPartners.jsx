@@ -66,7 +66,7 @@ const RestaurantCard = ({ restaurant, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-lg" style={{ background: 'linear-gradient(135deg, #9a5d4c 0%, #7a4d3c 100%)' }}>
+      <div className="flip-card-back rounded-2xl" style={{ background: 'linear-gradient(135deg, #9a5d4c 0%, #7a4d3c 100%)' }}>
         <h3 className="font-heading text-2xl mb-6">{restaurant.name}</h3>
         
         <div className="space-y-4">
