@@ -333,7 +333,7 @@ GOLF_COURSES = [
             "fr": "Un parcours challenging conçu par Kurt Rossknecht, avec des changements d'élévation dramatiques.",
             "se": "En utmanande bana designad av Kurt Rossknecht, med dramatiska höjdskillnader och bergsutsikt."
         },
-        "image": "https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=800",
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/son-muntaner-golf/son-muntaner-golf",
         "holes": 18,
         "par": 72,
         "price_from": 51,
