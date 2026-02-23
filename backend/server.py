@@ -495,7 +495,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe en bord de mer avec équipements de classe mondiale et forfaits golf exclusifs.",
             "se": "Lyxigt strandresort med världsklassiga bekvämligheter och exklusiva golfpaket."
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/resort-views.jpg",
+        "image": "/api/static/images/st-regis.jpg",
         "location": "Costa d'en Blanes",
         "deal": {
             "en": "Golf & Stay Package: 3 nights + 2 rounds",
