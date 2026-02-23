@@ -387,7 +387,7 @@ export const ReviewCarousel = () => {
 
         {/* Booking CTA Section */}
         <div className="mt-20 mb-10">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 p-12 md:p-16 text-center shadow-2xl">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-green via-brand-green/90 to-brand-green/80 p-12 md:p-16 text-center shadow-2xl">
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
