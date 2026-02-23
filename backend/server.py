@@ -898,18 +898,18 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
     html_content = f"""
     <html>
-    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #FFFFE3;">
         <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
-            <h2 style="color: #0a5f38; margin-bottom: 20px;">New Contact Inquiry - Golfinmallorca.com</h2>
+            <h2 style="color: #808034; margin-bottom: 20px;">New Contact Inquiry - Golfinmallorca.com</h2>
             <p style="color: #333;"><strong>Name:</strong> {inquiry.name}</p>
             <p style="color: #333;"><strong>Email:</strong> {inquiry.email}</p>
             <p style="color: #333;"><strong>Phone:</strong> {inquiry.phone or 'Not provided'}</p>
             <p style="color: #333;"><strong>Country:</strong> {inquiry.country}</p>
             <p style="color: #333;"><strong>Inquiry Type:</strong> {inquiry.inquiry_type}</p>
-            <hr style="border: 1px solid #eee; margin: 20px 0;">
+            <hr style="border: 1px solid #DBD4FF; margin: 20px 0;">
             <p style="color: #333;"><strong>Message:</strong></p>
-            <p style="color: #555; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">{inquiry.message}</p>
-            <hr style="border: 1px solid #eee; margin: 20px 0;">
+            <p style="color: #555; background-color: #FFFFE3; padding: 15px; border-radius: 5px;">{inquiry.message}</p>
+            <hr style="border: 1px solid #DBD4FF; margin: 20px 0;">
             <p style="color: #888; font-size: 12px;">This email was sent automatically from Golfinmallorca.com contact form.</p>
         </div>
     </body>
