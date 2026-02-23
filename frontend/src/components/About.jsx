@@ -41,7 +41,7 @@ export const About = () => {
           {/* Image */}
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <div className="aspect-[4/5] img-zoom rounded-sm overflow-hidden shadow-2xl">
+              <div className="aspect-[4/5] img-zoom rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="/api/static/images/about-golf.jpg"
                   alt="Golf Alcanada course in Mallorca"
@@ -50,8 +50,8 @@ export const About = () => {
                 />
               </div>
               {/* Decorative element */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-sand/30 -z-10 rounded-sm" />
-              <div className="absolute -top-6 -right-6 w-24 h-24 border-2 border-brand-terracotta/30 -z-10 rounded-sm" />
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-sand/30 -z-10 rounded-2xl" />
+              <div className="absolute -top-6 -right-6 w-24 h-24 border-2 border-brand-terracotta/30 -z-10 rounded-2xl" />
             </div>
           </div>
         </div>
