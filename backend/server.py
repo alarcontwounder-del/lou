@@ -583,7 +583,7 @@ PARTNER_OFFERS = [
             "fr": "Deux étoiles Michelin, mêlant tradition majorquine et techniques culinaires d'avant-garde.",
             "se": "Två Michelinstjärnor, blandar mallorkinsk tradition med avantgardistiska kulinariska tekniker."
         },
-        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800",
+        "image": "https://zaranda.es/wp-content/uploads/2025/12/cierre-temporada-esp-3.jpg",
         "location": "Es Capdellà",
         "deal": {
             "en": "After-Golf Special: Tasting menu 15% off",
