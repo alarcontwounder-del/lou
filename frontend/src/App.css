@@ -121,7 +121,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(135deg, #0a5f38 0%, #084a2b 100%);
+  background: linear-gradient(135deg, #808034 0%, #606020 100%);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
