@@ -1397,6 +1397,7 @@ PARTNER_OFFERS = [
         "discount_percent": 17,
         "contact_url": "https://www.bensdavall.com"
     }
+,
 ]
 
 # Static blog posts
