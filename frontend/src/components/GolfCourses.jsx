@@ -33,7 +33,10 @@ const CourseCard = ({ course, language, t }) => (
         <div className="p-5 pt-4">
           <div 
             className="flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-green transition-colors"
-            onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(course.name + ', ' + course.location + ', Mallorca')}`, '_blank')}
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(course.name + ', ' + course.location + ', Mallorca')}`, '_blank');
+            }}
             title="Open in Google Maps"
           >
             <MapPin className="w-3.5 h-3.5" />
