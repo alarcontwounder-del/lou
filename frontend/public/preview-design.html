@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golfinmallorca.com - New Design Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-green: #1A3C34;
+            --brand-sand: #D4C5A9;
+            --brand-terracotta: #C17C54;
+            --brand-cream: #FAFAF9;
+            --text-primary: #1C1917;
+            --text-secondary: #57534E;
+            --text-muted: #A8A29E;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--brand-cream);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 197, 169, 0.2);
+            padding: 1rem 3rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--brand-green);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-green);
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            background: var(--brand-green);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary:hover {
+            background: #0f2820;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 60, 52, 0.2);
+        }
+
+        /* Reviews Sidebar */
+        .reviews-sidebar {
+            position: fixed;
+            right: 0;
+            top: 80px;
+            width: 320px;
+            height: calc(100vh - 80px);
+            background: white;
+            border-left: 1px solid rgba(212, 197, 169, 0.3);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            z-index: 50;
+        }
+
+        .reviews-sidebar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-green);
+        }
+
+        .review-card {
+            background: var(--brand-cream);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateX(-4px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--brand-sand);
+        }
+
+        .review-platform {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .platform-logo {
+            width: 16px;
+            height: 16px;
+        }
+
+        .review-stars {
+            color: #F59E0B;
+            font-size: 0.875rem;
+        }
+
+        .review-text {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .review-author {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-right: 320px;
+            padding-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 60, 52, 0.3), rgba(26, 60, 52, 0.5)), 
+                        url('https://images.unsplash.com/photo-1672825953834-a686738c5047?w=1600&h=900&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.02em;
+        }
+
+        /* Section */
+        .section {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--brand-green);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 197, 169, 0.2);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(26, 60, 52, 0.12);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: var(--brand-sand);
+            color: var(--brand-green);
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--brand-green);
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            color: var(--brand-terracotta);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        .card-link:hover {
+            color: var(--brand-green);
+        }
+
+        /* Color Palette Section */
+        .color-palette {
+            background: white;
+            padding: 4rem 3rem;
+            margin: 2rem 0;
+        }
+
+        .color-swatches {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .color-box {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-content {
+                margin-right: 0;
+            }
+            .reviews-sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">Golfinmallorca</div>
+            <nav class="nav-links">
+                <a href="#courses">Golf Courses</a>
+                <a href="#hotels">Accommodations</a>
+                <a href="#dining">Fine Dining</a>
+                <a href="#about">About</a>
+                <div class="lang-selector">
+                    <span>EN</span> | <span>DE</span> | <span>FR</span> | <span>SE</span>
+                </div>
+            </nav>
+            <button class="btn-primary">Book Now</button>
+        </div>
+    </header>
+
+    <!-- Reviews Sidebar (Fixed) -->
+    <aside class="reviews-sidebar">
+        <h3>Reviews</h3>
+        
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar"></div>
+                <div>
+                    <div class="review-platform">
+                        <svg class="platform-logo" viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        Google
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-text">
+                "Exceptional golf courses with stunning views. The booking process was seamless."
+            </div>
+            <div class="review-author">— Michael R.</div>
+        </div>
+
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar"></div>
+                <div>
+                    <div class="review-platform">
+                        <svg class="platform-logo" viewBox="0 0 24 24" fill="#00AF87"><circle cx="12" cy="12" r="10" fill="#00AF87"/><path d="M12 6.5l2.12 4.3 4.74.69-3.43 3.34.81 4.72L12 17.27l-4.24 2.23.81-4.72-3.43-3.34 4.74-.69z" fill="white"/></svg>
+                        TripAdvisor
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-text">
+                "Perfect combination of luxury accommodations and world-class golf."
+            </div>
+            <div class="review-author">— Sarah K.</div>
+        </div>
+
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar"></div>
+                <div>
+                    <div class="review-platform">
+                        <svg class="platform-logo" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></svg>
+                        Facebook
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-text">
+                "Highly recommend! Beautiful courses and excellent service throughout."
+            </div>
+            <div class="review-author">— Thomas B.</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Mallorca's Premier Golf Experience</h1>
+                <p>Discover championship courses, luxury accommodations, and Michelin-starred dining in the Mediterranean's most exclusive golf destination</p>
+                <button class="btn-primary">Explore Courses</button>
+            </div>
+        </section>
+
+        <!-- Color Palette Section -->
+        <section class="color-palette">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--brand-green);">New Color Palette</h2>
+            <div class="color-swatches">
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #1A3C34;"></div>
+                    <div class="color-name">Deep Emerald</div>
+                    <div class="color-hex">#1A3C34</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #D4C5A9;"></div>
+                    <div class="color-name">Warm Sand</div>
+                    <div class="color-hex">#D4C5A9</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #C17C54;"></div>
+                    <div class="color-name">Muted Terracotta</div>
+                    <div class="color-hex">#C17C54</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #FAFAF9;"></div>
+                    <div class="color-name">Soft Cream</div>
+                    <div class="color-hex">#FAFAF9</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Golf Courses Section -->
+        <section class="section">
+            <h2 class="section-title">Championship Courses</h2>
+            <p class="section-subtitle">Experience Mallorca's finest golf courses with breathtaking Mediterranean views</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1748714240808-736ad18e9bef?w=600&h=400&fit=crop" alt="Golf Course" class="card-image">
+                    <div class="card-content">
+                        <span class="card-badge">18 Holes • Par 72</span>
+                        <h3 class="card-title">Golf Alcanada</h3>
+                        <p class="card-description">Nestled along Mallorca's stunning coastline, Alcanada offers panoramic sea views.</p>
+                        <a href="#" class="card-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1571928917219-478ae39b64ca?w=600&h=400&fit=crop" alt="Golf Course" class="card-image">
+                    <div class="card-content">
+                        <span class="card-badge">18 Holes • Par 72</span>
+                        <h3 class="card-title">Son Gual Mallorca</h3>
+                        <p class="card-description">Championship course combining tradition with modern luxury amenities.</p>
+                        <a href="#" class="card-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1505794718076-13e166c01a33?w=600&h=400&fit=crop" alt="Golf Course" class="card-image">
+                    <div class="card-content">
+                        <span class="card-badge">18 Holes • Par 72</span>
+                        <h3 class="card-title">Son Vida Golf</h3>
+                        <p class="card-description">The oldest course in Mallorca, offering a classic golfing experience.</p>
+                        <a href="#" class="card-link">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
