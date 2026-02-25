@@ -1574,7 +1574,7 @@ PARTNER_OFFERS = [
         "contact_url": "https://www.golfinmallorca.com/restaurants/zaranda",
     },
     {
-        "id": "es-fum",
+        "id": "es-fum-calvia",
         "name": "Es Fum",
         "type": "restaurant",
         "michelin_stars": "⭐ Michelin",
