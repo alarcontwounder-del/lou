@@ -1328,7 +1328,6 @@ PARTNER_OFFERS = [
         "discount_percent": 25,
         "contact_url": "https://www.golfinmallorca.com/hotels/castell-son-claret",
     },
-    },
     {
         "id": "es-fum",
         "name": "Es Fum",
