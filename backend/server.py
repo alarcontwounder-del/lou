@@ -1549,7 +1549,7 @@ PARTNER_OFFERS = [
         "contact_url": "https://www.golfinmallorca.com/restaurants/bens-davall",
     },
     {
-        "id": "zaranda",
+        "id": "zaranda-palma",
         "name": "Zaranda",
         "type": "restaurant",
         "michelin_stars": "⭐ Michelin",
