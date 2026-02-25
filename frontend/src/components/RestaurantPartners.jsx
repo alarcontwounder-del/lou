@@ -32,6 +32,22 @@ const RestaurantCard = ({ restaurant, language, t }) => (
 
         {/* Content */}
         <div className="p-5 pt-4">
+          {/* Michelin Stars & Cuisine Type Badges */}
+          {(restaurant.michelin_stars || restaurant.cuisine_type) && (
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              {restaurant.michelin_stars && (
+                <span className="text-xs px-2 py-1 bg-amber-50 text-amber-700 font-semibold rounded border border-amber-200">
+                  {restaurant.michelin_stars}
+                </span>
+              )}
+              {restaurant.municipality && (
+                <span className="text-xs px-2 py-1 bg-brand-terracotta/10 text-brand-terracotta font-medium rounded">
+                  {restaurant.municipality}
+                </span>
+              )}
+            </div>
+          )}
+          
           <div className="flex items-center gap-2 text-stone-400 text-xs mb-2">
             <MapPin className="w-3.5 h-3.5" />
             <span>{restaurant.location}</span>
