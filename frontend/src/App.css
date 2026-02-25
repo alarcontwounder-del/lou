@@ -224,11 +224,11 @@
 
 .lang-btn:hover,
 .lang-btn.active {
-  color: #0a5f38;
+  color: #808034;
 }
 
 .lang-btn.active {
-  border-bottom: 2px solid #0a5f38;
+  border-bottom: 2px solid #808034;
 }
 
 /* Nav styles */
