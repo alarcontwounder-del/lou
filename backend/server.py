@@ -703,6 +703,7 @@ PARTNER_OFFERS = [
         "offer_price": 1449,
         "discount_percent": 20,
         "contact_url": "https://www.caprocat.com"
+    },
     {
         "id": "can-mostatxins",
         "name": "Can Mostatxins",
