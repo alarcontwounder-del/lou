@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 :root {
-  --brand-green: #0a5f38;
-  --brand-sand: #E8DCC4;
-  --brand-terracotta: #C65D3B;
-  --brand-cream: #FAF8F3;
+  --brand-green: #808034;
+  --brand-sand: #DBD4FF;
+  --brand-terracotta: #723480;
+  --brand-cream: #FFFFE3;
 }
 
 * {
