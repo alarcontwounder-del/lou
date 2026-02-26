@@ -50,8 +50,9 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <a
-          href="#hero"
-          onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
+          href="https://golfinmallorca.greenfee365.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="transition-all duration-300"
           data-testid="logo"
         >
@@ -59,7 +60,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
             className="h-36 md:h-44 w-auto object-contain transition-all duration-300"
-            style={{ filter: isScrolled ? 'none' : 'brightness(0) saturate(100%) invert(50%) sepia(80%) saturate(500%) hue-rotate(355deg) brightness(85%)' }}
+            style={{ filter: isScrolled ? 'none' : 'brightness(0) saturate(100%) invert(67%) sepia(64%) saturate(400%) hue-rotate(5deg) brightness(95%)' }}
           />
         </a>
 
