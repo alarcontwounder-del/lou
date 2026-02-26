@@ -82,28 +82,28 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           </button>
           <button
             onClick={() => scrollToSection('restaurants')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
+            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
             data-testid="nav-restaurants"
           >
             {t('restaurants.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('reviews')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
+            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
             data-testid="nav-reviews"
           >
             {t('reviews.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
+            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
             data-testid="nav-blog"
           >
             {t('blog.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
+            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
             data-testid="nav-contact"
           >
             {t('nav.contact')}
