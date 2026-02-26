@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golfinmallorca - Clean Modern Design (Correct Ink Wash)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* CORRECT Ink Wash Colors (from visual image) */
+            --dark-gray: #4A4A4A;
+            --light-gray: #CBCBCB;
+            --cream: #FFFFE3;
+            --dusty-blue: #7891A8;  /* Muted slate blue-gray from image */
+            --almost-black: #2B2B2B;
+            --pure-white: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--pure-white);
+            color: var(--almost-black);
+            line-height: 1.6;
+        }
+
+        /* REVIEWS TICKER */
+        .reviews-ticker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--almost-black);
+            color: white;
+            padding: 0.75rem 0;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 4rem;
+            animation: ticker 40s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .ticker-stars {
+            color: #FFD700;
+            font-size: 0.75rem;
+        }
+
+        .ticker-platform {
+            opacity: 0.7;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* NAVIGATION */
+        .nav {
+            position: fixed;
+            top: 3rem;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--almost-black);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dusty-blue);
+        }
+
+        .btn {
+            background: var(--dusty-blue);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .btn:hover {
+            background: #6a8199;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(120, 145, 168, 0.3);
+        }
+
+        /* HERO WITH BACKGROUND */
+        .hero {
+            margin-top: 7rem;
+            min-height: 90vh;
+            background: 
+                linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.5)),
+                url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1920&h=1080&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 .highlight {
+            font-style: italic;
+            color: var(--dusty-blue);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.8;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 7rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: var(--almost-black);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+            font-weight: 400;
+        }
+
+        /* SIMPLE UNIFORM GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid rgba(203, 203, 203, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(74, 74, 74, 0.12);
+            border-color: var(--dusty-blue);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--dark-gray);
+            padding: 0.375rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--almost-black);
+        }
+
+        .card-description {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            color: var(--dusty-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .card-link:hover {
+            color: var(--dark-gray);
+        }
+
+        .michelin-badge {
+            background: var(--almost-black);
+            color: #FFD700;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* COLOR PALETTE DISPLAY */
+        .color-display {
+            background: white;
+            padding: 5rem 4rem;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .color-box {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(203, 203, 203, 0.3);
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            color: var(--almost-black);
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+        }
+
+        /* ALTERNATE SECTION */
+        .section-alt {
+            background: var(--cream);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--almost-black);
+            color: white;
+            padding: 8rem 4rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav {
+                padding: 1.5rem 2rem;
+            }
+            .section {
+                padding: 5rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- REVIEWS TICKER -->
+    <div class="reviews-ticker">
+        <div class="ticker-content">
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Exceptional golf experience"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Perfect luxury getaway"</span>
+                <span class="ticker-platform">TripAdvisor</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"World-class courses"</span>
+                <span class="ticker-platform">Facebook</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Highly recommend!"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+            <!-- Duplicate for infinite scroll -->
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Exceptional golf experience"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Perfect luxury getaway"</span>
+                <span class="ticker-platform">TripAdvisor</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"World-class courses"</span>
+                <span class="ticker-platform">Facebook</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Highly recommend!"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="logo">Golfinmallorca</div>
+        <div class="nav-links">
+            <a href="#courses">Golf Courses</a>
+            <a href="#hotels">Accommodations</a>
+            <a href="#dining">Fine Dining</a>
+            <a href="#about">About</a>
+        </div>
+        <button class="btn">Book Now</button>
+    </nav>
+
+    <!-- HERO WITH BACKGROUND IMAGE -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Mallorca's<br>
+                <span class="highlight">Premier</span><br>
+                Golf Experience
+            </h1>
+            <p class="hero-subtitle">
+                Championship courses, Michelin-starred dining, and luxury accommodations in the Mediterranean's most exclusive destination
+            </p>
+            <button class="btn" style="padding: 1.125rem 2.5rem; font-size: 1.05rem;">Explore Courses</button>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Golf Courses</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">29</div>
+                    <div class="stat-label">Luxury Hotels</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">39</div>
+                    <div class="stat-label">Restaurants</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLOR PALETTE DISPLAY -->
+    <div class="color-display">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 600;">Ink Wash Color Palette</h2>
+        <div class="color-grid">
+            <div class="color-swatch">
+                <div class="color-box" style="background: #4A4A4A;"></div>
+                <div class="color-name">Dark Gray</div>
+                <div class="color-hex">#4A4A4A</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: #CBCBCB;"></div>
+                <div class="color-name">Light Gray</div>
+                <div class="color-hex">#CBCBCB</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: #FFFFE3;"></div>
+                <div class="color-name">Cream</div>
+                <div class="color-hex">#FFFFE3</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: #7891A8;"></div>
+                <div class="color-name">Dusty Blue</div>
+                <div class="color-hex">#7891A8</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOLF COURSES - SIMPLE GRID -->
+    <section class="section" id="courses">
+        <div class="section-header">
+            <h2 class="section-title">Championship Courses</h2>
+            <p class="section-subtitle">Experience Mallorca's finest golf courses with breathtaking Mediterranean views</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1748714240808-736ad18e9bef?w=800&h=600&fit=crop" alt="Golf Alcanada" class="card-image">
+                <div class="card-content">
+                    <span class="card-badge">18 Holes · Par 72</span>
+                    <h3 class="card-title">Golf Alcanada</h3>
+                    <p class="card-description">Nestled along Mallorca's stunning coastline with panoramic sea views.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1571928917219-478ae39b64ca?w=800&h=600&fit=crop" alt="Son Gual" class="card-image">
+                <div class="card-content">
+                    <span class="card-badge">Championship</span>
+                    <h3 class="card-title">Son Gual Mallorca</h3>
+                    <p class="card-description">Award-winning course combining tradition with modern luxury.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1505794718076-13e166c01a33?w=800&h=600&fit=crop" alt="Son Vida" class="card-image">
+                <div class="card-content">
+                    <span class="card-badge">Historic</span>
+                    <h3 class="card-title">Son Vida Golf</h3>
+                    <p class="card-description">The oldest golf course in Mallorca, offering classic elegance.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&h=600&fit=crop" alt="Golf Course" class="card-image">
+                <div class="card-content">
+                    <span class="card-badge">Coastal</span>
+                    <h3 class="card-title">Canyamel Golf</h3>
+                    <p class="card-description">Spectacular coastal views and challenging layout.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1672825953834-a686738c5047?w=800&h=600&fit=crop" alt="Golf Course" class="card-image">
+                <div class="card-content">
+                    <span class="card-badge">Premium</span>
+                    <h3 class="card-title">Arabella Golf</h3>
+                    <p class="card-description">Three magnificent courses in one exclusive location.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&h=600&fit=crop" alt="Golf Course" class="card-image">
+                <div class="card-content">
+                    <span class="card-badge">Mountain Views</span>
+                    <h3 class="card-title">Pollença Golf</h3>
+                    <p class="card-description">Stunning Tramuntana mountain backdrop.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MICHELIN RESTAURANTS - SIMPLE GRID -->
+    <section class="section section-alt" id="dining">
+        <div class="section-header">
+            <h2 class="section-title">Michelin-Starred Dining</h2>
+            <p class="section-subtitle">Indulge in exceptional culinary experiences at Mallorca's finest restaurants</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop" alt="Voro Restaurant" class="card-image">
+                <div class="card-content">
+                    <span class="michelin-badge">⭐⭐ Michelin</span>
+                    <h3 class="card-title">Voro</h3>
+                    <p class="card-description">Two Michelin stars showcasing innovative Mediterranean cuisine in Capdepera.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1643879397174-4f10ac503566?w=800&h=600&fit=crop" alt="Marc Fosh Restaurant" class="card-image">
+                <div class="card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="card-title">Marc Fosh</h3>
+                    <p class="card-description">Refined Mediterranean cuisine with exceptional golf dining packages.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1611520175743-30ff00129621?w=800&h=600&fit=crop" alt="Es Fum Restaurant" class="card-image">
+                <div class="card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="card-title">Es Fum</h3>
+                    <p class="card-description">Contemporary Mediterranean at the prestigious St. Regis Mardavall.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1663530761401-15eefb544889?w=800&h=600&fit=crop" alt="Zaranda Restaurant" class="card-image">
+                <div class="card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="card-title">Zaranda</h3>
+                    <p class="card-description">Exquisite Michelin-starred dining at Hotel Es Princep, Palma.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/29106106/pexels-photo-29106106.jpeg?w=800&h=600&fit=crop" alt="Restaurant" class="card-image">
+                <div class="card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="card-title">Adrián Quetglas</h3>
+                    <p class="card-description">Creative fusion cuisine in the heart of Palma.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/32399760/pexels-photo-32399760.jpeg?w=800&h=600&fit=crop" alt="Restaurant" class="card-image">
+                <div class="card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="card-title">DINS Santi Taura</h3>
+                    <p class="card-description">Authentic Mallorcan cuisine reimagined with modern techniques.</p>
+                    <a href="#" class="card-link">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">Ready to Experience Mallorca?</h2>
+        <p class="cta-subtitle">Book your luxury golf getaway today and discover the Mediterranean's finest courses</p>
+        <button class="btn" style="padding: 1.25rem 3rem; font-size: 1.05rem;">Get Started</button>
+    </section>
+
+</body>
+</html>
