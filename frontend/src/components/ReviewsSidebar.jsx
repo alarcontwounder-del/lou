@@ -276,6 +276,12 @@ export const ReviewsSidebar = ({ isVisible }) => {
           Showing {filteredReviews.length} of {reviews.length} verified reviews
         </p>
       </div>
+
+      {/* Review Modal */}
+      <ReviewModal 
+        isOpen={isReviewModalOpen} 
+        onClose={() => setIsReviewModalOpen(false)} 
+      />
     </aside>
   );
 };
