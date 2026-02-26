@@ -1076,7 +1076,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=800&h=600&fit=crop",
+        "image": "https://www.bordoyhotels.com/idb/13106/Mostatxins-Quinze-710x530.jpeg",
         "location": "Palma",
         "full_address": "Plaça de Sant Francesc, 5, 07001 Palma, Illes Balears, Spain",
         "deal": {
@@ -1100,7 +1100,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop",
+        "image": "https://sonbrull.com/public/img/bg-home-intro.webp",
         "location": "Palma",
         "full_address": "Carrer del Forn de la Glòria, 14, 07012 Palma, Illes Balears, Spain",
         "deal": {
@@ -1124,7 +1124,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop",
+        "image": "https://www.canauliluxuryretreat.com/wp-content/uploads/sites/2/2021/10/pollenca-can-auli-hotel.jpg",
         "location": "Palma",
         "full_address": "Carrer de la Missió, 7A, 07003 Palma, Illes Balears, Spain",
         "deal": {
@@ -1148,7 +1148,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.yartanhotels.com/wp-content/uploads/2019/12/Yartan-Boutique-Hotel-exterior.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Francesc, 8, 07001 Palma, Illes Balears, Spain",
         "deal": {
@@ -1172,7 +1172,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.pexels.com/photos/16646229/pexels-photo-16646229.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.pletademar.com/images/Home_hotel_new.png",
         "location": "Palma",
         "full_address": "Carrer de la Concepció, 26, 07012 Palma, Illes Balears, Spain",
         "deal": {
@@ -1196,7 +1196,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.pexels.com/photos/10135442/pexels-photo-10135442.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.cansimoneta.com/storage/app/uploads/public/68a/d8e/aac/thumb_504_1239_534_0_0_auto.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Feliu, 1, 07012 Palma, Illes Balears, Spain",
         "deal": {
