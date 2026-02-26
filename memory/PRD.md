@@ -24,6 +24,14 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 
 ## What's Been Implemented
 
+### February 26, 2026 (Session 3)
+- **Review Widget**: Added "Write a Review" functionality
+  - Golden amber button in sidebar footer
+  - Google OAuth login required for verified reviews
+  - Review modal with star rating and text input
+  - Backend APIs for submission and admin approval workflow
+  - Reviews stored in MongoDB with pending/approved/rejected status
+
 ### February 26, 2026 (Session 2)
 - **ALL Images Fixed**: Replaced remaining broken hotel/restaurant images
   - Hotels: Palma Riad (hotelpalmademallorca.net CDN), Hotel Villa Italia (mallorcahotelsweb.com CDN), Mon Port Hotel & Spa (Castell Son Claret CDN), Castell Son Claret (official profitroom CDN)
