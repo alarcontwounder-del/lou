@@ -180,18 +180,8 @@ export const ReviewsSidebar = ({ isVisible }) => {
       <div className="h-20 flex-shrink-0"></div>
       
       {/* Header with Stats */}
-      <div className="p-5 border-b-2 border-amber-500 bg-brand-charcoal flex-shrink-0">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-serif font-bold text-white italic">Reviews</h2>
-          <button
-            onClick={() => setIsReviewModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 text-xs font-semibold rounded-full transition-all"
-            data-testid="write-review-btn"
-          >
-            <PenLine className="w-3.5 h-3.5" />
-            <span>Write Review</span>
-          </button>
-        </div>
+      <div className="p-5 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
+        <h2 className="text-2xl font-serif font-bold text-white mb-4 italic">Reviews</h2>
         
         {/* Stats Row */}
         <div className="grid grid-cols-3 gap-3 mb-4">
