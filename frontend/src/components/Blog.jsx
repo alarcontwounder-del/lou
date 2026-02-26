@@ -68,7 +68,7 @@ export const Blog = () => {
     <section id="blog" className="section-padding bg-white" data-testid="blog-section">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <p className="text-brand-terracotta text-sm uppercase tracking-[0.2em] mb-4" data-testid="blog-subtitle">
+          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="blog-subtitle">
             {t('blog.subtitle')}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4" data-testid="blog-title">
@@ -121,7 +121,7 @@ export const Blog = () => {
 
                 <button
                   onClick={() => openPost(post)}
-                  className="inline-flex items-center gap-2 text-brand-green hover:text-brand-terracotta transition-colors font-medium text-sm"
+                  className="inline-flex items-center gap-2 text-brand-charcoal hover:text-brand-slate transition-colors font-medium text-sm"
                   data-testid={'blog-read-' + post.slug}
                 >
                   {t('blog.readMore')}
