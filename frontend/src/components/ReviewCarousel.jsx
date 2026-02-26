@@ -10,13 +10,13 @@ const countryFlags = {
 };
 
 const avatarColors = [
-  'bg-brand-green', 'bg-brand-terracotta', 'bg-amber-600',
-  'bg-brand-green/80', 'bg-stone-600', 'bg-brand-terracotta/80',
+  'bg-brand-charcoal', 'bg-brand-slate', 'bg-amber-600',
+  'bg-brand-charcoal/80', 'bg-stone-600', 'bg-brand-slate/80',
 ];
 
 const platformBadges = {
   'Google Reviews': { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200', label: 'Google' },
-  'Trustpilot': { bg: 'bg-brand-cream', text: 'text-brand-green', border: 'border-brand-green/30', label: 'Trustpilot' },
+  'Trustpilot': { bg: 'bg-brand-cream', text: 'text-brand-charcoal', border: 'border-brand-charcoal/30', label: 'Trustpilot' },
   'TripAdvisor': { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', label: 'TripAdvisor' },
   'Capterra': { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', label: 'Capterra' },
   'Product Hunt': { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', label: 'Product Hunt' },
@@ -68,7 +68,7 @@ const ReviewCard = ({ review, index }) => {
       style={{ transitionDelay: `${index * 50}ms` }}
       data-testid={`review-card-${review.id}`}
     >
-      <Quote className="absolute top-4 right-4 w-8 h-8 text-brand-sand/20 group-hover:text-brand-sand/40 transition-colors" />
+      <Quote className="absolute top-4 right-4 w-8 h-8 text-brand-slate/20 group-hover:text-brand-slate/40 transition-colors" />
       <div className={`${badge.bg} ${badge.text} border ${badge.border} text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4`}>
         {badge.label}
       </div>
@@ -93,7 +93,7 @@ const ReviewCard = ({ review, index }) => {
           <button
             onClick={() => setShowTranslation(!showTranslation)}
             className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all ${
-              showTranslation ? 'bg-brand-green text-white shadow-sm hover:bg-brand-green/90' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+              showTranslation ? 'bg-brand-charcoal text-white shadow-sm hover:bg-brand-charcoal/90' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
             }`}
             data-testid={`translate-btn-${review.id}`}
           >
@@ -184,7 +184,7 @@ export const ReviewCarousel = () => {
 
         {/* Section Header */}
         <div className="text-center mb-10">
-          <p className="text-brand-terracotta text-xs font-bold uppercase tracking-[0.3em] mb-4">
+          <p className="text-brand-slate text-xs font-bold uppercase tracking-[0.3em] mb-4">
             Trusted by Golfers Worldwide
           </p>
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-stone-900 mb-5 leading-tight">
@@ -207,14 +207,14 @@ export const ReviewCarousel = () => {
             </div>
             <div className="flex flex-col items-center justify-center py-6 px-4" data-testid="stat-global-reach">
               <div className="flex items-center gap-2 mb-1.5">
-                <Globe className="w-6 h-6 text-brand-terracotta" />
+                <Globe className="w-6 h-6 text-brand-slate" />
                 <span className="text-4xl font-bold text-stone-900">{uniqueCountries.length}</span>
               </div>
               <span className="text-xs text-stone-500 uppercase tracking-widest font-semibold">Global Reach</span>
             </div>
             <div className="flex flex-col items-center justify-center py-6 px-4" data-testid="stat-verified-reviews">
               <div className="flex items-center gap-2 mb-1.5">
-                <Users className="w-6 h-6 text-brand-green" />
+                <Users className="w-6 h-6 text-brand-charcoal" />
                 <span className="text-4xl font-bold text-stone-900">{stats.total_reviews}</span>
               </div>
               <span className="text-xs text-stone-500 uppercase tracking-widest font-semibold">Verified Reviews</span>
@@ -241,7 +241,7 @@ export const ReviewCarousel = () => {
               placeholder="Search by country, platform, or keyword..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-12 py-4 rounded-2xl border border-stone-200 bg-white text-stone-700 placeholder-stone-400 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all text-base shadow-sm"
+              className="w-full pl-14 pr-12 py-4 rounded-2xl border border-stone-200 bg-white text-stone-700 placeholder-stone-400 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-base shadow-sm"
               data-testid="review-search"
             />
             {searchQuery && (
@@ -256,7 +256,7 @@ export const ReviewCarousel = () => {
             <div className="relative flex-1">
               <button
                 onClick={() => { setIsPlatformDropdownOpen(!isPlatformDropdownOpen); setIsCountryDropdownOpen(false); }}
-                className="w-full px-5 py-3 rounded-2xl border border-stone-200 bg-white text-left flex items-center justify-between gap-2 hover:border-brand-green transition-all shadow-sm"
+                className="w-full px-5 py-3 rounded-2xl border border-stone-200 bg-white text-left flex items-center justify-between gap-2 hover:border-brand-slate transition-all shadow-sm"
                 data-testid="platform-filter"
               >
                 <span className="text-stone-700 font-medium">{platformFilter === 'All' ? 'All Platforms' : platformFilter.replace(' Reviews', '')}</span>
@@ -269,7 +269,7 @@ export const ReviewCarousel = () => {
                       key={platform}
                       onClick={() => { setPlatformFilter(platform); setIsPlatformDropdownOpen(false); }}
                       className={`w-full px-5 py-3 text-left hover:bg-stone-50 transition-colors first:rounded-t-2xl last:rounded-b-2xl ${
-                        platformFilter === platform ? 'bg-stone-50 font-semibold text-brand-green' : 'text-stone-700'
+                        platformFilter === platform ? 'bg-stone-50 font-semibold text-brand-charcoal' : 'text-stone-700'
                       }`}
                     >
                       {platform === 'All' ? 'All Platforms' : platform.replace(' Reviews', '')}
@@ -286,7 +286,7 @@ export const ReviewCarousel = () => {
             <div className="relative flex-1">
               <button
                 onClick={() => { setIsCountryDropdownOpen(!isCountryDropdownOpen); setIsPlatformDropdownOpen(false); }}
-                className="w-full px-5 py-3 rounded-2xl border border-stone-200 bg-white text-left flex items-center justify-between gap-2 hover:border-brand-green transition-all shadow-sm"
+                className="w-full px-5 py-3 rounded-2xl border border-stone-200 bg-white text-left flex items-center justify-between gap-2 hover:border-brand-slate transition-all shadow-sm"
                 data-testid="country-filter"
               >
                 <span className="flex items-center gap-2">
@@ -302,7 +302,7 @@ export const ReviewCarousel = () => {
                       key={country}
                       onClick={() => { setCountryFilter(country); setIsCountryDropdownOpen(false); }}
                       className={`w-full px-5 py-3 text-left flex items-center gap-3 hover:bg-stone-50 transition-colors first:rounded-t-2xl last:rounded-b-2xl ${
-                        countryFilter === country ? 'bg-stone-50 font-semibold text-brand-green' : 'text-stone-700'
+                        countryFilter === country ? 'bg-stone-50 font-semibold text-brand-charcoal' : 'text-stone-700'
                       }`}
                     >
                       <span>{country !== 'All' ? countryFlags[country] : '🌍'}</span>
@@ -360,7 +360,7 @@ export const ReviewCarousel = () => {
                     onClick={() => handlePageChange(item)}
                     className={`w-10 h-10 rounded-xl text-sm font-semibold transition-all ${
                       currentPage === item
-                        ? 'bg-brand-green text-white shadow-md'
+                        ? 'bg-brand-charcoal text-white shadow-md'
                         : 'border border-stone-200 bg-white text-stone-600 hover:bg-stone-50'
                     }`}
                     data-testid={`pagination-page-${item}`}
@@ -387,7 +387,7 @@ export const ReviewCarousel = () => {
 
         {/* Booking CTA Section */}
         <div className="mt-20 mb-10">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-green via-brand-green/90 to-brand-green/80 p-12 md:p-16 text-center shadow-2xl">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-charcoal via-brand-charcoal/90 to-brand-charcoalLight p-12 md:p-16 text-center shadow-2xl">
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
@@ -405,7 +405,7 @@ export const ReviewCarousel = () => {
                 href="https://golfinmallorca.greenfee365.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-brand-green font-bold text-lg px-10 py-5 rounded-full hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                className="inline-flex items-center gap-3 bg-white text-brand-charcoal font-bold text-lg px-10 py-5 rounded-full hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
                 data-testid="booking-cta-button"
               >
                 Book My Tee Time Now
