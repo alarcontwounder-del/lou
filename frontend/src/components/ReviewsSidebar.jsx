@@ -185,7 +185,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
           <h2 className="text-2xl font-serif font-bold text-white italic">Reviews</h2>
           <button
             onClick={() => setIsReviewModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-stone-900 text-xs font-semibold rounded-full transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 text-xs font-semibold rounded-full transition-all"
             data-testid="write-review-btn"
           >
             <PenLine className="w-3.5 h-3.5" />
