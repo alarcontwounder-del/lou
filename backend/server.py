@@ -1411,7 +1411,7 @@ PARTNER_OFFERS = [
             "fr": "Excellence deux étoiles Michelin proposant une cuisine méditerranéenne innovante à Capdepera.",
             "se": "Två Michelin-stjärnor med innovativ medelhavskök i Capdepera.",
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-restaurant-area.jpg",
         "location": "Capdepera",
         "full_address": "Ctra. Canyamel km 55.2, 07589 Capdepera, Mallorca, Spain",
         "deal": {
@@ -1436,7 +1436,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1643879397174-4f10ac503566?w=800&h=600&fit=crop",
+        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-merengue-salado.jpg",
         "location": "Palma",
         "full_address": "Carrer de la Missió 7, 07003 Palma, Mallorca, Spain",
         "deal": {
@@ -1786,7 +1786,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-restaurant-area.jpg",
         "location": "Pollença",
         "full_address": "Carrer de la Pursiana 5, 07460 Pollença, Mallorca, Spain",
         "deal": {
@@ -1811,7 +1811,7 @@ PARTNER_OFFERS = [
             "fr": "Légendaire pour son agneau rôti exceptionnel et sa cuisine de montagne majorquine authentique.",
             "se": "Legendarisk för exceptionellt rostlamm och autentisk mallorkinsk bergmat.",
         },
-        "image": "https://images.unsplash.com/photo-1643879397174-4f10ac503566?w=800&h=600&fit=crop",
+        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-merengue-salado.jpg",
         "location": "Alaró",
         "full_address": "Carretera Alaró–Orient km 4.5, 07340 Alaró, Mallorca, Spain",
         "deal": {
@@ -2161,7 +2161,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-restaurant-area.jpg",
         "location": "Pollença",
         "full_address": "Carretera Pollença–Alcúdia km 59, 07460 Pollença, Mallorca, Spain",
         "deal": {
@@ -2186,7 +2186,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1643879397174-4f10ac503566?w=800&h=600&fit=crop",
+        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-merengue-salado.jpg",
         "location": "Port de Pollença",
         "full_address": "Carrer d’Enmig, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
