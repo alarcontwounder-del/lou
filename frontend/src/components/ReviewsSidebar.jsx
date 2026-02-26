@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Search, X, Globe, Users } from 'lucide-react';
+import { Star, Search, X, Globe, Users, PenLine } from 'lucide-react';
 import axios from 'axios';
+import ReviewModal from './ReviewModal';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
