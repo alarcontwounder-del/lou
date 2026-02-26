@@ -884,7 +884,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/80459541.jpg",
+        "image": "https://dam.melia.com/melia/file/yh7BoHMDs6RPSWXKFSn6.JPG",
         "location": "Cala d’Or",
         "full_address": "Portinatx, 16-18, 07660 Cala d’Or, Illes Balears, Spain",
         "deal": {
@@ -1244,7 +1244,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel design contemporain avec architecture avant-gardiste, intérieurs artistiques et expériences de golf organisées.",
             "se": "Samtida designhotell med banbrytande arkitektur, konstnärliga interiörer och kurerade golfupplevelser.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/80459541.jpg",
+        "image": "https://dam.melia.com/melia/file/yh7BoHMDs6RPSWXKFSn6.JPG",
         "location": "Palma",
         "full_address": "Carrer de les Caputxines, 9, 07003 Palma, Illes Balears, Spain",
         "deal": {
