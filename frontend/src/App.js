@@ -16,6 +16,7 @@ import { Footer } from './components/Footer';
 import { AdminDashboard } from './components/AdminDashboard';
 import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
+import DesignPreview from './pages/DesignPreview';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
