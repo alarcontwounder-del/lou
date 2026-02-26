@@ -1028,7 +1028,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://www.hilton.com/im/en/PMICRLX/20953216/pmicrlx-67254726.jpg",
+        "image": "https://calreiet.com/wp-content/uploads/2024/06/Entrance.png",
         "location": "Banyalbufar",
         "full_address": "Ctra. C-710, km 83.7, 07191 Banyalbufar, Illes Balears, Spain",
         "deal": {
@@ -1052,7 +1052,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe classique avec élégance intemporelle, équipements premium et accès pratique aux parcours de golf de championnat.",
             "se": "Klassiskt lyxhotell med tidlös elegans, premium bekvämligheter och bekväm tillgång till mästerskap golfbanor.",
         },
-        "image": "https://www.caprocatgrandhotel.com/images/hotel-pool.jpg",
+        "image": "https://wa-uploads.profitroom.com/castellsonclaret/666x952/17283758726354_dsc0702finalneu.jpg",
         "location": "Sóller",
         "full_address": "Carrer de Romaguera, 18, 07100 Sóller, Illes Balears, Spain",
         "deal": {
