@@ -93,23 +93,31 @@ function MainContent() {
 
   return (
     <div className="min-h-screen bg-brand-cream">
+      {/* Reviews Sidebar - visible after hero */}
+      <ReviewsSidebar isVisible={showSidebar} />
+      
       <Navbar 
         onAdminClick={handleOpenAdmin} 
         isAuthenticated={!!user} 
         isCheckingAuth={isCheckingAuth}
       />
-      <main>
+      
+      {/* Main content with left margin when sidebar is visible */}
+      <main className={`transition-all duration-300 ${showSidebar ? 'lg:ml-80' : ''}`}>
         <Hero />
         <About />
         <GolfCourses />
         <HotelPartners />
         <RestaurantPartners />
-        <ReviewCarousel />
         <Blog />
         <Contact />
       </main>
-      <Newsletter />
-      <Footer />
+      
+      <div className={`transition-all duration-300 ${showSidebar ? 'lg:ml-80' : ''}`}>
+        <Newsletter />
+        <Footer />
+      </div>
+      
       <Toaster position="bottom-right" />
       
       {showAdmin && user && (
