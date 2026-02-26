@@ -56,12 +56,12 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           data-testid="logo"
         >
           <div className={`transition-all duration-300 ${
-            isScrolled ? '' : 'bg-white/30 backdrop-blur-sm rounded-xl px-4 py-2'
+            isScrolled ? '' : 'bg-white/40 backdrop-blur-md rounded-xl px-5 py-3'
           }`}>
             <img 
               src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
               alt="Golf in Mallorca Spain"
-              className="h-20 md:h-24 w-auto object-contain transition-all duration-300"
+              className="h-28 md:h-32 w-auto object-contain transition-all duration-300"
             />
           </div>
         </a>
