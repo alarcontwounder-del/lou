@@ -149,7 +149,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
 
   return (
     <aside 
-      className="fixed left-0 top-0 h-screen w-80 bg-white border-r border-stone-200 z-40 overflow-hidden flex flex-col shadow-lg hidden lg:flex"
+      className="fixed left-0 top-0 h-screen w-80 bg-white border-r border-stone-200 z-40 overflow-hidden flex flex-col shadow-lg hidden lg:flex pt-20"
       data-testid="reviews-sidebar"
     >
       {/* Header */}
