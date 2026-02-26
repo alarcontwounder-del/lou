@@ -716,7 +716,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=800&h=600&fit=crop",
+        "image": "https://www.bordoyhotels.com/idb/13106/Mostatxins-Quinze-710x530.jpeg",
         "location": "Alcúdia",
         "full_address": "Carrer del Lledoner, 15, 07400 Alcúdia, Illes Balears, Spain",
         "deal": {
@@ -740,7 +740,7 @@ PARTNER_OFFERS = [
             "fr": "Retraite rurale élégante offrant tranquillité, charme authentique majorquin et équipements de luxe modernes.",
             "se": "Elegant lantlig tillflyktsort med lugn, äkta mallorkinsk charm och moderna lyxbekvämligheter.",
         },
-        "image": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop",
+        "image": "https://sonbrull.com/public/img/bg-home-intro.webp",
         "location": "Pollença",
         "full_address": "Carretera Palma–Pollença, km 50, 07460 Pollença, Illes Balears, Spain",
         "deal": {
@@ -764,7 +764,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop",
+        "image": "https://www.canauliluxuryretreat.com/wp-content/uploads/sites/2/2021/10/pollenca-can-auli-hotel.jpg",
         "location": "Pollença",
         "full_address": "Carrer de Can Aulí, 5, 07460 Pollença, Illes Balears, Spain",
         "deal": {
@@ -788,7 +788,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/204583847.jpg?k=ba8e5f0ce04e0b44e1ffee9d8a9b2c6c8f8a4b1a6a0f2e4e0e8c5d5f2a2c3e4f&o=",
         "location": "Artà",
         "full_address": "Carrer Trespolet, 8, 07570 Artà, Illes Balears, Spain",
         "deal": {
@@ -812,7 +812,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.pexels.com/photos/16646229/pexels-photo-16646229.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.pletademar.com/images/Home_hotel_new.png",
         "location": "Capdepera",
         "full_address": "Carretera Artà–Canyamel, km 8, 07589 Capdepera, Illes Balears, Spain",
         "deal": {
@@ -836,7 +836,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.pexels.com/photos/10135442/pexels-photo-10135442.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.cansimoneta.com/storage/app/uploads/public/68a/d8e/aac/thumb_504_1239_534_0_0_auto.jpg",
         "location": "Canyamel",
         "full_address": "Carretera Artà–Canyamel, km 8, 07589 Canyamel, Illes Balears, Spain",
         "deal": {
