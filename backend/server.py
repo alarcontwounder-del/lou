@@ -1220,7 +1220,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://slh.com/getmedia/d1c2b3a4-e5f6-4789-a012-b3c4d5e6f7a8/can-ferrereta-exterior.jpg",
+        "image": "https://palmariadonly.hotelpalmademallorca.net/data/Photos/700x500w/11531/1153110/1153110282/palma-riad-adults-only-palma-de-mallorca-photo-1.JPEG",
         "location": "Palma",
         "full_address": "Carrer de Sant Jaume, 5, 07012 Palma, Illes Balears, Spain",
         "deal": {
