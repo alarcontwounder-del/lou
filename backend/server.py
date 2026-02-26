@@ -1536,7 +1536,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.bensdavall.com/wp-content/uploads/bens-davall-terrace.jpg",
+        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
         "location": "Sóller",
         "full_address": "Carretera Sóller–Deià km 56, 07100 Sóller, Mallorca, Spain",
         "deal": {
@@ -1911,7 +1911,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://www.bensdavall.com/wp-content/uploads/bens-davall-terrace.jpg",
+        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Magí 62, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -2286,7 +2286,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://www.bensdavall.com/wp-content/uploads/bens-davall-terrace.jpg",
+        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
         "location": "Port d’Andratx",
         "full_address": "Avinguda Mateo Bosch, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
