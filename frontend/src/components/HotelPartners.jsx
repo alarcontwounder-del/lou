@@ -16,7 +16,7 @@ const HotelCard = ({ hotel, language, t }) => (
       <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
         {/* Discount Badge */}
         {hotel.discount_percent && (
-          <div className="absolute top-6 right-6 z-10 bg-brand-terracotta text-white text-xs font-bold px-3 py-1.5 rounded-full">
+          <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {hotel.discount_percent}%
           </div>
         )}
