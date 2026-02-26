@@ -267,7 +267,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
       <div className="p-4 border-t border-stone-300 bg-stone-100 flex-shrink-0">
         <button
           onClick={() => setIsReviewModalOpen(true)}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-brand-charcoal hover:bg-stone-700 text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-stone-600 hover:bg-stone-500 text-white font-semibold rounded-xl transition-all"
           data-testid="write-review-btn-footer"
         >
           <PenLine className="w-5 h-5" />
