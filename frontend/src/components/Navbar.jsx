@@ -52,26 +52,30 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
         <a
           href="#hero"
           onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
-          className={`font-heading text-2xl font-semibold tracking-tight transition-colors duration-300 ${
-            isScrolled ? 'text-brand-charcoal' : 'text-white'
-          }`}
+          className="transition-all duration-300"
           data-testid="logo"
         >
-          Golfinmallorca.com
+          <img 
+            src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/uslds9ge_Black%20and%20White%20Minimalist%20Music%20Studio%20Logo.jpg"
+            alt="Golfinmallorca.com"
+            className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${
+              isScrolled ? '' : 'brightness-0 invert'
+            }`}
+          />
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-6">
           <button
             onClick={() => scrollToSection('courses')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
+            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
             data-testid="nav-courses"
           >
             {t('nav.courses')}
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
+            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
             data-testid="nav-hotels"
           >
             {t('offers.hotels')}
