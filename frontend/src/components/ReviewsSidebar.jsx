@@ -180,7 +180,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
       <div className="h-20 flex-shrink-0"></div>
       
       {/* Header with Stats */}
-      <div className="p-5 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
+      <div className="p-5 border-b-2 border-amber-500 bg-brand-charcoal flex-shrink-0">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-serif font-bold text-white italic">Reviews</h2>
           <button
