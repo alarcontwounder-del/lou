@@ -860,7 +860,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://www.hotelcanferrereta.com/static/svg/logos/logo-white.svg",
+        "image": "https://www.hotelcanferrereta.com/backoffice/images/645-152cf1300x870.jpg",
         "location": "Santanyí",
         "full_address": "Carrer de Can Ferrereta, 12, 07650 Santanyí, Illes Balears, Spain",
         "deal": {
