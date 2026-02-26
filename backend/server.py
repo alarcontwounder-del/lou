@@ -149,6 +149,26 @@ class ClientReviewCreate(BaseModel):
     language: str = "EN"
     review_text: str
 
+# User-submitted review model (requires auth, pending approval)
+class UserReviewSubmission(BaseModel):
+    rating: int = Field(ge=1, le=5)
+    review_text: str
+    platform: str = "Google"  # The platform they used to sign in
+
+class UserReview(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    review_id: str = Field(default_factory=lambda: f"review_{uuid.uuid4().hex[:12]}")
+    user_id: str  # Links to authenticated user
+    user_name: str
+    user_email: str
+    user_picture: Optional[str] = None
+    rating: int = Field(ge=1, le=5)
+    review_text: str
+    platform: str  # Google, Facebook, etc.
+    status: str = "pending"  # pending, approved, rejected
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    reviewed_at: Optional[datetime] = None
+
 # Real reviews data from CSV with English translations
 REVIEWS_DATA = [
     {'id': 1, 'user_name': 'Mark S.', 'age': 45, 'gender': 'Male', 'country': 'UK', 'platform': 'Trustpilot', 'rating': 5, 'language': 'EN',
