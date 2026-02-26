@@ -22,33 +22,36 @@ const TrustpilotLogo = () => (
 
 const TripAdvisorLogo = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24">
-    <circle fill="#34E0A1" cx="12" cy="12" r="10"/>
-    <circle fill="white" cx="8" cy="11" r="3"/>
-    <circle fill="white" cx="16" cy="11" r="3"/>
-    <circle fill="#000" cx="8" cy="11" r="1.5"/>
-    <circle fill="#000" cx="16" cy="11" r="1.5"/>
-  </svg>
-);
-
-const YelpLogo = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24">
-    <path fill="#FF1A1A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2zm4 8h-2v-4h2v4zm0-6h-2V9h2v2z"/>
+    <circle fill="#34E0A1" cx="12" cy="12" r="11"/>
+    <circle fill="white" cx="8" cy="10" r="3.5"/>
+    <circle fill="white" cx="16" cy="10" r="3.5"/>
+    <circle fill="#000" cx="8" cy="10" r="1.8"/>
+    <circle fill="#000" cx="16" cy="10" r="1.8"/>
+    <ellipse fill="#FF5722" cx="12" cy="16" rx="3" ry="1.5"/>
   </svg>
 );
 
 const FacebookLogo = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24">
-    <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    <circle fill="#1877F2" cx="12" cy="12" r="11"/>
+    <path fill="white" d="M16.5 8H14c-.5 0-1 .5-1 1v2h3.5l-.5 3H13v7h-3v-7H8v-3h2V9c0-2 1.5-3.5 3.5-3.5h3v2.5z"/>
+  </svg>
+);
+
+const YelpLogo = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24">
+    <circle fill="#D32323" cx="12" cy="12" r="11"/>
+    <path fill="white" d="M10 6v5l-3 2v-5l3-2zm4 0v5l3 2v-5l-3-2zm-2 7l-3 3h6l-3-3z"/>
   </svg>
 );
 
 const platformLogos = {
-  'Google Reviews': GoogleLogo,
-  'Google': GoogleLogo,
-  'Trustpilot': TrustpilotLogo,
-  'TripAdvisor': TripAdvisorLogo,
-  'Yelp': YelpLogo,
-  'Facebook': FacebookLogo,
+  'Google Reviews': { Logo: GoogleLogo, name: 'Google', color: '#4285F4' },
+  'Google': { Logo: GoogleLogo, name: 'Google', color: '#4285F4' },
+  'Trustpilot': { Logo: TrustpilotLogo, name: 'Trustpilot', color: '#00B67A' },
+  'TripAdvisor': { Logo: TripAdvisorLogo, name: 'TripAdvisor', color: '#34E0A1' },
+  'Yelp': { Logo: YelpLogo, name: 'Yelp', color: '#D32323' },
+  'Facebook': { Logo: FacebookLogo, name: 'Facebook', color: '#1877F2' },
 };
 
 const StarRating = ({ rating }) => (
