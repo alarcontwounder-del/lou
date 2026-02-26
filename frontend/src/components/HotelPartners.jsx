@@ -36,12 +36,12 @@ const HotelCard = ({ hotel, language, t }) => (
           {(hotel.category || hotel.region) && (
             <div className="flex items-center gap-2 mb-2">
               {hotel.category && (
-                <span className="text-xs px-2 py-1 bg-brand-sand/20 text-brand-green font-medium rounded">
+                <span className="text-xs px-2 py-1 bg-brand-slate/20 text-brand-charcoal font-medium rounded">
                   {hotel.category}
                 </span>
               )}
               {hotel.region && (
-                <span className="text-xs px-2 py-1 bg-brand-green/10 text-brand-green font-medium rounded">
+                <span className="text-xs px-2 py-1 bg-brand-charcoal/10 text-brand-charcoal font-medium rounded">
                   {hotel.region}
                 </span>
               )}

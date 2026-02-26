@@ -41,7 +41,7 @@ const RestaurantCard = ({ restaurant, language, t }) => (
                 </span>
               )}
               {restaurant.municipality && (
-                <span className="text-xs px-2 py-1 bg-brand-terracotta/10 text-brand-terracotta font-medium rounded">
+                <span className="text-xs px-2 py-1 bg-brand-slate/10 text-brand-slate font-medium rounded">
                   {restaurant.municipality}
                 </span>
               )}
