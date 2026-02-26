@@ -58,18 +58,16 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f00349dc_1.png"
             alt="Golfinmallorca.com"
-            className={`h-16 md:h-20 w-auto object-contain transition-all duration-300 ${
-              isScrolled ? '' : 'brightness-0 invert drop-shadow-lg'
-            }`}
+            className="h-20 md:h-24 w-auto object-contain transition-all duration-300"
           />
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           <button
             onClick={() => scrollToSection('courses')}
-            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
-              isScrolled ? 'text-stone-800' : 'text-white'
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-courses"
           >
@@ -77,8 +75,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
-            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
-              isScrolled ? 'text-stone-800' : 'text-white'
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-hotels"
           >
