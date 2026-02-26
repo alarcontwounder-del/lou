@@ -23,12 +23,12 @@ export const Hero = () => {
       <div className="hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
+      <div className="relative z-10 min-h-screen flex items-center px-4 sm:px-6">
         <div className="container-custom w-full">
           <div className="max-w-3xl">
             {/* Subtitle */}
             <p
-              className="text-white text-sm uppercase tracking-[0.3em] mb-6 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] font-semibold"
+              className="text-white text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-semibold"
               data-testid="hero-subtitle"
             >
               {t('hero.subtitle')}
@@ -36,7 +36,7 @@ export const Hero = () => {
 
             {/* Title */}
             <h1
-              className="font-heading text-5xl md:text-7xl text-white font-medium leading-tight mb-8 opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]"
+              className="font-heading text-4xl sm:text-5xl md:text-7xl text-white font-medium leading-tight mb-6 sm:mb-8 opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
               data-testid="hero-title"
             >
               {t('hero.title')}
@@ -44,7 +44,7 @@ export const Hero = () => {
 
             {/* Description */}
             <p
-              className="text-white text-lg md:text-xl leading-relaxed mb-12 max-w-xl opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+              className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-12 max-w-xl opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
               data-testid="hero-description"
             >
               {t('hero.description')}
@@ -56,7 +56,7 @@ export const Hero = () => {
                 href="https://golfinmallorca.greenfee365.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-full bg-white/90 text-stone-800 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-white text-stone-800 hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl"
                 data-testid="hero-book-tee-time"
               >
                 {t('hero.bookTeeTime')}
@@ -64,7 +64,7 @@ export const Hero = () => {
               </a>
               <button
                 onClick={() => scrollToSection('courses')}
-                className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-full border border-white/60 text-white hover:bg-white/20 transition-all duration-300 backdrop-blur-sm"
+                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-full border-2 border-white/70 text-white hover:bg-white/20 transition-all duration-300"
                 data-testid="hero-cta-secondary"
               >
                 {t('hero.ctaSecondary')}
