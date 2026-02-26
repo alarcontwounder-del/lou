@@ -1292,7 +1292,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe complet avec jardins méditerranéens, forfaits golf et options de restauration de classe mondiale.",
             "se": "Komplett lyxresort med medelhavsträdgårdar, golfpaket och världsklass matställen.",
         },
-        "image": "https://www.fincaserenamallorca.com/wp-content/uploads/2019/05/finca-serena-exterior.jpg",
+        "image": "https://wa-uploads.profitroom.com/castellsonclaret/666x952/16946874185587_castellsonclaretluxuryhotelinmallorca4.jpg",
         "location": "Port d’Andratx",
         "full_address": "Carrer de Cala d’Egos, s/n, 07157 Port d’Andratx, Illes Balears, Spain",
         "deal": {
@@ -1316,7 +1316,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://www.tenmallorca.com/wp-content/uploads/2019/10/ten-mallorca-pool.jpg",
+        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
         "location": "Calvià",
         "full_address": "Carretera Es Capdellà–Galilea, km 1.7, 07196 Calvià, Illes Balears, Spain",
         "deal": {
