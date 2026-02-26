@@ -54,7 +54,7 @@ const ReviewCard = ({ review }) => {
       className="bg-white border border-stone-100 rounded-2xl p-5 hover:shadow-lg transition-shadow duration-300 relative group"
       data-testid={`review-card-${review.id}`}
     >
-      <Quote className="absolute top-4 right-4 w-6 h-6 text-brand-sand/20 group-hover:text-brand-sand/40 transition-colors" />
+      <Quote className="absolute top-4 right-4 w-6 h-6 text-brand-slate/20 group-hover:text-brand-slate/40 transition-colors" />
       <div className="flex items-center justify-between mb-3">
         <PlatformBadge platform={review.platform} />
         <StarRating rating={review.rating} />
@@ -63,7 +63,7 @@ const ReviewCard = ({ review }) => {
         "{review.review_text}"
       </p>
       <div className="flex items-center gap-3 pt-3 border-t border-stone-100">
-        <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green font-bold text-sm shrink-0">
+        <div className="w-9 h-9 rounded-full bg-brand-slate/10 flex items-center justify-center text-brand-charcoal font-bold text-sm shrink-0">
           {review.user_name.split(' ').map(n => n[0]).join('')}
         </div>
         <div className="flex-1 min-w-0">
@@ -79,7 +79,7 @@ const ReviewCard = ({ review }) => {
 const StatCard = ({ icon: Icon, value, label, testId }) => (
   <div className="flex flex-col items-center text-center px-4 py-3" data-testid={testId}>
     <div className="flex items-center gap-2 mb-1">
-      <Icon className="w-5 h-5 text-brand-terracotta" />
+      <Icon className="w-5 h-5 text-brand-slate" />
       <span className="text-3xl md:text-4xl font-bold text-stone-900">{value}</span>
     </div>
     <span className="text-xs md:text-sm text-stone-500 uppercase tracking-wider font-medium">{label}</span>
@@ -153,7 +153,7 @@ export const Reviews = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-8">
-          <p className="text-brand-terracotta text-sm uppercase tracking-[0.2em] mb-4" data-testid="reviews-subtitle">
+          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="reviews-subtitle">
             {t('reviews.subtitle')}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-3" data-testid="reviews-title">
@@ -206,14 +206,14 @@ export const Reviews = () => {
               placeholder="Search by country, platform, or keyword..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-stone-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 border border-stone-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-slate/20 focus:border-brand-slate transition-colors"
               data-testid="reviews-search"
             />
           </div>
           <select
             value={filterPlatform}
             onChange={(e) => setFilterPlatform(e.target.value)}
-            className="px-4 py-2.5 border border-stone-200 rounded-xl text-sm bg-white text-stone-600 focus:outline-none focus:ring-2 focus:ring-brand-green/20 cursor-pointer"
+            className="px-4 py-2.5 border border-stone-200 rounded-xl text-sm bg-white text-stone-600 focus:outline-none focus:ring-2 focus:ring-brand-slate/20 cursor-pointer"
             data-testid="reviews-filter-platform"
           >
             <option value="">All Platforms</option>
@@ -224,7 +224,7 @@ export const Reviews = () => {
           <select
             value={filterCountry}
             onChange={(e) => setFilterCountry(e.target.value)}
-            className="px-4 py-2.5 border border-stone-200 rounded-xl text-sm bg-white text-stone-600 focus:outline-none focus:ring-2 focus:ring-brand-green/20 cursor-pointer"
+            className="px-4 py-2.5 border border-stone-200 rounded-xl text-sm bg-white text-stone-600 focus:outline-none focus:ring-2 focus:ring-brand-slate/20 cursor-pointer"
             data-testid="reviews-filter-country"
           >
             <option value="">All Countries</option>
@@ -275,7 +275,7 @@ export const Reviews = () => {
                     onClick={() => setCurrentPage(item)}
                     className={`w-10 h-10 rounded-xl text-sm font-medium transition-colors ${
                       currentPage === item
-                        ? 'bg-brand-green text-white shadow-sm'
+                        ? 'bg-brand-charcoal text-white shadow-sm'
                         : 'border border-stone-200 text-stone-600 hover:bg-stone-50'
                     }`}
                     data-testid={`pagination-page-${item}`}
