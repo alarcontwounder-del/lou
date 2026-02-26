@@ -59,8 +59,12 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/uslds9ge_Black%20and%20White%20Minimalist%20Music%20Studio%20Logo.jpg"
             alt="Golfinmallorca.com"
             className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${
-              isScrolled ? '' : 'brightness-0 invert'
+              isScrolled ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
             }`}
+            style={{ 
+              filter: isScrolled ? 'none' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+              backgroundColor: 'transparent'
+            }}
           />
         </a>
 
