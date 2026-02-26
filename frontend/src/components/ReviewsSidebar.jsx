@@ -273,9 +273,17 @@ export const ReviewsSidebar = ({ isVisible }) => {
         )}
       </div>
       
-      {/* Footer Stats */}
-      <div className="p-4 border-t border-stone-600 bg-brand-charcoal">
-        <p className="text-xs text-stone-400 text-center">
+      {/* Footer with Write Review Button */}
+      <div className="p-4 border-t border-stone-300 bg-stone-100 flex-shrink-0">
+        <button
+          onClick={() => setIsReviewModalOpen(true)}
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
+          data-testid="write-review-btn-footer"
+        >
+          <PenLine className="w-5 h-5" />
+          <span>Write a Review</span>
+        </button>
+        <p className="text-xs text-stone-500 text-center mt-2">
           Showing {filteredReviews.length} of {reviews.length} verified reviews
         </p>
       </div>
