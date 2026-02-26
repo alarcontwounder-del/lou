@@ -40,7 +40,7 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 ## Prioritized Backlog
 
 ### P0 - Critical
-- [ ] Fix remaining restaurant images (Zaranda, Es Fum, Sa Clastra, Andreu Genestra)
+- [x] ~~Fix remaining restaurant images (Zaranda, Es Fum, Sa Clastra, Andreu Genestra)~~ ✅ COMPLETED
 
 ### P1 - High Priority  
 - [ ] Email functionality (needs RESEND_API_KEY, SENDER_EMAIL)
