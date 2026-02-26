@@ -75,13 +75,18 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Elegant phantom arrow */}
       <button
         onClick={() => scrollToSection('about')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors cursor-pointer z-10"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 group"
         data-testid="scroll-indicator"
       >
-        <ChevronDown className="w-8 h-8 animate-bounce" />
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-white/60 text-xs uppercase tracking-[0.2em] font-light group-hover:text-white/80 transition-colors">Scroll</span>
+          <div className="w-8 h-14 rounded-full border-2 border-white/30 flex items-start justify-center pt-2 group-hover:border-white/50 transition-colors">
+            <div className="w-1.5 h-3 bg-white/60 rounded-full animate-bounce group-hover:bg-white/80 transition-colors"></div>
+          </div>
+        </div>
       </button>
     </section>
   );
