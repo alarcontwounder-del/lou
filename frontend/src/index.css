@@ -51,22 +51,80 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Hidden by default, shows on hover */
+html {
+  scrollbar-width: none; /* Firefox */
+}
+
+html:hover {
+  scrollbar-width: thin; /* Firefox - show on hover */
+}
+
+body {
+  overflow-y: scroll;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
+  transition: width 0.3s ease;
+}
+
+/* Show scrollbar on body/html hover */
+body:hover::-webkit-scrollbar,
+html:hover::-webkit-scrollbar {
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--brand-cream);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--brand-sand);
-  border-radius: 4px;
+  background: rgba(120, 113, 108, 0.4);
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-terracotta);
+  background: rgba(120, 113, 108, 0.7);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Custom scrollbar for sidebar and other scrollable areas */
+.custom-scrollbar {
+  scrollbar-width: none;
+}
+
+.custom-scrollbar:hover {
+  scrollbar-width: thin;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.3);
+  border-radius: 5px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 113, 108, 0.7);
 }
 
 /* Selection color */
