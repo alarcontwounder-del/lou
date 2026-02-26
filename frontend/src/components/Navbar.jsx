@@ -53,7 +53,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           href="#hero"
           onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
           className={`font-heading text-2xl font-semibold tracking-tight transition-colors duration-300 ${
-            isScrolled ? 'text-brand-green' : 'text-white'
+            isScrolled ? 'text-brand-charcoal' : 'text-white'
           }`}
           data-testid="logo"
         >
@@ -64,42 +64,42 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
         <div className="hidden md:flex items-center gap-5">
           <button
             onClick={() => scrollToSection('courses')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
             data-testid="nav-courses"
           >
             {t('nav.courses')}
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
             data-testid="nav-hotels"
           >
             {t('offers.hotels')}
           </button>
           <button
             onClick={() => scrollToSection('restaurants')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
             data-testid="nav-restaurants"
           >
             {t('restaurants.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('reviews')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
             data-testid="nav-reviews"
           >
             {t('reviews.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
             data-testid="nav-blog"
           >
             {t('blog.subtitle')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-green' : ''}`}
+            className={`nav-link ${isScrolled ? 'text-stone-700 hover:text-brand-slate' : ''}`}
             data-testid="nav-contact"
           >
             {t('nav.contact')}
@@ -110,7 +110,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
             <DropdownMenuTrigger
               className={`flex items-center gap-1 px-3 py-2 rounded-full border transition-colors duration-300 ${
                 isScrolled
-                  ? 'border-stone-200 text-stone-700 hover:border-brand-green'
+                  ? 'border-stone-200 text-stone-700 hover:border-brand-slate'
                   : 'border-white/30 text-white hover:border-white'
               }`}
               data-testid="language-selector"
@@ -123,7 +123,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
                 <DropdownMenuItem
                   key={lang.code}
                   onClick={() => changeLanguage(lang.code)}
-                  className={`cursor-pointer ${language === lang.code ? 'bg-brand-sand/20' : ''}`}
+                  className={`cursor-pointer ${language === lang.code ? 'bg-brand-slate/20' : ''}`}
                   data-testid={`lang-${lang.code}`}
                 >
                   <span className="mr-2">{lang.flag}</span>
@@ -139,13 +139,13 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
               onClick={onAdminClick}
               className={`p-2 rounded-full transition-colors duration-300 ${
                 isScrolled
-                  ? 'text-stone-500 hover:text-brand-green hover:bg-stone-100'
+                  ? 'text-stone-500 hover:text-brand-slate hover:bg-stone-100'
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
               title={isAuthenticated ? 'Admin Dashboard' : 'Admin Login'}
               data-testid="admin-btn"
             >
-              <Settings className={`w-5 h-5 ${isAuthenticated ? 'text-brand-green' : ''}`} />
+              <Settings className={`w-5 h-5 ${isAuthenticated ? 'text-brand-slate' : ''}`} />
             </button>
           )}
 
@@ -163,7 +163,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden p-2 ${isScrolled ? 'text-brand-green' : 'text-white'}`}
+          className={`md:hidden p-2 ${isScrolled ? 'text-brand-charcoal' : 'text-white'}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-testid="mobile-menu-btn"
         >
@@ -180,37 +180,37 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => scrollToSection('courses')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
               {t('nav.courses')}
             </button>
             <button
               onClick={() => scrollToSection('hotels')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
               {t('offers.hotels')}
             </button>
             <button
               onClick={() => scrollToSection('restaurants')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
               {t('restaurants.subtitle')}
             </button>
             <button
               onClick={() => scrollToSection('reviews')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
               {t('reviews.subtitle')}
             </button>
             <button
               onClick={() => scrollToSection('blog')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
               {t('blog.subtitle')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-left py-2 text-stone-700 hover:text-brand-green font-medium"
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
               {t('nav.contact')}
             </button>
@@ -223,7 +223,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
                   onClick={() => changeLanguage(lang.code)}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                     language === lang.code
-                      ? 'bg-brand-green text-white'
+                      ? 'bg-brand-charcoal text-white'
                       : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
                   }`}
                 >
@@ -239,9 +239,9 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
                   setMobileMenuOpen(false);
                   onAdminClick();
                 }}
-                className="flex items-center gap-2 text-left py-2 text-stone-700 hover:text-brand-green font-medium border-t border-stone-100 mt-2 pt-4"
+                className="flex items-center gap-2 text-left py-2 text-stone-700 hover:text-brand-slate font-medium border-t border-stone-100 mt-2 pt-4"
               >
-                <Settings className={`w-5 h-5 ${isAuthenticated ? "text-brand-green" : ""}`} />
+                <Settings className={`w-5 h-5 ${isAuthenticated ? "text-brand-slate" : ""}`} />
                 {isAuthenticated ? "Admin Dashboard" : "Admin Login"}
               </button>
             )}
