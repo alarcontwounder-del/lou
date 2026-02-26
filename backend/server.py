@@ -980,7 +980,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine de luxe privé avec terrains expansifs, service raffiné et partenariats golf exclusifs avec des parcours de premier ordre.",
             "se": "Privat lyxegendom med vidsträckta marker, förfinad service och exklusiva golfpartnerskap med förstklassiga banor.",
         },
-        "image": "https://images.pexels.com/photos/28443535/pexels-photo-28443535.jpeg?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/265432100.jpg",
         "location": "Sencelles",
         "full_address": "Camí de Son Xotano, 07140 Sencelles, Illes Balears, Spain",
         "deal": {
@@ -1004,7 +1004,7 @@ PARTNER_OFFERS = [
             "fr": "Propriété ultra-luxe avec équipements de classe mondiale, restaurants Michelin et forfaits golf exceptionnels.",
             "se": "Ultra-lyxig fastighet med världsklass bekvämligheter, Michelin-restauranger och exceptionella golfpaket.",
         },
-        "image": "https://images.unsplash.com/photo-1691322449342-37a5295098c8?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/312456789.jpg",
         "location": "Deià",
         "full_address": "Carrer son Canals, 07179 Deià, Illes Balears, Spain",
         "deal": {
@@ -1028,7 +1028,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://images.unsplash.com/photo-1666455231536-e5cf8b48db7d?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/345678901.jpg",
         "location": "Banyalbufar",
         "full_address": "Ctra. C-710, km 83.7, 07191 Banyalbufar, Illes Balears, Spain",
         "deal": {
@@ -1052,7 +1052,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe classique avec élégance intemporelle, équipements premium et accès pratique aux parcours de golf de championnat.",
             "se": "Klassiskt lyxhotell med tidlös elegans, premium bekvämligheter och bekväm tillgång till mästerskap golfbanor.",
         },
-        "image": "https://images.unsplash.com/photo-1682194573353-ee183e5c3c89?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/378901234.jpg",
         "location": "Sóller",
         "full_address": "Carrer de Romaguera, 18, 07100 Sóller, Illes Balears, Spain",
         "deal": {
@@ -1711,7 +1711,7 @@ PARTNER_OFFERS = [
             "fr": "Bar à tapas espagnol contemporain avec des petites assiettes créatives et une atmosphère vibrante.",
             "se": "Samtida spansk tapasbar med kreativa smårätter och livlig atmosfär.",
         },
-        "image": "https://images.pexels.com/photos/785541/pexels-photo-785541.jpeg?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300245?width=800",
         "location": "Palma",
         "full_address": "Carrer de Can Brondo 4, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -1736,7 +1736,7 @@ PARTNER_OFFERS = [
             "fr": "Cuisine traditionnelle majorquine authentique célébrant les saveurs locales et le patrimoine.",
             "se": "Äkta traditionell mallorkinsk mat som firar lokala smaker och arv.",
         },
-        "image": "https://images.pexels.com/photos/1545399/pexels-photo-1545399.jpeg?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300278?width=800",
         "location": "Caimari",
         "full_address": "Carrer de l’Església 1, 07314 Caimari, Mallorca, Spain",
         "deal": {
@@ -1761,7 +1761,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Deià.",
             "se": "Fin matupplevelse med samtida medelhavskök i Deià.",
         },
-        "image": "https://images.unsplash.com/photo-1656397149243-91bfd4fa0f6f?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300311?width=800",
         "location": "Deià",
         "full_address": "Carrer Bisbe Nadal 10, 07179 Deià, Mallorca, Spain",
         "deal": {
@@ -2086,7 +2086,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.pexels.com/photos/785541/pexels-photo-785541.jpeg?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300245?width=800",
         "location": "Palma",
         "full_address": "Carrer de Ramon y Cajal 12, 07011 Palma, Mallorca, Spain",
         "deal": {
@@ -2111,7 +2111,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.pexels.com/photos/1545399/pexels-photo-1545399.jpeg?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300278?width=800",
         "location": "Palma",
         "full_address": "Carrer de Sant Jaume 3, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -2136,7 +2136,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Selva.",
             "se": "Fin matupplevelse med samtida medelhavskök i Selva.",
         },
-        "image": "https://images.unsplash.com/photo-1656397149243-91bfd4fa0f6f?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300311?width=800",
         "location": "Selva",
         "full_address": "Plaça Nova, 07313 Selva, Mallorca, Spain",
         "deal": {
