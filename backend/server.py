@@ -1486,7 +1486,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://adrianquetglas.es/wp-content/uploads/logo-adrian-quetglas.png",
+        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
         "location": "Palma",
         "full_address": "Passeig de Mallorca 20, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -1861,7 +1861,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://adrianquetglas.es/wp-content/uploads/logo-adrian-quetglas.png",
+        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
         "location": "Port de Pollença",
         "full_address": "Carretera Formentor s/n, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
@@ -2236,7 +2236,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Portocolom.",
             "se": "Fin matupplevelse med samtida medelhavskök i Portocolom.",
         },
-        "image": "https://adrianquetglas.es/wp-content/uploads/logo-adrian-quetglas.png",
+        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
         "location": "Portocolom",
         "full_address": "Passeig del Port, 07670 Portocolom, Mallorca, Spain",
         "deal": {
