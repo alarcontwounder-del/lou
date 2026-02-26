@@ -84,8 +84,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           </button>
           <button
             onClick={() => scrollToSection('restaurants')}
-            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
-              isScrolled ? 'text-stone-800' : 'text-white'
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-restaurants"
           >
@@ -93,8 +93,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           </button>
           <button
             onClick={() => scrollToSection('reviews')}
-            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
-              isScrolled ? 'text-stone-800' : 'text-white'
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-reviews"
           >
@@ -102,8 +102,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
-              isScrolled ? 'text-stone-800' : 'text-white'
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-blog"
           >
@@ -111,8 +111,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
-              isScrolled ? 'text-stone-800' : 'text-white'
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-contact"
           >
