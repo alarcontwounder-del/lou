@@ -20,11 +20,36 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="font-heading text-3xl mb-4">Golfinmallorca.com</h3>
+            {/* Logo */}
+            <img 
+              src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/uslds9ge_Black%20and%20White%20Minimalist%20Music%20Studio%20Logo.jpg"
+              alt="Golfinmallorca.com"
+              className="h-16 w-auto object-contain brightness-0 invert mb-4"
+            />
             <p className="text-white/70 max-w-md mb-6">
               The leading golf agency in Mallorca since 2003. Only exclusive operator based on the island specializing in all types of golf services.
             </p>
-            {/* Social Links - To be added later */}
+            {/* Social Links */}
+            <div className="flex items-center gap-4 mb-4">
+              <a 
+                href="https://www.facebook.com/golfinmallorca" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors group"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5 text-white/80 group-hover:text-white" />
+              </a>
+              <a 
+                href="https://www.instagram.com/golfinmallorca" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors group"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5 text-white/80 group-hover:text-white" />
+              </a>
+            </div>
             <p className="text-white/50 text-sm">
               Website: <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors">golfinmallorca.com</a>
             </p>
