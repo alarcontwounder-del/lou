@@ -1561,7 +1561,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://andreugenestra.com/wp-content/uploads/andreu-genestra-restaurant.jpg",
+        "image": "https://andreugenestra.com/wp-content/uploads/2025/11/andreu-genestra-carrusel-21.jpg",
         "location": "Palma",
         "full_address": "Carrer de Bala Roja 1, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -1586,7 +1586,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://zaranda.es/wp-content/uploads/zaranda-restaurant.jpg",
+        "image": "https://zaranda.es/wp-content/uploads/2025/12/cierre-temporada-esp-3.jpg",
         "location": "Costa d\'en Blanes",
         "full_address": "Ma-1 19, 07181 Costa d\'en Blanes, Mallorca, Spain",
         "deal": {
@@ -1936,7 +1936,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://andreugenestra.com/wp-content/uploads/andreu-genestra-restaurant.jpg",
+        "image": "https://andreugenestra.com/wp-content/uploads/2025/11/andreu-genestra-carrusel-21.jpg",
         "location": "Palma",
         "full_address": "Carrer de la Fàbrica 30, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -1961,7 +1961,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Sóller.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Sóller.",
         },
-        "image": "https://zaranda.es/wp-content/uploads/zaranda-restaurant.jpg",
+        "image": "https://zaranda.es/wp-content/uploads/2025/12/cierre-temporada-esp-3.jpg",
         "location": "Port de Sóller",
         "full_address": "Carrer de Bèlgica s/n, 07108 Port de Sóller, Mallorca, Spain",
         "deal": {
