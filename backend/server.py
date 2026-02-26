@@ -1511,7 +1511,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://macadecastro.com/wp-content/uploads/maca-restaurant.jpg",
+        "image": "https://macadecastro.com/wp-content/uploads/2024/04/image-1.png",
         "location": "Port d’Alcúdia",
         "full_address": "Carrer de Juno s/n, 07400 Port d’Alcúdia, Mallorca, Spain",
         "deal": {
@@ -1886,7 +1886,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Santanyí.",
             "se": "Fin matupplevelse med samtida medelhavskök i Santanyí.",
         },
-        "image": "https://macadecastro.com/wp-content/uploads/maca-restaurant.jpg",
+        "image": "https://macadecastro.com/wp-content/uploads/2024/04/image-1.png",
         "location": "Santanyí",
         "full_address": "Carrer del Pintor Bernareggi 17, 07650 Santanyí, Mallorca, Spain",
         "deal": {
@@ -2261,7 +2261,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Escorca.",
             "se": "Fin matupplevelse med samtida medelhavskök i Escorca.",
         },
-        "image": "https://macadecastro.com/wp-content/uploads/maca-restaurant.jpg",
+        "image": "https://macadecastro.com/wp-content/uploads/2024/04/image-1.png",
         "location": "Escorca",
         "full_address": "Carretera Lluc–Escorca km 5.2, 07315 Escorca, Mallorca, Spain",
         "deal": {
