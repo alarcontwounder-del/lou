@@ -104,7 +104,13 @@ const ReviewCard = ({ review, index }) => {
   const avatarColor = avatarColors[index % avatarColors.length];
   const isEnglish = review.language === 'EN';
   const displayText = showTranslation ? review.review_text_en : review.review_text;
-  const badge = platformBadges[review.platform] || { bg: 'bg-stone-100', text: 'text-stone-600', border: 'border-stone-200', label: review.platform };
+  const platform = platformConfig[review.platform] || { 
+    Logo: () => null, 
+    bg: 'bg-stone-100', 
+    text: 'text-stone-600', 
+    border: 'border-stone-200', 
+    label: review.platform 
+  };
 
   useEffect(() => {
     const node = cardRef.current;
@@ -126,8 +132,12 @@ const ReviewCard = ({ review, index }) => {
       data-testid={`review-card-${review.id}`}
     >
       <Quote className="absolute top-4 right-4 w-8 h-8 text-brand-slate/20 group-hover:text-brand-slate/40 transition-colors" />
-      <div className={`${badge.bg} ${badge.text} border ${badge.border} text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4`}>
-        {badge.label}
+      
+      {/* Platform Badge with Logo */}
+      <div className={`${platform.bg} ${platform.text} border ${platform.border} text-xs font-semibold px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-4`}>
+        <platform.Logo />
+        <span>{platform.label}</span>
+      </div>
       </div>
       <div className="flex items-center gap-3 mb-4">
         <div className="relative flex-shrink-0">
