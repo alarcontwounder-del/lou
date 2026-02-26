@@ -764,7 +764,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://www.canauliluxuryretreat.com/wp-content/uploads/sites/2/2021/10/pollenca-can-auli-hotel.jpg",
+        "image": "https://www.simpsontravel.com/media/odsl2bpk/can-auli_pool-terrace-night.jpg?width=800&height=600",
         "location": "Pollença",
         "full_address": "Carrer de Can Aulí, 5, 07460 Pollença, Illes Balears, Spain",
         "deal": {
