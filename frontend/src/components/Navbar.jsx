@@ -56,13 +56,11 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           data-testid="logo"
         >
           <img 
-            src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/uslds9ge_Black%20and%20White%20Minimalist%20Music%20Studio%20Logo.jpg"
+            src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f00349dc_1.png"
             alt="Golfinmallorca.com"
-            className="h-16 md:h-20 w-auto object-contain transition-all duration-300"
-            style={{ 
-              mixBlendMode: isScrolled ? 'normal' : 'multiply',
-              filter: isScrolled ? 'none' : 'contrast(1.2)'
-            }}
+            className={`h-16 md:h-20 w-auto object-contain transition-all duration-300 ${
+              isScrolled ? '' : 'brightness-0 invert drop-shadow-lg'
+            }`}
           />
         </a>
 
