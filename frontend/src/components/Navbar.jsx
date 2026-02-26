@@ -58,28 +58,30 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/uslds9ge_Black%20and%20White%20Minimalist%20Music%20Studio%20Logo.jpg"
             alt="Golfinmallorca.com"
-            className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${
-              isScrolled ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
-            }`}
+            className="h-16 md:h-20 w-auto object-contain transition-all duration-300"
             style={{ 
-              filter: isScrolled ? 'none' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
-              backgroundColor: 'transparent'
+              mixBlendMode: isScrolled ? 'normal' : 'multiply',
+              filter: isScrolled ? 'none' : 'contrast(1.2)'
             }}
           />
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           <button
             onClick={() => scrollToSection('courses')}
-            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
+            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
+              isScrolled ? 'text-stone-800' : 'text-white'
+            }`}
             data-testid="nav-courses"
           >
             {t('nav.courses')}
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
-            className={`nav-link text-sm md:text-base font-medium tracking-wide ${isScrolled ? 'text-stone-800 hover:text-brand-slate' : 'text-brand-cream hover:text-white'}`}
+            className={`text-base font-semibold tracking-wider uppercase transition-all duration-300 hover:opacity-80 ${
+              isScrolled ? 'text-stone-800' : 'text-white'
+            }`}
             data-testid="nav-hotels"
           >
             {t('offers.hotels')}
