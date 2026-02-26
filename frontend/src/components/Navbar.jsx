@@ -58,9 +58,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className={`h-28 md:h-32 w-auto object-contain transition-all duration-300 ${
-              isScrolled ? '' : 'brightness-0 sepia saturate-[10] hue-rotate-[350deg] brightness-[0.9]'
-            }`}
+            className="h-28 md:h-32 w-auto object-contain transition-all duration-300"
+            style={isScrolled ? {} : { filter: 'brightness(0) saturate(100%) invert(76%) sepia(30%) saturate(500%) hue-rotate(180deg)' }}
           />
         </a>
 
