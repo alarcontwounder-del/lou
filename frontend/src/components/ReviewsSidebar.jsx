@@ -178,7 +178,17 @@ export const ReviewsSidebar = ({ isVisible }) => {
     >
       {/* Header with Stats */}
       <div className="p-5 border-b border-stone-600 bg-brand-charcoal">
-        <h2 className="text-2xl font-serif font-bold text-white mb-4 italic">Reviews</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-serif font-bold text-white italic">Reviews</h2>
+          <button
+            onClick={() => setIsReviewModalOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-stone-900 text-xs font-semibold rounded-full transition-colors"
+            data-testid="write-review-btn"
+          >
+            <PenLine className="w-3.5 h-3.5" />
+            <span>Write Review</span>
+          </button>
+        </div>
         
         {/* Stats Row */}
         <div className="grid grid-cols-3 gap-3 mb-4">
