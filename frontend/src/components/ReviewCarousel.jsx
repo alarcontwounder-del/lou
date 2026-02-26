@@ -138,7 +138,6 @@ const ReviewCard = ({ review, index }) => {
         <platform.Logo />
         <span>{platform.label}</span>
       </div>
-      </div>
       <div className="flex items-center gap-3 mb-4">
         <div className="relative flex-shrink-0">
           <div className={`w-12 h-12 rounded-full ${avatarColor} flex items-center justify-center text-white font-bold text-sm shadow-md`}>
