@@ -55,15 +55,13 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           className="transition-all duration-300"
           data-testid="logo"
         >
-          <div className={`transition-all duration-300 ${
-            isScrolled ? '' : 'bg-white/40 backdrop-blur-md rounded-xl px-5 py-3'
-          }`}>
-            <img 
-              src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
-              alt="Golf in Mallorca Spain"
-              className="h-28 md:h-32 w-auto object-contain transition-all duration-300"
-            />
-          </div>
+          <img 
+            src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
+            alt="Golf in Mallorca Spain"
+            className={`h-28 md:h-32 w-auto object-contain transition-all duration-300 ${
+              isScrolled ? '' : 'brightness-0 invert'
+            }`}
+          />
         </a>
 
         {/* Desktop Navigation */}
