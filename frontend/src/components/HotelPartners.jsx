@@ -49,7 +49,7 @@ const HotelCard = ({ hotel, language, t }) => (
           )}
           
           <div 
-            className="flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-green transition-colors"
+            className="flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotel.full_address || hotel.name + ', ' + hotel.location + ', Mallorca')}`, '_blank');
