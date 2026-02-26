@@ -70,7 +70,7 @@ export const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Side - Form */}
           <div>
-            <p className="text-brand-terracotta text-sm uppercase tracking-[0.2em] mb-4" data-testid="contact-subtitle">
+            <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="contact-subtitle">
               {t('contact.subtitle')}
             </p>
             <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-6" data-testid="contact-title">
@@ -81,9 +81,9 @@ export const Contact = () => {
             </p>
 
             {success ? (
-              <div className="bg-brand-green/5 border border-brand-green/20 rounded-sm p-8 text-center" data-testid="contact-success">
-                <CheckCircle className="w-12 h-12 text-brand-green mx-auto mb-4" />
-                <p className="text-lg font-medium text-brand-green">{t('contact.success')}</p>
+              <div className="bg-brand-charcoal/5 border border-brand-charcoal/20 rounded-sm p-8 text-center" data-testid="contact-success">
+                <CheckCircle className="w-12 h-12 text-brand-charcoal mx-auto mb-4" />
+                <p className="text-lg font-medium text-brand-charcoal">{t('contact.success')}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
@@ -179,14 +179,14 @@ export const Contact = () => {
                 />
               </div>
               {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-terracotta/10 -z-10 rounded-2xl" />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-slate/10 -z-10 rounded-2xl" />
             </div>
 
             {/* Contact Info */}
             <div className="space-y-6 bg-brand-cream/50 p-8 rounded-sm">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-brand-green/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-brand-green" />
+                <div className="w-12 h-12 bg-brand-slate/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-brand-slate" />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Phone</p>
@@ -195,8 +195,8 @@ export const Contact = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-brand-green/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-brand-green" />
+                <div className="w-12 h-12 bg-brand-slate/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-brand-slate" />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Email</p>
@@ -205,8 +205,8 @@ export const Contact = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-brand-green/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-brand-green" />
+                <div className="w-12 h-12 bg-brand-slate/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-brand-slate" />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Address</p>
