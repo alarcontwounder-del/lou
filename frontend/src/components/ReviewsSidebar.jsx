@@ -121,21 +121,26 @@ const ReviewItem = ({ review }) => {
 
 export const ReviewsSidebar = ({ isVisible }) => {
   const [reviews, setReviews] = useState([]);
+  const [stats, setStats] = useState({ average_rating: 0, total_reviews: 0, by_platform: {}, by_country: {} });
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchReviews = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/api/reviews`);
-        setReviews(response.data);
+        const [reviewsRes, statsRes] = await Promise.all([
+          axios.get(`${BACKEND_URL}/api/reviews`),
+          axios.get(`${BACKEND_URL}/api/reviews/stats`)
+        ]);
+        setReviews(reviewsRes.data);
+        setStats(statsRes.data);
       } catch (error) {
         console.error('Error fetching reviews:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchReviews();
+    fetchData();
   }, []);
 
   const filteredReviews = reviews.filter(review => 
@@ -145,16 +150,59 @@ export const ReviewsSidebar = ({ isVisible }) => {
     review.platform?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const uniqueCountries = Object.keys(stats.by_country || {});
+
   if (!isVisible) return null;
 
   return (
     <aside 
-      className="fixed left-0 top-0 h-screen w-80 bg-white border-r border-stone-200 z-40 overflow-hidden flex flex-col shadow-lg hidden lg:flex pt-20"
+      className="fixed left-0 top-0 h-screen w-80 bg-gradient-to-b from-slate-50 to-slate-100/80 border-r border-slate-200 z-40 overflow-hidden flex flex-col shadow-xl hidden lg:flex pt-20"
       data-testid="reviews-sidebar"
     >
-      {/* Header */}
-      <div className="p-5 border-b border-stone-100 bg-white">
+      {/* Header with Stats */}
+      <div className="p-5 border-b border-slate-200 bg-white/70 backdrop-blur-sm">
         <h2 className="text-2xl font-serif font-bold text-stone-900 mb-4 italic">Reviews</h2>
+        
+        {/* Stats Row */}
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="text-center p-2 bg-white rounded-lg shadow-sm">
+            <div className="flex items-center justify-center gap-1">
+              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+              <span className="text-lg font-bold text-stone-900">{stats.average_rating?.toFixed(1) || '5.0'}</span>
+            </div>
+            <p className="text-[10px] text-stone-500 uppercase tracking-wide">Rating</p>
+          </div>
+          <div className="text-center p-2 bg-white rounded-lg shadow-sm">
+            <div className="flex items-center justify-center gap-1">
+              <Users className="w-4 h-4 text-brand-slate" />
+              <span className="text-lg font-bold text-stone-900">{stats.total_reviews || reviews.length}</span>
+            </div>
+            <p className="text-[10px] text-stone-500 uppercase tracking-wide">Reviews</p>
+          </div>
+          <div className="text-center p-2 bg-white rounded-lg shadow-sm">
+            <div className="flex items-center justify-center gap-1">
+              <Globe className="w-4 h-4 text-brand-slate" />
+              <span className="text-lg font-bold text-stone-900">{uniqueCountries.length}</span>
+            </div>
+            <p className="text-[10px] text-stone-500 uppercase tracking-wide">Countries</p>
+          </div>
+        </div>
+
+        {/* Platform Logos */}
+        <div className="flex items-center justify-center gap-4 mb-4 py-2 px-3 bg-white rounded-lg shadow-sm">
+          <div className="flex items-center gap-1.5" title="Google Reviews">
+            <GoogleLogo />
+            <span className="text-xs font-medium text-stone-600">{stats.by_platform?.['Google Reviews'] || 0}</span>
+          </div>
+          <div className="flex items-center gap-1.5" title="Trustpilot">
+            <TrustpilotLogo />
+            <span className="text-xs font-medium text-stone-600">{stats.by_platform?.['Trustpilot'] || 0}</span>
+          </div>
+          <div className="flex items-center gap-1.5" title="TripAdvisor">
+            <TripAdvisorLogo />
+            <span className="text-xs font-medium text-stone-600">{stats.by_platform?.['TripAdvisor'] || 0}</span>
+          </div>
+        </div>
         
         {/* Search */}
         <div className="relative">
