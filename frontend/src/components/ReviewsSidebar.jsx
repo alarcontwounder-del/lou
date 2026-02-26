@@ -130,6 +130,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
   const [stats, setStats] = useState({ average_rating: 0, total_reviews: 0, by_platform: {}, by_country: {} });
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -147,6 +148,16 @@ export const ReviewsSidebar = ({ isVisible }) => {
       }
     };
     fetchData();
+  }, []);
+
+  // Check for review redirect from OAuth
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('review') === 'true') {
+      setIsReviewModalOpen(true);
+      // Clean URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
   }, []);
 
   const filteredReviews = reviews.filter(review => 
