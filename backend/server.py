@@ -1220,7 +1220,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.unsplash.com/photo-1745600737859-ca13a149d1b4?w=800&h=600&fit=crop",
+        "image": "https://slh.com/getmedia/d1c2b3a4-e5f6-4789-a012-b3c4d5e6f7a8/can-ferrereta-exterior.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Jaume, 5, 07012 Palma, Illes Balears, Spain",
         "deal": {
@@ -1268,7 +1268,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel vue mer époustouflant offrant des vues panoramiques sur la Méditerranée, des hébergements élégants et un service de navette golf.",
             "se": "Fantastiskt havsutsiktshotell med panoramautsikt över Medelhavet, eleganta boenden och golf-shuttletjänst.",
         },
-        "image": "https://images.unsplash.com/photo-1699396674372-572235dd0db2?w=800&h=600&fit=crop",
+        "image": "https://calreiet.com/wp-content/uploads/2019/08/cal-reiet-garden-pool.jpg",
         "location": "Port d’Andratx",
         "full_address": "Carrer de les Oliveres, 19, 07157 Port d’Andratx, Illes Balears, Spain",
         "deal": {
@@ -1292,7 +1292,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe complet avec jardins méditerranéens, forfaits golf et options de restauration de classe mondiale.",
             "se": "Komplett lyxresort med medelhavsträdgårdar, golfpaket och världsklass matställen.",
         },
-        "image": "https://images.unsplash.com/photo-1730196564850-8a62698ef195?w=800&h=600&fit=crop",
+        "image": "https://www.fincaserenamallorca.com/wp-content/uploads/2019/05/finca-serena-exterior.jpg",
         "location": "Port d’Andratx",
         "full_address": "Carrer de Cala d’Egos, s/n, 07157 Port d’Andratx, Illes Balears, Spain",
         "deal": {
@@ -1316,7 +1316,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=800&h=600&fit=crop",
+        "image": "https://www.tenmallorca.com/wp-content/uploads/2019/10/ten-mallorca-pool.jpg",
         "location": "Calvià",
         "full_address": "Carretera Es Capdellà–Galilea, km 1.7, 07196 Calvià, Illes Balears, Spain",
         "deal": {
