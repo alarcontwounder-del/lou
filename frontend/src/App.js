@@ -29,6 +29,22 @@ function MainContent() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [user, setUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  // Show sidebar after scrolling past hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        setShowSidebar(window.scrollY > heroBottom - 100);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     // Check if user was passed from AuthCallback
