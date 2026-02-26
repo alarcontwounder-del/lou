@@ -26,7 +26,7 @@ export const Footer = () => {
             </p>
             {/* Social Links - To be added later */}
             <p className="text-white/50 text-sm">
-              Website: <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-sand hover:text-white transition-colors">golfinmallorca.com</a>
+              Website: <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors">golfinmallorca.com</a>
             </p>
           </div>
 
@@ -79,7 +79,7 @@ export const Footer = () => {
                   href="https://golfinmallorca.greenfee365.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-sand hover:text-white transition-colors font-medium"
+                  className="text-brand-slate hover:text-white transition-colors font-medium"
                 >
                   {t('hero.bookTeeTime')}
                 </a>
