@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golfinmallorca - Modern Preview (Ink Wash)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Ink Wash Palette */
+            --dark-gray: #4A4A4A;
+            --light-gray: #CBCBCB;
+            --cream: #FFFFE3;
+            --sage-green: #6DB196;
+            --almost-black: #2B2B2B;
+            --pure-white: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--pure-white);
+            color: var(--almost-black);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* HORIZONTAL REVIEWS TICKER */
+        .reviews-ticker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--almost-black);
+            color: white;
+            padding: 0.75rem 0;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 4rem;
+            animation: ticker 40s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+
+        .ticker-stars {
+            color: #FFD700;
+            font-size: 0.75rem;
+        }
+
+        .ticker-platform {
+            opacity: 0.7;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* NAVIGATION */
+        .nav {
+            position: fixed;
+            top: 3rem;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 250, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--almost-black);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage-green);
+        }
+
+        .btn {
+            background: var(--sage-green);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .btn:hover {
+            background: #5a9f85;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(109, 177, 150, 0.3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 7rem;
+            padding: 4rem 3rem;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+            color: var(--almost-black);
+        }
+
+        .hero-content h1 .highlight {
+            font-style: italic;
+            color: var(--sage-green);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--sage-green);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--dark-gray);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 6rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+            font-weight: 400;
+        }
+
+        /* BENTO GRID (Asymmetric) */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 300px;
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            background: white;
+            border: 1px solid rgba(203, 203, 203, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(74, 74, 74, 0.1);
+            border-color: var(--sage-green);
+        }
+
+        /* Different sizes for bento items */
+        .bento-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .bento-item:nth-child(2) { grid-column: span 2; }
+        .bento-item:nth-child(3) { grid-column: span 2; }
+        .bento-item:nth-child(4) { grid-column: span 1; grid-row: span 2; }
+        .bento-item:nth-child(5) { grid-column: span 1; grid-row: span 2; }
+        .bento-item:nth-child(6) { grid-column: span 2; }
+
+        .bento-image {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .bento-item:hover .bento-image {
+            transform: scale(1.05);
+        }
+
+        .bento-content {
+            padding: 1.5rem;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bento-badge {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--sage-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            width: fit-content;
+        }
+
+        .bento-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--almost-black);
+        }
+
+        /* HORIZONTAL SCROLL SECTION */
+        .horizontal-scroll {
+            padding: 6rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll-container {
+            display: flex;
+            gap: 2rem;
+            padding: 0 3rem;
+        }
+
+        .scroll-card {
+            min-width: 400px;
+            height: 500px;
+            background: white;
+            border: 1px solid rgba(203, 203, 203, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .scroll-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(74, 74, 74, 0.1);
+        }
+
+        .scroll-card-image {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+        }
+
+        .scroll-card-content {
+            padding: 2rem;
+        }
+
+        .scroll-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .scroll-card-text {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .michelin-badge {
+            background: #2B2B2B;
+            color: #FFD700;
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        /* COLOR PALETTE DISPLAY */
+        .color-display {
+            background: white;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .color-box {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(203, 203, 203, 0.3);
+        }
+
+        .color-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            color: var(--dark-gray);
+            font-size: 0.875rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--almost-black);
+            color: white;
+            padding: 8rem 3rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-item:nth-child(n) {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HORIZONTAL REVIEWS TICKER -->
+    <div class="reviews-ticker">
+        <div class="ticker-content">
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Exceptional golf experience"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Perfect luxury getaway"</span>
+                <span class="ticker-platform">TripAdvisor</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"World-class courses"</span>
+                <span class="ticker-platform">Facebook</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Highly recommend!"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+            <!-- Duplicate for infinite scroll -->
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Exceptional golf experience"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Perfect luxury getaway"</span>
+                <span class="ticker-platform">TripAdvisor</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"World-class courses"</span>
+                <span class="ticker-platform">Facebook</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-stars">★★★★★</span>
+                <span>"Highly recommend!"</span>
+                <span class="ticker-platform">Google</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="logo">Golfinmallorca</div>
+        <div class="nav-links">
+            <a href="#courses">Courses</a>
+            <a href="#hotels">Hotels</a>
+            <a href="#dining">Dining</a>
+            <a href="#about">About</a>
+        </div>
+        <button class="btn">Book Now</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Mallorca's<br>
+                <span class="highlight">Premier</span><br>
+                Golf Experience
+            </h1>
+            <p class="hero-subtitle">
+                Discover championship courses, Michelin-starred dining, and luxury accommodations in the Mediterranean's most exclusive destination
+            </p>
+            <button class="btn" style="padding: 1rem 2.5rem; font-size: 1rem;">Explore Courses</button>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Golf Courses</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">29</div>
+                    <div class="stat-label">Luxury Hotels</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">39</div>
+                    <div class="stat-label">Restaurants</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLOR PALETTE DISPLAY -->
+    <div class="color-display">
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 700;">Ink Wash Palette</h2>
+        <div class="color-grid">
+            <div class="color-swatch">
+                <div class="color-box" style="background: #4A4A4A;"></div>
+                <div class="color-name">Dark Gray</div>
+                <div class="color-hex">#4A4A4A</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: #CBCBCB;"></div>
+                <div class="color-name">Light Gray</div>
+                <div class="color-hex">#CBCBCB</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: #FFFFE3;"></div>
+                <div class="color-name">Cream</div>
+                <div class="color-hex">#FFFFE3</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: #6DB196;"></div>
+                <div class="color-name">Sage Green</div>
+                <div class="color-hex">#6DB196</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENTO GRID - GOLF COURSES -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Championship<br>Courses</h2>
+            <p class="section-subtitle">Mediterranean views. World-class design. Unforgettable experiences.</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1748714240808-736ad18e9bef?w=800&h=600&fit=crop" alt="Golf Course" class="bento-image">
+                <div class="bento-content">
+                    <span class="bento-badge">18 Holes · Par 72</span>
+                    <h3 class="bento-title">Golf Alcanada</h3>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1571928917219-478ae39b64ca?w=600&h=400&fit=crop" alt="Golf Course" class="bento-image">
+                <div class="bento-content">
+                    <span class="bento-badge">Championship</span>
+                    <h3 class="bento-title">Son Gual</h3>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1505794718076-13e166c01a33?w=600&h=400&fit=crop" alt="Golf Course" class="bento-image">
+                <div class="bento-content">
+                    <span class="bento-badge">Historic</span>
+                    <h3 class="bento-title">Son Vida</h3>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1672825953834-a686738c5047?w=400&h=600&fit=crop" alt="Golf Course" class="bento-image">
+                <div class="bento-content">
+                    <span class="bento-badge">Coastal</span>
+                    <h3 class="bento-title">Canyamel</h3>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=400&h=600&fit=crop" alt="Golf Course" class="bento-image">
+                <div class="bento-content">
+                    <span class="bento-badge">Premium</span>
+                    <h3 class="bento-title">Arabella</h3>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&h=400&fit=crop" alt="Golf Course" class="bento-image">
+                <div class="bento-content">
+                    <span class="bento-badge">Mountain Views</span>
+                    <h3 class="bento-title">Pollença</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORIZONTAL SCROLL - MICHELIN RESTAURANTS -->
+    <section class="horizontal-scroll">
+        <div style="padding: 0 3rem; margin-bottom: 3rem;">
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;">Michelin-Starred<br>Dining</h2>
+        </div>
+        
+        <div class="scroll-container">
+            <div class="scroll-card">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Restaurant" class="scroll-card-image">
+                <div class="scroll-card-content">
+                    <span class="michelin-badge">⭐⭐ Michelin</span>
+                    <h3 class="scroll-card-title">Voro</h3>
+                    <p class="scroll-card-text">Two Michelin stars showcasing innovative Mediterranean cuisine.</p>
+                </div>
+            </div>
+
+            <div class="scroll-card">
+                <img src="https://images.unsplash.com/photo-1643879397174-4f10ac503566?w=600&h=400&fit=crop" alt="Restaurant" class="scroll-card-image">
+                <div class="scroll-card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="scroll-card-title">Marc Fosh</h3>
+                    <p class="scroll-card-text">Refined Mediterranean dining with exceptional golf packages.</p>
+                </div>
+            </div>
+
+            <div class="scroll-card">
+                <img src="https://images.unsplash.com/photo-1611520175743-30ff00129621?w=600&h=400&fit=crop" alt="Restaurant" class="scroll-card-image">
+                <div class="scroll-card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="scroll-card-title">Es Fum</h3>
+                    <p class="scroll-card-text">Contemporary Mediterranean at St. Regis Mardavall.</p>
+                </div>
+            </div>
+
+            <div class="scroll-card">
+                <img src="https://images.unsplash.com/photo-1663530761401-15eefb544889?w=600&h=400&fit=crop" alt="Restaurant" class="scroll-card-image">
+                <div class="scroll-card-content">
+                    <span class="michelin-badge">⭐ Michelin</span>
+                    <h3 class="scroll-card-title">Zaranda</h3>
+                    <p class="scroll-card-text">Exquisite dining experience at Hotel Es Princep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">Ready to<br>Experience<br>Mallorca?</h2>
+        <p class="cta-subtitle">Book your luxury golf getaway today</p>
+        <button class="btn" style="padding: 1.25rem 3rem; font-size: 1rem;">Get Started</button>
+    </section>
+
+</body>
+</html>
