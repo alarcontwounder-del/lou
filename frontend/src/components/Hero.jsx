@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { ChevronDown } from 'lucide-react';
 
 export const Hero = () => {
   const { t } = useLanguage();
