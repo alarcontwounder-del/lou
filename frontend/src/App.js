@@ -116,6 +116,7 @@ function AppRouter() {
   
   return (
     <Routes>
+      <Route path="/preview" element={<DesignPreview />} />
       <Route path="/*" element={<MainContent />} />
     </Routes>
   );
