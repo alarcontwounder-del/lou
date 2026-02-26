@@ -980,7 +980,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine de luxe privé avec terrains expansifs, service raffiné et partenariats golf exclusifs avec des parcours de premier ordre.",
             "se": "Privat lyxegendom med vidsträckta marker, förfinad service och exklusiva golfpartnerskap med förstklassiga banor.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/265432100.jpg",
+        "image": "https://www.sonxotano.com/images/estate-pool.jpg",
         "location": "Sencelles",
         "full_address": "Camí de Son Xotano, 07140 Sencelles, Illes Balears, Spain",
         "deal": {
@@ -1004,7 +1004,7 @@ PARTNER_OFFERS = [
             "fr": "Propriété ultra-luxe avec équipements de classe mondiale, restaurants Michelin et forfaits golf exceptionnels.",
             "se": "Ultra-lyxig fastighet med världsklass bekvämligheter, Michelin-restauranger och exceptionella golfpaket.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/312456789.jpg",
+        "image": "https://img.belmond.com/image/upload/w_800,h_600,c_fill/photos/lrs/lrs-ext01.jpg",
         "location": "Deià",
         "full_address": "Carrer son Canals, 07179 Deià, Illes Balears, Spain",
         "deal": {
@@ -1028,7 +1028,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/345678901.jpg",
+        "image": "https://www.hilton.com/im/en/PMICRLX/20953216/pmicrlx-67254726.jpg",
         "location": "Banyalbufar",
         "full_address": "Ctra. C-710, km 83.7, 07191 Banyalbufar, Illes Balears, Spain",
         "deal": {
@@ -1052,7 +1052,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe classique avec élégance intemporelle, équipements premium et accès pratique aux parcours de golf de championnat.",
             "se": "Klassiskt lyxhotell med tidlös elegans, premium bekvämligheter och bekväm tillgång till mästerskap golfbanor.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/378901234.jpg",
+        "image": "https://www.caprocatgrandhotel.com/images/hotel-pool.jpg",
         "location": "Sóller",
         "full_address": "Carrer de Romaguera, 18, 07100 Sóller, Illes Balears, Spain",
         "deal": {
