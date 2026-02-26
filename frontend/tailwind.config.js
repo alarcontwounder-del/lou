@@ -9,10 +9,16 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          green: '#808034',
-          sand: '#DBD4FF',
-          terracotta: '#723480',
-          cream: '#FFFFE3',
+          // Ink Wash Palette
+          charcoal: '#2D2D2D',      // Deep charcoal - primary dark
+          charcoalLight: '#3D3D3D', // Warm charcoal - cards, surfaces
+          slate: '#6B7B8C',         // Dusty slate blue - accent
+          gray: '#9CA3AF',          // Soft gray - secondary text
+          cream: '#F5F2EB',         // Warm cream - light backgrounds
+          // Legacy aliases for compatibility
+          green: '#2D2D2D',         // Now charcoal
+          sand: '#6B7B8C',          // Now slate blue
+          terracotta: '#6B7B8C',    // Now slate blue (accent)
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

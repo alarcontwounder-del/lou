@@ -5,10 +5,16 @@
 @tailwind utilities;
 
 :root {
-  --brand-green: #808034;
-  --brand-sand: #DBD4FF;
-  --brand-terracotta: #723480;
-  --brand-cream: #FFFFE3;
+  /* Ink Wash Palette */
+  --brand-charcoal: #2D2D2D;
+  --brand-charcoal-light: #3D3D3D;
+  --brand-slate: #6B7B8C;
+  --brand-gray: #9CA3AF;
+  --brand-cream: #F5F2EB;
+  /* Legacy aliases */
+  --brand-green: #2D2D2D;
+  --brand-sand: #6B7B8C;
+  --brand-terracotta: #6B7B8C;
 }
 
 * {
@@ -65,8 +71,8 @@ html {
 
 /* Selection color */
 ::selection {
-  background-color: var(--brand-sand);
-  color: var(--brand-green);
+  background-color: var(--brand-slate);
+  color: white;
 }
 
 /* Grain texture overlay */
