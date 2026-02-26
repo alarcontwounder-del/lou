@@ -1148,7 +1148,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://www.yartanhotels.com/wp-content/uploads/2019/12/Yartan-Boutique-Hotel-exterior.jpg",
+        "image": "https://www.yartanhotels.com/backoffice/images/56-1b8a3226.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Francesc, 8, 07001 Palma, Illes Balears, Spain",
         "deal": {
