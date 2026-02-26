@@ -173,11 +173,14 @@ export const ReviewsSidebar = ({ isVisible }) => {
 
   return (
     <aside 
-      className="fixed left-0 top-0 h-screen w-80 bg-brand-charcoal border-r border-stone-700 z-40 overflow-hidden flex flex-col shadow-2xl hidden lg:flex pt-20"
+      className="fixed left-0 top-0 h-screen w-80 bg-brand-charcoal border-r border-stone-700 z-40 flex flex-col shadow-2xl hidden lg:flex"
       data-testid="reviews-sidebar"
     >
+      {/* Spacer for navbar */}
+      <div className="h-20 flex-shrink-0"></div>
+      
       {/* Header with Stats */}
-      <div className="p-5 border-b border-stone-600 bg-brand-charcoal">
+      <div className="p-5 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-serif font-bold text-white italic">Reviews</h2>
           <button
