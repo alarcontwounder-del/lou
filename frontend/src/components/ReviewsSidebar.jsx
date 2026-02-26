@@ -227,7 +227,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
       </div>
       
       {/* Reviews List */}
-      <div className="flex-1 overflow-y-auto px-5 custom-scrollbar">
+      <div className="flex-1 overflow-y-auto px-5 custom-scrollbar bg-white/50">
         {loading ? (
           <div className="flex items-center justify-center py-10">
             <div className="w-8 h-8 border-2 border-brand-slate border-t-transparent rounded-full animate-spin"></div>
@@ -244,9 +244,9 @@ export const ReviewsSidebar = ({ isVisible }) => {
       </div>
       
       {/* Footer Stats */}
-      <div className="p-4 border-t border-stone-100 bg-stone-50">
+      <div className="p-4 border-t border-slate-200 bg-white/70">
         <p className="text-xs text-stone-500 text-center">
-          Showing {filteredReviews.length} of {reviews.length} reviews
+          Showing {filteredReviews.length} of {reviews.length} verified reviews
         </p>
       </div>
     </aside>
