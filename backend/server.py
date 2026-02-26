@@ -1461,7 +1461,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1611520175743-30ff00129621?w=800&h=600&fit=crop",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
         "location": "Palma",
         "full_address": "Plaça de Llorenç Villalonga 4, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -1486,7 +1486,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1663530761401-15eefb544889?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300047?width=800",
         "location": "Palma",
         "full_address": "Passeig de Mallorca 20, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -1511,7 +1511,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.pexels.com/photos/29106106/pexels-photo-29106106.jpeg?w=800&h=600&fit=crop",
+        "image": "https://macadecastro.com/wp-content/uploads/maca-restaurant.jpg",
         "location": "Port d’Alcúdia",
         "full_address": "Carrer de Juno s/n, 07400 Port d’Alcúdia, Mallorca, Spain",
         "deal": {
@@ -1536,7 +1536,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.pexels.com/photos/32399760/pexels-photo-32399760.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.bensdavall.com/wp-content/uploads/bens-davall-terrace.jpg",
         "location": "Sóller",
         "full_address": "Carretera Sóller–Deià km 56, 07100 Sóller, Mallorca, Spain",
         "deal": {
@@ -1561,7 +1561,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1680405531955-8b4981bb1b0c?w=800&h=600&fit=crop",
+        "image": "https://andreugenestra.com/wp-content/uploads/andreu-genestra-restaurant.jpg",
         "location": "Palma",
         "full_address": "Carrer de Bala Roja 1, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -1586,7 +1586,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.pexels.com/photos/9137236/pexels-photo-9137236.jpeg?w=800&h=600&fit=crop",
+        "image": "https://zaranda.es/wp-content/uploads/zaranda-restaurant.jpg",
         "location": "Costa d\'en Blanes",
         "full_address": "Ma-1 19, 07181 Costa d\'en Blanes, Mallorca, Spain",
         "deal": {
@@ -1611,7 +1611,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1667388969250-1c7220bf3f37?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300123?width=800",
         "location": "Galilea",
         "full_address": "Carretera Es Capdellà km 1.7, 07196 Galilea, Mallorca, Spain",
         "deal": {
@@ -1636,7 +1636,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1729394405518-eaf2a0203aa7?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300156?width=800",
         "location": "Llucmajor",
         "full_address": "Carretera Cala Pi km 5, 07639 Llucmajor, Mallorca, Spain",
         "deal": {
@@ -1661,7 +1661,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300189?width=800",
         "location": "Playa de Muro",
         "full_address": "Avenida del Levante s/n, 07458 Playa de Muro, Mallorca, Spain",
         "deal": {
@@ -1686,7 +1686,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.pexels.com/photos/18404554/pexels-photo-18404554.jpeg?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300212?width=800",
         "location": "Palma",
         "full_address": "Carrer de Sant Feliu 1, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -1836,7 +1836,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Santa Maria del Camí.",
             "se": "Fin matupplevelse med samtida medelhavskök i Santa Maria del Camí.",
         },
-        "image": "https://images.unsplash.com/photo-1611520175743-30ff00129621?w=800&h=600&fit=crop",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
         "location": "Santa Maria del Camí",
         "full_address": "Camí de Coanegra s/n, 07320 Santa Maria del Camí, Mallorca, Spain",
         "deal": {
@@ -1861,7 +1861,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1663530761401-15eefb544889?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300047?width=800",
         "location": "Port de Pollença",
         "full_address": "Carretera Formentor s/n, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
@@ -1886,7 +1886,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Santanyí.",
             "se": "Fin matupplevelse med samtida medelhavskök i Santanyí.",
         },
-        "image": "https://images.pexels.com/photos/29106106/pexels-photo-29106106.jpeg?w=800&h=600&fit=crop",
+        "image": "https://macadecastro.com/wp-content/uploads/maca-restaurant.jpg",
         "location": "Santanyí",
         "full_address": "Carrer del Pintor Bernareggi 17, 07650 Santanyí, Mallorca, Spain",
         "deal": {
@@ -1911,7 +1911,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.pexels.com/photos/32399760/pexels-photo-32399760.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.bensdavall.com/wp-content/uploads/bens-davall-terrace.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Magí 62, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -1936,7 +1936,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1680405531955-8b4981bb1b0c?w=800&h=600&fit=crop",
+        "image": "https://andreugenestra.com/wp-content/uploads/andreu-genestra-restaurant.jpg",
         "location": "Palma",
         "full_address": "Carrer de la Fàbrica 30, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -1961,7 +1961,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Sóller.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Sóller.",
         },
-        "image": "https://images.pexels.com/photos/9137236/pexels-photo-9137236.jpeg?w=800&h=600&fit=crop",
+        "image": "https://zaranda.es/wp-content/uploads/zaranda-restaurant.jpg",
         "location": "Port de Sóller",
         "full_address": "Carrer de Bèlgica s/n, 07108 Port de Sóller, Mallorca, Spain",
         "deal": {
@@ -1986,7 +1986,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma Nova.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma Nova.",
         },
-        "image": "https://images.unsplash.com/photo-1667388969250-1c7220bf3f37?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300123?width=800",
         "location": "Palma Nova",
         "full_address": "Carrer de Pagell 1, 07181 Palma Nova, Mallorca, Spain",
         "deal": {
@@ -2011,7 +2011,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1729394405518-eaf2a0203aa7?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300156?width=800",
         "location": "Palma",
         "full_address": "Carrer de Cotoner 44, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -2036,7 +2036,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300189?width=800",
         "location": "Port d’Andratx",
         "full_address": "Passeig Marítim 14, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
@@ -2061,7 +2061,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Alcúdia.",
             "se": "Fin matupplevelse med samtida medelhavskök i Alcúdia.",
         },
-        "image": "https://images.pexels.com/photos/18404554/pexels-photo-18404554.jpeg?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300212?width=800",
         "location": "Alcúdia",
         "full_address": "Carrer de la Victòria 1, 07400 Alcúdia, Mallorca, Spain",
         "deal": {
@@ -2211,7 +2211,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Cala d’Or.",
             "se": "Fin matupplevelse med samtida medelhavskök i Cala d’Or.",
         },
-        "image": "https://images.unsplash.com/photo-1611520175743-30ff00129621?w=800&h=600&fit=crop",
+        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
         "location": "Cala d’Or",
         "full_address": "Passeig Marítim s/n, 07660 Cala d’Or, Mallorca, Spain",
         "deal": {
@@ -2236,7 +2236,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Portocolom.",
             "se": "Fin matupplevelse med samtida medelhavskök i Portocolom.",
         },
-        "image": "https://images.unsplash.com/photo-1663530761401-15eefb544889?w=800&h=600&fit=crop",
+        "image": "https://guide.michelin.com/svc/v2/images/restaurants/3300047?width=800",
         "location": "Portocolom",
         "full_address": "Passeig del Port, 07670 Portocolom, Mallorca, Spain",
         "deal": {
@@ -2261,7 +2261,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Escorca.",
             "se": "Fin matupplevelse med samtida medelhavskök i Escorca.",
         },
-        "image": "https://images.pexels.com/photos/29106106/pexels-photo-29106106.jpeg?w=800&h=600&fit=crop",
+        "image": "https://macadecastro.com/wp-content/uploads/maca-restaurant.jpg",
         "location": "Escorca",
         "full_address": "Carretera Lluc–Escorca km 5.2, 07315 Escorca, Mallorca, Spain",
         "deal": {
@@ -2286,7 +2286,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://images.pexels.com/photos/32399760/pexels-photo-32399760.jpeg?w=800&h=600&fit=crop",
+        "image": "https://www.bensdavall.com/wp-content/uploads/bens-davall-terrace.jpg",
         "location": "Port d’Andratx",
         "full_address": "Avinguda Mateo Bosch, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
