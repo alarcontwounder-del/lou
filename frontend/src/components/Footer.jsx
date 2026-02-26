@@ -22,9 +22,9 @@ export const Footer = () => {
           <div className="lg:col-span-2">
             {/* Logo */}
             <img 
-              src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f00349dc_1.png"
-              alt="Golfinmallorca.com"
-              className="h-20 w-auto object-contain brightness-0 invert mb-4"
+              src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
+              alt="Golf in Mallorca Spain"
+              className="h-16 w-auto object-contain brightness-0 invert mb-4"
             />
             <p className="text-white/70 max-w-md mb-6">
               The leading golf agency in Mallorca since 2003. Only exclusive operator based on the island specializing in all types of golf services.
