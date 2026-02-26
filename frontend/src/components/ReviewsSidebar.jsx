@@ -258,6 +258,16 @@ export const ReviewsSidebar = ({ isVisible }) => {
       
       {/* Reviews List */}
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar bg-stone-100">
+        {/* Write Review Button */}
+        <button
+          onClick={() => setIsReviewModalOpen(true)}
+          className="w-full mb-4 flex items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold rounded-xl transition-colors shadow-lg"
+          data-testid="write-review-btn-main"
+        >
+          <PenLine className="w-5 h-5" />
+          <span>Write a Review</span>
+        </button>
+        
         {loading ? (
           <div className="flex items-center justify-center py-10">
             <div className="w-8 h-8 border-2 border-brand-slate border-t-transparent rounded-full animate-spin"></div>
