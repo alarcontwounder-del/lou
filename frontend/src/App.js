@@ -102,9 +102,11 @@ function MainContent() {
         isCheckingAuth={isCheckingAuth}
       />
       
+      {/* Hero - always full width, no sidebar margin */}
+      <Hero />
+      
       {/* Main content with left margin when sidebar is visible */}
       <main className={`transition-all duration-300 ${showSidebar ? 'lg:ml-80' : ''}`}>
-        <Hero />
         <About />
         <GolfCourses />
         <HotelPartners />
