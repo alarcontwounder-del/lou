@@ -860,7 +860,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.unsplash.com/photo-1745600737859-ca13a149d1b4?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/341766542.jpg?k=b6c0b0e8f4e5d5c5a4b3a2f1e0d9c8b7a6f5e4d3c2b1a0&o=",
         "location": "Santanyí",
         "full_address": "Carrer de Can Ferrereta, 12, 07650 Santanyí, Illes Balears, Spain",
         "deal": {
@@ -908,7 +908,7 @@ PARTNER_OFFERS = [
             "fr": "Retraite de bien-être holistique combinant relaxation consciente, thérapies spa et expériences de golf dans un cadre serein.",
             "se": "Holistisk hälsoresa som kombinerar mindful avkoppling, spa-terapi och golfupplevelser i lugn omgivning.",
         },
-        "image": "https://images.unsplash.com/photo-1699396674372-572235dd0db2?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/102856443.jpg?k=a5b5c5d5e5f5a4b3a2f1e0d9c8b7a6f5e4d3&o=",
         "location": "Santanyí",
         "full_address": "Carrer de Cal Reiet, 80, 07650 Santanyí, Illes Balears, Spain",
         "deal": {
@@ -932,7 +932,7 @@ PARTNER_OFFERS = [
             "fr": "Retraite rurale élégante offrant tranquillité, charme authentique majorquin et équipements de luxe modernes.",
             "se": "Elegant lantlig tillflyktsort med lugn, äkta mallorkinsk charm och moderna lyxbekvämligheter.",
         },
-        "image": "https://images.unsplash.com/photo-1730196564850-8a62698ef195?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/185927089.jpg?k=f5e5d5c5a4b3a2f1e0d9c8b7a6f5e4d3c2b1&o=",
         "location": "Montuïri",
         "full_address": "Ma-3200 km 3, 07230 Montuïri, Illes Balears, Spain",
         "deal": {
@@ -956,7 +956,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/182432189.jpg?k=e5d5c5a4b3a2f1e0d9c8b7a6f5e4d3c2b1a0&o=",
         "location": "Sineu",
         "full_address": "Carrer de Son Riera, 14, 07510 Sineu, Illes Balears, Spain",
         "deal": {
