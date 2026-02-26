@@ -183,7 +183,7 @@ export const GolfCourses = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-brand-terracotta text-sm uppercase tracking-[0.2em] mb-4" data-testid="courses-subtitle">
+          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="courses-subtitle">
             {t('courses.subtitle')}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4" data-testid="courses-title">

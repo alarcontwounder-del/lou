@@ -176,7 +176,7 @@ export const HotelPartners = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-brand-terracotta text-sm uppercase tracking-[0.2em] mb-4" data-testid="hotels-subtitle">
+          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="hotels-subtitle">
             {t('hotels.subtitle')}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-6" data-testid="hotels-title">
