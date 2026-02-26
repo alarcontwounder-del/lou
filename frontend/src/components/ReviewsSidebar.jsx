@@ -67,24 +67,19 @@ const StarRating = ({ rating }) => (
 
 const ReviewItem = ({ review }) => {
   const [expanded, setExpanded] = useState(false);
-  const PlatformLogo = platformLogos[review.platform] || GoogleLogo;
-  const isLongText = review.review_text && review.review_text.length > 150;
+  const platform = platformLogos[review.platform] || platformLogos['Google'];
+  const PlatformLogo = platform.Logo;
+  const isLongText = review.review_text && review.review_text.length > 120;
   const displayText = expanded || !isLongText 
     ? review.review_text 
-    : review.review_text.substring(0, 150) + '...';
-
-  const formatDate = (dateStr) => {
-    if (!dateStr) return '';
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' });
-  };
+    : review.review_text.substring(0, 120) + '...';
 
   return (
-    <div className="py-4 border-b border-stone-100 last:border-b-0">
-      {/* Header: Avatar, Stars, Date, Platform */}
-      <div className="flex items-start gap-3 mb-2">
+    <div className="py-4 border-b border-stone-200/50 last:border-b-0 bg-white rounded-lg mb-3 px-4 shadow-sm">
+      {/* Header: Avatar & Name */}
+      <div className="flex items-center gap-3 mb-3">
         {/* Avatar */}
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-stone-300 to-stone-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 overflow-hidden">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-stone-400 to-stone-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 overflow-hidden shadow">
           {review.avatar_url ? (
             <img src={review.avatar_url} alt={review.user_name} className="w-full h-full object-cover" />
           ) : (
@@ -92,32 +87,39 @@ const ReviewItem = ({ review }) => {
           )}
         </div>
         
-        {/* Rating & Info */}
+        {/* Name & Rating */}
         <div className="flex-1 min-w-0">
-          <StarRating rating={review.rating || 5} />
-          <p className="text-xs text-stone-400 mt-1">
-            {formatDate(review.review_date)} via {review.platform?.replace(' Reviews', '')}
-          </p>
-        </div>
-        
-        {/* Platform Logo */}
-        <div className="flex-shrink-0">
-          <PlatformLogo />
+          <p className="font-semibold text-stone-900 text-sm">{review.user_name}</p>
+          <div className="flex items-center gap-1">
+            <StarRating rating={review.rating || 5} />
+            <span className="text-xs text-stone-400 ml-1">
+              {review.review_date ? new Date(review.review_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''}
+            </span>
+          </div>
         </div>
       </div>
       
       {/* Review Text */}
-      <p className="text-sm text-stone-700 leading-relaxed">
+      <p className="text-sm text-stone-700 leading-relaxed mb-3">
         {displayText}
         {isLongText && (
           <button 
             onClick={() => setExpanded(!expanded)}
             className="text-brand-slate hover:underline ml-1 font-medium"
           >
-            {expanded ? 'Show less' : 'Read more'}
+            {expanded ? 'Less' : 'Read more'}
           </button>
         )}
       </p>
+      
+      {/* Posted on Platform */}
+      <div className="flex items-center gap-2 pt-2 border-t border-stone-100">
+        <span className="text-xs text-stone-400">Posted on</span>
+        <div className="flex items-center gap-1.5">
+          <PlatformLogo />
+          <span className="text-xs font-medium" style={{ color: platform.color }}>{platform.name}</span>
+        </div>
+      </div>
     </div>
   );
 };
