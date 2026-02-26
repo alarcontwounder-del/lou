@@ -1268,7 +1268,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel vue mer époustouflant offrant des vues panoramiques sur la Méditerranée, des hébergements élégants et un service de navette golf.",
             "se": "Fantastiskt havsutsiktshotell med panoramautsikt över Medelhavet, eleganta boenden och golf-shuttletjänst.",
         },
-        "image": "https://calreiet.com/wp-content/uploads/2019/08/cal-reiet-garden-pool.jpg",
+        "image": "https://villa-italia.mallorcahotelsweb.com/data/Imgs/700x500w/17183/1718300/1718300235/hotel-villa-italia-port-d-andratx-img-1.JPEG",
         "location": "Port d’Andratx",
         "full_address": "Carrer de les Oliveres, 19, 07157 Port d’Andratx, Illes Balears, Spain",
         "deal": {
