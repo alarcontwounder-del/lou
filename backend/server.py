@@ -2825,6 +2825,107 @@ async def create_review(review: ClientReviewCreate):
     # await db.reviews.insert_one(new_review)
     return {"message": "Review submitted successfully!", "id": new_id}
 
+@api_router.post("/reviews/submit", response_model=dict)
+async def submit_user_review(review: UserReviewSubmission, request: Request):
+    """Submit a review from authenticated user (requires login, pending admin approval)."""
+    # Get user from session
+    session_token = request.cookies.get("session_token")
+    if not session_token:
+        auth_header = request.headers.get("Authorization")
+        if auth_header and auth_header.startswith("Bearer "):
+            session_token = auth_header[7:]
+    
+    if not session_token:
+        raise HTTPException(status_code=401, detail="Authentication required. Please sign in with Google to submit a review.")
+    
+    # Find session
+    session_doc = await db.user_sessions.find_one(
+        {"session_token": session_token},
+        {"_id": 0}
+    )
+    
+    if not session_doc:
+        raise HTTPException(status_code=401, detail="Session not found. Please sign in again.")
+    
+    # Check session expiry
+    expires_at = session_doc["expires_at"]
+    if isinstance(expires_at, str):
+        expires_at = datetime.fromisoformat(expires_at)
+    if expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=timezone.utc)
+    if expires_at < datetime.now(timezone.utc):
+        raise HTTPException(status_code=401, detail="Session expired. Please sign in again.")
+    
+    # Get user
+    user_doc = await db.users.find_one(
+        {"user_id": session_doc["user_id"]},
+        {"_id": 0}
+    )
+    
+    if not user_doc:
+        raise HTTPException(status_code=401, detail="User not found.")
+    
+    # Create the review
+    review_id = f"review_{uuid.uuid4().hex[:12]}"
+    review_doc = {
+        "review_id": review_id,
+        "user_id": user_doc["user_id"],
+        "user_name": user_doc["name"],
+        "user_email": user_doc["email"],
+        "user_picture": user_doc.get("picture"),
+        "rating": review.rating,
+        "review_text": review.review_text,
+        "platform": review.platform,
+        "status": "pending",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "reviewed_at": None
+    }
+    
+    await db.user_reviews.insert_one(review_doc)
+    
+    return {
+        "message": "Thank you! Your review has been submitted and is pending approval.",
+        "review_id": review_id,
+        "status": "pending"
+    }
+
+@api_router.get("/reviews/pending", response_model=List[dict])
+async def get_pending_reviews(request: Request):
+    """Get all pending reviews (admin only - for now returns all pending)."""
+    cursor = db.user_reviews.find(
+        {"status": "pending"},
+        {"_id": 0}
+    ).sort("created_at", -1)
+    
+    reviews = await cursor.to_list(length=100)
+    return reviews
+
+@api_router.put("/reviews/{review_id}/approve", response_model=dict)
+async def approve_review(review_id: str):
+    """Approve a pending review (admin only)."""
+    result = await db.user_reviews.update_one(
+        {"review_id": review_id},
+        {"$set": {"status": "approved", "reviewed_at": datetime.now(timezone.utc).isoformat()}}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Review not found")
+    
+    return {"message": "Review approved", "review_id": review_id}
+
+@api_router.put("/reviews/{review_id}/reject", response_model=dict)
+async def reject_review(review_id: str):
+    """Reject a pending review (admin only)."""
+    result = await db.user_reviews.update_one(
+        {"review_id": review_id},
+        {"$set": {"status": "rejected", "reviewed_at": datetime.now(timezone.utc).isoformat()}}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Review not found")
+    
+    return {"message": "Review rejected", "review_id": review_id}
+
 @api_router.get("/reviews/stats", response_model=dict)
 async def get_review_stats():
     """Get review statistics."""
