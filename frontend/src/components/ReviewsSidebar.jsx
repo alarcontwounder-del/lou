@@ -153,8 +153,8 @@ export const ReviewsSidebar = ({ isVisible }) => {
       data-testid="reviews-sidebar"
     >
       {/* Header */}
-      <div className="p-5 border-b border-stone-100">
-        <h2 className="text-xl font-bold text-stone-900 mb-4">Reviews</h2>
+      <div className="p-5 border-b border-stone-100 bg-white">
+        <h2 className="text-2xl font-serif font-bold text-stone-900 mb-4 italic">Reviews</h2>
         
         {/* Search */}
         <div className="relative">
