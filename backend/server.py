@@ -788,7 +788,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique intime avec service personnalisé et caractère unique au cœur de Majorque.",
             "se": "Intimt boutiquehotell med personlig service och unik karaktär i hjärtat av Mallorca.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/204583847.jpg?k=ba8e5f0ce04e0b44e1ffee9d8a9b2c6c8f8a4b1a6a0f2e4e0e8c5d5f2a2c3e4f&o=",
+        "image": "https://www.yartanhotels.com/backoffice/images/56-1b8a3226.jpg",
         "location": "Artà",
         "full_address": "Carrer Trespolet, 8, 07570 Artà, Illes Balears, Spain",
         "deal": {
