@@ -2023,6 +2023,36 @@ PARTNER_OFFERS = [
         "discount_percent": 15,
         "contact_url": "https://www.patikibeach.com",
     },
+    # ============================================
+    # CAFÉS, BARS & BRUNCH PLACES
+    # ============================================
+    # Add your cafés, bars and brunch spots here
+    # Example structure:
+    # {
+    #     "id": "cafe-example",
+    #     "name": "Café Name",
+    #     "type": "cafe_bar",
+    #     "category": "Brunch Spot",  # Options: "Coffee Shop", "Wine Bar", "Cocktail Bar", "Brunch Spot", "Café & Bakery"
+    #     "specialty": "Specialty coffee",  # What they're known for
+    #     "description": {
+    #         "en": "Description in English",
+    #         "de": "Description in German",
+    #         "fr": "Description in French",
+    #         "se": "Description in Swedish",
+    #     },
+    #     "image": "URL to image",
+    #     "location": "Palma",
+    #     "full_address": "Full street address",
+    #     "hours": "8:00 - 18:00",  # Optional opening hours
+    #     "deal": {
+    #         "en": "Golfer special deal",
+    #         "de": "...",
+    #         "fr": "...",
+    #         "se": "...",
+    #     },
+    #     "discount_percent": 10,
+    #     "contact_url": "https://website.com",
+    # },
     {
         "id": "es-fum",
         "name": "Es Fum",
