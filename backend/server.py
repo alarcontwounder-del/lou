@@ -1511,7 +1511,7 @@ PARTNER_OFFERS = [
             "fr": "Resort tout inclus premium près d'Alcanada Golf avec équipements familiaux et forfaits golf.",
             "se": "Premium all-inclusive resort nära Alcanada Golf med familjevänliga bekvämligheter och golfpaket.",
         },
-        "image": "https://images.unsplash.com/photo-1769292580172-f04ba3eb04e3?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/238615589.jpg?k=zafiro-palace-alcudia&o=",
         "location": "Alcúdia",
         "full_address": "Carrer dels Mariners, s/n, 07400 Port d'Alcúdia, Mallorca",
         "deal": {
@@ -1535,7 +1535,7 @@ PARTNER_OFFERS = [
             "fr": "Resort exclusif abritant le restaurant 2 étoiles Michelin VORO, avec emplacement spectaculaire près de Canyamel Golf.",
             "se": "Exklusivt resort med 2-Michelin-stjärnig restaurang VORO, fantastisk klippläge nära Canyamel Golf.",
         },
-        "image": "https://images.unsplash.com/photo-1682194573353-ee183e5c3c89?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/355691421.jpg?k=cap-vermell&o=",
         "location": "Canyamel",
         "full_address": "Urbanització Atalaya de Canyamel, s/n, 07589 Canyamel, Mallorca",
         "deal": {
@@ -1559,7 +1559,7 @@ PARTNER_OFFERS = [
             "fr": "Resort ultra-luxe avec plage privée, spa de classe mondiale et départs préférentiels à Canyamel Golf.",
             "se": "Ultra-lyxresort med privat strand, spa i världsklass och förmånliga starttider på Canyamel Golf.",
         },
-        "image": "https://images.unsplash.com/photo-1692698913019-8197afe18fae?w=800&h=600&fit=crop",
+        "image": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/08/16/1130/Park-Hyatt-Mallorca-P084-Resort-Pool.jpg/Park-Hyatt-Mallorca-P084-Resort-Pool.16x9.jpg",
         "location": "Canyamel",
         "full_address": "Urbanització Atalaya de Canyamel, s/n, 07589 Canyamel, Mallorca",
         "deal": {
@@ -1583,7 +1583,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique éco-luxe dans une finca restaurée avec jardins biologiques et accès aux golfs du nord-est.",
             "se": "Eko-lyxboutique-hotell i en restaurerad finca med ekologiska trädgårdar och tillgång till nordöstra golfbanor.",
         },
-        "image": "https://images.unsplash.com/photo-1758972575441-413c44d67292?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/283927561.jpg?k=es-raco-arta&o=",
         "location": "Artà",
         "full_address": "Carrer Na Batlessa, s/n, 07570 Artà, Mallorca",
         "deal": {
