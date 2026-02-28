@@ -139,7 +139,7 @@ export const BeachClubPartners = () => {
   useEffect(() => {
     const fetchBeachClubs = async () => {
       try {
-        const response = await axios.get(`${API}/partner_offers?type=beach_club`);
+        const response = await axios.get(`${API}/partner-offers?type=beach_club`);
         setBeachClubs(response.data);
       } catch (error) {
         console.error('Error fetching beach clubs:', error);
