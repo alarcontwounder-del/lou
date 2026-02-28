@@ -1361,7 +1361,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de golf de luxe à Son Vida avec accès direct à trois parcours de championnat et spa de classe mondiale.",
             "se": "Lyxigt golfresort i Son Vida med direkt tillgång till tre mästerskapsbanor och spa i världsklass.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/0c/2e/3a/exterior.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1690199828906-b2e4c50a630f?w=800&h=600&fit=crop",
         "location": "Son Vida",
         "full_address": "Carrer de la Vinagrella, s/n, 07013 Son Vida, Mallorca",
         "deal": {
@@ -1385,7 +1385,7 @@ PARTNER_OFFERS = [
             "fr": "Château historique transformé en hôtel de luxe surplombant la baie de Palma, avec privilèges golf exclusifs.",
             "se": "Historiskt slott omvandlat till lyxhotell med utsikt över Palmabukten och exklusiva golfprivilegier.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/99/77/castillo-hotel-son-vida.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1682194573479-83b1d6072253?w=800&h=600&fit=crop",
         "location": "Son Vida",
         "full_address": "Carrer Raixa, 2, 07013 Son Vida, Mallorca",
         "deal": {
@@ -1409,7 +1409,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe contemporain près de Santa Ponsa Golf avec piscine à débordement et cuisine de la ferme à la table.",
             "se": "Samtida lyxresort nära Santa Ponsa Golf med fantastisk infinitypool och farm-to-table-matsal.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/f0/65/11/kimpton-aysla-mallorca.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1641584433875-dbbecb033066?w=800&h=600&fit=crop",
         "location": "Santa Ponsa",
         "full_address": "Avinguda del Rei Jaume I, 109, 07180 Santa Ponsa, Mallorca",
         "deal": {
@@ -1433,7 +1433,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe réservé aux adultes au port Adriano avec piscine à débordement sur le toit et forfaits golf exclusifs.",
             "se": "Endast-vuxna lyxhotell vid Port Adriano marina med infinitypool på taket och exklusiva golfpaket.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/5e/74/01/pure-salt-port-adriano.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1663574629234-5a88589e56a8?w=800&h=600&fit=crop",
         "location": "Port Adriano",
         "full_address": "Urbanització El Toro, s/n, 07180 Port Adriano, Mallorca",
         "deal": {
@@ -1457,7 +1457,7 @@ PARTNER_OFFERS = [
             "fr": "Resort tout inclus premium près d'Alcanada Golf avec équipements familiaux et forfaits golf.",
             "se": "Premium all-inclusive resort nära Alcanada Golf med familjevänliga bekvämligheter och golfpaket.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/ca/9f/41/zafiro-palace-alcudia.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1769292580172-f04ba3eb04e3?w=800&h=600&fit=crop",
         "location": "Alcúdia",
         "full_address": "Carrer dels Mariners, s/n, 07400 Port d'Alcúdia, Mallorca",
         "deal": {
@@ -1481,7 +1481,7 @@ PARTNER_OFFERS = [
             "fr": "Resort exclusif abritant le restaurant 2 étoiles Michelin VORO, avec emplacement spectaculaire près de Canyamel Golf.",
             "se": "Exklusivt resort med 2-Michelin-stjärnig restaurang VORO, fantastisk klippläge nära Canyamel Golf.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/54/0c/1f/cap-vermell-grand-hotel.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1682194573353-ee183e5c3c89?w=800&h=600&fit=crop",
         "location": "Canyamel",
         "full_address": "Urbanització Atalaya de Canyamel, s/n, 07589 Canyamel, Mallorca",
         "deal": {
