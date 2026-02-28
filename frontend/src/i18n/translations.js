@@ -53,6 +53,11 @@ export const translations = {
       description: "Discover exceptional Mediterranean cuisine at our partner restaurants with exclusive offers.",
       reserve: "Reserve Table"
     },
+    beachClubs: {
+      subtitle: "Relax After Golf",
+      title: "Premium Beach Clubs",
+      description: "Unwind after your round at Mallorca's most exclusive beach clubs with special golfer packages."
+    },
     contact: {
       subtitle: "Get in Touch",
       title: "Plan Your Golf Getaway",
