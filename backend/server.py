@@ -1144,7 +1144,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://www.canauliluxuryretreat.com/wp-content/uploads/sites/2/2021/10/pollenca-can-auli-hotel.jpg",
+        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de la Missió, 7A, 07003 Palma, Illes Balears, Spain",
         "deal": {
