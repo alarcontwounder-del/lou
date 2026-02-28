@@ -69,46 +69,46 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-4 lg:gap-6">
           <button
             onClick={() => scrollToSection('courses')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-courses"
           >
-            {t('nav.courses')}
+            Golf
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-hotels"
           >
-            {t('offers.hotels')}
+            Hotels
           </button>
           <button
             onClick={() => scrollToSection('restaurants')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-restaurants"
           >
-            {t('restaurants.subtitle')}
+            Restaurants
           </button>
           <button
             onClick={() => scrollToSection('cafes-bars')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-cafes-bars"
           >
-            Cafés & Bars
+            Cafés
           </button>
           <button
             onClick={() => scrollToSection('beach-clubs')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-beach-clubs"
@@ -121,21 +121,21 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           
           <button
             onClick={() => scrollToSection('reviews')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-reviews"
           >
-            {t('reviews.subtitle')}
+            Reviews
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-blog"
           >
-            {t('blog.subtitle')}
+            Blog
           </button>
           <button
             onClick={() => scrollToSection('contact')}
