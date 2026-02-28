@@ -58,6 +58,11 @@ export const translations = {
       title: "Premium Beach Clubs",
       description: "Unwind after your round at Mallorca's most exclusive beach clubs with special golfer packages."
     },
+    cafeBars: {
+      subtitle: "Coffee, Cocktails & Brunch",
+      title: "Bars, Cafés & Brunch",
+      description: "From the perfect morning espresso to sunset cocktails, discover Mallorca's best spots for coffee lovers and social gatherings."
+    },
     contact: {
       subtitle: "Get in Touch",
       title: "Plan Your Golf Getaway",
