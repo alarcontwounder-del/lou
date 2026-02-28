@@ -191,6 +191,22 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             </button>
           )}
 
+          {/* Search Button in Navbar */}
+          {onSearchClick && (
+            <button
+              onClick={onSearchClick}
+              className={`p-2 rounded-full transition-colors duration-300 ${
+                isScrolled
+                  ? 'text-stone-500 hover:text-brand-slate hover:bg-stone-100'
+                  : 'text-white/70 hover:text-white hover:bg-white/10'
+              }`}
+              title="Search"
+              data-testid="navbar-search-btn"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+          )}
+
           {/* Book CTA */}
           <a
             href="https://golfinmallorca.greenfee365.com"
