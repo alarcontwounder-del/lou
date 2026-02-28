@@ -107,6 +107,19 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
             Cafés & Bars
           </button>
           <button
+            onClick={() => scrollToSection('beach-clubs')}
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+            }`}
+            data-testid="nav-beach-clubs"
+          >
+            Beach Clubs
+          </button>
+          
+          {/* Separator */}
+          <span className={`hidden lg:block w-px h-4 ${isScrolled ? 'bg-stone-300' : 'bg-white/30'}`}></span>
+          
+          <button
             onClick={() => scrollToSection('reviews')}
             className={`text-sm font-medium transition-colors duration-300 ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
