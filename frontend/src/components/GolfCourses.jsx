@@ -205,6 +205,67 @@ export const GolfCourses = () => {
             />
           ))}
         </div>
+
+        {/* Worldwide Booking CTA */}
+        <div 
+          className="mt-16 relative overflow-hidden rounded-3xl"
+          data-testid="worldwide-golf-cta"
+        >
+          {/* Background with gradient overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: 'url(https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&h=600&fit=crop)',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/95 via-brand-charcoal/85 to-brand-charcoal/70" />
+          
+          {/* Content */}
+          <div className="relative z-10 px-8 py-12 md:px-16 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4">
+                <Globe className="w-4 h-4 text-brand-gold" />
+                <span className="text-white/90 text-sm font-medium">Worldwide Tee Times</span>
+              </div>
+              <h3 className="font-heading text-3xl md:text-4xl text-white mb-4">
+                {language === 'de' ? 'Golf spielen, wo immer Sie sind' :
+                 language === 'fr' ? 'Jouez au golf où que vous soyez' :
+                 language === 'se' ? 'Spela golf var du än är' :
+                 'Play Golf Wherever You Are'}
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed">
+                {language === 'de' ? 'Planen Sie Ihre Reise? Buchen Sie Abschlagszeiten in Ihrem Heimatland, Ihrer Zielstadt oder fast überall auf der Welt – bevor oder während Ihrer Reise.' :
+                 language === 'fr' ? 'Vous planifiez votre voyage ? Réservez des départs dans votre pays, votre ville de destination ou presque partout dans le monde – avant ou pendant votre voyage.' :
+                 language === 'se' ? 'Planerar du din resa? Boka starttider i ditt hemland, din destinationsstad eller nästan var som helst i världen – före eller under din resa.' :
+                 'Planning your trip? Book tee times in your home country, destination city, or almost anywhere in the world – before or during your travels.'}
+              </p>
+            </div>
+            
+            <div className="flex flex-col items-center gap-3">
+              <a
+                href="https://greenfee365.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 bg-white text-brand-charcoal px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                data-testid="worldwide-golf-btn"
+              >
+                <span>
+                  {language === 'de' ? 'Weltweit erkunden' :
+                   language === 'fr' ? 'Explorer le monde' :
+                   language === 'se' ? 'Utforska världen' :
+                   'Explore Worldwide'}
+                </span>
+                <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <span className="text-white/60 text-sm">
+                {language === 'de' ? 'Über 3.000 Golfplätze verfügbar' :
+                 language === 'fr' ? 'Plus de 3 000 parcours disponibles' :
+                 language === 'se' ? 'Över 3 000 banor tillgängliga' :
+                 'Over 3,000 courses available'}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
