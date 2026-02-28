@@ -377,9 +377,9 @@ export const translations = {
       subtitle: "Exklusiva Golfupplevelser",
       title: "Upptäck Mallorcas Bästa Golf",
       description: "Din port till premiumgolfbanor, lyxboende och oförglömliga Medelhavsupplevelser.",
-      bookTeeTime: "Boka Tee Time",
+      bookTeeTime: "Boka tee time nu",
       cta: "Börja Din Resa",
-      ctaSecondary: "Se Banor"
+      ctaSecondary: "Se golfbanor på Mallorca"
     },
     about: {
       subtitle: "Om Oss",
