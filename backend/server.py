@@ -650,6 +650,60 @@ GOLF_COURSES = [
         "location": "Bendinat",
         "features": ["Exclusive Club", "Sea Views", "Historic Course", "Fine Dining"],
         "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/real-golf-de-bendinat"
+    },
+    {
+        "id": "golf-ibiza",
+        "name": "Golf Ibiza by azuLinehotels",
+        "description": {
+            "en": "A unique VIP experience on Ibiza's only golf club, featuring 18 challenging holes across coastal valleys and mountains, open 365 days a year.",
+            "de": "Ein einzigartiges VIP-Erlebnis auf Ibizas einzigem Golfclub, mit 18 anspruchsvollen Löchern durch Küstentäler und Berge, 365 Tage im Jahr geöffnet.",
+            "fr": "Une expérience VIP unique sur le seul club de golf d'Ibiza, avec 18 trous stimulants à travers vallées côtières et montagnes, ouvert 365 jours par an.",
+            "se": "En unik VIP-upplevelse på Ibizas enda golfklubb, med 18 utmanande hål genom kustvallarna och bergen, öppet 365 dagar om året."
+        },
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-ibiza-by-azuinehotels/golf-ibiza-by-azuinehotels",
+        "holes": 18,
+        "par": 72,
+        "price_from": 140,
+        "location": "Santa Eulària, Ibiza",
+        "phone": "+34 971 196 052",
+        "features": ["Island's Only Course", "VIP Experience", "Driving Range", "Pro Shop", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-ibiza-by-azuinehotels"
+    },
+    {
+        "id": "roca-llisa-ibiza",
+        "name": "Roca Llisa by azuLinehotels",
+        "description": {
+            "en": "A relaxed 9-hole course ideal for beginners or quick rounds, featuring a flat open layout with bunkers, trees, and lakes at Golf Ibiza.",
+            "de": "Ein entspannter 9-Loch-Platz ideal für Anfänger oder schnelle Runden, mit flachem offenem Layout mit Bunkern, Bäumen und Seen bei Golf Ibiza.",
+            "fr": "Un parcours 9 trous détendu idéal pour les débutants ou les parties rapides, avec un layout plat ouvert avec bunkers, arbres et lacs à Golf Ibiza.",
+            "se": "En avslappnad 9-hålsbana idealisk för nybörjare eller snabba rundor, med flat öppen layout med bunkrar, träd och sjöar på Golf Ibiza."
+        },
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/roca-llisa-by-azulinehotels/roca-llisa-by-azulinehotels",
+        "holes": 9,
+        "par": 35,
+        "price_from": 95,
+        "location": "Santa Eulària, Ibiza",
+        "phone": "+34 971 196 052",
+        "features": ["9-Hole Course", "Beginner Friendly", "Quick Round", "Driving Range", "Restaurant"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/roca-llisa-by-azulinehotels"
+    },
+    {
+        "id": "golf-son-parc-menorca",
+        "name": "Golf Son Parc Menorca",
+        "description": {
+            "en": "Menorca's only 18-hole course, beautifully set within a protected natural landscape with wide fairways and strategic bunkering.",
+            "de": "Menorcas einziger 18-Loch-Platz, wunderschön in einer geschützten Naturlandschaft mit breiten Fairways und strategischen Bunkern gelegen.",
+            "fr": "Le seul parcours 18 trous de Minorque, magnifiquement situé dans un paysage naturel protégé avec de larges fairways et des bunkers stratégiques.",
+            "se": "Menorcas enda 18-hålsbana, vackert belägen i ett skyddat naturlandskap med breda fairways och strategiska bunkrar."
+        },
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-son-parc-menorca/golf-son-parc-menorca",
+        "holes": 18,
+        "par": 71,
+        "price_from": 65,
+        "location": "Son Parc, Menorca",
+        "phone": "+34 971 188 875",
+        "features": ["Island's Only Course", "Natural Setting", "Driving Range", "Bar Restaurant", "Pro Shop"],
+        "booking_url": "https://golfinmallorca.greenfee365.com/golf-course/golf-son-parc-menorca"
     }
 ]
 
