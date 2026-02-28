@@ -122,12 +122,12 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
         </button>
       )}
 
-      {/* Expanded Floating Search Bar - Dark minimal design */}
+      {/* Expanded Floating Search Bar - Drops down from navbar, right aligned */}
       {isExpanded && (
         <div 
           ref={searchRef}
           data-testid="floating-search-expanded"
-          className="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-full max-w-xl px-4"
+          className="fixed top-20 right-6 z-50 w-full max-w-md"
         >
           <div className="bg-stone-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-stone-700">
             {/* Search Input Row */}
