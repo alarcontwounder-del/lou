@@ -1054,7 +1054,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine de luxe privé avec terrains expansifs, service raffiné et partenariats golf exclusifs avec des parcours de premier ordre.",
             "se": "Privat lyxegendom med vidsträckta marker, förfinad service och exklusiva golfpartnerskap med förstklassiga banor.",
         },
-        "image": "https://images.unsplash.com/photo-1633368098496-be7b5571547c?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/372098893.jpg?k=d3c6e897c8e59bd7e3a6e7b8e8a7c6d5&o=",
         "location": "Sencelles",
         "full_address": "Camí de Son Xotano, 07140 Sencelles, Illes Balears, Spain",
         "deal": {
@@ -1126,7 +1126,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe classique avec élégance intemporelle, équipements premium et accès pratique aux parcours de golf de championnat.",
             "se": "Klassiskt lyxhotell med tidlös elegans, premium bekvämligheter och bekväm tillgång till mästerskap golfbanor.",
         },
-        "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop",
+        "image": "https://image-tc.galaxy.tf/wijpeg-4floa7yvebyc1kd6u37vazhar/gran-hotel-soller-hotel-building-11.jpg?width=800&height=600",
         "location": "Sóller",
         "full_address": "Carrer de Romaguera, 18, 07100 Sóller, Illes Balears, Spain",
         "deal": {
@@ -1198,7 +1198,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique de luxe sophistiqué alliant charme historique, élégance contemporaine et accès au golf.",
             "se": "Sofistikerat boutique-lyxhotell som blandar historisk charm med samtida elegans och golftillgång.",
         },
-        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
+        "image": "https://conventdelamissio.com/backoffice/images/344-48convent1300x870.webp",
         "location": "Palma",
         "full_address": "Carrer de la Missió, 7A, 07003 Palma, Illes Balears, Spain",
         "deal": {
