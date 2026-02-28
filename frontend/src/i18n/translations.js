@@ -133,9 +133,9 @@ export const translations = {
       subtitle: "Exklusive Golf-Erlebnisse",
       title: "Entdecken Sie Mallorcas Besten Golf",
       description: "Ihr Tor zu Premium-Golfplätzen, Luxusunterkünften und unvergesslichen mediterranen Erlebnissen.",
-      bookTeeTime: "Abschlagzeit Buchen",
+      bookTeeTime: "Jetzt Tee Time buchen",
       cta: "Starten Sie Ihre Reise",
-      ctaSecondary: "Plätze Ansehen"
+      ctaSecondary: "Golfplätze auf Mallorca ansehen"
     },
     about: {
       subtitle: "Über Uns",
