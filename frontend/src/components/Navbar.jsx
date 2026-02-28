@@ -15,7 +15,7 @@ const languages = [
   { code: 'se', label: 'SE', flag: '🇸🇪' },
 ];
 
-export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
+export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearchClick }) => {
   const { language, changeLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
