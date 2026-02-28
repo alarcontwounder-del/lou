@@ -104,6 +104,7 @@ function MainContent() {
         onAdminClick={handleOpenAdmin} 
         isAuthenticated={!!user} 
         isCheckingAuth={isCheckingAuth}
+        onSearchClick={() => searchRef.current?.open()}
       />
       
       {/* Hero - always full width, no sidebar margin */}
@@ -128,8 +129,8 @@ function MainContent() {
       
       <Toaster position="bottom-right" />
       
-      {/* Floating Search Mockup */}
-      <FloatingSearch />
+      {/* Floating Search Mockup - showButton=false to only use navbar trigger */}
+      <FloatingSearch ref={searchRef} showButton={false} />
       
       {showAdmin && user && (
         <AdminDashboard 
