@@ -3913,7 +3913,7 @@ PARTNER_OFFERS = [
             "fr": "Fusion exquise de cuisines asiatique, sud-américaine et méditerranéenne avec cuisine ouverte. Dragon Fish, Croquettes de Wagyu et sushi créatif.",
             "se": "Utsökt fusion av asiatisk, sydamerikansk och medelhavskök med öppet showkök. Dragon Fish, Wagyu-kroketter och kreativ sushi.",
         },
-        "image": "https://images.unsplash.com/photo-1759038086841-506aae3e1545?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals Local 44, 07181 Portals Nous, Mallorca",
         "deal": {
@@ -3963,7 +3963,7 @@ PARTNER_OFFERS = [
             "fr": "Cuisine italienne méditerranéenne élégante avec pâtes maison, homard frais, huîtres et risotto al bogavante. Terrasse portuaire avec belle carte des vins.",
             "se": "Elegant italiensk medelhavsmiddag med hemgjord pasta, färsk hummer, ostron och risotto al bogavante. Hamnterrass med stark vinlista.",
         },
-        "image": "https://images.unsplash.com/photo-1766668413632-da08d0302bf7?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1322184/pexels-photo-1322184.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals, 07181 Portals Nous, Mallorca",
         "deal": {
@@ -3988,7 +3988,7 @@ PARTNER_OFFERS = [
             "fr": "Cuisine japonaise Newstyle et brasserie française. Sushi, plats français frais dans le port exclusif de Puerto Portals avec ambiance Zhero détendue.",
             "se": "Japansk Newstyle och fransk brasserimat. Sushi, färska franska rätter i exklusiva Puerto Portals hamn med avslappnad Zhero-atmosfär.",
         },
-        "image": "https://images.unsplash.com/photo-1761515397055-1bba63a150d3?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals, 07181 Portals Nous, Mallorca",
         "deal": {
@@ -4013,7 +4013,7 @@ PARTNER_OFFERS = [
             "fr": "Gourmet méditerranéen exclusif à l'élégant Puerto Portals. Célèbre Wellies Burger, Burger & Lobster, champagnes et cocktails créatifs avec vue sur le port.",
             "se": "Exklusiv medelhavsgourmet i eleganta Puerto Portals. Kända Wellies Burger, Burger & Lobster, champagne och kreativa cocktails med hamnutsikt.",
         },
-        "image": "https://images.unsplash.com/photo-1712952468219-d3e7d7395e34?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals Loc. 22, 07818 Portals Nous, Mallorca",
         "deal": {
