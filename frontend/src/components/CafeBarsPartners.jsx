@@ -50,7 +50,7 @@ const CafeBarCard = ({ place, language, t }) => (
           )}
           
           <div 
-            className="flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-amber-600 transition-colors"
+            className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-amber-600 transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.full_address || place.name + ', ' + place.location + ', Mallorca')}`, '_blank');
