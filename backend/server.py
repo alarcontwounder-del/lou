@@ -1463,7 +1463,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe contemporain près de Santa Ponsa Golf avec piscine à débordement et cuisine de la ferme à la table.",
             "se": "Samtida lyxresort nära Santa Ponsa Golf med fantastisk infinitypool och farm-to-table-matsal.",
         },
-        "image": "https://digital.ihg.com/is/image/ihg/kimpton-santa-ponsa-8623193946-16x9",
+        "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Santa Ponsa",
         "full_address": "Avinguda del Rei Jaume I, 109, 07180 Santa Ponsa, Mallorca",
         "deal": {
@@ -1487,7 +1487,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe réservé aux adultes au port Adriano avec piscine à débordement sur le toit et forfaits golf exclusifs.",
             "se": "Endast-vuxna lyxhotell vid Port Adriano marina med infinitypool på taket och exklusiva golfpaket.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/372896789.jpg?k=pure-salt-port-adriano&o=",
+        "image": "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Port Adriano",
         "full_address": "Urbanització El Toro, s/n, 07180 Port Adriano, Mallorca",
         "deal": {
@@ -1511,7 +1511,7 @@ PARTNER_OFFERS = [
             "fr": "Resort tout inclus premium près d'Alcanada Golf avec équipements familiaux et forfaits golf.",
             "se": "Premium all-inclusive resort nära Alcanada Golf med familjevänliga bekvämligheter och golfpaket.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/238615589.jpg?k=zafiro-palace-alcudia&o=",
+        "image": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Alcúdia",
         "full_address": "Carrer dels Mariners, s/n, 07400 Port d'Alcúdia, Mallorca",
         "deal": {
@@ -1535,7 +1535,7 @@ PARTNER_OFFERS = [
             "fr": "Resort exclusif abritant le restaurant 2 étoiles Michelin VORO, avec emplacement spectaculaire près de Canyamel Golf.",
             "se": "Exklusivt resort med 2-Michelin-stjärnig restaurang VORO, fantastisk klippläge nära Canyamel Golf.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/355691421.jpg?k=cap-vermell&o=",
+        "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Canyamel",
         "full_address": "Urbanització Atalaya de Canyamel, s/n, 07589 Canyamel, Mallorca",
         "deal": {
