@@ -242,7 +242,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
               onClick={() => scrollToSection('cafes-bars')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              Cafés
+              Cafés & Bars
             </button>
             <button
               onClick={() => scrollToSection('beach-clubs')}
