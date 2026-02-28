@@ -112,6 +112,7 @@ function MainContent() {
         <GolfCourses />
         <HotelPartners />
         <RestaurantPartners />
+        <BeachClubPartners />
         <Blog />
         <Contact />
       </main>
