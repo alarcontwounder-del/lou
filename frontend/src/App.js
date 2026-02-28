@@ -113,6 +113,7 @@ function MainContent() {
         <GolfCourses />
         <HotelPartners />
         <RestaurantPartners />
+        <CafeBarsPartners />
         <BeachClubPartners />
         <Blog />
         <Contact />
