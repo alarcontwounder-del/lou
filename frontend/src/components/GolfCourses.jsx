@@ -211,11 +211,11 @@ export const GolfCourses = () => {
           className="mt-16 relative overflow-hidden rounded-3xl"
           data-testid="worldwide-golf-cta"
         >
-          {/* Background with gradient overlay */}
+          {/* Background with gradient overlay - same as hero */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: 'url(https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&h=600&fit=crop)',
+              backgroundImage: `url('https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG')`,
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/95 via-brand-charcoal/85 to-brand-charcoal/70" />
