@@ -1787,7 +1787,7 @@ PARTNER_OFFERS = [
             "fr": "Beach club exclusif dans une crique privée avec service premium et spécialités de fruits de mer méditerranéens.",
             "se": "Exklusiv beachclub i en privat vik med premiumservice och medelhavs-skaldjursspecialiteter.",
         },
-        "image": "https://images.unsplash.com/photo-1760559849512-bed767716a05?w=800&h=600&fit=crop",
+        "image": "https://images.unsplash.com/photo-1760697640508-0dcb42681693?w=800&h=600&fit=crop",
         "location": "Calvià",
         "full_address": "Carrer de Cap Falcó 19, 07181 Calvià, Mallorca",
         "nearest_golf": "T Golf Calvià",
