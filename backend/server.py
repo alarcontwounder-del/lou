@@ -1645,7 +1645,7 @@ PARTNER_OFFERS = [
             "fr": "Izakaya japonais tendance à Santa Catalina servant des plats fusion innovants et cocktails artisanaux.",
             "se": "Trendig japansk izakaya i Santa Catalina med innovativa fusionrätter och hantverkscocktails.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/53/29/a9/izakaya-mallorca.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1711205061543-45ce6f06e4f8?w=800&h=600&fit=crop",
         "location": "Palma",
         "deal": {
             "en": "After Golf: Omakase menu + sake pairing",
@@ -1668,7 +1668,7 @@ PARTNER_OFFERS = [
             "fr": "Gastronomie au Jumeirah Port Soller avec vues panoramiques sur la mer et cuisine fusion méditerranéenne-asiatique.",
             "se": "Finmåltid på Jumeirah Port Soller med panoramautsikt och medelhavs-asiatisk fusionkök.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/22/8c/4d/es-fanals.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1616895428703-598b1d6fe4f7?w=800&h=600&fit=crop",
         "location": "Port de Sóller",
         "deal": {
             "en": "Sunset Dining: Terrace menu with sea view",
@@ -1691,7 +1691,7 @@ PARTNER_OFFERS = [
             "fr": "Beach club élégant à Palma Nova avec cuisine méditerranéenne, DJ sets et cocktails au coucher du soleil.",
             "se": "Stilfull beachclub i Palma Nova med medelhavskök, DJ-sets och solnedgångscocktails.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/b8/75/11/ona-beach-club.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1761926545961-252275b47a2a?w=800&h=600&fit=crop",
         "location": "Palma Nova",
         "deal": {
             "en": "Golfer's Beach Day: Lunch + sunbed + drink",
