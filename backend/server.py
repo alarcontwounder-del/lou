@@ -1054,7 +1054,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine de luxe privé avec terrains expansifs, service raffiné et partenariats golf exclusifs avec des parcours de premier ordre.",
             "se": "Privat lyxegendom med vidsträckta marker, förfinad service och exklusiva golfpartnerskap med förstklassiga banor.",
         },
-        "image": "https://www.sonxotano.com/images/estate-pool.jpg",
+        "image": "https://images.unsplash.com/photo-1633368098496-be7b5571547c?w=800&h=600&fit=crop",
         "location": "Sencelles",
         "full_address": "Camí de Son Xotano, 07140 Sencelles, Illes Balears, Spain",
         "deal": {
