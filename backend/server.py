@@ -2077,7 +2077,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-merengue-salado.jpg",
+        "image": "https://images.unsplash.com/photo-1600663791817-d74f5196ba29?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de la Missió 7, 07003 Palma, Mallorca, Spain",
         "deal": {
@@ -2252,7 +2252,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-ensaimada.jpg",
+        "image": "https://images.unsplash.com/photo-1508471349025-ca3e278cf5e2?w=800&h=600&fit=crop",
         "location": "Galilea",
         "full_address": "Carretera Es Capdellà km 1.7, 07196 Galilea, Mallorca, Spain",
         "deal": {
@@ -2277,7 +2277,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-pichon.jpg",
+        "image": "https://images.unsplash.com/photo-1665684718390-e4c4f23b48fa?w=800&h=600&fit=crop",
         "location": "Llucmajor",
         "full_address": "Carretera Cala Pi km 5, 07639 Llucmajor, Mallorca, Spain",
         "deal": {
@@ -2302,7 +2302,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2019/01/gal02-300x200.jpg",
+        "image": "https://images.unsplash.com/photo-1765360773028-6affda725695?w=800&h=600&fit=crop",
         "location": "Playa de Muro",
         "full_address": "Avenida del Levante s/n, 07458 Playa de Muro, Mallorca, Spain",
         "deal": {
@@ -2327,7 +2327,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2018/06/mf12-300x200.jpg",
+        "image": "https://images.unsplash.com/photo-1768697358705-c1b60333da35?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Sant Feliu 1, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -2352,7 +2352,7 @@ PARTNER_OFFERS = [
             "fr": "Bar à tapas espagnol contemporain avec des petites assiettes créatives et une atmosphère vibrante.",
             "se": "Samtida spansk tapasbar med kreativa smårätter och livlig atmosfär.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2018/06/mf17-300x200.jpg",
+        "image": "https://images.unsplash.com/photo-1769773297747-bd00e31b33aa?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Can Brondo 4, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -2452,7 +2452,7 @@ PARTNER_OFFERS = [
             "fr": "Légendaire pour son agneau rôti exceptionnel et sa cuisine de montagne majorquine authentique.",
             "se": "Legendarisk för exceptionellt rostlamm och autentisk mallorkinsk bergmat.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-merengue-salado.jpg",
+        "image": "https://images.unsplash.com/photo-1600663791817-d74f5196ba29?w=800&h=600&fit=crop",
         "location": "Alaró",
         "full_address": "Carretera Alaró–Orient km 4.5, 07340 Alaró, Mallorca, Spain",
         "deal": {
@@ -2627,7 +2627,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma Nova.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma Nova.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-ensaimada.jpg",
+        "image": "https://images.unsplash.com/photo-1508471349025-ca3e278cf5e2?w=800&h=600&fit=crop",
         "location": "Palma Nova",
         "full_address": "Carrer de Pagell 1, 07181 Palma Nova, Mallorca, Spain",
         "deal": {
@@ -2652,7 +2652,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-pichon.jpg",
+        "image": "https://images.unsplash.com/photo-1665684718390-e4c4f23b48fa?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Cotoner 44, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -2677,7 +2677,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2019/01/gal02-300x200.jpg",
+        "image": "https://images.unsplash.com/photo-1765360773028-6affda725695?w=800&h=600&fit=crop",
         "location": "Port d’Andratx",
         "full_address": "Passeig Marítim 14, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
@@ -2702,7 +2702,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Alcúdia.",
             "se": "Fin matupplevelse med samtida medelhavskök i Alcúdia.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2018/06/mf12-300x200.jpg",
+        "image": "https://images.unsplash.com/photo-1768697358705-c1b60333da35?w=800&h=600&fit=crop",
         "location": "Alcúdia",
         "full_address": "Carrer de la Victòria 1, 07400 Alcúdia, Mallorca, Spain",
         "deal": {
@@ -2727,7 +2727,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2018/06/mf17-300x200.jpg",
+        "image": "https://images.unsplash.com/photo-1769773297747-bd00e31b33aa?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Ramon y Cajal 12, 07011 Palma, Mallorca, Spain",
         "deal": {
@@ -2827,7 +2827,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://www.marcfosh.com/wp-content/uploads/2024/02/marc-fosh-dish-merengue-salado.jpg",
+        "image": "https://images.unsplash.com/photo-1600663791817-d74f5196ba29?w=800&h=600&fit=crop",
         "location": "Port de Pollença",
         "full_address": "Carrer d’Enmig, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
