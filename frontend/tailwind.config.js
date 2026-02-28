@@ -15,6 +15,7 @@ module.exports = {
           slate: '#6B7B8C',         // Dusty slate blue - accent
           gray: '#9CA3AF',          // Soft gray - secondary text
           cream: '#F5F2EB',         // Warm cream - light backgrounds
+          gold: '#C9A227',          // Golden amber - CTA accent
           // Legacy aliases for compatibility
           green: '#2D2D2D',         // Now charcoal
           sand: '#6B7B8C',          // Now slate blue
