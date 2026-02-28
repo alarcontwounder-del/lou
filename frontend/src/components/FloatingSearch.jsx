@@ -116,7 +116,7 @@ export const FloatingSearch = () => {
         <button
           onClick={handleSearchClick}
           data-testid="floating-search-button"
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-5 py-3 
+          className="fixed bottom-20 right-6 z-40 flex items-center gap-3 px-5 py-3 
                      bg-gradient-to-r from-stone-800 to-stone-700 text-white 
                      rounded-full shadow-lg hover:shadow-xl transition-all duration-300 
                      hover:scale-105 group"
