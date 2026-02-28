@@ -11,9 +11,9 @@ export const translations = {
       subtitle: "Exclusive Golf Experiences",
       title: "Discover Mallorca's Finest Golf",
       description: "Your gateway to premium golf courses, luxury accommodations, and unforgettable Mediterranean experiences.",
-      bookTeeTime: "Book Tee Time",
+      bookTeeTime: "Book a tee time now",
       cta: "Start Your Journey",
-      ctaSecondary: "View Courses"
+      ctaSecondary: "View golf courses in Mallorca"
     },
     about: {
       subtitle: "About Us",
