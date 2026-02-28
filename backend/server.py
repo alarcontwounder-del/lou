@@ -3010,7 +3010,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1600663791817-d74f5196ba29?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de la Missió 7, 07003 Palma, Mallorca, Spain",
         "deal": {
@@ -3035,7 +3035,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1744413923195-c32510caf017?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Plaça de Llorenç Villalonga 4, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -3060,7 +3060,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Passeig de Mallorca 20, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -3110,7 +3110,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Sóller",
         "full_address": "Carretera Sóller–Deià km 56, 07100 Sóller, Mallorca, Spain",
         "deal": {
@@ -3385,7 +3385,7 @@ PARTNER_OFFERS = [
             "fr": "Légendaire pour son agneau rôti exceptionnel et sa cuisine de montagne majorquine authentique.",
             "se": "Legendarisk för exceptionellt rostlamm och autentisk mallorkinsk bergmat.",
         },
-        "image": "https://images.unsplash.com/photo-1600663791817-d74f5196ba29?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Alaró",
         "full_address": "Carretera Alaró–Orient km 4.5, 07340 Alaró, Mallorca, Spain",
         "deal": {
@@ -3410,7 +3410,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Santa Maria del Camí.",
             "se": "Fin matupplevelse med samtida medelhavskök i Santa Maria del Camí.",
         },
-        "image": "https://images.unsplash.com/photo-1744413923195-c32510caf017?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Santa Maria del Camí",
         "full_address": "Camí de Coanegra s/n, 07320 Santa Maria del Camí, Mallorca, Spain",
         "deal": {
@@ -3435,7 +3435,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Port de Pollença",
         "full_address": "Carretera Formentor s/n, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
@@ -3485,7 +3485,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Sant Magí 62, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -3760,7 +3760,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1600663791817-d74f5196ba29?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Port de Pollença",
         "full_address": "Carrer d’Enmig, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
@@ -3785,7 +3785,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Cala d’Or.",
             "se": "Fin matupplevelse med samtida medelhavskök i Cala d’Or.",
         },
-        "image": "https://images.unsplash.com/photo-1744413923195-c32510caf017?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Cala d’Or",
         "full_address": "Passeig Marítim s/n, 07660 Cala d’Or, Mallorca, Spain",
         "deal": {
@@ -3810,7 +3810,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Portocolom.",
             "se": "Fin matupplevelse med samtida medelhavskök i Portocolom.",
         },
-        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Portocolom",
         "full_address": "Passeig del Port, 07670 Portocolom, Mallorca, Spain",
         "deal": {
@@ -3860,7 +3860,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Port d’Andratx",
         "full_address": "Avinguda Mateo Bosch, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
@@ -3938,7 +3938,7 @@ PARTNER_OFFERS = [
             "fr": "Un classique de Puerto Portals depuis 1987. Célèbre pour le hamburger Flanigan, steak tartare, fruits de mer frais et tapas avec vue sur la marina.",
             "se": "En Puerto Portals-klassiker sedan 1987. Känd för Flanigan-hamburgaren, steak tartare, färska skaldjur och tapas med marinautsikt.",
         },
-        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Local 16, Puerto Portals, 07181 Calviá, Mallorca",
         "deal": {
