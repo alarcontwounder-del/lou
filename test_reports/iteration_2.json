@@ -1,0 +1,75 @@
+{
+  "summary": "Completed frontend testing for Golf in Mallorca website. Fixed critical bug in HotelPartners.jsx and RestaurantPartners.jsx where API calls used wrong query parameter (offer_type instead of type), causing all partner offers to be returned instead of filtered results. All 7 test features verified after fix.",
+  
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "RestaurantPartners.jsx",
+        "issue": "Some restaurant images are broken (e.g., Brut Restaurant, Es Freu, Voro)",
+        "priority": "MEDIUM",
+        "note": "Images showing alt text only - broken external image URLs"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  
+  "passed_tests": [
+    "Beach Clubs section loads with 11 beach clubs - ALL IMAGES DISPLAY CORRECTLY",
+    "Hotels section loads correctly with all hotel images displaying",
+    "Hotel cards display category tags (Boutique, Luxury Rural, Luxury Hotel, etc.)",
+    "Hotel cards display region tags (North, Northeast, East Coast Luxury, etc.)",
+    "Restaurants section loads with 45 restaurants (FIXED: was showing all 94 offers before fix)",
+    "Restaurant cards display Michelin star badges (11 total: 1x ⭐⭐, 10x ⭐)",
+    "Reviews Sidebar visible on scroll past hero section",
+    "Reviews Sidebar shows reviews with platform logos (Google, Trustpilot, TripAdvisor)",
+    "'Write a Review' button found and opens modal correctly",
+    "Review modal shows 'Continue with Google' authentication option",
+    "Navigation between sections works (Golf Courses, Hotels, Restaurants)"
+  ],
+  
+  "bugs_fixed": [
+    {
+      "file": "/app/frontend/src/components/HotelPartners.jsx",
+      "issue": "API call used 'offer_type=hotel' instead of 'type=hotel'",
+      "fix": "Changed axios.get URL from ?offer_type=hotel to ?type=hotel"
+    },
+    {
+      "file": "/app/frontend/src/components/RestaurantPartners.jsx", 
+      "issue": "API call used 'offer_type=restaurant' instead of 'type=restaurant'",
+      "fix": "Changed axios.get URL from ?offer_type=restaurant to ?type=restaurant"
+    }
+  ],
+  
+  "test_report_links": ["/app/test_reports/iteration_2.json"],
+  
+  "action_items": [
+    "Replace broken restaurant images (Brut Restaurant, Es Freu, Voro, DINS Santi Taura) with working Unsplash images"
+  ],
+  
+  "critical_code_review_comments": [
+    "API parameter inconsistency: Beach Clubs uses 'type' correctly while Hotels/Restaurants used wrong 'offer_type' - now fixed"
+  ],
+  
+  "updated_files": [
+    "/app/frontend/src/components/HotelPartners.jsx",
+    "/app/frontend/src/components/RestaurantPartners.jsx"
+  ],
+  
+  "success_rate": {
+    "backend": "N/A - frontend only testing",
+    "frontend": "95% (11/11 features working, some broken images)"
+  },
+  
+  "test_credentials": null,
+  "seed_data_creation": null,
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  
+  "context_for_next_testing_agent": "All sections (Beach Clubs, Hotels, Restaurants) are now loading correct filtered data. 11 beach clubs with images OK, 38 hotels with category/region tags, 45 restaurants with 11 Michelin badges. Some restaurant images are still broken and need replacement."
+}
