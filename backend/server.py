@@ -2052,7 +2052,7 @@ PARTNER_OFFERS = [
             "fr": "Excellence deux étoiles Michelin proposant une cuisine méditerranéenne innovante à Capdepera.",
             "se": "Två Michelin-stjärnor med innovativ medelhavskök i Capdepera.",
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-restaurant-area.jpg",
+        "image": "https://images.unsplash.com/photo-1744413923823-aa42d8c09e72?w=800&h=600&fit=crop",
         "location": "Capdepera",
         "full_address": "Ctra. Canyamel km 55.2, 07589 Capdepera, Mallorca, Spain",
         "deal": {
@@ -2102,7 +2102,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
+        "image": "https://images.unsplash.com/photo-1744413923195-c32510caf017?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Plaça de Llorenç Villalonga 4, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -2427,7 +2427,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Pollença.",
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-restaurant-area.jpg",
+        "image": "https://images.unsplash.com/photo-1744413923823-aa42d8c09e72?w=800&h=600&fit=crop",
         "location": "Pollença",
         "full_address": "Carrer de la Pursiana 5, 07460 Pollença, Mallorca, Spain",
         "deal": {
@@ -2477,7 +2477,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Santa Maria del Camí.",
             "se": "Fin matupplevelse med samtida medelhavskök i Santa Maria del Camí.",
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
+        "image": "https://images.unsplash.com/photo-1744413923195-c32510caf017?w=800&h=600&fit=crop",
         "location": "Santa Maria del Camí",
         "full_address": "Camí de Coanegra s/n, 07320 Santa Maria del Camí, Mallorca, Spain",
         "deal": {
@@ -2802,7 +2802,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Pollença.",
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-restaurant-area.jpg",
+        "image": "https://images.unsplash.com/photo-1744413923823-aa42d8c09e72?w=800&h=600&fit=crop",
         "location": "Pollença",
         "full_address": "Carretera Pollença–Alcúdia km 59, 07460 Pollença, Mallorca, Spain",
         "deal": {
@@ -2852,7 +2852,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Cala d’Or.",
             "se": "Fin matupplevelse med samtida medelhavskök i Cala d’Or.",
         },
-        "image": "https://www.restaurant-esfum.com/es/resourcefiles/gallery-images/es-fum-terrace-sea-view.jpg",
+        "image": "https://images.unsplash.com/photo-1744413923195-c32510caf017?w=800&h=600&fit=crop",
         "location": "Cala d’Or",
         "full_address": "Passeig Marítim s/n, 07660 Cala d’Or, Mallorca, Spain",
         "deal": {
