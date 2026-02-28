@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Menu, X, ChevronDown, Settings } from 'lucide-react';
+import { Menu, X, ChevronDown, Settings, Search } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
