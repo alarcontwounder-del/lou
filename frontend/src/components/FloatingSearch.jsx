@@ -111,19 +111,17 @@ export const FloatingSearch = () => {
 
   return (
     <>
-      {/* Floating Search Button - Always visible when not expanded */}
+      {/* Floating Search Button - Simple dark circle with search icon */}
       {!isExpanded && (
         <button
           onClick={handleSearchClick}
           data-testid="floating-search-button"
-          className="fixed bottom-20 right-6 z-40 flex items-center gap-3 px-5 py-3 
-                     bg-gradient-to-r from-stone-800 to-stone-700 text-white 
-                     rounded-full shadow-lg hover:shadow-xl transition-all duration-300 
-                     hover:scale-105 group"
+          className="fixed bottom-20 right-6 z-40 w-12 h-12 flex items-center justify-center
+                     bg-stone-800 text-white rounded-full shadow-lg 
+                     hover:shadow-xl transition-all duration-300 hover:scale-105"
         >
           <Search className="w-5 h-5" />
-          <span className="font-medium hidden sm:inline">Search</span>
-          <span className="absolute -top-1 -right-1 w-3 h-3 bg-amber-500 rounded-full animate-pulse" />
+          <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-amber-500 rounded-full" />
         </button>
       )}
 
