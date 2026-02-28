@@ -419,6 +419,16 @@ export const translations = {
       description: "Upptäck exceptionell medelhavskök på våra partnerrestauranger med exklusiva erbjudanden.",
       reserve: "Reservera Bord"
     },
+    beachClubs: {
+      subtitle: "Avslappning Efter Golf",
+      title: "Premium Beach Clubs",
+      description: "Koppla av efter din runda på Mallorcas mest exklusiva strandklubbar med speciella golferpaket."
+    },
+    cafeBars: {
+      subtitle: "Kaffe, Cocktails & Brunch",
+      title: "Barer, Kaféer & Brunch",
+      description: "Från den perfekta morgonespressot till solnedgångscocktails – upptäck Mallorcas bästa ställen för kaffeälskare."
+    },
     contact: {
       subtitle: "Kontakta Oss",
       title: "Planera Din Golfsemester",
