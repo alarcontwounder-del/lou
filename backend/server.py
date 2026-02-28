@@ -1505,7 +1505,7 @@ PARTNER_OFFERS = [
             "fr": "Resort ultra-luxe avec plage privée, spa de classe mondiale et départs préférentiels à Canyamel Golf.",
             "se": "Ultra-lyxresort med privat strand, spa i världsklass och förmånliga starttider på Canyamel Golf.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/6d/63/0a/park-hyatt-mallorca.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1692698913019-8197afe18fae?w=800&h=600&fit=crop",
         "location": "Canyamel",
         "full_address": "Urbanització Atalaya de Canyamel, s/n, 07589 Canyamel, Mallorca",
         "deal": {
@@ -1529,7 +1529,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique éco-luxe dans une finca restaurée avec jardins biologiques et accès aux golfs du nord-est.",
             "se": "Eko-lyxboutique-hotell i en restaurerad finca med ekologiska trädgårdar och tillgång till nordöstra golfbanor.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/27/55/c7/es-raco-d-arta.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1758972575441-413c44d67292?w=800&h=600&fit=crop",
         "location": "Artà",
         "full_address": "Carrer Na Batlessa, s/n, 07570 Artà, Mallorca",
         "deal": {
@@ -1553,7 +1553,7 @@ PARTNER_OFFERS = [
             "fr": "Manoir du 17ème siècle dans les montagnes de Tramuntana avec collection d'art et transferts golf en hélicoptère.",
             "se": "1600-tals herrgård i Tramuntana-bergen med konstsamling och helikopter-golfransfers.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/c8/ac/12/gran-hotel-son-net.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1567333828478-2d320d69e250?w=800&h=600&fit=crop",
         "location": "Puigpunyent",
         "full_address": "Carrer Castillo de Son Net, s/n, 07194 Puigpunyent, Mallorca",
         "deal": {
@@ -1576,7 +1576,7 @@ PARTNER_OFFERS = [
             "fr": "Deux étoiles Michelin au Cap Vermell Grand Hotel. Le chef Álvaro Salazar crée une cuisine méditerranéenne extraordinaire.",
             "se": "Två Michelinstjärnor på Cap Vermell Grand Hotel. Kocken Álvaro Salazar skapar extraordinär medelhavskök.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/54/0c/20/voro-restaurant.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1711204539664-6937fecf39f1?w=800&h=600&fit=crop",
         "location": "Canyamel",
         "deal": {
             "en": "Golfer's Tasting: 8-course menu with wine pairing",
@@ -1599,7 +1599,7 @@ PARTNER_OFFERS = [
             "fr": "Une étoile Michelin mettant en valeur la cuisine majorquine authentique avec la créativité du chef Santi Taura.",
             "se": "En Michelinstjärna som visar autentiskt mallorkinsk mat med kocken Santi Tauras kreativitet.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/f5/36/c9/dins-santi-taura.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1651977560780-9dd0a6071db6?w=800&h=600&fit=crop",
         "location": "Palma",
         "deal": {
             "en": "Traditional Tasting: Mallorcan heritage menu",
@@ -1622,7 +1622,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant de montagne légendaire célèbre pour son agneau rôti lentement, ses vues spectaculaires et son atmosphère majorquine authentique.",
             "se": "Legendarisk bergsrestaurang känd för långsamt rostat lamm, spektakulär utsikt och autentisk mallorkinsk atmosfär.",
         },
-        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/58/e1/78/es-verger.jpg?w=800&h=600",
+        "image": "https://images.unsplash.com/photo-1624698331245-4a22ee38c3bc?w=800&h=600&fit=crop",
         "location": "Alaró",
         "deal": {
             "en": "Mountain Feast: Lamb + local wine selection",
