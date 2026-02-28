@@ -255,9 +255,9 @@ export const translations = {
       subtitle: "Expériences Golf Exclusives",
       title: "Découvrez le Meilleur Golf de Majorque",
       description: "Votre passerelle vers des parcours de golf premium, des hébergements de luxe et des expériences méditerranéennes inoubliables.",
-      bookTeeTime: "Réserver un Départ",
+      bookTeeTime: "Réserver un tee time",
       cta: "Commencez Votre Voyage",
-      ctaSecondary: "Voir les Parcours"
+      ctaSecondary: "Voir les parcours à Majorque"
     },
     about: {
       subtitle: "À Propos",
