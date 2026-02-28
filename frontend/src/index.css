@@ -170,14 +170,15 @@ html:hover::-webkit-scrollbar {
   z-index: 1;
 }
 
-/* Prevent flip on location icon click */
-.flip-card .location-icon {
-  cursor: pointer;
-  z-index: 10;
+/* Location icon styling */
+.location-link {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
 }
 
-.flip-card .location-icon:hover {
-  color: var(--brand-slate);
+.location-link:hover {
+  color: #6B7B8C !important;
 }
 
 /* Grain texture overlay */
