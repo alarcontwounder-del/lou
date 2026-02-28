@@ -150,7 +150,7 @@ export const HotelPartners = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get(`${API}/partner-offers?offer_type=hotel`);
+        const response = await axios.get(`${API}/partner-offers?type=hotel`);
         setHotels(response.data);
       } catch (error) {
         console.error('Error fetching hotels:', error);

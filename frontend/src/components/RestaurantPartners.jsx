@@ -162,7 +162,7 @@ export const RestaurantPartners = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await axios.get(`${API}/partner-offers?offer_type=restaurant`);
+        const response = await axios.get(`${API}/partner-offers?type=restaurant`);
         setRestaurants(response.data);
       } catch (error) {
         console.error('Error fetching restaurants:', error);
