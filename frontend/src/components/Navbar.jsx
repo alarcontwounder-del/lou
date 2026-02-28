@@ -53,15 +53,26 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           href="https://golfinmallorca.greenfee365.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="transition-all duration-300"
+          className="transition-all duration-300 flex-shrink-0"
           data-testid="logo"
         >
+          {/* Desktop/Tablet Logo */}
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className="h-16 sm:h-24 md:h-44 w-auto max-w-[140px] sm:max-w-none object-contain transition-all duration-300"
+            className="hidden sm:block h-24 md:h-44 w-auto object-contain transition-all duration-300"
             style={{ filter: isScrolled ? 'none' : 'brightness(0) saturate(100%) invert(67%) sepia(64%) saturate(400%) hue-rotate(5deg) brightness(95%)' }}
           />
+          {/* Mobile Logo - Text based for better readability */}
+          <div 
+            className={`sm:hidden font-serif text-xl font-bold leading-tight transition-colors duration-300 ${
+              isScrolled ? 'text-brand-charcoal' : 'text-brand-gold'
+            }`}
+          >
+            <span className="block">Golfin</span>
+            <span className="block -mt-1">mallorca</span>
+            <span className="block -mt-1 text-sm font-normal tracking-wide">.com</span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}
