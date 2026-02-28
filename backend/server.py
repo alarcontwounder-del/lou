@@ -1699,7 +1699,7 @@ PARTNER_OFFERS = [
             "fr": "Izakaya japonais tendance à Santa Catalina servant des plats fusion innovants et cocktails artisanaux.",
             "se": "Trendig japansk izakaya i Santa Catalina med innovativa fusionrätter och hantverkscocktails.",
         },
-        "image": "https://images.unsplash.com/photo-1711205061543-45ce6f06e4f8?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "deal": {
             "en": "After Golf: Omakase menu + sake pairing",
@@ -1722,7 +1722,7 @@ PARTNER_OFFERS = [
             "fr": "Gastronomie au Jumeirah Port Soller avec vues panoramiques sur la mer et cuisine fusion méditerranéenne-asiatique.",
             "se": "Finmåltid på Jumeirah Port Soller med panoramautsikt och medelhavs-asiatisk fusionkök.",
         },
-        "image": "https://images.unsplash.com/photo-1616895428703-598b1d6fe4f7?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Port de Sóller",
         "deal": {
             "en": "Sunset Dining: Terrace menu with sea view",
@@ -1745,7 +1745,7 @@ PARTNER_OFFERS = [
             "fr": "Beach club élégant à Palma Nova avec cuisine méditerranéenne, DJ sets et cocktails au coucher du soleil.",
             "se": "Stilfull beachclub i Palma Nova med medelhavskök, DJ-sets och solnedgångscocktails.",
         },
-        "image": "https://images.unsplash.com/photo-1761926545961-252275b47a2a?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1078981/pexels-photo-1078981.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma Nova",
         "deal": {
             "en": "Golfer's Beach Day: Lunch + sunbed + drink",
@@ -1769,7 +1769,7 @@ PARTNER_OFFERS = [
             "fr": "Beach club iconique avec piscine à débordement, spa bien-être et cuisine méditerranéenne vue mer.",
             "se": "Ikonisk beachclub med infinitypool, wellness-spa och medelhavskök med havsutsikt.",
         },
-        "image": "https://images.unsplash.com/photo-1763402084622-c7da69907b81?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1049298/pexels-photo-1049298.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Illetas",
         "full_address": "Passeig Illetes 58B, 07181 Illetas, Mallorca",
         "nearest_golf": "Real Golf de Bendinat",
