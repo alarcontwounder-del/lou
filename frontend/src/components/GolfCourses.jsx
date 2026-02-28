@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
