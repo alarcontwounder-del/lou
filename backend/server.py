@@ -3320,9 +3320,9 @@ async def get_golf_courses():
     return GOLF_COURSES
 
 @api_router.get("/partner-offers", response_model=List[dict])
-async def get_partner_offers(offer_type: Optional[str] = None):
-    if offer_type:
-        return [o for o in PARTNER_OFFERS if o["type"] == offer_type]
+async def get_partner_offers(type: Optional[str] = None):
+    if type:
+        return [o for o in PARTNER_OFFERS if o["type"] == type]
     return PARTNER_OFFERS
 
 @api_router.post("/contact", response_model=ContactInquiry)
