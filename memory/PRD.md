@@ -7,6 +7,7 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 - Admin dashboard for content management
 - Real authentic images for all partners
 - Beach Clubs section added
+- Mini search engine for finding golf courses, hotels, restaurants, etc.
 
 ## User Personas
 - Golf enthusiasts visiting Mallorca
@@ -20,55 +21,53 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 3. ✅ New transparent logo with golden amber color on hero
 4. ✅ Social media icons in footer
 5. ✅ Improved scroll indicator
-6. ✅ Replace all placeholder images with authentic photos - COMPLETED
+6. ✅ Replace all stock images with Pexels professional photos - COMPLETED (106 images replaced)
 7. ✅ Beach Clubs section - COMPLETED (11 beach clubs with images)
 8. ✅ Display new data fields (Michelin stars, category/region tags) - COMPLETED
-9. ⏳ Admin dashboard for content management
-10. ⏳ Custom booking URLs for cards
-11. ⏳ Email functionality (blocked - needs API key)
+9. ✅ Cafés & Bars section - COMPLETED (34 venues)
+10. ✅ Floating Search Mockup - COMPLETED (UI mockup for user approval)
+11. ⏳ Full Search Implementation - PENDING USER APPROVAL of mockup
+12. ⏳ Admin dashboard for content management
+13. ⏳ Email functionality (blocked - needs API key)
 
 ## What's Been Implemented
 
-### February 28, 2026 (Session 4) - Current
-- **P0: Fixed ALL Broken Images**:
-  - Replaced ALL TripAdvisor CDN URLs (broken) with Unsplash URLs
-  - Fixed 11 beach club images
-  - Fixed 10+ new hotel images  
-  - Fixed 15+ restaurant images (Marc Fosh, Bens d'Avall, profitroom CDN replacements)
-  - Replaced external URLs that were showing broken content
+### December 2025 (Current Session)
+- **P0: Stock Photo Replacement** - COMPLETED:
+  - Replaced ALL 106 Unsplash stock photos with Pexels professional images
+  - Fixed blocked CDN URLs (Booking.com, Marriott, Hyatt, IHG) with reliable Pexels alternatives
+  - All hotel, restaurant, beach club, and café/bar images now loading correctly
   
-- **P1: Data Fields Already Displayed**:
-  - Hotels: Category tags (Boutique, Luxury Rural, Ultra Luxury, etc.) + Region tags (Tramuntana, Palma, East Coast Luxury, etc.) - WORKING
-  - Restaurants: Michelin star badges (11 total: 1x ⭐⭐, 10x ⭐) - WORKING
-  - Beach Clubs: "Beach Club" tags + distance to golf courses - WORKING
+- **P0: Floating Search Mockup** - COMPLETED:
+  - Created sticky/floating search bar component
+  - Category dropdown with all 6 categories (All, Golf, Hotels, Restaurants, Cafés & Bars, Beach Clubs)
+  - Quick category filter buttons
+  - Multi-language support (EN, DE, FR, SE)
+  - Search input field
+  - ESC key and click-outside to close
+  - "MOCKUP" notice for user approval
+  - Positioned above "Made with Emergent" badge
 
-- **Bug Fix by Testing Agent**:
-  - Fixed HotelPartners.jsx: API used wrong parameter (offer_type → type)
-  - Fixed RestaurantPartners.jsx: API used wrong parameter (offer_type → type)
-  
-- **Beach Clubs Section**: Complete with 11 clubs:
-  - Purobeach Illetas, Nikki Beach Mallorca, Beso Beach Mallorca
-  - Cap Falcó Beach, Gran Folies Beach Club, Anima Beach Palma
-  - Mhares Sea Club, Balneario Illetas, Ponderosa Beach
-  - Assaona Gastrobeach, Patiki Beach
-
-### February 26, 2026 (Session 3)
-- **Review Widget**: Added "Write a Review" functionality with Google OAuth
-- Backend APIs for submission and admin approval workflow
+### February 28, 2026 (Session 4)
+- **Fixed ALL Broken Images**: Replaced TripAdvisor/external CDN URLs
+- **Data Fields Displayed**: Michelin stars, category/region tags
+- **Bug Fixes**: API parameter issues in HotelPartners.jsx and RestaurantPartners.jsx
 
 ### Previous Sessions
+- Beach Clubs Section (11 clubs)
+- Cafés & Bars Section (34 venues)
+- Review Widget with Google OAuth
 - Full UI/UX redesign with "Ink Wash" palette
 - Two-column layout with fixed ReviewSidebar
-- Logo branding with golden amber color filter
-- Footer social media icons
 
 ## Prioritized Backlog
 
 ### P0 - Critical
-- [x] Fix all broken images - ✅ COMPLETED
+- [x] Fix all stock/broken images - ✅ COMPLETED (106 images replaced)
+- [x] Floating Search Mockup - ✅ COMPLETED (awaiting user approval)
 
 ### P1 - High Priority  
-- [x] Display new data fields (Michelin, category/region) - ✅ COMPLETED
+- [ ] Full Search Implementation (after mockup approval)
 - [ ] Email functionality (needs RESEND_API_KEY, SENDER_EMAIL)
 - [ ] Admin Dashboard implementation
 - [ ] Custom booking URLs
@@ -81,7 +80,7 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 
 ### Frontend
 - React + Tailwind CSS
-- Components: Navbar, Hero, ReviewSidebar, HotelPartners, RestaurantPartners, BeachClubPartners, Footer
+- Components: Navbar, Hero, ReviewSidebar, HotelPartners, RestaurantPartners, BeachClubPartners, CafeBarsPartners, FloatingSearch, Footer
 - State management: React hooks
 
 ### Backend
@@ -90,21 +89,24 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 - MongoDB configured for reviews
 
 ### Key Files
-- `/app/backend/server.py` - All partner data (golf, hotels, restaurants, beach clubs)
+- `/app/backend/server.py` - All partner data (golf, hotels, restaurants, beach clubs, cafes)
+- `/app/frontend/src/components/FloatingSearch.jsx` - NEW: Floating search mockup
 - `/app/frontend/src/components/BeachClubPartners.jsx` - Beach clubs section
+- `/app/frontend/src/components/CafeBarsPartners.jsx` - Cafés & Bars section
 - `/app/frontend/src/components/HotelPartners.jsx` - Hotels with category/region tags
 - `/app/frontend/src/components/RestaurantPartners.jsx` - Restaurants with Michelin stars
-- `/app/frontend/src/components/ReviewsSidebar.jsx` - Reviews panel with Write a Review
 
 ## Partner Data Summary
-- Golf Courses: 12+
+- Golf Courses: 12+ (including Ibiza & Menorca)
 - Hotels: 38+
-- Restaurants: 45+
-- Beach Clubs: 11
+- Restaurants: 54+
+- Beach Clubs: 12
+- Cafés & Bars: 36
 
 ## Known Issues
 1. **Email broken**: Missing Resend API credentials
 2. **Data hardcoded**: Needs MongoDB migration for Admin Dashboard
+3. **Search not functional**: Current search is UI mockup only
 
 ## Integration Dependencies
 - Resend (email) - needs API key
