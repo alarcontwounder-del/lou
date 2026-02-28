@@ -8,6 +8,7 @@ import { About } from './components/About';
 import { GolfCourses } from './components/GolfCourses';
 import { HotelPartners } from './components/HotelPartners';
 import { RestaurantPartners } from './components/RestaurantPartners';
+import { BeachClubPartners } from './components/BeachClubPartners';
 import { ReviewCarousel } from './components/ReviewCarousel';
 import { Blog } from './components/Blog';
 import { Newsletter } from './components/Newsletter';
