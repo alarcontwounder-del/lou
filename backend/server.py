@@ -1559,7 +1559,7 @@ PARTNER_OFFERS = [
             "fr": "Resort ultra-luxe avec plage privée, spa de classe mondiale et départs préférentiels à Canyamel Golf.",
             "se": "Ultra-lyxresort med privat strand, spa i världsklass och förmånliga starttider på Canyamel Golf.",
         },
-        "image": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/08/16/1130/Park-Hyatt-Mallorca-P084-Resort-Pool.jpg/Park-Hyatt-Mallorca-P084-Resort-Pool.16x9.jpg",
+        "image": "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Canyamel",
         "full_address": "Urbanització Atalaya de Canyamel, s/n, 07589 Canyamel, Mallorca",
         "deal": {
@@ -1583,7 +1583,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel boutique éco-luxe dans une finca restaurée avec jardins biologiques et accès aux golfs du nord-est.",
             "se": "Eko-lyxboutique-hotell i en restaurerad finca med ekologiska trädgårdar och tillgång till nordöstra golfbanor.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/283927561.jpg?k=es-raco-arta&o=",
+        "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Artà",
         "full_address": "Carrer Na Batlessa, s/n, 07570 Artà, Mallorca",
         "deal": {
@@ -1607,7 +1607,7 @@ PARTNER_OFFERS = [
             "fr": "Manoir du 17ème siècle dans les montagnes de Tramuntana avec collection d'art et transferts golf en hélicoptère.",
             "se": "1600-tals herrgård i Tramuntana-bergen med konstsamling och helikopter-golfransfers.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/161736847.jpg?k=gran-hotel-son-net&o=",
+        "image": "https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puigpunyent",
         "full_address": "Carrer Castillo de Son Net, s/n, 07194 Puigpunyent, Mallorca",
         "deal": {
@@ -1630,7 +1630,7 @@ PARTNER_OFFERS = [
             "fr": "Deux étoiles Michelin au Cap Vermell Grand Hotel. Le chef Álvaro Salazar crée une cuisine méditerranéenne extraordinaire.",
             "se": "Två Michelinstjärnor på Cap Vermell Grand Hotel. Kocken Álvaro Salazar skapar extraordinär medelhavskök.",
         },
-        "image": "https://lh3.googleusercontent.com/p/AF1QipO5v-VORO-restaurant-cap-vermell-mallorca",
+        "image": "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Canyamel",
         "deal": {
             "en": "Golfer's Tasting: 8-course menu with wine pairing",
