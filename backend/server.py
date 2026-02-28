@@ -1072,7 +1072,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe classique avec élégance intemporelle, équipements premium et accès pratique aux parcours de golf de championnat.",
             "se": "Klassiskt lyxhotell med tidlös elegans, premium bekvämligheter och bekväm tillgång till mästerskap golfbanor.",
         },
-        "image": "https://wa-uploads.profitroom.com/castellsonclaret/666x952/17283758726354_dsc0702finalneu.jpg",
+        "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop",
         "location": "Sóller",
         "full_address": "Carrer de Romaguera, 18, 07100 Sóller, Illes Balears, Spain",
         "deal": {
@@ -1312,7 +1312,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe complet avec jardins méditerranéens, forfaits golf et options de restauration de classe mondiale.",
             "se": "Komplett lyxresort med medelhavsträdgårdar, golfpaket och världsklass matställen.",
         },
-        "image": "https://wa-uploads.profitroom.com/castellsonclaret/666x952/16946874185587_castellsonclaretluxuryhotelinmallorca4.jpg",
+        "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
         "location": "Port d’Andratx",
         "full_address": "Carrer de Cala d’Egos, s/n, 07157 Port d’Andratx, Illes Balears, Spain",
         "deal": {
@@ -1336,7 +1336,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
         "location": "Calvià",
         "full_address": "Carretera Es Capdellà–Galilea, km 1.7, 07196 Calvià, Illes Balears, Spain",
         "deal": {
@@ -2127,7 +2127,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Passeig de Mallorca 20, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -2177,7 +2177,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
+        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
         "location": "Sóller",
         "full_address": "Carretera Sóller–Deià km 56, 07100 Sóller, Mallorca, Spain",
         "deal": {
@@ -2377,7 +2377,7 @@ PARTNER_OFFERS = [
             "fr": "Cuisine traditionnelle majorquine authentique célébrant les saveurs locales et le patrimoine.",
             "se": "Äkta traditionell mallorkinsk mat som firar lokala smaker och arv.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/4.jpg",
+        "image": "https://images.unsplash.com/photo-1649082236294-94468ba45741?w=800&h=600&fit=crop",
         "location": "Caimari",
         "full_address": "Carrer de l’Església 1, 07314 Caimari, Mallorca, Spain",
         "deal": {
@@ -2402,7 +2402,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Deià.",
             "se": "Fin matupplevelse med samtida medelhavskök i Deià.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/5.jpg",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
         "location": "Deià",
         "full_address": "Carrer Bisbe Nadal 10, 07179 Deià, Mallorca, Spain",
         "deal": {
@@ -2502,7 +2502,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
         "location": "Port de Pollença",
         "full_address": "Carretera Formentor s/n, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
@@ -2552,7 +2552,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
+        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Sant Magí 62, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -2752,7 +2752,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/4.jpg",
+        "image": "https://images.unsplash.com/photo-1649082236294-94468ba45741?w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Sant Jaume 3, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -2777,7 +2777,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Selva.",
             "se": "Fin matupplevelse med samtida medelhavskök i Selva.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/5.jpg",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
         "location": "Selva",
         "full_address": "Plaça Nova, 07313 Selva, Mallorca, Spain",
         "deal": {
@@ -2877,7 +2877,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Portocolom.",
             "se": "Fin matupplevelse med samtida medelhavskök i Portocolom.",
         },
-        "image": "https://wa-uploads.profitroom.com/castellsonclaret/890x500/16946891502929_2.castellsonclaretmallorcagastronomy.jpg",
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
         "location": "Portocolom",
         "full_address": "Passeig del Port, 07670 Portocolom, Mallorca, Spain",
         "deal": {
@@ -2927,7 +2927,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://www.bensdavall.com/upload/slider/6.jpg",
+        "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
         "location": "Port d’Andratx",
         "full_address": "Avinguda Mateo Bosch, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
