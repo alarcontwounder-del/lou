@@ -3285,7 +3285,7 @@ PARTNER_OFFERS = [
             "fr": "Bar à tapas espagnol contemporain avec des petites assiettes créatives et une atmosphère vibrante.",
             "se": "Samtida spansk tapasbar med kreativa smårätter och livlig atmosfär.",
         },
-        "image": "https://images.unsplash.com/photo-1769773297747-bd00e31b33aa?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1078981/pexels-photo-1078981.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Can Brondo 4, 07001 Palma, Mallorca, Spain",
         "deal": {
@@ -3310,7 +3310,7 @@ PARTNER_OFFERS = [
             "fr": "Cuisine traditionnelle majorquine authentique célébrant les saveurs locales et le patrimoine.",
             "se": "Äkta traditionell mallorkinsk mat som firar lokala smaker och arv.",
         },
-        "image": "https://images.unsplash.com/photo-1649082236294-94468ba45741?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1488315/pexels-photo-1488315.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Caimari",
         "full_address": "Carrer de l’Església 1, 07314 Caimari, Mallorca, Spain",
         "deal": {
@@ -3335,7 +3335,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Deià.",
             "se": "Fin matupplevelse med samtida medelhavskök i Deià.",
         },
-        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/776538/pexels-photo-776538.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Deià",
         "full_address": "Carrer Bisbe Nadal 10, 07179 Deià, Mallorca, Spain",
         "deal": {
@@ -3660,7 +3660,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1769773297747-bd00e31b33aa?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1078981/pexels-photo-1078981.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Ramon y Cajal 12, 07011 Palma, Mallorca, Spain",
         "deal": {
@@ -3685,7 +3685,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1649082236294-94468ba45741?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1488315/pexels-photo-1488315.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Sant Jaume 3, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -3710,7 +3710,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Selva.",
             "se": "Fin matupplevelse med samtida medelhavskök i Selva.",
         },
-        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/776538/pexels-photo-776538.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Selva",
         "full_address": "Plaça Nova, 07313 Selva, Mallorca, Spain",
         "deal": {
@@ -3888,7 +3888,7 @@ PARTNER_OFFERS = [
             "fr": "Fusion japonaise-méditerranéenne moderne par le Chef Simon Petutschnig. Grillade robata, sushi, tartare de wagyu avec vue imprenable sur la marina.",
             "se": "Modern japansk-medelhavsfusion av Executive Chef Simon Petutschnig. Robata-grillning, sushi, wagyu-tartare med fantastisk marinautsikt.",
         },
-        "image": "https://images.unsplash.com/photo-1770736929333-4fb8cd5a1657?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals, 07181 Portals Nous, Mallorca",
         "deal": {
@@ -4063,7 +4063,7 @@ PARTNER_OFFERS = [
             "fr": "Haute cuisine japonaise avec décoration exquise. Sushi, sashimi, temaki, gyoza, teppanyaki et tempura. Cabines en verre privées pour dîner exclusif.",
             "se": "Japansk haute cuisine med utsökt dekoration. Sushi, sashimi, temaki, gyoza, teppanyaki och tempura. Privata glashytter för exklusiv middag.",
         },
-        "image": "https://images.unsplash.com/photo-1769773297747-bd00e31b33aa?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1078981/pexels-photo-1078981.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals, 2, 07181 Portals Nous, Mallorca",
         "deal": {
