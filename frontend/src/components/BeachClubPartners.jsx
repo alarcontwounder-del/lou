@@ -48,7 +48,7 @@ const BeachClubCard = ({ club, language, t }) => (
           )}
           
           <div 
-            className="flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-cyan-600 transition-colors"
+            className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-cyan-600 transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(club.full_address || club.name + ', ' + club.location + ', Mallorca')}`, '_blank');
