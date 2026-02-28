@@ -1415,7 +1415,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de golf de luxe à Son Vida avec accès direct à trois parcours de championnat et spa de classe mondiale.",
             "se": "Lyxigt golfresort i Son Vida med direkt tillgång till tre mästerskapsbanor och spa i världsklass.",
         },
-        "image": "https://images.unsplash.com/photo-1690199828906-b2e4c50a630f?w=800&h=600&fit=crop",
+        "image": "https://cache.marriott.com/content/dam/marriott-renditions/PMISI/pmisi-exterior-5696-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1336px:*",
         "location": "Son Vida",
         "full_address": "Carrer de la Vinagrella, s/n, 07013 Son Vida, Mallorca",
         "deal": {
@@ -1439,7 +1439,7 @@ PARTNER_OFFERS = [
             "fr": "Château historique transformé en hôtel de luxe surplombant la baie de Palma, avec privilèges golf exclusifs.",
             "se": "Historiskt slott omvandlat till lyxhotell med utsikt över Palmabukten och exklusiva golfprivilegier.",
         },
-        "image": "https://images.unsplash.com/photo-1682194573479-83b1d6072253?w=800&h=600&fit=crop",
+        "image": "https://cache.marriott.com/content/dam/marriott-renditions/PMILC/pmilc-exterior-7506-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1336px:*",
         "location": "Son Vida",
         "full_address": "Carrer Raixa, 2, 07013 Son Vida, Mallorca",
         "deal": {
@@ -1463,7 +1463,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe contemporain près de Santa Ponsa Golf avec piscine à débordement et cuisine de la ferme à la table.",
             "se": "Samtida lyxresort nära Santa Ponsa Golf med fantastisk infinitypool och farm-to-table-matsal.",
         },
-        "image": "https://images.unsplash.com/photo-1641584433875-dbbecb033066?w=800&h=600&fit=crop",
+        "image": "https://digital.ihg.com/is/image/ihg/kimpton-santa-ponsa-8623193946-16x9",
         "location": "Santa Ponsa",
         "full_address": "Avinguda del Rei Jaume I, 109, 07180 Santa Ponsa, Mallorca",
         "deal": {
@@ -1487,7 +1487,7 @@ PARTNER_OFFERS = [
             "fr": "Hôtel de luxe réservé aux adultes au port Adriano avec piscine à débordement sur le toit et forfaits golf exclusifs.",
             "se": "Endast-vuxna lyxhotell vid Port Adriano marina med infinitypool på taket och exklusiva golfpaket.",
         },
-        "image": "https://images.unsplash.com/photo-1663574629234-5a88589e56a8?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/372896789.jpg?k=pure-salt-port-adriano&o=",
         "location": "Port Adriano",
         "full_address": "Urbanització El Toro, s/n, 07180 Port Adriano, Mallorca",
         "deal": {
