@@ -175,6 +175,16 @@ export const translations = {
       description: "Entdecken Sie außergewöhnliche mediterrane Küche in unseren Partner-Restaurants mit exklusiven Angeboten.",
       reserve: "Tisch Reservieren"
     },
+    beachClubs: {
+      subtitle: "Entspannen Nach Dem Golf",
+      title: "Premium Beach Clubs",
+      description: "Entspannen Sie nach Ihrer Runde in Mallorcas exklusivsten Beach Clubs mit speziellen Golfer-Paketen."
+    },
+    cafeBars: {
+      subtitle: "Kaffee, Cocktails & Brunch",
+      title: "Bars, Cafés & Brunch",
+      description: "Vom perfekten Morgen-Espresso bis zum Sonnenuntergangs-Cocktail – entdecken Sie Mallorcas beste Orte für Kaffeeliebhaber."
+    },
     contact: {
       subtitle: "Kontaktieren Sie Uns",
       title: "Planen Sie Ihren Golf-Urlaub",
