@@ -98,6 +98,15 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
             {t('restaurants.subtitle')}
           </button>
           <button
+            onClick={() => scrollToSection('cafes-bars')}
+            className={`text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+            }`}
+            data-testid="nav-cafes-bars"
+          >
+            Cafés & Bars
+          </button>
+          <button
             onClick={() => scrollToSection('reviews')}
             className={`text-sm font-medium transition-colors duration-300 ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
