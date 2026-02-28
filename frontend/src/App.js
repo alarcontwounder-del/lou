@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import '@/App.css';
 import { LanguageProvider } from './context/LanguageContext';
@@ -33,6 +33,7 @@ function MainContent() {
   const [user, setUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [showSidebar, setShowSidebar] = useState(false);
+  const searchRef = useRef(null);
 
   // Show sidebar after scrolling past hero section
   useEffect(() => {
