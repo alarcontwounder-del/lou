@@ -224,37 +224,52 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
               onClick={() => scrollToSection('courses')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              {t('nav.courses')}
+              Golf
             </button>
             <button
               onClick={() => scrollToSection('hotels')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              {t('offers.hotels')}
+              Hotels
             </button>
             <button
               onClick={() => scrollToSection('restaurants')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              {t('restaurants.subtitle')}
+              Restaurants
             </button>
+            <button
+              onClick={() => scrollToSection('cafes-bars')}
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
+            >
+              Cafés
+            </button>
+            <button
+              onClick={() => scrollToSection('beach-clubs')}
+              className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
+            >
+              Beach Clubs
+            </button>
+            
+            <div className="border-t border-stone-100 my-2"></div>
+            
             <button
               onClick={() => scrollToSection('reviews')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              {t('reviews.subtitle')}
+              Reviews
             </button>
             <button
               onClick={() => scrollToSection('blog')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              {t('blog.subtitle')}
+              Blog
             </button>
             <button
               onClick={() => scrollToSection('contact')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              {t('nav.contact')}
+              Contact
             </button>
             
             {/* Mobile Language Selector */}
