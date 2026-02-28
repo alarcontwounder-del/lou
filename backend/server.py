@@ -1366,7 +1366,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de luxe complet avec jardins méditerranéens, forfaits golf et options de restauration de classe mondiale.",
             "se": "Komplett lyxresort med medelhavsträdgårdar, golfpaket och världsklass matställen.",
         },
-        "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
+        "image": "https://www.hotelmonport.com/intranet/images/thumbs/tn_500_500_03_07_1910_03_03hotel_mon_port_exteriores.jpg",
         "location": "Port d’Andratx",
         "full_address": "Carrer de Cala d’Egos, s/n, 07157 Port d’Andratx, Illes Balears, Spain",
         "deal": {
