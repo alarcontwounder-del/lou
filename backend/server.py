@@ -2973,7 +2973,7 @@ PARTNER_OFFERS = [
     }
 ,
     {
-        "id": "voro",
+        "id": "voro-duplicate",
         "name": "Voro",
         "type": "restaurant",
         "michelin_stars": "⭐⭐ Michelin",
@@ -3023,7 +3023,7 @@ PARTNER_OFFERS = [
         "contact_url": "https://www.golfinmallorca.com/restaurants/marc-fosh",
     },
     {
-        "id": "dins-santi-taura",
+        "id": "dins-santi-taura-duplicate",
         "name": "DINS Santi Taura",
         "type": "restaurant",
         "michelin_stars": "⭐ Michelin",
@@ -3373,7 +3373,7 @@ PARTNER_OFFERS = [
         "contact_url": "https://www.golfinmallorca.com/restaurants/brut-restaurant",
     },
     {
-        "id": "es-verger",
+        "id": "es-verger-duplicate",
         "name": "Es Verger",
         "type": "restaurant",
         "michelin_stars": None,
@@ -3498,7 +3498,7 @@ PARTNER_OFFERS = [
         "contact_url": "https://www.golfinmallorca.com/restaurants/mombo",
     },
     {
-        "id": "izakaya-mallorca",
+        "id": "izakaya-mallorca-duplicate",
         "name": "Izakaya Mallorca",
         "type": "restaurant",
         "michelin_stars": None,
@@ -3523,7 +3523,7 @@ PARTNER_OFFERS = [
         "contact_url": "https://www.golfinmallorca.com/restaurants/izakaya-mallorca",
     },
     {
-        "id": "es-fanals",
+        "id": "es-fanals-duplicate",
         "name": "Es Fanals",
         "type": "restaurant",
         "michelin_stars": None,
