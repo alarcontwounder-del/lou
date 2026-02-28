@@ -240,7 +240,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
               onClick={() => scrollToSection('courses')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
             >
-              Golf
+              Golf Courses
             </button>
             <button
               onClick={() => scrollToSection('hotels')}
