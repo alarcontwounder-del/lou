@@ -101,12 +101,12 @@ export const FloatingSearch = () => {
 
   return (
     <>
-      {/* Floating Search Button - Simple dark circle with search icon */}
+      {/* Floating Search Button - Option 1: Top Right (below navbar) */}
       {!isExpanded && (
         <button
           onClick={handleSearchClick}
           data-testid="floating-search-button"
-          className="fixed bottom-20 right-6 z-40 w-12 h-12 flex items-center justify-center
+          className="fixed top-24 right-6 z-40 w-12 h-12 flex items-center justify-center
                      bg-stone-800 text-white rounded-full shadow-lg 
                      hover:shadow-xl transition-all duration-300 hover:scale-105"
         >
