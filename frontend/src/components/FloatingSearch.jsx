@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { Search, X, ChevronDown, Flag, Hotel, Utensils, Coffee, Palmtree } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -53,7 +53,7 @@ const searchPlaceholders = {
   se: 'Sök...'
 };
 
-export const FloatingSearch = () => {
+export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
@@ -63,6 +63,13 @@ export const FloatingSearch = () => {
 
   const labels = categoryLabels[language] || categoryLabels.en;
   const placeholder = searchPlaceholders[language] || searchPlaceholders.en;
+
+  // Expose open method to parent
+  useImperativeHandle(ref, () => ({
+    open: () => setIsExpanded(true),
+    close: () => setIsExpanded(false),
+    toggle: () => setIsExpanded(prev => !prev)
+  }));
 
   // Handle click outside to close
   useEffect(() => {
@@ -101,8 +108,8 @@ export const FloatingSearch = () => {
 
   return (
     <>
-      {/* Floating Search Button - Option 2: Middle Right Side */}
-      {!isExpanded && (
+      {/* Floating Search Button - Only show if showButton is true */}
+      {showButton && !isExpanded && (
         <button
           onClick={handleSearchClick}
           data-testid="floating-search-button"
@@ -115,12 +122,12 @@ export const FloatingSearch = () => {
         </button>
       )}
 
-      {/* Expanded Floating Search Bar - Top position */}
+      {/* Expanded Floating Search Bar - Dark minimal design */}
       {isExpanded && (
         <div 
           ref={searchRef}
           data-testid="floating-search-expanded"
-          className="fixed top-24 right-6 z-50 w-full max-w-xl"
+          className="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-full max-w-xl px-4"
         >
           <div className="bg-stone-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-stone-700">
             {/* Search Input Row */}
@@ -140,7 +147,7 @@ export const FloatingSearch = () => {
 
                 {/* Category Dropdown Menu */}
                 {showDropdown && (
-                  <div className="absolute bottom-full mb-2 left-0 bg-stone-800 rounded-xl shadow-xl border border-stone-700 overflow-hidden min-w-40 z-10">
+                  <div className="absolute top-full mt-2 left-0 bg-stone-800 rounded-xl shadow-xl border border-stone-700 overflow-hidden min-w-40 z-10">
                     {Object.entries(labels).map(([key, label]) => {
                       const Icon = categoryIcons[key];
                       return (
@@ -237,6 +244,8 @@ export const FloatingSearch = () => {
       )}
     </>
   );
-};
+});
+
+FloatingSearch.displayName = 'FloatingSearch';
 
 export default FloatingSearch;
