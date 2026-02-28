@@ -246,7 +246,7 @@ export const GolfCourses = () => {
                 href="https://golfinmallorca.greenfee365.com/es-ES/search?query=all_clubs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-white text-brand-charcoal px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="group inline-flex items-center gap-3 bg-white text-brand-charcoal px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 data-testid="worldwide-golf-btn"
               >
                 <span>
