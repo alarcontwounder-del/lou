@@ -235,13 +235,7 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
         </div>
       )}
 
-      {/* Backdrop when expanded */}
-      {isExpanded && (
-        <div 
-          className="fixed inset-0 bg-black/30 backdrop-blur-[2px] z-40"
-          onClick={() => setIsExpanded(false)}
-        />
-      )}
+      {/* No backdrop - search doesn't block the page */}
     </>
   );
 });
