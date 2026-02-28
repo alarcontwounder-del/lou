@@ -1653,7 +1653,7 @@ PARTNER_OFFERS = [
             "fr": "Une étoile Michelin mettant en valeur la cuisine majorquine authentique avec la créativité du chef Santi Taura.",
             "se": "En Michelinstjärna som visar autentiskt mallorkinsk mat med kocken Santi Tauras kreativitet.",
         },
-        "image": "https://lh3.googleusercontent.com/p/AF1QipNwDINS-santi-taura-palma-mallorca",
+        "image": "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "deal": {
             "en": "Traditional Tasting: Mallorcan heritage menu",
@@ -1676,7 +1676,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant de montagne légendaire célèbre pour son agneau rôti lentement, ses vues spectaculaires et son atmosphère majorquine authentique.",
             "se": "Legendarisk bergsrestaurang känd för långsamt rostat lamm, spektakulär utsikt och autentisk mallorkinsk atmosfär.",
         },
-        "image": "https://lh3.googleusercontent.com/p/AF1QipMtVfjKoEs-verger-alaro-mallorca-lamb",
+        "image": "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Alaró",
         "deal": {
             "en": "Mountain Feast: Lamb + local wine selection",
