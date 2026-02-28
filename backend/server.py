@@ -3185,7 +3185,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1508471349025-ca3e278cf5e2?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Galilea",
         "full_address": "Carretera Es Capdellà km 1.7, 07196 Galilea, Mallorca, Spain",
         "deal": {
@@ -3210,7 +3210,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1665684718390-e4c4f23b48fa?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Llucmajor",
         "full_address": "Carretera Cala Pi km 5, 07639 Llucmajor, Mallorca, Spain",
         "deal": {
@@ -3235,7 +3235,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant étoilé Michelin proposant une cuisine méditerranéenne raffinée et des expériences culinaires de golf exceptionnelles.",
             "se": "Michelin-stjärnig restaurang med förfinad medelhavskök och exceptionella golf-matupplevelser.",
         },
-        "image": "https://images.unsplash.com/photo-1765360773028-6affda725695?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Playa de Muro",
         "full_address": "Avenida del Levante s/n, 07458 Playa de Muro, Mallorca, Spain",
         "deal": {
@@ -3260,7 +3260,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1768697358705-c1b60333da35?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Sant Feliu 1, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -3560,7 +3560,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma Nova.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma Nova.",
         },
-        "image": "https://images.unsplash.com/photo-1508471349025-ca3e278cf5e2?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma Nova",
         "full_address": "Carrer de Pagell 1, 07181 Palma Nova, Mallorca, Spain",
         "deal": {
@@ -3585,7 +3585,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://images.unsplash.com/photo-1665684718390-e4c4f23b48fa?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Palma",
         "full_address": "Carrer de Cotoner 44, 07013 Palma, Mallorca, Spain",
         "deal": {
@@ -3610,7 +3610,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://images.unsplash.com/photo-1765360773028-6affda725695?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Port d’Andratx",
         "full_address": "Passeig Marítim 14, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
@@ -3635,7 +3635,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Alcúdia.",
             "se": "Fin matupplevelse med samtida medelhavskök i Alcúdia.",
         },
-        "image": "https://images.unsplash.com/photo-1768697358705-c1b60333da35?w=800&h=600&fit=crop",
+        "image": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Alcúdia",
         "full_address": "Carrer de la Victòria 1, 07400 Alcúdia, Mallorca, Spain",
         "deal": {
