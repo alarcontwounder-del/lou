@@ -297,6 +297,16 @@ export const translations = {
       description: "Découvrez une cuisine méditerranéenne exceptionnelle dans nos restaurants partenaires avec des offres exclusives.",
       reserve: "Réserver une Table"
     },
+    beachClubs: {
+      subtitle: "Détente Après Le Golf",
+      title: "Beach Clubs Premium",
+      description: "Détendez-vous après votre partie dans les beach clubs les plus exclusifs de Majorque avec des forfaits spéciaux golfeurs."
+    },
+    cafeBars: {
+      subtitle: "Café, Cocktails & Brunch",
+      title: "Bars, Cafés & Brunch",
+      description: "De l'espresso matinal parfait aux cocktails au coucher du soleil, découvrez les meilleurs spots de Majorque pour les amateurs de café."
+    },
     contact: {
       subtitle: "Contactez-Nous",
       title: "Planifiez Votre Escapade Golf",
