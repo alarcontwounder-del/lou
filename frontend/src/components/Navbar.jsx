@@ -56,27 +56,16 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth }) => {
           className="transition-all duration-300 flex-shrink-0"
           data-testid="logo"
         >
-          {/* Desktop/Tablet Logo */}
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className="hidden sm:block h-20 md:h-32 w-auto object-contain transition-all duration-300"
+            className="h-14 sm:h-20 md:h-32 w-auto object-contain transition-all duration-300"
             style={{ 
               filter: isScrolled 
                 ? 'brightness(0.2) saturate(100%)' 
                 : 'brightness(0) saturate(100%) invert(67%) sepia(64%) saturate(400%) hue-rotate(5deg) brightness(95%)' 
             }}
           />
-          {/* Mobile Logo - Text based for better readability */}
-          <div 
-            className={`sm:hidden font-serif text-xl font-bold leading-tight transition-colors duration-300 ${
-              isScrolled ? 'text-brand-charcoal' : 'text-brand-gold'
-            }`}
-          >
-            <span className="block">Golfin</span>
-            <span className="block -mt-1">mallorca</span>
-            <span className="block -mt-1 text-sm font-normal tracking-wide">.com</span>
-          </div>
         </a>
 
         {/* Desktop Navigation */}
