@@ -1054,7 +1054,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine de luxe privé avec terrains expansifs, service raffiné et partenariats golf exclusifs avec des parcours de premier ordre.",
             "se": "Privat lyxegendom med vidsträckta marker, förfinad service och exklusiva golfpartnerskap med förstklassiga banor.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/372098893.jpg?k=d3c6e897c8e59bd7e3a6e7b8e8a7c6d5&o=",
+        "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Sencelles",
         "full_address": "Camí de Son Xotano, 07140 Sencelles, Illes Balears, Spain",
         "deal": {
@@ -1390,7 +1390,7 @@ PARTNER_OFFERS = [
             "fr": "Domaine ultra-luxe exclusif avec villas privées, installations spa et services de conciergerie golf personnalisés.",
             "se": "Exklusiv ultra-lyxegendom med privata villor, spaanläggningar och personliga golf concierge-tjänster.",
         },
-        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/266883037.jpg?k=castell-son-claret-mallorca&o=",
+        "image": "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Calvià",
         "full_address": "Carretera Es Capdellà–Galilea, km 1.7, 07196 Calvià, Illes Balears, Spain",
         "deal": {
@@ -1415,7 +1415,7 @@ PARTNER_OFFERS = [
             "fr": "Resort de golf de luxe à Son Vida avec accès direct à trois parcours de championnat et spa de classe mondiale.",
             "se": "Lyxigt golfresort i Son Vida med direkt tillgång till tre mästerskapsbanor och spa i världsklass.",
         },
-        "image": "https://cache.marriott.com/content/dam/marriott-renditions/PMISI/pmisi-exterior-5696-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1336px:*",
+        "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Son Vida",
         "full_address": "Carrer de la Vinagrella, s/n, 07013 Son Vida, Mallorca",
         "deal": {
@@ -1439,7 +1439,7 @@ PARTNER_OFFERS = [
             "fr": "Château historique transformé en hôtel de luxe surplombant la baie de Palma, avec privilèges golf exclusifs.",
             "se": "Historiskt slott omvandlat till lyxhotell med utsikt över Palmabukten och exklusiva golfprivilegier.",
         },
-        "image": "https://cache.marriott.com/content/dam/marriott-renditions/PMILC/pmilc-exterior-7506-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1336px:*",
+        "image": "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         "location": "Son Vida",
         "full_address": "Carrer Raixa, 2, 07013 Son Vida, Mallorca",
         "deal": {
