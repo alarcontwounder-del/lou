@@ -127,6 +127,9 @@ function MainContent() {
       
       <Toaster position="bottom-right" />
       
+      {/* Floating Search Mockup */}
+      <FloatingSearch />
+      
       {showAdmin && user && (
         <AdminDashboard 
           onClose={() => setShowAdmin(false)} 
