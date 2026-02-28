@@ -1607,7 +1607,7 @@ PARTNER_OFFERS = [
             "fr": "Manoir du 17ème siècle dans les montagnes de Tramuntana avec collection d'art et transferts golf en hélicoptère.",
             "se": "1600-tals herrgård i Tramuntana-bergen med konstsamling och helikopter-golfransfers.",
         },
-        "image": "https://images.unsplash.com/photo-1567333828478-2d320d69e250?w=800&h=600&fit=crop",
+        "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/161736847.jpg?k=gran-hotel-son-net&o=",
         "location": "Puigpunyent",
         "full_address": "Carrer Castillo de Son Net, s/n, 07194 Puigpunyent, Mallorca",
         "deal": {
@@ -1630,7 +1630,7 @@ PARTNER_OFFERS = [
             "fr": "Deux étoiles Michelin au Cap Vermell Grand Hotel. Le chef Álvaro Salazar crée une cuisine méditerranéenne extraordinaire.",
             "se": "Två Michelinstjärnor på Cap Vermell Grand Hotel. Kocken Álvaro Salazar skapar extraordinär medelhavskök.",
         },
-        "image": "https://images.unsplash.com/photo-1711204539664-6937fecf39f1?w=800&h=600&fit=crop",
+        "image": "https://lh3.googleusercontent.com/p/AF1QipO5v-VORO-restaurant-cap-vermell-mallorca",
         "location": "Canyamel",
         "deal": {
             "en": "Golfer's Tasting: 8-course menu with wine pairing",
@@ -1653,7 +1653,7 @@ PARTNER_OFFERS = [
             "fr": "Une étoile Michelin mettant en valeur la cuisine majorquine authentique avec la créativité du chef Santi Taura.",
             "se": "En Michelinstjärna som visar autentiskt mallorkinsk mat med kocken Santi Tauras kreativitet.",
         },
-        "image": "https://images.unsplash.com/photo-1651977560780-9dd0a6071db6?w=800&h=600&fit=crop",
+        "image": "https://lh3.googleusercontent.com/p/AF1QipNwDINS-santi-taura-palma-mallorca",
         "location": "Palma",
         "deal": {
             "en": "Traditional Tasting: Mallorcan heritage menu",
@@ -1676,7 +1676,7 @@ PARTNER_OFFERS = [
             "fr": "Restaurant de montagne légendaire célèbre pour son agneau rôti lentement, ses vues spectaculaires et son atmosphère majorquine authentique.",
             "se": "Legendarisk bergsrestaurang känd för långsamt rostat lamm, spektakulär utsikt och autentisk mallorkinsk atmosfär.",
         },
-        "image": "https://images.unsplash.com/photo-1624698331245-4a22ee38c3bc?w=800&h=600&fit=crop",
+        "image": "https://lh3.googleusercontent.com/p/AF1QipMtVfjKoEs-verger-alaro-mallorca-lamb",
         "location": "Alaró",
         "deal": {
             "en": "Mountain Feast: Lamb + local wine selection",
