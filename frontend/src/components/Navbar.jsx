@@ -77,7 +77,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             }`}
             data-testid="nav-courses"
           >
-            Golf
+            Golf Courses
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
