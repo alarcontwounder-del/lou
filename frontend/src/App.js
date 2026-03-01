@@ -20,7 +20,6 @@ import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
 import { ReviewsSidebar } from './components/ReviewsSidebar';
 import { FloatingSearch } from './components/FloatingSearch';
-import { ScrollCapsule } from './components/ScrollCapsule';
 import DesignPreview from './pages/DesignPreview';
 import axios from 'axios';
 
