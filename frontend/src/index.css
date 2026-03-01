@@ -51,13 +51,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar - Hidden by default, shows on hover */
+/* Custom scrollbar - Dark capsule style, shows on hover */
 html {
-  scrollbar-width: none; /* Firefox */
-}
-
-html:hover {
-  scrollbar-width: thin; /* Firefox - show on hover */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(45, 45, 45, 0.6) transparent;
 }
 
 body {
@@ -66,30 +63,32 @@ body {
 
 /* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 8px;
   transition: width 0.3s ease;
 }
 
-/* Show scrollbar on body/html hover */
+/* Expand scrollbar on hover */
 body:hover::-webkit-scrollbar,
 html:hover::-webkit-scrollbar {
-  width: 12px;
+  width: 14px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(245, 242, 235, 0.3);
+  border-radius: 10px;
+  margin: 4px 0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(120, 113, 108, 0.4);
-  border-radius: 6px;
+  background: rgba(45, 45, 45, 0.7);
+  border-radius: 10px;
   border: 3px solid transparent;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(120, 113, 108, 0.7);
-  border: 3px solid transparent;
+  background: rgba(45, 45, 45, 0.9);
+  border: 2px solid transparent;
   background-clip: padding-box;
 }
 
