@@ -125,7 +125,7 @@ const ReviewItem = ({ review }) => {
   );
 };
 
-export const ReviewsSidebar = ({ isVisible }) => {
+export const ReviewsSidebar = ({ isVisible, isAnchored = false }) => {
   const [reviews, setReviews] = useState([]);
   const [stats, setStats] = useState({ average_rating: 0, total_reviews: 0, by_platform: {}, by_country: {} });
   const [searchQuery, setSearchQuery] = useState('');
@@ -169,18 +169,21 @@ export const ReviewsSidebar = ({ isVisible }) => {
 
   const uniqueCountries = Object.keys(stats.by_country || {});
 
-  // Don't render at all when not visible to prevent any overlap issues
   if (!isVisible) {
     return null;
   }
 
+  // Anchored mode: sidebar is part of page flow, sticky within its container
+  // Not fixed: scrolls with content but stays visible in its section
+  const sidebarClasses = isAnchored
+    ? "sticky top-16 h-[calc(100vh-4rem)] w-48 bg-brand-charcoal border-r border-stone-700 shadow-xl flex flex-col rounded-r-2xl flex-shrink-0"
+    : "fixed left-0 top-0 h-screen w-48 bg-brand-charcoal border-r border-stone-700 z-30 shadow-xl hidden lg:flex flex-col rounded-r-2xl";
+
   return (
     <aside 
-      className="fixed left-0 top-0 h-screen w-48 bg-brand-charcoal border-r border-stone-700 z-30 shadow-xl hidden lg:flex flex-col animate-in slide-in-from-left duration-300 rounded-r-2xl"
+      className={sidebarClasses}
       data-testid="reviews-sidebar"
     >
-      {/* Spacer for navbar */}
-      <div className="h-16 flex-shrink-0"></div>
       
       {/* Header with Stats */}
       <div className="p-3 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
