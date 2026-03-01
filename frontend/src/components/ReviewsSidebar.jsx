@@ -179,6 +179,8 @@ export const ReviewsSidebar = ({ isVisible }) => {
       className="fixed left-0 top-0 h-screen w-48 bg-brand-charcoal border-r border-stone-700 z-30 shadow-xl hidden lg:flex flex-col animate-in slide-in-from-left duration-300"
       data-testid="reviews-sidebar"
     >
+      {/* Spacer for navbar */}
+      <div className="h-16 flex-shrink-0"></div>
       
       {/* Header with Stats */}
       <div className="p-3 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
