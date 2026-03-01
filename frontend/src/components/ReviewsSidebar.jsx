@@ -169,13 +169,14 @@ export const ReviewsSidebar = ({ isVisible }) => {
 
   const uniqueCountries = Object.keys(stats.by_country || {});
 
+  // Don't render at all when not visible to prevent any overlap issues
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <aside 
-      className={`fixed left-0 top-16 h-[calc(100vh-4rem)] w-48 bg-brand-charcoal border-r border-stone-700 z-30 shadow-xl transition-all duration-300 ease-in-out hidden lg:flex flex-col ${
-        isVisible 
-          ? 'opacity-100 translate-x-0' 
-          : 'opacity-0 -translate-x-full pointer-events-none'
-      }`}
+      className="fixed left-0 top-0 h-screen w-48 bg-brand-charcoal border-r border-stone-700 z-30 shadow-xl hidden lg:flex flex-col animate-in slide-in-from-left duration-300"
       data-testid="reviews-sidebar"
     >
       
