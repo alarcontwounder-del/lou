@@ -16,6 +16,7 @@ export const SectionNavigator = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredSection, setHoveredSection] = useState(null);
+  const [isHoveringZone, setIsHoveringZone] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,10 +59,23 @@ export const SectionNavigator = () => {
   if (!isVisible) return null;
 
   return (
-    <nav 
-      className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-1"
-      aria-label="Section navigation"
-    >
+    <>
+      {/* Invisible hover zone on right edge - triggers ghost effect */}
+      <div 
+        className="fixed right-0 top-0 w-20 h-full z-30 hidden lg:block"
+        onMouseEnter={() => setIsHoveringZone(true)}
+        onMouseLeave={() => setIsHoveringZone(false)}
+      />
+      
+      {/* Navigation dots - ghost effect */}
+      <nav 
+        className={`fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-2 transition-all duration-300 ease-out ${
+          isHoveringZone ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
+        }`}
+        aria-label="Section navigation"
+        onMouseEnter={() => setIsHoveringZone(true)}
+        onMouseLeave={() => setIsHoveringZone(false)}
+      >
       {sections.map((section) => {
         const isActive = activeSection === section.id;
         const isHovered = hoveredSection === section.id;
