@@ -84,7 +84,7 @@ const BeachClubCard = ({ club, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl p-6 flex flex-col justify-between">
+      <div className="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl p-6 flex flex-col justify-between text-white">
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Waves className="w-5 h-5 text-cyan-200" />
@@ -96,6 +96,19 @@ const BeachClubCard = ({ club, language, t }) => (
           <p className="text-cyan-100 text-sm leading-relaxed mb-4">
             {club.description[language] || club.description.en}
           </p>
+
+          {/* Location - Clickable */}
+          <div 
+            className="location-link flex items-center gap-2 text-cyan-100 text-sm mb-4 cursor-pointer hover:text-white transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(club.full_address || club.name + ', ' + club.location + ', Mallorca')}`, '_blank');
+            }}
+            title="Open in Google Maps"
+          >
+            <MapPin className="w-4 h-4" />
+            <span>{club.location}</span>
+          </div>
 
           {/* Deal */}
           {club.deal && (
