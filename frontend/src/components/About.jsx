@@ -41,11 +41,11 @@ export const About = () => {
           {/* Image */}
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <div className="aspect-[4/5] img-zoom rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-[16/10] img-zoom rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="https://customer-assets.emergentagent.com/job_e972e808-34ad-4ed5-9add-1b44d86f7c5d/artifacts/b8qqdpbf_4031807808_4672471f49_o%20copia%20copy.jpg"
                   alt="Golf course panorama in Mallorca at sunset"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   data-testid="about-image"
                 />
               </div>
