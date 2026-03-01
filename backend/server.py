@@ -4636,9 +4636,317 @@ async def reorder_golf_courses(course_ids: List[str]):
 
 @api_router.get("/partner-offers", response_model=List[dict])
 async def get_partner_offers(type: Optional[str] = None):
+    """Get partner offers from MongoDB, falls back to hardcoded data if empty"""
+    
+    if type == "hotel":
+        cursor = db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=100)
+        if items:
+            return items
+    elif type == "restaurant":
+        cursor = db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=100)
+        if items:
+            return items
+    elif type == "beach_club":
+        cursor = db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=100)
+        if items:
+            return items
+    elif type == "cafe_bar":
+        cursor = db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=100)
+        if items:
+            return items
+    elif type is None:
+        # Return all partners combined
+        hotels = await db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+        restaurants = await db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+        beach_clubs = await db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+        cafe_bars = await db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+        
+        all_partners = hotels + restaurants + beach_clubs + cafe_bars
+        if all_partners:
+            return all_partners
+    
+    # Fallback to hardcoded data
     if type:
         return [o for o in PARTNER_OFFERS if o["type"] == type]
     return PARTNER_OFFERS
+
+
+# Individual partner type endpoints
+@api_router.get("/hotels", response_model=List[dict])
+async def get_hotels():
+    """Get all hotels from MongoDB"""
+    cursor = db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+    hotels = await cursor.to_list(length=100)
+    if not hotels:
+        return [o for o in PARTNER_OFFERS if o["type"] == "hotel"]
+    return hotels
+
+
+@api_router.get("/restaurants", response_model=List[dict])
+async def get_restaurants():
+    """Get all restaurants from MongoDB"""
+    cursor = db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+    restaurants = await cursor.to_list(length=100)
+    if not restaurants:
+        return [o for o in PARTNER_OFFERS if o["type"] == "restaurant"]
+    return restaurants
+
+
+@api_router.get("/beach-clubs", response_model=List[dict])
+async def get_beach_clubs():
+    """Get all beach clubs from MongoDB"""
+    cursor = db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+    beach_clubs = await cursor.to_list(length=100)
+    if not beach_clubs:
+        return [o for o in PARTNER_OFFERS if o["type"] == "beach_club"]
+    return beach_clubs
+
+
+@api_router.get("/cafe-bars", response_model=List[dict])
+async def get_cafe_bars():
+    """Get all cafés and bars from MongoDB"""
+    cursor = db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
+    cafe_bars = await cursor.to_list(length=100)
+    if not cafe_bars:
+        return [o for o in PARTNER_OFFERS if o["type"] == "cafe_bar"]
+    return cafe_bars
+
+
+# CRUD endpoints for each partner type
+@api_router.post("/hotels", response_model=dict, status_code=201)
+async def create_hotel(hotel: dict):
+    """Create a new hotel"""
+    existing = await db.hotels.find_one({"id": hotel.get("id")})
+    if existing:
+        raise HTTPException(status_code=400, detail="Hotel with this ID already exists")
+    
+    now = datetime.now(timezone.utc)
+    hotel["type"] = "hotel"
+    hotel["is_active"] = True
+    hotel["display_order"] = hotel.get("display_order", 0)
+    hotel["created_at"] = now
+    hotel["updated_at"] = now
+    
+    await db.hotels.insert_one(hotel)
+    hotel.pop("_id", None)
+    return hotel
+
+
+@api_router.put("/hotels/{hotel_id}", response_model=dict)
+async def update_hotel(hotel_id: str, hotel_update: dict):
+    """Update an existing hotel"""
+    existing = await db.hotels.find_one({"id": hotel_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Hotel not found")
+    
+    hotel_update.pop("_id", None)
+    hotel_update.pop("id", None)
+    hotel_update.pop("created_at", None)
+    
+    if hotel_update:
+        hotel_update["updated_at"] = datetime.now(timezone.utc)
+        await db.hotels.update_one({"id": hotel_id}, {"$set": hotel_update})
+    
+    updated = await db.hotels.find_one({"id": hotel_id}, {"_id": 0})
+    return updated
+
+
+@api_router.delete("/hotels/{hotel_id}", status_code=204)
+async def delete_hotel(hotel_id: str):
+    """Soft delete a hotel"""
+    result = await db.hotels.update_one(
+        {"id": hotel_id},
+        {"$set": {"is_active": False, "updated_at": datetime.now(timezone.utc)}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Hotel not found")
+    return None
+
+
+@api_router.post("/restaurants", response_model=dict, status_code=201)
+async def create_restaurant(restaurant: dict):
+    """Create a new restaurant"""
+    existing = await db.restaurants.find_one({"id": restaurant.get("id")})
+    if existing:
+        raise HTTPException(status_code=400, detail="Restaurant with this ID already exists")
+    
+    now = datetime.now(timezone.utc)
+    restaurant["type"] = "restaurant"
+    restaurant["is_active"] = True
+    restaurant["display_order"] = restaurant.get("display_order", 0)
+    restaurant["created_at"] = now
+    restaurant["updated_at"] = now
+    
+    await db.restaurants.insert_one(restaurant)
+    restaurant.pop("_id", None)
+    return restaurant
+
+
+@api_router.put("/restaurants/{restaurant_id}", response_model=dict)
+async def update_restaurant(restaurant_id: str, restaurant_update: dict):
+    """Update an existing restaurant"""
+    existing = await db.restaurants.find_one({"id": restaurant_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Restaurant not found")
+    
+    restaurant_update.pop("_id", None)
+    restaurant_update.pop("id", None)
+    restaurant_update.pop("created_at", None)
+    
+    if restaurant_update:
+        restaurant_update["updated_at"] = datetime.now(timezone.utc)
+        await db.restaurants.update_one({"id": restaurant_id}, {"$set": restaurant_update})
+    
+    updated = await db.restaurants.find_one({"id": restaurant_id}, {"_id": 0})
+    return updated
+
+
+@api_router.delete("/restaurants/{restaurant_id}", status_code=204)
+async def delete_restaurant(restaurant_id: str):
+    """Soft delete a restaurant"""
+    result = await db.restaurants.update_one(
+        {"id": restaurant_id},
+        {"$set": {"is_active": False, "updated_at": datetime.now(timezone.utc)}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Restaurant not found")
+    return None
+
+
+@api_router.post("/beach-clubs", response_model=dict, status_code=201)
+async def create_beach_club(beach_club: dict):
+    """Create a new beach club"""
+    existing = await db.beach_clubs.find_one({"id": beach_club.get("id")})
+    if existing:
+        raise HTTPException(status_code=400, detail="Beach club with this ID already exists")
+    
+    now = datetime.now(timezone.utc)
+    beach_club["type"] = "beach_club"
+    beach_club["is_active"] = True
+    beach_club["display_order"] = beach_club.get("display_order", 0)
+    beach_club["created_at"] = now
+    beach_club["updated_at"] = now
+    
+    await db.beach_clubs.insert_one(beach_club)
+    beach_club.pop("_id", None)
+    return beach_club
+
+
+@api_router.put("/beach-clubs/{beach_club_id}", response_model=dict)
+async def update_beach_club(beach_club_id: str, beach_club_update: dict):
+    """Update an existing beach club"""
+    existing = await db.beach_clubs.find_one({"id": beach_club_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Beach club not found")
+    
+    beach_club_update.pop("_id", None)
+    beach_club_update.pop("id", None)
+    beach_club_update.pop("created_at", None)
+    
+    if beach_club_update:
+        beach_club_update["updated_at"] = datetime.now(timezone.utc)
+        await db.beach_clubs.update_one({"id": beach_club_id}, {"$set": beach_club_update})
+    
+    updated = await db.beach_clubs.find_one({"id": beach_club_id}, {"_id": 0})
+    return updated
+
+
+@api_router.delete("/beach-clubs/{beach_club_id}", status_code=204)
+async def delete_beach_club(beach_club_id: str):
+    """Soft delete a beach club"""
+    result = await db.beach_clubs.update_one(
+        {"id": beach_club_id},
+        {"$set": {"is_active": False, "updated_at": datetime.now(timezone.utc)}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Beach club not found")
+    return None
+
+
+@api_router.post("/cafe-bars", response_model=dict, status_code=201)
+async def create_cafe_bar(cafe_bar: dict):
+    """Create a new café/bar"""
+    existing = await db.cafe_bars.find_one({"id": cafe_bar.get("id")})
+    if existing:
+        raise HTTPException(status_code=400, detail="Café/Bar with this ID already exists")
+    
+    now = datetime.now(timezone.utc)
+    cafe_bar["type"] = "cafe_bar"
+    cafe_bar["is_active"] = True
+    cafe_bar["display_order"] = cafe_bar.get("display_order", 0)
+    cafe_bar["created_at"] = now
+    cafe_bar["updated_at"] = now
+    
+    await db.cafe_bars.insert_one(cafe_bar)
+    cafe_bar.pop("_id", None)
+    return cafe_bar
+
+
+@api_router.put("/cafe-bars/{cafe_bar_id}", response_model=dict)
+async def update_cafe_bar(cafe_bar_id: str, cafe_bar_update: dict):
+    """Update an existing café/bar"""
+    existing = await db.cafe_bars.find_one({"id": cafe_bar_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Café/Bar not found")
+    
+    cafe_bar_update.pop("_id", None)
+    cafe_bar_update.pop("id", None)
+    cafe_bar_update.pop("created_at", None)
+    
+    if cafe_bar_update:
+        cafe_bar_update["updated_at"] = datetime.now(timezone.utc)
+        await db.cafe_bars.update_one({"id": cafe_bar_id}, {"$set": cafe_bar_update})
+    
+    updated = await db.cafe_bars.find_one({"id": cafe_bar_id}, {"_id": 0})
+    return updated
+
+
+@api_router.delete("/cafe-bars/{cafe_bar_id}", status_code=204)
+async def delete_cafe_bar(cafe_bar_id: str):
+    """Soft delete a café/bar"""
+    result = await db.cafe_bars.update_one(
+        {"id": cafe_bar_id},
+        {"$set": {"is_active": False, "updated_at": datetime.now(timezone.utc)}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Café/Bar not found")
+    return None
+
+
+# Combined search endpoint for all partners
+@api_router.get("/all-partners", response_model=dict)
+async def get_all_partners():
+    """Get all partners grouped by type"""
+    golf_courses = await db.golf_courses.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+    hotels = await db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+    restaurants = await db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+    beach_clubs = await db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+    cafe_bars = await db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+    
+    # Fallback to hardcoded data if collections are empty
+    if not golf_courses:
+        golf_courses = GOLF_COURSES
+    if not hotels:
+        hotels = [o for o in PARTNER_OFFERS if o["type"] == "hotel"]
+    if not restaurants:
+        restaurants = [o for o in PARTNER_OFFERS if o["type"] == "restaurant"]
+    if not beach_clubs:
+        beach_clubs = [o for o in PARTNER_OFFERS if o["type"] == "beach_club"]
+    if not cafe_bars:
+        cafe_bars = [o for o in PARTNER_OFFERS if o["type"] == "cafe_bar"]
+    
+    return {
+        "golf_courses": golf_courses,
+        "hotels": hotels,
+        "restaurants": restaurants,
+        "beach_clubs": beach_clubs,
+        "cafe_bars": cafe_bars,
+        "total_count": len(golf_courses) + len(hotels) + len(restaurants) + len(beach_clubs) + len(cafe_bars)
+    }
 
 @api_router.post("/contact", response_model=ContactInquiry)
 async def create_contact_inquiry(inquiry: ContactInquiryCreate):
