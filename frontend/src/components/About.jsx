@@ -8,9 +8,9 @@ export const About = () => {
   return (
     <section id="about" className="section-padding bg-brand-cream" data-testid="about-section">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-          {/* Text Content - 2 columns */}
-          <div className="order-2 lg:order-1 lg:col-span-2">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Text Content */}
+          <div className="order-2 lg:order-1">
             <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="about-subtitle">
               {t('about.subtitle')}
             </p>
@@ -38,8 +38,8 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Image - 3 columns (larger) */}
-          <div className="order-1 lg:order-2 lg:col-span-3">
+          {/* Image */}
+          <div className="order-1 lg:order-2">
             <div className="relative">
               <div className="aspect-[4/3] img-zoom rounded-2xl overflow-hidden shadow-2xl">
                 <img
