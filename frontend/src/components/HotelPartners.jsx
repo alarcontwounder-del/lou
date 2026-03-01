@@ -89,14 +89,21 @@ const HotelCard = ({ hotel, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-2xl" style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+      <div className="flip-card-back rounded-2xl p-6 text-white" style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
         <h3 className="font-heading text-2xl mb-6">{hotel.name}</h3>
         
         <div className="space-y-4">
-          {/* Location */}
-          <div className="flex items-start gap-3">
+          {/* Location - Clickable */}
+          <div 
+            className="location-link flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotel.full_address || hotel.name + ', ' + hotel.location + ', Mallorca')}`, '_blank');
+            }}
+            title="Open in Google Maps"
+          >
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <MapPin className="w-5 h-5" />
+              <Navigation className="w-5 h-5" />
             </div>
             <div>
               <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Location</p>
