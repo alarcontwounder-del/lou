@@ -86,7 +86,7 @@ const CafeBarCard = ({ place, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back bg-gradient-to-br from-amber-700 to-orange-800 rounded-2xl p-6 flex flex-col justify-between">
+      <div className="flip-card-back bg-gradient-to-br from-amber-700 to-orange-800 rounded-2xl p-6 flex flex-col justify-between text-white">
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Coffee className="w-5 h-5 text-amber-200" />
@@ -98,6 +98,19 @@ const CafeBarCard = ({ place, language, t }) => (
           <p className="text-amber-100 text-sm leading-relaxed mb-4">
             {place.description[language] || place.description.en}
           </p>
+
+          {/* Location - Clickable */}
+          <div 
+            className="location-link flex items-center gap-2 text-amber-100 text-sm mb-4 cursor-pointer hover:text-white transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.full_address || place.name + ', ' + place.location + ', Mallorca')}`, '_blank');
+            }}
+            title="Open in Google Maps"
+          >
+            <Navigation className="w-4 h-4" />
+            <span>{place.location}</span>
+          </div>
 
           {/* Deal */}
           {place.deal && (
