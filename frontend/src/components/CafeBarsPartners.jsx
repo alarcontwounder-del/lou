@@ -16,7 +16,7 @@ const CafeBarCard = ({ place, language, t }) => (
       <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
         {/* Discount Badge */}
         {place.discount_percent && (
-          <div className="absolute top-6 right-6 z-10 bg-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+          <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {place.discount_percent}%
           </div>
         )}
@@ -30,7 +30,7 @@ const CafeBarCard = ({ place, language, t }) => (
           />
           {/* Category Icon Overlay */}
           <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1.5">
-            <Coffee className="w-4 h-4 text-amber-700" />
+            <Coffee className="w-4 h-4 text-stone-600" />
             <span className="text-xs font-medium text-stone-700">
               {place.category || 'Café & Bar'}
             </span>
@@ -42,7 +42,7 @@ const CafeBarCard = ({ place, language, t }) => (
           {/* Specialty Tags */}
           {place.specialty && (
             <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="text-xs px-2 py-1 bg-amber-100 text-amber-700 font-medium rounded flex items-center gap-1">
+              <span className="text-xs px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded flex items-center gap-1">
                 <Croissant className="w-3 h-3" />
                 {place.specialty}
               </span>
@@ -50,7 +50,7 @@ const CafeBarCard = ({ place, language, t }) => (
           )}
           
           <div 
-            className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-amber-600 transition-colors"
+            className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.full_address || place.name + ', ' + place.location + ', Mallorca')}`, '_blank');
@@ -71,8 +71,8 @@ const CafeBarCard = ({ place, language, t }) => (
 
           {/* Deal Preview */}
           {place.deal && (
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg p-3 mb-3">
-              <p className="text-xs font-medium text-amber-700 line-clamp-1">
+            <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
+              <p className="text-xs font-medium text-stone-600 line-clamp-1">
                 {place.deal[language] || place.deal.en}
               </p>
             </div>
