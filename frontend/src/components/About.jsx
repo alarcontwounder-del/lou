@@ -6,7 +6,7 @@ export const About = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-12 bg-brand-cream" data-testid="about-section">
+    <section id="about" className="pt-12 pb-6 bg-brand-cream" data-testid="about-section">
       <div className="container-custom max-w-4xl mx-auto text-center">
         <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="about-subtitle">
           {t('about.subtitle')}

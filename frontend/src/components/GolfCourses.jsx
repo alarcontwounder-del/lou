@@ -183,7 +183,7 @@ export const GolfCourses = () => {
   }
 
   return (
-    <section id="courses" className="section-padding bg-brand-cream" data-testid="courses-section">
+    <section id="courses" className="pt-8 pb-24 px-6 md:px-12 bg-brand-cream" data-testid="courses-section">
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-12">
