@@ -112,7 +112,7 @@ function MainContent() {
       <Hero />
       
       {/* Main content with left margin when sidebar is visible */}
-      <main className={`transition-all duration-300 ${showSidebar ? 'lg:ml-80' : ''}`}>
+      <main className={`transition-all duration-300 ${showSidebar ? 'lg:ml-64' : ''}`}>
         <About />
         <GolfCourses />
         <HotelPartners />
@@ -123,7 +123,7 @@ function MainContent() {
         <Contact />
       </main>
       
-      <div className={`transition-all duration-300 ${showSidebar ? 'lg:ml-80' : ''}`}>
+      <div className={`transition-all duration-300 ${showSidebar ? 'lg:ml-64' : ''}`}>
         <Newsletter />
         <Footer />
       </div>
