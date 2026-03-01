@@ -32,7 +32,16 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 
 ## What's Been Implemented
 
-### December 2025 (Current Session)
+### March 1, 2026 (Current Session)
+- **P0: Reviews Sidebar Hero Overlap Fix** - COMPLETED:
+  - Fixed the bug where ReviewsSidebar overlapped the hero section when scrolling up
+  - Changed visibility logic to use `getBoundingClientRect()` for accurate viewport detection
+  - Sidebar now only shows when hero is completely out of view (bottom edge < 50px from viewport top)
+  - Added smooth slide-in/out animation with opacity and translate transforms
+  - Sidebar starts at `top-16` (below navbar) instead of `top-0`
+  - Uses `pointer-events-none` when hidden to prevent interaction bugs
+
+### December 2025 (Previous Session)
 - **P0: Stock Photo Replacement** - COMPLETED:
   - Replaced ALL 106 Unsplash stock photos with Pexels professional images
   - Fixed blocked CDN URLs (Booking.com, Marriott, Hyatt, IHG) with reliable Pexels alternatives
