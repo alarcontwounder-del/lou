@@ -220,6 +220,20 @@ export const AdminDashboard = ({ onClose, user }) => {
                 Pending Reviews ({pendingReviews.length})
               </div>
             </button>
+            <button
+              onClick={() => { setActiveTab('content'); setSearchTerm(''); }}
+              className={`flex-1 px-4 py-3 font-medium transition-colors text-sm ${
+                activeTab === 'content'
+                  ? 'border-b-2 border-brand-slate text-brand-charcoal bg-white'
+                  : 'text-stone-600 hover:text-stone-900'
+              }`}
+              data-testid="content-tab"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <LayoutGrid className="w-4 h-4" />
+                Content Manager
+              </div>
+            </button>
           </div>
         </div>
 
