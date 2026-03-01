@@ -104,7 +104,7 @@ const CompactReviewCard = ({ review }) => {
 
 export const CompactReviewsCarousel = () => {
   const [reviews, setReviews] = useState([]);
-  const [stats, setStats] = useState({ average_rating: 0, total_reviews: 0 });
+  const [stats, setStats] = useState({ average_rating: 0, total_reviews: 0, by_platform: {}, by_country: {} });
   const [loading, setLoading] = useState(true);
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
   const carouselRef = useRef(null);
@@ -129,7 +129,7 @@ export const CompactReviewsCarousel = () => {
 
   const scrollCarousel = (direction) => {
     if (carouselRef.current) {
-      const scrollAmount = 380; // ~2 cards
+      const scrollAmount = 420; // ~2 cards
       carouselRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -140,14 +140,32 @@ export const CompactReviewsCarousel = () => {
   return (
     <section className="py-8 bg-stone-50 border-t border-stone-100" data-testid="reviews-carousel-section">
       <div className="container-custom">
-        {/* Header - very compact */}
+        {/* Header with stats */}
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4 flex-wrap">
             <h3 className="text-sm font-medium text-stone-600">Customer Reviews</h3>
+            
+            {/* Rating badge */}
             <div className="flex items-center gap-1 px-2 py-0.5 bg-white rounded-full border border-stone-200">
               <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
               <span className="text-xs font-semibold text-stone-700">{stats.average_rating?.toFixed(1) || '5.0'}</span>
               <span className="text-[10px] text-stone-400">({stats.total_reviews || reviews.length})</span>
+            </div>
+            
+            {/* Platform counts */}
+            <div className="hidden sm:flex items-center gap-2">
+              <div className="flex items-center gap-1 px-2 py-0.5 bg-white rounded-full border border-stone-200">
+                <GoogleLogo />
+                <span className="text-[10px] text-stone-500">{stats.by_platform?.['Google Reviews'] || 0}</span>
+              </div>
+              <div className="flex items-center gap-1 px-2 py-0.5 bg-white rounded-full border border-stone-200">
+                <TrustpilotLogo />
+                <span className="text-[10px] text-stone-500">{stats.by_platform?.['Trustpilot'] || 0}</span>
+              </div>
+              <div className="flex items-center gap-1 px-2 py-0.5 bg-white rounded-full border border-stone-200">
+                <TripAdvisorLogo />
+                <span className="text-[10px] text-stone-500">{stats.by_platform?.['TripAdvisor'] || 0}</span>
+              </div>
             </div>
           </div>
           
