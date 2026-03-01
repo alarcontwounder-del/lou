@@ -150,7 +150,7 @@ body {
 
 .flip-card-front {
   z-index: 2;
-  background: white;
+  /* background controlled by Tailwind classes */
 }
 
 .flip-card-back {
