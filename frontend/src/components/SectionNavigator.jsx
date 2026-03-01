@@ -110,7 +110,8 @@ export const SectionNavigator = () => {
           </button>
         );
       })}
-    </nav>
+      </nav>
+    </>
   );
 };
 
