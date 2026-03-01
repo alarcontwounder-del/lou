@@ -229,10 +229,10 @@ export const ReviewsSidebar = ({ isVisible }) => {
           <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-stone-400" />
           <input
             type="text"
-            placeholder="Search reviews..."
+            placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-8 py-2.5 text-sm bg-white/10 border border-stone-600 rounded-lg text-white placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-slate/50 focus:border-brand-slate"
+            className="w-full pl-7 pr-6 py-2 text-xs bg-white/10 border border-stone-600 rounded-lg text-white placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-brand-slate/50"
             data-testid="sidebar-search"
           />
           {searchQuery && (
