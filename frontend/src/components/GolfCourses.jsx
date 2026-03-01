@@ -12,8 +12,8 @@ const CourseCard = ({ course, language, t }) => (
     data-testid={`course-card-${course.id}`}
   >
     <div className="flip-card-inner">
-      {/* Front of Card */}
-      <div className="flip-card-front bg-stone-300 border border-stone-300 shadow-sm rounded-2xl">
+      {/* Front of Card - Light grey with white text */}
+      <div className="flip-card-front bg-stone-200 border border-stone-300 shadow-sm rounded-2xl">
         {/* Image - Vertical/Portrait orientation */}
         <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
@@ -29,10 +29,10 @@ const CourseCard = ({ course, language, t }) => (
           )}
         </div>
 
-        {/* Content */}
+        {/* Content - White text on grey background */}
         <div className="p-5 pt-4">
           <div 
-            className="flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
+            className="flex items-center gap-2 text-white/70 text-xs mb-2 cursor-pointer hover:text-white transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(course.name + ', ' + course.location + ', Mallorca')}`, '_blank');
@@ -43,28 +43,28 @@ const CourseCard = ({ course, language, t }) => (
             <span>{course.location}</span>
           </div>
 
-          <h3 className="font-heading text-xl text-stone-900 mb-2">
+          <h3 className="font-heading text-xl text-white mb-2">
             {course.name}
           </h3>
 
-          <p className="text-stone-500 text-sm mb-4 line-clamp-2">
+          <p className="text-white/80 text-sm mb-4 line-clamp-2">
             {course.description[language] || course.description.en}
           </p>
 
           {/* Stats */}
           <div className="flex gap-4 mb-3">
             <div>
-              <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.holes')}</span>
-              <p className="text-lg font-semibold text-stone-700">{course.holes}</p>
+              <span className="text-xs uppercase tracking-wider text-white/60">{t('courses.holes')}</span>
+              <p className="text-lg font-semibold text-white">{course.holes}</p>
             </div>
             <div>
-              <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.par')}</span>
-              <p className="text-lg font-semibold text-stone-700">{course.par}</p>
+              <span className="text-xs uppercase tracking-wider text-white/60">{t('courses.par')}</span>
+              <p className="text-lg font-semibold text-white">{course.par}</p>
             </div>
           </div>
 
           {/* Hover hint */}
-          <p className="text-xs text-stone-400 italic">Hover for details →</p>
+          <p className="text-xs text-white/50 italic">Hover for details →</p>
         </div>
       </div>
 
