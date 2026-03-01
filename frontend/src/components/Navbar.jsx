@@ -25,9 +25,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Navbar is only visible in the hero area (first ~100px)
-      // After that, it stays hidden
-      if (currentScrollY < 100) {
+      // Navbar is only visible in the hero area (first ~80px)
+      if (currentScrollY < 80) {
         setIsVisible(true);
         setIsScrolled(false);
       } else {
@@ -53,13 +52,9 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
   return (
     <nav
       data-testid="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-      } ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2'
-          : 'bg-transparent py-4'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+        isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+      } bg-transparent py-2`}
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
