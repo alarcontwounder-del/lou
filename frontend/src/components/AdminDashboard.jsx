@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Mail, Phone, MapPin, Users, MessageSquare, Download, LogOut, Search, Trash2, AlertCircle, Star, CheckCircle, XCircle } from 'lucide-react';
+import { X, Mail, Phone, MapPin, Users, MessageSquare, Download, LogOut, Search, Trash2, AlertCircle, Star, CheckCircle, XCircle, LayoutGrid } from 'lucide-react';
 import axios from 'axios';
+import { ContentManager } from './ContentManager';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
