@@ -89,39 +89,38 @@ function MainContent() {
         onSearchClick={() => searchRef.current?.open()}
       />
       
-      {/* Hero - always full width, no sidebar */}
+      {/* Hero */}
       <Hero />
       
-      {/* About section - full width, no sidebar */}
+      {/* About */}
       <About />
       
-      {/* Main content FROM Golf Courses onwards - with anchored sidebar */}
-      <div className="lg:flex">
-        {/* Anchored Sidebar - scrolls with content, not fixed */}
-        <div className="hidden lg:block">
-          <ReviewsSidebar isVisible={true} isAnchored={true} />
-        </div>
+      {/* Main content - clean layout without sidebar */}
+      <main>
+        <GolfCourses />
+        <HotelPartners />
+        <RestaurantPartners />
+        <CafeBarsPartners />
+        <BeachClubPartners />
         
-        {/* Content area */}
-        <main className="flex-1">
-          <GolfCourses />
-          <HotelPartners />
-          <RestaurantPartners />
-          <CafeBarsPartners />
-          <BeachClubPartners />
-          <Blog />
-          <Contact />
-          <Newsletter />
-          <Footer />
-        </main>
-      </div>
+        {/* Reviews Section - clean horizontal layout */}
+        <ReviewCarousel />
+        
+        <Blog />
+        <Contact />
+        <Newsletter />
+        <Footer />
+      </main>
       
       <Toaster position="bottom-right" />
       
-      {/* Floating Search Mockup - showButton=false to only use navbar trigger */}
+      {/* Floating Reviews Button */}
+      <FloatingReviewsButton />
+      
+      {/* Floating Search Mockup */}
       <FloatingSearch ref={searchRef} showButton={false} />
       
-      {/* Scroll Capsule with arrows - appears on right side hover */}
+      {/* Scroll Capsule */}
       <ScrollCapsule />
       
       {showAdmin && user && (
