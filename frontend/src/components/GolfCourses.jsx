@@ -51,16 +51,13 @@ const CourseCard = ({ course, language, t }) => (
             {course.description[language] || course.description.en}
           </p>
 
-          {/* Stats */}
-          <div className="flex gap-4 mb-3">
-            <div>
-              <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.holes')}</span>
-              <p className="text-lg font-semibold text-stone-700">{course.holes}</p>
-            </div>
-            <div>
-              <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.par')}</span>
-              <p className="text-lg font-semibold text-stone-700">{course.par}</p>
-            </div>
+          {/* Stats - inline like Hotel pricing */}
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.holes')}</span>
+            <span className="text-xl font-semibold text-stone-800">{course.holes}</span>
+            <span className="text-stone-300 mx-1">|</span>
+            <span className="text-xs uppercase tracking-wider text-stone-400">{t('courses.par')}</span>
+            <span className="text-xl font-semibold text-stone-800">{course.par}</span>
           </div>
 
           {/* Hover hint */}
