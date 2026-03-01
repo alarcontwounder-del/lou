@@ -173,7 +173,7 @@ export const ReviewsSidebar = ({ isVisible }) => {
 
   return (
     <aside 
-      className="fixed left-0 top-0 h-screen w-64 bg-brand-charcoal border-r border-stone-700 z-40 flex flex-col shadow-2xl hidden lg:flex"
+      className="fixed left-0 top-0 h-screen w-48 bg-brand-charcoal border-r border-stone-700 z-30 flex flex-col shadow-xl hidden lg:flex"
       data-testid="reviews-sidebar"
     >
       {/* Spacer for navbar */}
