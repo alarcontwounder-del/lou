@@ -169,15 +169,15 @@ export const ReviewsSidebar = ({ isVisible }) => {
 
   const uniqueCountries = Object.keys(stats.by_country || {});
 
-  if (!isVisible) return null;
-
   return (
     <aside 
-      className="fixed left-0 top-0 h-screen w-48 bg-brand-charcoal border-r border-stone-700 z-30 flex flex-col shadow-xl hidden lg:flex"
+      className={`fixed left-0 top-16 h-[calc(100vh-4rem)] w-48 bg-brand-charcoal border-r border-stone-700 z-30 flex-col shadow-xl lg:flex transition-all duration-300 ease-in-out ${
+        isVisible 
+          ? 'opacity-100 translate-x-0' 
+          : 'opacity-0 -translate-x-full pointer-events-none'
+      } hidden`}
       data-testid="reviews-sidebar"
     >
-      {/* Spacer for navbar */}
-      <div className="h-16 flex-shrink-0"></div>
       
       {/* Header with Stats */}
       <div className="p-3 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
