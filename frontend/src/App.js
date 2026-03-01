@@ -133,6 +133,9 @@ function MainContent() {
       {/* Floating Search Mockup - showButton=false to only use navbar trigger */}
       <FloatingSearch ref={searchRef} showButton={false} />
       
+      {/* Scroll Capsule - appears on right side hover */}
+      <ScrollCapsule />
+      
       {showAdmin && user && (
         <AdminDashboard 
           onClose={() => setShowAdmin(false)} 
