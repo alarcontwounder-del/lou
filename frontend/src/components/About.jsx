@@ -8,9 +8,9 @@ export const About = () => {
   return (
     <section id="about" className="section-padding bg-brand-cream" data-testid="about-section">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text Content */}
-          <div className="order-2 lg:order-1">
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+          {/* Text Content - 3 columns (60%) */}
+          <div className="order-2 lg:order-1 lg:col-span-3">
             <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="about-subtitle">
               {t('about.subtitle')}
             </p>
