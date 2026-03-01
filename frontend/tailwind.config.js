@@ -9,17 +9,17 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          // Ink Wash Palette
-          charcoal: '#2D2D2D',      // Deep charcoal - primary dark
+          // Ink Wash Palette (from user's color card)
+          charcoal: '#4A4A4A',      // Dark charcoal - primary dark
           charcoalLight: '#3D3D3D', // Warm charcoal - cards, surfaces
-          slate: '#6B7B8C',         // Dusty slate blue - accent
-          gray: '#9CA3AF',          // Soft gray - secondary text
-          cream: '#F5F2EB',         // Warm cream - light backgrounds
+          slate: '#6D8196',         // Slate blue - accent
+          gray: '#CBCBCB',          // Light grey - secondary
+          cream: '#FFFFE3',         // Cream/ivory - light backgrounds
           gold: '#C9A227',          // Golden amber - CTA accent
           // Legacy aliases for compatibility
-          green: '#2D2D2D',         // Now charcoal
-          sand: '#6B7B8C',          // Now slate blue
-          terracotta: '#6B7B8C',    // Now slate blue (accent)
+          green: '#4A4A4A',         // Now charcoal
+          sand: '#6D8196',          // Now slate blue
+          terracotta: '#6D8196',    // Now slate blue (accent)
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
