@@ -482,21 +482,15 @@ export const AdminDashboard = ({ onClose, user }) => {
           <div className="flex justify-around text-center">
             <div>
               <p className="text-2xl font-bold text-brand-charcoal">{contacts.length}</p>
-              <p className="text-xs text-stone-500 uppercase tracking-wide">Total Contacts</p>
+              <p className="text-xs text-stone-500 uppercase tracking-wide">Contacts</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-brand-charcoal/90">{subscribers.length}</p>
               <p className="text-xs text-stone-500 uppercase tracking-wide">Subscribers</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-brand-slate">
-                {contacts.filter(c => {
-                  const date = new Date(c.created_at);
-                  const today = new Date();
-                  return date.toDateString() === today.toDateString();
-                }).length}
-              </p>
-              <p className="text-xs text-stone-500 uppercase tracking-wide">Today</p>
+              <p className="text-2xl font-bold text-amber-500">{pendingReviews.length}</p>
+              <p className="text-xs text-stone-500 uppercase tracking-wide">Pending Reviews</p>
             </div>
           </div>
         </div>
