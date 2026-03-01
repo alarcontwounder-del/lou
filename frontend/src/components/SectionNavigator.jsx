@@ -65,7 +65,6 @@ export const SectionNavigator = () => {
       {sections.map((section) => {
         const isActive = activeSection === section.id;
         const isHovered = hoveredSection === section.id;
-        const Icon = section.icon;
 
         return (
           <button
@@ -73,9 +72,7 @@ export const SectionNavigator = () => {
             onClick={() => scrollToSection(section.id)}
             onMouseEnter={() => setHoveredSection(section.id)}
             onMouseLeave={() => setHoveredSection(null)}
-            className={`group flex items-center gap-2 transition-all duration-200 ${
-              isActive ? 'opacity-100' : 'opacity-40 hover:opacity-70'
-            }`}
+            className="group flex items-center gap-2 transition-all duration-200"
             title={section.label}
             data-testid={`nav-dot-${section.id}`}
           >
@@ -88,14 +85,14 @@ export const SectionNavigator = () => {
               {section.label}
             </span>
 
-            {/* Dot - simple circle for inactive, larger with icon for active */}
-            {isActive ? (
-              <div className="w-7 h-7 bg-stone-400 rounded-full shadow-sm flex items-center justify-center">
-                {Icon && <Icon />}
-              </div>
-            ) : (
-              <div className="w-2 h-2 bg-stone-300 rounded-full hover:bg-stone-400 hover:w-2.5 hover:h-2.5 transition-all duration-200" />
-            )}
+            {/* Simple dot - larger when active */}
+            <div 
+              className={`rounded-full transition-all duration-200 ${
+                isActive 
+                  ? 'w-3 h-3 bg-stone-500' 
+                  : 'w-1.5 h-1.5 bg-stone-300 hover:bg-stone-400 hover:w-2 hover:h-2'
+              }`}
+            />
           </button>
         );
       })}
