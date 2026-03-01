@@ -38,8 +38,8 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Image */}
-          <div className="order-1 lg:order-2">
+          {/* Image - 2 columns (40%) */}
+          <div className="order-1 lg:order-2 lg:col-span-2">
             <div className="relative">
               <div className="aspect-[4/3] img-zoom rounded-2xl overflow-hidden shadow-2xl">
                 <img
