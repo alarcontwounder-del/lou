@@ -17,116 +17,120 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 ## What's Been Implemented
 
 ### December 1, 2026 (Current Session)
-- **P0: Golf Courses Data Migration to MongoDB** - COMPLETED:
-  - Created MongoDB collection `golf_courses` for storing course data
-  - Built migration script with proper seeding (`/app/backend/seed_golf_courses.py`)
-  - Updated API endpoint `/api/golf-courses` to fetch from MongoDB with fallback to hardcoded data
-  - Added CRUD endpoints for golf courses (create, update, delete, reorder)
-  - Reordered courses as requested: **Son Gual → Alcanada → Pula** as first three
-  - Created database models and routes in `/app/backend/models/` and `/app/backend/routes/`
 
-- **P0: UI Layout Adjustments** - COMPLETED:
-  - Reduced vertical spacing between "About Us" and "World-Class Courses" sections
-  - About section: `pt-12 pb-6` (reduced bottom padding)
-  - Golf Courses section: `pt-8 pb-24 px-6` (reduced top padding)
+#### ✅ FULL DATABASE MIGRATION COMPLETE
+All partner data has been migrated from hardcoded `server.py` to MongoDB:
 
-- **Image Framing Enhancement** - COMPLETED:
-  - Added CSS class `.card-image-container` with `object-position: center`
-  - All partner cards maintain consistent `h-64` image height with proper aspect ratio
+| Collection | Records | Status |
+|------------|---------|--------|
+| golf_courses | 16 | ✅ Migrated |
+| hotels | 38 | ✅ Migrated |
+| restaurants | 54 | ✅ Migrated |
+| beach_clubs | 12 | ✅ Migrated |
+| cafe_bars | 36 | ✅ Migrated |
+| **Total** | **156** | ✅ Complete |
+
+**API Endpoints Created:**
+- `GET /api/golf-courses` - All golf courses
+- `GET /api/hotels` - All hotels  
+- `GET /api/restaurants` - All restaurants
+- `GET /api/beach-clubs` - All beach clubs
+- `GET /api/cafe-bars` - All cafés & bars
+- `GET /api/all-partners` - All partners grouped by type
+- Full CRUD operations (POST, PUT, DELETE) for each type
+
+**Other Completed Tasks:**
+- Golf courses reordered: **Son Gual → Alcanada → Pula** as first three
+- Reduced spacing between "About Us" and "World-Class Courses" sections
+- Added image framing CSS improvements
 
 ### Previous Sessions
-- **Reviews UI Overhaul**: Replaced floating sidebar with compact horizontal carousel
-- **Navigation**: Ghost section navigator for quick page jumps
-- **UI Consistency**: Standardized colors on all partner cards
-- **Content**: Fixed golf courses count (16), cream background throughout
-- **Beach Clubs Section**: 11 beach clubs with images
-- **Cafés & Bars Section**: 34 venues
-- **Floating Search Mockup**: UI ready for implementation
+- Reviews UI: Compact horizontal carousel (replaced floating sidebar)
+- Ghost section navigator for quick page jumps
+- Standardized colors across all partner cards
+- Fixed golf courses count (16), cream background throughout
+- Beach Clubs Section (11 clubs)
+- Cafés & Bars Section (34 venues)
+- Floating Search Mockup (UI ready)
 
 ## Technical Architecture
 
-### Database
-- **MongoDB Collections**:
-  - `golf_courses` - Golf course data with multi-language support (NEW)
-  - `contact_inquiries` - Contact form submissions
-  - `newsletter_subscriptions` - Newsletter signups
-  - `users` - Authenticated users
-  - `user_sessions` - Session tokens
-  - `user_reviews` - User-submitted reviews
+### MongoDB Collections
+```
+golf_courses    - 16 records (includes Ibiza & Menorca)
+hotels          - 38 records
+restaurants     - 54 records  
+beach_clubs     - 12 records
+cafe_bars       - 36 records
+contact_inquiries
+newsletter_subscriptions
+users
+user_sessions
+user_reviews
+```
 
-### Golf Courses Schema
+### Shared Schema Fields (All Partner Types)
 ```javascript
 {
-  id: String,           // Unique slug (e.g., "golf-son-gual")
+  id: String,           // Unique slug
   name: String,
+  type: String,         // "hotel", "restaurant", "beach_club", "cafe_bar"
   description: {        // Multi-language
-    en: String,
-    de: String,
-    fr: String,
-    se: String
+    en: String, de: String, fr: String, se: String
   },
   image: String,
-  holes: Number,
-  par: Number,
-  price_from: Number,
   location: String,
-  full_address: String,
-  phone: String,
-  features: [String],
-  booking_url: String,
-  is_active: Boolean,   // For soft delete
-  display_order: Number,// For custom ordering
+  deal: { en, de, fr, se },
+  discount_percent: Number,
+  contact_url: String,
+  is_active: Boolean,   // Soft delete
+  display_order: Number,// Custom ordering
   created_at: Date,
-  updated_at: Date
+  updated_at: Date,
+  // Type-specific fields...
 }
 ```
 
 ### Key Files
-- `/app/backend/server.py` - Main FastAPI application
-- `/app/backend/seed_golf_courses.py` - Database seeding script
-- `/app/backend/models/golf_course.py` - Pydantic models
-- `/app/frontend/src/components/GolfCourses.jsx` - Golf courses display
-- `/app/frontend/src/components/About.jsx` - About section
-
-### API Endpoints (Golf Courses)
-- `GET /api/golf-courses` - Fetch all active courses (sorted by display_order)
-- `POST /api/golf-courses` - Create new course
-- `PUT /api/golf-courses/{id}` - Update course
-- `DELETE /api/golf-courses/{id}` - Soft delete course
-- `POST /api/golf-courses/reorder` - Reorder courses
+- `/app/backend/server.py` - FastAPI with all CRUD endpoints
+- `/app/backend/seed_golf_courses.py` - Golf courses seeding
+- `/app/backend/seed_all_partners.py` - Full partner migration script
+- `/app/frontend/src/components/GolfCourses.jsx`
+- `/app/frontend/src/components/HotelPartners.jsx`
+- `/app/frontend/src/components/RestaurantPartners.jsx`
+- `/app/frontend/src/components/BeachClubPartners.jsx`
+- `/app/frontend/src/components/CafeBarsPartners.jsx`
 
 ## Prioritized Backlog
 
-### P0 - Critical
-- [x] Golf courses MongoDB migration - ✅ COMPLETED
-- [x] Reduce spacing between sections - ✅ COMPLETED
-- [x] Reorder golf cards - ✅ COMPLETED
-- [ ] Real photos for all venues (user needs to provide URLs)
+### P0 - Critical (User Input Needed)
+- [ ] Replace stock photos with real venue images (user to provide URLs)
 
 ### P1 - High Priority  
-- [ ] Migrate remaining data to MongoDB (Hotels, Restaurants, Beach Clubs, Cafés)
-- [ ] Full Search Implementation (after mockup approval)
+- [ ] Admin Dashboard - Full CRUD UI for all content types
+- [ ] Full Search Engine implementation (backend + frontend)
 - [ ] Email functionality (needs RESEND_API_KEY)
-- [ ] Admin Dashboard - Golf Courses CRUD
 
 ### P2 - Medium Priority
-- [ ] Admin Dashboard - Review management
+- [ ] Admin Dashboard - Review moderation
 - [ ] Hero video replacement
 - [ ] Weather widget integration
 
 ## Known Issues
 1. **Email broken**: Missing Resend API credentials
-2. **Real photos needed**: Partner venues still using stock images
+2. **Real photos needed**: Some venues still using stock images
 3. **Search not functional**: Current search is UI mockup only
+4. **Admin Dashboard**: Backend ready, frontend CRUD UI needed
 
 ## Integration Dependencies
 - Resend (email) - needs API key
 - PostHog (analytics) - configured
 - Emergent Google OAuth - implemented for reviews
 
-## Partner Data Summary
-- Golf Courses: 16 (now in MongoDB)
-- Hotels: 38+ (hardcoded in server.py)
-- Restaurants: 54+ (hardcoded in server.py)
-- Beach Clubs: 12 (hardcoded in server.py)
-- Cafés & Bars: 36 (hardcoded in server.py)
+## Data Summary
+- **Total Partners**: 156 records in MongoDB
+- **Golf Courses**: 16 (Mallorca, Ibiza, Menorca)
+- **Hotels**: 38 (Luxury to Boutique)
+- **Restaurants**: 54 (Fine dining to casual)
+- **Beach Clubs**: 12
+- **Cafés & Bars**: 36
