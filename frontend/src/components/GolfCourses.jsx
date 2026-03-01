@@ -13,7 +13,7 @@ const CourseCard = ({ course, language, t }) => (
   >
     <div className="flip-card-inner">
       {/* Front of Card */}
-      <div className="flip-card-front bg-stone-200 border border-stone-200 shadow-sm rounded-2xl">
+      <div className="flip-card-front bg-stone-300 border border-stone-300 shadow-sm rounded-2xl">
         {/* Image - Vertical/Portrait orientation */}
         <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
