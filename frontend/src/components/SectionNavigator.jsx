@@ -103,8 +103,8 @@ export const SectionNavigator = () => {
             <div 
               className={`rounded-full transition-all duration-200 ${
                 isActive 
-                  ? 'w-3 h-3 bg-stone-500' 
-                  : 'w-1.5 h-1.5 bg-stone-300 hover:bg-stone-400 hover:w-2 hover:h-2'
+                  ? 'w-4 h-4 bg-stone-500' 
+                  : 'w-2.5 h-2.5 bg-stone-300 hover:bg-stone-400 hover:w-3 hover:h-3'
               }`}
             />
           </button>
