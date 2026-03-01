@@ -1,75 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-// Custom luxury-style SVG icons
-const GolfIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <circle cx="12" cy="6" r="3" />
-    <path d="M12 9v12" />
-    <path d="M8 21h8" />
-  </svg>
-);
-
-const HotelIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <rect x="4" y="4" width="16" height="16" rx="1" />
-    <path d="M4 9h16" />
-    <path d="M9 4v5" />
-    <path d="M15 4v5" />
-    <rect x="9" y="14" width="6" height="6" />
-  </svg>
-);
-
-const DiningIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <path d="M3 6h18" />
-    <path d="M5 6v14a1 1 0 001 1h12a1 1 0 001-1V6" />
-    <ellipse cx="12" cy="6" rx="8" ry="2" />
-  </svg>
-);
-
-const CocktailIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <path d="M8 3l8 0" />
-    <path d="M12 3v4" />
-    <path d="M6 7l6 8 6-8z" />
-    <path d="M12 15v6" />
-    <path d="M9 21h6" />
-  </svg>
-);
-
-const PalmIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <path d="M12 21V11" />
-    <path d="M12 11c-3-4-7-3-9-1" />
-    <path d="M12 11c3-4 7-3 9-1" />
-    <path d="M12 8c-2-3-1-6 0-7" />
-    <path d="M9 21h6" />
-  </svg>
-);
-
-const QuillIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <path d="M20 4c-2 0-4 2-6 6l-8 8v3h3l8-8c4-2 6-4 6-6 0-1-1-3-3-3z" />
-  </svg>
-);
-
-const EnvelopeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-    <rect x="3" y="5" width="18" height="14" rx="1" />
-    <path d="M3 5l9 7 9-7" />
-  </svg>
-);
-
 const sections = [
-  { id: 'hero', label: 'Home', icon: null },
-  { id: 'about', label: 'About', icon: null },
-  { id: 'courses', label: 'Golf Courses', icon: GolfIcon },
-  { id: 'hotels', label: 'Hotels', icon: HotelIcon },
-  { id: 'restaurants', label: 'Restaurants', icon: DiningIcon },
-  { id: 'cafes-bars', label: 'Cafés & Bars', icon: CocktailIcon },
-  { id: 'beach-clubs', label: 'Beach Clubs', icon: PalmIcon },
-  { id: 'blog', label: 'Blog', icon: QuillIcon },
-  { id: 'contact', label: 'Contact', icon: EnvelopeIcon },
+  { id: 'hero', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'courses', label: 'Golf Courses' },
+  { id: 'hotels', label: 'Hotels' },
+  { id: 'restaurants', label: 'Restaurants' },
+  { id: 'cafes-bars', label: 'Cafés & Bars' },
+  { id: 'beach-clubs', label: 'Beach Clubs' },
+  { id: 'blog', label: 'Blog' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 export const SectionNavigator = () => {
