@@ -183,8 +183,8 @@ export const BeachClubPartners = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Umbrella className="w-6 h-6 text-cyan-600" />
-            <span className="text-sm uppercase tracking-[0.2em] text-cyan-600 font-medium">
+            <Umbrella className="w-6 h-6 text-stone-500" />
+            <span className="text-sm uppercase tracking-[0.2em] text-stone-500 font-medium">
               {t('beachClubs.subtitle') || 'Relax After Golf'}
             </span>
           </div>
