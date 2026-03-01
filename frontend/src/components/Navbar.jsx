@@ -18,15 +18,36 @@ const languages = [
 export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearchClick }) => {
   const { language, changeLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Determine if scrolled past hero
+      setIsScrolled(currentScrollY > 50);
+      
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          // Scrolling down - hide navbar
+          setIsHidden(true);
+        } else {
+          // Scrolling up - show navbar
+          setIsHidden(false);
+        }
+      } else {
+        setIsHidden(false);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -41,10 +62,12 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
   return (
     <nav
       data-testid="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isHidden ? '-translate-y-full' : 'translate-y-0'
+      } ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
