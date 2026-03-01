@@ -93,13 +93,13 @@ const BeachClubCard = ({ club, language, t }) => (
             </h3>
           </div>
           
-          <p className="text-cyan-100 text-sm leading-relaxed mb-4">
+          <p className="text-stone-300 text-sm leading-relaxed mb-4">
             {club.description[language] || club.description.en}
           </p>
 
           {/* Location - Clickable */}
           <div 
-            className="location-link flex items-center gap-2 text-cyan-100 text-sm mb-4 cursor-pointer hover:text-white transition-colors"
+            className="location-link flex items-center gap-2 text-stone-300 text-sm mb-4 cursor-pointer hover:text-white transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(club.full_address || club.name + ', ' + club.location + ', Mallorca')}`, '_blank');
@@ -112,7 +112,7 @@ const BeachClubCard = ({ club, language, t }) => (
 
           {/* Deal */}
           {club.deal && (
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-4">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
               <p className="text-white text-xs uppercase tracking-wider mb-1 opacity-80">{t('offers.exclusive')}</p>
               <p className="text-white font-semibold text-sm">
                 {club.deal[language] || club.deal.en}
@@ -122,7 +122,7 @@ const BeachClubCard = ({ club, language, t }) => (
 
           {/* Nearest Golf Course */}
           {club.nearest_golf && (
-            <div className="flex items-center gap-2 text-cyan-100 text-sm">
+            <div className="flex items-center gap-2 text-stone-300 text-sm">
               <Navigation className="w-4 h-4" />
               <span>{club.distance_km}km from {club.nearest_golf}</span>
             </div>
@@ -134,7 +134,7 @@ const BeachClubCard = ({ club, language, t }) => (
           href={club.contact_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3 bg-white text-cyan-700 text-center rounded-xl font-semibold hover:bg-cyan-50 transition-colors flex items-center justify-center gap-2"
+          className="w-full py-3 bg-white text-stone-800 text-center rounded-xl font-semibold hover:bg-stone-100 transition-colors flex items-center justify-center gap-2"
         >
           {t('offers.bookNow')}
           <ExternalLink className="w-4 h-4" />
