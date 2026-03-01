@@ -101,9 +101,6 @@ function MainContent() {
 
   return (
     <div className="min-h-screen bg-brand-cream">
-      {/* Reviews Sidebar - visible after hero */}
-      <ReviewsSidebar isVisible={showSidebar} />
-      
       <Navbar 
         onAdminClick={handleOpenAdmin} 
         isAuthenticated={!!user} 
@@ -111,24 +108,31 @@ function MainContent() {
         onSearchClick={() => searchRef.current?.open()}
       />
       
-      {/* Hero - always full width, no sidebar margin */}
+      {/* Hero - always full width, no sidebar */}
       <Hero />
       
-      {/* Main content with left margin when sidebar is visible */}
-      <main className={`transition-all duration-300 ${showSidebar ? 'lg:ml-48' : ''}`}>
-        <About />
-        <GolfCourses />
-        <HotelPartners />
-        <RestaurantPartners />
-        <CafeBarsPartners />
-        <BeachClubPartners />
-        <Blog />
-        <Contact />
-      </main>
+      {/* About section - full width, no sidebar */}
+      <About />
       
-      <div className={`transition-all duration-300 ${showSidebar ? 'lg:ml-48' : ''}`}>
-        <Newsletter />
-        <Footer />
+      {/* Main content FROM Golf Courses onwards - with anchored sidebar */}
+      <div className="lg:flex">
+        {/* Anchored Sidebar - scrolls with content, not fixed */}
+        <div className="hidden lg:block">
+          <ReviewsSidebar isVisible={true} isAnchored={true} />
+        </div>
+        
+        {/* Content area */}
+        <main className="flex-1">
+          <GolfCourses />
+          <HotelPartners />
+          <RestaurantPartners />
+          <CafeBarsPartners />
+          <BeachClubPartners />
+          <Blog />
+          <Contact />
+          <Newsletter />
+          <Footer />
+        </main>
       </div>
       
       <Toaster position="bottom-right" />
