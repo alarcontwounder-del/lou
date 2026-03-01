@@ -36,16 +36,16 @@ function MainContent() {
   const [showSidebar, setShowSidebar] = useState(false);
   const searchRef = useRef(null);
 
-  // Show sidebar only when hero is completely out of view
+  // Show sidebar only when Golf Courses section is reached (not just when hero is gone)
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.getElementById('hero');
-      if (heroSection) {
-        const heroRect = heroSection.getBoundingClientRect();
-        // Sidebar shows only when hero's bottom edge is completely above the viewport
-        // Using 0 (or negative) to ensure hero is COMPLETELY out of view
-        const heroFullyOutOfView = heroRect.bottom <= 0;
-        setShowSidebar(heroFullyOutOfView);
+      const coursesSection = document.getElementById('courses');
+      if (coursesSection) {
+        const coursesRect = coursesSection.getBoundingClientRect();
+        // Sidebar shows only when the top of the Golf Courses section reaches the viewport top
+        // This ensures sidebar appears when "World-Class Courses Await" is visible
+        const coursesReached = coursesRect.top <= 100;
+        setShowSidebar(coursesReached);
       }
     };
     
