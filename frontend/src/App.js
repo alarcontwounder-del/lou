@@ -116,8 +116,8 @@ function MainContent() {
       {/* Floating Search Mockup */}
       <FloatingSearch ref={searchRef} showButton={false} />
       
-      {/* Scroll Capsule */}
-      <ScrollCapsule />
+      {/* Section Navigator - dots on right side */}
+      <SectionNavigator />
       
       {showAdmin && user && (
         <AdminDashboard 
