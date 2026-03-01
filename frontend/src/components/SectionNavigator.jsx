@@ -148,18 +148,14 @@ export const SectionNavigator = () => {
               {section.label}
             </span>
 
-            {/* Dot/Icon */}
-            <div 
-              className={`flex items-center justify-center transition-all duration-200 ${
-                isActive 
-                  ? 'w-8 h-8 bg-stone-400 rounded-full shadow-sm' 
-                  : 'w-2.5 h-2.5 bg-stone-300 rounded-full hover:bg-stone-400 hover:w-3 hover:h-3'
-              }`}
-            >
-              {isActive && Icon && (
-                <Icon className="w-4 h-4 text-white" />
-              )}
-            </div>
+            {/* Dot - simple circle for inactive, larger with icon for active */}
+            {isActive ? (
+              <div className="w-7 h-7 bg-stone-400 rounded-full shadow-sm flex items-center justify-center">
+                {Icon && <Icon />}
+              </div>
+            ) : (
+              <div className="w-2 h-2 bg-stone-300 rounded-full hover:bg-stone-400 hover:w-2.5 hover:h-2.5 transition-all duration-200" />
+            )}
           </button>
         );
       })}
