@@ -95,27 +95,24 @@ function MainContent() {
       {/* About */}
       <About />
       
-      {/* Main content - clean layout without sidebar */}
+      {/* Main content - clean layout */}
       <main>
         <GolfCourses />
         <HotelPartners />
         <RestaurantPartners />
         <CafeBarsPartners />
         <BeachClubPartners />
-        
-        {/* Reviews Section - clean horizontal layout */}
-        <ReviewCarousel />
-        
         <Blog />
         <Contact />
         <Newsletter />
+        
+        {/* Compact Reviews Carousel - just before footer */}
+        <CompactReviewsCarousel />
+        
         <Footer />
       </main>
       
       <Toaster position="bottom-right" />
-      
-      {/* Floating Reviews Button */}
-      <FloatingReviewsButton />
       
       {/* Floating Search Mockup */}
       <FloatingSearch ref={searchRef} showButton={false} />
