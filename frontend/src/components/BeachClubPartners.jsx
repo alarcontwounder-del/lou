@@ -16,7 +16,7 @@ const BeachClubCard = ({ club, language, t }) => (
       <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
         {/* Discount Badge */}
         {club.discount_percent && (
-          <div className="absolute top-6 right-6 z-10 bg-cyan-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+          <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {club.discount_percent}%
           </div>
         )}
@@ -30,7 +30,7 @@ const BeachClubCard = ({ club, language, t }) => (
           />
           {/* Beach Club Icon Overlay */}
           <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1.5">
-            <Umbrella className="w-4 h-4 text-cyan-600" />
+            <Umbrella className="w-4 h-4 text-stone-600" />
             <span className="text-xs font-medium text-stone-700">Beach Club</span>
           </div>
         </div>
@@ -40,7 +40,7 @@ const BeachClubCard = ({ club, language, t }) => (
           {/* Nearest Golf Tag */}
           {club.nearest_golf && (
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs px-2 py-1 bg-green-100 text-green-700 font-medium rounded flex items-center gap-1">
+              <span className="text-xs px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded flex items-center gap-1">
                 <Navigation className="w-3 h-3" />
                 {club.distance_km}km to {club.nearest_golf}
               </span>
@@ -48,7 +48,7 @@ const BeachClubCard = ({ club, language, t }) => (
           )}
           
           <div 
-            className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-cyan-600 transition-colors"
+            className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(club.full_address || club.name + ', ' + club.location + ', Mallorca')}`, '_blank');
@@ -69,8 +69,8 @@ const BeachClubCard = ({ club, language, t }) => (
 
           {/* Deal Preview */}
           {club.deal && (
-            <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-3 mb-3">
-              <p className="text-xs font-medium text-cyan-700 line-clamp-1">
+            <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
+              <p className="text-xs font-medium text-stone-600 line-clamp-1">
                 {club.deal[language] || club.deal.en}
               </p>
             </div>
@@ -84,10 +84,10 @@ const BeachClubCard = ({ club, language, t }) => (
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl p-6 flex flex-col justify-between text-white">
+      <div className="flip-card-back rounded-2xl p-6 flex flex-col justify-between text-white" style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Waves className="w-5 h-5 text-cyan-200" />
+            <Waves className="w-5 h-5 text-stone-300" />
             <h3 className="text-white text-xl font-heading font-semibold">
               {club.name}
             </h3>
