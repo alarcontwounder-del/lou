@@ -134,14 +134,14 @@ export const SectionNavigator = () => {
             onMouseEnter={() => setHoveredSection(section.id)}
             onMouseLeave={() => setHoveredSection(null)}
             className={`group flex items-center gap-2 transition-all duration-200 ${
-              isActive ? 'opacity-100' : 'opacity-50 hover:opacity-100'
+              isActive ? 'opacity-100' : 'opacity-40 hover:opacity-70'
             }`}
             title={section.label}
             data-testid={`nav-dot-${section.id}`}
           >
             {/* Label - shows on hover */}
             <span 
-              className={`text-xs font-medium text-stone-700 bg-white px-2 py-1 rounded shadow-sm border border-stone-200 whitespace-nowrap transition-all duration-200 ${
+              className={`text-xs font-medium text-stone-500 bg-white px-2 py-1 rounded shadow-sm border border-stone-100 whitespace-nowrap transition-all duration-200 ${
                 isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
               }`}
             >
@@ -152,8 +152,8 @@ export const SectionNavigator = () => {
             <div 
               className={`flex items-center justify-center transition-all duration-200 ${
                 isActive 
-                  ? 'w-8 h-8 bg-brand-charcoal rounded-full shadow-md' 
-                  : 'w-3 h-3 bg-stone-400 rounded-full hover:bg-stone-600 hover:w-4 hover:h-4'
+                  ? 'w-8 h-8 bg-stone-400 rounded-full shadow-sm' 
+                  : 'w-2.5 h-2.5 bg-stone-300 rounded-full hover:bg-stone-400 hover:w-3 hover:h-3'
               }`}
             >
               {isActive && Icon && (
