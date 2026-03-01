@@ -42,9 +42,9 @@ function MainContent() {
       const heroSection = document.getElementById('hero');
       if (heroSection) {
         const heroRect = heroSection.getBoundingClientRect();
-        // Sidebar shows only when hero's bottom edge is above the viewport (fully scrolled past)
-        // Adding a small buffer (50px) to ensure smooth transition
-        const heroFullyOutOfView = heroRect.bottom < 50;
+        // Sidebar shows only when hero's bottom edge is completely above the viewport
+        // Using 0 (or negative) to ensure hero is COMPLETELY out of view
+        const heroFullyOutOfView = heroRect.bottom <= 0;
         setShowSidebar(heroFullyOutOfView);
       }
     };
