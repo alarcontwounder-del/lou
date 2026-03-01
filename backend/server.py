@@ -4551,7 +4551,88 @@ async def root():
 
 @api_router.get("/golf-courses", response_model=List[dict])
 async def get_golf_courses():
-    return GOLF_COURSES
+    """Get all golf courses from MongoDB, falls back to hardcoded data if empty"""
+    # Try to fetch from MongoDB first
+    cursor = db.golf_courses.find(
+        {"is_active": True},
+        {"_id": 0}  # Exclude MongoDB _id field
+    ).sort("display_order", 1)
+    
+    courses = await cursor.to_list(length=100)
+    
+    # If no courses in database, return hardcoded data (for backward compatibility)
+    if not courses:
+        return GOLF_COURSES
+    
+    return courses
+
+
+@api_router.post("/golf-courses", response_model=dict, status_code=201)
+async def create_golf_course(course: dict):
+    """Create a new golf course (admin only)"""
+    # Check if course with same ID already exists
+    existing = await db.golf_courses.find_one({"id": course.get("id")})
+    if existing:
+        raise HTTPException(status_code=400, detail="Golf course with this ID already exists")
+    
+    # Add metadata
+    now = datetime.now(timezone.utc)
+    course["is_active"] = True
+    course["display_order"] = course.get("display_order", 0)
+    course["created_at"] = now
+    course["updated_at"] = now
+    
+    await db.golf_courses.insert_one(course)
+    
+    # Return without _id
+    course.pop("_id", None)
+    return course
+
+
+@api_router.put("/golf-courses/{course_id}", response_model=dict)
+async def update_golf_course(course_id: str, course_update: dict):
+    """Update an existing golf course (admin only)"""
+    existing = await db.golf_courses.find_one({"id": course_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Golf course not found")
+    
+    # Remove fields that shouldn't be updated directly
+    course_update.pop("_id", None)
+    course_update.pop("id", None)
+    course_update.pop("created_at", None)
+    
+    if course_update:
+        course_update["updated_at"] = datetime.now(timezone.utc)
+        await db.golf_courses.update_one(
+            {"id": course_id},
+            {"$set": course_update}
+        )
+    
+    updated = await db.golf_courses.find_one({"id": course_id}, {"_id": 0})
+    return updated
+
+
+@api_router.delete("/golf-courses/{course_id}", status_code=204)
+async def delete_golf_course(course_id: str):
+    """Soft delete a golf course (sets is_active to False)"""
+    result = await db.golf_courses.update_one(
+        {"id": course_id},
+        {"$set": {"is_active": False, "updated_at": datetime.now(timezone.utc)}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Golf course not found")
+    return None
+
+
+@api_router.post("/golf-courses/reorder", status_code=200)
+async def reorder_golf_courses(course_ids: List[str]):
+    """Reorder golf courses by updating display_order (admin only)"""
+    for index, course_id in enumerate(course_ids):
+        await db.golf_courses.update_one(
+            {"id": course_id},
+            {"$set": {"display_order": index, "updated_at": datetime.now(timezone.utc)}}
+        )
+    return {"message": "Courses reordered successfully"}
 
 @api_router.get("/partner-offers", response_model=List[dict])
 async def get_partner_offers(type: Optional[str] = None):
