@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Mail, Phone, MapPin, Users, MessageSquare, Download, LogOut, Search, Trash2, AlertCircle } from 'lucide-react';
+import { X, Mail, Phone, MapPin, Users, MessageSquare, Download, LogOut, Search, Trash2, AlertCircle, Star, CheckCircle, XCircle } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -8,10 +8,12 @@ export const AdminDashboard = ({ onClose, user }) => {
   const [activeTab, setActiveTab] = useState('contacts');
   const [contacts, setContacts] = useState([]);
   const [subscribers, setSubscribers] = useState([]);
+  const [pendingReviews, setPendingReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const [deleting, setDeleting] = useState(false);
+  const [reviewAction, setReviewAction] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -19,16 +21,44 @@ export const AdminDashboard = ({ onClose, user }) => {
 
   const fetchData = async () => {
     try {
-      const [contactsRes, subscribersRes] = await Promise.all([
+      const [contactsRes, subscribersRes, reviewsRes] = await Promise.all([
         axios.get(`${BACKEND_URL}/api/contact`, { withCredentials: true }),
-        axios.get(`${BACKEND_URL}/api/newsletter`, { withCredentials: true })
+        axios.get(`${BACKEND_URL}/api/newsletter`, { withCredentials: true }),
+        axios.get(`${BACKEND_URL}/api/reviews/pending`, { withCredentials: true })
       ]);
       setContacts(contactsRes.data);
       setSubscribers(subscribersRes.data);
+      setPendingReviews(reviewsRes.data || []);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleApproveReview = async (reviewId) => {
+    setReviewAction(reviewId);
+    try {
+      await axios.post(`${BACKEND_URL}/api/reviews/${reviewId}/approve`, {}, { withCredentials: true });
+      setPendingReviews(pendingReviews.filter(r => r.id !== reviewId));
+    } catch (error) {
+      console.error('Approve error:', error);
+      alert('Failed to approve review');
+    } finally {
+      setReviewAction(null);
+    }
+  };
+
+  const handleRejectReview = async (reviewId) => {
+    setReviewAction(reviewId);
+    try {
+      await axios.post(`${BACKEND_URL}/api/reviews/${reviewId}/reject`, {}, { withCredentials: true });
+      setPendingReviews(pendingReviews.filter(r => r.id !== reviewId));
+    } catch (error) {
+      console.error('Reject error:', error);
+      alert('Failed to reject review');
+    } finally {
+      setReviewAction(null);
     }
   };
 
