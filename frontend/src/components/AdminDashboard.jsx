@@ -179,7 +179,7 @@ export const AdminDashboard = ({ onClose, user }) => {
           <div className="flex">
             <button
               onClick={() => { setActiveTab('contacts'); setSearchTerm(''); }}
-              className={`flex-1 px-6 py-4 font-medium transition-colors ${
+              className={`flex-1 px-4 py-3 font-medium transition-colors text-sm ${
                 activeTab === 'contacts'
                   ? 'border-b-2 border-brand-slate text-brand-charcoal bg-white'
                   : 'text-stone-600 hover:text-stone-900'
@@ -187,13 +187,13 @@ export const AdminDashboard = ({ onClose, user }) => {
               data-testid="contacts-tab"
             >
               <div className="flex items-center justify-center gap-2">
-                <MessageSquare className="w-5 h-5" />
-                Contact Inquiries ({contacts.length})
+                <MessageSquare className="w-4 h-4" />
+                Contacts ({contacts.length})
               </div>
             </button>
             <button
               onClick={() => { setActiveTab('subscribers'); setSearchTerm(''); }}
-              className={`flex-1 px-6 py-4 font-medium transition-colors ${
+              className={`flex-1 px-4 py-3 font-medium transition-colors text-sm ${
                 activeTab === 'subscribers'
                   ? 'border-b-2 border-brand-slate text-brand-charcoal bg-white'
                   : 'text-stone-600 hover:text-stone-900'
@@ -201,8 +201,22 @@ export const AdminDashboard = ({ onClose, user }) => {
               data-testid="subscribers-tab"
             >
               <div className="flex items-center justify-center gap-2">
-                <Mail className="w-5 h-5" />
-                Newsletter Subscribers ({subscribers.length})
+                <Mail className="w-4 h-4" />
+                Subscribers ({subscribers.length})
+              </div>
+            </button>
+            <button
+              onClick={() => { setActiveTab('reviews'); setSearchTerm(''); }}
+              className={`flex-1 px-4 py-3 font-medium transition-colors text-sm ${
+                activeTab === 'reviews'
+                  ? 'border-b-2 border-brand-slate text-brand-charcoal bg-white'
+                  : 'text-stone-600 hover:text-stone-900'
+              }`}
+              data-testid="reviews-tab"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <Star className="w-4 h-4" />
+                Pending Reviews ({pendingReviews.length})
               </div>
             </button>
           </div>
