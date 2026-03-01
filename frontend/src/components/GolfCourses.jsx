@@ -12,8 +12,8 @@ const CourseCard = ({ course, language, t }) => (
     data-testid={`course-card-${course.id}`}
   >
     <div className="flip-card-inner">
-      {/* Front of Card - Darker grey with white text */}
-      <div className="flip-card-front bg-stone-500 border border-stone-500 shadow-sm rounded-2xl">
+      {/* Front of Card - Charcoal with white text (like back of cards) */}
+      <div className="flip-card-front bg-brand-charcoal border border-brand-charcoal shadow-sm rounded-2xl">
         {/* Image - Vertical/Portrait orientation */}
         <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
