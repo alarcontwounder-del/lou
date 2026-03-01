@@ -3,7 +3,7 @@
 ## Original Problem Statement
 Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 - Modern, dynamic UI/UX design ("Ink Wash" color palette: charcoal, cream, slate blue)
-- Fixed left-side reviews sidebar
+- Fixed left-side reviews sidebar (appears after scrolling past hero)
 - Admin dashboard for content management
 - Real authentic images for all partners
 - Beach Clubs section added
