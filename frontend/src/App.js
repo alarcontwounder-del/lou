@@ -33,26 +33,7 @@ function MainContent() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [user, setUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
-  const [showSidebar, setShowSidebar] = useState(false);
   const searchRef = useRef(null);
-
-  // Show sidebar only when Golf Courses section is reached (not just when hero is gone)
-  useEffect(() => {
-    const handleScroll = () => {
-      const coursesSection = document.getElementById('courses');
-      if (coursesSection) {
-        const coursesRect = coursesSection.getBoundingClientRect();
-        // Sidebar shows only when the top of the Golf Courses section reaches the viewport top
-        // This ensures sidebar appears when "World-Class Courses Await" is visible
-        const coursesReached = coursesRect.top <= 100;
-        setShowSidebar(coursesReached);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial position
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     // Check if user was passed from AuthCallback
