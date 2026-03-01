@@ -177,56 +177,56 @@ export const ReviewsSidebar = ({ isVisible }) => {
       data-testid="reviews-sidebar"
     >
       {/* Spacer for navbar */}
-      <div className="h-20 flex-shrink-0"></div>
+      <div className="h-16 flex-shrink-0"></div>
       
       {/* Header with Stats */}
-      <div className="p-5 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
-        <h2 className="text-2xl font-serif font-bold text-white mb-4 italic">Reviews</h2>
+      <div className="p-3 border-b border-stone-600 bg-brand-charcoal flex-shrink-0">
+        <h2 className="text-xl font-serif font-bold text-white mb-3 italic">Reviews</h2>
         
-        {/* Stats Row */}
-        <div className="grid grid-cols-3 gap-3 mb-4">
-          <div className="text-center p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-            <div className="flex items-center justify-center gap-1">
-              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-              <span className="text-lg font-bold text-white">{stats.average_rating?.toFixed(1) || '5.0'}</span>
+        {/* Stats Row - Compact */}
+        <div className="grid grid-cols-3 gap-1 mb-3">
+          <div className="text-center p-1.5 bg-white/10 rounded-lg">
+            <div className="flex items-center justify-center gap-0.5">
+              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <span className="text-sm font-bold text-white">{stats.average_rating?.toFixed(1) || '5.0'}</span>
             </div>
-            <p className="text-[10px] text-stone-400 uppercase tracking-wide">Rating</p>
+            <p className="text-[8px] text-stone-400 uppercase">Rating</p>
           </div>
-          <div className="text-center p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-            <div className="flex items-center justify-center gap-1">
-              <Users className="w-4 h-4 text-brand-slate" />
-              <span className="text-lg font-bold text-white">{stats.total_reviews || reviews.length}</span>
+          <div className="text-center p-1.5 bg-white/10 rounded-lg">
+            <div className="flex items-center justify-center gap-0.5">
+              <Users className="w-3 h-3 text-brand-slate" />
+              <span className="text-sm font-bold text-white">{stats.total_reviews || reviews.length}</span>
             </div>
-            <p className="text-[10px] text-stone-400 uppercase tracking-wide">Reviews</p>
+            <p className="text-[8px] text-stone-400 uppercase">Reviews</p>
           </div>
-          <div className="text-center p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-            <div className="flex items-center justify-center gap-1">
-              <Globe className="w-4 h-4 text-brand-slate" />
-              <span className="text-lg font-bold text-white">{uniqueCountries.length}</span>
+          <div className="text-center p-1.5 bg-white/10 rounded-lg">
+            <div className="flex items-center justify-center gap-0.5">
+              <Globe className="w-3 h-3 text-brand-slate" />
+              <span className="text-sm font-bold text-white">{uniqueCountries.length}</span>
             </div>
-            <p className="text-[10px] text-stone-400 uppercase tracking-wide">Countries</p>
+            <p className="text-[8px] text-stone-400 uppercase">Countries</p>
           </div>
         </div>
 
-        {/* Platform Logos */}
-        <div className="flex items-center justify-center gap-4 mb-4 py-2 px-3 bg-white/10 rounded-lg backdrop-blur-sm">
-          <div className="flex items-center gap-1.5" title="Google Reviews">
+        {/* Platform Logos - Compact */}
+        <div className="flex items-center justify-center gap-2 mb-3 py-1.5 px-2 bg-white/10 rounded-lg">
+          <div className="flex items-center gap-1" title="Google Reviews">
             <GoogleLogo />
-            <span className="text-xs font-medium text-white">{stats.by_platform?.['Google Reviews'] || 0}</span>
+            <span className="text-[10px] font-medium text-white">{stats.by_platform?.['Google Reviews'] || 0}</span>
           </div>
-          <div className="flex items-center gap-1.5" title="Trustpilot">
+          <div className="flex items-center gap-1" title="Trustpilot">
             <TrustpilotLogo />
-            <span className="text-xs font-medium text-white">{stats.by_platform?.['Trustpilot'] || 0}</span>
+            <span className="text-[10px] font-medium text-white">{stats.by_platform?.['Trustpilot'] || 0}</span>
           </div>
-          <div className="flex items-center gap-1.5" title="TripAdvisor">
+          <div className="flex items-center gap-1" title="TripAdvisor">
             <TripAdvisorLogo />
-            <span className="text-xs font-medium text-white">{stats.by_platform?.['TripAdvisor'] || 0}</span>
+            <span className="text-[10px] font-medium text-white">{stats.by_platform?.['TripAdvisor'] || 0}</span>
           </div>
         </div>
         
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+          <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-stone-400" />
           <input
             type="text"
             placeholder="Search reviews..."
