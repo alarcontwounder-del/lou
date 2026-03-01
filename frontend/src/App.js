@@ -36,17 +36,20 @@ function MainContent() {
   const [showSidebar, setShowSidebar] = useState(false);
   const searchRef = useRef(null);
 
-  // Show sidebar after scrolling past hero section
+  // Show sidebar only when hero is completely out of view
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById('hero');
       if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        setShowSidebar(window.scrollY > heroBottom - 100);
+        const heroRect = heroSection.getBoundingClientRect();
+        // Sidebar shows only when hero's bottom edge is above the viewport (fully scrolled past)
+        // Adding a small buffer (50px) to ensure smooth transition
+        const heroFullyOutOfView = heroRect.bottom < 50;
+        setShowSidebar(heroFullyOutOfView);
       }
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check initial position
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
