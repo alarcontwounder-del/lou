@@ -36,12 +36,12 @@ const RestaurantCard = ({ restaurant, language, t }) => (
           {(restaurant.michelin_stars || restaurant.cuisine_type) && (
             <div className="flex flex-wrap items-center gap-2 mb-2">
               {restaurant.michelin_stars && (
-                <span className="text-xs px-2 py-1 bg-amber-50 text-amber-700 font-semibold rounded border border-amber-200">
+                <span className="text-xs px-2 py-1 bg-stone-100 text-stone-600 font-semibold rounded border border-stone-200">
                   {restaurant.michelin_stars}
                 </span>
               )}
               {restaurant.municipality && (
-                <span className="text-xs px-2 py-1 bg-brand-slate/10 text-brand-slate font-medium rounded">
+                <span className="text-xs px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded">
                   {restaurant.municipality}
                 </span>
               )}
