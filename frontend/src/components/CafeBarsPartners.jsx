@@ -185,8 +185,8 @@ export const CafeBarsPartners = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Coffee className="w-6 h-6 text-amber-700" />
-            <span className="text-sm uppercase tracking-[0.2em] text-amber-700 font-medium">
+            <Coffee className="w-6 h-6 text-stone-500" />
+            <span className="text-sm uppercase tracking-[0.2em] text-stone-500 font-medium">
               {t('cafeBars.subtitle') || 'Coffee, Cocktails & Brunch'}
             </span>
           </div>
