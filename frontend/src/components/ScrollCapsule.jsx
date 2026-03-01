@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 
 export const ScrollCapsule = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [showUpArrow, setShowUpArrow] = useState(false);
   const [showDownArrow, setShowDownArrow] = useState(true);
 
@@ -31,9 +32,20 @@ export const ScrollCapsule = () => {
   };
 
   return (
-    <div className="fixed right-2 top-1/2 -translate-y-1/2 z-40">
-      {/* Capsule container - always visible */}
-      <div className="flex flex-col items-center bg-stone-800/80 backdrop-blur-sm rounded-full py-1.5 px-0.5 shadow-lg">
+    <div 
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-40 pr-2"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      {/* Invisible hover trigger area */}
+      <div className="absolute -inset-y-20 -left-8 right-0 cursor-pointer" />
+      
+      {/* Capsule container - ghost effect */}
+      <div 
+        className={`flex flex-col items-center bg-stone-800/80 backdrop-blur-sm rounded-full py-1.5 px-0.5 shadow-lg transition-all duration-300 ${
+          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+        }`}
+      >
         {/* Up button */}
         <button
           onClick={scrollUp}
