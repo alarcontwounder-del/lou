@@ -180,7 +180,7 @@ export const CafeBarsPartners = () => {
   }
 
   return (
-    <section id="cafes-bars" className="py-20 bg-white" data-testid="cafes-bars-section">
+    <section id="cafes-bars" className="py-20 bg-brand-cream" data-testid="cafes-bars-section">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">

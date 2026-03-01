@@ -65,7 +65,7 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-white" data-testid="contact-section">
+    <section id="contact" className="section-padding bg-brand-cream" data-testid="contact-section">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Side - Form */}

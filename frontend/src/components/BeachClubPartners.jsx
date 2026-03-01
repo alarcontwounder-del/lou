@@ -178,7 +178,7 @@ export const BeachClubPartners = () => {
   }
 
   return (
-    <section id="beach-clubs" className="py-20 bg-white" data-testid="beach-clubs-section">
+    <section id="beach-clubs" className="py-20 bg-brand-cream" data-testid="beach-clubs-section">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">

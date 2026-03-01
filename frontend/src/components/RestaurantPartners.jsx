@@ -182,7 +182,7 @@ export const RestaurantPartners = () => {
 
   if (loading) {
     return (
-      <section id="restaurants" className="section-padding bg-white">
+      <section id="restaurants" className="section-padding bg-brand-cream">
         <div className="container-custom">
           <div className="text-center">Loading...</div>
         </div>
@@ -191,7 +191,7 @@ export const RestaurantPartners = () => {
   }
 
   return (
-    <section id="restaurants" className="section-padding bg-white" data-testid="restaurants-section">
+    <section id="restaurants" className="section-padding bg-brand-cream" data-testid="restaurants-section">
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">

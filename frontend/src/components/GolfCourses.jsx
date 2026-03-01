@@ -177,7 +177,7 @@ export const GolfCourses = () => {
 
   if (loading) {
     return (
-      <section id="courses" className="section-padding bg-white">
+      <section id="courses" className="section-padding bg-brand-cream">
         <div className="container-custom">
           <div className="text-center">Loading...</div>
         </div>
@@ -186,7 +186,7 @@ export const GolfCourses = () => {
   }
 
   return (
-    <section id="courses" className="section-padding bg-white" data-testid="courses-section">
+    <section id="courses" className="section-padding bg-brand-cream" data-testid="courses-section">
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-12">

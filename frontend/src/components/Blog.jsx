@@ -56,7 +56,7 @@ export const Blog = () => {
 
   if (loading) {
     return (
-      <section id="blog" className="section-padding bg-white">
+      <section id="blog" className="section-padding bg-brand-cream">
         <div className="container-custom">
           <div className="text-center">Loading...</div>
         </div>
@@ -65,7 +65,7 @@ export const Blog = () => {
   }
 
   return (
-    <section id="blog" className="section-padding bg-white" data-testid="blog-section">
+    <section id="blog" className="section-padding bg-brand-cream" data-testid="blog-section">
       <div className="container-custom">
         <div className="text-center mb-12">
           <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="blog-subtitle">
