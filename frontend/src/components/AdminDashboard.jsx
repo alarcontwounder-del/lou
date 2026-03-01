@@ -488,6 +488,11 @@ export const AdminDashboard = ({ onClose, user }) => {
                   )}
                 </div>
               )}
+
+              {/* Content Manager Tab */}
+              {activeTab === 'content' && (
+                <ContentManager />
+              )}
             </>
           )}
         </div>
