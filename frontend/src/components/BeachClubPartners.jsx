@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Umbrella, Navigation, Waves } from 'lucide-react';
+import { MapPin, ExternalLink, Umbrella, Navigation, Waves, Eye } from 'lucide-react';
+import { QuickViewModal } from './QuickViewModal';
 
-const BeachClubCard = ({ club, language, t }) => (
+const BeachClubCard = ({ club, language, t, onQuickView }) => (
   <div
     className="flip-card"
     data-testid={`beach-club-card-${club.id}`}
@@ -30,6 +31,18 @@ const BeachClubCard = ({ club, language, t }) => (
             <Umbrella className="w-4 h-4 text-stone-600" />
             <span className="text-xs font-medium text-stone-700">Beach Club</span>
           </div>
+          {/* Quick View Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(club);
+            }}
+            className="absolute top-3 left-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
+            title="Quick View"
+            data-testid={`beach-club-quick-view-${club.id}`}
+          >
+            <Eye className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Content */}
@@ -74,9 +87,19 @@ const BeachClubCard = ({ club, language, t }) => (
           )}
 
           {/* Hover Indicator */}
-          <p className="text-xs text-stone-400 text-center mt-2 italic">
+          <p className="text-xs text-stone-400 text-center mt-2 italic hidden md:block">
             {t('card.hoverForDetails') || 'Hover for details'}
           </p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(club);
+            }}
+            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto mt-2"
+          >
+            <Eye className="w-3 h-3" />
+            View Details
+          </button>
         </div>
       </div>
 
@@ -144,6 +167,7 @@ const BeachClubCard = ({ club, language, t }) => (
 export const BeachClubPartners = () => {
   const { t, language } = useLanguage();
   const { beachClubs, loading, getDisplayedItems } = useData();
+  const [quickViewItem, setQuickViewItem] = useState(null);
 
   // Apply display limit
   const displayedClubs = getDisplayedItems(beachClubs, 'beach_clubs');
@@ -165,37 +189,50 @@ export const BeachClubPartners = () => {
   }
 
   return (
-    <section id="beach-clubs" className="section-padding bg-brand-cream" data-testid="beach-clubs-section">
-      <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Umbrella className="w-6 h-6 text-stone-500" />
-            <span className="text-sm uppercase tracking-[0.2em] text-stone-500 font-medium">
-              {t('beachClubs.subtitle') || 'Relax After Golf'}
-            </span>
+    <>
+      <section id="beach-clubs" className="section-padding bg-brand-cream" data-testid="beach-clubs-section">
+        <div className="container-custom">
+          {/* Section Header */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Umbrella className="w-6 h-6 text-stone-500" />
+              <span className="text-sm uppercase tracking-[0.2em] text-stone-500 font-medium">
+                {t('beachClubs.subtitle') || 'Relax After Golf'}
+              </span>
+            </div>
+            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4">
+              {t('beachClubs.title') || 'Premium Beach Clubs'}
+            </h2>
+            <p className="text-stone-600 max-w-2xl mx-auto">
+              {t('beachClubs.description') || 'Unwind after your round at Mallorca\'s most exclusive beach clubs with special golfer packages.'}
+            </p>
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4">
-            {t('beachClubs.title') || 'Premium Beach Clubs'}
-          </h2>
-          <p className="text-stone-600 max-w-2xl mx-auto">
-            {t('beachClubs.description') || 'Unwind after your round at Mallorca\'s most exclusive beach clubs with special golfer packages.'}
-          </p>
-        </div>
 
-        {/* Beach Club Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedClubs.map((club) => (
-            <BeachClubCard 
-              key={club.id} 
-              club={club} 
-              language={language}
-              t={t}
-            />
-          ))}
+          {/* Beach Club Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayedClubs.map((club) => (
+              <BeachClubCard 
+                key={club.id} 
+                club={club} 
+                language={language}
+                t={t}
+                onQuickView={setQuickViewItem}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Quick View Modal */}
+      <QuickViewModal
+        isOpen={!!quickViewItem}
+        onClose={() => setQuickViewItem(null)}
+        item={quickViewItem}
+        type="beach_club"
+        language={language}
+        t={t}
+      />
+    </>
   );
 };
 

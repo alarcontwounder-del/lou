@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Phone, Mail, Globe, Navigation } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Mail, Globe, Navigation, Eye } from 'lucide-react';
+import { QuickViewModal } from './QuickViewModal';
 
-const HotelCard = ({ hotel, language, t }) => (
+const HotelCard = ({ hotel, language, t, onQuickView }) => (
   <div
     className="flip-card"
     data-testid={`hotel-card-${hotel.id}`}
@@ -25,6 +26,18 @@ const HotelCard = ({ hotel, language, t }) => (
             alt={hotel.name}
             className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
           />
+          {/* Quick View Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(hotel);
+            }}
+            className="absolute top-3 left-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
+            title="Quick View"
+            data-testid={`hotel-quick-view-${hotel.id}`}
+          >
+            <Eye className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Content */}
@@ -81,7 +94,17 @@ const HotelCard = ({ hotel, language, t }) => (
           )}
 
           {/* Hover hint */}
-          <p className="text-xs text-stone-400 italic">Hover for details →</p>
+          <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(hotel);
+            }}
+            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
+          >
+            <Eye className="w-3 h-3" />
+            View Details
+          </button>
         </div>
       </div>
 
@@ -149,6 +172,7 @@ const HotelCard = ({ hotel, language, t }) => (
 export const HotelPartners = () => {
   const { language, t } = useLanguage();
   const { hotels, loading, getDisplayedItems } = useData();
+  const [quickViewItem, setQuickViewItem] = useState(null);
 
   // Apply display limit
   const displayedHotels = getDisplayedItems(hotels, 'hotels');
@@ -166,28 +190,46 @@ export const HotelPartners = () => {
   }
 
   return (
-    <section id="hotels" className="section-padding bg-brand-cream" data-testid="hotels-section">
-      <div className="container-custom">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="hotels-subtitle">
-            {t('hotels.subtitle')}
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-6" data-testid="hotels-title">
-            {t('hotels.title')}
-          </h2>
-          <p className="text-stone-600 max-w-2xl mx-auto text-lg">
-            {t('hotels.description')}
-          </p>
-        </div>
+    <>
+      <section id="hotels" className="section-padding bg-brand-cream" data-testid="hotels-section">
+        <div className="container-custom">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="hotels-subtitle">
+              {t('hotels.subtitle')}
+            </p>
+            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-6" data-testid="hotels-title">
+              {t('hotels.title')}
+            </h2>
+            <p className="text-stone-600 max-w-2xl mx-auto text-lg">
+              {t('hotels.description')}
+            </p>
+          </div>
 
-        {/* Hotels Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedHotels.map((hotel) => (
-            <HotelCard key={hotel.id} hotel={hotel} language={language} t={t} />
-          ))}
+          {/* Hotels Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedHotels.map((hotel) => (
+              <HotelCard 
+                key={hotel.id} 
+                hotel={hotel} 
+                language={language} 
+                t={t}
+                onQuickView={setQuickViewItem}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Quick View Modal */}
+      <QuickViewModal
+        isOpen={!!quickViewItem}
+        onClose={() => setQuickViewItem(null)}
+        item={quickViewItem}
+        type="hotel"
+        language={language}
+        t={t}
+      />
+    </>
   );
 };

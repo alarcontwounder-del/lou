@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Coffee, Clock, Croissant, Navigation } from 'lucide-react';
+import { MapPin, ExternalLink, Coffee, Clock, Croissant, Navigation, Eye } from 'lucide-react';
+import { QuickViewModal } from './QuickViewModal';
 
-const CafeBarCard = ({ place, language, t }) => (
+const CafeBarCard = ({ place, language, t, onQuickView }) => (
   <div
     className="flip-card"
     data-testid={`cafe-bar-card-${place.id}`}
@@ -32,6 +33,18 @@ const CafeBarCard = ({ place, language, t }) => (
               {place.category || 'Café & Bar'}
             </span>
           </div>
+          {/* Quick View Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(place);
+            }}
+            className="absolute top-3 left-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
+            title="Quick View"
+            data-testid={`cafe-bar-quick-view-${place.id}`}
+          >
+            <Eye className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Content */}
@@ -76,9 +89,19 @@ const CafeBarCard = ({ place, language, t }) => (
           )}
 
           {/* Hover Indicator */}
-          <p className="text-xs text-stone-400 text-center mt-2 italic">
+          <p className="text-xs text-stone-400 text-center mt-2 italic hidden md:block">
             {t('card.hoverForDetails') || 'Hover for details'}
           </p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(place);
+            }}
+            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto mt-2"
+          >
+            <Eye className="w-3 h-3" />
+            View Details
+          </button>
         </div>
       </div>
 
@@ -146,6 +169,7 @@ const CafeBarCard = ({ place, language, t }) => (
 export const CafeBarsPartners = () => {
   const { t, language } = useLanguage();
   const { cafeBars, loading, getDisplayedItems } = useData();
+  const [quickViewItem, setQuickViewItem] = useState(null);
 
   // Apply display limit
   const displayedCafeBars = getDisplayedItems(cafeBars, 'cafe_bars');
@@ -167,37 +191,50 @@ export const CafeBarsPartners = () => {
   }
 
   return (
-    <section id="cafes-bars" className="section-padding bg-brand-cream" data-testid="cafes-bars-section">
-      <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Coffee className="w-6 h-6 text-stone-500" />
-            <span className="text-sm uppercase tracking-[0.2em] text-stone-500 font-medium">
-              {t('cafeBars.subtitle') || 'Coffee, Cocktails & Brunch'}
-            </span>
+    <>
+      <section id="cafes-bars" className="section-padding bg-brand-cream" data-testid="cafes-bars-section">
+        <div className="container-custom">
+          {/* Section Header */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Coffee className="w-6 h-6 text-stone-500" />
+              <span className="text-sm uppercase tracking-[0.2em] text-stone-500 font-medium">
+                {t('cafeBars.subtitle') || 'Coffee, Cocktails & Brunch'}
+              </span>
+            </div>
+            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4">
+              {t('cafeBars.title') || 'Bars, Cafés & Brunch'}
+            </h2>
+            <p className="text-stone-600 max-w-2xl mx-auto">
+              {t('cafeBars.description') || 'From the perfect morning espresso to sunset cocktails, discover Mallorca\'s best spots for coffee lovers and social gatherings.'}
+            </p>
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4">
-            {t('cafeBars.title') || 'Bars, Cafés & Brunch'}
-          </h2>
-          <p className="text-stone-600 max-w-2xl mx-auto">
-            {t('cafeBars.description') || 'From the perfect morning espresso to sunset cocktails, discover Mallorca\'s best spots for coffee lovers and social gatherings.'}
-          </p>
-        </div>
 
-        {/* Cafe & Bar Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedCafeBars.map((place) => (
-            <CafeBarCard 
-              key={place.id} 
-              place={place} 
-              language={language}
-              t={t}
-            />
-          ))}
+          {/* Cafe & Bar Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayedCafeBars.map((place) => (
+              <CafeBarCard 
+                key={place.id} 
+                place={place} 
+                language={language}
+                t={t}
+                onQuickView={setQuickViewItem}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Quick View Modal */}
+      <QuickViewModal
+        isOpen={!!quickViewItem}
+        onClose={() => setQuickViewItem(null)}
+        item={quickViewItem}
+        type="cafe_bar"
+        language={language}
+        t={t}
+      />
+    </>
   );
 };
 

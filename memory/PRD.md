@@ -11,6 +11,23 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 
 ### March 2, 2026 (Current Session)
 
+#### ✅ QUICK VIEW FEATURE
+Implemented "Quick View" modal for all partner cards:
+- **Eye icon** on every card (top-right corner for Golf, top-left for others)
+- **Mobile support**: "View Details" text link appears on mobile (hidden on desktop where hover works)
+- **Works on all partner types**: Golf Courses, Hotels, Restaurants, Beach Clubs, Cafés & Bars
+- **Modal shows**: Image, location (clickable map link), name, type-specific details (holes/par for golf, price/discount for hotels, Michelin stars for restaurants), description, exclusive offer, and CTA button
+
+**Files Created:**
+- `/app/frontend/src/components/QuickViewModal.jsx` - Reusable modal component
+
+**Files Modified:**
+- `/app/frontend/src/components/GolfCourses.jsx` - Added quick view button and modal
+- `/app/frontend/src/components/HotelPartners.jsx` - Added quick view button and modal
+- `/app/frontend/src/components/RestaurantPartners.jsx` - Added quick view button and modal
+- `/app/frontend/src/components/BeachClubPartners.jsx` - Added quick view button and modal
+- `/app/frontend/src/components/CafeBarsPartners.jsx` - Added quick view button and modal
+
 #### ✅ UNIFIED SECTION SPACING
 Fixed inconsistent vertical spacing between all sections:
 - Created unified `.section-padding` class in `App.css`

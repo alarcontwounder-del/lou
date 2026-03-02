@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation, Eye } from 'lucide-react';
+import { QuickViewModal } from './QuickViewModal';
 
-const RestaurantCard = ({ restaurant, language, t }) => (
+const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
   <div
     className="flip-card"
     data-testid={`restaurant-card-${restaurant.id}`}
@@ -25,6 +26,18 @@ const RestaurantCard = ({ restaurant, language, t }) => (
             alt={restaurant.name}
             className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
           />
+          {/* Quick View Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(restaurant);
+            }}
+            className="absolute top-3 left-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
+            title="Quick View"
+            data-testid={`restaurant-quick-view-${restaurant.id}`}
+          >
+            <Eye className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Content */}
@@ -81,7 +94,17 @@ const RestaurantCard = ({ restaurant, language, t }) => (
           )}
 
           {/* Hover hint */}
-          <p className="text-xs text-stone-400 italic">Hover for details →</p>
+          <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(restaurant);
+            }}
+            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
+          >
+            <Eye className="w-3 h-3" />
+            View Details
+          </button>
         </div>
       </div>
 
@@ -161,6 +184,7 @@ const RestaurantCard = ({ restaurant, language, t }) => (
 export const RestaurantPartners = () => {
   const { language, t } = useLanguage();
   const { restaurants, loading, getDisplayedItems } = useData();
+  const [quickViewItem, setQuickViewItem] = useState(null);
 
   // Apply display limit
   const displayedRestaurants = getDisplayedItems(restaurants, 'restaurants');
@@ -178,28 +202,46 @@ export const RestaurantPartners = () => {
   }
 
   return (
-    <section id="restaurants" className="section-padding bg-brand-cream" data-testid="restaurants-section">
-      <div className="container-custom">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="restaurants-subtitle">
-            {t('restaurants.subtitle')}
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-6" data-testid="restaurants-title">
-            {t('restaurants.title')}
-          </h2>
-          <p className="text-stone-600 max-w-2xl mx-auto text-lg">
-            {t('restaurants.description')}
-          </p>
-        </div>
+    <>
+      <section id="restaurants" className="section-padding bg-brand-cream" data-testid="restaurants-section">
+        <div className="container-custom">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="restaurants-subtitle">
+              {t('restaurants.subtitle')}
+            </p>
+            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-6" data-testid="restaurants-title">
+              {t('restaurants.title')}
+            </h2>
+            <p className="text-stone-600 max-w-2xl mx-auto text-lg">
+              {t('restaurants.description')}
+            </p>
+          </div>
 
-        {/* Restaurants Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedRestaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} language={language} t={t} />
-          ))}
+          {/* Restaurants Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedRestaurants.map((restaurant) => (
+              <RestaurantCard 
+                key={restaurant.id} 
+                restaurant={restaurant} 
+                language={language} 
+                t={t}
+                onQuickView={setQuickViewItem}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Quick View Modal */}
+      <QuickViewModal
+        isOpen={!!quickViewItem}
+        onClose={() => setQuickViewItem(null)}
+        item={quickViewItem}
+        type="restaurant"
+        language={language}
+        t={t}
+      />
+    </>
   );
 };

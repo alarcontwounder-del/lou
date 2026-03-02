@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation, Eye } from 'lucide-react';
+import { QuickViewModal } from './QuickViewModal';
 
-const CourseCard = ({ course, language, t }) => (
+const CourseCard = ({ course, language, t, onQuickView }) => (
   <div
     className="flip-card"
     data-testid={`course-card-${course.id}`}
@@ -25,6 +26,18 @@ const CourseCard = ({ course, language, t }) => (
               From €{course.price_from}
             </div>
           )}
+          {/* Quick View Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(course);
+            }}
+            className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
+            title="Quick View"
+            data-testid={`course-quick-view-${course.id}`}
+          >
+            <Eye className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Content */}
@@ -58,8 +71,18 @@ const CourseCard = ({ course, language, t }) => (
             <span className="text-xl font-semibold text-stone-800">{course.par}</span>
           </div>
 
-          {/* Hover hint */}
-          <p className="text-xs text-stone-400 italic">Hover for details →</p>
+          {/* Quick View hint for mobile */}
+          <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(course);
+            }}
+            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
+          >
+            <Eye className="w-3 h-3" />
+            View Details
+          </button>
         </div>
       </div>
 
@@ -154,6 +177,7 @@ const CourseCard = ({ course, language, t }) => (
 export const GolfCourses = () => {
   const { language, t } = useLanguage();
   const { golfCourses, loading, getDisplayedItems } = useData();
+  const [quickViewItem, setQuickViewItem] = useState(null);
 
   // Apply display limit
   const displayedCourses = getDisplayedItems(golfCourses, 'golf');
@@ -171,30 +195,32 @@ export const GolfCourses = () => {
   }
 
   return (
-    <section id="courses" className="section-padding bg-brand-cream" data-testid="courses-section">
-      <div className="container-custom">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="courses-subtitle">
-            {t('courses.subtitle')}
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4" data-testid="courses-title">
-            {t('courses.title')}
-          </h2>
-          <p className="text-stone-600 max-w-2xl mx-auto">
-            {t('courses.description')}
-          </p>
-        </div>
+    <>
+      <section id="courses" className="section-padding bg-brand-cream" data-testid="courses-section">
+        <div className="container-custom">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="courses-subtitle">
+              {t('courses.subtitle')}
+            </p>
+            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 mb-4" data-testid="courses-title">
+              {t('courses.title')}
+            </h2>
+            <p className="text-stone-600 max-w-2xl mx-auto">
+              {t('courses.description')}
+            </p>
+          </div>
 
-        {/* Grid - 3 cards per row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedCourses.map((course) => (
-            <CourseCard 
-              key={course.id} 
-              course={course} 
-              language={language} 
-              t={t} 
-            />
+          {/* Grid - 3 cards per row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedCourses.map((course) => (
+              <CourseCard 
+                key={course.id} 
+                course={course} 
+                language={language} 
+                t={t}
+                onQuickView={setQuickViewItem}
+              />
           ))}
         </div>
 
@@ -260,5 +286,16 @@ export const GolfCourses = () => {
         </div>
       </div>
     </section>
+
+    {/* Quick View Modal */}
+    <QuickViewModal
+      isOpen={!!quickViewItem}
+      onClose={() => setQuickViewItem(null)}
+      item={quickViewItem}
+      type="golf"
+      language={language}
+      t={t}
+    />
+  </>
   );
 };
