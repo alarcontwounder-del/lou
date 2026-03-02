@@ -14,7 +14,7 @@ module.exports = {
           charcoalLight: '#3D3D3D', // Warm charcoal - cards, surfaces
           slate: '#6D8196',         // Slate blue - accent
           gray: '#CBCBCB',          // Light grey - secondary
-          cream: '#FFFFE3',         // Cream/ivory - light backgrounds
+          cream: '#FEFEF5',         // Soft cream - light backgrounds
           gold: '#C9A227',          // Golden amber - CTA accent
           // Legacy aliases for compatibility
           green: '#4A4A4A',         // Now charcoal
