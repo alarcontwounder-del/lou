@@ -4370,14 +4370,14 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
 
 async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
-    logo_url = "https://golf-spacing-v2.preview.emergentagent.com/api/uploads/logo_email.png"
+    logo_url = "https://golf-spacing-v2.preview.emergentagent.com/api/uploads/logo_black_bg.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <!-- Header with gradient and logo -->
-            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 180px; height: auto; margin-bottom: 10px;" />
+            <!-- Header with solid black background to match logo -->
+            <div style="background-color: #000000; padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center;">
+                <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 200px; height: auto; margin-bottom: 10px;" />
                 <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
             </div>
             
