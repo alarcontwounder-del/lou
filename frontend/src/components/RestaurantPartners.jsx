@@ -164,21 +164,29 @@ const RestaurantCard = ({ restaurant, language, t }) => (
 export const RestaurantPartners = () => {
   const { language, t } = useLanguage();
   const [restaurants, setRestaurants] = useState([]);
+  const [displayLimit, setDisplayLimit] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchRestaurants = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/partner-offers?type=restaurant`);
-        setRestaurants(response.data);
+        const [restaurantsRes, settingsRes] = await Promise.all([
+          axios.get(`${API}/partner-offers?type=restaurant`),
+          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
+        ]);
+        setRestaurants(restaurantsRes.data);
+        setDisplayLimit(settingsRes.data?.restaurants || null);
       } catch (error) {
         console.error('Error fetching restaurants:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchRestaurants();
+    fetchData();
   }, []);
+
+  // Apply display limit
+  const displayedRestaurants = displayLimit ? restaurants.slice(0, displayLimit) : restaurants;
 
   if (loading) {
     return (
@@ -208,7 +216,7 @@ export const RestaurantPartners = () => {
 
         {/* Restaurants Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {restaurants.map((restaurant) => (
+          {displayedRestaurants.map((restaurant) => (
             <RestaurantCard key={restaurant.id} restaurant={restaurant} language={language} t={t} />
           ))}
         </div>
