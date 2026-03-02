@@ -88,7 +88,12 @@ const ImageUploadField = ({ value, onChange }) => {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       
-      onChange(response.data.url);
+      // Prepend BACKEND_URL if the returned URL is relative
+      let imageUrl = response.data.url;
+      if (imageUrl.startsWith('/')) {
+        imageUrl = `${BACKEND_URL}${imageUrl}`;
+      }
+      onChange(imageUrl);
     } catch (err) {
       setError(err.response?.data?.detail || 'Upload failed. Please try again.');
     } finally {
