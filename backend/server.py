@@ -4950,6 +4950,40 @@ async def get_all_partners():
         "total_count": len(golf_courses) + len(hotels) + len(restaurants) + len(beach_clubs) + len(cafe_bars)
     }
 
+
+# Display Settings endpoints
+@api_router.get("/display-settings", response_model=dict)
+async def get_display_settings():
+    """Get display limits for each partner category"""
+    settings = await db.display_settings.find_one({"id": "main"}, {"_id": 0})
+    if not settings:
+        # Return defaults - null means show all
+        return {
+            "golf": None,
+            "hotels": None,
+            "restaurants": None,
+            "beach_clubs": None,
+            "cafe_bars": None
+        }
+    return settings
+
+
+@api_router.post("/display-settings", response_model=dict)
+async def save_display_settings(settings: dict):
+    """Save display limits for each partner category"""
+    settings["id"] = "main"
+    settings["updated_at"] = datetime.now(timezone.utc)
+    
+    await db.display_settings.update_one(
+        {"id": "main"},
+        {"$set": settings},
+        upsert=True
+    )
+    
+    # Return without _id
+    saved = await db.display_settings.find_one({"id": "main"}, {"_id": 0})
+    return saved
+
 @api_router.post("/contact", response_model=ContactInquiry)
 async def create_contact_inquiry(inquiry: ContactInquiryCreate):
     inquiry_obj = ContactInquiry(**inquiry.model_dump())
