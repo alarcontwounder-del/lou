@@ -147,21 +147,29 @@ const BeachClubCard = ({ club, language, t }) => (
 export const BeachClubPartners = () => {
   const { t, language } = useLanguage();
   const [beachClubs, setBeachClubs] = useState([]);
+  const [displayLimit, setDisplayLimit] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBeachClubs = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/partner-offers?type=beach_club`);
-        setBeachClubs(response.data);
+        const [clubsRes, settingsRes] = await Promise.all([
+          axios.get(`${API}/partner-offers?type=beach_club`),
+          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
+        ]);
+        setBeachClubs(clubsRes.data);
+        setDisplayLimit(settingsRes.data?.beach_clubs || null);
       } catch (error) {
         console.error('Error fetching beach clubs:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchBeachClubs();
+    fetchData();
   }, []);
+
+  // Apply display limit
+  const displayedClubs = displayLimit ? beachClubs.slice(0, displayLimit) : beachClubs;
 
   if (loading) {
     return (
@@ -198,7 +206,7 @@ export const BeachClubPartners = () => {
 
         {/* Beach Club Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {beachClubs.map((club) => (
+          {displayedClubs.map((club) => (
             <BeachClubCard 
               key={club.id} 
               club={club} 
