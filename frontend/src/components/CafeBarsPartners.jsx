@@ -167,7 +167,7 @@ export const CafeBarsPartners = () => {
   }
 
   return (
-    <section id="cafes-bars" className="py-10 bg-brand-cream" data-testid="cafes-bars-section">
+    <section id="cafes-bars" className="py-8 bg-brand-cream" data-testid="cafes-bars-section">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-8">
