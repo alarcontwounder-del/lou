@@ -5171,6 +5171,181 @@ async def delete_newsletter_subscriber(subscriber_id: str, request: Request):
     
     return {"message": "Subscriber deleted successfully"}
 
+@api_router.post("/newsletter/add")
+async def add_subscriber_manual(request: Request, name: str = "", email: str = "", country: str = ""):
+    """Add a single subscriber manually (admin only)."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    # Check if email exists
+    existing = await db.newsletter_subscriptions.find_one({"email": email.lower()})
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already subscribed")
+    
+    subscription = {
+        "id": str(uuid.uuid4()),
+        "email": email.lower(),
+        "name": name,
+        "country": country,
+        "subscribed_at": datetime.now(timezone.utc).isoformat(),
+        "is_active": True
+    }
+    
+    await db.newsletter_subscriptions.insert_one(subscription)
+    del subscription["_id"] if "_id" in subscription else None
+    
+    return subscription
+
+@api_router.post("/newsletter/import-csv")
+async def import_subscribers_csv(request: Request, file: UploadFile = File(...)):
+    """Import subscribers from CSV file (admin only)."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    import csv
+    import io
+    
+    content = await file.read()
+    decoded = content.decode('utf-8')
+    
+    reader = csv.DictReader(io.StringIO(decoded))
+    
+    imported = 0
+    skipped = 0
+    errors = []
+    
+    for row in reader:
+        # Try to find email, name, country columns (flexible naming)
+        email = row.get('email') or row.get('Email') or row.get('EMAIL') or row.get('e-mail') or ''
+        name = row.get('name') or row.get('Name') or row.get('NAME') or row.get('first_name', '') + ' ' + row.get('last_name', '') or ''
+        country = row.get('country') or row.get('Country') or row.get('COUNTRY') or ''
+        
+        email = email.strip().lower()
+        name = name.strip()
+        country = country.strip()
+        
+        if not email or '@' not in email:
+            skipped += 1
+            continue
+        
+        # Check if exists
+        existing = await db.newsletter_subscriptions.find_one({"email": email})
+        if existing:
+            skipped += 1
+            continue
+        
+        subscription = {
+            "id": str(uuid.uuid4()),
+            "email": email,
+            "name": name or "Subscriber",
+            "country": country or "Unknown",
+            "subscribed_at": datetime.now(timezone.utc).isoformat(),
+            "is_active": True
+        }
+        
+        try:
+            await db.newsletter_subscriptions.insert_one(subscription)
+            imported += 1
+        except Exception as e:
+            errors.append(f"{email}: {str(e)}")
+    
+    return {
+        "success": True,
+        "imported": imported,
+        "skipped": skipped,
+        "errors": errors[:10]  # Limit errors shown
+    }
+
+@api_router.post("/newsletter/send-bulk")
+async def send_bulk_email(request: Request, subject: str = "", message: str = ""):
+    """Send bulk email to all active subscribers (admin only)."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    if not subject or not message:
+        raise HTTPException(status_code=400, detail="Subject and message are required")
+    
+    # Get all active subscribers
+    subscribers = await db.newsletter_subscriptions.find({"is_active": True}, {"_id": 0}).to_list(10000)
+    
+    if not subscribers:
+        raise HTTPException(status_code=400, detail="No active subscribers found")
+    
+    sent = 0
+    failed = 0
+    
+    for sub in subscribers:
+        try:
+            html_content = f"""
+            <html>
+            <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+                <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+                    <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center;">
+                        <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 600; letter-spacing: 2px;">GOLFINMALLORCA</h1>
+                        <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+                    </div>
+                    
+                    <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                        <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 20px 0; font-weight: 500;">{subject}</h2>
+                        
+                        <div style="color: #57534E; font-size: 15px; line-height: 1.7;">
+                            {message.replace(chr(10), '<br>')}
+                        </div>
+                        
+                        <div style="text-align: center; margin: 32px 0;">
+                            <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #2D2D2D; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px;">Book Your Tee Time</a>
+                        </div>
+                        
+                        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E5E5;">
+                            <p style="color: #2D2D2D; font-size: 15px; margin: 0;">
+                                Best regards,<br>
+                                <strong style="color: #2D2D2D;">The Golfinmallorca.com Team</strong>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: #2D2D2D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                        <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin: 0 0 8px 0;">
+                            Since 2003, connecting golfers with the finest courses in Mallorca
+                        </p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 13px; margin: 0;">
+                            <a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">contact@golfinmallorca.com</a>
+                            <span style="color: rgba(255,255,255,0.4); margin: 0 10px;">|</span>
+                            +34 620 987 575
+                        </p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
+            
+            params = {
+                "from": SENDER_EMAIL,
+                "to": [sub["email"]],
+                "subject": subject,
+                "html": html_content
+            }
+            
+            await asyncio.to_thread(resend.Emails.send, params)
+            sent += 1
+            
+            # Small delay to avoid rate limiting
+            await asyncio.sleep(0.1)
+            
+        except Exception as e:
+            logging.error(f"Failed to send to {sub['email']}: {e}")
+            failed += 1
+    
+    return {
+        "success": True,
+        "sent": sent,
+        "failed": failed,
+        "total_subscribers": len(subscribers)
+    }
+
 @api_router.delete("/contact/{contact_id}")
 async def delete_contact_inquiry(contact_id: str, request: Request):
     """Delete a contact inquiry (admin only)."""
