@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Plus, Edit2, Trash2, Save, X, Search, 
   MapPin, ExternalLink, ChevronDown, Eye, EyeOff,
   Hotel, UtensilsCrossed, Palmtree, Coffee, Flag,
-  ToggleLeft, ToggleRight, Settings, Link, RefreshCw
+  ToggleLeft, ToggleRight, Settings, Link, RefreshCw,
+  Upload, Image as ImageIcon
 } from 'lucide-react';
 import axios from 'axios';
 
