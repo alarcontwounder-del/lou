@@ -152,7 +152,7 @@ export const CafeBarsPartners = () => {
 
   if (loading) {
     return (
-      <section className="py-8 bg-brand-cream">
+      <section className="section-padding bg-brand-cream">
         <div className="container-custom">
           <div className="text-center py-10">
             <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
@@ -167,7 +167,7 @@ export const CafeBarsPartners = () => {
   }
 
   return (
-    <section id="cafes-bars" className="py-8 bg-brand-cream" data-testid="cafes-bars-section">
+    <section id="cafes-bars" className="section-padding bg-brand-cream" data-testid="cafes-bars-section">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-8">

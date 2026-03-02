@@ -57,7 +57,7 @@ export const Newsletter = () => {
     <>
       <Toaster position="top-right" richColors closeButton />
       
-      <section className="py-20 relative overflow-hidden" data-testid="newsletter-section">
+      <section className="section-padding relative overflow-hidden" data-testid="newsletter-section">
         {/* Premium Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-brand-charcoal via-brand-charcoal/90 to-brand-charcoalLight"></div>
         
