@@ -2,121 +2,108 @@
 
 ## Original Problem Statement
 Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
-- Modern, dynamic UI/UX design ("Ink Wash" color palette: charcoal, cream, slate blue)
+- Modern, dynamic UI/UX design ("Ink Wash" color palette)
 - Admin dashboard for content management
 - Real authentic images for all partners
-- Beach Clubs section
-- Mini search engine for finding golf courses, hotels, restaurants, etc.
+- Partner management with display controls
 
 ## What's Been Implemented
 
-### December 1, 2026 (Current Session)
+### December 2, 2026 (Current Session)
 
-#### ✅ FULL DATABASE MIGRATION COMPLETE
-All partner data migrated from hardcoded `server.py` to MongoDB:
+#### ✅ FULL CONTENT MANAGEMENT SYSTEM
+Complete admin control over all partners with:
 
-| Collection | Records | Status |
-|------------|---------|--------|
-| golf_courses | 16 | ✅ Migrated |
-| hotels | 38 | ✅ Migrated |
-| restaurants | 54 | ✅ Migrated |
-| beach_clubs | 12 | ✅ Migrated |
-| cafe_bars | 36 | ✅ Migrated |
-| **Total** | **156** | ✅ Complete |
+**Toggle Active/Inactive:**
+- On/off switch on each partner card in Admin
+- Hidden partners don't appear on website
+- "Show Hidden" filter to view inactive partners
+- Easy restore by toggling back on
 
-#### ✅ ADMIN DASHBOARD - CONTENT MANAGER UI
-New Content Manager component with full CRUD capabilities:
-- **File**: `/app/frontend/src/components/ContentManager.jsx`
-- **Features**:
-  - Tab-based navigation for all 5 partner types (Golf, Hotels, Restaurants, Beach Clubs, Cafés)
-  - Search/filter functionality within each tab
-  - Add New partner button with full form
-  - Edit existing partners (all fields including multi-language descriptions)
-  - Delete partners (soft delete)
-  - Image preview in forms
-  - Compact card grid view
-- **Access**: Admin Dashboard → "Content Manager" tab
+**Display Limits:**
+- Settings panel to control cards shown per category
+- Options: 3, 4, 6, 8, 10, 12, 16, 20, or "Show All"
+- Settings saved in MongoDB (`display_settings` collection)
+- Each category section respects limits
 
-#### ✅ API ENDPOINTS (Full CRUD)
-Each partner type has complete REST API:
-- `GET /api/{type}` - List all
-- `POST /api/{type}` - Create new
-- `PUT /api/{type}/{id}` - Update
-- `DELETE /api/{type}/{id}` - Soft delete
+**URL Management:**
+- Prominent "Booking URL" field in edit form
+- Easy to add/edit/remove partner booking links
+- Visual URL indicator on each card
 
-**Endpoints:**
-- `/api/golf-courses`
-- `/api/hotels`
-- `/api/restaurants`
-- `/api/beach-clubs`
-- `/api/cafe-bars`
-- `/api/all-partners` - Combined view
+**API Updates:**
+- `GET /api/display-settings` - Get display limits
+- `POST /api/display-settings` - Save display limits
+- `?include_inactive=true` parameter on all GET endpoints
+- Soft delete with `is_active` field
 
-#### ✅ OTHER COMPLETED TASKS
-- Golf courses reordered: **Son Gual → Alcanada → Pula** as first three
-- Reduced spacing between "About Us" and "World-Class Courses" sections
+### December 1, 2026
+- Full database migration (156 partners to MongoDB)
+- Admin Dashboard Content Manager UI
+- Golf courses reordered (Son Gual, Alcanada, Pula first)
+- Reduced spacing between sections
 
-### Previous Sessions
-- Reviews UI: Compact horizontal carousel
-- Ghost section navigator
-- Standardized colors across all partner cards
-- Beach Clubs Section (12 clubs)
-- Cafés & Bars Section (36 venues)
-- Floating Search Mockup (UI ready)
+## Admin Dashboard Features
+
+### Content Manager Tab
+Access: Gear icon → Google Login → "Content Manager" tab
+
+| Feature | Description |
+|---------|-------------|
+| **Type Tabs** | Golf, Hotels, Restaurants, Beach Clubs, Cafés |
+| **Search** | Filter by name, location, category |
+| **Active Toggle** | Show/hide partners on website |
+| **Show Hidden** | View inactive partners |
+| **Display Limits** | Set max cards per category |
+| **Add New** | Create new partners |
+| **Edit** | Modify all fields including URLs |
+| **Delete** | Permanently remove partners |
+
+### Display Settings
+| Category | Default | Options |
+|----------|---------|---------|
+| Golf Courses | Show All | 3-20 or All |
+| Hotels | Show All | 3-20 or All |
+| Restaurants | Show All | 3-20 or All |
+| Beach Clubs | Show All | 3-20 or All |
+| Cafés & Bars | Show All | 3-20 or All |
 
 ## Technical Architecture
 
 ### MongoDB Collections
 ```
-golf_courses    - 16 records
-hotels          - 38 records
-restaurants     - 54 records  
-beach_clubs     - 12 records
-cafe_bars       - 36 records
-contact_inquiries
-newsletter_subscriptions
-users
-user_sessions
-user_reviews
+golf_courses      - 16 records
+hotels            - 38 records
+restaurants       - 54 records  
+beach_clubs       - 12 records
+cafe_bars         - 36 records
+display_settings  - 1 record (limits config)
 ```
 
-### Key Files
-- `/app/backend/server.py` - FastAPI with all CRUD endpoints
-- `/app/backend/seed_golf_courses.py` - Golf courses seeding
-- `/app/backend/seed_all_partners.py` - Full partner migration script
-- `/app/frontend/src/components/ContentManager.jsx` - **NEW** Admin Content Manager
-- `/app/frontend/src/components/AdminDashboard.jsx` - Updated with Content tab
+### Key Files Updated
+- `/app/frontend/src/components/ContentManager.jsx` - Full admin UI
+- `/app/frontend/src/components/GolfCourses.jsx` - Display limits
+- `/app/frontend/src/components/HotelPartners.jsx` - Display limits
+- `/app/frontend/src/components/RestaurantPartners.jsx` - Display limits
+- `/app/frontend/src/components/BeachClubPartners.jsx` - Display limits
+- `/app/frontend/src/components/CafeBarsPartners.jsx` - Display limits
+- `/app/backend/server.py` - Display settings endpoints
 
 ## Prioritized Backlog
 
 ### P0 - Critical (User Input Needed)
-- [ ] Replace stock photos with real venue images (user to provide URLs)
+- [ ] Replace stock photos with real venue images
 
 ### P1 - High Priority  
-- [ ] Full Search Engine implementation (backend + frontend)
+- [ ] Full Search Engine implementation
 - [ ] Email functionality (needs RESEND_API_KEY)
 
 ### P2 - Medium Priority
 - [ ] Hero video replacement
 - [ ] Weather widget integration
 
-### P3 - Low Priority
-- [ ] Fix webpack deprecation warnings
-
-## Known Issues
-1. **Email broken**: Missing Resend API credentials
-2. **Real photos needed**: Some venues still using stock images
-3. **Search not functional**: Current search is UI mockup only
-
-## Admin Dashboard Access
-1. Click the gear icon in the navigation bar
-2. Login with Google OAuth (Emergent-managed)
-3. Access tabs: Contacts | Subscribers | Pending Reviews | **Content Manager**
-
 ## Data Summary
 - **Total Partners**: 156 records in MongoDB
-- **Golf Courses**: 16 (Mallorca, Ibiza, Menorca)
-- **Hotels**: 38 (Luxury to Boutique)
-- **Restaurants**: 54 (Fine dining to casual)
-- **Beach Clubs**: 12
-- **Cafés & Bars**: 36
+- **All with toggle on/off**: Yes
+- **All with URL editing**: Yes
+- **Display limits**: Configurable per category
