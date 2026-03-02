@@ -5025,9 +5025,8 @@ async def upload_image(file: UploadFile = File(...)):
         f.write(content)
     
     # Return the URL (relative to API)
-    # Get the base URL from environment or construct it
-    base_url = os.environ.get('REACT_APP_BACKEND_URL', '')
-    image_url = f"{base_url}/api/uploads/{safe_filename}"
+    # The frontend will prepend the BACKEND_URL automatically when displaying
+    image_url = f"/api/uploads/{safe_filename}"
     
     return {
         "success": True,
