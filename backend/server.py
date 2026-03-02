@@ -4370,7 +4370,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
 
 async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
-    logo_url = "https://golf-spacing-v2.preview.emergentagent.com/api/uploads/logo_black_bg.png"
+    logo_url = "https://golf-spacing-v2.preview.emergentagent.com/api/uploads/logo_v1772469548.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
