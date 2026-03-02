@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Coffee, Clock, Croissant, Navigation } from 'lucide-react';
-import axios from 'axios';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const CafeBarCard = ({ place, language, t }) => (
   <div
@@ -23,7 +20,7 @@ const CafeBarCard = ({ place, language, t }) => (
 
         {/* Image */}
         <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
-          <img
+          <img loading="lazy"
             src={place.image}
             alt={place.name}
             className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
@@ -148,36 +145,18 @@ const CafeBarCard = ({ place, language, t }) => (
 
 export const CafeBarsPartners = () => {
   const { t, language } = useLanguage();
-  const [cafeBars, setCafeBars] = useState([]);
-  const [displayLimit, setDisplayLimit] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [cafesRes, settingsRes] = await Promise.all([
-          axios.get(`${API}/partner-offers?type=cafe_bar`),
-          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
-        ]);
-        setCafeBars(cafesRes.data);
-        setDisplayLimit(settingsRes.data?.cafe_bars || null);
-      } catch (error) {
-        console.error('Error fetching cafes and bars:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { cafeBars, loading, getDisplayedItems } = useData();
 
   // Apply display limit
-  const displayedCafeBars = displayLimit ? cafeBars.slice(0, displayLimit) : cafeBars;
+  const displayedCafeBars = getDisplayedItems(cafeBars, 'cafe_bars');
 
   if (loading) {
     return (
-      <section className="py-16 bg-gradient-to-b from-amber-50 to-white">
+      <section className="py-16 bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center">Loading cafés & bars...</div>
+          <div className="text-center py-20">
+            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          </div>
         </div>
       </section>
     );

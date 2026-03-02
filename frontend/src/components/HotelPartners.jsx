@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Mail, Globe, Navigation } from 'lucide-react';
-import axios from 'axios';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const HotelCard = ({ hotel, language, t }) => (
   <div
@@ -23,7 +20,7 @@ const HotelCard = ({ hotel, language, t }) => (
 
         {/* Image - Vertical with rounded edges */}
         <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
-          <img
+          <img loading="lazy"
             src={hotel.image}
             alt={hotel.name}
             className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
@@ -151,36 +148,18 @@ const HotelCard = ({ hotel, language, t }) => (
 
 export const HotelPartners = () => {
   const { language, t } = useLanguage();
-  const [hotels, setHotels] = useState([]);
-  const [displayLimit, setDisplayLimit] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [hotelsRes, settingsRes] = await Promise.all([
-          axios.get(`${API}/partner-offers?type=hotel`),
-          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
-        ]);
-        setHotels(hotelsRes.data);
-        setDisplayLimit(settingsRes.data?.hotels || null);
-      } catch (error) {
-        console.error('Error fetching hotels:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { hotels, loading, getDisplayedItems } = useData();
 
   // Apply display limit
-  const displayedHotels = displayLimit ? hotels.slice(0, displayLimit) : hotels;
+  const displayedHotels = getDisplayedItems(hotels, 'hotels');
 
   if (loading) {
     return (
       <section id="hotels" className="section-padding bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center">Loading...</div>
+          <div className="text-center py-20">
+            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          </div>
         </div>
       </section>
     );

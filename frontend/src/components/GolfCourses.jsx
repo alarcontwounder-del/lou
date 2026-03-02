@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation } from 'lucide-react';
-import axios from 'axios';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const CourseCard = ({ course, language, t }) => (
   <div
@@ -19,6 +16,7 @@ const CourseCard = ({ course, language, t }) => (
           <img
             src={course.image}
             alt={course.name}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
           />
           {/* Price Badge */}
@@ -155,36 +153,18 @@ const CourseCard = ({ course, language, t }) => (
 
 export const GolfCourses = () => {
   const { language, t } = useLanguage();
-  const [courses, setCourses] = useState([]);
-  const [displayLimit, setDisplayLimit] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [coursesRes, settingsRes] = await Promise.all([
-          axios.get(`${API}/golf-courses`),
-          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
-        ]);
-        setCourses(coursesRes.data);
-        setDisplayLimit(settingsRes.data?.golf || null);
-      } catch (error) {
-        console.error('Error fetching golf courses:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { golfCourses, loading, getDisplayedItems } = useData();
 
   // Apply display limit
-  const displayedCourses = displayLimit ? courses.slice(0, displayLimit) : courses;
+  const displayedCourses = getDisplayedItems(golfCourses, 'golf');
 
   if (loading) {
     return (
       <section id="courses" className="section-padding bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center">Loading...</div>
+          <div className="text-center py-20">
+            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          </div>
         </div>
       </section>
     );

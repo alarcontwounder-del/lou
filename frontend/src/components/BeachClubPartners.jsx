@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Umbrella, Navigation, Waves } from 'lucide-react';
-import axios from 'axios';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const BeachClubCard = ({ club, language, t }) => (
   <div
@@ -23,7 +20,7 @@ const BeachClubCard = ({ club, language, t }) => (
 
         {/* Image */}
         <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
-          <img
+          <img loading="lazy"
             src={club.image}
             alt={club.name}
             className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
@@ -146,36 +143,18 @@ const BeachClubCard = ({ club, language, t }) => (
 
 export const BeachClubPartners = () => {
   const { t, language } = useLanguage();
-  const [beachClubs, setBeachClubs] = useState([]);
-  const [displayLimit, setDisplayLimit] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [clubsRes, settingsRes] = await Promise.all([
-          axios.get(`${API}/partner-offers?type=beach_club`),
-          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
-        ]);
-        setBeachClubs(clubsRes.data);
-        setDisplayLimit(settingsRes.data?.beach_clubs || null);
-      } catch (error) {
-        console.error('Error fetching beach clubs:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { beachClubs, loading, getDisplayedItems } = useData();
 
   // Apply display limit
-  const displayedClubs = displayLimit ? beachClubs.slice(0, displayLimit) : beachClubs;
+  const displayedClubs = getDisplayedItems(beachClubs, 'beach_clubs');
 
   if (loading) {
     return (
-      <section className="py-16 bg-gradient-to-b from-cyan-50 to-white">
+      <section className="py-16 bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center">Loading beach clubs...</div>
+          <div className="text-center py-20">
+            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          </div>
         </div>
       </section>
     );

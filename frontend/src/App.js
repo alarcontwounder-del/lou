@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import '@/App.css';
 import { LanguageProvider } from './context/LanguageContext';
+import { DataProvider } from './context/DataContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -150,7 +151,9 @@ function App() {
   return (
     <BrowserRouter>
       <LanguageProvider>
-        <AppRouter />
+        <DataProvider>
+          <AppRouter />
+        </DataProvider>
       </LanguageProvider>
     </BrowserRouter>
   );
