@@ -4990,6 +4990,68 @@ async def save_display_settings(settings: dict):
     saved = await db.display_settings.find_one({"id": "main"}, {"_id": 0})
     return saved
 
+
+# Image Upload endpoint
+ALLOWED_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
+
+@api_router.post("/upload-image")
+async def upload_image(file: UploadFile = File(...)):
+    """Upload an image file and return the URL"""
+    
+    # Check file extension
+    file_ext = Path(file.filename).suffix.lower()
+    if file_ext not in ALLOWED_EXTENSIONS:
+        raise HTTPException(
+            status_code=400, 
+            detail=f"File type not allowed. Allowed: {', '.join(ALLOWED_EXTENSIONS)}"
+        )
+    
+    # Read file content
+    content = await file.read()
+    
+    # Check file size
+    if len(content) > MAX_FILE_SIZE:
+        raise HTTPException(status_code=400, detail="File too large. Maximum size is 10MB")
+    
+    # Generate unique filename
+    unique_id = str(uuid.uuid4())[:8]
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    safe_filename = f"{timestamp}_{unique_id}{file_ext}"
+    
+    # Save file
+    file_path = UPLOADS_DIR / safe_filename
+    with open(file_path, "wb") as f:
+        f.write(content)
+    
+    # Return the URL (relative to API)
+    # Get the base URL from environment or construct it
+    base_url = os.environ.get('REACT_APP_BACKEND_URL', '')
+    image_url = f"{base_url}/api/uploads/{safe_filename}"
+    
+    return {
+        "success": True,
+        "filename": safe_filename,
+        "url": image_url,
+        "size": len(content)
+    }
+
+
+@api_router.delete("/upload-image/{filename}")
+async def delete_uploaded_image(filename: str):
+    """Delete an uploaded image"""
+    file_path = UPLOADS_DIR / filename
+    
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="Image not found")
+    
+    # Security: ensure the filename doesn't contain path traversal
+    if ".." in filename or "/" in filename:
+        raise HTTPException(status_code=400, detail="Invalid filename")
+    
+    file_path.unlink()
+    return {"success": True, "message": "Image deleted"}
+
 @api_router.post("/contact", response_model=ContactInquiry)
 async def create_contact_inquiry(inquiry: ContactInquiryCreate):
     inquiry_obj = ContactInquiry(**inquiry.model_dump())
