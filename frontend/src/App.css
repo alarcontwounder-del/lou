@@ -14,6 +14,7 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #2D3A35; /* Fallback color while image loads */
 }
 
 /* Mobile: Focus on the main golf scene */
