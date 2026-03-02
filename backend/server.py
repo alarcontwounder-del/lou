@@ -4304,19 +4304,51 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
     html_content = f"""
     <html>
-    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #FFFFE3;">
-        <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
-            <h2 style="color: #808034; margin-bottom: 20px;">New Contact Inquiry - Golfinmallorca.com</h2>
-            <p style="color: #333;"><strong>Name:</strong> {inquiry.name}</p>
-            <p style="color: #333;"><strong>Email:</strong> {inquiry.email}</p>
-            <p style="color: #333;"><strong>Phone:</strong> {inquiry.phone or 'Not provided'}</p>
-            <p style="color: #333;"><strong>Country:</strong> {inquiry.country}</p>
-            <p style="color: #333;"><strong>Inquiry Type:</strong> {inquiry.inquiry_type}</p>
-            <hr style="border: 1px solid #DBD4FF; margin: 20px 0;">
-            <p style="color: #333;"><strong>Message:</strong></p>
-            <p style="color: #555; background-color: #FFFFE3; padding: 15px; border-radius: 5px;">{inquiry.message}</p>
-            <hr style="border: 1px solid #DBD4FF; margin: 20px 0;">
-            <p style="color: #888; font-size: 12px;">This email was sent automatically from Golfinmallorca.com contact form.</p>
+    <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 30px; border-radius: 16px 16px 0 0; text-align: center;">
+                <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 1px;">GOLFINMALLORCA</h1>
+                <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
+            </div>
+            
+            <!-- Content -->
+            <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 120px;">Name</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{inquiry.name}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;"><a href="mailto:{inquiry.email}" style="color: #6B7B8C; text-decoration: none;">{inquiry.email}</a></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{inquiry.phone or 'Not provided'}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Country</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{inquiry.country}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Type</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{inquiry.inquiry_type}</td>
+                    </tr>
+                </table>
+                
+                <div style="margin-top: 24px;">
+                    <p style="color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Message</p>
+                    <div style="background-color: #F5F2EB; padding: 20px; border-radius: 8px; border-left: 4px solid #6B7B8C;">
+                        <p style="color: #2D2D2D; font-size: 15px; line-height: 1.7; margin: 0;">{inquiry.message}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">
+                This email was sent automatically from Golfinmallorca.com
+            </p>
         </div>
     </body>
     </html>
@@ -4339,49 +4371,76 @@ async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
     html_content = f"""
     <html>
-    <body style="font-family: Arial, sans-serif; padding: 20px; background-color: #FFFFE3;">
-        <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #808034; margin: 0;">Golfinmallorca.com</h1>
-                <p style="color: #723480; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+    <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <!-- Header with gradient -->
+            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center;">
+                <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 600; letter-spacing: 2px;">GOLFINMALLORCA</h1>
+                <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
             </div>
             
-            <h2 style="color: #808034;">Welcome to Our Newsletter, {name}!</h2>
-            
-            <p style="color: #333; line-height: 1.6;">
-                Thank you for subscribing to the Golfinmallorca.com newsletter! You've joined an exclusive community of golf enthusiasts who appreciate the finest courses and experiences Mallorca has to offer.
-            </p>
-            
-            <p style="color: #333; line-height: 1.6;">
-                As a subscriber, you'll receive:
-            </p>
-            
-            <ul style="color: #333; line-height: 1.8;">
-                <li>Exclusive deals on green fees at premium courses</li>
-                <li>Early access to golf & hotel packages</li>
-                <li>Insider tips on the best courses and restaurants</li>
-                <li>Seasonal offers and special promotions</li>
-            </ul>
-            
-            <div style="text-align: center; margin: 30px 0;">
-                <a href="https://golfinmallorca.greenfee365.com" style="background-color: #808034; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">Book Your Tee Time</a>
+            <!-- Main Content -->
+            <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 20px 0; font-weight: 500;">Welcome, {name}!</h2>
+                
+                <p style="color: #57534E; font-size: 15px; line-height: 1.7; margin: 0 0 20px 0;">
+                    Thank you for joining our exclusive community of golf enthusiasts. You're now part of a select group who appreciate the finest courses and experiences Mallorca has to offer.
+                </p>
+                
+                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin: 24px 0;">
+                    <p style="color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">As a subscriber, you'll receive:</p>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
+                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Exclusive deals on green fees at premium courses
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
+                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Early access to golf & hotel packages
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
+                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Insider tips on the best courses and restaurants
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
+                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Seasonal offers and special promotions
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- CTA Button -->
+                <div style="text-align: center; margin: 32px 0;">
+                    <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #2D2D2D; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px;">Book Your Tee Time</a>
+                </div>
+                
+                <p style="color: #57534E; font-size: 15px; line-height: 1.7; margin: 0;">
+                    We're excited to help you plan your next golfing adventure in Mallorca!
+                </p>
+                
+                <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E5E5;">
+                    <p style="color: #2D2D2D; font-size: 15px; margin: 0;">
+                        Best regards,<br>
+                        <strong style="color: #2D2D2D;">The Golfinmallorca.com Team</strong>
+                    </p>
+                </div>
             </div>
             
-            <p style="color: #333; line-height: 1.6;">
-                We're excited to help you plan your next golfing adventure in Mallorca!
-            </p>
-            
-            <p style="color: #333;">
-                Best regards,<br>
-                <strong>The Golfinmallorca.com Team</strong>
-            </p>
-            
-            <hr style="border: 1px solid #DBD4FF; margin: 30px 0;">
-            
-            <p style="color: #888; font-size: 12px; text-align: center;">
-                Since 2003, we've been connecting golfers with the finest courses in Mallorca.<br>
-                Contact us: contact@golfinmallorca.com | +34 871 555 365
-            </p>
+            <!-- Footer -->
+            <div style="background-color: #2D2D2D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin: 0 0 8px 0;">
+                    Since 2003, connecting golfers with the finest courses in Mallorca
+                </p>
+                <p style="color: rgba(255,255,255,0.8); font-size: 13px; margin: 0;">
+                    <a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">contact@golfinmallorca.com</a>
+                    <span style="color: rgba(255,255,255,0.4); margin: 0 10px;">|</span>
+                    +34 620 987 575
+                </p>
+            </div>
         </div>
     </body>
     </html>
