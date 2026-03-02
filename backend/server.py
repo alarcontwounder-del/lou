@@ -4550,13 +4550,11 @@ async def root():
     return {"message": "Mallorca Golf Exclusive API"}
 
 @api_router.get("/golf-courses", response_model=List[dict])
-async def get_golf_courses():
+async def get_golf_courses(include_inactive: bool = False):
     """Get all golf courses from MongoDB, falls back to hardcoded data if empty"""
     # Try to fetch from MongoDB first
-    cursor = db.golf_courses.find(
-        {"is_active": True},
-        {"_id": 0}  # Exclude MongoDB _id field
-    ).sort("display_order", 1)
+    query = {} if include_inactive else {"is_active": True}
+    cursor = db.golf_courses.find(query, {"_id": 0}).sort("display_order", 1)
     
     courses = await cursor.to_list(length=100)
     
