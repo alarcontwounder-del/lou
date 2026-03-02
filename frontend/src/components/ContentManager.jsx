@@ -380,24 +380,11 @@ const EditModal = ({ partner, type, onSave, onClose, isNew }) => {
               <p className="text-xs text-blue-600 mt-1">This URL appears on the "Book" button on the card back</p>
             </div>
 
-            {/* Image URL */}
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Image URL</label>
-              <div className="flex gap-2">
-                <input
-                  type="url"
-                  value={formData.image || ''}
-                  onChange={(e) => updateField('image', e.target.value)}
-                  className="flex-1 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="https://..."
-                />
-                {formData.image && (
-                  <div className="w-10 h-10 rounded border overflow-hidden flex-shrink-0">
-                    <img src={formData.image} alt="" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'} />
-                  </div>
-                )}
-              </div>
-            </div>
+            {/* Image Upload Section */}
+            <ImageUploadField 
+              value={formData.image} 
+              onChange={(url) => updateField('image', url)} 
+            />
 
             {/* Type-specific fields */}
             {type === 'golf' && (
