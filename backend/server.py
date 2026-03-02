@@ -4677,40 +4677,44 @@ async def get_partner_offers(type: Optional[str] = None):
 
 # Individual partner type endpoints
 @api_router.get("/hotels", response_model=List[dict])
-async def get_hotels():
+async def get_hotels(include_inactive: bool = False):
     """Get all hotels from MongoDB"""
-    cursor = db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-    hotels = await cursor.to_list(length=100)
+    query = {} if include_inactive else {"is_active": True}
+    cursor = db.hotels.find(query, {"_id": 0}).sort("display_order", 1)
+    hotels = await cursor.to_list(length=200)
     if not hotels:
         return [o for o in PARTNER_OFFERS if o["type"] == "hotel"]
     return hotels
 
 
 @api_router.get("/restaurants", response_model=List[dict])
-async def get_restaurants():
+async def get_restaurants(include_inactive: bool = False):
     """Get all restaurants from MongoDB"""
-    cursor = db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-    restaurants = await cursor.to_list(length=100)
+    query = {} if include_inactive else {"is_active": True}
+    cursor = db.restaurants.find(query, {"_id": 0}).sort("display_order", 1)
+    restaurants = await cursor.to_list(length=200)
     if not restaurants:
         return [o for o in PARTNER_OFFERS if o["type"] == "restaurant"]
     return restaurants
 
 
 @api_router.get("/beach-clubs", response_model=List[dict])
-async def get_beach_clubs():
+async def get_beach_clubs(include_inactive: bool = False):
     """Get all beach clubs from MongoDB"""
-    cursor = db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-    beach_clubs = await cursor.to_list(length=100)
+    query = {} if include_inactive else {"is_active": True}
+    cursor = db.beach_clubs.find(query, {"_id": 0}).sort("display_order", 1)
+    beach_clubs = await cursor.to_list(length=200)
     if not beach_clubs:
         return [o for o in PARTNER_OFFERS if o["type"] == "beach_club"]
     return beach_clubs
 
 
 @api_router.get("/cafe-bars", response_model=List[dict])
-async def get_cafe_bars():
+async def get_cafe_bars(include_inactive: bool = False):
     """Get all cafés and bars from MongoDB"""
-    cursor = db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-    cafe_bars = await cursor.to_list(length=100)
+    query = {} if include_inactive else {"is_active": True}
+    cursor = db.cafe_bars.find(query, {"_id": 0}).sort("display_order", 1)
+    cafe_bars = await cursor.to_list(length=200)
     if not cafe_bars:
         return [o for o in PARTNER_OFFERS if o["type"] == "cafe_bar"]
     return cafe_bars
