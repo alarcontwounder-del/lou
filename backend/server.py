@@ -4427,7 +4427,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
     params = {
         "from": SENDER_EMAIL,
         "to": [email],
-        "subject": "Welcome to Golfinmallorca.com Newsletter!",
+        "subject": "Bienvenido a Golfinmallorca - NEW DESIGN TEST",
         "html": html_content
     }
     
