@@ -171,10 +171,10 @@ export const GolfCourses = () => {
   }
 
   return (
-    <section id="courses" className="pt-8 pb-24 px-6 md:px-12 bg-brand-cream" data-testid="courses-section">
+    <section id="courses" className="pt-6 pb-12 px-6 md:px-12 bg-brand-cream" data-testid="courses-section">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="courses-subtitle">
             {t('courses.subtitle')}
           </p>
@@ -200,7 +200,7 @@ export const GolfCourses = () => {
 
         {/* Worldwide Booking CTA */}
         <div 
-          className="mt-16 relative overflow-hidden rounded-3xl"
+          className="mt-8 relative overflow-hidden rounded-3xl"
           data-testid="worldwide-golf-cta"
         >
           {/* Background with gradient overlay - same as hero */}

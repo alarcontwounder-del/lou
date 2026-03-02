@@ -176,14 +176,14 @@
   color: #a8a29e;
 }
 
-/* Section spacing */
+/* Section spacing - reduced for tighter layout */
 .section-padding {
-  padding: 6rem 1.5rem;
+  padding: 2.5rem 1.5rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding: 8rem 3rem;
+    padding: 3rem 3rem;
   }
 }
 

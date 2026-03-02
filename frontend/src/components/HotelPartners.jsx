@@ -169,7 +169,7 @@ export const HotelPartners = () => {
     <section id="hotels" className="section-padding bg-brand-cream" data-testid="hotels-section">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="hotels-subtitle">
             {t('hotels.subtitle')}
           </p>
