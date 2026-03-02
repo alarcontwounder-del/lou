@@ -156,21 +156,29 @@ const CourseCard = ({ course, language, t }) => (
 export const GolfCourses = () => {
   const { language, t } = useLanguage();
   const [courses, setCourses] = useState([]);
+  const [displayLimit, setDisplayLimit] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/golf-courses`);
-        setCourses(response.data);
+        const [coursesRes, settingsRes] = await Promise.all([
+          axios.get(`${API}/golf-courses`),
+          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
+        ]);
+        setCourses(coursesRes.data);
+        setDisplayLimit(settingsRes.data?.golf || null);
       } catch (error) {
         console.error('Error fetching golf courses:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchCourses();
+    fetchData();
   }, []);
+
+  // Apply display limit
+  const displayedCourses = displayLimit ? courses.slice(0, displayLimit) : courses;
 
   if (loading) {
     return (
@@ -200,7 +208,7 @@ export const GolfCourses = () => {
 
         {/* Grid - 3 cards per row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course) => (
+          {displayedCourses.map((course) => (
             <CourseCard 
               key={course.id} 
               course={course} 
