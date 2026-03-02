@@ -4370,20 +4370,19 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
 
 async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
-    logo_url = "https://golf-spacing-v2.preview.emergentagent.com/api/uploads/logo_v1772469548.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <!-- Header with solid black background to match logo -->
-            <div style="background-color: #000000; padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 200px; height: auto; margin-bottom: 10px;" />
-                <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+            <!-- Clean Header -->
+            <div style="text-align: center; padding: 30px 20px; border-bottom: 2px solid #2D2D2D;">
+                <h1 style="color: #2D2D2D; margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px;">Golfinmallorca.com</h1>
+                <p style="color: #6B7B8C; margin: 8px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
             </div>
             
             <!-- Main Content -->
-            <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 20px 0; font-weight: 500;">Welcome, {name}!</h2>
+            <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px;">
+                <h2 style="color: #2D2D2D; font-size: 24px; margin: 0 0 20px 0; font-weight: 500;">Welcome, {name}!</h2>
                 
                 <p style="color: #57534E; font-size: 15px; line-height: 1.7; margin: 0 0 20px 0;">
                     Thank you for joining our exclusive community of golf enthusiasts. You're now part of a select group who appreciate the finest courses and experiences Mallorca has to offer.
@@ -4392,32 +4391,15 @@ async def send_newsletter_welcome_email(name: str, email: str):
                 <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin: 24px 0;">
                     <p style="color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">As a subscriber, you'll receive:</p>
                     <table style="width: 100%;">
-                        <tr>
-                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
-                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Exclusive deals on green fees at premium courses
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
-                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Early access to golf & hotel packages
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
-                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Insider tips on the best courses and restaurants
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">
-                                <span style="color: #6B7B8C; margin-right: 10px;">&#10003;</span> Seasonal offers and special promotions
-                            </td>
-                        </tr>
+                        <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Exclusive deals on green fees at premium courses</td></tr>
+                        <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Early access to golf & hotel packages</td></tr>
+                        <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Insider tips on the best courses and restaurants</td></tr>
+                        <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Seasonal offers and special promotions</td></tr>
                     </table>
                 </div>
                 
-                <!-- CTA Button -->
                 <div style="text-align: center; margin: 32px 0;">
-                    <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #2D2D2D; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px;">Book Your Tee Time</a>
+                    <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #2D2D2D; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 14px;">Book Your Tee Time</a>
                 </div>
                 
                 <p style="color: #57534E; font-size: 15px; line-height: 1.7; margin: 0;">
@@ -4427,21 +4409,15 @@ async def send_newsletter_welcome_email(name: str, email: str):
                 <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E5E5;">
                     <p style="color: #2D2D2D; font-size: 15px; margin: 0;">
                         Best regards,<br>
-                        <strong style="color: #2D2D2D;">The Golfinmallorca.com Team</strong>
+                        <strong>The Golfinmallorca.com Team</strong>
                     </p>
                 </div>
             </div>
             
-            <!-- Footer -->
-            <div style="background-color: #2D2D2D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin: 0 0 8px 0;">
-                    Since 2003, connecting golfers with the finest courses in Mallorca
-                </p>
-                <p style="color: rgba(255,255,255,0.8); font-size: 13px; margin: 0;">
-                    <a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">contact@golfinmallorca.com</a>
-                    <span style="color: rgba(255,255,255,0.4); margin: 0 10px;">|</span>
-                    +34 620 987 575
-                </p>
+            <!-- Simple Footer -->
+            <div style="text-align: center; padding: 24px; color: #9CA3AF; font-size: 12px;">
+                <p style="margin: 0 0 8px 0;">Since 2003, connecting golfers with the finest courses in Mallorca</p>
+                <p style="margin: 0;">contact@golfinmallorca.com | +34 620 987 575</p>
             </div>
         </div>
     </body>
