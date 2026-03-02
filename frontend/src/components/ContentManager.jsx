@@ -54,6 +54,163 @@ const PARTNER_TYPES = {
   }
 };
 
+// Image Upload Component
+const ImageUploadField = ({ value, onChange }) => {
+  const fileInputRef = useRef(null);
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleFileSelect = async (file) => {
+    if (!file) return;
+    
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+      setError('Please select a JPG, PNG, GIF, or WebP image');
+      return;
+    }
+    
+    // Validate file size (10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      setError('Image must be less than 10MB');
+      return;
+    }
+
+    setError(null);
+    setUploading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      const response = await axios.post(`${BACKEND_URL}/api/upload-image`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      
+      onChange(response.data.url);
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Upload failed. Please try again.');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files[0];
+    handleFileSelect(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setDragOver(true);
+  };
+
+  const handleDragLeave = () => {
+    setDragOver(false);
+  };
+
+  return (
+    <div className="space-y-3">
+      <label className="block text-sm font-medium text-stone-700">Partner Image</label>
+      
+      {/* Current Image Preview */}
+      {value && (
+        <div className="relative inline-block">
+          <img 
+            src={value} 
+            alt="Current" 
+            className="w-32 h-24 object-cover rounded-lg border border-stone-200"
+            onError={(e) => { e.target.src = ''; e.target.alt = 'Image failed to load'; }}
+          />
+          <button
+            type="button"
+            onClick={() => onChange('')}
+            className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-md"
+            title="Remove image"
+          >
+            <X className="w-3 h-3" />
+          </button>
+        </div>
+      )}
+      
+      {/* Upload Area */}
+      <div
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        className={`border-2 border-dashed rounded-lg p-4 text-center transition-colors ${
+          dragOver 
+            ? 'border-blue-500 bg-blue-50' 
+            : 'border-stone-300 hover:border-stone-400'
+        } ${uploading ? 'opacity-50 pointer-events-none' : ''}`}
+      >
+        {uploading ? (
+          <div className="flex items-center justify-center gap-2 text-stone-600">
+            <RefreshCw className="w-5 h-5 animate-spin" />
+            <span>Uploading...</span>
+          </div>
+        ) : (
+          <>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Upload className="w-5 h-5 text-stone-400" />
+              <span className="text-sm text-stone-600">
+                Drag & drop an image here, or
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-sm font-medium transition-colors"
+            >
+              Browse Files
+            </button>
+            <p className="text-xs text-stone-400 mt-2">
+              JPG, PNG, GIF, WebP • Max 10MB
+            </p>
+          </>
+        )}
+        
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/jpeg,image/png,image/gif,image/webp"
+          onChange={(e) => handleFileSelect(e.target.files[0])}
+          className="hidden"
+        />
+      </div>
+      
+      {/* Error Message */}
+      {error && (
+        <p className="text-sm text-red-600 flex items-center gap-1">
+          <X className="w-4 h-4" />
+          {error}
+        </p>
+      )}
+      
+      {/* Or paste URL */}
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-stone-200"></div>
+        </div>
+        <div className="relative flex justify-center text-xs">
+          <span className="px-2 bg-white text-stone-400">or paste URL</span>
+        </div>
+      </div>
+      
+      <input
+        type="url"
+        value={value || ''}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full px-3 py-2 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        placeholder="https://example.com/image.jpg"
+      />
+    </div>
+  );
+};
+
 // Compact Partner Card with Active Toggle
 const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive }) => {
   const config = PARTNER_TYPES[type];
