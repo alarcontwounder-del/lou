@@ -152,21 +152,29 @@ const HotelCard = ({ hotel, language, t }) => (
 export const HotelPartners = () => {
   const { language, t } = useLanguage();
   const [hotels, setHotels] = useState([]);
+  const [displayLimit, setDisplayLimit] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchHotels = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/partner-offers?type=hotel`);
-        setHotels(response.data);
+        const [hotelsRes, settingsRes] = await Promise.all([
+          axios.get(`${API}/partner-offers?type=hotel`),
+          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
+        ]);
+        setHotels(hotelsRes.data);
+        setDisplayLimit(settingsRes.data?.hotels || null);
       } catch (error) {
         console.error('Error fetching hotels:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchHotels();
+    fetchData();
   }, []);
+
+  // Apply display limit
+  const displayedHotels = displayLimit ? hotels.slice(0, displayLimit) : hotels;
 
   if (loading) {
     return (
@@ -196,7 +204,7 @@ export const HotelPartners = () => {
 
         {/* Hotels Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {hotels.map((hotel) => (
+          {displayedHotels.map((hotel) => (
             <HotelCard key={hotel.id} hotel={hotel} language={language} t={t} />
           ))}
         </div>
