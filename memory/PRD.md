@@ -11,64 +11,63 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 
 ### December 2, 2026 (Current Session)
 
+#### ✅ IMAGE UPLOAD FUNCTIONALITY
+Direct image upload from computer:
+- **Drag & drop** images into the upload area
+- **Browse files** button to select images
+- Supports JPG, PNG, GIF, WebP formats
+- Max file size: 10MB
+- Images stored in `/app/backend/uploads/`
+- Still supports **URL paste** as alternative
+- Live preview of uploaded/pasted images
+
+**Backend Endpoints:**
+- `POST /api/upload-image` - Upload image file
+- `DELETE /api/upload-image/{filename}` - Delete uploaded image
+- `GET /api/uploads/{filename}` - Serve uploaded images
+
 #### ✅ FULL CONTENT MANAGEMENT SYSTEM
-Complete admin control over all partners with:
+Complete admin control over all partners:
 
-**Toggle Active/Inactive:**
-- On/off switch on each partner card in Admin
-- Hidden partners don't appear on website
-- "Show Hidden" filter to view inactive partners
-- Easy restore by toggling back on
+| Feature | Status |
+|---------|--------|
+| Toggle on/off | ✅ Show/hide partners |
+| Display limits | ✅ 3-20 or "Show All" per category |
+| Image upload | ✅ Direct upload from computer |
+| URL editing | ✅ Booking/contact URLs |
+| Add/Edit/Delete | ✅ Full CRUD |
 
-**Display Limits:**
-- Settings panel to control cards shown per category
-- Options: 3, 4, 6, 8, 10, 12, 16, 20, or "Show All"
-- Settings saved in MongoDB (`display_settings` collection)
-- Each category section respects limits
-
-**URL Management:**
-- Prominent "Booking URL" field in edit form
-- Easy to add/edit/remove partner booking links
-- Visual URL indicator on each card
-
-**API Updates:**
-- `GET /api/display-settings` - Get display limits
-- `POST /api/display-settings` - Save display limits
-- `?include_inactive=true` parameter on all GET endpoints
-- Soft delete with `is_active` field
-
-### December 1, 2026
+### Previous Sessions
 - Full database migration (156 partners to MongoDB)
-- Admin Dashboard Content Manager UI
 - Golf courses reordered (Son Gual, Alcanada, Pula first)
-- Reduced spacing between sections
+- Reviews carousel and ghost navigator
+- Color consistency across all cards
 
 ## Admin Dashboard Features
 
 ### Content Manager Tab
 Access: Gear icon → Google Login → "Content Manager" tab
 
-| Feature | Description |
-|---------|-------------|
-| **Type Tabs** | Golf, Hotels, Restaurants, Beach Clubs, Cafés |
-| **Search** | Filter by name, location, category |
-| **Active Toggle** | Show/hide partners on website |
-| **Show Hidden** | View inactive partners |
-| **Display Limits** | Set max cards per category |
-| **Add New** | Create new partners |
-| **Edit** | Modify all fields including URLs |
-| **Delete** | Permanently remove partners |
+**Image Upload Options:**
+1. Drag & drop image file
+2. Click "Browse Files" to select
+3. Paste image URL directly
 
-### Display Settings
-| Category | Default | Options |
-|----------|---------|---------|
-| Golf Courses | Show All | 3-20 or All |
-| Hotels | Show All | 3-20 or All |
-| Restaurants | Show All | 3-20 or All |
-| Beach Clubs | Show All | 3-20 or All |
-| Cafés & Bars | Show All | 3-20 or All |
+**All Features:**
+- Type tabs (Golf, Hotels, Restaurants, Beach Clubs, Cafés)
+- Search and filter
+- Active/inactive toggle
+- Display limits settings
+- Full CRUD operations
 
 ## Technical Architecture
+
+### File Storage
+```
+/app/backend/uploads/     - Uploaded images
+                         - Served via /api/uploads/
+                         - Filename: {timestamp}_{uuid}.{ext}
+```
 
 ### MongoDB Collections
 ```
@@ -77,22 +76,15 @@ hotels            - 38 records
 restaurants       - 54 records  
 beach_clubs       - 12 records
 cafe_bars         - 36 records
-display_settings  - 1 record (limits config)
+display_settings  - 1 record
 ```
 
-### Key Files Updated
-- `/app/frontend/src/components/ContentManager.jsx` - Full admin UI
-- `/app/frontend/src/components/GolfCourses.jsx` - Display limits
-- `/app/frontend/src/components/HotelPartners.jsx` - Display limits
-- `/app/frontend/src/components/RestaurantPartners.jsx` - Display limits
-- `/app/frontend/src/components/BeachClubPartners.jsx` - Display limits
-- `/app/frontend/src/components/CafeBarsPartners.jsx` - Display limits
-- `/app/backend/server.py` - Display settings endpoints
+### Key Files
+- `/app/frontend/src/components/ContentManager.jsx` - Image upload UI
+- `/app/backend/server.py` - Upload endpoint
+- `/app/backend/uploads/` - Stored images
 
 ## Prioritized Backlog
-
-### P0 - Critical (User Input Needed)
-- [ ] Replace stock photos with real venue images
 
 ### P1 - High Priority  
 - [ ] Full Search Engine implementation
@@ -104,6 +96,5 @@ display_settings  - 1 record (limits config)
 
 ## Data Summary
 - **Total Partners**: 156 records in MongoDB
-- **All with toggle on/off**: Yes
-- **All with URL editing**: Yes
+- **Image storage**: Local uploads + external URLs supported
 - **Display limits**: Configurable per category
