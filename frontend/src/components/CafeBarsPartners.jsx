@@ -149,21 +149,29 @@ const CafeBarCard = ({ place, language, t }) => (
 export const CafeBarsPartners = () => {
   const { t, language } = useLanguage();
   const [cafeBars, setCafeBars] = useState([]);
+  const [displayLimit, setDisplayLimit] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCafeBars = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/partner-offers?type=cafe_bar`);
-        setCafeBars(response.data);
+        const [cafesRes, settingsRes] = await Promise.all([
+          axios.get(`${API}/partner-offers?type=cafe_bar`),
+          axios.get(`${API}/display-settings`).catch(() => ({ data: {} }))
+        ]);
+        setCafeBars(cafesRes.data);
+        setDisplayLimit(settingsRes.data?.cafe_bars || null);
       } catch (error) {
         console.error('Error fetching cafes and bars:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchCafeBars();
+    fetchData();
   }, []);
+
+  // Apply display limit
+  const displayedCafeBars = displayLimit ? cafeBars.slice(0, displayLimit) : cafeBars;
 
   if (loading) {
     return (
@@ -200,7 +208,7 @@ export const CafeBarsPartners = () => {
 
         {/* Cafe & Bar Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cafeBars.map((place) => (
+          {displayedCafeBars.map((place) => (
             <CafeBarCard 
               key={place.id} 
               place={place} 
