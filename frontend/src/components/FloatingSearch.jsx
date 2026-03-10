@@ -50,11 +50,11 @@ const categoryLabels = {
 };
 
 const categoryColors = {
-  golf: 'bg-green-100 text-green-700',
-  hotel: 'bg-blue-100 text-blue-700',
-  restaurant: 'bg-orange-100 text-orange-700',
-  cafe_bar: 'bg-amber-100 text-amber-700',
-  beach_club: 'bg-cyan-100 text-cyan-700',
+  golf: 'bg-stone-200 text-stone-700',
+  hotel: 'bg-stone-300 text-stone-800',
+  restaurant: 'bg-stone-400 text-stone-900',
+  cafe_bar: 'bg-stone-500 text-white',
+  beach_club: 'bg-stone-600 text-white',
 };
 
 const searchPlaceholders = {
@@ -284,7 +284,7 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
 
             {/* Results Area */}
             {(hasSearched || loading) && (
-              <div className="border-t border-stone-700 max-h-80 overflow-y-auto">
+              <div className="border-t border-stone-700 max-h-96 overflow-y-auto">
                 {loading ? (
                   <div className="flex items-center justify-center py-8">
                     <Loader2 className="w-6 h-6 text-stone-400 animate-spin" />
