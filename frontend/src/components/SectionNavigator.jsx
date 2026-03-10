@@ -60,16 +60,16 @@ export const SectionNavigator = () => {
 
   return (
     <>
-      {/* Invisible hover zone on right edge - triggers ghost effect */}
+      {/* Invisible hover zone on right edge - desktop only */}
       <div 
         className="fixed right-0 top-0 w-20 h-full z-30 hidden lg:block"
         onMouseEnter={() => setIsHoveringZone(true)}
         onMouseLeave={() => setIsHoveringZone(false)}
       />
       
-      {/* Navigation dots - ghost effect */}
+      {/* Navigation dots - always visible on mobile, ghost effect on desktop */}
       <nav 
-        className={`fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-2 transition-all duration-300 ease-out ${
+        className={`fixed right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-1.5 sm:gap-2 transition-all duration-300 ease-out lg:${
           isHoveringZone ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
         }`}
         aria-label="Section navigation"
@@ -86,13 +86,13 @@ export const SectionNavigator = () => {
             onClick={() => scrollToSection(section.id)}
             onMouseEnter={() => setHoveredSection(section.id)}
             onMouseLeave={() => setHoveredSection(null)}
-            className="group flex items-center gap-2 transition-all duration-200"
+            className="group flex items-center gap-2 transition-all duration-200 p-1"
             title={section.label}
             data-testid={`nav-dot-${section.id}`}
           >
-            {/* Label - shows on hover */}
+            {/* Label - shows on hover (desktop only) */}
             <span 
-              className={`text-xs font-medium text-stone-500 bg-white px-2 py-1 rounded shadow-sm border border-stone-100 whitespace-nowrap transition-all duration-200 ${
+              className={`hidden lg:block text-xs font-medium text-stone-500 bg-white px-2 py-1 rounded shadow-sm border border-stone-100 whitespace-nowrap transition-all duration-200 ${
                 isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
               }`}
             >
@@ -103,8 +103,8 @@ export const SectionNavigator = () => {
             <div 
               className={`rounded-full transition-all duration-200 ${
                 isActive 
-                  ? 'w-4 h-4 bg-stone-500' 
-                  : 'w-2.5 h-2.5 bg-stone-300 hover:bg-stone-400 hover:w-3 hover:h-3'
+                  ? 'w-3 h-3 sm:w-4 sm:h-4 bg-stone-600' 
+                  : 'w-2 h-2 sm:w-2.5 sm:h-2.5 bg-stone-400 hover:bg-stone-500 hover:w-2.5 hover:h-2.5 sm:hover:w-3 sm:hover:h-3'
               }`}
             />
           </button>
