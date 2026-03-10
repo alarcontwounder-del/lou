@@ -40,6 +40,19 @@ export const ReviewModal = ({ isOpen, onClose }) => {
   const [reviewText, setReviewText] = useState('');
   const [submitStatus, setSubmitStatus] = useState(null); // null, 'submitting', 'success', 'error'
   const [errorMessage, setErrorMessage] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Handle animation on open
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to trigger CSS transition
+      requestAnimationFrame(() => {
+        setIsVisible(true);
+      });
+    } else {
+      setIsVisible(false);
+    }
+  }, [isOpen]);
 
   // Check if user is already logged in
   useEffect(() => {
@@ -125,9 +138,18 @@ export const ReviewModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 ease-out ${
+        isVisible ? 'bg-black/60' : 'bg-black/0'
+      }`}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
       <div 
-        className="bg-stone-100 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
+        className={`bg-stone-100 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transition-all duration-300 ease-out ${
+          isVisible 
+            ? 'opacity-100 translate-y-0 scale-100' 
+            : 'opacity-0 translate-y-8 scale-95'
+        }`}
         data-testid="review-modal"
       >
         {/* Header */}
