@@ -96,7 +96,7 @@ export const Newsletter = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 placeholder-stone-400"
+                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-stone-200 border border-stone-300 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 placeholder-stone-400"
                     data-testid="newsletter-name"
                     required
                   />
@@ -110,7 +110,7 @@ export const Newsletter = () => {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 placeholder-stone-400"
+                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-stone-200 border border-stone-300 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 placeholder-stone-400"
                     data-testid="newsletter-email"
                     required
                   />
@@ -123,7 +123,7 @@ export const Newsletter = () => {
                 <select
                   value={formData.country}
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-stone-200 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 appearance-none bg-white cursor-pointer"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-stone-200 border border-stone-300 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 appearance-none cursor-pointer"
                   data-testid="newsletter-country"
                   required
                 >
