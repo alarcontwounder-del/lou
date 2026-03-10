@@ -86,7 +86,7 @@ export const Newsletter = () => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="bg-brand-cream rounded-2xl p-8 md:p-10 shadow-2xl">
+            <form onSubmit={handleSubmit} className="bg-brand-cream rounded-2xl p-5 sm:p-8 md:p-10 shadow-2xl">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 {/* Name Field */}
                 <div className="relative">

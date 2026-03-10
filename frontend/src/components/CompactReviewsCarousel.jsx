@@ -73,7 +73,7 @@ const CompactReviewCard = ({ review }) => {
   const flag = countryFlags[review.country] || '🌍';
 
   return (
-    <div className="bg-stone-200 rounded-lg p-3 shadow-sm border border-stone-300 min-w-[200px] max-w-[200px] flex-shrink-0 hover:shadow-md transition-shadow">
+    <div className="bg-stone-200 rounded-lg p-3 shadow-sm border border-stone-300 min-w-[160px] max-w-[160px] sm:min-w-[200px] sm:max-w-[200px] flex-shrink-0 hover:shadow-md transition-shadow">
       {/* Header with avatar and name */}
       <div className="flex items-center gap-2 mb-2">
         <div className="w-6 h-6 rounded-full bg-brand-slate/15 flex items-center justify-center text-brand-charcoal font-semibold text-[10px]">
@@ -139,10 +139,10 @@ export const CompactReviewsCarousel = () => {
 
   return (
     <section className="py-8 bg-brand-cream border-t border-stone-200" data-testid="reviews-carousel-section">
-      <div className="container-custom">
+      <div className="container-custom px-4">
         {/* Header with stats */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
             <h3 className="text-sm font-medium text-stone-600">Customer Reviews</h3>
             
             {/* Rating badge */}
