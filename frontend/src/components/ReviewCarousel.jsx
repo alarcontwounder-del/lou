@@ -125,7 +125,7 @@ const ReviewCard = ({ review, index }) => {
   return (
     <div
       ref={cardRef}
-      className={`bg-stone-100 border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 relative group ${
+      className={`bg-stone-200 border border-stone-300 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 relative group ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{ transitionDelay: `${index * 50}ms` }}
@@ -262,7 +262,7 @@ export const ReviewCarousel = () => {
         </div>
 
         {/* Statistics Bar */}
-        <div className="bg-white rounded-2xl border border-stone-100 shadow-sm mb-10 overflow-hidden" data-testid="reviews-stats-bar">
+        <div className="bg-stone-200 rounded-2xl border border-stone-300 shadow-sm mb-10 overflow-hidden" data-testid="reviews-stats-bar">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-stone-100">
             <div className="flex flex-col items-center justify-center py-6 px-4" data-testid="stat-avg-rating">
               <div className="flex items-center gap-2 mb-1.5">
