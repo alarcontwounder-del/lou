@@ -4370,15 +4370,14 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
 
 async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
-    logo_url = "https://golf-spacing-v2.preview.emergentagent.com/api/uploads/logo_final_v3.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <!-- Clean Header with Transparent Logo -->
+            <!-- Clean Header -->
             <div style="text-align: center; padding: 30px 20px; border-bottom: 2px solid #2D2D2D;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 300px; height: auto;" />
-                <p style="color: #6B7B8C; margin: 12px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+                <h1 style="color: #2D2D2D; margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px;">Golfinmallorca.com</h1>
+                <p style="color: #6B7B8C; margin: 8px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
             </div>
             
             <!-- Main Content -->
@@ -4428,7 +4427,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
     params = {
         "from": SENDER_EMAIL,
         "to": [email],
-        "subject": "Welcome - FINAL LOGO v3",
+        "subject": "Welcome to Golfinmallorca.com!",
         "html": html_content
     }
     
