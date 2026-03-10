@@ -4963,6 +4963,64 @@ async def delete_cafe_bar(cafe_bar_id: str):
 
 
 # Combined search endpoint for all partners
+@api_router.get("/search")
+async def search_partners(q: str = "", category: str = "all"):
+    """Search across all partner types"""
+    query = q.lower().strip()
+    results = []
+    
+    # Define collections to search
+    collections = {
+        "golf": db.golf_courses,
+        "hotel": db.hotels,
+        "restaurant": db.restaurants,
+        "beach_club": db.beach_clubs,
+        "cafe_bar": db.cafe_bars
+    }
+    
+    # If category is specified, only search that collection
+    if category != "all" and category in collections:
+        collections = {category: collections[category]}
+    
+    for partner_type, collection in collections.items():
+        items = await collection.find({"is_active": True}, {"_id": 0}).to_list(100)
+        
+        for item in items:
+            # Search in name and location
+            name = item.get("name", "").lower()
+            location = item.get("location", "").lower()
+            
+            # Search in description (which might be multilingual)
+            description = item.get("description", {})
+            if isinstance(description, dict):
+                desc_text = " ".join([str(v).lower() for v in description.values()])
+            else:
+                desc_text = str(description).lower()
+            
+            # Check if query matches
+            if not query or query in name or query in location or query in desc_text:
+                results.append({
+                    "id": item.get("id"),
+                    "type": partner_type,
+                    "name": item.get("name"),
+                    "location": item.get("location"),
+                    "image": item.get("image"),
+                    "description": item.get("description"),
+                    "booking_url": item.get("booking_url"),
+                    "price_from": item.get("price_from"),
+                    "offer_price": item.get("offer_price"),
+                    "discount_percent": item.get("discount_percent"),
+                    "michelin_stars": item.get("michelin_stars"),
+                    "category": item.get("category"),
+                })
+    
+    return {
+        "results": results,
+        "count": len(results),
+        "query": q,
+        "category": category
+    }
+
 @api_router.get("/all-partners", response_model=dict)
 async def get_all_partners():
     """Get all partners grouped by type"""
