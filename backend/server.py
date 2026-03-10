@@ -4967,7 +4967,11 @@ async def delete_cafe_bar(cafe_bar_id: str):
 async def search_partners(q: str = "", category: str = "all"):
     """Search across all partner types"""
     query = q.lower().strip()
-    results = []
+    
+    # Results grouped by priority
+    golf_results = []
+    hotel_results = []
+    other_results = []
     
     # Define collections to search
     collections = {
@@ -4999,7 +5003,7 @@ async def search_partners(q: str = "", category: str = "all"):
             
             # Check if query matches
             if not query or query in name or query in location or query in desc_text:
-                results.append({
+                result_item = {
                     "id": item.get("id"),
                     "type": partner_type,
                     "name": item.get("name"),
@@ -5012,7 +5016,22 @@ async def search_partners(q: str = "", category: str = "all"):
                     "discount_percent": item.get("discount_percent"),
                     "michelin_stars": item.get("michelin_stars"),
                     "category": item.get("category"),
-                })
+                }
+                
+                # Sort into priority groups
+                if partner_type == "golf":
+                    golf_results.append(result_item)
+                elif partner_type == "hotel":
+                    hotel_results.append(result_item)
+                else:
+                    other_results.append(result_item)
+    
+    # Shuffle the "other" results to mix restaurants, beach clubs, cafes
+    import random
+    random.shuffle(other_results)
+    
+    # Combine: Golf first, Hotels second, then mixed others
+    results = golf_results + hotel_results + other_results
     
     return {
         "results": results,
