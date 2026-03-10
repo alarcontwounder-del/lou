@@ -45,10 +45,11 @@ export const ReviewModal = ({ isOpen, onClose }) => {
   // Handle animation on open
   useEffect(() => {
     if (isOpen) {
-      // Small delay to trigger CSS transition
-      requestAnimationFrame(() => {
+      // Small delay to ensure DOM is ready before triggering animation
+      const timer = setTimeout(() => {
         setIsVisible(true);
-      });
+      }, 10);
+      return () => clearTimeout(timer);
     } else {
       setIsVisible(false);
     }
@@ -139,16 +140,16 @@ export const ReviewModal = ({ isOpen, onClose }) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 ease-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-500 ease-out ${
         isVisible ? 'bg-black/60' : 'bg-black/0'
       }`}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div 
-        className={`bg-stone-100 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transition-all duration-300 ease-out ${
+        className={`bg-stone-100 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transition-all duration-500 ease-out ${
           isVisible 
             ? 'opacity-100 translate-y-0 scale-100' 
-            : 'opacity-0 translate-y-8 scale-95'
+            : 'opacity-0 translate-y-12 scale-90'
         }`}
         data-testid="review-modal"
       >
