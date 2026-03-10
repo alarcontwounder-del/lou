@@ -57,22 +57,22 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       } bg-transparent py-2`}
     >
       <div className="container-custom flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - Hidden in hero, will show in hero content instead */}
         <a
           href="https://golfinmallorca.greenfee365.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="transition-all duration-300 flex-shrink-0"
+          className="transition-all duration-300 flex-shrink-0 -ml-2 sm:-ml-4 opacity-0 pointer-events-none"
           data-testid="logo"
         >
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className="h-14 sm:h-20 md:h-32 w-auto object-contain transition-all duration-300"
+            className="h-16 sm:h-24 md:h-36 w-auto object-contain transition-all duration-300"
             style={{ 
               filter: isScrolled 
                 ? 'brightness(0.2) saturate(100%)' 
-                : 'brightness(0) saturate(100%) invert(67%) sepia(64%) saturate(400%) hue-rotate(5deg) brightness(95%)' 
+                : 'brightness(0) invert(1)' 
             }}
           />
         </a>
