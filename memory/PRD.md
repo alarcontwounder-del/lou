@@ -1,161 +1,110 @@
 # Golfinmallorca.com - Product Requirements Document
 
 ## Original Problem Statement
-Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
-- Modern, dynamic UI/UX design ("Ink Wash" color palette)
-- Admin dashboard for content management
-- Real authentic images for all partners
-- Partner management with display controls
+Build a comprehensive website for Golfinmallorca.com - a golf tourism platform in Mallorca. The site showcases golf courses, hotels, restaurants, beach clubs, and cafe bars. Key requirements include:
+- Modern, responsive UI/UX with consistent visual design
+- Full-featured admin CMS for content management
+- Email functionality for newsletters and contact forms
+- Site-wide search feature
+- Real venue images instead of stock photos
 
-## What's Been Implemented
+## User Personas
+1. **Golf Tourists** - Visitors planning golf trips to Mallorca, looking for courses, accommodations, and dining
+2. **Site Admin** - Content manager maintaining partner listings, reviewing submissions, managing subscribers
 
-### March 10, 2026 (Current Session)
+## Tech Stack
+- **Frontend:** React, Tailwind CSS, React Context API
+- **Backend:** FastAPI, MongoDB (Motor), Pydantic
+- **Email:** Resend API
+- **Auth:** Emergent-managed Google Auth
+- **Analytics:** PostHog
 
-#### ✅ SEARCH FEATURE
-Implemented full search functionality:
-- **Backend `/api/search` endpoint** - Searches across all partner collections
-- **Search by**: Name, location, description
-- **Results order**: Golf → Hotels → Mixed (restaurants, beach clubs, cafés)
-- **Category filtering** via dropdown or quick pills
-- **Real-time results** with 300ms debounce
-- **Grey scale badges** for each category type
+## Core Requirements
 
-**Files Modified:**
-- `/app/backend/server.py` - Added `/api/search` endpoint
-- `/app/frontend/src/components/FloatingSearch.jsx` - Connected to backend
+### Completed Features ✅
+1. **Partner Management System**
+   - Full CRUD for golf courses, hotels, restaurants, beach clubs, cafe bars
+   - Active/inactive toggle per partner
+   - Display limit settings per category
+   - Image upload functionality
 
-#### ✅ EMAIL SYSTEM
-- Added Resend API integration
-- Newsletter welcome email with clean design
-- Admin subscriber management (Add, Import CSV, Bulk Email)
-- Clean text-based email design (no logo image issues)
+2. **Quick View Modal**
+   - Eye icon on all partner cards
+   - Shows detailed partner info without navigation
 
-#### ✅ UI CONSISTENCY UPDATES
-- **Review cards**: Changed from white to grey (`bg-stone-100`) on cream background
-- **Newsletter form**: Changed from white to cream (`bg-brand-cream`) on grey background
-- **Search badges**: Grey scale differentiation per category
+3. **Site-wide Search**
+   - Backend endpoint `/api/search`
+   - Category filtering (Golf, Hotels, Mixed)
+   - Real-time keyword search
+   - Custom result sorting (Golf → Hotels → Mixed)
 
-### March 2, 2026 (Previous Session)
+4. **Email System**
+   - Resend API integration
+   - Newsletter subscription
+   - Contact form submissions
+   - Branded HTML email templates
 
-#### ✅ QUICK VIEW FEATURE
-Implemented "Quick View" modal for all partner cards:
-- **Eye icon** on every card (top-right corner for Golf, top-left for others)
-- **Mobile support**: "View Details" text link appears on mobile (hidden on desktop where hover works)
-- **Works on all partner types**: Golf Courses, Hotels, Restaurants, Beach Clubs, Cafés & Bars
-- **Modal shows**: Image, location (clickable map link), name, type-specific details (holes/par for golf, price/discount for hotels, Michelin stars for restaurants), description, exclusive offer, and CTA button
+5. **Subscriber Management**
+   - Manual add subscriber
+   - CSV bulk import
+   - Bulk email sending capability
+   - Subscriber active/inactive status
 
-**Files Created:**
-- `/app/frontend/src/components/QuickViewModal.jsx` - Reusable modal component
+6. **UI/UX Refinements**
+   - Standardized section spacing
+   - Color palette consistency across sections
+   - Review cards with grey backgrounds
+   - Review modal with matching grey theme (FIXED: March 10, 2026)
 
-**Files Modified:**
-- `/app/frontend/src/components/GolfCourses.jsx` - Added quick view button and modal
-- `/app/frontend/src/components/HotelPartners.jsx` - Added quick view button and modal
-- `/app/frontend/src/components/RestaurantPartners.jsx` - Added quick view button and modal
-- `/app/frontend/src/components/BeachClubPartners.jsx` - Added quick view button and modal
-- `/app/frontend/src/components/CafeBarsPartners.jsx` - Added quick view button and modal
+### Blocked Items ⏸️
+1. **Real Venue Photos** - Technical implementation complete, awaiting user's images
+2. **Full Email Functionality** - Domain verification required in Resend dashboard
 
-#### ✅ UNIFIED SECTION SPACING
-Fixed inconsistent vertical spacing between all sections:
-- Created unified `.section-padding` class in `App.css`
-- Applied to ALL sections consistently: About, Golf, Hotels, Restaurants, Cafés, Beach Clubs, Blog, Contact, Newsletter
-- Mobile: `2.5rem 1.5rem` (40px vertical, 24px horizontal)
-- Desktop: `3rem 3rem` (48px all around)
-- Previously had inconsistent spacing ranging from `py-8` to `py-20` to custom `pt-x pb-y` values
+### Pending Items 🟡
+1. **External Review Links** - Need actual URLs for Google, Trustpilot, TripAdvisor
 
-**Files Modified:**
-- `/app/frontend/src/App.css` - Updated section-padding class
-- `/app/frontend/src/components/About.jsx` - Changed to section-padding
-- `/app/frontend/src/components/GolfCourses.jsx` - Changed to section-padding  
-- `/app/frontend/src/components/BeachClubPartners.jsx` - Changed to section-padding
-- `/app/frontend/src/components/CafeBarsPartners.jsx` - Changed to section-padding
-- `/app/frontend/src/components/Newsletter.jsx` - Changed from py-20 to section-padding
+### Future/Backlog 📋
+1. Hero Video implementation
+2. Weather Widget integration
+3. Webpack deprecation warnings cleanup
 
-### December 2, 2026 (Previous Session)
+## Key API Endpoints
+- `GET /api/search?q={query}&category={category}` - Search all partners
+- `POST /api/newsletter/import` - Bulk import subscribers from CSV
+- `POST /api/newsletter/bulk-email` - Send bulk email to subscribers
+- `GET /api/all-partners` - Fetch all active partners
+- `PUT /api/admin/partners/{partner_id}` - Update partner
+- `POST /api/reviews/submit` - Submit user review
 
-#### ✅ IMAGE UPLOAD FUNCTIONALITY
-Direct image upload from computer:
-- **Drag & drop** images into the upload area
-- **Browse files** button to select images
-- Supports JPG, PNG, GIF, WebP formats
-- Max file size: 10MB
-- Images stored in `/app/backend/uploads/`
-- Still supports **URL paste** as alternative
-- Live preview of uploaded/pasted images
+## Database Schema
+- **golf_courses, hotels, restaurants, beach_clubs, cafe_bars:** Partner data with `is_active` flag
+- **display_settings:** `{category, limit}` per partner type
+- **newsletter_subscriptions:** `{name, email, country, subscribed_at, is_active}`
 
-**Backend Endpoints:**
-- `POST /api/upload-image` - Upload image file
-- `DELETE /api/upload-image/{filename}` - Delete uploaded image
-- `GET /api/uploads/{filename}` - Serve uploaded images
-
-#### ✅ FULL CONTENT MANAGEMENT SYSTEM
-Complete admin control over all partners:
-
-| Feature | Status |
-|---------|--------|
-| Toggle on/off | ✅ Show/hide partners |
-| Display limits | ✅ 3-20 or "Show All" per category |
-| Image upload | ✅ Direct upload from computer |
-| URL editing | ✅ Booking/contact URLs |
-| Add/Edit/Delete | ✅ Full CRUD |
-
-### Previous Sessions
-- Full database migration (156 partners to MongoDB)
-- Golf courses reordered (Son Gual, Alcanada, Pula first)
-- Reviews carousel and ghost navigator
-- Color consistency across all cards
-
-## Admin Dashboard Features
-
-### Content Manager Tab
-Access: Gear icon → Google Login → "Content Manager" tab
-
-**Image Upload Options:**
-1. Drag & drop image file
-2. Click "Browse Files" to select
-3. Paste image URL directly
-
-**All Features:**
-- Type tabs (Golf, Hotels, Restaurants, Beach Clubs, Cafés)
-- Search and filter
-- Active/inactive toggle
-- Display limits settings
-- Full CRUD operations
-
-## Technical Architecture
-
-### File Storage
+## File Structure
 ```
-/app/backend/uploads/     - Uploaded images
-                         - Served via /api/uploads/
-                         - Filename: {timestamp}_{uuid}.{ext}
+/app/
+├── backend/
+│   ├── emails/
+│   │   ├── templates/
+│   │   └── emails.py
+│   ├── uploads/
+│   ├── routes/
+│   │   └── newsletter.py
+│   └── server.py
+└── frontend/
+    └── src/
+        ├── App.js
+        ├── components/
+        │   ├── admin/AdminDashboard.jsx
+        │   ├── common/
+        │   │   ├── FloatingSearch.jsx
+        │   │   └── QuickViewModal.jsx
+        │   ├── CompactReviewsCarousel.jsx
+        │   ├── ReviewModal.jsx
+        │   └── partners/
+        └── index.css
 ```
 
-### MongoDB Collections
-```
-golf_courses      - 16 records
-hotels            - 38 records
-restaurants       - 54 records  
-beach_clubs       - 12 records
-cafe_bars         - 36 records
-display_settings  - 1 record
-```
-
-### Key Files
-- `/app/frontend/src/components/ContentManager.jsx` - Image upload UI
-- `/app/backend/server.py` - Upload endpoint
-- `/app/backend/uploads/` - Stored images
-
-## Prioritized Backlog
-
-### P1 - High Priority  
-- [ ] Full Search Engine implementation
-- [ ] Email functionality (needs RESEND_API_KEY)
-
-### P2 - Medium Priority
-- [ ] Hero video replacement
-- [ ] Weather widget integration
-
-## Data Summary
-- **Total Partners**: 156 records in MongoDB
-- **Image storage**: Local uploads + external URLs supported
-- **Display limits**: Configurable per category
+## Last Updated
+March 10, 2026 - Fixed review modal form input styling (white → grey)

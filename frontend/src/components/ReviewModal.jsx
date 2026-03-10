@@ -127,7 +127,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div 
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
+        className="bg-stone-100 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
         data-testid="review-modal"
       >
         {/* Header */}
@@ -170,7 +170,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
                     href="https://g.page/r/golfinmallorca/review"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-2 p-3 border border-stone-200 rounded-lg hover:bg-stone-50 hover:border-stone-300 transition-colors"
+                    className="flex flex-col items-center gap-2 p-3 bg-stone-200 border border-stone-300 rounded-lg hover:bg-stone-300 hover:border-stone-400 transition-colors"
                   >
                     <svg className="w-6 h-6" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -186,7 +186,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
                     href="https://www.trustpilot.com/review/golfinmallorca.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-2 p-3 border border-stone-200 rounded-lg hover:bg-stone-50 hover:border-[#00B67A] transition-colors"
+                    className="flex flex-col items-center gap-2 p-3 bg-stone-200 border border-stone-300 rounded-lg hover:bg-stone-300 hover:border-[#00B67A] transition-colors"
                   >
                     <svg className="w-6 h-6" viewBox="0 0 24 24">
                       <path fill="#00B67A" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
@@ -199,7 +199,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
                     href="https://www.tripadvisor.com/UserReviewEdit-g187463-d1234567-Golf_in_Mallorca-Palma_de_Mallorca_Majorca_Balearic_Islands.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-2 p-3 border border-stone-200 rounded-lg hover:bg-stone-50 hover:border-[#34E0A1] transition-colors"
+                    className="flex flex-col items-center gap-2 p-3 bg-stone-200 border border-stone-300 rounded-lg hover:bg-stone-300 hover:border-[#34E0A1] transition-colors"
                   >
                     <svg className="w-6 h-6" viewBox="0 0 24 24">
                       <circle fill="#34E0A1" cx="12" cy="12" r="10"/>
@@ -220,7 +220,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
                   <div className="w-full border-t border-stone-200"></div>
                 </div>
                 <div className="relative flex justify-center text-xs">
-                  <span className="px-3 bg-white text-stone-400">or review on our website</span>
+                  <span className="px-3 bg-stone-100 text-stone-400">or review on our website</span>
                 </div>
               </div>
               
@@ -228,7 +228,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
               <div className="text-center">
                 <button
                   onClick={handleGoogleLogin}
-                  className="w-full flex items-center justify-center gap-3 px-6 py-3 border border-stone-300 rounded-lg hover:bg-stone-50 transition-colors font-medium text-stone-700"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-stone-200 border border-stone-300 rounded-lg hover:bg-stone-300 transition-colors font-medium text-stone-700"
                   data-testid="google-login-btn"
                 >
                   <GoogleLogo />
@@ -244,7 +244,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
             /* Logged in - Show Review Form */
             <form onSubmit={handleSubmit}>
               {/* User Info */}
-              <div className="flex items-center gap-3 mb-6 p-3 bg-stone-50 rounded-lg">
+              <div className="flex items-center gap-3 mb-6 p-3 bg-stone-200 rounded-lg">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-stone-200">
                   {user.picture ? (
                     <img src={user.picture} alt={user.name} className="w-full h-full object-cover" />
@@ -290,7 +290,7 @@ export const ReviewModal = ({ isOpen, onClose }) => {
                   placeholder="Share your experience with Golf in Mallorca..."
                   rows={4}
                   disabled={submitStatus === 'submitting'}
-                  className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-slate/50 focus:border-brand-slate resize-none disabled:bg-stone-100 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-stone-200 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-slate/50 focus:border-brand-slate resize-none disabled:bg-stone-300 disabled:cursor-not-allowed text-stone-700 placeholder:text-stone-400"
                   data-testid="review-text-input"
                 />
               </div>
