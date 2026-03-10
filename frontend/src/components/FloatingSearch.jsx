@@ -50,11 +50,11 @@ const categoryLabels = {
 };
 
 const categoryColors = {
-  golf: 'bg-stone-200 text-stone-700',
-  hotel: 'bg-stone-300 text-stone-800',
-  restaurant: 'bg-stone-400 text-stone-900',
-  cafe_bar: 'bg-stone-500 text-white',
-  beach_club: 'bg-stone-600 text-white',
+  golf: 'bg-stone-300 text-stone-800',
+  hotel: 'bg-stone-400 text-stone-900',
+  restaurant: 'bg-stone-500 text-white',
+  cafe_bar: 'bg-stone-600 text-white',
+  beach_club: 'bg-stone-700 text-white',
 };
 
 const searchPlaceholders = {
