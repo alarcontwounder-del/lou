@@ -26,22 +26,6 @@ export const Hero = () => {
       <div className="relative z-10 min-h-screen flex items-center px-4 sm:px-6">
         <div className="container-custom w-full">
           <div className="max-w-3xl">
-            {/* Logo - Option B: In hero content, aligned with text */}
-            <a
-              href="https://golfinmallorca.greenfee365.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mb-6 sm:mb-8 opacity-0 animate-fade-in-up"
-              data-testid="hero-logo"
-            >
-              <img 
-                src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
-                alt="Golf in Mallorca Spain"
-                className="h-16 sm:h-20 md:h-28 w-auto object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
-              />
-            </a>
-
             {/* Subtitle */}
             <p
               className="text-white text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-semibold"
