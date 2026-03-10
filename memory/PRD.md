@@ -9,7 +9,33 @@ Build a premium golf booking website for Mallorca ("Golfinmallorca.com") with:
 
 ## What's Been Implemented
 
-### March 2, 2026 (Current Session)
+### March 10, 2026 (Current Session)
+
+#### ✅ SEARCH FEATURE
+Implemented full search functionality:
+- **Backend `/api/search` endpoint** - Searches across all partner collections
+- **Search by**: Name, location, description
+- **Results order**: Golf → Hotels → Mixed (restaurants, beach clubs, cafés)
+- **Category filtering** via dropdown or quick pills
+- **Real-time results** with 300ms debounce
+- **Grey scale badges** for each category type
+
+**Files Modified:**
+- `/app/backend/server.py` - Added `/api/search` endpoint
+- `/app/frontend/src/components/FloatingSearch.jsx` - Connected to backend
+
+#### ✅ EMAIL SYSTEM
+- Added Resend API integration
+- Newsletter welcome email with clean design
+- Admin subscriber management (Add, Import CSV, Bulk Email)
+- Clean text-based email design (no logo image issues)
+
+#### ✅ UI CONSISTENCY UPDATES
+- **Review cards**: Changed from white to grey (`bg-stone-100`) on cream background
+- **Newsletter form**: Changed from white to cream (`bg-brand-cream`) on grey background
+- **Search badges**: Grey scale differentiation per category
+
+### March 2, 2026 (Previous Session)
 
 #### ✅ QUICK VIEW FEATURE
 Implemented "Quick View" modal for all partner cards:

@@ -125,7 +125,7 @@ const ReviewCard = ({ review, index }) => {
   return (
     <div
       ref={cardRef}
-      className={`bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 relative group ${
+      className={`bg-stone-100 border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 relative group ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{ transitionDelay: `${index * 50}ms` }}
