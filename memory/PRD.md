@@ -107,4 +107,4 @@ Build a comprehensive website for Golfinmallorca.com - a golf tourism platform i
 ```
 
 ## Last Updated
-March 10, 2026 - Fixed review modal form input styling (white → grey)
+March 10, 2026 - Fixed Newsletter form input styling (white → grey), Added smooth animation to Review modal (fade-in + slide-up)
