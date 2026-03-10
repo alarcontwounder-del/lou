@@ -23,7 +23,7 @@ export const Hero = () => {
       <div className="hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center px-4 sm:px-6">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 pb-24">
         <div className="container-custom w-full">
           <div className="max-w-3xl">
             {/* Subtitle */}
