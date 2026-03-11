@@ -47,8 +47,8 @@ export const Footer = () => {
             {/* Partner Logo */}
             <div className="flex items-center gap-6 flex-wrap">
               <img 
-                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/7nw4yxb1_Untitled%20Project%20%281%29.png"
-                alt="Mallorca Ca Nostra"
+                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/agyb9uib_Logo_Illes_Balears_Sostenibles%20copy.png"
+                alt="Illes Balears Sostenibles"
                 className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen"
               />
             </div>
