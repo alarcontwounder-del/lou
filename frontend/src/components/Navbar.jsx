@@ -57,7 +57,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       } bg-transparent py-2`}
     >
       <div className="container-custom flex items-center justify-between">
-        {/* Logo - WHITE, LARGE for brand visibility */}
+        {/* Logo - WHITE, EXTRA LARGE for brand visibility */}
         <a
           href="https://golfinmallorca.greenfee365.com"
           target="_blank"
@@ -68,7 +68,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className="h-24 sm:h-28 md:h-32 w-auto object-contain transition-all duration-300"
+            className="h-32 sm:h-36 md:h-44 w-auto object-contain transition-all duration-300"
             style={{ filter: 'brightness(0) invert(1)' }}
           />
         </a>
