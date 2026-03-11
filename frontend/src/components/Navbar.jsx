@@ -57,7 +57,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       } bg-transparent py-2`}
     >
       <div className="container-custom flex items-center justify-between">
-        {/* Logo - BLACK version */}
+        {/* Logo - WHITE, LARGE for brand visibility */}
         <a
           href="https://golfinmallorca.greenfee365.com"
           target="_blank"
@@ -68,8 +68,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className="h-20 sm:h-24 md:h-28 w-auto object-contain transition-all duration-300"
-            style={{ filter: 'brightness(0)' }}
+            className="h-24 sm:h-28 md:h-32 w-auto object-contain transition-all duration-300"
+            style={{ filter: 'brightness(0) invert(1)' }}
           />
         </a>
 
@@ -212,16 +212,6 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             </button>
           )}
 
-          {/* Book CTA */}
-          <a
-            href="https://golfinmallorca.greenfee365.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary text-sm"
-            data-testid="nav-book-btn"
-          >
-            {t('nav.book')}
-          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -323,16 +313,6 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
                 {isAuthenticated ? "Admin Dashboard" : "Admin Login"}
               </button>
             )}
-
-
-            <a
-              href="https://golfinmallorca.greenfee365.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary mt-2 text-center"
-            >
-              {t('nav.book')}
-            </a>
           </div>
         </div>
       )}
