@@ -23,12 +23,12 @@ export const Hero = () => {
       <div className="hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 pb-24">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-40 sm:pt-44 md:pt-48 pb-24">
         <div className="container-custom w-full">
           <div className="max-w-3xl">
             {/* Subtitle */}
             <p
-              className="text-white text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-semibold"
+              className="text-white text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-semibold"
               data-testid="hero-subtitle"
             >
               {t('hero.subtitle')}
@@ -36,7 +36,7 @@ export const Hero = () => {
 
             {/* Title */}
             <h1
-              className="font-heading text-4xl sm:text-5xl md:text-7xl text-white font-medium leading-tight mb-6 sm:mb-8 opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
+              className="font-heading text-4xl sm:text-5xl md:text-7xl text-white font-medium leading-tight mb-8 sm:mb-10 opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
               data-testid="hero-title"
             >
               {t('hero.title')}
@@ -44,7 +44,7 @@ export const Hero = () => {
 
             {/* Description */}
             <p
-              className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-12 max-w-xl opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+              className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-10 sm:mb-12 max-w-xl opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
               data-testid="hero-description"
             >
               {t('hero.description')}
