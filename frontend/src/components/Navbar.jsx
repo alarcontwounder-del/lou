@@ -57,7 +57,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       } bg-transparent py-2`}
     >
       <div className="container-custom flex items-center justify-between">
-        {/* Logo - WHITE, EXTRA LARGE for brand visibility */}
+        {/* Logo - WHITE, EXTRA LARGE with drop shadow for definition */}
         <a
           href="https://golfinmallorca.greenfee365.com"
           target="_blank"
@@ -68,8 +68,8 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className="h-32 sm:h-36 md:h-44 w-auto object-contain transition-all duration-300"
-            style={{ filter: 'brightness(0) invert(1)' }}
+            className="h-32 sm:h-36 md:h-44 w-auto object-contain transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            style={{ filter: 'brightness(0) invert(1) drop-shadow(0 2px 3px rgba(0,0,0,0.4))' }}
           />
         </a>
 
@@ -77,7 +77,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
         <div className="hidden md:flex items-center gap-4 lg:gap-6">
           <button
             onClick={() => scrollToSection('courses')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-courses"
@@ -86,7 +86,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           <button
             onClick={() => scrollToSection('hotels')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-hotels"
@@ -95,7 +95,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           <button
             onClick={() => scrollToSection('restaurants')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-restaurants"
@@ -104,7 +104,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           <button
             onClick={() => scrollToSection('cafes-bars')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-cafes-bars"
@@ -113,7 +113,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           <button
             onClick={() => scrollToSection('beach-clubs')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-beach-clubs"
@@ -121,12 +121,12 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             Beach Clubs
           </button>
           
-          {/* Separator */}
-          <span className={`hidden lg:block w-px h-4 ${isScrolled ? 'bg-stone-300' : 'bg-white/30'}`}></span>
+          {/* Separator - more visible */}
+          <span className={`hidden lg:block w-0.5 h-5 rounded-full ${isScrolled ? 'bg-stone-400' : 'bg-white/70'}`}></span>
           
           <button
             onClick={() => scrollToSection('reviews')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-reviews"
@@ -135,7 +135,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap ${
+            className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-blog"
@@ -144,7 +144,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className={`text-sm font-medium transition-colors duration-300 ${
+            className={`text-base font-medium transition-colors duration-300 drop-shadow-sm ${
               isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-contact"
@@ -155,14 +155,14 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           {/* Language Selector */}
           <DropdownMenu>
             <DropdownMenuTrigger
-              className={`flex items-center gap-1 px-3 py-2 rounded-full border transition-colors duration-300 ${
+              className={`flex items-center gap-1 px-3 py-2 rounded-full border transition-colors duration-300 text-base ${
                 isScrolled
                   ? 'border-stone-200 text-stone-700 hover:border-brand-slate'
-                  : 'border-white/30 text-white hover:border-white'
+                  : 'border-white/50 text-white hover:border-white'
               }`}
               data-testid="language-selector"
             >
-              <span className="text-sm font-medium">{currentLang?.label}</span>
+              <span className="text-base font-medium">{currentLang?.label}</span>
               <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="bg-white">
