@@ -44,7 +44,7 @@ export const Footer = () => {
                 <Instagram className="w-5 h-5 text-white/80 group-hover:text-white" />
               </a>
             </div>
-            {/* Partner Logos - Same size, consistent white styling */}
+            {/* Partner Logos - Same size, all white/grayscale, transparent backgrounds */}
             <div className="flex items-center gap-6 flex-wrap">
               <img 
                 src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/agyb9uib_Logo_Illes_Balears_Sostenibles%20copy.png"
@@ -52,9 +52,9 @@ export const Footer = () => {
                 className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen"
               />
               <img 
-                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/4x58oyop_Disen%CC%83o%20sin%20ti%CC%81tulo.png"
+                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/ozpl6a9p_png-transparent-palma-jungle-parc-junior-logo-tourism-iberostar-hotels-resorts-mallorca-text-logo-accommodation-thumbnail-Picsart-BackgroundRemover.png"
                 alt="Mallorca Illes Balears"
-                className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity invert"
+                className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen grayscale brightness-150"
               />
               <img 
                 src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/7nw4yxb1_Untitled%20Project%20%281%29.png"
