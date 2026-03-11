@@ -52,9 +52,9 @@ export const Footer = () => {
                 className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen"
               />
               <img 
-                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/etb7w9zw_png-transparent-palma-jungle-parc-junior-logo-tourism-iberostar-hotels-resorts-mallorca-text-logo-accommodation-thumbnail%20copy.png"
+                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/4x58oyop_Disen%CC%83o%20sin%20ti%CC%81tulo.png"
                 alt="Mallorca Illes Balears"
-                className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity grayscale brightness-150"
+                className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity invert"
               />
               <img 
                 src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/7nw4yxb1_Untitled%20Project%20%281%29.png"
