@@ -20,17 +20,11 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            {/* Logo */}
-            <img 
-              src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
-              alt="Golf in Mallorca Spain"
-              className="h-16 w-auto object-contain brightness-0 invert mb-4"
-            />
             <p className="text-white/70 max-w-md mb-6">
               The leading golf agency in Mallorca since 2003. Only exclusive operator based on the island specializing in all types of golf services.
             </p>
             {/* Social Links */}
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-6">
               <a 
                 href="https://www.facebook.com/golfinmallorca" 
                 target="_blank" 
@@ -50,9 +44,24 @@ export const Footer = () => {
                 <Instagram className="w-5 h-5 text-white/80 group-hover:text-white" />
               </a>
             </div>
-            <p className="text-white/50 text-sm">
-              Website: <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors">golfinmallorca.com</a>
-            </p>
+            {/* Partner Logos - Grayscale */}
+            <div className="flex items-center gap-4 flex-wrap">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/agyb9uib_Logo_Illes_Balears_Sostenibles%20copy.png"
+                alt="Illes Balears Sostenibles"
+                className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img 
+                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/etb7w9zw_png-transparent-palma-jungle-parc-junior-logo-tourism-iberostar-hotels-resorts-mallorca-text-logo-accommodation-thumbnail%20copy.png"
+                alt="Mallorca Illes Balears"
+                className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale"
+              />
+              <img 
+                src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/7nw4yxb1_Untitled%20Project%20%281%29.png"
+                alt="Mallorca Ca Nostra"
+                className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale"
+              />
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -119,6 +128,10 @@ export const Footer = () => {
               <li>+34 620 987 575</li>
               <li>contact@golfinmallorca.com</li>
               <li>Palma de Mallorca, IB, Spain</li>
+              <li className="pt-2">
+                <span className="text-white/50">Website: </span>
+                <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors">golfinmallorca.com</a>
+              </li>
             </ul>
           </div>
         </div>
