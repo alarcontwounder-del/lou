@@ -12,13 +12,13 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
     <div className="flip-card-inner">
       {/* Front of Card */}
       <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
-        {/* Image - Vertical/Portrait orientation */}
-        <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+        {/* Image - Properly framed with center focus */}
+        <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
             src={course.image}
             alt={course.name}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
+            className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
           />
           {/* Price Badge */}
           {course.price_from && (

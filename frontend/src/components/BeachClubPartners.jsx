@@ -20,11 +20,11 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
         )}
 
         {/* Image */}
-        <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+        <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img loading="lazy"
             src={club.image}
             alt={club.name}
-            className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
+            className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
           />
           {/* Beach Club Icon Overlay */}
           <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1.5">

@@ -19,12 +19,12 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => (
           </div>
         )}
 
-        {/* Image - Vertical with rounded edges */}
-        <div className="h-64 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+        {/* Image - Properly framed with center focus */}
+        <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img loading="lazy"
             src={hotel.image}
             alt={hotel.name}
-            className="w-full h-full object-cover transition-transform duration-500 rounded-xl"
+            className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
           />
           {/* Quick View Button */}
           <button
