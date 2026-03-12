@@ -1,0 +1,22 @@
+# Robots.txt for Golfinmallorca.com
+# https://golfinmallorca.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://golfinmallorca.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+
+# Allow search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
