@@ -1,0 +1,400 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://golfinmallorca.com/#organization",
+      "name": "Golf in Mallorca",
+      "alternateName": ["Golfinmallorca.com", "GIM", "Golf in Mallorca Spain"],
+      "url": "https://golfinmallorca.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://golfinmallorca.com/logo.png",
+        "width": 400,
+        "height": 200
+      },
+      "image": "https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG",
+      "description": "The leading golf agency in Mallorca since 2003. The only exclusive operator based on the island specializing in comprehensive golf travel services including tee time bookings, luxury accommodations, fine dining, and curated Mediterranean experiences.",
+      "foundingDate": "2003",
+      "knowsAbout": [
+        "Golf Tourism in Mallorca",
+        "Tee Time Reservations",
+        "Golf Course Directory",
+        "Luxury Golf Hotels",
+        "Mediterranean Gastronomy",
+        "Beach Club Experiences",
+        "Golf Holiday Packages",
+        "Balearic Islands Travel"
+      ],
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "English",
+          "alternateName": "en"
+        },
+        {
+          "@type": "Language",
+          "name": "German",
+          "alternateName": "de"
+        },
+        {
+          "@type": "Language",
+          "name": "French",
+          "alternateName": "fr"
+        },
+        {
+          "@type": "Language",
+          "name": "Swedish",
+          "alternateName": "sv"
+        }
+      ],
+      "areaServed": {
+        "@type": "TouristDestination",
+        "@id": "https://golfinmallorca.com/#mallorca",
+        "name": "Mallorca",
+        "alternateName": ["Majorca", "Mallorca Spain", "Balearic Islands"],
+        "description": "The largest of Spain's Balearic Islands in the Mediterranean, renowned for its world-class golf courses, luxury resorts, stunning beaches, and exceptional gastronomy.",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "39.6953",
+          "longitude": "3.0176"
+        },
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Spain"
+        },
+        "touristType": ["Golf Travelers", "Luxury Tourists", "European Visitors"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Palma de Mallorca",
+        "addressLocality": "Palma",
+        "addressRegion": "Illes Balears",
+        "postalCode": "07001",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.5696",
+        "longitude": "2.6502"
+      },
+      "telephone": "+34 620 987 575",
+      "email": "contact@golfinmallorca.com",
+      "sameAs": [
+        "https://www.facebook.com/golfinmallorca",
+        "https://www.instagram.com/golfinmallorca",
+        "https://x.com/golfinmallorca",
+        "https://www.linkedin.com/company/golfinmallorca",
+        "https://golfinmallorca.greenfee365.com"
+      ],
+      "makesOffer": [
+        {"@id": "https://golfinmallorca.com/#golf-booking-service"},
+        {"@id": "https://golfinmallorca.com/#hotel-directory"},
+        {"@id": "https://golfinmallorca.com/#restaurant-guide"},
+        {"@id": "https://golfinmallorca.com/#beach-club-directory"},
+        {"@id": "https://golfinmallorca.com/#cafe-bar-guide"}
+      ]
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://golfinmallorca.com/#website",
+      "url": "https://golfinmallorca.com",
+      "name": "Golf in Mallorca",
+      "description": "The definitive guide for golf travel in Mallorca - book tee times, discover luxury hotels, explore fine dining, and experience the Mediterranean lifestyle.",
+      "publisher": {"@id": "https://golfinmallorca.com/#organization"},
+      "inLanguage": ["en", "de", "fr", "sv"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://golfinmallorca.com/?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+
+    {
+      "@type": "TouristInformationCenter",
+      "@id": "https://golfinmallorca.com/#tourist-hub",
+      "name": "Golf in Mallorca - Travel Hub",
+      "description": "Your central hub for planning the perfect golf holiday in Mallorca. We connect you with premium golf courses, luxury accommodations, exceptional restaurants, beach clubs, and local experiences.",
+      "url": "https://golfinmallorca.com",
+      "touristType": ["Golf Enthusiasts", "Luxury Travelers", "Food & Wine Lovers", "Beach Lovers"],
+      "availableLanguage": ["en", "de", "fr", "sv"],
+      "parentOrganization": {"@id": "https://golfinmallorca.com/#organization"},
+      "areaServed": {"@id": "https://golfinmallorca.com/#mallorca"}
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://golfinmallorca.com/#golf-booking-service",
+      "name": "Golf Tee Time Booking Service",
+      "description": "Book tee times at all 13 premium golf courses in Mallorca with instant confirmation. We partner directly with courses to offer the best rates and availability.",
+      "provider": {"@id": "https://golfinmallorca.com/#organization"},
+      "serviceType": "Golf Reservation Service",
+      "areaServed": {"@id": "https://golfinmallorca.com/#mallorca"},
+      "hasOfferCatalog": {"@id": "https://golfinmallorca.com/#golf-courses-catalog"}
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://golfinmallorca.com/#hotel-directory",
+      "name": "Luxury Golf Hotel Directory",
+      "description": "Curated selection of luxury hotels and resorts in Mallorca, ideal for golf travelers. From boutique hotels to 5-star resorts with golf course access.",
+      "provider": {"@id": "https://golfinmallorca.com/#organization"},
+      "serviceType": "Hotel Recommendation Service",
+      "areaServed": {"@id": "https://golfinmallorca.com/#mallorca"},
+      "hasOfferCatalog": {"@id": "https://golfinmallorca.com/#hotels-catalog"}
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://golfinmallorca.com/#restaurant-guide",
+      "name": "Mediterranean Restaurant Guide",
+      "description": "Discover the finest restaurants in Mallorca - from Michelin-starred fine dining to authentic local cuisine. Recommendations for golf travelers and food enthusiasts.",
+      "provider": {"@id": "https://golfinmallorca.com/#organization"},
+      "serviceType": "Restaurant Recommendation Service",
+      "areaServed": {"@id": "https://golfinmallorca.com/#mallorca"},
+      "hasOfferCatalog": {"@id": "https://golfinmallorca.com/#restaurants-catalog"}
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://golfinmallorca.com/#beach-club-directory",
+      "name": "Beach Club Experience Guide",
+      "description": "The best beach clubs in Mallorca for relaxation after golf. Exclusive venues with pools, lounges, and Mediterranean views.",
+      "provider": {"@id": "https://golfinmallorca.com/#organization"},
+      "serviceType": "Beach Club Recommendation Service",
+      "areaServed": {"@id": "https://golfinmallorca.com/#mallorca"},
+      "hasOfferCatalog": {"@id": "https://golfinmallorca.com/#beach-clubs-catalog"}
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://golfinmallorca.com/#cafe-bar-guide",
+      "name": "Cafés & Bars Guide",
+      "description": "Local cafés and bars in Mallorca - perfect for 19th hole drinks, morning coffee, or evening cocktails. Authentic Mediterranean atmosphere.",
+      "provider": {"@id": "https://golfinmallorca.com/#organization"},
+      "serviceType": "Cafe Bar Recommendation Service",
+      "areaServed": {"@id": "https://golfinmallorca.com/#mallorca"},
+      "hasOfferCatalog": {"@id": "https://golfinmallorca.com/#cafes-bars-catalog"}
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://golfinmallorca.com/#golf-courses-catalog",
+      "name": "Golf Courses in Mallorca",
+      "description": "Complete directory of 13 premium golf courses in Mallorca with booking availability",
+      "numberOfItems": 13,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "GolfCourse",
+            "name": "Golf Son Gual",
+            "description": "Championship course designed by Thomas Himmel, consistently rated among Europe's best.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Palma de Mallorca", "addressCountry": "ES"},
+            "geo": {"@type": "GeoCoordinates", "latitude": "39.5456", "longitude": "2.7789"},
+            "priceRange": "€85-€145"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "GolfCourse",
+            "name": "Golf Alcanada",
+            "description": "Stunning coastal course with iconic lighthouse views, designed by Robert Trent Jones Jr.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Alcúdia", "addressCountry": "ES"},
+            "geo": {"@type": "GeoCoordinates", "latitude": "39.8456", "longitude": "3.1234"},
+            "priceRange": "€115-€175"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "GolfCourse",
+            "name": "Real Golf de Bendinat",
+            "description": "Elegant course near Palma with Mediterranean Sea views and challenging layout.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Bendinat", "addressCountry": "ES"},
+            "priceRange": "€70-€110"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "GolfCourse",
+            "name": "Golf Santa Ponsa",
+            "description": "European Tour venue with three courses offering variety for all skill levels.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Santa Ponsa", "addressCountry": "ES"},
+            "priceRange": "€66-€120"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "GolfCourse",
+            "name": "Son Vida Golf",
+            "description": "Mallorca's oldest and most prestigious course with panoramic Palma Bay views.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Palma de Mallorca", "addressCountry": "ES"},
+            "priceRange": "€47-€95"
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://golfinmallorca.com/#hotels-catalog",
+      "name": "Luxury Hotels in Mallorca",
+      "description": "Curated selection of premium hotels and resorts for golf travelers",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Hotel",
+            "name": "Castillo Hotel Son Vida",
+            "description": "5-star castle hotel with direct golf course access and panoramic views.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Palma de Mallorca", "addressCountry": "ES"},
+            "starRating": {"@type": "Rating", "ratingValue": "5"}
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Hotel",
+            "name": "St. Regis Mardavall",
+            "description": "Ultra-luxury beachfront resort with world-class spa and golf packages.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Costa d'en Blanes", "addressCountry": "ES"},
+            "starRating": {"@type": "Rating", "ratingValue": "5"}
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://golfinmallorca.com/#restaurants-catalog",
+      "name": "Restaurants in Mallorca",
+      "description": "Fine dining and local cuisine recommendations for golf travelers",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Restaurant",
+            "name": "Restaurant Es Fum",
+            "description": "Michelin-starred restaurant offering innovative Mediterranean cuisine.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Costa d'en Blanes", "addressCountry": "ES"},
+            "servesCuisine": "Mediterranean Fine Dining"
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://golfinmallorca.com/#beach-clubs-catalog",
+      "name": "Beach Clubs in Mallorca",
+      "description": "Premium beach clubs for relaxation after golf",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "LocalBusiness",
+            "name": "Nikki Beach Mallorca",
+            "description": "World-famous beach club with pools, lounges, and Mediterranean cuisine.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Magaluf", "addressCountry": "ES"}
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://golfinmallorca.com/#cafes-bars-catalog",
+      "name": "Cafés & Bars in Mallorca",
+      "description": "Local cafés and bars perfect for the 19th hole",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CafeOrCoffeeShop",
+            "name": "Cappuccino Grand Café",
+            "description": "Iconic Mallorcan café chain with Mediterranean terrace atmosphere.",
+            "address": {"@type": "PostalAddress", "addressLocality": "Palma de Mallorca", "addressCountry": "ES"}
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://golfinmallorca.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Golf in Mallorca?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Golf in Mallorca (golfinmallorca.com) is the leading golf travel hub for the island since 2003. We are the only exclusive operator based in Mallorca, offering a complete ecosystem of golf services including tee time bookings at 13 courses, luxury hotel recommendations, restaurant guides, beach clubs, and local experiences. We are not just a booking site - we are your complete guide to the Mallorca golf lifestyle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services does Golf in Mallorca offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Golf in Mallorca offers: 1) Tee time bookings at all 13 Mallorca golf courses, 2) Curated luxury hotel directory, 3) Restaurant recommendations from fine dining to local cuisine, 4) Beach club guides, 5) Café and bar recommendations, 6) Multi-language support (English, German, French, Swedish), and 7) Personalized golf holiday planning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the best golf courses in Mallorca?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The top golf courses in Mallorca include: Golf Son Gual (championship course, €85-€145), Golf Alcanada (coastal with lighthouse views, €115-€175), Real Golf de Bendinat (Mediterranean views, €70-€110), Golf Santa Ponsa (European Tour venue, €66-€120), and Son Vida Golf (oldest course, €47-€95)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the best time to play golf in Mallorca?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best time to play golf in Mallorca is spring (March-May) and autumn (September-November) with pleasant temperatures of 18-25°C. Summer can exceed 30°C but early morning tee times are enjoyable. Winter offers mild conditions (12-18°C) and lower green fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Golf in Mallorca serve international visitors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Golf in Mallorca serves golf travelers from around the world, with a focus on European markets including Germany, UK, Sweden, France, and Switzerland. Our website is available in English, German, French, and Swedish to serve our international clientele."
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://golfinmallorca.com/#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://golfinmallorca.com"},
+        {"@type": "ListItem", "position": 2, "name": "Golf Courses", "item": "https://golfinmallorca.com/#courses"},
+        {"@type": "ListItem", "position": 3, "name": "Hotels", "item": "https://golfinmallorca.com/#hotels"},
+        {"@type": "ListItem", "position": 4, "name": "Restaurants", "item": "https://golfinmallorca.com/#restaurants"},
+        {"@type": "ListItem", "position": 5, "name": "Beach Clubs", "item": "https://golfinmallorca.com/#beach-clubs"},
+        {"@type": "ListItem", "position": 6, "name": "Cafés & Bars", "item": "https://golfinmallorca.com/#cafes-bars"}
+      ]
+    }
+  ]
+}
