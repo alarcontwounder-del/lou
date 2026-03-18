@@ -14,16 +14,7 @@ export default function BookTeeTimesPage() {
   const navigate = useNavigate();
 
   const goToContact = () => {
-    navigate('/');
-    const tryScroll = (attempts = 0) => {
-      const el = document.getElementById('contact');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      } else if (attempts < 20) {
-        setTimeout(() => tryScroll(attempts + 1), 200);
-      }
-    };
-    setTimeout(() => tryScroll(), 300);
+    navigate('/', { state: { scrollTo: 'contact' } });
   };
 
   useEffect(() => {

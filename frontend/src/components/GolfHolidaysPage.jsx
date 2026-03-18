@@ -16,16 +16,7 @@ export default function GolfHolidaysPage() {
   const navigate = useNavigate();
 
   const goToContact = () => {
-    navigate('/');
-    const tryScroll = (attempts = 0) => {
-      const el = document.getElementById('contact');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      } else if (attempts < 20) {
-        setTimeout(() => tryScroll(attempts + 1), 200);
-      }
-    };
-    setTimeout(() => tryScroll(), 300);
+    navigate('/', { state: { scrollTo: 'contact' } });
   };
 
   useEffect(() => {
@@ -188,7 +179,7 @@ export default function GolfHolidaysPage() {
           ))}
         </div>
         <div className="text-center mt-10">
-          <button onClick={() => { navigate('/'); setTimeout(() => { const el = document.getElementById('courses'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 500); }} className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 font-medium transition-colors">
+          <button onClick={() => navigate('/', { state: { scrollTo: 'courses' } })} className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 font-medium transition-colors">
             View all 16 golf courses<ChevronRight className="w-4 h-4" />
           </button>
         </div>
