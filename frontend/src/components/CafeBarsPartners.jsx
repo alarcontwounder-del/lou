@@ -172,7 +172,7 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
           href={place.contact_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3 bg-white text-stone-800 text-center rounded-xl font-semibold hover:bg-stone-100 transition-colors flex items-center justify-center gap-2"
+          className="w-full py-3 mt-4 bg-white text-stone-800 text-center rounded-xl font-semibold hover:bg-stone-100 transition-colors flex items-center justify-center gap-2"
         >
           {t('offers.viewDetails') || 'View Details'}
           <ExternalLink className="w-4 h-4" />

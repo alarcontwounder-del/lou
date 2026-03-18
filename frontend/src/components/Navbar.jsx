@@ -56,7 +56,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       data-testid="navbar"
       className={`${isLight ? 'relative' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isLight ? 'bg-brand-cream' :
-        isVisible ? 'translate-y-0 opacity-100 bg-transparent' : '-translate-y-full opacity-0 pointer-events-none bg-transparent'
+        isVisible ? 'translate-y-0 opacity-100 bg-transparent overflow-visible' : '-translate-y-full opacity-0 pointer-events-none bg-transparent overflow-hidden'
       } py-2`}
     >
       <div className="container-custom flex items-center justify-between">
