@@ -60,18 +60,18 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       } py-2`}
     >
       <div className="container-custom flex items-center justify-between">
-        {/* Logo - WHITE, EXTRA LARGE with drop shadow for definition */}
+        {/* Logo - links to homepage on course pages, booking site on homepage */}
         <a
-          href="https://golfinmallorca.greenfee365.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          href={isLight ? '/' : 'https://golfinmallorca.greenfee365.com'}
+          target={isLight ? '_self' : '_blank'}
+          rel={isLight ? undefined : 'noopener noreferrer'}
           className="transition-all duration-300 flex-shrink-0"
           data-testid="logo"
         >
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className={`${isLight ? 'h-20 sm:h-24' : 'h-32 sm:h-36 md:h-44'} w-auto object-contain transition-all duration-300 ${isLight ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}
+            className={`${isLight ? 'h-24 sm:h-28' : 'h-32 sm:h-36 md:h-44'} w-auto object-contain transition-all duration-300 ${isLight ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}
             style={isLight ? {} : { filter: 'brightness(0) invert(1) drop-shadow(0 2px 3px rgba(0,0,0,0.4))' }}
           />
         </a>
