@@ -35,6 +35,11 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - Footer internal links to new landing pages
   - llms.txt updated with new pages and 16 courses
   - Updated service descriptions from 13 to 16 courses across all schemas
+- [x] **Bug Fixes — Search, Footer, Design** (March 2026)
+  - Search now finds Golf Holidays and Book Tee Times landing pages (static page results with amber badge)
+  - Footer links navigate correctly between pages using React Router (useNavigate)
+  - Book Tee Times page redesigned: course thumbnail cards with "Book a Tee Time" buttons, cream/white alternating sections
+  - Hero/CTA sections changed from black to dark grey (brand-charcoal) on both landing pages
 - [x] **Nearest Golf Course Distance** on ALL partner categories (March 2026)
   - Hotels: 38 venues with distance badges on card front, back, and QuickView modal
   - Restaurants: 49 venues with distance badges on card front, back, and QuickView modal
