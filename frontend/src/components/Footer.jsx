@@ -66,63 +66,50 @@ export const Footer = () => {
             <h4 className="font-medium text-lg mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
               <li>
-                <button
-                  onClick={() => scrollToSection('hero')}
-                  className="text-white/70 hover:text-white transition-colors"
-                >
+                <button onClick={() => scrollToSection('hero')} className="text-white/70 hover:text-white transition-colors">
                   {t('nav.home')}
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('courses')}
-                  className="text-white/70 hover:text-white transition-colors"
-                >
+                <button onClick={() => scrollToSection('courses')} className="text-white/70 hover:text-white transition-colors">
                   {t('nav.courses')}
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('hotels')}
-                  className="text-white/70 hover:text-white transition-colors"
-                >
+                <button onClick={() => scrollToSection('hotels')} className="text-white/70 hover:text-white transition-colors">
                   {t('offers.hotels')}
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('restaurants')}
-                  className="text-white/70 hover:text-white transition-colors"
-                >
+                <button onClick={() => scrollToSection('restaurants')} className="text-white/70 hover:text-white transition-colors">
                   {t('restaurants.subtitle')}
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="text-white/70 hover:text-white transition-colors"
-                >
+                <button onClick={() => scrollToSection('contact')} className="text-white/70 hover:text-white transition-colors">
                   {t('nav.contact')}
                 </button>
               </li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="font-medium text-lg mb-4">Services</h4>
+            <ul className="space-y-3">
               <li>
-                <a
-                  href="https://golfinmallorca.greenfee365.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-brand-slate hover:text-white transition-colors font-medium"
-                >
+                <a href="https://golfinmallorca.greenfee365.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors font-medium">
                   {t('hero.bookTeeTime')}
                 </a>
               </li>
               <li>
-                <Link to="/golf-holidays-mallorca" className="text-white/70 hover:text-white transition-colors">
-                  Golf Holidays
+                <Link to="/book-tee-times" className="text-white/70 hover:text-white transition-colors">
+                  Book Tee Times Mallorca
                 </Link>
               </li>
               <li>
-                <Link to="/book-tee-times" className="text-white/70 hover:text-white transition-colors">
-                  Book Tee Times
+                <Link to="/golf-holidays-mallorca" className="text-white/70 hover:text-white transition-colors">
+                  Golf Holiday Packages
                 </Link>
               </li>
             </ul>

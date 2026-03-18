@@ -54,19 +54,17 @@ function MainContent() {
     // Handle scroll-to-section when navigating from other pages
     if (location.state?.scrollTo) {
       const sectionId = location.state.scrollTo;
-      // Clear state so it doesn't re-scroll on re-renders
       navigate('/', { replace: true, state: {} });
-      // Wait for all sections to mount, then scroll
+      // Use requestAnimationFrame loop for instant scroll before paint
       const tryScroll = (attempts = 0) => {
         const el = document.getElementById(sectionId);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        } else if (attempts < 30) {
-          setTimeout(() => tryScroll(attempts + 1), 150);
+          el.scrollIntoView({ behavior: 'instant' });
+        } else if (attempts < 50) {
+          requestAnimationFrame(() => tryScroll(attempts + 1));
         }
       };
-      // Start after a small delay to let React render
-      setTimeout(() => tryScroll(), 100);
+      requestAnimationFrame(tryScroll);
       return;
     }
 

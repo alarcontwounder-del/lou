@@ -280,16 +280,16 @@ export const GolfCourses = () => {
                 href="https://golfinmallorca.greenfee365.com/es-ES/search?query=all_clubs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-white text-brand-charcoal px-8 py-4 rounded-full font-semibold text-lg hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="group inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 data-testid="worldwide-golf-btn"
               >
                 <span>
-                  {language === 'de' ? 'Weltweit erkunden' :
-                   language === 'fr' ? 'Explorer le monde' :
-                   language === 'se' ? 'Utforska världen' :
-                   'Explore Worldwide'}
+                  {language === 'de' ? 'Kurse erkunden & weltweit buchen' :
+                   language === 'fr' ? 'Explorer & réserver dans le monde entier' :
+                   language === 'se' ? 'Utforska & boka starttider världen över' :
+                   'Explore Courses & Book Tee Times Worldwide'}
                 </span>
-                <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <span className="text-white/60 text-sm">
                 {language === 'de' ? 'Über 3.000 Golfplätze verfügbar' :
