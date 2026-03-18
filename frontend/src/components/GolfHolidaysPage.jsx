@@ -188,9 +188,9 @@ export default function GolfHolidaysPage() {
           ))}
         </div>
         <div className="text-center mt-10">
-          <Link to="/#courses" className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 font-medium transition-colors">
+          <button onClick={() => { navigate('/'); setTimeout(() => { const el = document.getElementById('courses'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 500); }} className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 font-medium transition-colors">
             View all 16 golf courses<ChevronRight className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </section>
 
@@ -207,6 +207,12 @@ export default function GolfHolidaysPage() {
             >
               Get a Free Quote
             </button>
+            <a
+              href="tel:+34620987575"
+              className="inline-flex items-center gap-2 border border-stone-500 text-stone-200 px-6 py-3 rounded-full font-semibold text-sm hover:border-white hover:text-white transition-all"
+            >
+              Call +34 620 987 575
+            </a>
           </div>
         </div>
       </section>
