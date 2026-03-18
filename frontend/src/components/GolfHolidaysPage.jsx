@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { Navbar } from '../components/Navbar';
@@ -13,6 +13,20 @@ const API = process.env.REACT_APP_BACKEND_URL;
 export default function GolfHolidaysPage() {
   const { language, t } = useLanguage();
   const { golfCourses } = useData();
+  const navigate = useNavigate();
+
+  const goToContact = () => {
+    navigate('/');
+    const tryScroll = (attempts = 0) => {
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else if (attempts < 20) {
+        setTimeout(() => tryScroll(attempts + 1), 200);
+      }
+    };
+    setTimeout(() => tryScroll(), 300);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -87,13 +101,13 @@ export default function GolfHolidaysPage() {
             >
               Book Tee Times<ExternalLink className="w-4 h-4" />
             </a>
-            <Link
-              to="/#contact"
+            <button
+              onClick={goToContact}
               className="inline-flex items-center gap-2 border border-stone-500 text-stone-200 px-6 py-3 rounded-full font-semibold text-sm hover:border-white hover:text-white transition-all"
               data-testid="holidays-enquiry-btn"
             >
               Request a Package Quote
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -186,20 +200,13 @@ export default function GolfHolidaysPage() {
           <h2 className="font-heading text-2xl md:text-3xl mb-4">Ready to Plan Your Mallorca Golf Holiday?</h2>
           <p className="text-stone-300 mb-8">Tell us your dates, group size, and preferences. Our concierge team will design a personalised golf trip package within 24 hours.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/#contact"
+            <button
+              onClick={goToContact}
               className="inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
               data-testid="holidays-contact-btn"
             >
               Get a Free Quote
-            </Link>
-            <a
-              href="tel:+34620987575"
-              className="inline-flex items-center gap-2 border border-stone-500 text-stone-200 px-6 py-3 rounded-full font-semibold text-sm hover:border-white hover:text-white transition-all"
-              data-testid="holidays-call-btn"
-            >
-              Call +34 620 987 575
-            </a>
+            </button>
           </div>
         </div>
       </section>

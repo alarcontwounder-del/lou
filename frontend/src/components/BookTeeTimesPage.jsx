@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { Navbar } from '../components/Navbar';
@@ -11,6 +11,20 @@ import { ChevronRight, ExternalLink, Clock, Shield, CreditCard, Headphones, Tag,
 export default function BookTeeTimesPage() {
   const { language, t } = useLanguage();
   const { golfCourses } = useData();
+  const navigate = useNavigate();
+
+  const goToContact = () => {
+    navigate('/');
+    const tryScroll = (attempts = 0) => {
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else if (attempts < 20) {
+        setTimeout(() => tryScroll(attempts + 1), 200);
+      }
+    };
+    setTimeout(() => tryScroll(), 300);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -144,10 +158,10 @@ export default function BookTeeTimesPage() {
                       href={c.booking_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-charcoal text-white text-xs font-semibold rounded-full hover:bg-stone-700 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-charcoal text-white text-xs font-semibold rounded-full hover:bg-stone-700 transition-colors whitespace-nowrap"
                       data-testid={`book-btn-${c.id}`}
                     >
-                      Book a Tee Time<ExternalLink className="w-3 h-3" />
+                      Book Now<ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
@@ -196,12 +210,12 @@ export default function BookTeeTimesPage() {
             >
               Book a Tee Time Now<ExternalLink className="w-4 h-4" />
             </a>
-            <Link
-              to="/#contact"
+            <button
+              onClick={goToContact}
               className="inline-flex items-center gap-2 border border-stone-500 text-stone-200 px-6 py-3 rounded-full font-semibold text-sm hover:border-white hover:text-white transition-all"
             >
               Contact Golf Concierge
-            </Link>
+            </button>
           </div>
         </div>
       </section>
