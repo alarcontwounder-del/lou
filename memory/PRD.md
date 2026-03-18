@@ -24,28 +24,42 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [x] SEO foundation: sitemap.xml, robots.txt, llms.txt, schema-hub.json
 - [x] Google Search Console verified
 - [x] **Individual Golf Course Pages** (16 courses with SEO-optimized detail pages)
-  - Dynamic routing: /golf-courses/:courseId
-  - Hero banner with course image, breadcrumb, name, location, holes/par, pricing
-  - Extended SEO descriptions, course details grid, features, best season info
-  - Booking CTA sidebar with pricing and external booking link
+  - Contained card hero design — image in rounded container, title/details above
+  - Real venue photos for Alcanada, Son Gual, Son Vida (user-provided)
+  - No Cloudinary upscaling to avoid pixelation
+  - Extended SEO descriptions per course from golfCourseSEO.js
+  - Course details grid (holes, par, designer, terrain, green fees, established year)
+  - Facilities & features tags
+  - Best season info
+  - "Book a Tee Time now!" CTA sidebar (grey button)
   - Location card with Google Maps link
-  - Related courses section (3 recommended courses)
-  - Dynamic document title, meta description, OG tags, JSON-LD schema per course
+  - Related courses section
+  - Dynamic document title, meta description, OG tags, JSON-LD GolfCourse schema
   - Canonical URL per course page
-  - All courses added to sitemap.xml
+  - All 16 courses in sitemap.xml
+  - Navbar light variant for course pages (relative, original logo colors, dark grey text, visible divider bar)
+
+## Recent UI/UX Fixes (This Session)
+- [x] Card front images: changed from h-56 to aspect-[4/3] — shows full images, no cropping
+- [x] Card back buttons: stacked vertically, "Book a Tee Time now!" primary + "View Details" secondary
+- [x] Course page hero: contained card design (rounded container, not full-bleed)
+- [x] Navbar light variant: bigger logo (h-20/h-24), stone-600 text, no border line, visible divider bar
+- [x] About section: single description text block, consistent color/size
+- [x] CTA button: grey (stone-500) instead of black
+- [x] Real venue photos: Alcanada (aerial), Son Gual (panoramic), Son Vida (clubhouse)
 
 ## In Progress
 - [ ] Keyword & content strategy analysis (user provided 2 CSV files with 500+ keywords)
-- [ ] Integrating high-traffic keywords into existing site copy
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
 - [ ] Sitemap submission (pending production deployment)
-- [ ] Authentic venue photos (pending user assets)
+- [ ] Authentic venue photos for remaining courses (pending user assets)
 - [ ] External review links (pending user URLs)
 
 ## Backlog / Future
 - [ ] Create remaining golf course pages (user mentioned having content for 30 courses)
+- [ ] Integrate high-traffic keywords into existing site copy
 - [ ] Hero video replacement (P2)
 - [ ] Weather widget for Mallorca (P2)
 - [ ] Multi-language subdirectories /de/, /fr/ instead of ?lang= params (P2)
@@ -61,18 +75,19 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 ├── frontend/
 │   └── src/
 │       ├── components/
-│       │   ├── GolfCourseLanding.jsx  # Individual course detail page
-│       │   ├── GolfCourses.jsx        # Course listing with links to detail pages
-│       │   ├── Navbar.jsx, Footer.jsx, Hero.jsx, etc.
+│       │   ├── GolfCourseLanding.jsx  # Individual course detail page (contained hero)
+│       │   ├── GolfCourses.jsx        # Course listing cards (4:3 aspect, stacked buttons)
+│       │   ├── Navbar.jsx             # Supports variant="light" for course pages
+│       │   ├── Footer.jsx, Hero.jsx, etc.
 │       │   └── AdminDashboard.jsx     # Full CMS
 │       ├── data/
 │       │   └── golfCourseSEO.js       # Extended SEO content for 16 courses
 │       ├── context/
 │       │   ├── LanguageContext.jsx
 │       │   └── DataContext.jsx
-│       └── App.js                     # Routes including /golf-courses/:courseId
+│       └── App.js                     # Routes: /golf-courses/:courseId (React.lazy)
 └── public/
-    ├── sitemap.xml                    # Updated with all course page URLs
+    ├── sitemap.xml                    # Updated with all 16 course page URLs
     ├── robots.txt
     ├── llms.txt
     └── schema-hub.json               # Master entity hub schema
@@ -80,10 +95,16 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 
 ## Key API Endpoints
 - `GET /api/golf-courses` - List all golf courses
-- `GET /api/golf-courses/{course_id}` - Get individual course (NEW)
+- `GET /api/golf-courses/{course_id}` - Get individual course
 - `POST /api/golf-courses` - Create course (admin)
 - `PUT /api/golf-courses/{course_id}` - Update course (admin)
 - `DELETE /api/golf-courses/{course_id}` - Delete course (admin)
 - `POST /api/newsletter/subscribe` - Newsletter signup
 - `POST /api/contact` - Contact form
 - `GET /api/auth/google` - Google OAuth
+
+## Important Technical Notes
+- GolfCourseLanding.jsx lives in /components/ (not /pages/) due to Babel metadata plugin stack overflow with complex imports from pages directory
+- React.lazy loading used for the course page route to avoid build issues
+- Hero images: user-provided photos used via HERO_IMAGE_OVERRIDE map; Cloudinary images NOT upscaled to avoid pixelation
+- Navbar has `variant="light"` prop: relative positioning, original logo colors, grey text, visible divider bar
