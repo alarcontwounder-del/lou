@@ -24,32 +24,24 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [x] SEO foundation: sitemap.xml, robots.txt, llms.txt, schema-hub.json
 - [x] Google Search Console verified
 - [x] **Individual Golf Course Pages** (16 courses with SEO-optimized detail pages)
-  - Contained card hero design — image in rounded container, title/details above
-  - Real venue photos for Alcanada, Son Gual, Son Vida (user-provided)
-  - No Cloudinary upscaling to avoid pixelation
-  - Extended SEO descriptions per course from golfCourseSEO.js
-  - Course details grid (holes, par, designer, terrain, green fees, established year)
-  - Facilities & features tags
-  - Best season info
-  - "Book a Tee Time now!" CTA sidebar (grey button)
-  - Location card with Google Maps link
-  - Related courses section
-  - Dynamic document title, meta description, OG tags, JSON-LD GolfCourse schema
-  - Canonical URL per course page
-  - All 16 courses in sitemap.xml
-  - Navbar light variant for course pages (relative, original logo colors, dark grey text, visible divider bar)
+- [x] **Keyword & Content Strategy Implementation** (March 2026)
+  - Homepage copy enriched with high-traffic keywords across hero, about, courses, hotels, restaurants, beach clubs, cafes sections
+  - Enhanced meta tags (title, description, OG, Twitter Card) with target keywords
+  - Expanded FAQ schema from 4 to 8 questions targeting long-tail keywords
+  - Enriched golfCourseSEO.js with location-specific keywords per course
+  - **NEW: /golf-holidays-mallorca landing page** — targets "golf holiday packages mallorca", "stay and play golf mallorca", "golf weekend breaks mallorca", etc.
+  - **NEW: /book-tee-times landing page** — targets "book tee times mallorca", "discount tee times mallorca", "mallorca tee time booking", etc.
+  - Sitemap updated with 2 new landing page URLs
+  - Footer internal links to new landing pages
+  - llms.txt updated with new pages and 16 courses
+  - Updated service descriptions from 13 to 16 courses across all schemas
 
-## Recent UI/UX Fixes (This Session)
-- [x] Card front images: changed from h-56 to aspect-[4/3] — shows full images, no cropping
-- [x] Card back buttons: stacked vertically, "Book a Tee Time now!" primary + "View Details" secondary
-- [x] Course page hero: contained card design (rounded container, not full-bleed)
-- [x] Navbar light variant: bigger logo (h-20/h-24), stone-600 text, no border line, visible divider bar
-- [x] About section: single description text block, consistent color/size
-- [x] CTA button: grey (stone-500) instead of black
-- [x] Real venue photos: Alcanada (aerial), Son Gual (panoramic), Son Vida (clubhouse)
-
-## In Progress
-- [ ] Keyword & content strategy analysis (user provided 2 CSV files with 500+ keywords)
+## Keyword Clusters Targeted
+1. **courses** (research): "best golf courses mallorca", "luxury golf courses mallorca", "top rated golf courses mallorca"
+2. **local** (commercial): "golf guide palma mallorca", "golf tee times alcudia mallorca", "golf packages santa ponsa mallorca"
+3. **core** (informational): "golf mallorca guide", "play golf mallorca", "golf in mallorca tee times"
+4. **travel** (commercial): "golf holiday packages mallorca", "stay and play golf mallorca", "mallorca golf vacation"
+5. **high-intent** (transactional): "book tee times mallorca", "discount tee times mallorca", "golf concierge mallorca", "vip golf experience mallorca"
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
@@ -58,11 +50,11 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [ ] External review links (pending user URLs)
 
 ## Backlog / Future
-- [ ] Create remaining golf course pages (user mentioned having content for 30 courses)
-- [ ] Integrate high-traffic keywords into existing site copy
+- [ ] Integrate remaining keywords into blog content / new blog posts
 - [ ] Hero video replacement (P2)
 - [ ] Weather widget for Mallorca (P2)
 - [ ] Multi-language subdirectories /de/, /fr/ instead of ?lang= params (P2)
+- [ ] Golf Packages page with bundled course + hotel deals (P2)
 - [ ] Webpack deprecation warnings cleanup (P3)
 - [ ] AdminDashboard.jsx refactoring into sub-components (P3)
 
@@ -70,27 +62,32 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 ```
 /app/
 ├── backend/
-│   └── server.py              # FastAPI with all API routes
-│   └── .env                   # MONGO_URL, RESEND_API_KEY, SENDER_EMAIL
+│   └── server.py
 ├── frontend/
 │   └── src/
 │       ├── components/
-│       │   ├── GolfCourseLanding.jsx  # Individual course detail page (contained hero)
-│       │   ├── GolfCourses.jsx        # Course listing cards (4:3 aspect, stacked buttons)
-│       │   ├── Navbar.jsx             # Supports variant="light" for course pages
-│       │   ├── Footer.jsx, Hero.jsx, etc.
-│       │   └── AdminDashboard.jsx     # Full CMS
+│       │   ├── GolfCourseLanding.jsx  # Individual course detail page
+│       │   ├── GolfHolidaysPage.jsx   # NEW: Golf holidays landing page
+│       │   ├── BookTeeTimesPage.jsx   # NEW: Book tee times landing page
+│       │   ├── GolfCourses.jsx        # Course listing cards
+│       │   ├── Navbar.jsx             # Supports variant="light"
+│       │   ├── Footer.jsx             # Updated with internal links
+│       │   ├── Hero.jsx, About.jsx, etc.
+│       │   └── AdminDashboard.jsx
 │       ├── data/
-│       │   └── golfCourseSEO.js       # Extended SEO content for 16 courses
+│       │   └── golfCourseSEO.js       # Enriched SEO content for 16 courses
+│       ├── i18n/
+│       │   └── translations.js        # Keyword-enriched copy
 │       ├── context/
-│       │   ├── LanguageContext.jsx
+│       │   ├── LanguageContext.js
 │       │   └── DataContext.jsx
-│       └── App.js                     # Routes: /golf-courses/:courseId (React.lazy)
+│       └── App.js                     # Routes: /, /golf-courses/:courseId, /golf-holidays-mallorca, /book-tee-times
 └── public/
-    ├── sitemap.xml                    # Updated with all 16 course page URLs
+    ├── index.html                     # Updated meta tags, FAQ schemas
+    ├── sitemap.xml                    # 2 new landing page URLs
     ├── robots.txt
-    ├── llms.txt
-    └── schema-hub.json               # Master entity hub schema
+    ├── llms.txt                       # Updated with 16 courses and new pages
+    └── schema-hub.json
 ```
 
 ## Key API Endpoints
@@ -104,7 +101,7 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - `GET /api/auth/google` - Google OAuth
 
 ## Important Technical Notes
-- GolfCourseLanding.jsx lives in /components/ (not /pages/) due to Babel metadata plugin stack overflow with complex imports from pages directory
-- React.lazy loading used for the course page route to avoid build issues
-- Hero images: user-provided photos used via HERO_IMAGE_OVERRIDE map; Cloudinary images NOT upscaled to avoid pixelation
-- Navbar has `variant="light"` prop: relative positioning, original logo colors, grey text, visible divider bar
+- GolfCourseLanding.jsx, GolfHolidaysPage.jsx, BookTeeTimesPage.jsx live in /components/ (not /pages/) due to Babel metadata plugin stack overflow
+- React.lazy loading used for all landing page routes
+- Hero images: user-provided photos via HERO_IMAGE_OVERRIDE map
+- Navbar has `variant="light"` prop for content/landing pages
