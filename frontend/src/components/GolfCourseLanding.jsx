@@ -36,8 +36,37 @@ export default function GolfCoursePage() {
   useEffect(() => {
     if (!course) return;
     const seo = SEO_CONTENT[course.id] || {};
-    document.title = seo.seoTitle || course.name + ' | Golf in Mallorca';
-    return () => { document.title = 'Golf in Mallorca'; };
+    const title = seo.seoTitle || course.name + ' | Golf in Mallorca';
+    const desc = seo.metaDesc || 'Book tee times at ' + course.name + ' in ' + course.location;
+    const url = 'https://golfinmallorca.com/golf-courses/' + course.id;
+    
+    document.title = title;
+    
+    const setMeta = (attr, name, content) => {
+      let el = document.querySelector('meta[' + attr + '="' + name + '"]');
+      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute('content', content);
+    };
+    setMeta('name', 'description', desc);
+    setMeta('property', 'og:title', title);
+    setMeta('property', 'og:description', desc);
+    setMeta('property', 'og:image', course.image);
+    setMeta('property', 'og:url', url);
+    setMeta('property', 'og:type', 'place');
+
+    let schema = document.getElementById('course-schema');
+    if (!schema) { schema = document.createElement('script'); schema.id = 'course-schema'; schema.type = 'application/ld+json'; document.head.appendChild(schema); }
+    schema.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'GolfCourse', name: course.name, description: course.description?.en || '', image: course.image, url: url, address: { '@type': 'PostalAddress', addressLocality: course.location, addressRegion: 'Illes Balears', addressCountry: 'ES' }, numberOfHoles: course.holes, priceRange: 'From EUR' + course.price_from, provider: { '@id': 'https://golfinmallorca.com/#organization' } });
+
+    let canonical = document.getElementById('course-canonical');
+    if (!canonical) { canonical = document.createElement('link'); canonical.id = 'course-canonical'; canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+    canonical.href = url;
+
+    return () => {
+      document.title = 'Golf in Mallorca - Book Tee Times & Discover the Island';
+      const s = document.getElementById('course-schema'); if (s) s.remove();
+      const c = document.getElementById('course-canonical'); if (c) c.remove();
+    };
   }, [course]);
 
   if (loading) {

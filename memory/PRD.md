@@ -1,55 +1,89 @@
 # Golfinmallorca.com - Product Requirements Document
 
 ## Original Problem Statement
-Build a comprehensive website for Golfinmallorca.com - a golf tourism platform in Mallorca. The site showcases golf courses, hotels, restaurants, beach clubs, and cafe bars.
+Build and refine the Golfinmallorca.com website - a full-featured golf travel portal for Mallorca (and Balearic Islands). The site should showcase golf courses, hotels, restaurants, beach clubs, and cafes/bars. Core goals: beautiful UI/UX, authentic images, comprehensive admin CMS, site-wide search, email system, and robust SEO/GEO targeting.
 
 ## Tech Stack
-- **Frontend:** React, Tailwind CSS, React Context API
-- **Backend:** FastAPI, MongoDB (Motor), Pydantic
+- **Frontend:** React, Tailwind CSS, Shadcn/UI
+- **Backend:** FastAPI, MongoDB
 - **Email:** Resend API
-- **Auth:** Emergent-managed Google Auth
+- **Auth:** Emergent-managed Google Auth (admin)
+- **Analytics:** PostHog
+- **SEO:** JSON-LD schemas, sitemap.xml, robots.txt, hreflang, OG tags
 
-## Completed Features ✅
+## Core Features (Completed)
+- [x] Landing page with Hero, About, Golf Courses, Hotels, Restaurants, Beach Clubs, Cafes/Bars sections
+- [x] Partner cards with Quick View modal and flip-card interaction
+- [x] Admin Dashboard with full CMS (CRUD for all partner types)
+- [x] Admin image uploader
+- [x] Site-wide floating search
+- [x] Newsletter subscription + email via Resend
+- [x] Contact form with email notifications
+- [x] Reviews carousel + "Write a review" modal
+- [x] Multi-language support (EN, DE, SE, FR, ES)
+- [x] SEO foundation: sitemap.xml, robots.txt, llms.txt, schema-hub.json
+- [x] Google Search Console verified
+- [x] **Individual Golf Course Pages** (16 courses with SEO-optimized detail pages)
+  - Dynamic routing: /golf-courses/:courseId
+  - Hero banner with course image, breadcrumb, name, location, holes/par, pricing
+  - Extended SEO descriptions, course details grid, features, best season info
+  - Booking CTA sidebar with pricing and external booking link
+  - Location card with Google Maps link
+  - Related courses section (3 recommended courses)
+  - Dynamic document title, meta description, OG tags, JSON-LD schema per course
+  - Canonical URL per course page
+  - All courses added to sitemap.xml
 
-### Core Features
-1. Partner Management System - Full CRUD with active/inactive toggle
-2. Quick View Modal - Eye icon on all partner cards
-3. Site-wide Search - Backend endpoint with category filtering
-4. Email System - Resend API for newsletters and contact forms
-5. Subscriber Management - Manual add, CSV import, bulk email
+## In Progress
+- [ ] Keyword & content strategy analysis (user provided 2 CSV files with 500+ keywords)
+- [ ] Integrating high-traffic keywords into existing site copy
 
-### UI/UX Refinements (March 11, 2026)
-- Hero section: Large white logo with drop shadow, better spacing
-- Navbar: Larger text (text-base), visible separator, removed Book Now button
-- Newsletter form: Grey input backgrounds
-- Review modal: Grey styling + fade-in/slide-up animation
-- Mobile responsive: Navigation dots visible, no horizontal overflow
-- Golf course cards: Proper image centering with object-center
-- Footer: Illes Balears Sostenibles logo, website link in Contact Info
+## Blocked
+- [ ] Google Business Profile reinstatement (user needs to change category)
+- [ ] Sitemap submission (pending production deployment)
+- [ ] Authentic venue photos (pending user assets)
+- [ ] External review links (pending user URLs)
 
-## Blocked Items ⏸️
-1. **Real Venue Photos** - Technical implementation complete, awaiting user's images
-2. **Full Email Functionality** - Domain verification required in Resend
+## Backlog / Future
+- [ ] Create remaining golf course pages (user mentioned having content for 30 courses)
+- [ ] Hero video replacement (P2)
+- [ ] Weather widget for Mallorca (P2)
+- [ ] Multi-language subdirectories /de/, /fr/ instead of ?lang= params (P2)
+- [ ] Webpack deprecation warnings cleanup (P3)
+- [ ] AdminDashboard.jsx refactoring into sub-components (P3)
 
-## Pending Items 🟡
-1. External review links (Google, Trustpilot, TripAdvisor URLs)
-
-## Future/Backlog 📋
-1. Hero Video implementation
-2. Weather Widget integration
-3. Webpack deprecation warnings cleanup
+## Architecture
+```
+/app/
+├── backend/
+│   └── server.py              # FastAPI with all API routes
+│   └── .env                   # MONGO_URL, RESEND_API_KEY, SENDER_EMAIL
+├── frontend/
+│   └── src/
+│       ├── components/
+│       │   ├── GolfCourseLanding.jsx  # Individual course detail page
+│       │   ├── GolfCourses.jsx        # Course listing with links to detail pages
+│       │   ├── Navbar.jsx, Footer.jsx, Hero.jsx, etc.
+│       │   └── AdminDashboard.jsx     # Full CMS
+│       ├── data/
+│       │   └── golfCourseSEO.js       # Extended SEO content for 16 courses
+│       ├── context/
+│       │   ├── LanguageContext.jsx
+│       │   └── DataContext.jsx
+│       └── App.js                     # Routes including /golf-courses/:courseId
+└── public/
+    ├── sitemap.xml                    # Updated with all course page URLs
+    ├── robots.txt
+    ├── llms.txt
+    └── schema-hub.json               # Master entity hub schema
+```
 
 ## Key API Endpoints
-- `GET /api/search?q={query}&category={category}`
-- `POST /api/newsletter/import`
-- `POST /api/newsletter/bulk-email`
-- `GET /api/all-partners`
-- `PUT /api/admin/partners/{partner_id}`
-
-## Database Schema
-- **golf_courses, hotels, restaurants, beach_clubs, cafe_bars:** Partner data with `is_active`
-- **display_settings:** `{category, limit}`
-- **newsletter_subscriptions:** `{name, email, country, subscribed_at, is_active}`
-
-## Last Updated
-March 11, 2026 - UI/UX refinements: logo, navbar, footer, hero spacing, card images
+- `GET /api/golf-courses` - List all golf courses
+- `GET /api/golf-courses/{course_id}` - Get individual course (NEW)
+- `POST /api/golf-courses` - Create course (admin)
+- `PUT /api/golf-courses/{course_id}` - Update course (admin)
+- `DELETE /api/golf-courses/{course_id}` - Delete course (admin)
+- `POST /api/newsletter/subscribe` - Newsletter signup
+- `POST /api/contact` - Contact form
+- `GET /api/auth/google` - Google OAuth
