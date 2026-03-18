@@ -14,7 +14,7 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
       {/* Front of Card */}
       <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
         {/* Image - Properly framed with center focus */}
-        <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+        <div className="aspect-[4/3] overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img
             src={course.image}
             alt={course.name}
