@@ -105,10 +105,18 @@ export default function GolfCoursePage() {
   );
 }
 
+function getHeroImage(imageUrl) {
+  if (imageUrl && imageUrl.includes('res.cloudinary.com') && imageUrl.includes('w_800')) {
+    return imageUrl.replace('w_800,h_600', 'w_1920,h_1080');
+  }
+  return imageUrl;
+}
+
 function CourseHeroSection({ course }) {
+  const heroImg = getHeroImage(course.image);
   return (
     <div className="relative h-[50vh] min-h-[400px]" data-testid="course-hero">
-      <img src={course.image} alt={course.name} className="w-full h-full object-cover" />
+      <img src={heroImg} alt={course.name} className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
       <Link to="/#courses" className="absolute top-24 left-6 md:left-12 inline-flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm hover:bg-white/25 transition-all" data-testid="back-to-courses">
         <ArrowLeft className="w-4 h-4" />All Courses
