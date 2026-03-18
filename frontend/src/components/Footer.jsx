@@ -1,12 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Instagram, Facebook } from 'lucide-react';
 
 export const Footer = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (id) => {
+    if (location.pathname !== '/') {
+      // Navigate to homepage first, then scroll
+      navigate('/#' + id);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

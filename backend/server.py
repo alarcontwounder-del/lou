@@ -5043,8 +5043,52 @@ async def search_partners(q: str = "", category: str = "all"):
     import random
     random.shuffle(other_results)
     
-    # Combine: Golf first, Hotels second, then mixed others
-    results = golf_results + hotel_results + other_results
+    # Static page results for landing pages
+    page_results = [
+        {
+            "id": "golf-holidays-mallorca",
+            "type": "page",
+            "name": "Golf Holidays in Mallorca",
+            "location": "Landing Page",
+            "image": None,
+            "description": {"en": "Custom golf holiday packages — stay and play deals, luxury resort packages, weekend breaks, group golf trips, and corporate golf events."},
+            "booking_url": "/golf-holidays-mallorca",
+            "price_from": None,
+            "offer_price": None,
+            "discount_percent": None,
+            "michelin_stars": None,
+            "category": "page",
+            "keywords": "golf holidays mallorca golf holiday packages stay and play golf weekend breaks group trips luxury golf vacation deals packages golf trip planner concierge"
+        },
+        {
+            "id": "book-tee-times",
+            "type": "page",
+            "name": "Book Tee Times in Mallorca",
+            "location": "Landing Page",
+            "image": None,
+            "description": {"en": "Book tee times at 16 golf courses in Mallorca with instant confirmation. Green fees from EUR47. Discount tee times, last-minute deals, and group bookings."},
+            "booking_url": "/book-tee-times",
+            "price_from": None,
+            "offer_price": None,
+            "discount_percent": None,
+            "michelin_stars": None,
+            "category": "page",
+            "keywords": "book tee times mallorca tee time booking reserve golf round discount green fees courses"
+        }
+    ]
+
+    # Check if pages match query
+    matching_pages = []
+    for page in page_results:
+        page_name = page["name"].lower()
+        page_keywords = page.get("keywords", "").lower()
+        page_desc = page["description"]["en"].lower()
+        if not query or query in page_name or query in page_keywords or query in page_desc:
+            result_copy = {k: v for k, v in page.items() if k != "keywords"}
+            matching_pages.append(result_copy)
+
+    # Combine: Pages first, Golf second, Hotels third, then mixed others
+    results = matching_pages + golf_results + hotel_results + other_results
     
     return {
         "results": results,

@@ -1,0 +1,89 @@
+{
+  "summary": "Complete testing of 4 user-reported bug fixes: Search panel now finds new landing pages, footer links navigate correctly, Book Tee Times has redesigned course cards with 'Book a Tee Time' buttons and thumbnails, and hero backgrounds use brand-charcoal (dark grey) instead of black. All 12 test scenarios passed.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "search_api_tests": {
+      "golf_holidays_search": "PASS - Search 'golf holidays' returns Golf Holidays page with 'page' type badge",
+      "book_tee_times_search": "PASS - Search 'book tee times' returns Book Tee Times page with 'page' type badge",
+      "packages_search": "PASS - Search 'packages' returns Golf Holidays page (matched by keywords)",
+      "page_result_structure": "PASS - Page results have correct fields: id, type, name, location, booking_url, category='page'"
+    },
+    "search_navigation_tests": {
+      "golf_holidays_click": "PASS - Clicking 'Golf Holidays in Mallorca' page result navigates to /golf-holidays-mallorca (internal navigation, not external tab)",
+      "book_tee_times_click": "PASS - Clicking 'Book Tee Times in Mallorca' page result navigates to /book-tee-times (internal navigation, not external tab)"
+    },
+    "footer_navigation_tests": {
+      "golf_holidays_link": "PASS - Footer 'Golf Holidays' link navigates to /golf-holidays-mallorca",
+      "book_tee_times_link": "PASS - Footer 'Book Tee Times' link navigates to /book-tee-times",
+      "home_navigation": "PASS - Footer 'Home' button navigates from landing pages back to homepage (/#hero)"
+    },
+    "landing_page_hero_colors": {
+      "book_tee_times_hero": "PASS - Uses bg-brand-charcoal (rgb(74, 74, 74)), NOT black",
+      "golf_holidays_hero": "PASS - Uses bg-brand-charcoal (rgb(74, 74, 74)), NOT black",
+      "book_tee_times_cta": "PASS - CTA section uses bg-brand-charcoal (rgb(74, 74, 74))",
+      "golf_holidays_cta": "PASS - CTA section uses bg-brand-charcoal (rgb(74, 74, 74))"
+    },
+    "book_tee_times_redesign": {
+      "course_cards_count": "PASS - 16 course cards displayed in price grid",
+      "thumbnails": "PASS - Each course card has a thumbnail image",
+      "book_buttons": "PASS - Each course card has 'Book a Tee Time' button",
+      "course_info": "PASS - Cards show course name, location, holes, par, and price"
+    }
+  },
+
+  "passed_tests": [
+    "Search 'golf holidays' returns Golf Holidays page result with 'page' badge",
+    "Search 'book tee times' returns Book Tee Times page result with 'page' badge",
+    "Search 'packages' returns Golf Holidays page (keyword match)",
+    "Clicking page search result navigates to internal page (not external tab)",
+    "Footer 'Golf Holidays' link navigates to /golf-holidays-mallorca",
+    "Footer 'Book Tee Times' link navigates to /book-tee-times",
+    "Footer 'Home' button navigates back to homepage from landing pages",
+    "/book-tee-times hero uses brand-charcoal (dark grey), not black",
+    "/golf-holidays-mallorca hero uses brand-charcoal (dark grey), not black",
+    "Book Tee Times page has 16 course cards with thumbnails",
+    "Each course card has 'Book a Tee Time' button",
+    "Course cards show name, location, holes, par, and price"
+  ],
+
+  "test_report_links": [
+    "/app/backend/tests/test_search_and_landing_pages.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [
+    "Search API (server.py ~5046-5091) correctly returns static page results with type='page' and booking_url as internal path",
+    "FloatingSearch.jsx correctly uses useNavigate for internal page navigation (type='page') vs window.open for external links",
+    "Footer.jsx correctly uses Link component for landing page links (/golf-holidays-mallorca, /book-tee-times)",
+    "BookTeeTimesPage.jsx uses bg-brand-charcoal (not bg-black or bg-stone-900) for hero and CTA sections",
+    "GolfHolidaysPage.jsx uses bg-brand-charcoal for hero and CTA sections",
+    "Book Tee Times page green fees section uses responsive grid with course thumbnail cards, not plain table"
+  ],
+
+  "updated_files": [],
+
+  "success_rate": {
+    "backend": "100% - 9/9 pytest tests passed",
+    "frontend": "100% - All 12 UI/integration tests passed"
+  },
+
+  "test_credentials": null,
+  "seed_data_creation": null,
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "Bug fixes verified: 1) Search API returns static page results for Golf Holidays and Book Tee Times landing pages - keywords include 'golf holidays', 'book tee times', 'packages'. 2) FloatingSearch uses navigate() for page type results (internal) vs window.open for external. 3) Footer has Link components for both landing pages. 4) Both landing pages use bg-brand-charcoal (#4A4A4A) for hero/CTA sections. 5) Book Tee Times has 16 course cards with thumbnails, info, and 'Book a Tee Time' buttons."
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
-import { Search, X, ChevronDown, Flag, Hotel, Utensils, Coffee, Palmtree, MapPin, ExternalLink, Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Search, X, ChevronDown, Flag, Hotel, Utensils, Coffee, Palmtree, MapPin, ExternalLink, Loader2, FileText } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import axios from 'axios';
 
@@ -12,6 +13,7 @@ const categoryIcons = {
   restaurant: Utensils,
   cafe_bar: Coffee,
   beach_club: Palmtree,
+  page: FileText,
 };
 
 const categoryLabels = {
@@ -55,6 +57,7 @@ const categoryColors = {
   restaurant: 'bg-stone-500 text-white',
   cafe_bar: 'bg-stone-600 text-white',
   beach_club: 'bg-stone-700 text-white',
+  page: 'bg-amber-600 text-white',
 };
 
 const searchPlaceholders = {
@@ -75,6 +78,7 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
   const searchRef = useRef(null);
   const debounceRef = useRef(null);
   const { language } = useLanguage();
+  const navigate = useNavigate();
 
   const labels = categoryLabels[language] || categoryLabels.en;
   const placeholder = searchPlaceholders[language] || searchPlaceholders.en;
@@ -159,7 +163,11 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
   };
 
   const handleResultClick = (result) => {
-    if (result.booking_url) {
+    if (result.type === 'page') {
+      // Internal page navigation
+      navigate(result.booking_url);
+      setIsExpanded(false);
+    } else if (result.booking_url) {
       window.open(result.booking_url, '_blank');
     }
   };
@@ -296,17 +304,24 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
                     </p>
                     {results.map((result) => {
                       const Icon = categoryIcons[result.type] || Search;
+                      const isPage = result.type === 'page';
                       return (
                         <div 
                           key={`${result.type}-${result.id}`}
                           onClick={() => handleResultClick(result)}
                           className="flex items-center gap-3 p-3 rounded-xl bg-stone-700/30 hover:bg-stone-700/60 cursor-pointer transition-colors group"
                         >
-                          <img 
-                            src={result.image} 
-                            alt={result.name}
-                            className="w-14 h-14 rounded-lg object-cover flex-shrink-0"
-                          />
+                          {isPage ? (
+                            <div className="w-14 h-14 rounded-lg bg-amber-600/20 flex items-center justify-center flex-shrink-0">
+                              <FileText className="w-6 h-6 text-amber-400" />
+                            </div>
+                          ) : (
+                            <img 
+                              src={result.image} 
+                              alt={result.name}
+                              className="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+                            />
+                          )}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                               <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[result.type] || 'bg-stone-100 text-stone-700'}`}>

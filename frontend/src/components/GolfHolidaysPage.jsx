@@ -64,7 +64,7 @@ export default function GolfHolidaysPage() {
       <Navbar onAdminClick={() => {}} isAuthenticated={false} isCheckingAuth={false} variant="light" />
 
       {/* Hero */}
-      <section className="bg-stone-900 text-white pt-8 pb-16" data-testid="holidays-hero">
+      <section className="bg-brand-charcoal text-white pt-8 pb-16" data-testid="holidays-hero">
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <nav className="flex items-center gap-2 text-stone-400 text-xs mb-6">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
@@ -82,7 +82,7 @@ export default function GolfHolidaysPage() {
               href="https://golfinmallorca.greenfee365.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-stone-900 px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
+              className="inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
               data-testid="holidays-book-btn"
             >
               Book Tee Times<ExternalLink className="w-4 h-4" />
@@ -181,14 +181,14 @@ export default function GolfHolidaysPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-stone-900 text-white py-16" data-testid="holidays-cta">
+      <section className="bg-brand-charcoal text-white py-16" data-testid="holidays-cta">
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
           <h2 className="font-heading text-2xl md:text-3xl mb-4">Ready to Plan Your Mallorca Golf Holiday?</h2>
           <p className="text-stone-300 mb-8">Tell us your dates, group size, and preferences. Our concierge team will design a personalised golf trip package within 24 hours.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/#contact"
-              className="inline-flex items-center gap-2 bg-white text-stone-900 px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
+              className="inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
               data-testid="holidays-contact-btn"
             >
               Get a Free Quote
