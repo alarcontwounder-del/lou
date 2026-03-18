@@ -81,7 +81,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('courses')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isLight ? 'text-stone-900 hover:text-brand-slate' : isScrolled ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isLight ? 'text-stone-600 hover:text-stone-900' : isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-courses"
           >
@@ -90,7 +90,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('hotels')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isLight ? 'text-stone-900 hover:text-brand-slate' : isScrolled ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isLight ? 'text-stone-600 hover:text-stone-900' : isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-hotels"
           >
@@ -99,7 +99,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('restaurants')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isLight ? 'text-stone-900 hover:text-brand-slate' : isScrolled ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isLight ? 'text-stone-600 hover:text-stone-900' : isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-restaurants"
           >
@@ -108,7 +108,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('cafes-bars')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-cafes-bars"
           >
@@ -117,7 +117,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('beach-clubs')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-beach-clubs"
           >
@@ -130,7 +130,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('reviews')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-reviews"
           >
@@ -139,7 +139,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('blog')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-blog"
           >
@@ -148,7 +148,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('contact')}
             className={`text-base font-medium transition-colors duration-300 drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-contact"
           >
