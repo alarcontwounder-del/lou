@@ -105,18 +105,43 @@ export default function GolfCoursePage() {
   );
 }
 
-function getHeroImage(imageUrl) {
-  if (imageUrl && imageUrl.includes('res.cloudinary.com') && imageUrl.includes('w_800')) {
-    return imageUrl.replace('w_800,h_600', 'w_1920,h_1080');
+// Per-course image position overrides for best framing
+const HERO_POSITION = {
+  'son-muntaner-golf': 'object-left',
+  'golf-santa-ponsa': 'object-center',
+  'golf-son-servera': 'object-bottom',
+  'capdepera-golf': 'object-right',
+};
+
+// Override hero images for courses with poor source photos
+const HERO_IMAGE_OVERRIDE = {
+  'golf-son-servera': 'https://images.unsplash.com/photo-1699564241478-8bcf8f274c1c?w=1920&h=1080&fit=crop&q=80',
+};
+
+// Per-course Cloudinary gravity overrides for images that crop poorly with g_auto
+const CLOUDINARY_GRAVITY = {
+  'golf-son-servera': 'g_south_east',
+  'capdepera-golf': 'g_east',
+  'son-muntaner-golf': 'g_west',
+};
+
+function getHeroImage(imageUrl, courseId) {
+  if (HERO_IMAGE_OVERRIDE[courseId]) return HERO_IMAGE_OVERRIDE[courseId];
+  if (imageUrl && imageUrl.includes('res.cloudinary.com')) {
+    const gravity = CLOUDINARY_GRAVITY[courseId] || 'g_auto';
+    return imageUrl
+      .replace('w_800,h_600', 'w_1920,h_1080')
+      .replace('c_fill', 'c_fill,' + gravity);
   }
   return imageUrl;
 }
 
 function CourseHeroSection({ course }) {
-  const heroImg = getHeroImage(course.image);
+  const heroImg = getHeroImage(course.image, course.id);
+  const posClass = HERO_POSITION[course.id] || 'object-center';
   return (
     <div className="relative h-[50vh] min-h-[400px]" data-testid="course-hero">
-      <img src={heroImg} alt={course.name} className="w-full h-full object-cover" />
+      <img src={heroImg} alt={course.name} className={'w-full h-full object-cover ' + posClass} />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
       <Link to="/#courses" className="absolute top-24 left-6 md:left-12 inline-flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm hover:bg-white/25 transition-all" data-testid="back-to-courses">
         <ArrowLeft className="w-4 h-4" />All Courses
