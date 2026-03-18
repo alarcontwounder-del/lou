@@ -106,43 +106,26 @@ export default function GolfCoursePage() {
 }
 
 // Per-course image position overrides for best framing
-const HERO_POSITION = {
-  'son-muntaner-golf': 'object-left',
-  'golf-santa-ponsa': 'object-center',
-  'golf-son-servera': 'object-bottom',
-  'capdepera-golf': 'object-right',
-};
+const HERO_POSITION = {};
 
-// Override hero images for courses with poor source photos
+// Override hero images with real venue photos provided by the owner
 const HERO_IMAGE_OVERRIDE = {
-  'golf-son-servera': 'https://images.unsplash.com/photo-1699564241478-8bcf8f274c1c?w=1920&h=720&fit=crop&q=80',
-  'golf-son-gual': 'https://images.unsplash.com/photo-1743625749446-f16eefdb1a07?w=1920&h=720&fit=crop&q=80',
-};
-
-// Per-course Cloudinary gravity overrides for images that crop poorly with g_auto
-const CLOUDINARY_GRAVITY = {
-  'golf-son-servera': 'g_south_east',
-  'capdepera-golf': 'g_east',
-  'son-muntaner-golf': 'g_west',
+  'golf-alcanada': 'https://customer-assets.emergentagent.com/job_d2328a9c-a7a3-423d-be37-2d406c49ef41/artifacts/jy0gy9e4_alcanada0.jpg',
+  'golf-son-gual': 'https://customer-assets.emergentagent.com/job_d2328a9c-a7a3-423d-be37-2d406c49ef41/artifacts/6phgn5ow_songual04%20copia.jpg',
+  'son-vida-golf': 'https://customer-assets.emergentagent.com/job_d2328a9c-a7a3-423d-be37-2d406c49ef41/artifacts/3jm58rib_hole-9-with-clubhouse.jpg',
 };
 
 function getHeroImage(imageUrl, courseId) {
   if (HERO_IMAGE_OVERRIDE[courseId]) return HERO_IMAGE_OVERRIDE[courseId];
-  if (imageUrl && imageUrl.includes('res.cloudinary.com')) {
-    const gravity = CLOUDINARY_GRAVITY[courseId] || 'g_auto';
-    return imageUrl
-      .replace('w_800,h_600', 'w_1920,h_720')
-      .replace('c_fill', 'c_fill,' + gravity);
-  }
+  // Do NOT upscale Cloudinary images — use original to avoid pixelation
   return imageUrl;
 }
 
 function CourseHeroSection({ course }) {
   const heroImg = getHeroImage(course.image, course.id);
-  const posClass = HERO_POSITION[course.id] || 'object-center';
   return (
     <div className="relative h-[35vh] min-h-[280px] max-h-[420px]" data-testid="course-hero">
-      <img src={heroImg} alt={course.name} className={'w-full h-full object-cover ' + posClass} />
+      <img src={heroImg} alt={course.name} className="w-full h-full object-cover object-center" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
       <Link to="/#courses" className="absolute top-20 left-6 md:left-12 inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs hover:bg-white/25 transition-all" data-testid="back-to-courses">
         <ArrowLeft className="w-4 h-4" />All Courses
