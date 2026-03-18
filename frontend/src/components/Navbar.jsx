@@ -125,7 +125,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </button>
           
           {/* Separator - more visible */}
-          <span className={`hidden lg:block w-0.5 h-5 rounded-full ${isScrolled ? 'bg-stone-400' : 'bg-white/70'}`}></span>
+          <span className={`hidden lg:block w-0.5 h-5 rounded-full ${isScrolled || isLight ? 'bg-stone-400' : 'bg-white/70'}`}></span>
           
           <button
             onClick={() => scrollToSection('reviews')}

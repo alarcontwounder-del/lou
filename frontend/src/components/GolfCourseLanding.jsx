@@ -148,11 +148,11 @@ function CourseHeroSection({ course }) {
 }
 
 function AboutSection({ name, longDesc, shortDesc }) {
+  const description = longDesc || shortDesc;
   return (
     <section data-testid="course-about">
       <h2 className="font-heading text-2xl md:text-3xl text-stone-900 mb-4">About {name}</h2>
-      <p className="text-stone-600 text-lg leading-relaxed mb-4">{longDesc || shortDesc}</p>
-      {longDesc && longDesc !== shortDesc && <p className="text-stone-500 leading-relaxed">{shortDesc}</p>}
+      <p className="text-stone-600 text-base leading-relaxed">{description}</p>
     </section>
   );
 }
@@ -228,7 +228,7 @@ function SidebarSection({ course, seo }) {
             <p className="text-xs text-stone-500 mt-1">per person</p>
           </div>
         )}
-        <a href={course.booking_url} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-stone-800 transition-all shadow-md" data-testid="book-tee-time-btn">
+        <a href={course.booking_url} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-2 bg-stone-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-stone-600 transition-all shadow-md" data-testid="book-tee-time-btn">
           Book a Tee Time now!<ExternalLink className="w-3.5 h-3.5" />
         </a>
         {course.phone && (
