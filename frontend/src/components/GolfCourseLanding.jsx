@@ -124,9 +124,9 @@ function getHeroImage(imageUrl, courseId) {
 function CourseHeroSection({ course }) {
   const heroImg = getHeroImage(course.image, course.id);
   return (
-    <div className="relative h-[35vh] min-h-[280px] max-h-[420px]" data-testid="course-hero">
-      <img src={heroImg} alt={course.name} className="w-full h-full object-cover object-center" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+    <div className="relative w-full bg-stone-900" data-testid="course-hero">
+      <img src={heroImg} alt={course.name} className="w-full h-auto block" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
       <Link to="/#courses" className="absolute top-20 left-6 md:left-12 inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs hover:bg-white/25 transition-all" data-testid="back-to-courses">
         <ArrowLeft className="w-4 h-4" />All Courses
       </Link>
