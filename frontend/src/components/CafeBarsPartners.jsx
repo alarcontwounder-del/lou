@@ -58,6 +58,14 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
               </span>
             </div>
           )}
+
+          {/* Nearest Golf Course */}
+          {place.nearest_golf && (
+            <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2" data-testid={`cafe-nearest-golf-${place.id}`}>
+              <Navigation className="w-3 h-3" />
+              <span>{place.distance_km}km to {place.nearest_golf}</span>
+            </div>
+          )}
           
           <div 
             className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
@@ -147,6 +155,14 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
             <div className="flex items-center gap-2 text-stone-300 text-sm">
               <Clock className="w-4 h-4" />
               <span>{place.hours}</span>
+            </div>
+          )}
+
+          {/* Nearest Golf */}
+          {place.nearest_golf && (
+            <div className="flex items-center gap-2 text-white/80 text-sm mt-3">
+              <Navigation className="w-4 h-4" />
+              <span>{place.distance_km}km from {place.nearest_golf}</span>
             </div>
           )}
         </div>

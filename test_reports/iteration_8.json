@@ -1,0 +1,102 @@
+{
+  "summary": "Complete frontend testing of 'nearest golf course + distance' feature for Hotels, Restaurants, Cafes & Bars, and Beach Clubs. All 12 test scenarios passed successfully. The distance data is correctly displayed on card fronts with 'Xkm to [Course Name]' format, on card backs with 'Xkm from [Course Name]' format, and in QuickView modals as pill badges.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "hotels_section": {
+      "card_count": "38 hotels (100% with badges)",
+      "card_front_format": "PASS - 'Xkm to [Golf Course Name]' with Navigation icon",
+      "card_back_format": "PASS - 'Xkm from [Golf Course Name]'",
+      "example_badges": ["2km to Real Golf De Bendinat", "22km to Son Vida Golf", "6km to Son Antem Resort"]
+    },
+    "restaurants_section": {
+      "card_count": "49 restaurants (100% with badges)",
+      "card_front_format": "PASS - 'Xkm to [Golf Course Name]' with Navigation icon",
+      "card_back_format": "PASS - 'Xkm from [Golf Course Name]'",
+      "example_badges": ["3km to Capdepera Golf", "6km to Son Vida Golf", "18km to Golf Son Gual"]
+    },
+    "cafes_bars_section": {
+      "card_count": "36 cafes/bars (100% with badges)",
+      "card_front_format": "PASS - 'Xkm to [Golf Course Name]' with Navigation icon",
+      "card_back_format": "PASS - 'Xkm from [Golf Course Name]'",
+      "example_badges": ["5km to Son Vida Golf", "6km to Son Vida Golf", "15km to Son Vida Golf"]
+    },
+    "beach_clubs_section": {
+      "card_count": "12 beach clubs (11 with badges - existing feature)",
+      "card_front_format": "PASS - Existing badges display correctly",
+      "card_back_format": "PASS - 'Xkm from [Golf Course Name]'",
+      "example_badges": ["3.2km to Real Golf de Bendinat", "5.8km to T Golf Calvià", "3.5km to Real Golf de Bendinat"]
+    },
+    "quickview_modals": {
+      "hotel_modal": "PASS - Shows '2km to Real Golf De Bendinat' as pill badge",
+      "restaurant_modal": "PASS - Shows '3km to Capdepera Golf' as pill badge",
+      "cafe_bar_modal": "PASS - Shows '5km to Son Vida Golf' as pill badge",
+      "beach_club_modal": "PASS - Shows '3.2km to Real Golf de Bendinat' as pill badge"
+    },
+    "golf_courses_section": {
+      "no_distance_badges": "PASS - Golf course cards correctly do NOT show distance badges"
+    }
+  },
+
+  "passed_tests": [
+    "Hotel cards show 'Xkm to [Golf Course Name]' with Navigation icon on card front",
+    "Restaurant cards show 'Xkm to [Golf Course Name]' with Navigation icon on card front",
+    "Cafe/Bar cards show 'Xkm to [Golf Course Name]' with Navigation icon on card front",
+    "Beach Club cards show existing distance badges correctly",
+    "Hotel card back (flip side) shows 'Xkm from [Golf Course Name]'",
+    "Restaurant card back (flip side) shows 'Xkm from [Golf Course Name]'",
+    "Cafe/Bar card back (flip side) shows 'Xkm from [Golf Course Name]'",
+    "QuickView modal for hotels shows distance badge",
+    "QuickView modal for restaurants shows distance badge",
+    "QuickView modal for cafes/bars shows distance badge",
+    "QuickView modal for beach clubs shows distance badge",
+    "Golf course cards correctly display without distance badges"
+  ],
+
+  "data_integrity": {
+    "hotels": "38 total, 38 with nearest_golf data (100%)",
+    "restaurants": "49 total, 49 with nearest_golf data (100%)",
+    "cafes_bars": "36 total, 36 with nearest_golf data (100%)",
+    "beach_clubs": "12 total, 11+ with nearest_golf data (pre-existing)"
+  },
+
+  "test_report_links": [
+    "/app/test_reports/iteration_8.json"
+  ],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [
+    "HotelPartners.jsx correctly implements nearest_golf display on both card front and card back",
+    "RestaurantPartners.jsx correctly implements nearest_golf display on both card front and card back",
+    "CafeBarsPartners.jsx correctly implements nearest_golf display on both card front and card back",
+    "QuickViewModal.jsx correctly shows nearest_golf badges for hotel, restaurant, cafe_bar, and beach_club types",
+    "BeachClubPartners.jsx maintains existing nearest_golf functionality",
+    "All data-testid attributes are properly implemented for testing (hotel-nearest-golf-{id}, restaurant-nearest-golf-{id}, cafe-nearest-golf-{id})",
+    "Navigation icon from lucide-react is used consistently across all components"
+  ],
+
+  "updated_files": [],
+
+  "success_rate": {
+    "backend": "N/A - Frontend only test",
+    "frontend": "100% - All 12 UI tests passed"
+  },
+
+  "test_credentials": null,
+  "seed_data_creation": null,
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "Nearest golf course + distance feature fully implemented and tested across Hotels (38), Restaurants (49), Cafes/Bars (36), and Beach Clubs (12). All card fronts show 'Xkm to [Course Name]', all card backs show 'Xkm from [Course Name]', and all QuickView modals display distance badges. Golf course cards correctly do NOT show distance badges. MongoDB migration script has populated all venue documents with nearest_golf and distance_km fields."
+}

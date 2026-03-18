@@ -57,6 +57,14 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => (
               )}
             </div>
           )}
+
+          {/* Nearest Golf Course */}
+          {hotel.nearest_golf && (
+            <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2" data-testid={`hotel-nearest-golf-${hotel.id}`}>
+              <Navigation className="w-3 h-3" />
+              <span>{hotel.distance_km}km to {hotel.nearest_golf}</span>
+            </div>
+          )}
           
           <div 
             className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
@@ -151,6 +159,14 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => (
               {hotel.deal[language] || hotel.deal.en}
             </p>
           </div>
+
+          {/* Nearest Golf */}
+          {hotel.nearest_golf && (
+            <div className="flex items-center gap-2 text-white/80 text-sm mt-3">
+              <Navigation className="w-4 h-4" />
+              <span>{hotel.distance_km}km from {hotel.nearest_golf}</span>
+            </div>
+          )}
         </div>
 
         {/* CTA Button */}

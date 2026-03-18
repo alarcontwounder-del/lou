@@ -123,6 +123,14 @@ export const QuickViewModal = ({ isOpen, onClose, item, type, language, t }) => 
                   )}
                 </div>
               )}
+              {item.nearest_golf && (
+                <div className="flex items-center gap-2 mb-4" data-testid="modal-hotel-nearest-golf">
+                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
+                    <Navigation className="w-3.5 h-3.5" />
+                    {item.distance_km}km to {item.nearest_golf}
+                  </span>
+                </div>
+              )}
               {item.offer_price && (
                 <div className="flex items-baseline gap-3 mb-4">
                   <span className="text-xs uppercase tracking-wider text-stone-400">From</span>
@@ -149,6 +157,14 @@ export const QuickViewModal = ({ isOpen, onClose, item, type, language, t }) => 
                 <Utensils className="w-4 h-4" />
                 <span className="text-sm">Mediterranean Fine Dining</span>
               </div>
+              {item.nearest_golf && (
+                <div className="flex items-center gap-2 mb-4" data-testid="modal-restaurant-nearest-golf">
+                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
+                    <Navigation className="w-3.5 h-3.5" />
+                    {item.distance_km}km to {item.nearest_golf}
+                  </span>
+                </div>
+              )}
               {item.offer_price && (
                 <div className="flex items-baseline gap-3 mb-4">
                   <span className="text-xs uppercase tracking-wider text-stone-400">From</span>
@@ -189,6 +205,14 @@ export const QuickViewModal = ({ isOpen, onClose, item, type, language, t }) => 
                   </span>
                 )}
               </div>
+              {item.nearest_golf && (
+                <div className="flex items-center gap-2 mb-4" data-testid="modal-cafe-nearest-golf">
+                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
+                    <Navigation className="w-3.5 h-3.5" />
+                    {item.distance_km}km to {item.nearest_golf}
+                  </span>
+                </div>
+              )}
               {item.hours && (
                 <div className="flex items-center gap-2 text-stone-600 mb-4">
                   <Clock className="w-4 h-4" />
