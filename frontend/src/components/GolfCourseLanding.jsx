@@ -85,7 +85,7 @@ export default function GolfCoursePage() {
 
   return (
     <div className="min-h-screen bg-brand-cream" data-testid="golf-course-page">
-      <Navbar onAdminClick={() => {}} isAuthenticated={false} isCheckingAuth={false} />
+      <Navbar onAdminClick={() => {}} isAuthenticated={false} isCheckingAuth={false} variant="light" />
       <CourseHeroSection course={course} />
       <main className="max-w-6xl mx-auto px-6 md:px-12 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -124,7 +124,7 @@ function getHeroImage(imageUrl, courseId) {
 function CourseHeroSection({ course }) {
   const heroImg = getHeroImage(course.image, course.id);
   return (
-    <div className="bg-brand-cream pt-20 pb-6" data-testid="course-hero">
+    <div className="bg-brand-cream pt-6 pb-6" data-testid="course-hero">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         <nav className="flex items-center gap-2 text-stone-400 text-xs mb-4" data-testid="breadcrumb">
           <Link to="/" className="hover:text-stone-700 transition-colors">Home</Link>
