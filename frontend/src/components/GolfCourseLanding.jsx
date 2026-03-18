@@ -5,6 +5,7 @@ import { useData } from '../context/DataContext';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { Newsletter } from '../components/Newsletter';
+import { CourseCard } from '../components/GolfCourses';
 import SEO_CONTENT from '../data/golfCourseSEO';
 import { Thermometer, MapPin, Flag, Trophy, ChevronRight, ExternalLink, Navigation, Star, Sun, Clock, Users } from 'lucide-react';
 import axios from 'axios';
@@ -14,7 +15,7 @@ const API = process.env.REACT_APP_BACKEND_URL;
 export default function GolfCoursePage() {
   const { courseId } = useParams();
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const { golfCourses } = useData();
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -97,7 +98,7 @@ export default function GolfCoursePage() {
           </div>
           <SidebarSection course={course} seo={seo} />
         </div>
-        <RelatedSection courses={related} />
+        <RelatedSection courses={related} language={language} t={t} />
       </main>
       <Newsletter />
       <Footer />
@@ -255,28 +256,14 @@ function SidebarSection({ course, seo }) {
   );
 }
 
-function RelatedSection({ courses }) {
+function RelatedSection({ courses, language, t }) {
   if (!courses || courses.length === 0) return null;
   return (
     <section className="mt-16" data-testid="related-courses">
       <h2 className="font-heading text-2xl md:text-3xl text-stone-900 mb-8">More Golf Courses in Mallorca</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {courses.map(rc => (
-          <Link key={rc.id} to={'/golf-courses/' + rc.id} className="group bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-md transition-all" data-testid={'related-course-' + rc.id}>
-            <div className="h-44 overflow-hidden">
-              <img src={rc.image} alt={rc.name} loading="lazy" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="p-4">
-              <p className="text-xs text-stone-400 flex items-center gap-1 mb-1"><MapPin className="w-3 h-3" />{rc.location}</p>
-              <h3 className="font-heading text-lg text-stone-900 group-hover:text-stone-700 transition-colors">{rc.name}</h3>
-              <div className="flex items-center gap-3 mt-2 text-sm text-stone-500">
-                <span>{rc.holes} Holes</span>
-                <span>|</span>
-                <span>Par {rc.par}</span>
-                {rc.price_from && <><span>|</span><span>From &euro;{rc.price_from}</span></>}
-              </div>
-            </div>
-          </Link>
+          <CourseCard key={rc.id} course={rc} language={language} t={t} />
         ))}
       </div>
     </section>

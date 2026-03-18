@@ -5,7 +5,7 @@ import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 
-const CourseCard = ({ course, language, t, onQuickView }) => (
+export const CourseCard = ({ course, language, t, onQuickView }) => (
   <div
     className="flip-card"
     data-testid={`course-card-${course.id}`}
@@ -28,17 +28,19 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
             </div>
           )}
           {/* Quick View Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView(course);
-            }}
-            className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
-            title="Quick View"
-            data-testid={`course-quick-view-${course.id}`}
-          >
-            <Eye className="w-4 h-4" />
-          </button>
+          {onQuickView && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickView(course);
+              }}
+              className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 hover:bg-white transition-all shadow-sm"
+              title="Quick View"
+              data-testid={`course-quick-view-${course.id}`}
+            >
+              <Eye className="w-4 h-4" />
+            </button>
+          )}
         </div>
 
         {/* Content */}
@@ -76,16 +78,18 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
 
           {/* Quick View hint for mobile */}
           <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView(course);
-            }}
-            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
-          >
-            <Eye className="w-3 h-3" />
-            View Details
-          </button>
+          {onQuickView && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickView(course);
+              }}
+              className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
+            >
+              <Eye className="w-3 h-3" />
+              View Details
+            </button>
+          )}
         </div>
       </div>
 
