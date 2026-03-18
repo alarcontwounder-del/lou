@@ -115,7 +115,8 @@ const HERO_POSITION = {
 
 // Override hero images for courses with poor source photos
 const HERO_IMAGE_OVERRIDE = {
-  'golf-son-servera': 'https://images.unsplash.com/photo-1699564241478-8bcf8f274c1c?w=1920&h=1080&fit=crop&q=80',
+  'golf-son-servera': 'https://images.unsplash.com/photo-1699564241478-8bcf8f274c1c?w=1920&h=720&fit=crop&q=80',
+  'golf-son-gual': 'https://images.unsplash.com/photo-1743625749446-f16eefdb1a07?w=1920&h=720&fit=crop&q=80',
 };
 
 // Per-course Cloudinary gravity overrides for images that crop poorly with g_auto
@@ -130,7 +131,7 @@ function getHeroImage(imageUrl, courseId) {
   if (imageUrl && imageUrl.includes('res.cloudinary.com')) {
     const gravity = CLOUDINARY_GRAVITY[courseId] || 'g_auto';
     return imageUrl
-      .replace('w_800,h_600', 'w_1920,h_1080')
+      .replace('w_800,h_600', 'w_1920,h_720')
       .replace('c_fill', 'c_fill,' + gravity);
   }
   return imageUrl;
@@ -140,23 +141,23 @@ function CourseHeroSection({ course }) {
   const heroImg = getHeroImage(course.image, course.id);
   const posClass = HERO_POSITION[course.id] || 'object-center';
   return (
-    <div className="relative h-[50vh] min-h-[400px]" data-testid="course-hero">
+    <div className="relative h-[35vh] min-h-[280px] max-h-[420px]" data-testid="course-hero">
       <img src={heroImg} alt={course.name} className={'w-full h-full object-cover ' + posClass} />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-      <Link to="/#courses" className="absolute top-24 left-6 md:left-12 inline-flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm hover:bg-white/25 transition-all" data-testid="back-to-courses">
+      <Link to="/#courses" className="absolute top-20 left-6 md:left-12 inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs hover:bg-white/25 transition-all" data-testid="back-to-courses">
         <ArrowLeft className="w-4 h-4" />All Courses
       </Link>
-      <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-8">
+      <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-6">
         <div className="max-w-6xl mx-auto">
-          <nav className="flex items-center gap-2 text-white/70 text-sm mb-3" data-testid="breadcrumb">
+          <nav className="flex items-center gap-2 text-white/70 text-xs mb-2" data-testid="breadcrumb">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <Link to="/#courses" className="hover:text-white transition-colors">Golf Courses</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-white">{course.name}</span>
           </nav>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-white mb-3" data-testid="course-name">{course.name}</h1>
-          <div className="flex flex-wrap items-center gap-4 text-white/90">
+          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-2" data-testid="course-name">{course.name}</h1>
+          <div className="flex flex-wrap items-center gap-3 text-white/90 text-sm">
             <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" />{course.location}</span>
             <span className="flex items-center gap-1.5"><Flag className="w-4 h-4" />{course.holes} Holes | Par {course.par}</span>
             {course.price_from && <span className="flex items-center gap-1.5"><Trophy className="w-4 h-4" />From &euro;{course.price_from}</span>}

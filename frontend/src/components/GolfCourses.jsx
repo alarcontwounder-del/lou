@@ -165,7 +165,7 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
         <div className="flex gap-2 mt-5">
           <Link
             to={`/golf-courses/${course.id}`}
-            className="inline-flex items-center justify-center gap-2 bg-white/20 text-white px-4 py-2.5 rounded-full text-sm font-medium hover:bg-white/30 transition-all border border-white/30"
+            className="inline-flex items-center justify-center gap-1 bg-white/20 text-white px-3 py-1.5 rounded-full text-xs font-medium hover:bg-white/30 transition-all border border-white/30"
             data-testid={`course-details-${course.id}`}
           >
             View Details
@@ -174,11 +174,11 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
             href={course.booking_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-white text-stone-800 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-white/90 transition-all"
+            className="inline-flex items-center justify-center gap-1 bg-white text-stone-800 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-white/90 transition-all"
             data-testid={`course-book-${course.id}`}
           >
             {t('courses.bookNow')}
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3 h-3" />
           </a>
         </div>
       </div>
