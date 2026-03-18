@@ -8,25 +8,25 @@ export const translations = {
       book: "Book Now"
     },
     hero: {
-      subtitle: "Exclusive Golf Experiences",
-      title: "Discover Mallorca's Finest Golf",
-      description: "Your gateway to premium golf courses, luxury accommodations, and unforgettable Mediterranean experiences.",
+      subtitle: "Mallorca's Only Exclusive Golf Operator Since 2003",
+      title: "Play the Best Golf Courses in Mallorca",
+      description: "Book tee times, golf holiday packages, and luxury stay & play deals at 16 premium courses. Your expert golf concierge on the island.",
       bookTeeTime: "Book a tee time now",
       cta: "Start Your Journey",
       ctaSecondary: "View golf courses in Mallorca"
     },
     about: {
-      subtitle: "About Us",
-      title: "Your Premier Golf Concierge in Mallorca",
-      description: "The leading golf agency in Mallorca since 2003. As the only exclusive operator based on the island, we specialize in all types of golf services connecting discerning golfers with Mallorca's most prestigious courses.",
-      point1: "Curated selection of championship courses",
-      point2: "Exclusive hotel & restaurant partnerships",
-      point3: "Personalized service in your language"
+      subtitle: "Your Golf Concierge",
+      title: "The Leading Golf Agency in Mallorca",
+      description: "Since 2003, we are the only exclusive golf operator based on the island. From booking tee times and arranging golf holiday packages to recommending luxury resorts and fine dining, we handle every detail of your Mallorca golf trip.",
+      point1: "16 championship golf courses across Mallorca & the Balearic Islands",
+      point2: "Luxury golf hotel packages & stay and play deals",
+      point3: "Personalized golf concierge service in your language"
     },
     courses: {
-      subtitle: "Golf Courses",
-      title: "World-Class Courses Await",
-      description: "Book tee times at 16 premium golf courses across Mallorca, Ibiza & Menorca with instant confirmation.",
+      subtitle: "Golf Courses in Mallorca",
+      title: "Book Tee Times at 16 Premium Courses",
+      description: "From championship layouts to scenic coastal courses, explore the best golf courses in Mallorca, Ibiza & Menorca with instant tee time confirmation.",
       holes: "Holes",
       par: "Par",
       from: "From",
@@ -43,30 +43,30 @@ export const translations = {
       bookHotel: "Book Now"
     },
     hotels: {
-      subtitle: "Hotel Partners",
-      title: "Luxury Accommodations",
-      description: "Stay at Mallorca's finest hotels with exclusive golf packages and special rates for our clients."
+      subtitle: "Golf Resorts & Hotels",
+      title: "Luxury Golf Hotels in Mallorca",
+      description: "Stay and play at Mallorca's finest golf resorts and luxury hotels. Exclusive golf holiday packages with special rates for our clients."
     },
     restaurants: {
       subtitle: "Restaurants & Bars",
-      title: "Fine Dining Experiences",
-      description: "Discover exceptional Mediterranean cuisine at our partner restaurants with exclusive offers.",
+      title: "Fine Dining After Your Round",
+      description: "Discover exceptional Mediterranean cuisine at our partner restaurants, from Michelin-starred dining to authentic Mallorcan cuisine.",
       reserve: "Reserve Table"
     },
     beachClubs: {
       subtitle: "Relax After Golf",
-      title: "Premium Beach Clubs",
-      description: "Unwind after your round at Mallorca's most exclusive beach clubs with special golfer packages."
+      title: "Mallorca's Best Beach Clubs",
+      description: "Unwind after your round at Mallorca's most exclusive beach clubs with pools, sea views, and special golfer packages."
     },
     cafeBars: {
-      subtitle: "Coffee, Cocktails & Brunch",
-      title: "Bars, Cafés & Brunch",
-      description: "From the perfect morning espresso to sunset cocktails, discover Mallorca's best spots for coffee lovers and social gatherings."
+      subtitle: "The 19th Hole",
+      title: "Bars, Cafés & Brunch Spots",
+      description: "From the perfect morning espresso to sunset cocktails, discover the best cafés and bars near Mallorca's golf courses."
     },
     contact: {
-      subtitle: "Get in Touch",
-      title: "Plan Your Golf Getaway",
-      description: "Fill out the form below and our team will contact you within 24 hours to craft your perfect Mallorca golf experience.",
+      subtitle: "Plan Your Golf Trip",
+      title: "Book Your Mallorca Golf Holiday",
+      description: "Tell us about your golf trip and our concierge team will craft a personalised package — tee times, hotels, transfers, and dining — within 24 hours.",
       name: "Your Name",
       email: "Email Address",
       phone: "Phone Number",
@@ -84,16 +84,16 @@ export const translations = {
       }
     },
     footer: {
-      tagline: "The leading golf agency in Mallorca since 2003",
+      tagline: "The leading golf agency in Mallorca since 2003. Book tee times, golf holidays & packages.",
       quickLinks: "Quick Links",
       contactInfo: "Contact Info",
       followUs: "Follow Us",
       rights: "All rights reserved."
     },
     blog: {
-      subtitle: "Golf Blog",
-      title: "Tips & Insights",
-      description: "Expert advice, course guides, and insider tips for your Mallorca golf experience.",
+      subtitle: "Mallorca Golf Guide",
+      title: "Tips, Course Guides & Travel Advice",
+      description: "Expert golf travel tips, detailed course guides, and insider advice for planning your perfect Mallorca golf holiday.",
       readMore: "Read More",
       categories: {
         travelTips: "Travel Tips",

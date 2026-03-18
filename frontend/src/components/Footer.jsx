@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 
 export const Footer = () => {
   const { t } = useLanguage();
@@ -107,6 +108,16 @@ export const Footer = () => {
                 >
                   {t('hero.bookTeeTime')}
                 </a>
+              </li>
+              <li>
+                <Link to="/golf-holidays-mallorca" className="text-white/70 hover:text-white transition-colors">
+                  Golf Holidays
+                </Link>
+              </li>
+              <li>
+                <Link to="/book-tee-times" className="text-white/70 hover:text-white transition-colors">
+                  Book Tee Times
+                </Link>
               </li>
             </ul>
           </div>

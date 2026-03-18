@@ -64,7 +64,7 @@ export default function GolfCoursePage() {
     canonical.href = url;
 
     return () => {
-      document.title = 'Golf in Mallorca - Book Tee Times & Discover the Island';
+      document.title = 'Golf in Mallorca | Book Tee Times, Golf Holidays & Packages';
       const s = document.getElementById('course-schema'); if (s) s.remove();
       const c = document.getElementById('course-canonical'); if (c) c.remove();
     };
