@@ -228,11 +228,11 @@ function SidebarSection({ course, seo }) {
             <p className="text-xs text-stone-500 mt-1">per person</p>
           </div>
         )}
-        <a href={course.booking_url} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-stone-800 transition-all shadow-md" data-testid="book-tee-time-btn">
-          Book Tee Time<ExternalLink className="w-4 h-4" />
+        <a href={course.booking_url} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-stone-800 transition-all shadow-md" data-testid="book-tee-time-btn">
+          Book a Tee Time now!<ExternalLink className="w-3.5 h-3.5" />
         </a>
         {course.phone && (
-          <a href={'tel:' + course.phone} className="w-full mt-3 inline-flex items-center justify-center gap-2 bg-white text-stone-700 border border-stone-200 px-6 py-3 rounded-full font-medium hover:bg-stone-50 transition-all text-sm">
+          <a href={'tel:' + course.phone} className="w-full mt-3 inline-flex items-center justify-center gap-2 bg-white text-stone-700 border border-stone-200 px-5 py-2 rounded-full font-medium hover:bg-stone-50 transition-all text-xs">
             Call Pro Shop: {course.phone}
           </a>
         )}

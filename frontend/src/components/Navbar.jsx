@@ -55,7 +55,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
     <nav
       data-testid="navbar"
       className={`${isLight ? 'relative' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        isLight ? 'bg-brand-cream border-b border-stone-200' :
+        isLight ? 'bg-brand-cream' :
         isVisible ? 'translate-y-0 opacity-100 bg-transparent' : '-translate-y-full opacity-0 pointer-events-none bg-transparent'
       } py-2`}
     >
@@ -71,7 +71,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className={`${isLight ? 'h-14 sm:h-16' : 'h-32 sm:h-36 md:h-44'} w-auto object-contain transition-all duration-300 ${isLight ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}
+            className={`${isLight ? 'h-20 sm:h-24' : 'h-32 sm:h-36 md:h-44'} w-auto object-contain transition-all duration-300 ${isLight ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}
             style={isLight ? {} : { filter: 'brightness(0) invert(1) drop-shadow(0 2px 3px rgba(0,0,0,0.4))' }}
           />
         </a>
@@ -81,7 +81,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('courses')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isLight ? 'text-stone-700 hover:text-brand-slate' : isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isLight ? 'text-stone-900 hover:text-brand-slate' : isScrolled ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-courses"
           >
@@ -90,7 +90,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('hotels')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isLight ? 'text-stone-700 hover:text-brand-slate' : isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isLight ? 'text-stone-900 hover:text-brand-slate' : isScrolled ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-hotels"
           >
@@ -99,7 +99,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('restaurants')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isLight ? 'text-stone-700 hover:text-brand-slate' : isScrolled ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isLight ? 'text-stone-900 hover:text-brand-slate' : isScrolled ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-restaurants"
           >
@@ -108,7 +108,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('cafes-bars')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-cafes-bars"
           >
@@ -117,7 +117,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('beach-clubs')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-beach-clubs"
           >
@@ -130,7 +130,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('reviews')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-reviews"
           >
@@ -139,7 +139,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('blog')}
             className={`text-base font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-blog"
           >
@@ -148,7 +148,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <button
             onClick={() => scrollToSection('contact')}
             className={`text-base font-medium transition-colors duration-300 drop-shadow-sm ${
-              isScrolled || isLight ? 'text-stone-700 hover:text-brand-slate' : 'text-white hover:text-white/80'
+              isScrolled || isLight ? 'text-stone-900 hover:text-brand-slate' : 'text-white hover:text-white/80'
             }`}
             data-testid="nav-contact"
           >

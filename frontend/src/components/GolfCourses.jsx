@@ -177,7 +177,7 @@ const CourseCard = ({ course, language, t, onQuickView }) => (
             className="inline-flex items-center justify-center gap-1 bg-white text-stone-800 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-white/90 transition-all"
             data-testid={`course-book-${course.id}`}
           >
-            {t('courses.bookNow')}
+            Book a Tee Time now!
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>
