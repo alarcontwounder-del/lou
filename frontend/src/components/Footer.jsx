@@ -33,7 +33,7 @@ export const Footer = () => {
             {/* Social Links */}
             <div className="flex items-center gap-4 mb-6">
               <a 
-                href="https://www.facebook.com/golfinmallorca" 
+                href="https://www.facebook.com/share/1CZVVBc8e9/?mibextid=wwXIfr" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors group"
