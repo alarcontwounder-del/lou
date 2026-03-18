@@ -35,6 +35,12 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - Footer internal links to new landing pages
   - llms.txt updated with new pages and 16 courses
   - Updated service descriptions from 13 to 16 courses across all schemas
+- [x] **Nearest Golf Course Distance** on ALL partner categories (March 2026)
+  - Hotels: 38 venues with distance badges on card front, back, and QuickView modal
+  - Restaurants: 49 venues with distance badges on card front, back, and QuickView modal
+  - Cafes/Bars: 36 venues with distance badges on card front, back, and QuickView modal
+  - Beach Clubs: Already had this feature (11 venues)
+  - MongoDB migration script: backend/migrate_nearest_golf.py
 
 ## Keyword Clusters Targeted
 1. **courses** (research): "best golf courses mallorca", "luxury golf courses mallorca", "top rated golf courses mallorca"
