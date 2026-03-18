@@ -170,11 +170,11 @@ export const Contact = () => {
           {/* Right Side - Contact Info & Image */}
           <div>
             <div className="relative mb-12">
-              <div className="aspect-[4/3] img-zoom overflow-hidden rounded-2xl shadow-xl">
+              <div className="img-zoom overflow-hidden rounded-2xl shadow-xl">
                 <img
                   src="/api/static/images/contact-golf.jpg"
-                  alt="Golf Son Gual Mallorca"
-                  className="w-full h-full object-cover"
+                  alt="Luxury golf in Mallorca"
+                  className="w-full h-auto object-contain"
                   data-testid="contact-image"
                 />
               </div>
