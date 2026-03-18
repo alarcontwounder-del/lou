@@ -22,6 +22,7 @@ import { Toaster } from './components/ui/sonner';
 import { FloatingSearch } from './components/FloatingSearch';
 import { SectionNavigator } from './components/SectionNavigator';
 import DesignPreview from './pages/DesignPreview';
+const GolfCoursePage = React.lazy(() => import('./components/GolfCourseLanding'));
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -142,6 +143,11 @@ function AppRouter() {
   return (
     <Routes>
       <Route path="/preview" element={<DesignPreview />} />
+      <Route path="/golf-courses/:courseId" element={
+        <React.Suspense fallback={<div className="min-h-screen bg-brand-cream flex items-center justify-center"><div className="w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin" /></div>}>
+          <GolfCoursePage />
+        </React.Suspense>
+      } />
       <Route path="/*" element={<MainContent />} />
     </Routes>
   );

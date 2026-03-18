@@ -4302,7 +4302,7 @@ BLOG_POSTS = [
 # Email helper functions
 async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
-    logo_url = "https://golf-review-fix.preview.emergentagent.com/api/uploads/logo_email.png"
+    logo_url = "https://seo-keyword-strategy.preview.emergentagent.com/api/uploads/logo_email.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
@@ -4606,6 +4606,19 @@ async def get_golf_courses(include_inactive: bool = False):
         return GOLF_COURSES
     
     return courses
+
+
+@api_router.get("/golf-courses/{course_id}")
+async def get_golf_course_by_id(course_id: str):
+    """Get a single golf course by its ID/slug"""
+    course = await db.golf_courses.find_one({"id": course_id}, {"_id": 0})
+    if not course:
+        # Fallback to hardcoded data
+        for c in GOLF_COURSES:
+            if c["id"] == course_id:
+                return c
+        raise HTTPException(status_code=404, detail="Golf course not found")
+    return course
 
 
 @api_router.post("/golf-courses", response_model=dict, status_code=201)
@@ -5335,7 +5348,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
     
     for sub in subscribers:
         try:
-            logo_url = "https://golf-review-fix.preview.emergentagent.com/api/uploads/logo_email.png"
+            logo_url = "https://seo-keyword-strategy.preview.emergentagent.com/api/uploads/logo_email.png"
             html_content = f"""
             <html>
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
