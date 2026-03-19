@@ -4187,113 +4187,281 @@ BLOG_POSTS = [
         "id": "best-time-golf-mallorca",
         "slug": "best-time-golf-mallorca",
         "title": {
-            "en": "The Best Time to Play Golf in Mallorca",
-            "de": "Die beste Zeit zum Golfspielen auf Mallorca",
-            "fr": "Le meilleur moment pour jouer au golf à Majorque",
-            "se": "Bästa tiden att spela golf på Mallorca"
+            "en": "The Best Time to Play Golf in Mallorca: A Season-by-Season Guide",
+            "de": "Die beste Zeit zum Golfspielen auf Mallorca: Ein Saisonführer",
+            "fr": "Le meilleur moment pour jouer au golf a Majorque: Guide saison par saison",
+            "se": "Basta tiden att spela golf pa Mallorca: En sasongguide"
         },
         "excerpt": {
-            "en": "Discover when to visit Mallorca for the perfect golfing conditions and avoid the crowds.",
-            "de": "Entdecken Sie, wann Sie Mallorca besuchen sollten, um perfekte Golfbedingungen zu genießen.",
-            "fr": "Découvrez quand visiter Majorque pour des conditions de golf parfaites.",
-            "se": "Upptäck när du ska besöka Mallorca för perfekta golfförhållanden."
+            "en": "Plan your Mallorca golf holiday around the best weather, lowest green fees, and quietest courses. Our season-by-season breakdown helps you book the perfect trip.",
+            "de": "Planen Sie Ihren Mallorca-Golfurlaub rund um das beste Wetter und die gunstigsten Green Fees.",
+            "fr": "Planifiez vos vacances golf a Majorque selon la meilleure meteo et les meilleurs tarifs.",
+            "se": "Planera din Mallorca-golfsemester kring det basta vadret och lagsta greenfeerna."
         },
         "content": {
-            "en": "Mallorca enjoys over 300 days of sunshine per year, making it an ideal golf destination almost year-round. However, the best time to play golf in Mallorca is during spring (March to May) and autumn (September to November). During these months, you'll experience pleasant temperatures between 18-25°C, minimal rainfall, and fewer tourists on the courses. The summer months can be quite hot, with temperatures often exceeding 30°C, while winter offers mild conditions but occasional rain. Spring brings the island to life with blooming almond trees and vibrant landscapes, creating a stunning backdrop for your round. Autumn provides similar weather with the added benefit of harvesting season, offering wonderful culinary experiences after your game.",
-            "de": "Mallorca genießt über 300 Sonnentage pro Jahr und ist damit fast das ganze Jahr über ein ideales Golfziel. Die beste Zeit zum Golfspielen auf Mallorca ist jedoch im Frühling (März bis Mai) und Herbst (September bis November)...",
-            "fr": "Majorque bénéficie de plus de 300 jours de soleil par an, ce qui en fait une destination de golf idéale presque toute l'année...",
-            "se": "Mallorca har över 300 soldagar per år, vilket gör det till en idealisk golfdestination nästan året runt..."
+            "en": "Mallorca enjoys over 300 days of sunshine per year, making it one of Europe's premier year-round golf destinations. But when is the best time to book tee times in Mallorca? Here's our insider guide.\n\n**Spring (March-May): The Peak Season**\nSpring is widely considered the best time to play golf in Mallorca. Temperatures range from 18-25C, the almond trees are in bloom, and the courses are in pristine condition after the winter rains. Green fees are at their standard rates, but the quality of golf is unmatched. This is the ideal time for a golf holiday package in Mallorca — combine 3-4 rounds with a luxury hotel stay.\n\n**Summer (June-August): Early Bird Golf**\nSummer temperatures can exceed 30C, but early morning tee times (before 9am) offer comfortable playing conditions. Many courses offer twilight and off-peak discount tee times during summer, making it a great option for budget-conscious golfers looking for cheap golf in Mallorca. After your round, the beach clubs and pools at our partner hotels are the perfect way to cool down.\n\n**Autumn (September-November): The Sweet Spot**\nAutumn rivals spring as the best golf season. The summer crowds have left, temperatures are a pleasant 20-26C, and the courses are quieter. This is when experienced golfers book their Mallorca golf trips — the conditions are perfect, green fees often drop slightly, and you can enjoy the island's harvest season with incredible food and wine experiences.\n\n**Winter (December-February): The Mild Escape**\nWhile northern Europe shivers, Mallorca offers mild winter golf with temperatures of 12-18C. This is when you'll find the cheapest green fees and the quietest courses. A winter golf break in Mallorca is a fantastic escape — Son Vida Golf from just EUR47 per round makes it incredibly affordable.\n\n**Our Recommendation:** Book your Mallorca golf holiday for late September to early November. You'll get the best weather, quieter courses, and excellent value. Contact our golf concierge team to build your perfect trip.",
+            "de": "Mallorca geniesst uber 300 Sonnentage pro Jahr und ist damit eines der besten ganzjahrigen Golfziele Europas...",
+            "fr": "Majorque beneficie de plus de 300 jours de soleil par an, ce qui en fait l'une des meilleures destinations golf d'Europe toute l'annee...",
+            "se": "Mallorca har over 300 soldagar per ar, vilket gor det till en av Europas basta golfar-runt-destinationer..."
         },
         "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-son-gual-mallorca/golf-son-gual-mallorca",
         "author": "Maria Santos",
         "category": "travel-tips",
-        "tags": ["weather", "planning", "seasons"],
+        "tags": ["weather", "planning", "seasons", "golf holidays", "when to play"],
         "published": True,
-        "created_at": "2024-12-15T10:00:00Z"
+        "created_at": "2025-12-15T10:00:00Z"
     },
     {
         "id": "top-5-courses-beginners",
         "slug": "top-5-courses-beginners",
         "title": {
-            "en": "Top 5 Golf Courses in Mallorca for Beginners",
-            "de": "Top 5 Golfplätze auf Mallorca für Anfänger",
-            "fr": "Top 5 des parcours de golf à Majorque pour débutants",
-            "se": "Topp 5 golfbanor på Mallorca för nybörjare"
+            "en": "Top 5 Golf Courses in Mallorca for Beginners & High Handicappers",
+            "de": "Top 5 Golfplatze auf Mallorca fur Anfanger & hohe Handicapper",
+            "fr": "Top 5 des parcours de golf a Majorque pour debutants",
+            "se": "Topp 5 golfbanor pa Mallorca for nyborjare"
         },
         "excerpt": {
-            "en": "New to golf? These beginner-friendly courses offer the perfect introduction to Mallorca's golf scene.",
-            "de": "Neu beim Golf? Diese anfängerfreundlichen Plätze bieten die perfekte Einführung.",
-            "fr": "Nouveau au golf? Ces parcours adaptés aux débutants offrent une introduction parfaite.",
-            "se": "Ny på golf? Dessa nybörjarvänliga banor erbjuder den perfekta introduktionen."
+            "en": "New to golf or a high handicapper? These beginner-friendly Mallorca courses offer wide fairways, patient staff, and green fees from just EUR47.",
+            "de": "Neu beim Golf? Diese anfangerfreundlichen Platze bieten die perfekte Einfuhrung.",
+            "fr": "Nouveau au golf? Ces parcours adaptes aux debutants offrent une introduction parfaite.",
+            "se": "Ny pa golf? Dessa nyborjarvanlinga banor erbjuder den perfekta introduktionen."
         },
         "content": {
-            "en": "If you're new to golf or still building your confidence on the course, Mallorca offers several welcoming options. Son Vida Golf stands out as the most beginner-friendly course, with its forgiving fairways and helpful staff. The course offers excellent practice facilities and lessons from PGA-certified professionals. Son Quint Golf provides another great option with its modern design and less intimidating layout. Pula Golf Resort offers a relaxed atmosphere perfect for those still learning the game. Golf Son Servera welcomes players of all levels with its traditional layout and patient staff. Finally, Son Antem East Course provides a resort setting where beginners can feel comfortable while enjoying quality facilities.",
-            "de": "Wenn Sie neu beim Golf sind oder noch Vertrauen auf dem Platz aufbauen, bietet Mallorca mehrere einladende Optionen...",
-            "fr": "Si vous êtes nouveau au golf ou encore en train de prendre confiance sur le parcours, Majorque offre plusieurs options accueillantes...",
-            "se": "Om du är ny på golf eller fortfarande bygger ditt självförtroende på banan, erbjuder Mallorca flera välkomnande alternativ..."
+            "en": "If you're new to golf or still building your confidence, Mallorca has some of the most welcoming courses in the Mediterranean. Here are our top 5 picks where you can book tee times without feeling intimidated.\n\n**1. Son Vida Golf (from EUR47)**\nMallorca's oldest course is also its most beginner-friendly. The fairways are generous, the staff are incredibly patient, and the views of Palma Bay are so stunning you won't mind the occasional wayward shot. With green fees from just EUR47, it's also the cheapest golf in Mallorca. The practice facilities and PGA-certified lessons make it perfect for improving your game during a golf holiday.\n\n**2. Son Quint Golf (from EUR58)**\nThis modern course near Palma features an open, forgiving layout that's ideal for mid-to-high handicappers. The panoramic views are spectacular, and the course design avoids overly punishing hazards. Part of the Arabella Golf estate, you can combine it with Son Vida for a multi-course stay and play package.\n\n**3. Son Antem East Course (from EUR54)**\nThe resort course at Son Antem is designed for enjoyable golf at all levels. Wide fairways, gentle bunkering, and a relaxed atmosphere make it perfect for beginners. Connected to the Marriott resort, it's ideal for a golf break where non-golfers can enjoy the pool and spa.\n\n**4. Pula Golf Resort (from EUR74)**\nDesigned by Jose Maria Olazabal, Pula Golf offers a beautiful setting in eastern Mallorca near Cala Millor. The course flows naturally through Mediterranean landscape and, while it has some challenging holes, the overall experience is welcoming for improving players.\n\n**5. Golf Son Servera (from EUR73)**\nOne of Mallorca's older courses, Son Servera has a traditional layout that rewards good course management over raw power. The staff are welcoming, the pace of play is relaxed, and the eastern location means it's often quieter than courses near Palma.\n\n**Tip:** Book a golf concierge consultation and we'll match you with the perfect courses for your skill level. We can also arrange group lessons at any of these venues.",
+            "de": "Wenn Sie neu beim Golf sind, bietet Mallorca einige der einladendsten Platze im Mittelmeerraum...",
+            "fr": "Si vous etes nouveau au golf, Majorque possede certains des parcours les plus accueillants de la Mediterranee...",
+            "se": "Om du ar ny pa golf har Mallorca nagra av de mest valkomnande banorna i Medelhavet..."
         },
         "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/son-vida-golf/son-vida-golf",
         "author": "Carlos Martinez",
         "category": "course-guides",
-        "tags": ["beginners", "courses", "tips"],
+        "tags": ["beginners", "courses", "tips", "cheap golf", "green fees"],
         "published": True,
-        "created_at": "2024-12-10T14:30:00Z"
+        "created_at": "2025-12-10T14:30:00Z"
     },
     {
         "id": "golf-and-gastronomy-mallorca",
         "slug": "golf-and-gastronomy-mallorca",
         "title": {
-            "en": "Golf & Gastronomy: The Perfect Mallorca Pairing",
-            "de": "Golf & Gastronomie: Die perfekte Mallorca-Kombination",
-            "fr": "Golf & Gastronomie: L'accord parfait à Majorque",
-            "se": "Golf & Gastronomi: Den perfekta Mallorca-kombinationen"
+            "en": "Golf & Gastronomy: Fine Dining After Your Round in Mallorca",
+            "de": "Golf & Gastronomie: Fine Dining nach Ihrer Runde auf Mallorca",
+            "fr": "Golf & Gastronomie: Gastronomie apres votre parcours a Majorque",
+            "se": "Golf & Gastronomi: Fine Dining efter din runda pa Mallorca"
         },
         "excerpt": {
-            "en": "Combine world-class golf with Michelin-starred dining for the ultimate Mallorca experience.",
-            "de": "Kombinieren Sie Weltklasse-Golf mit Michelin-Sterne-Dining für das ultimative Mallorca-Erlebnis.",
-            "fr": "Combinez golf de classe mondiale et gastronomie étoilée Michelin pour l'expérience ultime.",
-            "se": "Kombinera golf i världsklass med Michelin-stjärnig matlagning för den ultimata Mallorca-upplevelsen."
+            "en": "Mallorca pairs world-class golf with Michelin-starred dining. Here's how to plan a golf and gastronomy trip that hits all the right notes.",
+            "de": "Mallorca verbindet Weltklasse-Golf mit Michelin-Sterne-Gastronomie.",
+            "fr": "Majorque allie golf de classe mondiale et gastronomie etoilee Michelin.",
+            "se": "Mallorca kombinerar golf i varldsklass med Michelin-stjarnad matlagning."
         },
         "content": {
-            "en": "Mallorca is not just a golf paradise—it's also a culinary destination with 8 Michelin-starred restaurants. After a morning round at Golf Alcanada, head to Es Fum for contemporary Mediterranean cuisine. If you're playing at Son Vida, the nearby Zaranda offers two Michelin stars and breathtaking views. For a more casual experience, the clubhouse restaurants at Son Gual and Santa Ponsa serve excellent local dishes. Don't miss the traditional Mallorcan cuisine: tumbet, sobrassada, and ensaimadas are must-tries. Many of our hotel partners offer special golf-and-dine packages that combine green fees with reservations at top restaurants.",
-            "de": "Mallorca ist nicht nur ein Golfparadies – es ist auch ein kulinarisches Ziel mit 8 Michelin-Sterne-Restaurants...",
-            "fr": "Majorque n'est pas seulement un paradis du golf, c'est aussi une destination culinaire avec 8 restaurants étoilés Michelin...",
-            "se": "Mallorca är inte bara ett golfparadis – det är också en kulinarisk destination med 8 Michelin-stjärniga restauranger..."
+            "en": "Mallorca isn't just a golf paradise — it's one of the Mediterranean's most exciting food destinations. With over 8 Michelin-starred restaurants and a thriving local food scene, a golf holiday in Mallorca should always include time at the table.\n\n**Near Golf Son Gual & Palma**\nAfter your round at Son Gual (one of Europe's best championship courses), head into Palma for dinner. DINS Santi Taura in the old town serves extraordinary Mallorcan cuisine with a modern twist. For Asian fusion, Izakaya on the harbour is a local favourite. Both are just 15 minutes from the course.\n\n**Near Golf Alcanada & the North**\nAlcanada's stunning coastal round works up a serious appetite. Es Fum at the St. Regis in nearby Costa d'en Blanes holds a Michelin star for its contemporary Mediterranean menu. Closer to Alcudia, the traditional Mallorcan restaurants along the old town walls serve fresh seafood straight from the bay.\n\n**Near Santa Ponsa & the Southwest**\nAfter playing the European Tour venue at Golf Santa Ponsa, drive to nearby Port Adriano for sunset drinks and dinner. Or venture to Andratx for VORO, a two-Michelin-star restaurant with jaw-dropping coastal views.\n\n**Traditional Mallorcan Must-Tries**\nNo golf trip to Mallorca is complete without trying: tumbet (layered vegetable dish), sobrassada (cured paprika sausage), pa amb oli (bread with tomato and olive oil), and the famous ensaimada pastry for breakfast.\n\n**Our Golf & Gastronomy Packages**\nWe offer custom golf holiday packages that combine tee times with restaurant reservations. Tell our concierge your tastes and we'll curate the perfect culinary itinerary alongside your golf schedule.",
+            "de": "Mallorca ist nicht nur ein Golfparadies — es ist auch eines der aufregendsten Feinschmeckerziele des Mittelmeers...",
+            "fr": "Majorque n'est pas seulement un paradis du golf — c'est aussi l'une des destinations gastronomiques les plus passionnantes de la Mediterranee...",
+            "se": "Mallorca ar inte bara ett golfparadis — det ar ocksa en av Medelhavets mest spannande matdestinationer..."
         },
         "image": "/api/static/images/blog-gastronomy.jpg",
         "author": "Elena Rossi",
         "category": "lifestyle",
-        "tags": ["food", "restaurants", "experiences"],
+        "tags": ["food", "restaurants", "experiences", "Michelin", "gastronomy"],
         "published": True,
-        "created_at": "2024-12-05T09:15:00Z"
+        "created_at": "2025-12-05T09:15:00Z"
     },
     {
         "id": "championship-courses-mallorca",
         "slug": "championship-courses-mallorca",
         "title": {
-            "en": "Championship Golf: Mallorca's Most Challenging Courses",
-            "de": "Championship-Golf: Mallorcas anspruchsvollste Plätze",
-            "fr": "Golf Championship: Les parcours les plus difficiles de Majorque",
-            "se": "Championship Golf: Mallorcas mest utmanande banor"
+            "en": "Championship Golf in Mallorca: 4 Courses That Will Test Your Game",
+            "de": "Championship-Golf auf Mallorca: 4 Platze die Ihr Spiel testen",
+            "fr": "Golf Championship a Majorque: 4 Parcours qui testeront votre jeu",
+            "se": "Championship Golf pa Mallorca: 4 banor som testar ditt spel"
         },
         "excerpt": {
-            "en": "Ready for a challenge? Discover the courses that test even the most experienced golfers.",
-            "de": "Bereit für eine Herausforderung? Entdecken Sie die Plätze, die selbst erfahrene Golfer testen.",
-            "fr": "Prêt pour un défi? Découvrez les parcours qui testent même les golfeurs les plus expérimentés.",
-            "se": "Redo för en utmaning? Upptäck banorna som testar även de mest erfarna golfarna."
+            "en": "Ready for a serious challenge? These Mallorca championship courses are among the best in Europe and demand every club in your bag.",
+            "de": "Bereit fur eine echte Herausforderung? Diese Championship-Platze gehoren zu den besten Europas.",
+            "fr": "Pret pour un vrai defi? Ces parcours championship comptent parmi les meilleurs d'Europe.",
+            "se": "Redo for en riktig utmaning? Dessa championship-banor ar bland de basta i Europa."
         },
         "content": {
-            "en": "For experienced golfers seeking a true test of their skills, Mallorca delivers world-class championship courses. Golf Son Gual, designed by Thomas Himmel, is widely considered one of Europe's finest courses with its immaculate conditioning and strategic design. Golf Alcanada challenges players with its coastal winds and stunning but demanding layout around the historic lighthouse. Son Antem West Championship Course offers tournament-ready conditions and has hosted European Tour qualifying events. The technical Son Muntaner Golf demands precision with its elevation changes and narrow fairways. These courses reward strategic thinking and punish errant shots—exactly what serious golfers crave.",
-            "de": "Für erfahrene Golfer, die einen echten Test ihrer Fähigkeiten suchen, bietet Mallorca Weltklasse-Championship-Plätze...",
-            "fr": "Pour les golfeurs expérimentés à la recherche d'un véritable test de leurs compétences, Majorque offre des parcours championship de classe mondiale...",
-            "se": "För erfarna golfare som söker ett verkligt test av sina färdigheter, levererar Mallorca mästerskapsbanor i världsklass..."
+            "en": "For experienced golfers seeking a true test of their skills, Mallorca delivers world-class championship courses that rival anything in Portugal, Spain, or Scotland. Here are the four courses that serious golfers should book tee times at.\n\n**1. Golf Son Gual (from EUR85)**\nWidely considered one of Europe's finest courses, Golf Son Gual was designed by Thomas Himmel and opened in 2007. The immaculate conditioning, strategic bunkering, and large, undulating greens provide a relentless test from the back tees. The course is just 15 minutes from Palma, making it easy to include in any Mallorca golf holiday. Pro tip: the 18th hole is one of the best closing holes in European golf.\n\n**2. Golf Alcanada (from EUR115)**\nThe most expensive round in Mallorca — and worth every euro. Robert Trent Jones Jr.'s masterpiece runs along the northern coast near Alcudia, with the iconic lighthouse as a backdrop. Coastal winds add an extra dimension to this links-style layout. The combination of stunning scenery and challenging golf makes Alcanada a bucket-list course for serious players.\n\n**3. Son Antem West Championship (from EUR59)**\nThis tournament-ready course has hosted European Tour qualifying events and offers exceptional value for a championship layout. The strategic hazards, demanding par 3s, and fast greens will test your decision-making as much as your ball-striking. Stay and play packages with the adjacent Marriott resort make it an excellent base for a golf break.\n\n**4. Son Muntaner Golf (from EUR51)**\nDon't let the modest green fee fool you — Son Muntaner demands precision with dramatic elevation changes, narrow tree-lined fairways, and some of the most spectacular mountain views in Mallorca golf. The uphill par 5 7th hole is legendary among local golfers.\n\n**Book a Championship Golf Trip**\nOur golf concierge can arrange a bespoke championship golf trip combining all four courses, luxury hotel accommodation, and transfers. Contact us for a personalised quote.",
+            "de": "Fur erfahrene Golfer bietet Mallorca Weltklasse-Championship-Platze, die mit allem in Portugal oder Schottland mithalten konnen...",
+            "fr": "Pour les golfeurs experimentes, Majorque offre des parcours championship de classe mondiale...",
+            "se": "For erfarna golfare levererar Mallorca masterskapsbanor i varldsklass..."
         },
         "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/son-antem-championship-course/son-antem-championship-course",
         "author": "James Thompson",
         "category": "course-guides",
-        "tags": ["championship", "advanced", "challenge"],
+        "tags": ["championship", "advanced", "challenge", "best courses"],
         "published": True,
-        "created_at": "2024-11-28T11:00:00Z"
+        "created_at": "2025-11-28T11:00:00Z"
+    },
+    {
+        "id": "ultimate-golf-guide-mallorca",
+        "slug": "ultimate-golf-guide-mallorca",
+        "title": {
+            "en": "The Ultimate Golf Guide to Mallorca: Everything You Need to Know",
+            "de": "Der ultimative Golf-Guide fur Mallorca: Alles was Sie wissen mussen",
+            "fr": "Le guide ultime du golf a Majorque: Tout ce que vous devez savoir",
+            "se": "Den ultimata golfguiden till Mallorca: Allt du behover veta"
+        },
+        "excerpt": {
+            "en": "Planning a golf trip to Mallorca? Our comprehensive guide covers 16 courses, green fees, best hotels, how to book, and insider tips from 20+ years on the island.",
+            "de": "Planen Sie eine Golfreise nach Mallorca? Unser umfassender Guide deckt alles ab.",
+            "fr": "Vous planifiez un voyage golf a Majorque? Notre guide complet couvre tout.",
+            "se": "Planerar du en golfresa till Mallorca? Var omfattande guide tacker allt."
+        },
+        "content": {
+            "en": "Welcome to the most comprehensive golf guide to Mallorca, written by the island's only exclusive golf operator since 2003. Whether you're planning your first golf holiday in Mallorca or you're a returning visitor, this guide has everything you need.\n\n**The Courses**\nMallorca offers 16 golf courses spread across the island, from championship layouts to scenic resort courses. Green fees range from EUR47 (Son Vida Golf) to EUR140 (Golf Ibiza VIP). The most popular courses for visiting golfers are Golf Son Gual, Golf Alcanada, and Golf Santa Ponsa — all three offer world-class golf and should be on every golfer's Mallorca bucket list.\n\n**How to Book Tee Times**\nYou can book tee times at all 16 courses instantly through our online booking platform with instant confirmation. For group bookings of 8+ players, contact our golf concierge for special rates. We recommend booking 2-4 weeks ahead during peak season (March-May, September-November).\n\n**Where to Stay**\nFor courses near Palma (Son Gual, Son Vida, Son Muntaner, Son Quint, Real Golf de Bendinat), stay in Palma's old town or the southwest coast hotels. For Golf Alcanada in the north, the Alcudia area has excellent resort options. For eastern courses (Pula, Son Servera, Capdepera), the Cala Millor coastline is ideal. We offer stay and play packages with all our partner hotels.\n\n**Getting Around**\nPalma airport is the gateway to Mallorca golf. Most courses are 15-45 minutes from the airport. We recommend renting a car for maximum flexibility, though we can arrange golf transfers as part of your holiday package.\n\n**What to Pack**\nMallorca's courses have standard European dress codes: collared shirts, tailored shorts or trousers, and soft-spike golf shoes. Bring sunscreen, a hat, and layers for the wind — especially at coastal courses like Alcanada.\n\n**Beyond Golf**\nMallorca is much more than golf. The island offers Michelin-starred restaurants, exclusive beach clubs, stunning hiking in the Tramuntana mountains, historic Palma cathedral, vibrant art galleries, and world-class wine from the Binissalem region.\n\n**Ready to Plan?**\nContact our golf concierge team and we'll design your perfect Mallorca golf trip — tee times, hotels, restaurants, and everything in between.",
+            "de": "Willkommen zum umfassendsten Golf-Guide fur Mallorca...",
+            "fr": "Bienvenue dans le guide golf le plus complet de Majorque...",
+            "se": "Valkommen till den mest omfattande golfguiden for Mallorca..."
+        },
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-alcanada/golf-alcanada",
+        "author": "Maria Santos",
+        "category": "travel-tips",
+        "tags": ["golf guide", "planning", "tee times", "green fees", "mallorca golf"],
+        "published": True,
+        "created_at": "2026-01-15T10:00:00Z"
+    },
+    {
+        "id": "stay-and-play-golf-packages-mallorca",
+        "slug": "stay-and-play-golf-packages-mallorca",
+        "title": {
+            "en": "Stay & Play: The Best Golf Hotel Packages in Mallorca",
+            "de": "Stay & Play: Die besten Golf-Hotel-Pakete auf Mallorca",
+            "fr": "Stay & Play: Les meilleurs forfaits golf-hotel a Majorque",
+            "se": "Stay & Play: De basta golf-hotellpaketen pa Mallorca"
+        },
+        "excerpt": {
+            "en": "Why book separately when you can save? Our curated stay and play golf packages combine Mallorca's best courses with luxury hotels for the ultimate golf break.",
+            "de": "Warum einzeln buchen wenn Sie sparen konnen? Unsere Stay & Play Pakete kombinieren die besten Platze mit Luxushotels.",
+            "fr": "Pourquoi reserver separement quand vous pouvez economiser? Nos forfaits Stay & Play combinent les meilleurs parcours avec des hotels de luxe.",
+            "se": "Varfor boka separat nar du kan spara? Vara Stay & Play-paket kombinerar de basta banorna med lyxhotell."
+        },
+        "content": {
+            "en": "A golf holiday in Mallorca is best enjoyed when everything is taken care of. Our stay and play packages combine premium golf with handpicked luxury hotels, saving you time and money. Here are our most popular combinations.\n\n**The Palma Championship Package**\nStay at the 5-star St. Regis Mardavall or the boutique Hotel Can Alomar in Palma. Play Golf Son Gual, Son Vida, and Real Golf de Bendinat — all within 20 minutes. This package is perfect for golfers who want championship golf combined with Palma's restaurants, bars, and nightlife.\n\n**The Northern Escape**\nBase yourself at the stunning Can Mostatxins boutique hotel near Pollenca or a resort in Port d'Alcudia. Play Golf Alcanada (the jewel of the north) and combine it with beach days, mountain cycling, and the charming old town of Alcudia. Ideal for couples where one partner golfs and the other explores.\n\n**The Eastern Discovery**\nStay in the Cala Millor area and play Pula Golf Resort, Golf Son Servera, and Capdepera Golf on consecutive days. The eastern coast is quieter, more authentic, and offers incredible value. A 3-night, 3-round package here is one of the best-value golf breaks in Mallorca.\n\n**The Grand Tour**\nFor the ultimate Mallorca golf trip, play 5 courses over 7 nights: Son Gual, Alcanada, Santa Ponsa, Pula Golf, and Son Vida. Stay at 2 different hotels — one near Palma, one in the north or east — for a complete island experience. Our concierge handles all the logistics.\n\n**Why Book Packages?**\nOur golf holiday packages save 10-20% compared to booking hotels and tee times separately. Plus, you get priority tee times, flexible cancellation, and a dedicated concierge who knows every course and hotel personally.\n\nContact us today for a personalised quote.",
+            "de": "Ein Golfurlaub auf Mallorca wird am besten genossen, wenn alles organisiert ist...",
+            "fr": "Des vacances golf a Majorque se savourent mieux quand tout est organise...",
+            "se": "En golfsemester pa Mallorca njuts bast nar allt ar ordnat..."
+        },
+        "image": "https://images.unsplash.com/photo-1619816733225-a25859428a75?w=800&h=500&fit=crop",
+        "author": "Carlos Martinez",
+        "category": "travel-tips",
+        "tags": ["stay and play", "golf packages", "hotels", "golf holidays", "deals"],
+        "published": True,
+        "created_at": "2026-01-22T09:00:00Z"
+    },
+    {
+        "id": "art-culture-mallorca-golfers",
+        "slug": "art-culture-mallorca-golfers",
+        "title": {
+            "en": "Art & Culture in Mallorca: Galleries, Museums & Hidden Gems for Visitors",
+            "de": "Kunst & Kultur auf Mallorca: Galerien, Museen & versteckte Juwelen",
+            "fr": "Art & Culture a Majorque: Galeries, Musees & Tresors caches",
+            "se": "Konst & Kultur pa Mallorca: Gallerier, Museer & Dolda Parlor"
+        },
+        "excerpt": {
+            "en": "Mallorca's art scene is as rich as its golf. From Miro's studio to Palma's contemporary galleries, discover the cultural side of the island between rounds.",
+            "de": "Mallorcas Kunstszene ist so reich wie sein Golf. Entdecken Sie die kulturelle Seite der Insel.",
+            "fr": "La scene artistique de Majorque est aussi riche que son golf. Decouvrez le cote culturel de l'ile.",
+            "se": "Mallorcas konstscen ar lika rik som dess golf. Upptack oens kulturella sida."
+        },
+        "content": {
+            "en": "Mallorca has inspired artists for centuries — from Chopin and George Sand to Joan Miro and the thriving contemporary art scene of today. A golf holiday in Mallorca offers the perfect opportunity to explore the island's cultural treasures between rounds.\n\n**Fundacio Miro Mallorca**\nThe great Catalan artist Joan Miro made Mallorca his home for over 30 years. His studio and foundation in the Cala Major district of Palma houses a stunning collection of his paintings, sculptures, and graphics. The building itself, designed by Josep Lluis Sert, is a work of art. Just 10 minutes from Son Vida Golf — perfect for a post-round cultural stop.\n\n**Es Baluard Museum of Contemporary Art**\nPerched on the old city walls of Palma with views of the cathedral and harbour, Es Baluard is Mallorca's premier contemporary art museum. The collection includes works by Picasso, Miro, Barcelo, and rotating exhibitions from international artists. The rooftop terrace with its panoramic views is not to be missed.\n\n**CCA Andratx (Centro de Arte Contemporaneo)**\nOne of Europe's largest contemporary art centres, CCA Andratx sits in a stunning converted factory in the southwest of the island. After a round at Golf Santa Ponsa, the 20-minute drive to Andratx takes you through beautiful mountain scenery to this extraordinary gallery complex.\n\n**Palma's Gallery District**\nThe streets around Carrer de Sant Feliu in Palma's old town are packed with independent galleries showing everything from traditional Mallorcan landscapes to cutting-edge contemporary work. Spend an afternoon gallery-hopping, stopping for coffee at the historic Ca'n Joan de S'aigo (Mallorca's oldest cafe, since 1700).\n\n**Deia: The Artist's Village**\nThe mountain village of Deia has been a magnet for artists and writers since Robert Graves settled here in the 1930s. Visit the Robert Graves museum, browse the village galleries, and have lunch at one of the clifftop restaurants overlooking the Mediterranean.\n\n**Rialto Living, Palma**\nPart gallery, part design store, part cafe — Rialto Living in a restored 19th-century Palma cinema is a lifestyle destination that showcases Mallorcan design, art, and craftsmanship.\n\n**Sineu Market**\nEvery Wednesday, the inland town of Sineu hosts Mallorca's oldest and most authentic market. Local artisans sell ceramics, textiles, leather goods, and paintings alongside fresh produce and livestock. A wonderful half-day trip on your non-golf day.\n\n**Our Tip:** Ask our concierge to pair your golf schedule with cultural recommendations. We know the island inside out — not just the fairways.",
+            "de": "Mallorca hat Kunstler seit Jahrhunderten inspiriert...",
+            "fr": "Majorque inspire les artistes depuis des siecles...",
+            "se": "Mallorca har inspirerat konstnarar i arhundraden..."
+        },
+        "image": "https://images.unsplash.com/photo-1748714240939-9dfed1bb951b?w=800&h=500&fit=crop",
+        "author": "Elena Rossi",
+        "category": "lifestyle",
+        "tags": ["art", "culture", "galleries", "Palma", "Miro", "museums"],
+        "published": True,
+        "created_at": "2026-02-10T08:30:00Z"
+    },
+    {
+        "id": "culinary-mallorca-food-guide",
+        "slug": "culinary-mallorca-food-guide",
+        "title": {
+            "en": "Culinary Mallorca: A Food Lover's Guide Beyond the Golf Course",
+            "de": "Kulinarisches Mallorca: Ein Feinschmecker-Guide jenseits des Golfplatzes",
+            "fr": "Majorque Culinaire: Guide gastronomique au-dela du golf",
+            "se": "Kulinariska Mallorca: En matalskarguide bortom golfbanan"
+        },
+        "excerpt": {
+            "en": "From Michelin stars to hidden tapas bars, market tours to wine tastings — Mallorca's food scene rivals its golf. Here's our insider guide to eating like a local.",
+            "de": "Von Michelin-Sternen bis zu versteckten Tapas-Bars — Mallorcas Food-Szene rivalisiert mit seinem Golf.",
+            "fr": "Des etoiles Michelin aux bars a tapas caches — la scene culinaire de Majorque rivalise avec son golf.",
+            "se": "Fran Michelin-stjarnor till dolda tapasbar — Mallorcas matscen rivaliserar med dess golf."
+        },
+        "content": {
+            "en": "Mallorca has quietly become one of the Mediterranean's most exciting food destinations. The island boasts 8 Michelin-starred restaurants, a booming wine region, and a traditional cuisine that reflects centuries of Mediterranean, Moorish, and Catalan influence. Here's how to eat your way through a golf holiday in Mallorca.\n\n**Michelin-Starred Dining**\nFor a special evening, book a table at VORO in Canyamel (2 stars) — chef Alvaro Salazar's tasting menu is extraordinary, served in a clifftop setting overlooking the sea. In Palma, DINS Santi Taura transforms traditional Mallorcan recipes into modern art. Zaranda at the Hilton Sa Torre near Son Antem Golf holds a star for its creative Mediterranean cuisine.\n\n**Traditional Mallorcan Cuisine**\nThe heart of Mallorcan food is honest, seasonal, and deeply satisfying. Must-try dishes include:\n- **Pa amb oli** — the island's beloved bread with tomato, olive oil, and cured meats\n- **Tumbet** — a layered vegetable dish with aubergine, peppers, potato, and tomato sauce\n- **Sobrassada** — Mallorca's famous soft, paprika-cured sausage\n- **Arros brut** — a rich, spiced rice dish (Mallorca's answer to paella)\n- **Ensaimada** — the spiral pastry that's a Mallorcan icon, perfect for breakfast\n\nTry these at Es Verger restaurant in Alaro (famous for its slow-roasted lamb shoulder) or at any of the traditional cellers (wine-cellar restaurants) in Sineu and Inca.\n\n**Wine Country: Binissalem**\nMallorca's emerging wine region around Binissalem produces excellent reds from the local Manto Negro grape and crisp whites from Prensal Blanc. Several bodegas offer tastings: Macia Batle, Jose L. Ferrer, and Bodega Ribas are all worth visiting. A wine tour makes a perfect rest-day activity between golf rounds.\n\n**Markets & Food Tours**\nPalma's Mercat de l'Olivar is a foodie paradise: fresh seafood, local cheeses, cured meats, and a bustling tapas bar where you can eat at the counter. For the most authentic experience, visit the weekly markets in Sineu (Wednesday), Pollenca (Sunday), or Arta (Tuesday).\n\n**Beach Club Dining**\nAfter golf, many of our clients head to a beach club for a long, lazy lunch. Purobeach Illetas (3km from Real Golf de Bendinat) and Nikki Beach Mallorca serve excellent food with sea views and DJ sets.\n\n**Ask Our Concierge**\nWe include restaurant recommendations and reservation assistance in all our golf holiday packages. Just tell us your tastes — from fine dining to authentic local — and we'll curate your culinary itinerary.",
+            "de": "Mallorca hat sich leise zu einem der aufregendsten Feinschmeckerziele des Mittelmeers entwickelt...",
+            "fr": "Majorque est devenue l'une des destinations gastronomiques les plus passionnantes de la Mediterranee...",
+            "se": "Mallorca har tyst blivit en av Medelhavets mest spannande matdestinationer..."
+        },
+        "image": "https://images.unsplash.com/photo-1535023909-6335ea9eb449?w=800&h=500&fit=crop",
+        "author": "Elena Rossi",
+        "category": "lifestyle",
+        "tags": ["food", "culinary", "restaurants", "wine", "tapas", "Michelin"],
+        "published": True,
+        "created_at": "2026-02-18T10:00:00Z"
+    },
+    {
+        "id": "cheap-golf-mallorca-budget",
+        "slug": "cheap-golf-mallorca-budget",
+        "title": {
+            "en": "Cheap Golf in Mallorca: How to Play Top Courses for Less",
+            "de": "Gunstiges Golf auf Mallorca: Wie Sie Top-Platze fur weniger spielen",
+            "fr": "Golf pas cher a Majorque: Comment jouer les meilleurs parcours pour moins",
+            "se": "Billig golf pa Mallorca: Hur du spelar toppbanor for mindre"
+        },
+        "excerpt": {
+            "en": "Think Mallorca golf is expensive? Think again. From EUR47 green fees to twilight deals and multi-round discounts, here's how to get the best value golf on the island.",
+            "de": "Denken Sie Mallorca-Golf ist teuer? Denken Sie nochmal. Ab EUR47 Green Fee.",
+            "fr": "Vous pensez que le golf a Majorque est cher? Detrompez-vous. A partir de 47 EUR.",
+            "se": "Tror du att Mallorca-golf ar dyrt? Tank om. Fran 47 EUR."
+        },
+        "content": {
+            "en": "Mallorca golf doesn't have to break the bank. While premium courses like Golf Alcanada command EUR115+ green fees, there are plenty of ways to play excellent golf for much less. Here's our insider guide to affordable golf in Mallorca.\n\n**Courses Under EUR60**\nSon Vida Golf (from EUR47): Mallorca's oldest course, stunning Palma Bay views, and the island's lowest green fee. An absolute bargain.\nSon Muntaner Golf (from EUR51): Dramatic mountain golf with incredible elevation changes. One of the best-value championship experiences in Europe.\nSon Antem East (from EUR54): Resort golf at its best, connected to the Marriott hotel.\nSon Quint Golf (from EUR58): Modern design, panoramic views, and a forgiving layout.\nSon Antem West Championship (from EUR59): Tournament-quality golf for under EUR60.\nCaydepera Golf (from EUR59): Coastal northeast Mallorca with Mediterranean views.\n\n**Money-Saving Tips**\n1. **Book twilight tee times.** Most courses offer discounted afternoon rates, especially in summer. You can save 20-40% by playing after 2pm.\n2. **Play in winter.** December to February offers the cheapest green fees and near-empty courses. The weather is mild (12-18C) and perfectly playable.\n3. **Book multi-round packages.** Our golf concierge can arrange 3, 5, or 7-round packages with cumulative discounts of 10-20% off standard rates.\n4. **Join a group booking.** Groups of 8+ golfers qualify for preferential rates at most courses.\n5. **Ask about last-minute deals.** We often have access to unsold tee times at reduced rates — contact our concierge to get on the last-minute list.\n\n**Best Value Golf Break**\nA 3-night, 3-round golf break playing Son Vida, Son Antem East, and Son Quint costs from around EUR250 in green fees — that's outstanding value for three rounds at quality courses in the Mediterranean sunshine.\n\nContact us for a budget-friendly golf holiday package and we'll find the best rates for your dates.",
+            "de": "Mallorca-Golf muss nicht teuer sein. Wahrend Premium-Platze wie Golf Alcanada EUR115+ kosten...",
+            "fr": "Le golf a Majorque ne doit pas necessairement etre couteux...",
+            "se": "Mallorca-golf behover inte vara dyrt..."
+        },
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/son-quint-golf/son-quint-golf",
+        "author": "Carlos Martinez",
+        "category": "travel-tips",
+        "tags": ["cheap golf", "budget", "discount", "green fees", "deals"],
+        "published": True,
+        "created_at": "2026-03-01T11:00:00Z"
+    },
+    {
+        "id": "golf-near-palma-courses",
+        "slug": "golf-near-palma-courses",
+        "title": {
+            "en": "Golf Near Palma: 6 Courses Within 20 Minutes of the City",
+            "de": "Golf in der Nahe von Palma: 6 Platze innerhalb von 20 Minuten",
+            "fr": "Golf pres de Palma: 6 Parcours a 20 minutes de la ville",
+            "se": "Golf nara Palma: 6 banor inom 20 minuter fran staden"
+        },
+        "excerpt": {
+            "en": "Staying in Palma? You're spoiled for choice. Six of Mallorca's best golf courses are less than 20 minutes from the city centre, the airport, and the best hotels.",
+            "de": "Ubernachten Sie in Palma? Sie haben die Qual der Wahl. Sechs der besten Golfplatze sind weniger als 20 Minuten entfernt.",
+            "fr": "Vous logez a Palma? Vous avez l'embarras du choix. Six des meilleurs parcours sont a moins de 20 minutes.",
+            "se": "Bor du i Palma? Du har mycket att valja pa. Sex av de basta banorna ligger mindre an 20 minuter bort."
+        },
+        "content": {
+            "en": "Palma de Mallorca is the perfect base for a golf trip. The city offers world-class restaurants, boutique hotels, vibrant nightlife, and a stunning old town — and six excellent golf courses are all within a 20-minute drive.\n\n**1. Golf Son Gual (10 min from airport)**\nThe crown jewel. Thomas Himmel's championship masterpiece is just east of Palma and the closest premium course to the airport. Many golfers play their first round here on arrival day. From EUR85.\n\n**2. Son Vida Golf (8 min from Palma centre)**\nNestled in the exclusive Son Vida hillside area above Palma, this is the island's oldest course (1964). The panoramic views of Palma Bay are breathtaking. From EUR47 — the cheapest round in Mallorca.\n\n**3. Son Muntaner Golf (8 min from Palma centre)**\nAdjacent to Son Vida, Son Muntaner offers dramatic elevation changes and mountain scenery. The most physically demanding course near Palma. From EUR51.\n\n**4. Son Quint Golf (10 min from Palma centre)**\nThe newest of the Arabella Golf trio, Son Quint is a modern, open course with spectacular panoramic views. The most beginner-friendly of the Palma courses. From EUR58.\n\n**5. Real Golf de Bendinat (12 min from Palma centre)**\nLocated in the upscale Bendinat/Portals area, this elegant course offers Mediterranean Sea views and a refined clubhouse. Popular with Palma's business community. From EUR65.\n\n**6. Golf Santa Ponsa I (18 min from Palma centre)**\nThe European Tour venue is the furthest from Palma centre but still under 20 minutes. The pine-lined fairways demand accuracy and the tournament pedigree adds prestige to your round. From EUR66.\n\n**The Perfect Palma Golf Week**\nPlay all six courses over 6 days, staying in a Palma boutique hotel. Our concierge will arrange tee times, transfers, and dinner reservations at the best restaurants in the city. This is the definitive Palma golf experience.\n\nBook your Palma golf package today.",
+            "de": "Palma de Mallorca ist die perfekte Basis fur eine Golfreise...",
+            "fr": "Palma de Majorque est la base parfaite pour un voyage golf...",
+            "se": "Palma de Mallorca ar den perfekta basen for en golfresa..."
+        },
+        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-santa-ponsa-i-mallorca/golf-santa-ponsa-i-mallorca",
+        "author": "Maria Santos",
+        "category": "course-guides",
+        "tags": ["Palma", "near Palma", "golf courses", "city golf", "location"],
+        "published": True,
+        "created_at": "2026-03-10T09:30:00Z"
     }
 ]
 
@@ -4302,7 +4470,7 @@ BLOG_POSTS = [
 # Email helper functions
 async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
-    logo_url = "https://course-pages-staging.preview.emergentagent.com/api/uploads/logo_email.png"
+    logo_url = "https://golf-holiday-seo.preview.emergentagent.com/api/uploads/logo_email.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
@@ -5392,7 +5560,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
     
     for sub in subscribers:
         try:
-            logo_url = "https://course-pages-staging.preview.emergentagent.com/api/uploads/logo_email.png"
+            logo_url = "https://golf-holiday-seo.preview.emergentagent.com/api/uploads/logo_email.png"
             html_content = f"""
             <html>
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
