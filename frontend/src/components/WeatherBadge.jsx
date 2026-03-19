@@ -15,7 +15,7 @@ const getWeatherInfo = (code) => {
   return { icon: CloudLightning, label: 'Storm' };
 };
 
-export const WeatherBadge = () => {
+export const WeatherBadge = ({ isScrolled }) => {
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -34,12 +34,15 @@ export const WeatherBadge = () => {
 
   return (
     <div
-      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 text-white/80 text-xs"
+      className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs transition-colors duration-300 ${
+        isScrolled
+          ? 'bg-stone-100 text-stone-600'
+          : 'bg-white/10 backdrop-blur-sm border border-white/15 text-white/80'
+      }`}
       data-testid="weather-badge"
     >
       <Icon className="w-3.5 h-3.5" />
       <span className="font-medium">{temp}°C</span>
-      <span className="hidden sm:inline text-white/60">Mallorca</span>
     </div>
   );
 };

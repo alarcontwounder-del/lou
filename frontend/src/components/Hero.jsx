@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { WeatherBadge } from './WeatherBadge';
 
 export const Hero = () => {
   const { t } = useLanguage();
@@ -84,10 +83,6 @@ export const Hero = () => {
         </div>
       </button>
 
-      {/* Weather Badge */}
-      <div className="absolute top-24 sm:top-28 right-4 sm:right-10 z-10 opacity-0 animate-fade-in-up stagger-1">
-        <WeatherBadge />
-      </div>
     </section>
   );
 };

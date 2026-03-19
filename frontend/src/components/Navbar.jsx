@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Menu, X, ChevronDown, Settings, Search } from 'lucide-react';
+import { WeatherBadge } from './WeatherBadge';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -162,6 +163,9 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           >
             {t('nav.contact')}
           </button>
+
+          {/* Weather Badge */}
+          <WeatherBadge isScrolled={isScrolled} />
 
           {/* Language Selector */}
           <DropdownMenu>
