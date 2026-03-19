@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, User, ArrowRight, Tag, X, ChevronDown } from 'lucide-react';
 import axios from 'axios';
 
@@ -7,6 +8,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const Blog = () => {
   const { language, t } = useLanguage();
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -210,6 +212,19 @@ export const Blog = () => {
               <p className="text-stone-600 leading-relaxed text-base whitespace-pre-line">
                 {getContent(selectedPost)}
               </p>
+
+              {selectedPost.cta && (
+                <div className="mt-6 pt-5 border-t border-stone-100">
+                  <button
+                    onClick={() => { closePost(); navigate(selectedPost.cta.url); }}
+                    className="inline-flex items-center gap-2 bg-brand-charcoal hover:bg-stone-700 text-white font-medium text-sm px-6 py-3 rounded-full transition-colors"
+                    data-testid="blog-cta-button"
+                  >
+                    {selectedPost.cta.label}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
