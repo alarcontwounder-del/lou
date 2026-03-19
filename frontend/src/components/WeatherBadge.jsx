@@ -34,15 +34,15 @@ export const WeatherBadge = ({ isScrolled }) => {
 
   return (
     <div
-      className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs transition-colors duration-300 ${
+      className={`hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors duration-300 ${
         isScrolled
           ? 'bg-stone-100 text-stone-600'
           : 'bg-white/10 backdrop-blur-sm border border-white/15 text-white/80'
       }`}
       data-testid="weather-badge"
     >
-      <Icon className="w-3.5 h-3.5" />
-      <span className="font-medium">{temp}°C</span>
+      <Icon className="w-4 h-4" />
+      <span className="font-semibold">{temp}°C</span>
     </div>
   );
 };
