@@ -57,6 +57,7 @@ export const DataProvider = ({ children }) => {
   const getDisplayedItems = (items, limitKey) => {
     const setting = data.displaySettings[limitKey];
     if (!setting) return items;
+    if (typeof setting === 'object' && setting.show === false) return [];
     if (typeof setting === 'number') return items.slice(0, setting);
     if (typeof setting === 'object' && setting.limit) return items.slice(0, setting.limit);
     return items;

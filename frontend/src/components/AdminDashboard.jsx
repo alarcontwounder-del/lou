@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { X, Mail, Users, MessageSquare, LogOut, Star, LayoutGrid } from 'lucide-react';
+import { X, Mail, Users, MessageSquare, LogOut, Star, LayoutGrid, Settings } from 'lucide-react';
 import axios from 'axios';
 import { ContentManager } from './ContentManager';
 import { ContactsTab } from './admin/ContactsTab';
 import { SubscribersTab } from './admin/SubscribersTab';
 import { ReviewsTab } from './admin/ReviewsTab';
 import { DeleteModal } from './admin/DeleteModal';
+import { DisplaySettingsTab } from './admin/DisplaySettingsTab';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -132,6 +133,7 @@ export const AdminDashboard = ({ onClose, user }) => {
     { id: 'subscribers', label: 'Subscribers', icon: Mail, count: subscribers.length },
     { id: 'reviews', label: 'Pending Reviews', icon: Star, count: pendingReviews.length },
     { id: 'content', label: 'Content Manager', icon: LayoutGrid },
+    { id: 'display', label: 'Display Settings', icon: Settings },
   ];
 
   return (
@@ -222,6 +224,7 @@ export const AdminDashboard = ({ onClose, user }) => {
                 />
               )}
               {activeTab === 'content' && <ContentManager />}
+              {activeTab === 'display' && <DisplaySettingsTab />}
             </>
           )}
         </div>
