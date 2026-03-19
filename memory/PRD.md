@@ -42,6 +42,10 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - Zero Pexels stock images remaining across all categories
 - [x] **Bug Fix: Nearest Golf Distance Restored** (March 2026) — Re-ran migration + updated seed script to auto-run migration after every seed
 - [x] **Bug Fix: QuickView (Eye Icon) Verified** (March 2026) — Working correctly across all partner categories
+- [x] **Data Cleanup: Duplicate Entry Removal** (March 2026) — Removed 6 duplicate restaurant entries (DINS Santi Taura, Zaranda, Es Fum, Es Verger, Izakaya Mallorca, Es Fanals duplicates)
+- [x] **Data Cleanup: Duplicate Image Deduplication** (March 2026) — Fixed 6 pairs of duplicate images (Mirabona, Es Guix, Ginbo, Altamar, Yara, Social Club)
+- [x] **Bug Fix: Broken Images Replaced** (March 2026) — Fixed 5 broken external images (DINS Santi Taura, Castillo Hotel Son Vida, Maca de Castro, Purobeach Illetas, Beso Beach)
+- [x] **Bug Fix: Lobster Club nearest_golf** (March 2026) — Added missing nearest_golf data for Lobster Club
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
@@ -79,7 +83,7 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 
 ## Key API Endpoints
 - `GET /api/hotels` - All hotels (38)
-- `GET /api/restaurants` - All restaurants (54)
+- `GET /api/restaurants` - All restaurants (48)
 - `GET /api/cafe-bars` - All cafe/bars (36)
 - `GET /api/beach-clubs` - All beach clubs (12)
 - `GET /api/golf-courses` - All golf courses
