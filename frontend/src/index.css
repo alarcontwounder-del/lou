@@ -126,7 +126,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s ease-in-out 0.8s; /* 0.8s delay gives time to click front elements */
+  transition: transform 0.6s ease-in-out 1.5s; /* 1.5s delay gives time to click front elements */
   transform-style: preserve-3d;
 }
 
