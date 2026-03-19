@@ -26,9 +26,9 @@ export const Hero = () => {
       <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-40 sm:pt-44 md:pt-48 pb-24">
         <div className="container-custom w-full">
           <div className="max-w-3xl">
-            {/* Subtitle */}
+            {/* Badge */}
             <div
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 sm:mb-8 opacity-0 animate-fade-in-up stagger-1"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-5 sm:mb-6 opacity-0 animate-fade-in-up stagger-1"
               data-testid="hero-subtitle"
             >
               <span className="text-white font-semibold text-sm sm:text-base tracking-wide">Est. 2003</span>
@@ -36,21 +36,21 @@ export const Hero = () => {
               <span className="text-white/90 text-xs sm:text-sm tracking-wide">Mallorca's First Golf Agency</span>
             </div>
 
+            {/* Brand story */}
+            <p
+              className="text-white text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] font-medium"
+              data-testid="hero-brand-story"
+            >
+              Leaders in innovation with the island's first 24/7 real-time booking system service.
+            </p>
+
             {/* Title */}
             <h1
-              className="font-heading text-4xl sm:text-5xl md:text-7xl text-white font-medium leading-tight mb-8 sm:mb-10 opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
+              className="font-heading text-4xl sm:text-5xl md:text-7xl text-white font-medium leading-tight mb-8 sm:mb-10 opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
               data-testid="hero-title"
             >
               {t('hero.title')}
             </h1>
-
-            {/* Description */}
-            <p
-              className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-10 sm:mb-12 max-w-xl opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
-              data-testid="hero-description"
-            >
-              {t('hero.description')}
-            </p>
 
             {/* CTA Button */}
             <div className="flex flex-col sm:flex-row gap-3 opacity-0 animate-fade-in-up stagger-4">
