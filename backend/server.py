@@ -4480,7 +4480,7 @@ BLOG_POSTS = [
 # Email helper functions
 async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
-    logo_url = "https://golf-holiday-seo.preview.emergentagent.com/api/uploads/logo_email.png"
+    logo_url = "https://authentic-venues.preview.emergentagent.com/api/uploads/logo_email.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
@@ -5570,7 +5570,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
     
     for sub in subscribers:
         try:
-            logo_url = "https://golf-holiday-seo.preview.emergentagent.com/api/uploads/logo_email.png"
+            logo_url = "https://authentic-venues.preview.emergentagent.com/api/uploads/logo_email.png"
             html_content = f"""
             <html>
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
