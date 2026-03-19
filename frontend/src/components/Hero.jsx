@@ -27,12 +27,14 @@ export const Hero = () => {
         <div className="container-custom w-full">
           <div className="max-w-3xl">
             {/* Subtitle */}
-            <p
-              className="text-white/90 text-sm sm:text-base tracking-wide mb-6 sm:mb-8 opacity-0 animate-fade-in-up stagger-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-medium max-w-2xl leading-relaxed"
+            <div
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 sm:mb-8 opacity-0 animate-fade-in-up stagger-1"
               data-testid="hero-subtitle"
             >
-              {t('hero.subtitle')}
-            </p>
+              <span className="text-white font-semibold text-sm sm:text-base tracking-wide">Est. 2003</span>
+              <span className="w-px h-4 bg-white/40"></span>
+              <span className="text-white/90 text-xs sm:text-sm tracking-wide">Mallorca's First Golf Agency</span>
+            </div>
 
             {/* Title */}
             <h1

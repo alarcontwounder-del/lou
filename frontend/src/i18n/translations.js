@@ -10,7 +10,7 @@ export const translations = {
     hero: {
       subtitle: "Established in 2003 as Mallorca's first golf agency. Leaders in innovation with the island's first 24/7 real-time booking system service.",
       title: "Play the Best Golf Courses in Mallorca",
-      description: "Book tee times, golf holiday packages, and luxury stay & play deals at 16 premium courses. Your expert golf concierge on the island.",
+      description: "Leaders in innovation with the island's first 24/7 real-time booking system. Book tee times, golf holiday packages, and luxury stay & play deals at 16 premium courses.",
       bookTeeTime: "Book a tee time now",
       cta: "Start Your Journey",
       ctaSecondary: "View golf courses in Mallorca"
