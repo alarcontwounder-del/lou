@@ -25,34 +25,31 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [x] Google Search Console verified
 - [x] **Individual Golf Course Pages** (16 courses with SEO-optimized detail pages)
 - [x] **Keyword & Content Strategy Implementation** (March 2026)
-  - Homepage copy enriched with high-traffic keywords across hero, about, courses, hotels, restaurants, beach clubs, cafes sections
-  - Enhanced meta tags (title, description, OG, Twitter Card) with target keywords
-  - Expanded FAQ schema from 4 to 8 questions targeting long-tail keywords
+  - Homepage copy enriched with high-traffic keywords
+  - Enhanced meta tags (title, description, OG, Twitter Card)
+  - Expanded FAQ schema from 4 to 8 questions
   - Enriched golfCourseSEO.js with location-specific keywords per course
-  - **NEW: /golf-holidays-mallorca landing page** — targets "golf holiday packages mallorca", "stay and play golf mallorca", "golf weekend breaks mallorca", etc.
-  - **NEW: /book-tee-times landing page** — targets "book tee times mallorca", "discount tee times mallorca", "mallorca tee time booking", etc.
+  - **NEW: /golf-holidays-mallorca landing page**
+  - **NEW: /book-tee-times landing page**
   - Sitemap updated with 2 new landing page URLs
   - Footer internal links to new landing pages
   - llms.txt updated with new pages and 16 courses
-  - Updated service descriptions from 13 to 16 courses across all schemas
-- [x] **Bug Fixes — Search, Footer, Design** (March 2026)
-  - Search now finds Golf Holidays and Book Tee Times landing pages (static page results with amber badge)
-  - Footer links navigate correctly between pages using React Router (useNavigate)
-  - Book Tee Times page redesigned: course thumbnail cards with "Book a Tee Time" buttons, cream/white alternating sections
-  - Hero/CTA sections changed from black to dark grey (brand-charcoal) on both landing pages
+- [x] **Blog Content Expansion** (March 2026) — VERIFIED March 19
+  - 4 existing blog posts enriched with keywords
+  - 6 new blog posts created (art galleries, culinary experiences, Palma golf, budget golf, stay & play packages, ultimate guide)
+  - All 10 posts rendering correctly in homepage grid + modal detail view
+  - API endpoints verified: GET /api/blog, GET /api/blog/{slug}
 - [x] **Nearest Golf Course Distance** on ALL partner categories (March 2026)
-  - Hotels: 38 venues with distance badges on card front, back, and QuickView modal
-  - Restaurants: 49 venues with distance badges on card front, back, and QuickView modal
-  - Cafes/Bars: 36 venues with distance badges on card front, back, and QuickView modal
-  - Beach Clubs: Already had this feature (11 venues)
-  - MongoDB migration script: backend/migrate_nearest_golf.py
+- [x] **Bug Fixes — Search, Footer, Navigation, Design** (March 2026)
+  - Search finds landing pages, footer links work, hero flash resolved
+  - Book Tee Times redesigned, brand-charcoal backgrounds, logo overlay fix
 
 ## Keyword Clusters Targeted
-1. **courses** (research): "best golf courses mallorca", "luxury golf courses mallorca", "top rated golf courses mallorca"
-2. **local** (commercial): "golf guide palma mallorca", "golf tee times alcudia mallorca", "golf packages santa ponsa mallorca"
-3. **core** (informational): "golf mallorca guide", "play golf mallorca", "golf in mallorca tee times"
-4. **travel** (commercial): "golf holiday packages mallorca", "stay and play golf mallorca", "mallorca golf vacation"
-5. **high-intent** (transactional): "book tee times mallorca", "discount tee times mallorca", "golf concierge mallorca", "vip golf experience mallorca"
+1. **courses** (research): "best golf courses mallorca", "luxury golf courses mallorca"
+2. **local** (commercial): "golf guide palma mallorca", "golf tee times alcudia mallorca"
+3. **core** (informational): "golf mallorca guide", "play golf mallorca"
+4. **travel** (commercial): "golf holiday packages mallorca", "stay and play golf mallorca"
+5. **high-intent** (transactional): "book tee times mallorca", "discount tee times mallorca"
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
@@ -61,10 +58,10 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [ ] External review links (pending user URLs)
 
 ## Backlog / Future
-- [ ] Integrate remaining keywords into blog content / new blog posts
+- [ ] SEO-friendly individual blog post routes (/blog/slug) instead of modal (P1 - recommended)
 - [ ] Hero video replacement (P2)
 - [ ] Weather widget for Mallorca (P2)
-- [ ] Multi-language subdirectories /de/, /fr/ instead of ?lang= params (P2)
+- [ ] Multi-language subdirectories /de/, /fr/ (P2)
 - [ ] Golf Packages page with bundled course + hotel deals (P2)
 - [ ] Webpack deprecation warnings cleanup (P3)
 - [ ] AdminDashboard.jsx refactoring into sub-components (P3)
@@ -73,46 +70,38 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 ```
 /app/
 ├── backend/
-│   └── server.py
+│   ├── server.py           # API endpoints, blog data, search
+│   └── migrate_nearest_golf.py
 ├── frontend/
 │   └── src/
 │       ├── components/
 │       │   ├── GolfCourseLanding.jsx  # Individual course detail page
-│       │   ├── GolfHolidaysPage.jsx   # NEW: Golf holidays landing page
-│       │   ├── BookTeeTimesPage.jsx   # NEW: Book tee times landing page
-│       │   ├── GolfCourses.jsx        # Course listing cards
-│       │   ├── Navbar.jsx             # Supports variant="light"
-│       │   ├── Footer.jsx             # Updated with internal links
-│       │   ├── Hero.jsx, About.jsx, etc.
+│       │   ├── GolfHolidaysPage.jsx   # Golf holidays landing page
+│       │   ├── BookTeeTimesPage.jsx   # Book tee times landing page
+│       │   ├── Blog.jsx              # Blog section with modal detail view
+│       │   ├── Navbar.jsx, Footer.jsx, FloatingSearch.jsx
 │       │   └── AdminDashboard.jsx
-│       ├── data/
-│       │   └── golfCourseSEO.js       # Enriched SEO content for 16 courses
-│       ├── i18n/
-│       │   └── translations.js        # Keyword-enriched copy
-│       ├── context/
-│       │   ├── LanguageContext.js
-│       │   └── DataContext.jsx
-│       └── App.js                     # Routes: /, /golf-courses/:courseId, /golf-holidays-mallorca, /book-tee-times
+│       ├── data/golfCourseSEO.js
+│       ├── i18n/translations.js
+│       ├── context/LanguageContext.js, DataContext.jsx
+│       └── App.js           # Routes and scroll-to-section logic
 └── public/
-    ├── index.html                     # Updated meta tags, FAQ schemas
-    ├── sitemap.xml                    # 2 new landing page URLs
-    ├── robots.txt
-    ├── llms.txt                       # Updated with 16 courses and new pages
-    └── schema-hub.json
+    ├── index.html, sitemap.xml, robots.txt, llms.txt, schema-hub.json
 ```
 
 ## Key API Endpoints
 - `GET /api/golf-courses` - List all golf courses
 - `GET /api/golf-courses/{course_id}` - Get individual course
-- `POST /api/golf-courses` - Create course (admin)
-- `PUT /api/golf-courses/{course_id}` - Update course (admin)
-- `DELETE /api/golf-courses/{course_id}` - Delete course (admin)
+- `GET /api/search?q=<query>` - Site-wide search (partners + pages)
+- `GET /api/blog` - All blog posts
+- `GET /api/blog/{slug}` - Individual blog post
 - `POST /api/newsletter/subscribe` - Newsletter signup
 - `POST /api/contact` - Contact form
 - `GET /api/auth/google` - Google OAuth
 
 ## Important Technical Notes
-- GolfCourseLanding.jsx, GolfHolidaysPage.jsx, BookTeeTimesPage.jsx live in /components/ (not /pages/) due to Babel metadata plugin stack overflow
-- React.lazy loading used for all landing page routes
+- Navigation uses React Router state + requestAnimationFrame for scroll-to-section (no setTimeout)
+- Blog uses modal detail view (not separate routes — SEO improvement recommended)
+- GolfCourseLanding/GolfHolidaysPage/BookTeeTimesPage use React.lazy to avoid Babel stack overflow
 - Hero images: user-provided photos via HERO_IMAGE_OVERRIDE map
 - Navbar has `variant="light"` prop for content/landing pages
