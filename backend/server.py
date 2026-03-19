@@ -4204,7 +4204,7 @@ BLOG_POSTS = [
             "fr": "Majorque beneficie de plus de 300 jours de soleil par an, ce qui en fait l'une des meilleures destinations golf d'Europe toute l'annee...",
             "se": "Mallorca har over 300 soldagar per ar, vilket gor det till en av Europas basta golfar-runt-destinationer..."
         },
-        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-son-gual-mallorca/golf-son-gual-mallorca",
+        "image": "https://customer-assets.emergentagent.com/job_69da4507-6f7e-4c8b-9d2b-d2cd88aa2044/artifacts/2i8p7fsc_Best%20time%20to%20play%20in%20amllorca.jpg",
         "author": "Maria Santos",
         "category": "travel-tips",
         "tags": ["weather", "planning", "seasons", "golf holidays", "when to play"],
@@ -4372,7 +4372,7 @@ BLOG_POSTS = [
             "fr": "Majorque inspire les artistes depuis des siecles...",
             "se": "Mallorca har inspirerat konstnarar i arhundraden..."
         },
-        "image": "https://images.unsplash.com/photo-1748714240939-9dfed1bb951b?w=800&h=500&fit=crop",
+        "image": "https://customer-assets.emergentagent.com/job_69da4507-6f7e-4c8b-9d2b-d2cd88aa2044/artifacts/ol7g631v_Art%26Culture.webp",
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["art", "culture", "galleries", "Palma", "Miro", "museums"],
@@ -4456,7 +4456,7 @@ BLOG_POSTS = [
             "fr": "Palma de Majorque est la base parfaite pour un voyage golf...",
             "se": "Palma de Mallorca ar den perfekta basen for en golfresa..."
         },
-        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_500,c_fill/courses/golf-santa-ponsa-i-mallorca/golf-santa-ponsa-i-mallorca",
+        "image": "https://customer-assets.emergentagent.com/job_69da4507-6f7e-4c8b-9d2b-d2cd88aa2044/artifacts/2zvw5znp_Golf%20near%20palma.jpg",
         "author": "Maria Santos",
         "category": "course-guides",
         "tags": ["Palma", "near Palma", "golf courses", "city golf", "location"],

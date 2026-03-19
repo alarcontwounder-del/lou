@@ -86,11 +86,11 @@ export const Blog = () => {
               className="card-hover bg-white border border-stone-100 rounded-2xl overflow-hidden group"
               data-testid={'blog-card-' + post.slug}
             >
-              <div className="img-zoom aspect-[16/10]">
+              <div className="img-zoom aspect-[3/2]">
                 <img
                   src={post.image}
                   alt={getTitle(post)}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
 
