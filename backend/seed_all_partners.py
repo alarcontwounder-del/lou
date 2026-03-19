@@ -156,6 +156,14 @@ async def seed_all_partners():
     
     client.close()
 
+    # Always run nearest golf migration after seeding
+    print("\n🏌️ Running nearest golf migration...")
+    from migrate_nearest_golf import update_collection as migrate_golf
+    for coll_name in ['hotels', 'restaurants', 'cafe_bars']:
+        u, s = migrate_golf(coll_name)
+        print(f"   {coll_name}: {u} updated, {s} skipped")
+    print("   ✅ Nearest golf data populated")
+
 
 async def reset_all_partners():
     """Reset all partner collections to seed data"""

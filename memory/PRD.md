@@ -40,6 +40,8 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - 36 cafes/bars: themed Unsplash images categorized by venue type
   - 9 restaurants with official images from their actual websites (Marc Fosh, DINS Santi Taura, etc.)
   - Zero Pexels stock images remaining across all categories
+- [x] **Bug Fix: Nearest Golf Distance Restored** (March 2026) — Re-ran migration + updated seed script to auto-run migration after every seed
+- [x] **Bug Fix: QuickView (Eye Icon) Verified** (March 2026) — Working correctly across all partner categories
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
