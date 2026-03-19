@@ -216,7 +216,18 @@ export const Blog = () => {
               {selectedPost.cta && (
                 <div className="mt-6 pt-5 border-t border-stone-100">
                   <button
-                    onClick={() => { closePost(); navigate(selectedPost.cta.url); }}
+                    onClick={() => {
+                      closePost();
+                      const url = selectedPost.cta.url;
+                      if (url.startsWith('#')) {
+                        setTimeout(() => {
+                          const el = document.getElementById(url.slice(1));
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                      } else {
+                        navigate(url);
+                      }
+                    }}
                     className="inline-flex items-center gap-2 bg-brand-charcoal hover:bg-stone-700 text-white font-medium text-sm px-6 py-3 rounded-full transition-colors"
                     data-testid="blog-cta-button"
                   >

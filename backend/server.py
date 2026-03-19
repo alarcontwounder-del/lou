@@ -4208,6 +4208,7 @@ BLOG_POSTS = [
         "author": "Maria Santos",
         "category": "travel-tips",
         "tags": ["weather", "planning", "seasons", "golf holidays", "when to play"],
+        "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2025-12-15T10:00:00Z"
     },
@@ -4236,6 +4237,7 @@ BLOG_POSTS = [
         "author": "Carlos Martinez",
         "category": "course-guides",
         "tags": ["beginners", "courses", "tips", "cheap golf", "green fees"],
+        "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2025-12-10T14:30:00Z"
     },
@@ -4264,6 +4266,7 @@ BLOG_POSTS = [
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["food", "restaurants", "experiences", "Michelin", "gastronomy"],
+        "cta": {"label": "Explore Our Restaurant Partners", "url": "#restaurants"},
         "published": True,
         "created_at": "2025-12-05T09:15:00Z"
     },
@@ -4292,6 +4295,7 @@ BLOG_POSTS = [
         "author": "James Thompson",
         "category": "course-guides",
         "tags": ["championship", "advanced", "challenge", "best courses"],
+        "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2025-11-28T11:00:00Z"
     },
@@ -4320,6 +4324,7 @@ BLOG_POSTS = [
         "author": "Maria Santos",
         "category": "travel-tips",
         "tags": ["golf guide", "planning", "tee times", "green fees", "mallorca golf"],
+        "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2026-01-15T10:00:00Z"
     },
@@ -4348,6 +4353,7 @@ BLOG_POSTS = [
         "author": "Carlos Martinez",
         "category": "travel-tips",
         "tags": ["stay and play", "golf packages", "hotels", "golf holidays", "deals"],
+        "cta": {"label": "Explore Our Hotel Partners", "url": "#hotels"},
         "published": True,
         "created_at": "2026-01-22T09:00:00Z"
     },
@@ -4376,6 +4382,7 @@ BLOG_POSTS = [
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["art", "culture", "galleries", "Palma", "Miro", "museums"],
+        "cta": {"label": "Discover Cafes & Bars in Mallorca", "url": "#cafes-bars"},
         "published": True,
         "created_at": "2026-02-10T08:30:00Z"
     },
@@ -4404,6 +4411,7 @@ BLOG_POSTS = [
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["food", "culinary", "restaurants", "wine", "tapas", "Michelin"],
+        "cta": {"label": "Explore Our Restaurant Partners", "url": "#restaurants"},
         "published": True,
         "created_at": "2026-02-18T10:00:00Z"
     },
@@ -4432,6 +4440,7 @@ BLOG_POSTS = [
         "author": "Carlos Martinez",
         "category": "travel-tips",
         "tags": ["cheap golf", "budget", "discount", "green fees", "deals"],
+        "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2026-03-01T11:00:00Z"
     },
