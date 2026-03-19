@@ -152,18 +152,18 @@ export const Blog = () => {
           <div
             ref={modalRef}
             onScroll={handleModalScroll}
-            className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto"
           >
             <button
               onClick={closePost}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 transition-colors"
+              className="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 transition-colors"
               data-testid="blog-modal-close"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
 
             <div className="relative">
-              <div className="aspect-video rounded-t-2xl overflow-hidden">
+              <div className="aspect-[16/9] rounded-t-2xl overflow-hidden">
                 <img
                   src={selectedPost.image}
                   alt={getTitle(selectedPost)}
@@ -175,35 +175,39 @@ export const Blog = () => {
                 <button
                   onClick={() => {
                     if (modalRef.current) {
-                      modalRef.current.scrollBy({ top: 300, behavior: 'smooth' });
+                      modalRef.current.scrollBy({ top: 280, behavior: 'smooth' });
                     }
                   }}
-                  className="absolute bottom-0 left-0 right-0 flex flex-col items-center pb-3 pt-10 bg-gradient-to-t from-black/50 to-transparent text-white/90 transition-opacity duration-500 hover:text-white cursor-pointer"
+                  className="absolute bottom-5 left-1/2 -translate-x-1/2 group"
                   data-testid="blog-scroll-hint"
                 >
-                  <span className="text-xs uppercase tracking-[0.15em] font-medium mb-1">Continue reading</span>
-                  <ChevronDown className="w-5 h-5 animate-bounce" />
+                  <div className="flex flex-col items-center gap-1.5 bg-black/40 backdrop-blur-sm rounded-full px-4 py-2.5">
+                    <span className="text-white/80 text-[10px] uppercase tracking-[0.2em] font-light group-hover:text-white transition-colors">Scroll</span>
+                    <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center pt-1.5 group-hover:border-white/60 transition-colors">
+                      <div className="w-1 h-2 bg-white/70 rounded-full animate-bounce group-hover:bg-white transition-colors"></div>
+                    </div>
+                  </div>
                 </button>
               )}
             </div>
 
-            <div className="p-8">
-              <div className="flex flex-wrap items-center gap-4 text-sm text-stone-400 mb-4">
+            <div className="p-6">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-stone-400 mb-3">
                 <span className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-3.5 h-3.5" />
                   {formatDate(selectedPost.created_at)}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <User className="w-4 h-4" />
+                  <User className="w-3.5 h-3.5" />
                   {selectedPost.author}
                 </span>
               </div>
 
-              <h2 className="font-heading text-3xl md:text-4xl text-stone-900 mb-6">
+              <h2 className="font-heading text-2xl md:text-3xl text-stone-900 mb-5">
                 {getTitle(selectedPost)}
               </h2>
 
-              <p className="text-stone-600 leading-relaxed text-lg whitespace-pre-line">
+              <p className="text-stone-600 leading-relaxed text-base whitespace-pre-line">
                 {getContent(selectedPost)}
               </p>
             </div>
