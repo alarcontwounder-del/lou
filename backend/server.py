@@ -4260,7 +4260,7 @@ BLOG_POSTS = [
             "fr": "Majorque n'est pas seulement un paradis du golf — c'est aussi l'une des destinations gastronomiques les plus passionnantes de la Mediterranee...",
             "se": "Mallorca ar inte bara ett golfparadis — det ar ocksa en av Medelhavets mest spannande matdestinationer..."
         },
-        "image": "/api/static/images/blog-gastronomy.jpg",
+        "image": "https://images.unsplash.com/photo-1766393305879-96093c91c0ca?w=800&h=530&fit=crop&q=80",
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["food", "restaurants", "experiences", "Michelin", "gastronomy"],
