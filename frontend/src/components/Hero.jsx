@@ -32,8 +32,8 @@ export const Hero = () => {
               data-testid="hero-subtitle"
             >
               <span className="text-white font-semibold text-sm sm:text-base tracking-wide">Est. 2003</span>
-              <span className="w-px h-4 bg-white/40"></span>
-              <span className="text-white/90 text-xs sm:text-sm tracking-wide">Mallorca's First Golf Agency</span>
+              <span className="w-px h-5 bg-white/50"></span>
+              <span className="text-white font-semibold text-sm sm:text-base tracking-wide">Mallorca's First Golf Agency</span>
             </div>
 
             {/* Brand story */}
