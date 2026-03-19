@@ -167,14 +167,14 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           {/* Language Selector */}
           <DropdownMenu>
             <DropdownMenuTrigger
-              className={`flex items-center gap-1 px-3 py-2 rounded-full border transition-colors duration-300 text-base ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full border transition-colors duration-300 text-sm ${
                 isScrolled
                   ? 'border-stone-200 text-stone-700 hover:border-brand-slate'
                   : 'border-white/50 text-white hover:border-white'
               }`}
               data-testid="language-selector"
             >
-              <span className="text-base font-medium">{currentLang?.label}</span>
+              <span className="text-sm font-semibold">{currentLang?.label}</span>
               <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="bg-white">
@@ -199,7 +199,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           {!isCheckingAuth && (
             <button
               onClick={onAdminClick}
-              className={`p-2 rounded-full transition-colors duration-300 ${
+              className={`p-2.5 rounded-full transition-colors duration-300 ${
                 isScrolled
                   ? 'text-stone-500 hover:text-brand-slate hover:bg-stone-100'
                   : 'text-white/70 hover:text-white hover:bg-white/10'
@@ -207,7 +207,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
               title={isAuthenticated ? 'Admin Dashboard' : 'Admin Login'}
               data-testid="admin-btn"
             >
-              <Settings className={`w-5 h-5 ${isAuthenticated ? 'text-brand-slate' : ''}`} />
+              <Settings className={`w-6 h-6 ${isAuthenticated ? 'text-brand-slate' : ''}`} />
             </button>
           )}
 
@@ -215,7 +215,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           {onSearchClick && (
             <button
               onClick={onSearchClick}
-              className={`p-2 rounded-full transition-colors duration-300 ${
+              className={`p-2.5 rounded-full transition-colors duration-300 ${
                 isScrolled
                   ? 'text-stone-500 hover:text-brand-slate hover:bg-stone-100'
                   : 'text-white/70 hover:text-white hover:bg-white/10'
@@ -223,7 +223,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
               title="Search"
               data-testid="navbar-search-btn"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-6 h-6" />
             </button>
           )}
 
