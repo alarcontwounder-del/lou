@@ -55,9 +55,11 @@ export const DataProvider = ({ children }) => {
 
   // Helper to get displayed items based on limits
   const getDisplayedItems = (items, limitKey) => {
-    const limit = data.displaySettings[limitKey];
-    if (!limit) return items;
-    return items.slice(0, limit);
+    const setting = data.displaySettings[limitKey];
+    if (!setting) return items;
+    if (typeof setting === 'number') return items.slice(0, setting);
+    if (typeof setting === 'object' && setting.limit) return items.slice(0, setting.limit);
+    return items;
   };
 
   return (
