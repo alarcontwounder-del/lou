@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Calendar, User, ArrowRight, Tag, X } from 'lucide-react';
+import { Calendar, User, ArrowRight, Tag, X, ChevronDown } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -10,6 +10,14 @@ export const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  const modalRef = useRef(null);
+
+  const handleModalScroll = useCallback(() => {
+    if (modalRef.current && modalRef.current.scrollTop > 60) {
+      setShowScrollHint(false);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -48,6 +56,7 @@ export const Blog = () => {
 
   const openPost = (post) => {
     setSelectedPost(post);
+    setShowScrollHint(true);
   };
 
   const closePost = () => {
@@ -140,7 +149,11 @@ export const Blog = () => {
             onClick={closePost}
           />
           
-          <div className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+          <div
+            ref={modalRef}
+            onScroll={handleModalScroll}
+            className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+          >
             <button
               onClick={closePost}
               className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 transition-colors"
@@ -149,12 +162,29 @@ export const Blog = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="aspect-video rounded-t-2xl overflow-hidden">
-              <img
-                src={selectedPost.image}
-                alt={getTitle(selectedPost)}
-                className="w-full h-full object-cover"
-              />
+            <div className="relative">
+              <div className="aspect-video rounded-t-2xl overflow-hidden">
+                <img
+                  src={selectedPost.image}
+                  alt={getTitle(selectedPost)}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {showScrollHint && (
+                <button
+                  onClick={() => {
+                    if (modalRef.current) {
+                      modalRef.current.scrollBy({ top: 300, behavior: 'smooth' });
+                    }
+                  }}
+                  className="absolute bottom-0 left-0 right-0 flex flex-col items-center pb-3 pt-10 bg-gradient-to-t from-black/50 to-transparent text-white/90 transition-opacity duration-500 hover:text-white cursor-pointer"
+                  data-testid="blog-scroll-hint"
+                >
+                  <span className="text-xs uppercase tracking-[0.15em] font-medium mb-1">Continue reading</span>
+                  <ChevronDown className="w-5 h-5 animate-bounce" />
+                </button>
+              )}
             </div>
 
             <div className="p-8">
@@ -173,7 +203,7 @@ export const Blog = () => {
                 {getTitle(selectedPost)}
               </h2>
 
-              <p className="text-stone-600 leading-relaxed text-lg">
+              <p className="text-stone-600 leading-relaxed text-lg whitespace-pre-line">
                 {getContent(selectedPost)}
               </p>
             </div>
