@@ -80,6 +80,10 @@ function generateItinerary(partners, services, budget) {
   return result;
 }
 
+const formatSingleDate = (d) => d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+
+const TRANSFER_IMAGE = 'https://static.prod-images.emergentagent.com/jobs/0fbbd441-c00e-428a-bb6e-219f78598e7b/images/0e2a814d7d4f13858a777c78dbf40f7946916082e253fcc28999e427632b5947.png';
+
 /* ---- Sub-components ---- */
 
 function ServiceButton({ opt, selected, onToggle }) {
@@ -182,28 +186,41 @@ export const TripPlanner = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const toggleService = (id) => {
+    const isDeselecting = form.services.includes(id);
     setForm(prev => ({
       ...prev,
       services: prev.services.includes(id) ? prev.services.filter(s => s !== id) : [...prev.services, id],
     }));
+    if (isDeselecting) {
+      setItinerary(prev => {
+        const updated = { ...prev };
+        if (id === 'hotel') delete updated.hotel;
+        if (id === 'restaurant') delete updated.restaurant;
+        if (id === 'beach_club') delete updated.beach_club;
+        return updated;
+      });
+    }
   };
 
-  const needsItinerary = form.services.some(s => ['hotel', 'restaurant', 'beach_club'].includes(s));
-  const totalSteps = needsItinerary ? 4 : 3;
+  const totalSteps = 4;
 
   const canNext = () => {
     if (step === 1) return form.services.length > 0 && form.budget;
-    if (step === 2) return form.date;
-    if (step === 3 && needsItinerary) return true;
-    const contactStep = needsItinerary ? 4 : 3;
-    if (step === contactStep) return form.name && form.email;
+    if (step === 2) return form.date?.from;
+    if (step === 3) return true;
+    if (step === 4) return form.name && form.email;
     return true;
   };
 
-  const formatDate = (d) => d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+  const formatDate = (range) => {
+    if (!range?.from) return '';
+    const arr = formatSingleDate(range.from);
+    const dep = range.to ? formatSingleDate(range.to) : '';
+    return dep ? `${arr} – ${dep}` : arr;
+  };
 
   const goNext = () => {
-    if (step === 2 && needsItinerary) {
+    if (step === 2) {
       const suggested = generateItinerary(partners, form.services, form.budget);
       setItinerary(suggested);
     }
@@ -221,12 +238,13 @@ export const TripPlanner = ({ isOpen, onClose }) => {
       await axios.post(`${BACKEND_URL}/api/trip-planner`, {
         name: form.name, email: form.email, phone: form.phone || null,
         services: form.services, budget: form.budget,
-        preferred_hotel: itinerary.hotel?.name || null,
-        preferred_restaurant: itinerary.restaurant?.name || null,
-        preferred_beach_club: itinerary.beach_club?.name || null,
+        preferred_hotel: form.services.includes('hotel') ? (itinerary.hotel?.name || null) : null,
+        preferred_restaurant: form.services.includes('restaurant') ? (itinerary.restaurant?.name || null) : null,
+        preferred_beach_club: form.services.includes('beach_club') ? (itinerary.beach_club?.name || null) : null,
         transfer_pickup: form.transfer_pickup || null,
         transfer_dropoff: form.transfer_dropoff || null,
-        date: form.date ? form.date.toISOString().split('T')[0] : '',
+        date: form.date?.from ? form.date.from.toISOString().split('T')[0] : '',
+        departure_date: form.date?.to ? form.date.to.toISOString().split('T')[0] : null,
         time: form.time || null, group_size: form.group_size,
         special_requests: form.special_requests || null,
       });
@@ -249,9 +267,6 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const contactStep = needsItinerary ? 4 : 3;
-  const itineraryStep = needsItinerary ? 3 : null;
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" data-testid="trip-planner-modal">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={handleClose} />
@@ -272,9 +287,9 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         <div className="flex-1 overflow-y-auto p-6">
           {submitted && <SuccessView onClose={handleClose} />}
           {!submitted && step === 1 && <StepServices form={form} toggleService={toggleService} setForm={setForm} />}
-          {!submitted && step === 2 && <StepDateTime form={form} setForm={setForm} formatDate={formatDate} />}
-          {!submitted && step === itineraryStep && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} />}
-          {!submitted && step === contactStep && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} needsItinerary={needsItinerary} />}
+          {!submitted && step === 2 && <StepDateTime form={form} setForm={setForm} />}
+          {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} />}
+          {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
         </div>
 
         {/* Footer */}
@@ -287,7 +302,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
             ) : <div />}
             {step < totalSteps ? (
               <button onClick={goNext} disabled={!canNext()} className="flex items-center gap-1.5 px-5 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" data-testid="trip-next-btn">
-                {step === 2 && needsItinerary ? 'See Suggestions' : 'Next'} <ChevronRight className="w-4 h-4" />
+                {step === 2 ? 'See Suggestions' : 'Next'} <ChevronRight className="w-4 h-4" />
               </button>
             ) : (
               <button onClick={handleSubmit} disabled={!canNext() || submitting} className="flex items-center gap-2 px-6 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" data-testid="trip-submit-btn">
@@ -341,21 +356,31 @@ function StepServices({ form, toggleService, setForm }) {
 
 /* ---- Step 2: Date / Time / Group ---- */
 
-function StepDateTime({ form, setForm, formatDate }) {
+function StepDateTime({ form, setForm }) {
   const calendarClassNames = {
     day_selected: "bg-stone-700 text-white hover:bg-stone-800 hover:text-white focus:bg-stone-700 focus:text-white",
     day_today: "bg-stone-200 text-stone-800 font-bold",
+    day_range_start: "day-range-start bg-stone-700 text-white",
+    day_range_end: "day-range-end bg-stone-700 text-white",
+    day_range_middle: "bg-stone-200 text-stone-700",
   };
 
   return (
     <div data-testid="trip-planner-step-2">
-      <h3 className="font-heading text-lg text-stone-800 mb-1">When are you coming?</h3>
-      <p className="text-stone-500 text-sm mb-4">Pick your preferred date and time</p>
+      <h3 className="font-heading text-lg text-stone-800 mb-1">When are you visiting?</h3>
+      <p className="text-stone-500 text-sm mb-4">Select your arrival and departure dates</p>
       <div className="flex justify-center mb-4">
-        <Calendar mode="single" selected={form.date} onSelect={(d) => setForm(p => ({ ...p, date: d }))} disabled={(d) => d < new Date()} className="rounded-xl border border-stone-300 shadow-sm bg-white" classNames={calendarClassNames} />
+        <Calendar mode="range" selected={form.date} onSelect={(d) => setForm(p => ({ ...p, date: d }))} disabled={(d) => d < new Date()} className="rounded-xl border border-stone-300 shadow-sm bg-white" classNames={calendarClassNames} />
       </div>
-      {form.date && (
-        <p className="text-center text-sm text-stone-600 mb-4">Selected: <span className="font-semibold text-stone-800">{formatDate(form.date)}</span></p>
+      {form.date?.from && (
+        <p className="text-center text-sm text-stone-600 mb-4">
+          Arrival: <span className="font-semibold text-stone-800">{formatSingleDate(form.date.from)}</span>
+          {form.date.to ? (
+            <> — Departure: <span className="font-semibold text-stone-800">{formatSingleDate(form.date.to)}</span></>
+          ) : (
+            <span className="text-stone-400 ml-1">(select departure)</span>
+          )}
+        </p>
       )}
       <div className="mb-4">
         <label className="flex items-center gap-2 text-stone-500 text-xs uppercase tracking-widest mb-2"><Clock className="w-3.5 h-3.5" /> Preferred time</label>
@@ -402,13 +427,14 @@ function StepItinerary({ itinerary, form, swapSuggestion }) {
         )}
         {form.services.includes('transfer') && (
           <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-stone-200">
-            <div className="w-14 h-14 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0">
-              <Car className="w-6 h-6 text-stone-500" />
+            <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
+              <img src={TRANSFER_IMAGE} alt="Mercedes S-Class" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
               <p className="text-xs text-stone-400 uppercase tracking-wider">Premium Transfer</p>
-              <p className="font-semibold text-stone-800 text-sm">Private Luxury Vehicle</p>
-              {form.transfer_pickup && <p className="text-xs text-stone-500">{form.transfer_pickup} → {form.transfer_dropoff || 'TBD'}</p>}
+              <p className="font-semibold text-stone-800 text-sm">Mercedes S-Class</p>
+              <p className="text-xs text-stone-500">Private luxury chauffeur service</p>
+              {form.transfer_pickup && <p className="text-xs text-stone-400 mt-0.5">{form.transfer_pickup} → {form.transfer_dropoff || 'TBD'}</p>}
             </div>
           </div>
         )}
@@ -421,7 +447,7 @@ function StepItinerary({ itinerary, form, swapSuggestion }) {
 
 /* ---- Step 4: Contact Details ---- */
 
-function StepContact({ form, setForm, formatDate, itinerary, needsItinerary }) {
+function StepContact({ form, setForm, formatDate, itinerary }) {
   const serviceLabels = form.services.map(s => SERVICES.find(o => o.id === s)?.label).join(', ');
   const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.range || '';
 
@@ -442,10 +468,10 @@ function StepContact({ form, setForm, formatDate, itinerary, needsItinerary }) {
           <p className="text-stone-600"><span className="text-stone-400">Budget:</span> {budgetLabel}</p>
           <p className="text-stone-600"><span className="text-stone-400">Date:</span> {formatDate(form.date)}{form.time ? ` at ${form.time}` : ''}</p>
           <p className="text-stone-600"><span className="text-stone-400">Group:</span> {form.group_size} {form.group_size === 1 ? 'person' : 'people'}</p>
-          {itinerary.hotel && <p className="text-stone-600"><span className="text-stone-400">Hotel:</span> {itinerary.hotel.name}</p>}
-          {itinerary.restaurant && <p className="text-stone-600"><span className="text-stone-400">Restaurant:</span> {itinerary.restaurant.name}</p>}
-          {itinerary.beach_club && <p className="text-stone-600"><span className="text-stone-400">Beach Club:</span> {itinerary.beach_club.name}</p>}
-          {form.services.includes('transfer') && form.transfer_pickup && <p className="text-stone-600"><span className="text-stone-400">Transfer:</span> {form.transfer_pickup} → {form.transfer_dropoff || 'TBD'}</p>}
+          {form.services.includes('hotel') && itinerary.hotel && <p className="text-stone-600"><span className="text-stone-400">Hotel:</span> {itinerary.hotel.name}</p>}
+          {form.services.includes('restaurant') && itinerary.restaurant && <p className="text-stone-600"><span className="text-stone-400">Restaurant:</span> {itinerary.restaurant.name}</p>}
+          {form.services.includes('beach_club') && itinerary.beach_club && <p className="text-stone-600"><span className="text-stone-400">Beach Club:</span> {itinerary.beach_club.name}</p>}
+          {form.services.includes('transfer') && <p className="text-stone-600"><span className="text-stone-400">Transfer:</span> {form.transfer_pickup ? `${form.transfer_pickup} → ${form.transfer_dropoff || 'TBD'}` : 'Mercedes S-Class'}</p>}
         </div>
       </div>
     </div>

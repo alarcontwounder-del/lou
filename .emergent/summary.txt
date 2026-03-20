@@ -1,171 +1,161 @@
-<analysis>**original_problem_statement:**
-The user wants to continue building their Golfinmallorca.com website. The initial task was to replace all stock placeholder photos with authentic images for all partners (Hotels, Restaurants, etc.).
-
-After completing this, the user reported several major regressions:
-- The distance to nearest golf course feature disappeared from all partner cards.
-- The quick view (eye icon) functionality was broken.
-- Several venues had incorrect or duplicate images (e.g., Mama Carmen and el Perrito shared a picture).
-- The partner sections (Hotels, Restaurants, etc.) seemed to be disappearing from the homepage.
-- The card flip animation was too fast, making it impossible to click the location icon.
-- The location icon on the front of the cards was not working.
-- Several new images were broken or not loading.
-
-The user expressed frustration about the regressions and requested all issues be fixed.
-
-**PRODUCT REQUIREMENTS:**
-- All partner listings must display authentic, high-quality, uncropped images from the actual venues.
-- The website must be fully responsive, visually consistent, and performant.
-- All previously implemented features, such as nearest golf distance and quick view, must remain functional after any changes.
-- UI interactions, like card flips, must be user-friendly.
+<analysis>**original_problem_statement**: 
+The user wants to continue building their Golfinmallorca.com website. 
+PRODUCT REQUIREMENTS: Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a new Golf Trip Planner lead capture tool. The site must be visually consistent and highly responsive.
 
 **User's preferred language**: English
+(Note for next agent: You MUST respond in English only)
 
-**what currently exists?**
-A full-stack React/FastAPI application for a golf travel website. In this session, the agent successfully replaced all 140 stock/placeholder images for hotels, restaurants, cafes, and beach clubs with a mix of authentic images scraped from official websites and high-quality themed images from Unsplash.
+**what currently exists?** 
+A full-stack React/FastAPI application for a golf travel website. The platform includes partner listings (Hotels, Restaurants, Cafe/Bars, Beach Clubs), an Admin Dashboard (with a newly added Display Settings tab), Contact/Newsletter forms integrated with Resend, and a newly built Golf Trip Planner wizard modal for lead capture.
 
-Subsequently, the agent addressed and fixed a series of severe regressions reported by the user. The  data was restored and the seeding process was made more robust to prevent future data loss. The card flip animation delay was fixed, and the associated location icon bug was resolved. All duplicate and incorrect image assignments were corrected with unique, more appropriate photos. Broken images were also identified and fixed.
+**Last working item**: 
+- **Last item agent was working**: Fixing 5 bugs reported by the user on the newly built Golf Trip Planner feature. 
+  1. Next button is blocked if *only* Premium Transfer is selected.
+  2. Stale itinerary: If a user selects Hotel/Beach Club, goes to the next step, then goes back and deselects them leaving only the transfer, the itinerary still shows the Hotel/Beach Club.
+  3. Calendar only accepts a single date; it needs to accept a date range (arrival and departure).
+  4. Missing image for the transfer in the suggested itinerary (user requested a black Mercedes S-Class).
+  5. Calendar selection color reverted to salmon; it needs to be greyscale.
+- **Status**: IN PROGRESS
+- **Agent Testing Done**: N
+- **Which testing method agent to use?**: Frontend testing agent / manual testing by screenshot tool.
+- **User Testing Done**: N
 
-**Last working item**:
-- **Last item agent was working:** Fixing a cascade of bugs reported by the user after the image replacement task. This included:
-    1.  Restoring the nearest golf course data that was wiped during a database re-seed.
-    2.  Fixing incorrect/duplicate images for numerous venues.
-    3.  Resolving a CSS issue where the card flip animation was too fast, preventing the location icon from being clicked.
-    4.  Fixing broken image links for several venues.
-    5.  Verifying that all partner sections were correctly displayed.
-- **Status:** USER VERIFICATION PENDING
-- **Agent Testing Done:** Y
-- **Which testing method agent to use?** Manual testing by user. The agent has already performed extensive verification using screenshots and API checks, confirming all reported issues are resolved. The user should now verify the fixes on the preview link.
-- **User Testing Done:** N
+**All Pending/In progress Issue list**: 
+Issue 1: Fix Golf Trip Planner UI and State Bugs (P0)
+Issue 2: Google Business Profile is suspended (P1)
+Issue 3: Sitemap submission to Google Search Console (P1)
+Issue 4: Get external review links for Write a review modal (P2)
 
-**All Pending/In progress Issue list**:
-- **Issue 1:** The user's Google Business Profile is suspended. (Priority: P1)
-- **Issue 2:** Sitemap submission to Google Search Console is pending website deployment. (Priority: P1)
-- **Issue 3:** Get external review links for the Write a review modal. (Priority: P2)
+Issues Detail:
+- **Issue 1: Fix Golf Trip Planner UI and State Bugs**
+  - **Attempted fixes**: The agent queried Unsplash for a black Mercedes S-Class image and pulled up  to review the calendar implementation, but the session ended before code changes were made.
+  - **Next debug checklist**: 
+    - : Update the state validation logic that disables the Next button to allow proceeding if *only* a transfer is selected.
+    - : Clear the  state for unselected services when navigating between steps.
+    -  / : Update  implementation to  to allow arrival/departure selection.
+    - : Add the Mercedes S-Class image to the itinerary render for the transfer segment.
+    -  / : Fix CSS variables (likely ) so the selected calendar day is grey, not salmon.
+  - **Why fix this issue and what will be achieved with the fix?**: User specifically requested these changes to finalize the core lead capture feature.
+  - **Status**: IN PROGRESS
+  - **Is recurring issue?**: N
+  - **Should Test frontend/backend/both after fix?**: Frontend
+  - **Blocked on other issue**: None
 
-**Issues Detail:**
-- **Issue 1: The user's Google Business Profile is suspended.**
-    - **Attempted fixes:** Agent previously provided guidance.
-    - **Next debug checklist:** Awaiting user action to resolve the issue directly with Google.
-    - **Why fix this issue and what will be achieved with the fix?** Critical for local search visibility (GEO SEO) and user trust.
-    - **Status:** BLOCKED (on user action)
-    - **Is recurring issue?** N
-    - **Should Test frontend/backend/both after fix?** N/A
-    - **Blocked on other issue:** None.
+- **Issue 2: Google Business Profile is suspended**
+  - **Attempted fixes**: Agent previously provided guidance.
+  - **Next debug checklist**: Awaiting user action to resolve directly with Google.
+  - **Why fix this issue**: Critical for GEO SEO.
+  - **Status**: BLOCKED
+  - **Is recurring issue?**: N
+  - **Should Test frontend/backend/both after fix?**: NA
 
-- **Issue 2: Sitemap submission to Google Search Console is pending website deployment.**
-    - **Attempted fixes:** The  is up-to-date.
-    - **Next debug checklist:** User needs to deploy the site to the production domain and resubmit the sitemap.
-    - **Why fix this issue and what will be achieved with the fix?** Essential for Google to crawl and index the site's pages.
-    - **Status:** BLOCKED (on deployment)
-    - **Is recurring issue?** N
-    - **Should Test frontend/backend/both after fix?** N/A
-    - **Blocked on other issue:** None.
+- **Issue 3: Sitemap submission to Google Search Console**
+  - **Status**: BLOCKED (Waiting on production deployment).
 
-- **Issue 3: Get external review links.**
-    - **Attempted fixes:** None.
-    - **Next debug checklist:** Ask the user to provide the URLs for their review pages (e.g., Google, Trustpilot).
-    - **Why fix this issue and what will be achieved with the fix?** To drive users to leave reviews and build social proof.
-    - **Status:** NOT STARTED
-    - **Is recurring issue?** N
-    - **Should Test frontend/backend/both after fix?** Frontend
-    - **Blocked on other issue:** None.
+- **Issue 4: Get external review links**
+  - **Status**: BLOCKED (Waiting on user to provide URLs).
 
-**In progress Task List**:
-- None.
+**In progress Task List**: 
+None (Tasks are covered under Issue 1).
 
-**Upcoming and Future Tasks**
-**Upcoming Tasks:**
-- **(P0) SEO-friendly blog routes:** Convert the blog from the current modal-based view to individual, indexable pages (e.g., ). This was suggested by the agent and is a significant SEO improvement.
-- **(P1)** Add Hero Video to homepage.
-- **(P2)** Add a Golf Packages page to bundle course and hotel deals.
+**Upcoming and Future Tasks**:
+Upcoming Tasks:
+- **(P0) SEO-friendly blog routes**: Convert the blog from the current modal-based view to individual, indexable pages (e.g., ).
+- **(P1) Hero Video**: Add Hero Video to homepage.
+- **(P2) Golf Packages page**: Add a dedicated page to bundle course and hotel deals.
+- **(P2) Stripe Payment Integration**: Add a simple deposit/booking fee flow via Stripe for packages and the Trip Planner.
 
-**Future Tasks:**
-- None.
+**Completed work in this session**:
+- Fixed missing  data for Lobster Club.
+- Removed 6 duplicate restaurant entries and duplicate image pairs in  and MongoDB.
+- Replaced broken images for Castillo Hotel, Maca de Castro, Purobeach, Beso Beach, and DINS Santi Taura.
+- Updated St. Regis image to an optimized authentic photo.
+- Fixed 10-item display limit bug (updated MongoDB display limits to 100).
+- Built Display Settings tab in Admin Dashboard ().
+- Adjusted card flip CSS delay to 3 seconds.
+- Fixed right-side scroll dots navigation and visibility.
+- Added X (Twitter) icon/link to footer.
+- Email Template Overhaul: Fixed logo cropping by burning the custom user logo onto a solid background and updating Resend templates.
+- **Major Feature**: Built the 3-step Golf Trip Planner wizard with budget matching, dynamic itinerary generation, Resend email notifications (admin + customer), and Hero/Navbar integrations.
 
-**Completed work in this session**
-- **Stock Photo Overhaul:**
-  - Replaced all 140 stock photos across Hotels, Restaurants, Cafe/Bars, and Beach Clubs.  was extensively modified.
-- **Bug Fixes & Regressions:**
-  - **Nearest Golf Data Restored:** Re-ran  to restore data wiped during re-seeding.
-  - **Data Persistence Improvement:** Modified  to automatically run the golf migration, preventing future data loss.
-  - **Duplicate/Incorrect Images Fixed:** Identified and replaced over 22 sets of duplicate images, including specific ones called out by the user (Izakaya, Mama Carmen's, El Perrito, La Rosa).
-  - **UI/UX Bug Fixes:**
-    - Corrected the card flip behavior by adding a  in , making the location icon clickable.
-    - Verified and fixed broken image links for several partners (e.g., Finca Serena).
-- **Testing:**
-  - Used  to validate the initial image replacement.
-  - Performed extensive manual testing with screenshots and API checks to verify all subsequent bug fixes.
+**Earlier issues found/mentioned but not fixed**:
+- **Issue 1**: Frontend Build Fragility (Babel Stack Overflow)
+  - **Debug checklist**: Check  and Webpack config. 
+  - **Why to solve this issue**: The build process threw a  error on deeply nested JSX (like in the initial ). The agent worked around it by splitting components, but the underlying Webpack/Babel risk remains.
+  - **Should Test frontend/backend/both after fix**: Frontend
+  - **Is recurring issue?**: Y
 
-**Earlier issues found/mentioned but not fixed**
-- **Frontend Build Fragility:** An issue from a previous session where the build process threw a  error was noted in the initial handoff but not investigated. This remains a potential risk for future development.
+**Known issue recurrence from previous fork**:
+- Issue recurrence in previous fork: None
+- Recurrence count: 0
+- Status: NA
 
-**Known issue recurrence from previous fork**
-- None.
-
-**Code Architecture**
+**Code Architecture**:
 
 
-**Key Technical Concepts**
-- **Bulk Data Replacement:** The agent systematically replaced over 140 image URLs in a static Python list () using web scraping, programmatic image fetching, and themed image selection.
-- **Data Integrity & Regression Fixing:** The agent diagnosed and fixed a critical data loss issue where the  data was wiped by the  script. The fix involved running a separate migration script and then modifying the seed script to integrate the migration, making the process more robust.
-- **CSS Debugging:** Diagnosed a UI/UX issue where a fast CSS transition on a flip-card prevented clicks on an underlying element. This was resolved by adjusting  in .
-- **Automated Auditing:** The agent wrote and used several  scripts to programmatically audit the entire dataset for Pexels URLs, duplicate images, and broken links, which was essential for managing the large-scale replacement and subsequent bug fixing.
+**Key Technical Concepts**:
+- Frontend: React, Tailwind CSS, Shadcn UI ( for calendar).
+- Backend: FastAPI, Motor (async MongoDB).
+- Communications: Resend SDK for transactional emails.
 
-**key DB schema**
--  (MongoDB collections: hotels, restaurants, etc.):  (string) and  (number) fields were repopulated after being accidentally wiped.
+**key DB schema**:
+- : Stores lead capture data from the Trip Planner.
+- : 
+-  (hotels, restaurants, etc.): Base listing collections.
 
-**All files of reference**
-- : The source of truth for all partner data, including the newly updated image URLs.
-- : The main seeding script, now modified to be more robust.
-- : The script used to populate nearest golf course data.
-- : Contains the crucial  fix for the card flip animation.
--  (and other partner components): Contain the card structure and click handlers for UI elements like the location icon.
+**changes in tech stack**:
+- None
+
+**All files of reference**:
+- : The core focus for the next agent to fix state and navigation logic.
+- : Needs to be configured for a start/end date range.
+- : Check  CSS variables to fix the salmon calendar color issue.
+- : API routes for the trip planner and HTML email templates.
 
 **Areas that need refactoring**:
-- None.
+- : Currently holds complex state for a multi-step wizard. It was already split once to avoid a Babel stack overflow, but adding range dates and dynamic un-selecting logic might require further clean-up to keep it manageable.
 
-**key api endpoints**
-- : Used to fetch all partner data and verify the image and  updates.
+**key api endpoints**:
+- : Submits the trip plan request and fires Resend emails.
+- : Manages category limits for the frontend.
 
-**Critical Info for New Agent**
-- **The seeding process is fragile.** Although the  migration is now part of the main seed script, any future bulk data manipulation in  should be followed by a thorough verification of all related features on the frontend to prevent regressions. The user is very sensitive to this.
-- **UI interaction timings are important.** The fix for the card flip () is a key usability improvement. Be mindful of how CSS animations can affect user interaction.
-- **The user is highly detail-oriented.** Double-check all visual changes and functionality before finishing. The user will spot incorrect images, broken links, and UI inconsistencies.
+**Critical Info for New Agent**:
+- The user is extremely attentive to visual details. When they ask for a black Mercedes S-Class, ensure you select a high-quality representation of that exact requirement.
+- **Do not overwrite  completely**—always use  as it contains massive static data lists.
+- The  dependency is installed (v8.10.1). You must use its  prop to achieve the requested arrival/departure dates.
 
-**documents and test reports created in this job**
+**documents and test reports created in this job**:
 - 
--  (Updated twice)
+- 
+- 
 
-**Last 10 User Messages and any pending HUMAN messages**
-1.  **User:** Reported a long list of bugs after the image replacement: missing nearest golf data, broken quick view, incorrect/duplicate images, disappearing sections, and broken card interactions. Expressed frustration. **Status: All reported issues have been fixed and are pending user verification.**
-2.  **User:** Asked for the test link to check the completed work (before reporting bugs). **Status: Handled.**
-3.  **User:** Responded to the initial plan, asking to resume the last task. **Status: Handled.**
+**Last 10 User Messages and any pending HUMAN messages**:
+1. User asked for trip planner feature to include interactive budget input, premium class transfer, and instant itinerary generation. (Done)
+2. User provided feedback on the new Trip Planner features (Pending):
+   - Next button blocked for transfer only.
+   - State doesn't clear when services are deselected.
+   - Calendar needs arrival + departure range.
+   - Transfer needs a black Mercedes S-Class image in the itinerary.
+   - Calendar selected color is salmon instead of grey.
 
 **Project Health Check:**
-- **Broken:**
-  - The user's Google Business Profile is still suspended, blocking local SEO efforts.
-- **Mocked:**
-  - External review links in the Write a review modal are placeholders.
-- **Needs Attention:**
-  - **(P1) Deployment:** The site is not live on the production domain, blocking Google Search Console sitemap submission.
-  - **(Potential Risk) Frontend Build Fragility:** An underlying Babel stack overflow error from a previous fork has not been investigated and remains a risk.
+- Broken: Trip Planner state logic and Calendar date selection.
+- Mocked: External review links.
 
-**3rd Party Integrations**
-- **Open-Meteo:** For the real-time weather widget.
-- **Resend:** For sending emails.
-- **Emergent-managed Google Auth:** For admin login.
-- **Cloudinary:** Images for golf courses are sourced from here.
-- **Unsplash:** Used extensively in this session to source high-quality themed images for partners.
+**3rd Party Integrations**:
+- OpenAI/Emergent LLMs (Various) — uses Emergent LLM Key
+- Resend (Emails) — requires User API Key (present in environment)
+- Stripe (Payments) — (Upcoming feature) requires User API Key / Test key in pod
+- Unsplash — via Image Selector Tool
 
-**Testing status**
-- **Testing agent used after significant changes:** YES. Used after the initial image replacement was complete.
-- **Troubleshoot agent used after agent stuck in loop:** NO.
-- **Test files created:** None.
-- **Known regressions:** A major regression occurred where  data was wiped, which was subsequently fixed. Several other UI and data bugs were introduced and fixed during this session.
+**Testing status**:
+- Testing agent used after significant changes: YES
+- Troubleshoot agent used after agent stuck in loop: NO
+- Test files created: None
+- Known regressions: Disabling services in the Trip Planner wizard does not clear them from the itinerary preview.
 
-**Credentials to test flow:**
-N/A
+**Credentials to test flow**:
+None needed (Resend API key is in the backend ).
 
-**What agent forgot to execute**
-- The agent initially forgot to re-run the  script after re-seeding the main partner data, which caused the distance to nearest golf course feature to break. This highlighted a flaw in the data management process, which the agent then corrected by integrating the migration into the main seed script to prevent recurrence.
-- The initial image replacement introduced a large number of duplicate images, which the user had to point out. The agent then had to perform a more thorough, systematic replacement to ensure uniqueness.</analysis>
+**What agent forgot to execute**:
+The agent did not finish implementing the fixes for the 5 bugs on the Golf Trip Planner reported in the user's very last message (Next button blocked, stale itinerary data, calendar date range, Mercedes S-Class image, and calendar salmon color).</analysis>
