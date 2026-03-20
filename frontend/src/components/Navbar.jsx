@@ -17,7 +17,7 @@ const languages = [
   { code: 'se', label: 'SE', flag: '🇸🇪' },
 ];
 
-export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearchClick, variant }) => {
+export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearchClick, onPlanTrip, variant }) => {
   const isLight = variant === 'light';
   const { language, changeLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -136,6 +136,18 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           {/* Separator - more visible */}
           <span className={`hidden lg:block w-0.5 h-5 rounded-full ${isScrolled || isLight ? 'bg-stone-400' : 'bg-white/70'}`}></span>
           
+          {onPlanTrip && (
+            <button
+              onClick={() => { setMobileMenuOpen(false); onPlanTrip(); }}
+              className={`text-sm font-semibold transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
+                isScrolled || isLight ? 'text-brand-charcoal hover:text-brand-slate' : 'text-white hover:text-white/80'
+              }`}
+              data-testid="nav-plan-trip"
+            >
+              Plan Trip
+            </button>
+          )}
+
           <button
             onClick={() => scrollToSection('reviews')}
             className={`text-sm font-medium transition-colors duration-300 whitespace-nowrap drop-shadow-sm ${
@@ -279,6 +291,15 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             
             <div className="border-t border-stone-100 my-2"></div>
             
+            {onPlanTrip && (
+              <button
+                onClick={() => { setMobileMenuOpen(false); onPlanTrip(); }}
+                className="text-left py-2 text-brand-charcoal hover:text-brand-slate font-semibold"
+                data-testid="mobile-nav-plan-trip"
+              >
+                Plan Your Trip
+              </button>
+            )}
             <button
               onClick={() => scrollToSection('reviews')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"

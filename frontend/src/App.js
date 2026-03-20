@@ -109,6 +109,7 @@ function MainContent() {
         isAuthenticated={!!user} 
         isCheckingAuth={isCheckingAuth}
         onSearchClick={() => searchRef.current?.open()}
+        onPlanTrip={() => setShowTripPlanner(true)}
       />
       
       {/* Hero */}
