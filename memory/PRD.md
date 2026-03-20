@@ -62,6 +62,12 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - Wizard always shows 4 steps regardless of service selection
   - Backend now accepts departure_date field for date ranges
   - Email templates updated to show arrival → departure dates
+- [x] **Trip Planner UX Enhancements** (March 2026):
+  - Added sticky scroll-down indicator (bouncing chevron + gradient fade) when content overflows
+  - Updated budget ranges: Moderate €1,000–€2,500, Premium €2,500–€4,000, Luxury €4,000+
+  - Added pricing context note: "Approx. prices based on high season for 3 days"
+  - Added 15% budget buffer note referencing Balearic Sustainable Tourism Tax (€4.40/night)
+  - Replaced AI-generated Mercedes image with user's provided authentic S-Class photo
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)

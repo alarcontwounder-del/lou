@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, ChevronDown, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles } from 'lucide-react';
 import { Calendar } from './ui/calendar';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -14,9 +14,9 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  { id: 'moderate', label: 'Moderate', range: '€500 – €1,000', desc: 'Great value experiences' },
-  { id: 'premium', label: 'Premium', range: '€1,000 – €2,500', desc: 'Upscale comfort' },
-  { id: 'luxury', label: 'Luxury', range: '€2,500+', desc: 'The finest Mallorca offers' },
+  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', desc: 'Great value experiences' },
+  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', desc: 'Upscale comfort' },
+  { id: 'luxury', label: 'Luxury', range: '€4,000+', desc: 'The finest Mallorca offers' },
 ];
 
 const TIMES = [
@@ -82,7 +82,7 @@ function generateItinerary(partners, services, budget) {
 
 const formatSingleDate = (d) => d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
-const TRANSFER_IMAGE = 'https://static.prod-images.emergentagent.com/jobs/0fbbd441-c00e-428a-bb6e-219f78598e7b/images/0e2a814d7d4f13858a777c78dbf40f7946916082e253fcc28999e427632b5947.png';
+const TRANSFER_IMAGE = 'https://customer-assets.emergentagent.com/job_0fbbd441-c00e-428a-bb6e-219f78598e7b/artifacts/g1vy93s4_47f1c9acaea9e915bba2c2416d77904ca73d3937.webp';
 
 /* ---- Sub-components ---- */
 
@@ -161,6 +161,8 @@ export const TripPlanner = ({ isOpen, onClose }) => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [itinerary, setItinerary] = useState({});
+  const contentRef = useRef(null);
+  const [showScrollHint, setShowScrollHint] = useState(false);
 
   const [form, setForm] = useState({
     services: [], budget: '',
@@ -184,6 +186,24 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    const checkScroll = () => {
+      setShowScrollHint(el.scrollHeight - el.scrollTop - el.clientHeight > 30);
+    };
+    const timer = setTimeout(checkScroll, 150);
+    checkScroll();
+    el.addEventListener('scroll', checkScroll);
+    const observer = new MutationObserver(checkScroll);
+    observer.observe(el, { childList: true, subtree: true });
+    return () => {
+      clearTimeout(timer);
+      el.removeEventListener('scroll', checkScroll);
+      observer.disconnect();
+    };
+  }, [step, isOpen]);
 
   const toggleService = (id) => {
     const isDeselecting = form.services.includes(id);
@@ -284,12 +304,19 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div ref={contentRef} className="flex-1 overflow-y-auto p-6">
           {submitted && <SuccessView onClose={handleClose} />}
           {!submitted && step === 1 && <StepServices form={form} toggleService={toggleService} setForm={setForm} />}
           {!submitted && step === 2 && <StepDateTime form={form} setForm={setForm} />}
           {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} />}
           {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
+          {showScrollHint && !submitted && (
+            <div className="sticky bottom-0 -mx-6 -mb-6 pointer-events-none" data-testid="scroll-indicator">
+              <div className="h-12 bg-gradient-to-t from-[#F5F2EB] via-[#F5F2EB]/80 to-transparent flex items-end justify-center pb-1.5">
+                <ChevronDown className="w-5 h-5 text-stone-400 animate-bounce" />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Footer */}
@@ -347,6 +374,10 @@ function StepServices({ form, toggleService, setForm }) {
             {BUDGETS.map(b => (
               <BudgetButton key={b.id} b={b} selected={form.budget === b.id} onSelect={() => setForm(p => ({ ...p, budget: b.id }))} />
             ))}
+          </div>
+          <p className="text-stone-400 text-xs mt-2.5 italic">Approx. prices based on high season for 3 days.</p>
+          <div className="mt-2 p-2.5 bg-stone-200/50 rounded-lg">
+            <p className="text-stone-500 text-xs leading-relaxed">A 15% budget buffer is recommended for extras like the Balearic Sustainable Tourism Tax (€4.40/night).</p>
           </div>
         </div>
       )}

@@ -5418,7 +5418,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
         if entry.transfer_pickup:
             details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Transfer</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.transfer_pickup} → {entry.transfer_dropoff or "TBD"}</td></tr>'
 
-        budget_map = {'moderate': '€500 – €1,000', 'premium': '€1,000 – €2,500', 'luxury': '€2,500+'}
+        budget_map = {'moderate': '€1,000 – €2,500', 'premium': '€2,500 – €4,000', 'luxury': '€4,000+'}
         budget_display = budget_map.get(entry.budget, 'N/A')
         group_word = 'person' if entry.group_size == 1 else 'people'
         time_display = entry.time or 'Flexible'
