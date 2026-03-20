@@ -78,6 +78,18 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - Schedule entries are fully optional — team follows up on details
   - Backend accepts schedule dict field, email templates show per-service schedule table
   - Legacy `time` field maintained for backward compatibility
+- [x] **Golf Course Pairing in Itinerary** (March 2026):
+  - When a hotel is suggested in Step 3, the nearest golf course auto-pairs below it
+  - Shows course image, name, distance (km), holes, par, and green fee starting price
+  - "Book Tee Time" button links directly to GreenFee365 booking page
+  - Case-insensitive matching between hotel's nearest_golf field and golf-courses API data
+  - Golf card only appears when hotel is selected (not for restaurant/transfer-only)
+- [x] **Share Trip Plan** (March 2026):
+  - Success view after submission shows "Share with your travel group" section
+  - WhatsApp share: Opens wa.me with pre-formatted trip summary
+  - Email share: Opens mailto: with subject and body
+  - Copy to clipboard: Copies trip text with "Copied!" feedback
+  - Summary includes: dates, group size, budget, hotel, restaurant, beach club, transfer
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
