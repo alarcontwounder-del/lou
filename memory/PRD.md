@@ -46,6 +46,13 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [x] **Data Cleanup: Duplicate Image Deduplication** (March 2026) — Fixed 6 pairs of duplicate images (Mirabona, Es Guix, Ginbo, Altamar, Yara, Social Club)
 - [x] **Bug Fix: Broken Images Replaced** (March 2026) — Fixed 5 broken external images (DINS Santi Taura, Castillo Hotel Son Vida, Maca de Castro, Purobeach Illetas, Beso Beach)
 - [x] **Bug Fix: Lobster Club nearest_golf** (March 2026) — Added missing nearest_golf data for Lobster Club
+- [x] **Display Settings Admin Tab** (March 2026) — Added Display Settings panel to Admin Dashboard for toggling categories on/off and controlling venue display limits
+- [x] **Card Flip Delay Fix** (March 2026) — Increased transition-delay to 3s for usable card interactions
+- [x] **St. Regis Image Fix** (March 2026) — Replaced with optimized authentic image (66KB vs 440KB)
+- [x] **Email Logo Fix** (March 2026) — Replaced with user-provided logo, white header design
+- [x] **X (Twitter) Footer Icon** (March 2026) — Added X social media icon linking to https://x.com/Golfinmallorca
+- [x] **Scroll Dots Fix** (March 2026) — Fixed Tailwind dynamic class issue preventing desktop hover effect
+- [x] **Golf Trip Planner** (March 2026) — 3-step wizard modal: select services (Hotel/Michelin Dining/Beach Club), pick date/time/group size, submit contact details. Backend stores requests + sends email notification
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
@@ -53,9 +60,10 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [ ] External review links (pending user URLs)
 
 ## Backlog / Future
-- [ ] SEO-friendly individual blog post routes (/blog/slug) instead of modal (P1 - recommended)
-- [ ] Hero video replacement (P2)
+- [ ] SEO-friendly individual blog post routes (/blog/slug) instead of modal (P0 - recommended)
+- [ ] Hero video replacement (P1)
 - [ ] Golf Packages page with bundled course + hotel deals (P2)
+- [ ] Stripe payment integration for package deposits (P2)
 
 ## Architecture
 ```
