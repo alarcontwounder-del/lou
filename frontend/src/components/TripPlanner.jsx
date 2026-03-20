@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, ChevronDown, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles } from 'lucide-react';
+import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, ChevronDown, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles, Mail, Copy } from 'lucide-react';
 import { Calendar } from './ui/calendar';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -152,13 +152,67 @@ function ItineraryCard({ label, icon: Icon, item, onSwap }) {
   );
 }
 
-function SuccessView({ onClose }) {
+function SuccessView({ onClose, form, itinerary, formatDate }) {
+  const [copied, setCopied] = useState(false);
+
+  const generateShareText = () => {
+    const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.range || '';
+    const lines = [
+      'Golf Trip to Mallorca',
+      `Dates: ${formatDate(form.date)}`,
+      `Group: ${form.group_size} ${form.group_size === 1 ? 'person' : 'people'}`,
+      `Budget: ${budgetLabel}`,
+      '',
+    ];
+    if (form.services.includes('hotel') && itinerary.hotel) lines.push(`Hotel: ${itinerary.hotel.name}`);
+    if (form.services.includes('restaurant') && itinerary.restaurant) lines.push(`Restaurant: ${itinerary.restaurant.name}`);
+    if (form.services.includes('beach_club') && itinerary.beach_club) lines.push(`Beach Club: ${itinerary.beach_club.name}`);
+    if (form.services.includes('transfer')) lines.push('Transfer: Mercedes S-Class');
+    lines.push('', 'Plan your trip at golfinmallorca.com');
+    return lines.join('\n');
+  };
+
+  const shareWhatsApp = () => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(generateShareText())}`, '_blank');
+  };
+
+  const shareEmail = () => {
+    window.open(`mailto:?subject=${encodeURIComponent('Golf Trip to Mallorca')}&body=${encodeURIComponent(generateShareText())}`);
+  };
+
+  const copyText = async () => {
+    try {
+      await navigator.clipboard.writeText(generateShareText());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (e) { /* clipboard API may fail in some contexts */ }
+  };
+
   return (
-    <div className="text-center py-10" data-testid="trip-planner-success">
+    <div className="text-center py-8" data-testid="trip-planner-success">
       <CheckCircle className="w-14 h-14 text-stone-600 mx-auto mb-4" />
       <h3 className="font-heading text-2xl text-stone-800 mb-2">Request Received!</h3>
-      <p className="text-stone-500 text-sm">We've received your personalised itinerary request. Our team will get back to you within 24 hours.</p>
-      <button onClick={onClose} className="mt-6 px-6 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors" data-testid="trip-planner-done-btn">Done</button>
+      <p className="text-stone-500 text-sm mb-6">We've received your personalised itinerary request. Our team will get back to you within 24 hours.</p>
+
+      <div className="mb-6">
+        <p className="text-stone-400 text-xs uppercase tracking-widest mb-3">Share with your travel group</p>
+        <div className="flex justify-center gap-2.5">
+          <button onClick={shareWhatsApp} className="flex items-center gap-1.5 px-4 py-2 bg-[#25D366] text-white text-xs font-medium rounded-lg hover:bg-[#20BD5A] transition-colors" data-testid="share-whatsapp">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </button>
+          <button onClick={shareEmail} className="flex items-center gap-1.5 px-4 py-2 bg-stone-700 text-white text-xs font-medium rounded-lg hover:bg-stone-800 transition-colors" data-testid="share-email">
+            <Mail className="w-4 h-4" />
+            Email
+          </button>
+          <button onClick={copyText} className="flex items-center gap-1.5 px-4 py-2 bg-stone-200 text-stone-700 text-xs font-medium rounded-lg hover:bg-stone-300 transition-colors" data-testid="share-copy">
+            <Copy className="w-4 h-4" />
+            {copied ? 'Copied!' : 'Copy'}
+          </button>
+        </div>
+      </div>
+
+      <button onClick={onClose} className="px-6 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors" data-testid="trip-planner-done-btn">Done</button>
     </div>
   );
 }
@@ -171,6 +225,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [itinerary, setItinerary] = useState({});
+  const [golfCourses, setGolfCourses] = useState([]);
   const contentRef = useRef(null);
   const [showScrollHint, setShowScrollHint] = useState(false);
 
@@ -183,12 +238,16 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (!isOpen) return;
-    axios.get(`${BACKEND_URL}/api/all-partners`).then(res => {
+    Promise.all([
+      axios.get(`${BACKEND_URL}/api/all-partners`),
+      axios.get(`${BACKEND_URL}/api/golf-courses`),
+    ]).then(([partnersRes, coursesRes]) => {
       setPartners({
-        hotels: res.data.hotels || [],
-        restaurants: (res.data.restaurants || []).filter(r => r.michelin_stars),
-        beach_clubs: res.data.beach_clubs || [],
+        hotels: partnersRes.data.hotels || [],
+        restaurants: (partnersRes.data.restaurants || []).filter(r => r.michelin_stars),
+        beach_clubs: partnersRes.data.beach_clubs || [],
       });
+      setGolfCourses(coursesRes.data || []);
     }).catch(() => {});
   }, [isOpen]);
 
@@ -315,10 +374,10 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
         {/* Content */}
         <div ref={contentRef} className="flex-1 overflow-y-auto p-6">
-          {submitted && <SuccessView onClose={handleClose} />}
+          {submitted && <SuccessView onClose={handleClose} form={form} itinerary={itinerary} formatDate={formatDate} />}
           {!submitted && step === 1 && <StepServices form={form} toggleService={toggleService} setForm={setForm} />}
           {!submitted && step === 2 && <StepDateTime form={form} setForm={setForm} />}
-          {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} />}
+          {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} golfCourses={golfCourses} />}
           {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
           {showScrollHint && !submitted && (
             <div className="sticky bottom-0 -mx-6 -mb-6 pointer-events-none" data-testid="scroll-indicator">
@@ -504,8 +563,17 @@ function StepDateTime({ form, setForm }) {
 
 /* ---- Step 3: Suggested Itinerary ---- */
 
-function StepItinerary({ itinerary, form, swapSuggestion }) {
+function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
   const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.label || '';
+
+  const matchGolfCourse = (hotel) => {
+    if (!hotel?.nearest_golf || !golfCourses.length) return null;
+    const name = hotel.nearest_golf.toLowerCase();
+    return golfCourses.find(c => c.name.toLowerCase().includes(name) || name.includes(c.name.toLowerCase()));
+  };
+
+  const nearestGolf = itinerary.hotel ? matchGolfCourse(itinerary.hotel) : null;
+
   return (
     <div data-testid="trip-planner-step-3">
       <div className="flex items-center gap-2 mb-1">
@@ -517,6 +585,21 @@ function StepItinerary({ itinerary, form, swapSuggestion }) {
       <div className="space-y-3">
         {itinerary.hotel && (
           <ItineraryCard label="Hotel" icon={Hotel} item={itinerary.hotel} onSwap={() => swapSuggestion('hotel')} />
+        )}
+        {nearestGolf && (
+          <div className="ml-5 -mt-1 p-3 bg-stone-50 rounded-lg border border-stone-200 border-dashed" data-testid="nearest-golf-card">
+            <div className="flex items-center gap-3">
+              <img src={nearestGolf.image} alt={nearestGolf.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] text-green-700 uppercase tracking-wider font-semibold">Nearest Golf Course</p>
+                <p className="text-sm font-semibold text-stone-800 truncate">{nearestGolf.name}</p>
+                <p className="text-xs text-stone-500">{itinerary.hotel.distance_km}km · {nearestGolf.holes} holes · Par {nearestGolf.par} · From €{nearestGolf.price_from}</p>
+              </div>
+              <a href={nearestGolf.booking_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 text-[11px] bg-green-700 text-white px-3 py-1.5 rounded-lg hover:bg-green-800 transition-colors whitespace-nowrap" data-testid="book-tee-time">
+                Book Tee Time
+              </a>
+            </div>
+          </div>
         )}
         {itinerary.restaurant && (
           <ItineraryCard label="Restaurant" icon={UtensilsCrossed} item={itinerary.restaurant} onSwap={() => swapSuggestion('restaurant')} />
