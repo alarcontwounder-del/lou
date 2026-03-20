@@ -69,8 +69,8 @@ export const SectionNavigator = () => {
       
       {/* Navigation dots - always visible on mobile, ghost effect on desktop */}
       <nav 
-        className={`fixed right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-1.5 sm:gap-2 transition-all duration-300 ease-out lg:${
-          isHoveringZone ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
+        className={`fixed right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-1.5 sm:gap-2 transition-all duration-300 ease-out ${
+          isHoveringZone ? 'lg:opacity-100 lg:translate-x-0' : 'lg:opacity-0 lg:translate-x-4 lg:pointer-events-none'
         }`}
         aria-label="Section navigation"
         onMouseEnter={() => setIsHoveringZone(true)}

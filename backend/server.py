@@ -4330,14 +4330,14 @@ BLOG_POSTS = [
 # Email helper functions
 async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
-    logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email.png"
+    logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_padded.png"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <!-- Header with logo -->
-            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 30px; border-radius: 16px 16px 0 0; text-align: center;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 150px; height: auto; margin-bottom: 8px;" />
+            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center;">
+                <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 120px; height: auto; margin-bottom: 8px; display: inline-block;" />
                 <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
             </div>
             
@@ -5420,13 +5420,13 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
     
     for sub in subscribers:
         try:
-            logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email.png"
+            logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_padded.png"
             html_content = f"""
             <html>
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
                 <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-                    <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center;">
-                        <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 180px; height: auto; margin-bottom: 10px;" />
+                    <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 40px 40px; border-radius: 16px 16px 0 0; text-align: center;">
+                        <img src="{logo_url}" alt="Golfinmallorca.com" style="max-width: 140px; height: auto; margin-bottom: 10px; display: inline-block;" />
                         <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
                     </div>
                     
