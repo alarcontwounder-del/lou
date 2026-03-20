@@ -68,6 +68,16 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
   - Added pricing context note: "Approx. prices based on high season for 3 days"
   - Added 15% budget buffer note referencing Balearic Sustainable Tourism Tax (€4.40/night)
   - Replaced AI-generated Mercedes image with user's provided authentic S-Class photo
+- [x] **Per-Service Schedule System** (March 2026):
+  - Replaced single "Preferred Time" picker with "Your Schedule" — per-service date + time scheduling
+  - Transfer shows two entries: "Arrival Pickup" and "Departure Pickup" with date/time dropdowns
+  - Restaurant shows "Dinner Reservation", Beach Club shows "Beach Club" — each with date/time
+  - Hotel doesn't need scheduling (uses the date range for check-in/check-out)
+  - Date dropdowns constrained to the selected arrival-departure range
+  - Time range extended to 06:00–22:00 for early/late transfers
+  - Schedule entries are fully optional — team follows up on details
+  - Backend accepts schedule dict field, email templates show per-service schedule table
+  - Legacy `time` field maintained for backward compatibility
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
