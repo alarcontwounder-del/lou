@@ -4330,15 +4330,19 @@ BLOG_POSTS = [
 # Email helper functions
 async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
-    logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_dark.png"
+    logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <!-- Header with logo -->
-            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 24px 40px; border-radius: 16px 16px 0 0; text-align: center;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 130px; height: auto; margin: 0 auto; display: block;" />
-                <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
+            <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+            </div>
+            
+            <!-- Subheader -->
+            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 14px 30px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
             </div>
             
             <!-- Content -->
@@ -5420,14 +5424,16 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
     
     for sub in subscribers:
         try:
-            logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_dark.png"
+            logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
             html_content = f"""
             <html>
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
                 <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-                    <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center;">
-                        <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 150px; height: auto; margin: 0 auto 10px auto; display: block;" />
-                        <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+                    <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                        <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 200px; height: auto; display: block; margin: 0 auto;" />
+                    </div>
+                    <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 14px 30px; text-align: center;">
+                        <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
                     </div>
                     
                     <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
