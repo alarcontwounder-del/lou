@@ -5314,8 +5314,9 @@ async def create_trip_request(request: TripPlannerRequest):
     doc['created_at'] = doc['created_at'].isoformat()
     await db.trip_planner_requests.insert_one(doc)
     
-    # Send notification email
+    # Send notification email to admin + confirmation to customer
     asyncio.create_task(send_trip_planner_email(entry))
+    asyncio.create_task(send_trip_planner_confirmation(entry))
     
     return {"id": entry.id, "status": "received", "message": "Your trip request has been received! We'll get back to you shortly."}
 
@@ -5377,6 +5378,80 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
         await asyncio.to_thread(resend.Emails.send, params)
     except Exception as e:
         print(f"Error sending trip planner email: {e}")
+
+async def send_trip_planner_confirmation(entry: TripPlannerEntry):
+    """Send confirmation email to the customer."""
+    try:
+        service_names = []
+        for s in entry.services:
+            if s == 'hotel':
+                service_names.append('Hotel Stay')
+            elif s == 'restaurant':
+                service_names.append('Michelin Dining')
+            elif s == 'beach_club':
+                service_names.append('Beach Club')
+
+        details_rows = ""
+        if entry.preferred_hotel:
+            details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Hotel</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.preferred_hotel}</td></tr>'
+        if entry.preferred_restaurant:
+            details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Restaurant</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.preferred_restaurant}</td></tr>'
+        if entry.preferred_beach_club:
+            details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Beach Club</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.preferred_beach_club}</td></tr>'
+
+        time_display = entry.time if entry.time else 'Flexible'
+        group_word = 'person' if entry.group_size == 1 else 'people'
+
+        logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+        html_content = f"""
+        <html>
+        <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+            <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+                <!-- Header with logo -->
+                <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                    <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+                </div>
+
+                <!-- Greeting -->
+                <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
+                    <h1 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0;">Thank you, {entry.name}!</h1>
+                    <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">We've received your request and our team will get back to you within 24 hours with a personalised plan.</p>
+                </div>
+
+                <!-- Request Summary -->
+                <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
+                    <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
+                        <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Your Request Summary</p>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Services</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{', '.join(service_names)}</td></tr>
+                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.date}</td></tr>
+                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{time_display}</td></tr>
+                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Group</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{entry.group_size} {group_word}</td></tr>
+                            {details_rows}
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
+                    <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com — Your Gateway to Luxury Golf in Mallorca</p>
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+
+        params = {
+            "from": SENDER_EMAIL,
+            "to": [entry.email],
+            "subject": f"Your Trip Request Confirmation — Golfinmallorca.com",
+            "html": html_content,
+        }
+        await asyncio.to_thread(resend.Emails.send, params)
+    except Exception as e:
+        print(f"Error sending trip confirmation email: {e}")
 
 
 
