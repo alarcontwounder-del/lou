@@ -139,10 +139,13 @@ class TripPlannerRequest(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = None
-    services: List[str]  # e.g. ["hotel", "restaurant", "beach_club"]
+    services: List[str]  # e.g. ["hotel", "restaurant", "beach_club", "transfer"]
+    budget: Optional[str] = None  # "moderate", "premium", "luxury"
     preferred_hotel: Optional[str] = None
     preferred_restaurant: Optional[str] = None
     preferred_beach_club: Optional[str] = None
+    transfer_pickup: Optional[str] = None
+    transfer_dropoff: Optional[str] = None
     date: str  # ISO date string
     time: Optional[str] = None
     group_size: int = 2
@@ -155,9 +158,12 @@ class TripPlannerEntry(BaseModel):
     email: str
     phone: Optional[str] = None
     services: List[str]
+    budget: Optional[str] = None
     preferred_hotel: Optional[str] = None
     preferred_restaurant: Optional[str] = None
     preferred_beach_club: Optional[str] = None
+    transfer_pickup: Optional[str] = None
+    transfer_dropoff: Optional[str] = None
     date: str
     time: Optional[str] = None
     group_size: int = 2
@@ -5335,6 +5341,8 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
             services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Restaurant</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_restaurant}</td></tr>'
         if entry.preferred_beach_club:
             services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Beach Club</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_beach_club}</td></tr>'
+        if entry.transfer_pickup:
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Transfer</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.transfer_pickup} → {entry.transfer_dropoff or "TBD"}</td></tr>'
         
         special_requests_html = ""
         if entry.special_requests:
@@ -5360,6 +5368,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Time</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.time or 'Flexible'}</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Group Size</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.group_size} people</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Services</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{', '.join(entry.services)}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Budget</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.budget or 'N/A'}</td></tr>
                         {services_html}
                     </table>
                     {special_requests_html}
@@ -5390,6 +5399,8 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
                 service_names.append('Michelin Dining')
             elif s == 'beach_club':
                 service_names.append('Beach Club')
+            elif s == 'transfer':
+                service_names.append('Premium Transfer')
 
         details_rows = ""
         if entry.preferred_hotel:
@@ -5398,8 +5409,11 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
             details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Restaurant</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.preferred_restaurant}</td></tr>'
         if entry.preferred_beach_club:
             details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Beach Club</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.preferred_beach_club}</td></tr>'
+        if entry.transfer_pickup:
+            details_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Transfer</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.transfer_pickup} → {entry.transfer_dropoff or "TBD"}</td></tr>'
 
-        time_display = entry.time if entry.time else 'Flexible'
+        budget_map = {'moderate': '€500 – €1,000', 'premium': '€1,000 – €2,500', 'luxury': '€2,500+'}
+        budget_display = budget_map.get(entry.budget, 'N/A')
         group_word = 'person' if entry.group_size == 1 else 'people'
 
         logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
@@ -5424,6 +5438,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
                         <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Your Request Summary</p>
                         <table style="width: 100%; border-collapse: collapse;">
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Services</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{', '.join(service_names)}</td></tr>
+                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Budget</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{budget_display}</td></tr>
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{entry.date}</td></tr>
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{time_display}</td></tr>
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Group</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{entry.group_size} {group_word}</td></tr>
