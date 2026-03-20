@@ -134,6 +134,37 @@ class BlogPost(BaseModel):
     published: bool = True
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# Trip Planner Models
+class TripPlannerRequest(BaseModel):
+    name: str
+    email: EmailStr
+    phone: Optional[str] = None
+    services: List[str]  # e.g. ["hotel", "restaurant", "beach_club"]
+    preferred_hotel: Optional[str] = None
+    preferred_restaurant: Optional[str] = None
+    preferred_beach_club: Optional[str] = None
+    date: str  # ISO date string
+    time: Optional[str] = None
+    group_size: int = 2
+    special_requests: Optional[str] = None
+
+class TripPlannerEntry(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str
+    phone: Optional[str] = None
+    services: List[str]
+    preferred_hotel: Optional[str] = None
+    preferred_restaurant: Optional[str] = None
+    preferred_beach_club: Optional[str] = None
+    date: str
+    time: Optional[str] = None
+    group_size: int = 2
+    special_requests: Optional[str] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
 # Client Review Models
 class ClientReview(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -5274,6 +5305,80 @@ async def get_contact_inquiries():
         if isinstance(inq['created_at'], str):
             inq['created_at'] = datetime.fromisoformat(inq['created_at'])
     return inquiries
+
+# Trip Planner endpoint
+@api_router.post("/trip-planner")
+async def create_trip_request(request: TripPlannerRequest):
+    entry = TripPlannerEntry(**request.model_dump())
+    doc = entry.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.trip_planner_requests.insert_one(doc)
+    
+    # Send notification email
+    asyncio.create_task(send_trip_planner_email(entry))
+    
+    return {"id": entry.id, "status": "received", "message": "Your trip request has been received! We'll get back to you shortly."}
+
+@api_router.get("/trip-planner")
+async def get_trip_requests():
+    requests = await db.trip_planner_requests.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return requests
+
+async def send_trip_planner_email(entry: TripPlannerEntry):
+    """Send notification email when a new trip planner request is received."""
+    try:
+        services_html = ""
+        if entry.preferred_hotel:
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Hotel</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_hotel}</td></tr>'
+        if entry.preferred_restaurant:
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Restaurant</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_restaurant}</td></tr>'
+        if entry.preferred_beach_club:
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Beach Club</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_beach_club}</td></tr>'
+        
+        special_requests_html = ""
+        if entry.special_requests:
+            special_requests_html = '<div style="margin-top: 20px; padding: 16px; background-color: #F5F2EB; border-radius: 8px;"><p style="color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px 0;">Special Requests</p><p style="color: #2D2D2D; font-size: 14px; margin: 0;">' + entry.special_requests + '</p></div>'
+
+        logo_url = "https://golfmallorca-preview.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+        html_content = f"""
+        <html>
+        <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+            <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+                <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                    <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+                </div>
+                <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 14px 30px; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW TRIP PLANNER REQUEST</p>
+                </div>
+                <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Name</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.name}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.email}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.phone or 'N/A'}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Date</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.date}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Time</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.time or 'Flexible'}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Group Size</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.group_size} people</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Services</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{', '.join(entry.services)}</td></tr>
+                        {services_html}
+                    </table>
+                    {special_requests_html}
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        
+        params = {
+            "from": SENDER_EMAIL,
+            "to": [SENDER_EMAIL],
+            "subject": f"Trip Planner: {entry.name} - {', '.join(entry.services)}",
+            "html": html_content,
+        }
+        await asyncio.to_thread(resend.Emails.send, params)
+    except Exception as e:
+        print(f"Error sending trip planner email: {e}")
+
+
 
 # Newsletter endpoints
 @api_router.post("/newsletter", response_model=NewsletterSubscription)

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { CalendarDays } from 'lucide-react';
 
-export const Hero = () => {
+export const Hero = ({ onPlanTrip }) => {
   const { t } = useLanguage();
 
   const scrollToSection = (id) => {
@@ -52,7 +53,7 @@ export const Hero = () => {
               {t('hero.title')}
             </h1>
 
-            {/* CTA Button */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 opacity-0 animate-fade-in-up stagger-4">
               <a
                 href="https://golfinmallorca.greenfee365.com"
@@ -64,6 +65,14 @@ export const Hero = () => {
                 {t('hero.bookTeeTime')}
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
+              <button
+                onClick={onPlanTrip}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-white/15 backdrop-blur-md text-white border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg"
+                data-testid="hero-plan-trip"
+              >
+                <CalendarDays className="w-4 h-4" />
+                Plan Your Trip
+              </button>
             </div>
           </div>
         </div>

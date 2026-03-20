@@ -21,6 +21,7 @@ import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
 import { FloatingSearch } from './components/FloatingSearch';
 import { SectionNavigator } from './components/SectionNavigator';
+import { TripPlanner } from './components/TripPlanner';
 import DesignPreview from './pages/DesignPreview';
 const GolfCoursePage = React.lazy(() => import('./components/GolfCourseLanding'));
 const GolfHolidaysPage = React.lazy(() => import('./components/GolfHolidaysPage'));
@@ -36,6 +37,7 @@ function MainContent() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [user, setUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [showTripPlanner, setShowTripPlanner] = useState(false);
   const searchRef = useRef(null);
 
   useEffect(() => {
@@ -110,7 +112,7 @@ function MainContent() {
       />
       
       {/* Hero */}
-      <Hero />
+      <Hero onPlanTrip={() => setShowTripPlanner(true)} />
       
       {/* About */}
       <About />
@@ -139,6 +141,9 @@ function MainContent() {
       
       {/* Section Navigator - dots on right side */}
       <SectionNavigator />
+      
+      {/* Trip Planner Modal */}
+      <TripPlanner isOpen={showTripPlanner} onClose={() => setShowTripPlanner(false)} />
       
       {showAdmin && user && (
         <AdminDashboard 
