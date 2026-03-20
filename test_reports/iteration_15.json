@@ -1,0 +1,94 @@
+{
+  "summary": "Complete testing of Golf Trip Planner 'Your Schedule' feature. All features verified working correctly. Backend: 11/11 tests passed. Frontend: All schedule-related flows working including per-service scheduling, date constraints, time range (06:00-22:00), and optional schedule entries.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "schedule_feature_verification": {
+      "transfer_only_2_rows": "PASS - Transfer-only selection shows 2 schedule rows: 'Arrival Pickup' and 'Departure Pickup'",
+      "restaurant_only_1_row": "PASS - Restaurant-only shows 1 row: 'Dinner Reservation'",
+      "beach_club_only_1_row": "PASS - Beach Club-only shows 1 row: 'Beach Club'",
+      "all_4_services_4_rows": "PASS - All 4 services shows 4 rows: Arrival Pickup, Dinner Reservation, Beach Club, Departure Pickup",
+      "date_dropdown_constrained": "PASS - Date dropdowns only show dates within selected arrival-departure range",
+      "time_dropdown_full_range": "PASS - Time dropdowns include all times from 06:00 to 22:00 (17 options)",
+      "early_times_available": "PASS - Early times (06:00, 07:00, 08:00) available for transfer pickups",
+      "late_times_available": "PASS - Late times (21:00, 22:00) available",
+      "schedule_appears_after_date": "PASS - Schedule section only appears after arrival date is picked",
+      "schedule_optional": "PASS - Wizard proceeds even if schedule is empty",
+      "contact_summary_shows_schedule": "PASS - Step 4 Contact Summary shows individual schedule entries",
+      "group_size_controls": "PASS - Group size +/- buttons work correctly (min 1, max 20)"
+    },
+    "backend_api_tests": {
+      "schedule_with_transfer_only": "PASS - POST /api/trip-planner accepts schedule dict for transfer-only",
+      "schedule_with_restaurant_only": "PASS - POST /api/trip-planner accepts schedule dict for restaurant-only",
+      "schedule_with_beach_club_only": "PASS - POST /api/trip-planner accepts schedule dict for beach_club-only",
+      "schedule_with_all_services": "PASS - POST /api/trip-planner accepts schedule dict with all 4 services",
+      "schedule_optional_null": "PASS - schedule field is optional (null accepted)",
+      "schedule_optional_empty": "PASS - empty schedule dict accepted",
+      "early_morning_times": "PASS - Early times (06:00, 07:00) accepted in schedule",
+      "late_evening_times": "PASS - Late times (21:00, 22:00) accepted in schedule",
+      "partial_schedule_entries": "PASS - Partial entries (only date or only time) accepted",
+      "legacy_time_field": "PASS - Legacy 'time' field still works for backward compatibility"
+    },
+    "full_wizard_flow": {
+      "step1_services_budget": "PASS - Services and budget selection works",
+      "step2_dates_schedule": "PASS - Date range and schedule entry works",
+      "step3_itinerary": "PASS - Itinerary suggestions displayed",
+      "step4_contact_submit": "PASS - Contact form and submission works",
+      "success_view": "PASS - Success view shown after submission"
+    }
+  },
+
+  "passed_tests": [
+    "Transfer-only shows 2 schedule rows (Arrival Pickup, Departure Pickup)",
+    "Restaurant-only shows 1 row (Dinner Reservation)",
+    "Beach Club-only shows 1 row (Beach Club)",
+    "All 4 services shows 4 rows",
+    "Date dropdowns constrained to arrival-departure range",
+    "Time dropdowns include 06:00-22:00 (17 options)",
+    "Schedule section appears only after arrival date selected",
+    "Schedule entries are optional",
+    "Contact Summary shows schedule entries",
+    "Group size controls work correctly",
+    "POST /api/trip-planner - schedule dict accepted",
+    "POST /api/trip-planner - schedule optional (null/empty)",
+    "POST /api/trip-planner - early/late times accepted",
+    "POST /api/trip-planner - partial entries accepted",
+    "POST /api/trip-planner - legacy time field works",
+    "Full wizard flow completes successfully"
+  ],
+
+  "test_report_links": [
+    "/app/backend/tests/test_trip_planner_schedule.py",
+    "/app/test_reports/pytest/pytest_trip_planner_schedule.xml"
+  ],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [],
+
+  "updated_files": [
+    "/app/backend/tests/test_trip_planner_schedule.py"
+  ],
+
+  "success_rate": {
+    "backend": "100% - 11/11 pytest tests passed",
+    "frontend": "100% - All schedule feature tests passed"
+  },
+
+  "test_credentials": null,
+  "seed_data_creation": "Created test trip requests via API with TEST_ prefix for identification",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "The 'Your Schedule' feature is fully implemented and working. Key data-testids for schedule: schedule-transfer_arrival, schedule-transfer_departure, schedule-restaurant, schedule-beach_club, schedule-{key}-date, schedule-{key}-time. TIMES array now includes 06:00-22:00. Schedule is stored as dict like {transfer_arrival: {date: '2026-03-25', time: '10:00'}}. Backend accepts 'schedule' field (Optional[dict]). Legacy 'time' field still works. Hotel service doesn't need a schedule row."
+}

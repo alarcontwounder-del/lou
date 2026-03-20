@@ -148,7 +148,8 @@ class TripPlannerRequest(BaseModel):
     transfer_dropoff: Optional[str] = None
     date: str  # ISO date string (arrival)
     departure_date: Optional[str] = None
-    time: Optional[str] = None
+    time: Optional[str] = None  # legacy
+    schedule: Optional[dict] = None
     group_size: int = 2
     special_requests: Optional[str] = None
 
@@ -167,7 +168,8 @@ class TripPlannerEntry(BaseModel):
     transfer_dropoff: Optional[str] = None
     date: str
     departure_date: Optional[str] = None
-    time: Optional[str] = None
+    time: Optional[str] = None  # legacy
+    schedule: Optional[dict] = None
     group_size: int = 2
     special_requests: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -5354,6 +5356,15 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
         if entry.departure_date:
             date_display = f"{entry.date} → {entry.departure_date}"
 
+        schedule_labels = {'transfer_arrival': 'Arrival Pickup', 'transfer_departure': 'Departure Pickup', 'restaurant': 'Dinner Reservation', 'beach_club': 'Beach Club'}
+        schedule_rows = ''
+        if entry.schedule:
+            for key, val in entry.schedule.items():
+                if val and (val.get('date') or val.get('time')):
+                    label = schedule_labels.get(key, key.replace('_', ' ').title())
+                    detail = f"{val.get('date', '')} {val.get('time', '')}".strip() or 'TBD'
+                    schedule_rows += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">{label}</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{detail}</td></tr>'
+
         logo_url = "https://mallorca-golf-portal.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
         html_content = f"""
         <html>
@@ -5371,7 +5382,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.email}</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.phone or 'N/A'}</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Date</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{date_display}</td></tr>
-                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Time</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.time or 'Flexible'}</td></tr>
+                        {schedule_rows}
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Group Size</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.group_size} people</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Services</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{', '.join(entry.services)}</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Budget</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.budget or 'N/A'}</td></tr>
@@ -5426,6 +5437,15 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
         if entry.departure_date:
             date_display = f"{entry.date} → {entry.departure_date}"
 
+        schedule_labels = {'transfer_arrival': 'Arrival Pickup', 'transfer_departure': 'Departure Pickup', 'restaurant': 'Dinner Reservation', 'beach_club': 'Beach Club'}
+        schedule_rows = ''
+        if entry.schedule:
+            for key, val in entry.schedule.items():
+                if val and (val.get('date') or val.get('time')):
+                    label = schedule_labels.get(key, key.replace('_', ' ').title())
+                    detail = f"{val.get('date', '')} {val.get('time', '')}".strip() or 'TBD'
+                    schedule_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">{label}</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{detail}</td></tr>'
+
         logo_url = "https://mallorca-golf-portal.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
         html_content = f"""
         <html>
@@ -5450,7 +5470,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Services</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{', '.join(service_names)}</td></tr>
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Budget</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{budget_display}</td></tr>
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{date_display}</td></tr>
-                            <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{time_display}</td></tr>
+                            {schedule_rows}
                             <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Group</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{entry.group_size} {group_word}</td></tr>
                             {details_rows}
                         </table>

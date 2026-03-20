@@ -20,8 +20,9 @@ const BUDGETS = [
 ];
 
 const TIMES = [
-  '09:00', '10:00', '11:00', '12:00', '13:00', '14:00',
-  '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00',
+  '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00',
+  '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00',
+  '20:00', '21:00', '22:00',
 ];
 
 /* Known luxury hotels for tier matching */
@@ -83,6 +84,15 @@ function generateItinerary(partners, services, budget) {
 const formatSingleDate = (d) => d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
 const TRANSFER_IMAGE = 'https://customer-assets.emergentagent.com/job_0fbbd441-c00e-428a-bb6e-219f78598e7b/artifacts/g1vy93s4_47f1c9acaea9e915bba2c2416d77904ca73d3937.webp';
+
+const SCHEDULE_ITEMS = [
+  { key: 'transfer_arrival', service: 'transfer', label: 'Arrival Pickup', icon: Car },
+  { key: 'restaurant', service: 'restaurant', label: 'Dinner Reservation', icon: UtensilsCrossed },
+  { key: 'beach_club', service: 'beach_club', label: 'Beach Club', icon: Umbrella },
+  { key: 'transfer_departure', service: 'transfer', label: 'Departure Pickup', icon: Car },
+];
+
+const formatShortDate = (d) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 
 /* ---- Sub-components ---- */
 
@@ -166,7 +176,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
   const [form, setForm] = useState({
     services: [], budget: '',
-    date: null, time: '', group_size: 2,
+    date: null, schedule: {}, group_size: 2,
     transfer_pickup: '', transfer_dropoff: '',
     name: '', email: '', phone: '', special_requests: '',
   });
@@ -265,7 +275,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         transfer_dropoff: form.transfer_dropoff || null,
         date: form.date?.from ? form.date.from.toISOString().split('T')[0] : '',
         departure_date: form.date?.to ? form.date.to.toISOString().split('T')[0] : null,
-        time: form.time || null, group_size: form.group_size,
+        schedule: Object.keys(form.schedule).length > 0 ? form.schedule : null, group_size: form.group_size,
         special_requests: form.special_requests || null,
       });
       setSubmitted(true);
@@ -281,7 +291,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     setStep(1);
     setSubmitted(false);
     setItinerary({});
-    setForm({ services: [], budget: '', date: null, time: '', group_size: 2, transfer_pickup: '', transfer_dropoff: '', name: '', email: '', phone: '', special_requests: '' });
+    setForm({ services: [], budget: '', date: null, schedule: {}, group_size: 2, transfer_pickup: '', transfer_dropoff: '', name: '', email: '', phone: '', special_requests: '' });
     onClose();
   };
 
@@ -396,6 +406,27 @@ function StepDateTime({ form, setForm }) {
     day_range_middle: "bg-stone-200 text-stone-700",
   };
 
+  const dateOptions = useMemo(() => {
+    if (!form.date?.from) return [];
+    const to = form.date.to || form.date.from;
+    const dates = [];
+    const d = new Date(form.date.from);
+    while (d <= to) {
+      dates.push(new Date(d));
+      d.setDate(d.getDate() + 1);
+    }
+    return dates;
+  }, [form.date]);
+
+  const updateSchedule = (key, field, value) => {
+    setForm(p => ({
+      ...p,
+      schedule: { ...p.schedule, [key]: { ...(p.schedule[key] || {}), [field]: value } }
+    }));
+  };
+
+  const activeItems = SCHEDULE_ITEMS.filter(item => form.services.includes(item.service));
+
   return (
     <div data-testid="trip-planner-step-2">
       <h3 className="font-heading text-lg text-stone-800 mb-1">When are you visiting?</h3>
@@ -413,14 +444,51 @@ function StepDateTime({ form, setForm }) {
           )}
         </p>
       )}
-      <div className="mb-4">
-        <label className="flex items-center gap-2 text-stone-500 text-xs uppercase tracking-widest mb-2"><Clock className="w-3.5 h-3.5" /> Preferred time</label>
-        <div className="grid grid-cols-5 gap-1.5">
-          {TIMES.map(t => (
-            <TimeButton key={t} time={t} selected={form.time === t} onSelect={() => setForm(p => ({ ...p, time: p.time === t ? '' : t }))} />
-          ))}
+
+      {form.date?.from && activeItems.length > 0 && (
+        <div className="mb-4">
+          <label className="flex items-center gap-2 text-stone-500 text-xs uppercase tracking-widest mb-2.5">
+            <Clock className="w-3.5 h-3.5" /> Your Schedule
+          </label>
+          <p className="text-stone-400 text-xs mb-2">Set your preferred date and time for each service</p>
+          <div className="space-y-2">
+            {activeItems.map(item => {
+              const Icon = item.icon;
+              const entry = form.schedule[item.key] || {};
+              return (
+                <div key={item.key} className="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-stone-200" data-testid={`schedule-${item.key}`}>
+                  <Icon className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                  <span className="text-xs font-medium text-stone-600 min-w-[105px] flex-shrink-0">{item.label}</span>
+                  <select
+                    value={entry.date || ''}
+                    onChange={e => updateSchedule(item.key, 'date', e.target.value)}
+                    className="flex-1 text-xs px-2 py-1.5 border border-stone-200 rounded bg-stone-50 text-stone-700 focus:outline-none focus:ring-1 focus:ring-stone-300"
+                    data-testid={`schedule-${item.key}-date`}
+                  >
+                    <option value="">Day</option>
+                    {dateOptions.map(d => (
+                      <option key={d.toISOString()} value={d.toISOString().split('T')[0]}>
+                        {formatShortDate(d)}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    value={entry.time || ''}
+                    onChange={e => updateSchedule(item.key, 'time', e.target.value)}
+                    className="w-[72px] text-xs px-2 py-1.5 border border-stone-200 rounded bg-stone-50 text-stone-700 focus:outline-none focus:ring-1 focus:ring-stone-300"
+                    data-testid={`schedule-${item.key}-time`}
+                  >
+                    <option value="">Time</option>
+                    {TIMES.map(t => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-stone-400 text-xs mt-2 italic">Optional — our team will confirm availability with you.</p>
         </div>
-      </div>
+      )}
+
       <div>
         <label className="flex items-center gap-2 text-stone-500 text-xs uppercase tracking-widest mb-2"><Users className="w-3.5 h-3.5" /> Group size</label>
         <div className="flex items-center gap-3">
@@ -497,7 +565,11 @@ function StepContact({ form, setForm, formatDate, itinerary }) {
         <div className="space-y-1 text-sm">
           <p className="text-stone-600"><span className="text-stone-400">Services:</span> {serviceLabels}</p>
           <p className="text-stone-600"><span className="text-stone-400">Budget:</span> {budgetLabel}</p>
-          <p className="text-stone-600"><span className="text-stone-400">Date:</span> {formatDate(form.date)}{form.time ? ` at ${form.time}` : ''}</p>
+          <p className="text-stone-600"><span className="text-stone-400">Dates:</span> {formatDate(form.date)}</p>
+          {SCHEDULE_ITEMS.filter(item => form.services.includes(item.service) && (form.schedule[item.key]?.date || form.schedule[item.key]?.time)).map(item => {
+            const s = form.schedule[item.key];
+            return <p key={item.key} className="text-stone-500 text-xs"><span className="text-stone-400">{item.label}:</span> {s.date || ''}{s.time ? ` at ${s.time}` : ''}</p>;
+          })}
           <p className="text-stone-600"><span className="text-stone-400">Group:</span> {form.group_size} {form.group_size === 1 ? 'person' : 'people'}</p>
           {form.services.includes('hotel') && itinerary.hotel && <p className="text-stone-600"><span className="text-stone-400">Hotel:</span> {itinerary.hotel.name}</p>}
           {form.services.includes('restaurant') && itinerary.restaurant && <p className="text-stone-600"><span className="text-stone-400">Restaurant:</span> {itinerary.restaurant.name}</p>}
