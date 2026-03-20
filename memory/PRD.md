@@ -53,6 +53,15 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - [x] **X (Twitter) Footer Icon** (March 2026) — Added X social media icon linking to https://x.com/Golfinmallorca
 - [x] **Scroll Dots Fix** (March 2026) — Fixed Tailwind dynamic class issue preventing desktop hover effect
 - [x] **Golf Trip Planner** (March 2026) — 3-step wizard modal: select services (Hotel/Michelin Dining/Beach Club), pick date/time/group size, submit contact details. Backend stores requests + sends email notification
+- [x] **Golf Trip Planner Bug Fixes** (March 2026) — Fixed 5 bugs:
+  - Next button now works for any single service or combination (transfer-only, hotel-only, etc.)
+  - Deselecting services clears them from the suggested itinerary
+  - Calendar now accepts date range (arrival + departure) using react-day-picker range mode
+  - Mercedes S-Class image added to transfer itinerary card
+  - Calendar selection colors changed from salmon to greyscale (stone palette)
+  - Wizard always shows 4 steps regardless of service selection
+  - Backend now accepts departure_date field for date ranges
+  - Email templates updated to show arrival → departure dates
 
 ## Blocked
 - [ ] Google Business Profile reinstatement (user needs to change category)
@@ -99,6 +108,8 @@ Build and refine the Golfinmallorca.com website - a full-featured golf travel po
 - `GET /api/blog` - All blog posts
 - `POST /api/newsletter/subscribe` - Newsletter signup
 - `POST /api/contact` - Contact form
+- `POST /api/trip-planner` - Trip Planner lead capture (accepts date + departure_date)
+- `GET /api/trip-planner` - Retrieve trip planner requests (admin)
 - `GET /api/auth/google` - Google OAuth
 
 ## Important Technical Notes
