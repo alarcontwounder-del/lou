@@ -144,7 +144,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
               }`}
               data-testid="nav-plan-trip"
             >
-              Plan Trip
+              Plan Trip / Reserve
             </button>
           )}
 
@@ -297,7 +297,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
                 className="text-left py-2 text-brand-charcoal hover:text-brand-slate font-semibold"
                 data-testid="mobile-nav-plan-trip"
               >
-                Plan Your Trip
+                Plan a Trip or Reserve
               </button>
             )}
             <button

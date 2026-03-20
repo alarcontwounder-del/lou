@@ -71,7 +71,7 @@ export const Hero = ({ onPlanTrip }) => {
                 data-testid="hero-plan-trip"
               >
                 <CalendarDays className="w-4 h-4" />
-                Plan Your Trip
+                Plan a Trip or Reserve
               </button>
             </div>
           </div>
