@@ -1895,8 +1895,146 @@ class CreatePaymentRequest(BaseModel):
     service_type: str = Field(default="reservation")  # "reservation" or "package"
 
 
+CURRENCY_SYMBOLS = {"eur": "\u20AC", "gbp": "\u00A3", "usd": "$"}
+
+
+async def send_payment_link_email(payment: dict, payment_link: str):
+    """Send payment link to customer"""
+    logo_url = "https://mallorca-golf-travel.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+    sym = CURRENCY_SYMBOLS.get(payment["currency"], payment["currency"].upper())
+    stype = "Package Payment" if payment["service_type"] == "package" else "Reservation Deposit"
+    html = f"""
+    <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+            <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+        </div>
+        <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
+            <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 12px; letter-spacing: 2px;">{stype.upper()}</p>
+        </div>
+        <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <p style="color: #2D2D2D; font-size: 16px; margin: 0 0 8px;">Hello {payment["customer_name"]},</p>
+            <p style="color: #6B7B8C; font-size: 14px; line-height: 1.6; margin: 0 0 24px;">
+                A payment request has been created for you by Golf in Mallorca.
+            </p>
+            <div style="background-color: #F5F2EB; padding: 20px; border-radius: 8px; margin-bottom: 24px;">
+                <p style="color: #6B7B8C; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Description</p>
+                <p style="color: #2D2D2D; font-size: 15px; font-weight: 500; margin: 0 0 12px;">{payment["description"]}</p>
+                <p style="color: #6B7B8C; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Amount</p>
+                <p style="color: #2D2D2D; font-size: 24px; font-weight: 700; margin: 0;">{sym}{payment["amount"]:.2f}</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="{payment_link}" style="display: inline-block; background-color: #6B7B8C; color: white; text-decoration: none; padding: 14px 40px; border-radius: 8px; font-size: 14px; font-weight: 600;">Pay Now</a>
+            </div>
+            <p style="color: #9CA3AF; font-size: 12px; text-align: center; margin: 20px 0 0;">
+                Or copy this link: <a href="{payment_link}" style="color: #6B7B8C;">{payment_link}</a>
+            </p>
+        </div>
+        <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">
+            Secure payment powered by Stripe &middot; golfinmallorca.com
+        </p>
+    </div></body></html>"""
+    try:
+        await asyncio.to_thread(resend.Emails.send, {
+            "from": SENDER_EMAIL,
+            "to": [payment["customer_email"]],
+            "subject": f"Payment Request from Golf in Mallorca - {sym}{payment['amount']:.2f}",
+            "html": html,
+        })
+        logger.info(f"Payment link email sent to {payment['customer_email']}")
+    except Exception as e:
+        logger.error(f"Failed to send payment link email: {e}")
+
+
+async def send_payment_confirmation_emails(payment: dict):
+    """Send confirmation emails to both admin and customer after successful payment"""
+    logo_url = "https://mallorca-golf-travel.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+    sym = CURRENCY_SYMBOLS.get(payment.get("currency", "eur"), "EUR")
+    stype = "Package Payment" if payment.get("service_type") == "package" else "Reservation Deposit"
+
+    # --- Email to ADMIN ---
+    admin_html = f"""
+    <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+            <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+        </div>
+        <div style="background: linear-gradient(135deg, #2D7D46 0%, #3A9958 100%); padding: 14px 30px; text-align: center;">
+            <p style="color: white; margin: 0; font-size: 12px; letter-spacing: 2px;">PAYMENT RECEIVED</p>
+        </div>
+        <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <p style="color: #2D2D2D; font-size: 16px; font-weight: 600; margin: 0 0 20px;">
+                {payment.get("customer_name", "A customer")} just paid {sym}{payment.get("amount", 0):.2f}
+            </p>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 120px;">Customer</td>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 14px;">{payment.get("customer_name", "")}</td></tr>
+                <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 14px;">{payment.get("customer_email", "")}</td></tr>
+                <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Type</td>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 14px;">{stype}</td></tr>
+                <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Amount</td>
+                    <td style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 18px; font-weight: 700;">{sym}{payment.get("amount", 0):.2f}</td></tr>
+                <tr><td style="padding: 10px 0; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Description</td>
+                    <td style="padding: 10px 0; color: #2D2D2D; font-size: 14px;">{payment.get("description", "")}</td></tr>
+            </table>
+        </div>
+        <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">golfinmallorca.com</p>
+    </div></body></html>"""
+
+    # --- Email to CUSTOMER ---
+    customer_html = f"""
+    <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+            <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+        </div>
+        <div style="background: linear-gradient(135deg, #2D7D46 0%, #3A9958 100%); padding: 14px 30px; text-align: center;">
+            <p style="color: white; margin: 0; font-size: 12px; letter-spacing: 2px;">PAYMENT CONFIRMATION</p>
+        </div>
+        <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <p style="color: #2D2D2D; font-size: 16px; margin: 0 0 8px;">Thank you, {payment.get("customer_name", "")}!</p>
+            <p style="color: #6B7B8C; font-size: 14px; line-height: 1.6; margin: 0 0 24px;">
+                Your payment has been received successfully. Here's your receipt:
+            </p>
+            <div style="background-color: #F5F2EB; padding: 20px; border-radius: 8px; margin-bottom: 24px;">
+                <p style="color: #6B7B8C; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Description</p>
+                <p style="color: #2D2D2D; font-size: 15px; font-weight: 500; margin: 0 0 12px;">{payment.get("description", "")}</p>
+                <p style="color: #6B7B8C; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Amount Paid</p>
+                <p style="color: #2D2D2D; font-size: 24px; font-weight: 700; margin: 0;">{sym}{payment.get("amount", 0):.2f}</p>
+            </div>
+            <p style="color: #6B7B8C; font-size: 13px; line-height: 1.6; margin: 0;">
+                If you have any questions, contact us at <a href="mailto:contact@golfinmallorca.com" style="color: #6B7B8C;">contact@golfinmallorca.com</a>
+            </p>
+        </div>
+        <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">golfinmallorca.com</p>
+    </div></body></html>"""
+
+    try:
+        await asyncio.to_thread(resend.Emails.send, {
+            "from": SENDER_EMAIL,
+            "to": ["contact@golfinmallorca.com"],
+            "subject": f"Payment Received: {sym}{payment.get('amount', 0):.2f} from {payment.get('customer_name', 'Customer')}",
+            "html": admin_html,
+        })
+        logger.info("Payment confirmation sent to admin")
+    except Exception as e:
+        logger.error(f"Failed to send admin payment confirmation: {e}")
+
+    try:
+        await asyncio.to_thread(resend.Emails.send, {
+            "from": SENDER_EMAIL,
+            "to": [payment.get("customer_email")],
+            "subject": f"Payment Confirmation - Golf in Mallorca - {sym}{payment.get('amount', 0):.2f}",
+            "html": customer_html,
+        })
+        logger.info(f"Payment receipt sent to {payment.get('customer_email')}")
+    except Exception as e:
+        logger.error(f"Failed to send customer payment receipt: {e}")
+
+
 @api_router.post("/admin/payment-request")
-async def create_payment_request(body: CreatePaymentRequest):
+async def create_payment_request(body: CreatePaymentRequest, request: Request):
     """Admin creates a payment request that generates a shareable payment link"""
     payment_id = _gen_payment_id()
     doc = {
@@ -1914,6 +2052,9 @@ async def create_payment_request(body: CreatePaymentRequest):
         "paid_at": None,
     }
     await db.payment_transactions.insert_one(doc)
+    origin = request.headers.get("origin") or str(request.base_url).rstrip("/")
+    payment_link = f"{origin}/pay/{payment_id}"
+    asyncio.create_task(send_payment_link_email(doc, payment_link))
     return {
         "payment_id": payment_id,
         "status": "pending",
@@ -1927,6 +2068,24 @@ async def list_payments():
     """Admin: list all payment requests"""
     payments = await db.payment_transactions.find({}, {"_id": 0}).sort("created_at", -1).to_list(200)
     return payments
+
+
+@api_router.get("/admin/payment-stats")
+async def get_payment_stats():
+    """Admin: get payment summary stats"""
+    all_payments = await db.payment_transactions.find({}, {"_id": 0, "status": 1, "amount": 1, "currency": 1}).to_list(500)
+    total = len(all_payments)
+    paid = [p for p in all_payments if p.get("status") == "paid"]
+    pending = [p for p in all_payments if p.get("status") in ("pending", "initiated")]
+    total_collected = sum(p.get("amount", 0) for p in paid)
+    total_pending = sum(p.get("amount", 0) for p in pending)
+    return {
+        "total_requests": total,
+        "paid_count": len(paid),
+        "pending_count": len(pending),
+        "total_collected": round(total_collected, 2),
+        "total_pending": round(total_pending, 2),
+    }
 
 
 @api_router.get("/payment/{payment_id}")
@@ -2016,10 +2175,14 @@ async def get_payment_status(session_id: str, request: Request):
     elif checkout_status.status == "expired":
         update_fields["status"] = "expired"
 
+    # Only send confirmation if transitioning to paid for the first time
+    was_unpaid = doc.get("status") != "paid"
     await db.payment_transactions.update_one(
         {"checkout_session_id": session_id},
         {"$set": update_fields}
     )
+    if checkout_status.payment_status == "paid" and was_unpaid:
+        asyncio.create_task(send_payment_confirmation_emails(doc))
 
     return {
         "status": update_fields.get("status", doc["status"]),
@@ -2040,7 +2203,7 @@ async def stripe_webhook(request: Request):
     try:
         event = await stripe_checkout.handle_webhook(body, sig)
         if event.payment_status == "paid" and event.session_id:
-            await db.payment_transactions.update_one(
+            result = await db.payment_transactions.update_one(
                 {"checkout_session_id": event.session_id, "status": {"$ne": "paid"}},
                 {"$set": {
                     "status": "paid",
@@ -2048,6 +2211,10 @@ async def stripe_webhook(request: Request):
                     "paid_at": datetime.now(timezone.utc).isoformat(),
                 }}
             )
+            if result.modified_count > 0:
+                doc = await db.payment_transactions.find_one({"checkout_session_id": event.session_id}, {"_id": 0})
+                if doc:
+                    asyncio.create_task(send_payment_confirmation_emails(doc))
     except Exception as e:
         logging.error(f"Webhook error: {e}")
     return {"status": "ok"}

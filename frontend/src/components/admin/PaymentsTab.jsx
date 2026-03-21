@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Copy, ExternalLink, Trash2, Check, Search, CreditCard, Loader2 } from 'lucide-react';
+import { Plus, Copy, ExternalLink, Trash2, Check, Search, CreditCard, Loader2, TrendingUp, Clock, CircleDollarSign } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 
@@ -19,6 +19,7 @@ const STATUS_STYLES = {
 
 export const PaymentsTab = () => {
   const [payments, setPayments] = useState([]);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -33,7 +34,7 @@ export const PaymentsTab = () => {
     service_type: 'reservation',
   });
 
-  useEffect(() => { fetchPayments(); }, []);
+  useEffect(() => { fetchPayments(); fetchStats(); }, []);
 
   const fetchPayments = async () => {
     try {
@@ -41,6 +42,13 @@ export const PaymentsTab = () => {
       setPayments(res.data);
     } catch { toast.error('Failed to load payments'); }
     finally { setLoading(false); }
+  };
+
+  const fetchStats = async () => {
+    try {
+      const res = await axios.get(`${BACKEND_URL}/api/admin/payment-stats`, { withCredentials: true });
+      setStats(res.data);
+    } catch { /* silent */ }
   };
 
   const handleCreate = async (e) => {
@@ -55,10 +63,11 @@ export const PaymentsTab = () => {
         ...form,
         amount: parseFloat(form.amount),
       }, { withCredentials: true });
-      toast.success(`Payment link created for ${form.customer_name}`);
+      toast.success(`Payment link created & emailed to ${form.customer_name}`);
       setShowForm(false);
       setForm({ customer_name: '', customer_email: '', amount: '', currency: 'eur', description: '', service_type: 'reservation' });
       fetchPayments();
+      fetchStats();
     } catch (err) {
       toast.error(err?.response?.data?.detail || 'Failed to create payment request');
     } finally { setCreating(false); }
@@ -70,6 +79,7 @@ export const PaymentsTab = () => {
       await axios.delete(`${BACKEND_URL}/api/admin/payment/${paymentId}`, { withCredentials: true });
       setPayments(prev => prev.filter(p => p.payment_id !== paymentId));
       toast.success('Payment request deleted');
+      fetchStats();
     } catch (err) {
       toast.error(err?.response?.data?.detail || 'Cannot delete this payment');
     }
@@ -93,6 +103,42 @@ export const PaymentsTab = () => {
 
   return (
     <div data-testid="payments-tab">
+      {/* Stats Summary */}
+      {stats && (
+        <div className="grid grid-cols-3 gap-3 mb-5" data-testid="payment-stats">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-1">
+              <CircleDollarSign className="w-4 h-4 text-emerald-600" />
+              <span className="text-[10px] text-emerald-600 uppercase tracking-wider font-medium">Collected</span>
+            </div>
+            <p className="text-xl font-bold text-emerald-700" data-testid="stat-collected">
+              {new Intl.NumberFormat('en', { style: 'currency', currency: 'eur' }).format(stats.total_collected)}
+            </p>
+            <p className="text-[10px] text-emerald-500">{stats.paid_count} paid</p>
+          </div>
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-1">
+              <Clock className="w-4 h-4 text-amber-600" />
+              <span className="text-[10px] text-amber-600 uppercase tracking-wider font-medium">Pending</span>
+            </div>
+            <p className="text-xl font-bold text-amber-700" data-testid="stat-pending">
+              {new Intl.NumberFormat('en', { style: 'currency', currency: 'eur' }).format(stats.total_pending)}
+            </p>
+            <p className="text-[10px] text-amber-500">{stats.pending_count} awaiting</p>
+          </div>
+          <div className="bg-stone-50 border border-stone-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-1">
+              <TrendingUp className="w-4 h-4 text-stone-600" />
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider font-medium">Total</span>
+            </div>
+            <p className="text-xl font-bold text-stone-700" data-testid="stat-total">
+              {stats.total_requests}
+            </p>
+            <p className="text-[10px] text-stone-400">requests</p>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="relative flex-1 max-w-xs">
@@ -158,15 +204,18 @@ export const PaymentsTab = () => {
               className="w-full px-3 py-2 text-sm border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-300"
               placeholder="e.g. 3-Day Golf Package - Son Gual + St. Regis" data-testid="payment-description" />
           </div>
-          <div className="flex gap-2 justify-end">
-            <button type="button" onClick={() => setShowForm(false)}
-              className="px-4 py-2 text-sm text-stone-600 bg-stone-100 rounded-lg hover:bg-stone-200">Cancel</button>
-            <button type="submit" disabled={creating}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-stone-800 rounded-lg hover:bg-stone-900 disabled:opacity-50"
-              data-testid="submit-payment-btn">
-              {creating ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
-              {creating ? 'Creating...' : 'Create Payment Link'}
-            </button>
+          <div className="flex items-center gap-2 justify-between">
+            <p className="text-[10px] text-stone-400">Payment link will be emailed to the customer automatically.</p>
+            <div className="flex gap-2">
+              <button type="button" onClick={() => setShowForm(false)}
+                className="px-4 py-2 text-sm text-stone-600 bg-stone-100 rounded-lg hover:bg-stone-200">Cancel</button>
+              <button type="submit" disabled={creating}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-stone-800 rounded-lg hover:bg-stone-900 disabled:opacity-50"
+                data-testid="submit-payment-btn">
+                {creating ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
+                {creating ? 'Creating...' : 'Create & Send Link'}
+              </button>
+            </div>
           </div>
         </form>
       )}

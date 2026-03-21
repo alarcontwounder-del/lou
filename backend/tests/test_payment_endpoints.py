@@ -446,6 +446,61 @@ class TestPaymentEndpoints:
         print("✓ Full payment flow completed successfully")
 
 
+class TestPaymentStats:
+    """Test payment stats endpoint - NEW feature"""
+    
+    def test_get_payment_stats(self):
+        """Test GET /api/admin/payment-stats returns correct structure"""
+        response = requests.get(f"{BASE_URL}/api/admin/payment-stats")
+        
+        assert response.status_code == 200, f"Expected 200, got {response.status_code}"
+        data = response.json()
+        
+        # Verify all required fields are present
+        assert "total_requests" in data, "Missing total_requests"
+        assert "paid_count" in data, "Missing paid_count"
+        assert "pending_count" in data, "Missing pending_count"
+        assert "total_collected" in data, "Missing total_collected"
+        assert "total_pending" in data, "Missing total_pending"
+        
+        # Verify types
+        assert isinstance(data["total_requests"], int), "total_requests should be int"
+        assert isinstance(data["paid_count"], int), "paid_count should be int"
+        assert isinstance(data["pending_count"], int), "pending_count should be int"
+        assert isinstance(data["total_collected"], (int, float)), "total_collected should be numeric"
+        assert isinstance(data["total_pending"], (int, float)), "total_pending should be numeric"
+        
+        print(f"✓ Payment stats: {data['total_requests']} total, {data['paid_count']} paid, {data['pending_count']} pending")
+        print(f"  Collected: €{data['total_collected']}, Pending: €{data['total_pending']}")
+    
+    def test_payment_stats_consistency(self):
+        """Test that stats are consistent with payments list"""
+        # Get stats
+        stats_res = requests.get(f"{BASE_URL}/api/admin/payment-stats")
+        assert stats_res.status_code == 200
+        stats = stats_res.json()
+        
+        # Get payments list
+        payments_res = requests.get(f"{BASE_URL}/api/admin/payments")
+        assert payments_res.status_code == 200
+        payments = payments_res.json()
+        
+        # Verify total_requests matches list length
+        assert stats["total_requests"] == len(payments), \
+            f"Stats total ({stats['total_requests']}) doesn't match payments count ({len(payments)})"
+        
+        # Count paid and pending from list
+        paid_count = sum(1 for p in payments if p.get("status") == "paid")
+        pending_count = sum(1 for p in payments if p.get("status") in ("pending", "initiated"))
+        
+        assert stats["paid_count"] == paid_count, \
+            f"Stats paid_count ({stats['paid_count']}) doesn't match actual ({paid_count})"
+        assert stats["pending_count"] == pending_count, \
+            f"Stats pending_count ({stats['pending_count']}) doesn't match actual ({pending_count})"
+        
+        print(f"✓ Stats are consistent with payments list")
+
+
 class TestExistingPayments:
     """Test with existing payments mentioned in the context"""
     
