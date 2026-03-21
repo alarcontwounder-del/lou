@@ -1,0 +1,97 @@
+{
+  "summary": "Complete testing of Golf Groups bug fixes in Trip Planner wizard. All 6 bug fixes verified working correctly via Playwright UI testing.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "bug_fix_1_budget_label": {
+      "requirement": "Budget label should say 'per person / day' (not 'per person')",
+      "status": "PASS",
+      "evidence": "Label shows 'BUDGET PER PERSON / DAY' when Golf Groups selected"
+    },
+    "bug_fix_2_budget_ranges": {
+      "requirement": "Budget ranges: Moderate €50-€100, Premium €100-€200, Luxury €200+",
+      "status": "PASS",
+      "evidence": "Moderate: €50 – €100, Premium: €100 – €200, Luxury: €200+"
+    },
+    "bug_fix_3_hotel_suggestions": {
+      "requirement": "Hotel suggestions should show for golf groups (prioritizing hotels nearest to golf courses)",
+      "status": "PASS",
+      "evidence": "Step 3 shows 'Pleta de Mar' hotel with '2km to Capdepera Golf' info"
+    },
+    "bug_fix_4_nearest_golf_card": {
+      "requirement": "Step 3 should show hotel with nearest_golf info when Golf Groups + Hotel selected",
+      "status": "PASS",
+      "evidence": "Nearest Golf Course card shows 'Capdepera Golf' with '2km · 18 holes · Par 72 · From €59' and 'Book Tee Time' button"
+    },
+    "bug_fix_5_missing_hint": {
+      "requirement": "Missing fields hint should show when Next is disabled",
+      "status": "PASS",
+      "evidence": "Shows 'Select a service' initially, then 'Select group type, number of players, budget' after Golf Groups selected"
+    },
+    "bug_fix_6_close_button_step1": {
+      "requirement": "Close button on Step 1",
+      "status": "PASS",
+      "evidence": "Close button (X Close) visible at bottom-left of Step 1"
+    },
+    "bug_fix_7_back_button": {
+      "requirement": "Back button should be visible on all steps > 1",
+      "status": "PASS",
+      "evidence": "Back button visible on Step 2, Step 3, and Step 4"
+    },
+    "bug_fix_8_budget_summary_format": {
+      "requirement": "Step 4 summary shows budget as '/pers/day' format for golf groups",
+      "status": "PASS",
+      "evidence": "Summary shows 'Budget: €100 – €200 /pers/day'"
+    },
+    "full_wizard_flow": {
+      "requirement": "Full wizard flow: Golf Groups + Hotel → select society, 12-20, premium budget → Step 2 dates → Step 3 itinerary with hotel → Step 4 with group name field",
+      "status": "PASS",
+      "evidence": "Complete flow tested successfully: Step 1 (Golf Groups + Hotel + Society + 12-20 + Premium) → Step 2 (dates selected) → Step 3 (hotel with nearest golf shown) → Step 4 (Society/Club name field + /pers/day budget format)"
+    }
+  },
+
+  "passed_tests": [
+    "Budget label shows 'BUDGET PER PERSON / DAY' when Golf Groups selected",
+    "Budget ranges: Moderate €50-€100, Premium €100-€200, Luxury €200+",
+    "Hotel suggestions show for golf groups with nearest golf course info",
+    "Nearest Golf Course card appears in Step 3 with distance, holes, par, price",
+    "Missing fields hint shows when Next is disabled",
+    "Close button visible on Step 1",
+    "Back button visible on Steps 2, 3, 4",
+    "Budget shows '/pers/day' format in Step 4 summary",
+    "Full wizard flow completes successfully",
+    "Group name field shows 'Society / Club name' placeholder"
+  ],
+
+  "test_report_links": [
+    "/app/test_reports/iteration_18.json"
+  ],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [],
+
+  "updated_files": [],
+
+  "success_rate": {
+    "backend": "N/A - Frontend only testing",
+    "frontend": "100% - All 9 test cases passed"
+  },
+
+  "test_credentials": null,
+  "seed_data_creation": null,
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "All Golf Groups bug fixes verified working. Key data-testids used: nav-plan-trip, service-golf_groups, service-hotel, group-type-society, players-12-20, budget-premium, budget-moderate, budget-luxury, missing-hint, trip-close-step1-btn, trip-back-btn, trip-next-btn, trip-planner-step-3, nearest-golf-card, trip-group-name. The hotel prioritization for golf groups works correctly - hotels with nearest_golf field are shown with distance info and a 'Nearest Golf Course' card appears below the hotel card."
+}

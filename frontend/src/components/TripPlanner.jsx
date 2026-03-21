@@ -15,9 +15,9 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', rangePerPerson: '€150 – €300', desc: 'Great value experiences' },
-  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', rangePerPerson: '€300 – €500', desc: 'Upscale comfort' },
-  { id: 'luxury', label: 'Luxury', range: '€4,000+', rangePerPerson: '€500+', desc: 'The finest Mallorca offers' },
+  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', rangePerPerson: '€50 – €100', desc: 'Great value experiences' },
+  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', rangePerPerson: '€100 – €200', desc: 'Upscale comfort' },
+  { id: 'luxury', label: 'Luxury', range: '€4,000+', rangePerPerson: '€200+', desc: 'The finest Mallorca offers' },
 ];
 
 const GROUP_TYPES = [
@@ -75,14 +75,25 @@ const BUDGET_TIERS = {
   luxury: ['luxury', 'premium'],
 };
 
-function generateItinerary(partners, services, budget) {
+function generateItinerary(partners, services, budget, isGolfGroup) {
   const tiers = BUDGET_TIERS[budget] || ['moderate', 'premium', 'luxury'];
   const result = {};
 
   if (services.includes('hotel')) {
-    const matched = partners.hotels.filter(h => tiers.includes(getHotelTier(h.name)));
-    const pool = matched.length > 0 ? matched : partners.hotels;
-    result.hotel = pool[Math.floor(Math.random() * pool.length)];
+    if (isGolfGroup) {
+      // For golf groups: prioritize hotels nearest to golf courses
+      const golfHotels = partners.hotels
+        .filter(h => h.nearest_golf && h.distance_km)
+        .sort((a, b) => (a.distance_km || 99) - (b.distance_km || 99));
+      // Filter by tier first, fallback to all golf hotels, then all hotels
+      const tiered = golfHotels.filter(h => tiers.includes(getHotelTier(h.name)));
+      const pool = tiered.length > 0 ? tiered : golfHotels.length > 0 ? golfHotels : partners.hotels;
+      result.hotel = pool[Math.floor(Math.random() * Math.min(pool.length, 5))]; // Pick from top 5 closest
+    } else {
+      const matched = partners.hotels.filter(h => tiers.includes(getHotelTier(h.name)));
+      const pool = matched.length > 0 ? matched : partners.hotels;
+      result.hotel = pool[Math.floor(Math.random() * pool.length)];
+    }
   }
 
   if (services.includes('restaurant')) {
@@ -176,7 +187,7 @@ function SuccessView({ onClose, form, itinerary, formatDate }) {
 
   const generateShareText = () => {
     const isGolfGroup = form.services.includes('golf_groups');
-    const budgetLabel = isGolfGroup ? (BUDGETS.find(b => b.id === form.budget)?.rangePerPerson || '') + ' /person' : (BUDGETS.find(b => b.id === form.budget)?.range || '');
+    const budgetLabel = isGolfGroup ? (BUDGETS.find(b => b.id === form.budget)?.rangePerPerson || '') + ' /pers/day' : (BUDGETS.find(b => b.id === form.budget)?.range || '');
     const lines = [
       isGolfGroup ? `Golf ${form.group_type === 'society' ? 'Society' : 'Group'} Trip to Mallorca` : 'Golf Trip to Mallorca',
       `Dates: ${formatDate(form.date)}`,
@@ -342,14 +353,14 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
   const goNext = () => {
     if (step === 2) {
-      const suggested = generateItinerary(partners, form.services, form.budget);
+      const suggested = generateItinerary(partners, form.services, form.budget, isGolfGroup);
       setItinerary(suggested);
     }
     setStep(s => s + 1);
   };
 
   const swapSuggestion = (category) => {
-    const newItinerary = generateItinerary(partners, [category], form.budget);
+    const newItinerary = generateItinerary(partners, [category], form.budget, isGolfGroup);
     setItinerary(prev => ({ ...prev, ...newItinerary }));
   };
 
@@ -389,6 +400,16 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     onClose();
   };
 
+  const getMissingHint = () => {
+    if (step !== 1) return null;
+    const missing = [];
+    if (form.services.length === 0) missing.push('a service');
+    if (isGolfGroup && !form.group_type) missing.push('group type');
+    if (isGolfGroup && !form.number_of_players) missing.push('number of players');
+    if (form.services.length > 0 && !form.budget) missing.push('budget');
+    return missing.length > 0 ? `Select ${missing.join(', ')}` : null;
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -425,22 +446,31 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
         {/* Footer */}
         {!submitted && (
-          <div className="px-6 py-4 border-t border-stone-300 flex items-center justify-between flex-shrink-0 bg-[#F5F2EB]">
-            {step > 1 ? (
-              <button onClick={() => setStep(s => s - 1)} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-700 transition-colors" data-testid="trip-back-btn">
-                <ChevronLeft className="w-4 h-4" /> Back
-              </button>
-            ) : <div />}
-            {step < totalSteps ? (
-              <button onClick={goNext} disabled={!canNext()} className="flex items-center gap-1.5 px-5 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" data-testid="trip-next-btn">
-                {step === 2 ? 'See Suggestions' : 'Next'} <ChevronRight className="w-4 h-4" />
-              </button>
-            ) : (
-              <button onClick={handleSubmit} disabled={!canNext() || submitting} className="flex items-center gap-2 px-6 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" data-testid="trip-submit-btn">
-                {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
-                {submitting ? 'Sending...' : 'Send Request'}
-              </button>
+          <div className="px-6 py-4 border-t border-stone-300 flex-shrink-0 bg-[#F5F2EB]">
+            {step === 1 && !canNext() && getMissingHint() && (
+              <p className="text-xs text-stone-400 mb-2 text-center" data-testid="missing-hint">{getMissingHint()}</p>
             )}
+            <div className="flex items-center justify-between">
+              {step > 1 ? (
+                <button onClick={() => setStep(s => s - 1)} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-700 transition-colors" data-testid="trip-back-btn">
+                  <ChevronLeft className="w-4 h-4" /> Back
+                </button>
+              ) : (
+                <button onClick={handleClose} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-700 transition-colors" data-testid="trip-close-step1-btn">
+                  <X className="w-4 h-4" /> Close
+                </button>
+              )}
+              {step < totalSteps ? (
+                <button onClick={goNext} disabled={!canNext()} className="flex items-center gap-1.5 px-5 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" data-testid="trip-next-btn">
+                  {step === 2 ? 'See Suggestions' : 'Next'} <ChevronRight className="w-4 h-4" />
+                </button>
+              ) : (
+                <button onClick={handleSubmit} disabled={!canNext() || submitting} className="flex items-center gap-2 px-6 py-2.5 bg-stone-700 text-white text-sm rounded-lg hover:bg-stone-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" data-testid="trip-submit-btn">
+                  {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
+                  {submitting ? 'Sending...' : 'Send Request'}
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -518,7 +548,7 @@ function StepServices({ form, toggleService, setForm }) {
       {form.services.length > 0 && (
         <div className="mt-5">
           <p className="text-stone-500 text-xs uppercase tracking-widest mb-2.5">
-            {isGolfGroup ? 'Budget per person' : 'Your budget range'}
+            {isGolfGroup ? 'Budget per person / day' : 'Your budget range'}
           </p>
           <div className="flex gap-2">
             {BUDGETS.map(b => (
@@ -526,7 +556,7 @@ function StepServices({ form, toggleService, setForm }) {
             ))}
           </div>
           <p className="text-stone-400 text-xs mt-2.5 italic">
-            {isGolfGroup ? 'Approx. prices per person for a 3-day golf trip.' : 'Approx. prices based on high season for 3 days.'}
+            {isGolfGroup ? 'Approx. cost per person per day for a golf trip.' : 'Approx. prices based on high season for 3 days.'}
           </p>
           <div className="mt-2 p-2.5 bg-stone-200/50 rounded-lg">
             <p className="text-stone-500 text-xs leading-relaxed">A 15% budget buffer is recommended for extras like the Balearic Sustainable Tourism Tax (€4.40/night).</p>
@@ -672,7 +702,12 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
         <Sparkles className="w-5 h-5 text-stone-600" />
         <h3 className="font-heading text-lg text-stone-800">Your Personalised Itinerary</h3>
       </div>
-      <p className="text-stone-500 text-sm mb-5">Based on your <span className="font-medium text-stone-700">{budgetLabel}</span> budget, here's what we suggest. Tap the refresh icon to see alternatives.</p>
+      <p className="text-stone-500 text-sm mb-5">
+        {isGolfGroup
+          ? <>Hotels nearest to golf courses for your <span className="font-medium text-stone-700">{budgetLabel}</span> group. Tap refresh for alternatives.</>
+          : <>Based on your <span className="font-medium text-stone-700">{budgetLabel}</span> budget, here's what we suggest. Tap the refresh icon to see alternatives.</>
+        }
+      </p>
 
       <div className="space-y-3">
         {itinerary.hotel && (
@@ -729,7 +764,7 @@ function StepContact({ form, setForm, formatDate, itinerary }) {
   const serviceLabels = form.services.map(s => SERVICES.find(o => o.id === s)?.label).join(', ');
   const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.range || '';
   const isGolfGroup = form.services.includes('golf_groups');
-  const budgetDisplay = isGolfGroup ? (BUDGETS.find(b => b.id === form.budget)?.rangePerPerson || '') + ' /person' : budgetLabel;
+  const budgetDisplay = isGolfGroup ? (BUDGETS.find(b => b.id === form.budget)?.rangePerPerson || '') + ' /pers/day' : budgetLabel;
 
   return (
     <div data-testid="trip-planner-step-contact">
