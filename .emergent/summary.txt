@@ -2,33 +2,33 @@
 PRODUCT REQUIREMENTS: Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive Golf Trip Planner lead capture tool. The site must be visually consistent and highly responsive.
 
 **User's preferred language**: English
-(Note for next agent: You MUST automatically detect the user's primary language from their messages and INSTRUCT next agent to respond in the user's preferred language only)
+(Note for next agent: You MUST automatically detect the user's primary language from their messages inside the trajectory and INSTRUCT next agent to respond in the user's preferred language only)
 
 **what currently exists?** 
-A full-stack React/FastAPI application for a golf travel website. Features include partner listings (Hotels, Restaurants, Cafe/Bars, Beach Clubs, Golf Courses), Contact/Newsletter forms integrated with Resend, and an advanced Golf Trip Planner wizard with per-service dynamic scheduling, automatic golf-course pairing based on hotel selection, and share functionality. 
+A full-stack React/FastAPI application for a golf travel website. Features include partner listings, an advanced Trip Planner wizard with a specific Golf Groups flow, automated itinerary generation prioritizing hotels near golf courses, and an Admin Dashboard with a Partner Images management tab. The backend data layer has been recently refactored to separate hardcoded data from routing logic.
 
 **Last working item**: 
-    - Last item agent was working: Swapping the image for the Cappuccino Grand Café card. The user provided the artifact in their very last message, and the agent located the dict entry in  but the session ended before the update could be applied to code and MongoDB.
+    - Last item agent was working: Implementing drag-and-drop image upload functionality in the Admin Dashboard's Partner Images tab using the  object storage playbook.
     - Status: IN PROGRESS
     - Agent Testing Done: N
-    - Which testing method agent to use? python -c / manual testing by curl to verify DB update, screenshot tool for UI.
+    - Which testing method agent to use? Both (Use curl to test the backend  endpoint, and screenshot tool/testing subagent to test the frontend Drag & Drop interaction in the Admin UI).
     - User Testing Done: N
 
 **All Pending/In progress Issue list**: 
 
-  Issue 1: Update Cappuccino Grand Café Image (P0)
+  Issue 1: Test and Finalize Drag-and-Drop Image Upload (P0)
   Issue 2: Google Business Profile is suspended (P1)
   Issue 3: Sitemap submission to Google Search Console (P1)
   Issue 4: Get external review links for Write a review modal (P2)
 
   Issues Detail:
   - Issue 1: 
-     - Attempted fixes: Agent viewed  to find the ID  but did not execute the  or DB update.
-     - Next debug checklist: Update  image URL for  with the provided artifact URL. Execute a bash python script to update the specific document in the MongoDB  collection so the frontend reflects it immediately.
-     - Why fix this issue and what will be achieved with the fix? Completes the user's explicit request for visual updates.
+     - Attempted fixes: Agent updated  with the storage helper and upload endpoints, and overwrote  with drag-and-drop logic. The session ended before testing.
+     - Next debug checklist: Verify the backend endpoint works correctly with the  library. Verify the frontend correctly handles file selection, upload, and state update.
+     - Why fix this issue and what will be achieved with the fix? Completes the user-approved enhancement to make image management easier.
      - Status: IN PROGRESS
      - Is recurring issue? N
-     - Should Test frontend/backend/both after fix? Backend (verify DB) and Frontend (Screenshot).
+     - Should Test frontend/backend/both after fix? Both
      - Blocked on other issue: None
   - Issue 2: 
      - Attempted fixes: Agent previously provided guidance.
@@ -43,103 +43,114 @@ A full-stack React/FastAPI application for a golf travel website. Features inclu
      - Status: BLOCKED (Waiting on user to provide URLs).
 
 **In progress Task List**: 
-None.
+  Task 1: Drag-and-Drop Admin Image Upload
+     - Where to resume:  and . Verify the integration logic is sound, run the app, and test uploading an image via the Admin Panel.
+     - What will be achieved with this? Allows admins to upload photos directly from their computer instead of pasting URLs.
+     - Status: IN PROGRESS
+     - Should Test frontend/backend/both after fix? Both
+     - Blocked on something: None
 
 **Upcoming and Future Tasks**
     Upcoming Tasks:
     - (P0) SEO-friendly blog routes: Convert the blog from the current modal-based view to individual, indexable pages (e.g., ).
     - (P1) Hero Video: Add Hero Video to homepage.
     Future Tasks:
+    - (P2) Refactor : This file is currently ~800 lines and handles too many responsibilities (wizard steps, itinerary generation, API calls). Needs to be broken down into smaller components.
     - (P2) Golf Packages page: Add a dedicated page to bundle course and hotel deals (Suggested by agent, needs user validation).
     - (P2) Stripe Payment Integration: Add a simple deposit/booking fee flow via Stripe for packages and the Trip Planner.
 
 **Completed work in this session**
-- Fixed Trip Planner Bugs: Unblocked transfer-only next button, cleared stale itinerary states, added date-range selection to calendar, greyscale calendar styling.
-- Trip Planner UX: Added scroll-indicator chevron, swapped car image to user-provided Mercedes S-Class, updated budget pricing text/ranges, added 15% tax context note.
-- Trip Planner Features: Implemented Per-Service Schedule System (dynamic date/time rows for transfers, dining, etc. instead of one global time), Golf Course Pairing (auto-suggests nearest course to selected hotel), and Share Trip functionality.
-- Image Updates (Code + DB): Swapped specific images for Golf Ibiza, Son Vida Golf, Capdepera Golf, El Perrito, La Rosa Vermutería, Brassclub, Chapeau (Chapo), Abaco, and Amok.
+- Image Updates: Swapped stock images for authentic photos for Cappuccino, Terrae, Flanigan, Barlovento, Bar Bosch, Tahini, Wellies, and La Bodeguilla. (Code + DB synced). (DONE)
+- Trip Planner Golf Groups: Renamed UI to Trip Planner, added specific Golf Groups category with per-person/per-day budget logic, auto-defaults, and nearest-golf-course hotel prioritization. (DONE)
+- Trip Planner UI Fixes: Standardized card sizes in Step 3, removed all green colors (swapped to grey), removed dashed borders, and replaced intrusive scroll gradient with a subtle floating pill. (DONE)
+- Admin Partner Images Tab: Built a new tab in the Admin Dashboard allowing the user to override partner images by pasting URLs. Data saves to MongoDB. (DONE)
+- Backend Refactoring: Reduced  from ~5974 lines to ~1833 lines by extracting all hardcoded data to  (partners.py, reviews.py, courses.py). Fixed all Python linting errors. (DONE)
 
 **Earlier issues found/mentioned but not fixed**
    - Issue 1: Frontend Build Fragility / ESLint Warnings
-   - Debug checklist: Check  (exhaustive-deps warning for ). The build process previously threw Babel stack overflow errors on deeply nested JSX.
+   - Debug checklist: Check  (exhaustive-deps warning for ).
    - Why to solve this issue and what will be achieved with this? Keeps the build stable and prevents future compilation failures as components grow.
    - Should Test frontend/backend/both after fix: Frontend
    - Is recurring issue? Y
 
 **Known issue recurrence from previous fork**
   - Issue recurrence in previous fork: Webpack/Babel build warnings.
-  - Recurrence count: 1
+  - Recurrence count: 2
   - Status: IN PROGRESS
 
 **Code Architecture**
 
 
 **Key Technical Concepts**
-- Frontend: React, Tailwind CSS, Shadcn UI ( for date ranges).
+- Frontend: React, Tailwind CSS, Shadcn UI.
 - Backend: FastAPI, Motor (async MongoDB), Pydantic.
-- Communications: Resend SDK for transactional emails (HTML templates generated in backend).
+- Storage: Emergent Integrations Object Storage (Installed this session for file uploads).
+- Communications: Resend SDK for transactional emails.
 
 **key DB schema**
-  - : Stores lead capture data, dynamic schedules, budget tiers.
-  - : {id, name, description, holes, par, price_from, booking_url, image}
-  - : base collections containing  and  to link with courses.
+  - Database name:  (Note: ensure you are checking this DB, not ).
+  - : Stores lead capture data.
+  -  /  /  / : Core partner collections.
+  - : Newly added collection to track admin image edits.
 
 **changes in tech stack**
-  - None
+  - Added  for Object Storage (File Uploads).
 
 **All files of reference** 
-- : Contains massive dictionaries of partners/courses, email templates, and Pydantic models. Needs update for Cappuccino image.
-- : Houses complex state for wizard, scheduling, and itinerary generation.
-- : Handles date ranges.
+- : Contains the newly written drag-and-drop upload logic (Needs testing).
+- : Contains the newly added storage helper and upload endpoint  (Needs testing).
+- : New directory containing all extracted hardcoded data.
+- : Heavily modified for Golf Groups and UI fixes. Ripe for future refactoring.
 
 **Areas that need refactoring**: 
--  (~600 lines) is handling too many responsibilities (wizard steps, itinerary generation, share logic). 
--  (~6000 lines) contains all hardcoded data lists. These should ideally be moved to JSON files or a dedicated seeding directory to clean up the routing file.
+-  (~800 lines) is still handling too many responsibilities. The backend refactor was successful, but the frontend refactor is pending.
 
 **key api endpoints**
-- : Submits the trip plan request, processes dynamic schedules, fires Resend emails.
-- : Fetches partner lists.
+- : New endpoint for drag-and-drop image uploads.
+- : Endpoint for URL-based image overrides.
 
 **Critical Info for New Agent** 
-- **Database Synchronization:** When updating partner/course data (like images), you MUST update both the hardcoded lists in  AND write a quick bash script to update the specific document in MongoDB. Hot-reloading  does NOT automatically seed the database unless  is explicitly run (which might overwrite other dynamic changes). 
-- Do not overwrite  entirely; always use .
-- User provides specific image artifacts. Ensure exact URLs are copied.
+- **Database Identity:** The backend connects to a database named  (verified via MongoDB URL parsing). Ensure you are querying the correct DB when verifying changes.
+- **Refactoring:**  no longer contains the massive lists of dictionaries. They are imported from .
+- **Integrations:** The  playbook was used to set up object storage. The backend and frontend logic was written, but the session timed out before it could be tested. **Testing this is your immediate priority.**
 
 **documents and test reports created in this job** 
-  - /app/test_reports/iteration_14.json
-  - /app/test_reports/iteration_15.json
-  - /app/test_reports/iteration_16.json
+  - /app/test_reports/iteration_17.json (Tested Golf Groups functionality)
+  - /app/test_reports/iteration_18.json (Tested Golf Groups bug fixes)
+  - /app/test_reports/iteration_19.json (Tested Trip Planner Next button logic)
   - /app/memory/PRD.md
 
 **Last 10 User Messages and any pending HUMAN messages** 
- 1. User provided artifact for Cappuccino cafe. (PENDING)
- 2. User provided 4 images for cafes (Brassclub, Abaco, Amok, Chapeau). (Done)
- 3. User requested image changes for El Perrito and La Rosa. (Done)
- 4. User requested image changes for 3 Golf Courses. (Done)
- 5. User signed off for the day. (Done)
- 6. User requested a test link and to start on share trip and golf courses near hotels. (Done)
- 7. User agreed to dynamic scheduling and requested logical naming. (Done)
- 8. User identified a logic flaw: a single preferred time doesn't work when booking multiple services across different days. (Done)
- 9. User asked for a test link. (Done)
- 10. User requested UX updates: scroll indicator, new car image, budget tier text, 15% tax tip. (Done)
+ 1. User requested adding a Golf Groups category to the trip planner and renaming Plan Trip to Trip Planner. (Done)
+ 2. User asked for a test link. (Done)
+ 3. User reported bugs with the Golf Groups budget (needed per person/day), Next button state, and missing hotel suggestions. (Done)
+ 4. User asked for test link. (Done)
+ 5. User reported Next button still not working. (Done - added auto-defaults).
+ 6. User reported UI inconsistencies in Step 3 cards (different sizes, green colors, ugly scroll indicator) and uploaded screenshots. (Done)
+ 7. User uploaded 5 authentic images to replace stock photos for restaurants/bars. (Done)
+ 8. User uploaded 2 more images and asked if they can change card pictures themselves to save time. (Done - built Admin tab).
+ 9. User authorized moving forward with backend refactoring. (Done - extracted  data).
+ 10. User accepted agent's suggestion to enhance the new Admin image tab with Drag-and-Drop file uploads. (In Progress - needs testing).
 
 **Project Health Check:**
-- Healthy. (No broken flows, features tested at 100% pass rate).
+- Mocked/Untested: Drag-and-Drop Admin Image Upload feature.
+- Healthy: Core Trip Planner, API endpoints, Email flows.
 
 **3rd Party Integrations**
 	 •	OpenAI/Emergent LLMs — uses Emergent LLM Key
 	 •	Gemini (Image Gen) — uses Emergent LLM Key
+     •	Emergent Object Storage (File Uploads) — uses Emergent LLM Key
 	 •	Resend (Emails) — requires User API Key
 	 •	Stripe (Payments) — requires User API Key (Upcoming)
 
 **Testing status**
   - Testing agent used after significant changes: YES
   - Troubleshoot agent used after agent stuck in loop: NO
-  - Test files created: None
-  - Known regressions: None
+  - Test files created: /app/test_reports/iteration_17.json, iteration_18.json, iteration_19.json
+  - Known regressions: None currently known, but the Admin Image Upload feature is completely untested.
 
 **Credentials to test flow:**
 None required (Resend is in the backend ).
 
 **What agent forgot to execute**
-The agent found the  ID in  to update the image provided by the user in the very last message, but ran out of context/messages before making the  and database update. Priority P0.</analysis>
+The agent modified  and  to implement the drag-and-drop object storage upload, but the session ended immediately after writing the frontend file. The agent forgot to actually run the frontend, test the upload endpoint, verify the drag-and-drop interaction, and ensure the DB updates correctly upon upload. Furthermore, the agent pushed back the refactoring of  to prioritize .</analysis>
