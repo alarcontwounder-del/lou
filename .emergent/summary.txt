@@ -1,161 +1,145 @@
 <analysis>**original_problem_statement**: 
-The user wants to continue building their Golfinmallorca.com website. 
-PRODUCT REQUIREMENTS: Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a new Golf Trip Planner lead capture tool. The site must be visually consistent and highly responsive.
+PRODUCT REQUIREMENTS: Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive Golf Trip Planner lead capture tool. The site must be visually consistent and highly responsive.
 
 **User's preferred language**: English
-(Note for next agent: You MUST respond in English only)
+(Note for next agent: You MUST automatically detect the user's primary language from their messages and INSTRUCT next agent to respond in the user's preferred language only)
 
 **what currently exists?** 
-A full-stack React/FastAPI application for a golf travel website. The platform includes partner listings (Hotels, Restaurants, Cafe/Bars, Beach Clubs), an Admin Dashboard (with a newly added Display Settings tab), Contact/Newsletter forms integrated with Resend, and a newly built Golf Trip Planner wizard modal for lead capture.
+A full-stack React/FastAPI application for a golf travel website. Features include partner listings (Hotels, Restaurants, Cafe/Bars, Beach Clubs, Golf Courses), Contact/Newsletter forms integrated with Resend, and an advanced Golf Trip Planner wizard with per-service dynamic scheduling, automatic golf-course pairing based on hotel selection, and share functionality. 
 
 **Last working item**: 
-- **Last item agent was working**: Fixing 5 bugs reported by the user on the newly built Golf Trip Planner feature. 
-  1. Next button is blocked if *only* Premium Transfer is selected.
-  2. Stale itinerary: If a user selects Hotel/Beach Club, goes to the next step, then goes back and deselects them leaving only the transfer, the itinerary still shows the Hotel/Beach Club.
-  3. Calendar only accepts a single date; it needs to accept a date range (arrival and departure).
-  4. Missing image for the transfer in the suggested itinerary (user requested a black Mercedes S-Class).
-  5. Calendar selection color reverted to salmon; it needs to be greyscale.
-- **Status**: IN PROGRESS
-- **Agent Testing Done**: N
-- **Which testing method agent to use?**: Frontend testing agent / manual testing by screenshot tool.
-- **User Testing Done**: N
+    - Last item agent was working: Swapping the image for the Cappuccino Grand Café card. The user provided the artifact in their very last message, and the agent located the dict entry in  but the session ended before the update could be applied to code and MongoDB.
+    - Status: IN PROGRESS
+    - Agent Testing Done: N
+    - Which testing method agent to use? python -c / manual testing by curl to verify DB update, screenshot tool for UI.
+    - User Testing Done: N
 
 **All Pending/In progress Issue list**: 
-Issue 1: Fix Golf Trip Planner UI and State Bugs (P0)
-Issue 2: Google Business Profile is suspended (P1)
-Issue 3: Sitemap submission to Google Search Console (P1)
-Issue 4: Get external review links for Write a review modal (P2)
 
-Issues Detail:
-- **Issue 1: Fix Golf Trip Planner UI and State Bugs**
-  - **Attempted fixes**: The agent queried Unsplash for a black Mercedes S-Class image and pulled up  to review the calendar implementation, but the session ended before code changes were made.
-  - **Next debug checklist**: 
-    - : Update the state validation logic that disables the Next button to allow proceeding if *only* a transfer is selected.
-    - : Clear the  state for unselected services when navigating between steps.
-    -  / : Update  implementation to  to allow arrival/departure selection.
-    - : Add the Mercedes S-Class image to the itinerary render for the transfer segment.
-    -  / : Fix CSS variables (likely ) so the selected calendar day is grey, not salmon.
-  - **Why fix this issue and what will be achieved with the fix?**: User specifically requested these changes to finalize the core lead capture feature.
-  - **Status**: IN PROGRESS
-  - **Is recurring issue?**: N
-  - **Should Test frontend/backend/both after fix?**: Frontend
-  - **Blocked on other issue**: None
+  Issue 1: Update Cappuccino Grand Café Image (P0)
+  Issue 2: Google Business Profile is suspended (P1)
+  Issue 3: Sitemap submission to Google Search Console (P1)
+  Issue 4: Get external review links for Write a review modal (P2)
 
-- **Issue 2: Google Business Profile is suspended**
-  - **Attempted fixes**: Agent previously provided guidance.
-  - **Next debug checklist**: Awaiting user action to resolve directly with Google.
-  - **Why fix this issue**: Critical for GEO SEO.
-  - **Status**: BLOCKED
-  - **Is recurring issue?**: N
-  - **Should Test frontend/backend/both after fix?**: NA
-
-- **Issue 3: Sitemap submission to Google Search Console**
-  - **Status**: BLOCKED (Waiting on production deployment).
-
-- **Issue 4: Get external review links**
-  - **Status**: BLOCKED (Waiting on user to provide URLs).
+  Issues Detail:
+  - Issue 1: 
+     - Attempted fixes: Agent viewed  to find the ID  but did not execute the  or DB update.
+     - Next debug checklist: Update  image URL for  with the provided artifact URL. Execute a bash python script to update the specific document in the MongoDB  collection so the frontend reflects it immediately.
+     - Why fix this issue and what will be achieved with the fix? Completes the user's explicit request for visual updates.
+     - Status: IN PROGRESS
+     - Is recurring issue? N
+     - Should Test frontend/backend/both after fix? Backend (verify DB) and Frontend (Screenshot).
+     - Blocked on other issue: None
+  - Issue 2: 
+     - Attempted fixes: Agent previously provided guidance.
+     - Next debug checklist: Awaiting user action to resolve directly with Google.
+     - Why fix this issue and what will be achieved with the fix? Critical for GEO SEO.
+     - Status: BLOCKED
+     - Is recurring issue? N
+     - Should Test frontend/backend/both after fix? NA
+  - Issue 3: 
+     - Status: BLOCKED (Waiting on production deployment).
+  - Issue 4: 
+     - Status: BLOCKED (Waiting on user to provide URLs).
 
 **In progress Task List**: 
-None (Tasks are covered under Issue 1).
+None.
 
-**Upcoming and Future Tasks**:
-Upcoming Tasks:
-- **(P0) SEO-friendly blog routes**: Convert the blog from the current modal-based view to individual, indexable pages (e.g., ).
-- **(P1) Hero Video**: Add Hero Video to homepage.
-- **(P2) Golf Packages page**: Add a dedicated page to bundle course and hotel deals.
-- **(P2) Stripe Payment Integration**: Add a simple deposit/booking fee flow via Stripe for packages and the Trip Planner.
+**Upcoming and Future Tasks**
+    Upcoming Tasks:
+    - (P0) SEO-friendly blog routes: Convert the blog from the current modal-based view to individual, indexable pages (e.g., ).
+    - (P1) Hero Video: Add Hero Video to homepage.
+    Future Tasks:
+    - (P2) Golf Packages page: Add a dedicated page to bundle course and hotel deals (Suggested by agent, needs user validation).
+    - (P2) Stripe Payment Integration: Add a simple deposit/booking fee flow via Stripe for packages and the Trip Planner.
 
-**Completed work in this session**:
-- Fixed missing  data for Lobster Club.
-- Removed 6 duplicate restaurant entries and duplicate image pairs in  and MongoDB.
-- Replaced broken images for Castillo Hotel, Maca de Castro, Purobeach, Beso Beach, and DINS Santi Taura.
-- Updated St. Regis image to an optimized authentic photo.
-- Fixed 10-item display limit bug (updated MongoDB display limits to 100).
-- Built Display Settings tab in Admin Dashboard ().
-- Adjusted card flip CSS delay to 3 seconds.
-- Fixed right-side scroll dots navigation and visibility.
-- Added X (Twitter) icon/link to footer.
-- Email Template Overhaul: Fixed logo cropping by burning the custom user logo onto a solid background and updating Resend templates.
-- **Major Feature**: Built the 3-step Golf Trip Planner wizard with budget matching, dynamic itinerary generation, Resend email notifications (admin + customer), and Hero/Navbar integrations.
+**Completed work in this session**
+- Fixed Trip Planner Bugs: Unblocked transfer-only next button, cleared stale itinerary states, added date-range selection to calendar, greyscale calendar styling.
+- Trip Planner UX: Added scroll-indicator chevron, swapped car image to user-provided Mercedes S-Class, updated budget pricing text/ranges, added 15% tax context note.
+- Trip Planner Features: Implemented Per-Service Schedule System (dynamic date/time rows for transfers, dining, etc. instead of one global time), Golf Course Pairing (auto-suggests nearest course to selected hotel), and Share Trip functionality.
+- Image Updates (Code + DB): Swapped specific images for Golf Ibiza, Son Vida Golf, Capdepera Golf, El Perrito, La Rosa Vermutería, Brassclub, Chapeau (Chapo), Abaco, and Amok.
 
-**Earlier issues found/mentioned but not fixed**:
-- **Issue 1**: Frontend Build Fragility (Babel Stack Overflow)
-  - **Debug checklist**: Check  and Webpack config. 
-  - **Why to solve this issue**: The build process threw a  error on deeply nested JSX (like in the initial ). The agent worked around it by splitting components, but the underlying Webpack/Babel risk remains.
-  - **Should Test frontend/backend/both after fix**: Frontend
-  - **Is recurring issue?**: Y
+**Earlier issues found/mentioned but not fixed**
+   - Issue 1: Frontend Build Fragility / ESLint Warnings
+   - Debug checklist: Check  (exhaustive-deps warning for ). The build process previously threw Babel stack overflow errors on deeply nested JSX.
+   - Why to solve this issue and what will be achieved with this? Keeps the build stable and prevents future compilation failures as components grow.
+   - Should Test frontend/backend/both after fix: Frontend
+   - Is recurring issue? Y
 
-**Known issue recurrence from previous fork**:
-- Issue recurrence in previous fork: None
-- Recurrence count: 0
-- Status: NA
+**Known issue recurrence from previous fork**
+  - Issue recurrence in previous fork: Webpack/Babel build warnings.
+  - Recurrence count: 1
+  - Status: IN PROGRESS
 
-**Code Architecture**:
+**Code Architecture**
 
 
-**Key Technical Concepts**:
-- Frontend: React, Tailwind CSS, Shadcn UI ( for calendar).
-- Backend: FastAPI, Motor (async MongoDB).
-- Communications: Resend SDK for transactional emails.
+**Key Technical Concepts**
+- Frontend: React, Tailwind CSS, Shadcn UI ( for date ranges).
+- Backend: FastAPI, Motor (async MongoDB), Pydantic.
+- Communications: Resend SDK for transactional emails (HTML templates generated in backend).
 
-**key DB schema**:
-- : Stores lead capture data from the Trip Planner.
-- : 
--  (hotels, restaurants, etc.): Base listing collections.
+**key DB schema**
+  - : Stores lead capture data, dynamic schedules, budget tiers.
+  - : {id, name, description, holes, par, price_from, booking_url, image}
+  - : base collections containing  and  to link with courses.
 
-**changes in tech stack**:
-- None
+**changes in tech stack**
+  - None
 
-**All files of reference**:
-- : The core focus for the next agent to fix state and navigation logic.
-- : Needs to be configured for a start/end date range.
-- : Check  CSS variables to fix the salmon calendar color issue.
-- : API routes for the trip planner and HTML email templates.
+**All files of reference** 
+- : Contains massive dictionaries of partners/courses, email templates, and Pydantic models. Needs update for Cappuccino image.
+- : Houses complex state for wizard, scheduling, and itinerary generation.
+- : Handles date ranges.
 
-**Areas that need refactoring**:
-- : Currently holds complex state for a multi-step wizard. It was already split once to avoid a Babel stack overflow, but adding range dates and dynamic un-selecting logic might require further clean-up to keep it manageable.
+**Areas that need refactoring**: 
+-  (~600 lines) is handling too many responsibilities (wizard steps, itinerary generation, share logic). 
+-  (~6000 lines) contains all hardcoded data lists. These should ideally be moved to JSON files or a dedicated seeding directory to clean up the routing file.
 
-**key api endpoints**:
-- : Submits the trip plan request and fires Resend emails.
-- : Manages category limits for the frontend.
+**key api endpoints**
+- : Submits the trip plan request, processes dynamic schedules, fires Resend emails.
+- : Fetches partner lists.
 
-**Critical Info for New Agent**:
-- The user is extremely attentive to visual details. When they ask for a black Mercedes S-Class, ensure you select a high-quality representation of that exact requirement.
-- **Do not overwrite  completely**—always use  as it contains massive static data lists.
-- The  dependency is installed (v8.10.1). You must use its  prop to achieve the requested arrival/departure dates.
+**Critical Info for New Agent** 
+- **Database Synchronization:** When updating partner/course data (like images), you MUST update both the hardcoded lists in  AND write a quick bash script to update the specific document in MongoDB. Hot-reloading  does NOT automatically seed the database unless  is explicitly run (which might overwrite other dynamic changes). 
+- Do not overwrite  entirely; always use .
+- User provides specific image artifacts. Ensure exact URLs are copied.
 
-**documents and test reports created in this job**:
-- 
-- 
-- 
+**documents and test reports created in this job** 
+  - /app/test_reports/iteration_14.json
+  - /app/test_reports/iteration_15.json
+  - /app/test_reports/iteration_16.json
+  - /app/memory/PRD.md
 
-**Last 10 User Messages and any pending HUMAN messages**:
-1. User asked for trip planner feature to include interactive budget input, premium class transfer, and instant itinerary generation. (Done)
-2. User provided feedback on the new Trip Planner features (Pending):
-   - Next button blocked for transfer only.
-   - State doesn't clear when services are deselected.
-   - Calendar needs arrival + departure range.
-   - Transfer needs a black Mercedes S-Class image in the itinerary.
-   - Calendar selected color is salmon instead of grey.
+**Last 10 User Messages and any pending HUMAN messages** 
+ 1. User provided artifact for Cappuccino cafe. (PENDING)
+ 2. User provided 4 images for cafes (Brassclub, Abaco, Amok, Chapeau). (Done)
+ 3. User requested image changes for El Perrito and La Rosa. (Done)
+ 4. User requested image changes for 3 Golf Courses. (Done)
+ 5. User signed off for the day. (Done)
+ 6. User requested a test link and to start on share trip and golf courses near hotels. (Done)
+ 7. User agreed to dynamic scheduling and requested logical naming. (Done)
+ 8. User identified a logic flaw: a single preferred time doesn't work when booking multiple services across different days. (Done)
+ 9. User asked for a test link. (Done)
+ 10. User requested UX updates: scroll indicator, new car image, budget tier text, 15% tax tip. (Done)
 
 **Project Health Check:**
-- Broken: Trip Planner state logic and Calendar date selection.
-- Mocked: External review links.
+- Healthy. (No broken flows, features tested at 100% pass rate).
 
-**3rd Party Integrations**:
-- OpenAI/Emergent LLMs (Various) — uses Emergent LLM Key
-- Resend (Emails) — requires User API Key (present in environment)
-- Stripe (Payments) — (Upcoming feature) requires User API Key / Test key in pod
-- Unsplash — via Image Selector Tool
+**3rd Party Integrations**
+	 •	OpenAI/Emergent LLMs — uses Emergent LLM Key
+	 •	Gemini (Image Gen) — uses Emergent LLM Key
+	 •	Resend (Emails) — requires User API Key
+	 •	Stripe (Payments) — requires User API Key (Upcoming)
 
-**Testing status**:
-- Testing agent used after significant changes: YES
-- Troubleshoot agent used after agent stuck in loop: NO
-- Test files created: None
-- Known regressions: Disabling services in the Trip Planner wizard does not clear them from the itinerary preview.
+**Testing status**
+  - Testing agent used after significant changes: YES
+  - Troubleshoot agent used after agent stuck in loop: NO
+  - Test files created: None
+  - Known regressions: None
 
-**Credentials to test flow**:
-None needed (Resend API key is in the backend ).
+**Credentials to test flow:**
+None required (Resend is in the backend ).
 
-**What agent forgot to execute**:
-The agent did not finish implementing the fixes for the 5 bugs on the Golf Trip Planner reported in the user's very last message (Next button blocked, stale itinerary data, calendar date range, Mercedes S-Class image, and calendar salmon color).</analysis>
+**What agent forgot to execute**
+The agent found the  ID in  to update the image provided by the user in the very last message, but ran out of context/messages before making the  and database update. Priority P0.</analysis>
