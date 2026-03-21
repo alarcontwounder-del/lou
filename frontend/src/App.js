@@ -26,6 +26,7 @@ import DesignPreview from './pages/DesignPreview';
 const GolfCoursePage = React.lazy(() => import('./components/GolfCourseLanding'));
 const GolfHolidaysPage = React.lazy(() => import('./components/GolfHolidaysPage'));
 const BookTeeTimesPage = React.lazy(() => import('./components/BookTeeTimesPage'));
+const PaymentPage = React.lazy(() => import('./components/PaymentPage'));
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -181,6 +182,11 @@ function AppRouter() {
       <Route path="/book-tee-times" element={
         <React.Suspense fallback={<div className="min-h-screen bg-brand-cream flex items-center justify-center"><div className="w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin" /></div>}>
           <BookTeeTimesPage />
+        </React.Suspense>
+      } />
+      <Route path="/pay/:paymentId" element={
+        <React.Suspense fallback={<div className="min-h-screen bg-stone-50 flex items-center justify-center"><div className="w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin" /></div>}>
+          <PaymentPage />
         </React.Suspense>
       } />
       <Route path="/*" element={<MainContent />} />

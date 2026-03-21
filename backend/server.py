@@ -12,10 +12,13 @@ import httpx
 import requests as sync_requests
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
-from typing import List, Optional
+from typing import List, Optional, Dict
 import uuid
+import string
+import random
 from datetime import datetime, timezone, timedelta
 import shutil
+from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
 
 ROOT_DIR = Path(__file__).parent
 UPLOADS_DIR = ROOT_DIR / "uploads"
@@ -31,6 +34,9 @@ STORAGE_URL = "https://integrations.emergentagent.com/objstore/api/v1/storage"
 EMERGENT_KEY = os.environ.get("EMERGENT_LLM_KEY")
 APP_NAME = "mallorca-golf"
 _storage_key = None
+
+# Stripe setup
+STRIPE_API_KEY = os.environ.get("STRIPE_API_KEY")
 
 def init_storage():
     global _storage_key
@@ -1870,6 +1876,191 @@ async def get_review_stats():
         "by_country": by_country,
         "by_platform": by_platform
     }
+
+
+# ─── Stripe Payment Endpoints ─────────────────────────────────────────────────
+
+def _gen_payment_id():
+    """Generate a short, URL-friendly payment ID"""
+    chars = string.ascii_lowercase + string.digits
+    return ''.join(random.choices(chars, k=8))
+
+
+class CreatePaymentRequest(BaseModel):
+    customer_name: str
+    customer_email: EmailStr
+    amount: float = Field(..., gt=0)
+    currency: str = Field(default="eur")
+    description: str
+    service_type: str = Field(default="reservation")  # "reservation" or "package"
+
+
+@api_router.post("/admin/payment-request")
+async def create_payment_request(body: CreatePaymentRequest):
+    """Admin creates a payment request that generates a shareable payment link"""
+    payment_id = _gen_payment_id()
+    doc = {
+        "payment_id": payment_id,
+        "customer_name": body.customer_name,
+        "customer_email": body.customer_email,
+        "amount": float(body.amount),
+        "currency": body.currency.lower(),
+        "description": body.description,
+        "service_type": body.service_type,
+        "status": "pending",
+        "checkout_session_id": None,
+        "payment_status": None,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "paid_at": None,
+    }
+    await db.payment_transactions.insert_one(doc)
+    return {
+        "payment_id": payment_id,
+        "status": "pending",
+        "amount": doc["amount"],
+        "currency": doc["currency"],
+    }
+
+
+@api_router.get("/admin/payments")
+async def list_payments():
+    """Admin: list all payment requests"""
+    payments = await db.payment_transactions.find({}, {"_id": 0}).sort("created_at", -1).to_list(200)
+    return payments
+
+
+@api_router.get("/payment/{payment_id}")
+async def get_payment_details(payment_id: str):
+    """Public: get payment request details for the customer payment page"""
+    doc = await db.payment_transactions.find_one({"payment_id": payment_id}, {"_id": 0})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Payment request not found")
+    return {
+        "payment_id": doc["payment_id"],
+        "customer_name": doc["customer_name"],
+        "amount": doc["amount"],
+        "currency": doc["currency"],
+        "description": doc["description"],
+        "service_type": doc["service_type"],
+        "status": doc["status"],
+    }
+
+
+@api_router.post("/payment/{payment_id}/checkout")
+async def create_checkout_session(payment_id: str, request: Request):
+    """Create a Stripe checkout session for a payment request"""
+    doc = await db.payment_transactions.find_one({"payment_id": payment_id}, {"_id": 0})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Payment request not found")
+    if doc["status"] == "paid":
+        raise HTTPException(status_code=400, detail="This payment has already been completed")
+
+    origin = request.headers.get("origin") or str(request.base_url).rstrip("/")
+    host_url = str(request.base_url).rstrip("/")
+    webhook_url = f"{host_url}api/webhook/stripe"
+
+    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+
+    success_url = f"{origin}/pay/{payment_id}?session_id={{CHECKOUT_SESSION_ID}}"
+    cancel_url = f"{origin}/pay/{payment_id}"
+
+    checkout_req = CheckoutSessionRequest(
+        amount=float(doc["amount"]),
+        currency=doc["currency"],
+        success_url=success_url,
+        cancel_url=cancel_url,
+        metadata={
+            "payment_id": payment_id,
+            "customer_name": doc["customer_name"],
+            "customer_email": doc["customer_email"],
+            "service_type": doc["service_type"],
+        },
+    )
+
+    session: CheckoutSessionResponse = await stripe_checkout.create_checkout_session(checkout_req)
+
+    await db.payment_transactions.update_one(
+        {"payment_id": payment_id},
+        {"$set": {
+            "checkout_session_id": session.session_id,
+            "status": "initiated",
+            "payment_status": "pending",
+        }}
+    )
+
+    return {"url": session.url, "session_id": session.session_id}
+
+
+@api_router.get("/payment/status/{session_id}")
+async def get_payment_status(session_id: str, request: Request):
+    """Poll Stripe for payment status and update DB"""
+    doc = await db.payment_transactions.find_one({"checkout_session_id": session_id}, {"_id": 0})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Payment session not found")
+
+    if doc.get("status") == "paid":
+        return {"status": "paid", "payment_status": "paid", "payment_id": doc["payment_id"]}
+
+    host_url = str(request.base_url).rstrip("/")
+    webhook_url = f"{host_url}api/webhook/stripe"
+    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+
+    checkout_status: CheckoutStatusResponse = await stripe_checkout.get_checkout_status(session_id)
+
+    update_fields = {
+        "payment_status": checkout_status.payment_status,
+    }
+    if checkout_status.payment_status == "paid":
+        update_fields["status"] = "paid"
+        update_fields["paid_at"] = datetime.now(timezone.utc).isoformat()
+    elif checkout_status.status == "expired":
+        update_fields["status"] = "expired"
+
+    await db.payment_transactions.update_one(
+        {"checkout_session_id": session_id},
+        {"$set": update_fields}
+    )
+
+    return {
+        "status": update_fields.get("status", doc["status"]),
+        "payment_status": checkout_status.payment_status,
+        "payment_id": doc["payment_id"],
+    }
+
+
+@app.post("/api/webhook/stripe")
+async def stripe_webhook(request: Request):
+    """Handle Stripe webhook events"""
+    body = await request.body()
+    sig = request.headers.get("Stripe-Signature")
+    host_url = str(request.base_url).rstrip("/")
+    webhook_url = f"{host_url}api/webhook/stripe"
+
+    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+    try:
+        event = await stripe_checkout.handle_webhook(body, sig)
+        if event.payment_status == "paid" and event.session_id:
+            await db.payment_transactions.update_one(
+                {"checkout_session_id": event.session_id, "status": {"$ne": "paid"}},
+                {"$set": {
+                    "status": "paid",
+                    "payment_status": "paid",
+                    "paid_at": datetime.now(timezone.utc).isoformat(),
+                }}
+            )
+    except Exception as e:
+        logging.error(f"Webhook error: {e}")
+    return {"status": "ok"}
+
+
+@api_router.delete("/admin/payment/{payment_id}")
+async def delete_payment_request(payment_id: str):
+    """Admin: delete/cancel a payment request"""
+    result = await db.payment_transactions.delete_one({"payment_id": payment_id, "status": {"$ne": "paid"}})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=400, detail="Cannot delete a paid payment or payment not found")
+    return {"status": "deleted", "payment_id": payment_id}
+
 
 # Include the router in the main app
 app.include_router(api_router)
