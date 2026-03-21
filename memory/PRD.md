@@ -1,74 +1,76 @@
 # Golf in Mallorca - Product Requirements Document
 
 ## Original Problem Statement
-Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive "Trip Planner" lead capture tool. The site must be visually consistent and highly responsive.
+Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive "Trip Planner" lead capture tool.
 
 ## Core Features (Implemented)
 - Partner listings: Hotels, Restaurants, Cafe/Bars, Beach Clubs, Golf Courses
 - Contact/Newsletter forms via Resend
-- Trip Planner wizard: 4-step flow (Services → Dates → Itinerary → Contact)
-- Per-service dynamic scheduling (date/time rows for transfers, dining, etc.)
-- Golf Course Pairing: auto-suggests nearest course to selected hotel
-- Share Trip functionality (WhatsApp, Email, Copy)
-- Multi-language support (EN, DE, FR, SE)
+- Trip Planner wizard with Golf Groups support
+- Per-service dynamic scheduling
+- Golf Course Pairing (auto-suggests nearest course to hotel)
+- Share Trip functionality
+- Admin panel with Partner Image editing
 - Blog section, Reviews, Weather widget
-- Admin content manager
 
 ## Recently Implemented (March 21, 2026)
-- **Golf Groups Feature**: New "Golf Groups" service category in Trip Planner
-  - Group type toggle: Golf Society / Friends Trip
-  - Player count: 4-8, 8-12, 12-20, 20+
-  - Budget per person pricing (Moderate €150-€300, Premium €300-€500, Luxury €500+)
-  - Vehicle type selector when combined with Transfer (Sedan, Minibus, Coach)
-  - Group/Society name field in contact step
-  - Backend models extended with group_type, group_name, transfer_type
-  - Email notifications flag golf group requests in subject line
-- **Renamed**: "Plan Trip / Reserve" → "Trip Planner" across navbar, hero, modal
-- **Cappuccino Grand Café**: Image updated to authentic photo
+- **Golf Groups**: New Trip Planner category with group type, player count, per-person/day budget, vehicle type
+- **Admin Partner Images tab**: Self-service image editing for all partner cards
+- **Cappuccino, Wellies, La Bodeguilla, Bar Bosch, Terrae, Barlovento, Flanigan's, Tahini**: All images updated
+- **Refactoring**: server.py split from 5974 → 1833 lines. Data extracted to /app/backend/data/
+- **Lint cleanup**: All ESLint + Python lint errors resolved
+- **Trip Planner UI fixes**: Uniform card sizes, no green colors, floating pill scroll indicator
 
 ## Tech Stack
-- Frontend: React, Tailwind CSS, Shadcn UI, react-day-picker
+- Frontend: React, Tailwind CSS, Shadcn UI
 - Backend: FastAPI, Motor (async MongoDB), Pydantic
 - Email: Resend SDK
-- LLM: Emergent LLM Key (OpenAI/Gemini)
+- DB: MongoDB (database: test_database)
 
 ## Architecture
 ```
-/app/
-├── backend/
-│   ├── server.py               # Main FastAPI, data, email, models
-│   ├── seed_all_partners.py    # DB seeding
-│   └── models/
-└── frontend/src/
-    ├── components/
-    │   ├── TripPlanner.jsx     # Wizard with Golf Groups
-    │   ├── Navbar.jsx
-    │   ├── Hero.jsx
-    │   └── ui/
-    └── context/
+/app/backend/
+├── server.py              # Routes + models (1833 lines)
+├── data/
+│   ├── partners.py        # PARTNER_OFFERS + BLOG_POSTS (3613 lines)
+│   ├── courses.py         # GOLF_COURSES (280 lines)
+│   └── reviews.py         # REVIEWS_DATA (259 lines)
+├── seed_all_partners.py
+└── .env
+
+/app/frontend/src/
+├── components/
+│   ├── TripPlanner.jsx
+│   ├── AdminDashboard.jsx
+│   ├── admin/
+│   │   ├── PartnerImagesTab.jsx  # NEW - self-service image editing
+│   │   ├── ContactsTab.jsx
+│   │   ├── DisplaySettingsTab.jsx
+│   │   └── ...
+│   └── ui/
+└── context/
 ```
 
 ## Key API Endpoints
-- `POST /api/trip-planner`: Submit trip request (supports golf_groups fields)
-- `GET /api/all-partners`: Fetch all partner categories
-- `GET /api/golf-courses`: Fetch golf courses
-- `POST /api/contact`: Contact form
-- `POST /api/newsletter/subscribe`: Newsletter
+- `GET /api/all-partners`: All partners (reads DB, falls back to code, applies overrides)
+- `PATCH /api/admin/partner/{id}/image`: Update partner image (writes to DB)
+- `POST /api/trip-planner`: Submit trip request
+- `GET /api/blog`: Blog posts
+
+## CRITICAL: Database Sync Note
+The DB name is `test_database` (from .env DB_NAME). When updating partner data:
+- Update BOTH the code (data/partners.py) AND the MongoDB collection
+- The admin image editor handles this automatically via the API
 
 ## Upcoming Tasks (P1)
-- SEO-friendly blog routes: Convert modal blog to `/blog/[slug]` pages
-- Hero Video: Add hero video to homepage
+- SEO-friendly blog routes (`/blog/[slug]` pages)
+- Hero Video on homepage
 
 ## Future/Backlog (P2)
-- Golf Packages page: Bundle course + hotel deals
-- Stripe Payment Integration: Deposit/booking flow
+- Golf Packages page
+- Stripe Payment Integration
 
 ## Blocked Items
 - Google Business Profile suspension (user action)
 - Sitemap submission (needs production deployment)
 - External review links (waiting on user URLs)
-
-## Refactoring Needs
-- TripPlanner.jsx (~700 lines): Split responsibilities
-- server.py (~6000 lines): Move hardcoded data to JSON/seed files
-- ESLint/Build warnings cleanup
