@@ -278,18 +278,13 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <!-- Header with logo -->
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
                 <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
             </div>
-            
-            <!-- Subheader -->
-            <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 14px 30px; text-align: center;">
-                <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
+            <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
             </div>
-            
-            <!-- Content -->
-            <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 120px;">Name</td>
@@ -312,7 +307,6 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
                         <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{inquiry.inquiry_type}</td>
                     </tr>
                 </table>
-                
                 <div style="margin-top: 24px;">
                     <p style="color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Message</p>
                     <div style="background-color: #F5F2EB; padding: 20px; border-radius: 8px; border-left: 4px solid #6B7B8C;">
@@ -320,11 +314,10 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
                     </div>
                 </div>
             </div>
-            
-            <!-- Footer -->
-            <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">
-                This email was sent automatically from Golfinmallorca.com
-            </p>
+            <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Golfinmallorca.com</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+            </div>
         </div>
     </body>
     </html>
@@ -345,54 +338,38 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
 
 async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
+    logo_url = "https://mallorca-golf-travel.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
     html_content = f"""
     <html>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <!-- Clean Header -->
-            <div style="text-align: center; padding: 30px 20px; border-bottom: 2px solid #2D2D2D;">
-                <h1 style="color: #2D2D2D; margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px;">Golfinmallorca.com</h1>
-                <p style="color: #6B7B8C; margin: 8px 0 0 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+            <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
             </div>
-            
-            <!-- Main Content -->
-            <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px;">
-                <h2 style="color: #2D2D2D; font-size: 24px; margin: 0 0 20px 0; font-weight: 500;">Welcome, {name}!</h2>
-                
-                <p style="color: #57534E; font-size: 15px; line-height: 1.7; margin: 0 0 20px 0;">
+            <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
+                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0; font-weight: 500;">Welcome, {name}!</h2>
+                <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">
                     Thank you for joining our exclusive community of golf enthusiasts. You're now part of a select group who appreciate the finest courses and experiences Mallorca has to offer.
                 </p>
-                
-                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin: 24px 0;">
-                    <p style="color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">As a subscriber, you'll receive:</p>
+            </div>
+            <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
+                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
+                    <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">As a subscriber, you'll receive:</p>
                     <table style="width: 100%;">
                         <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Exclusive deals on green fees at premium courses</td></tr>
-                        <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Early access to golf & hotel packages</td></tr>
+                        <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Early access to golf &amp; hotel packages</td></tr>
                         <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Insider tips on the best courses and restaurants</td></tr>
                         <tr><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">&#10003; Seasonal offers and special promotions</td></tr>
                     </table>
                 </div>
-                
                 <div style="text-align: center; margin: 32px 0;">
-                    <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #2D2D2D; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 14px;">Book Your Tee Time</a>
-                </div>
-                
-                <p style="color: #57534E; font-size: 15px; line-height: 1.7; margin: 0;">
-                    We're excited to help you plan your next golfing adventure in Mallorca!
-                </p>
-                
-                <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E5E5;">
-                    <p style="color: #2D2D2D; font-size: 15px; margin: 0;">
-                        Best regards,<br>
-                        <strong>The Golfinmallorca.com Team</strong>
-                    </p>
+                    <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #6B7B8C; color: white; padding: 16px 40px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px;">Book Your Tee Time</a>
                 </div>
             </div>
-            
-            <!-- Simple Footer -->
-            <div style="text-align: center; padding: 24px; color: #9CA3AF; font-size: 12px;">
-                <p style="margin: 0 0 8px 0;">Since 2003, connecting golfers with the finest courses in Mallorca</p>
-                <p style="margin: 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+            <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Contact us at</p>
+                <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
             </div>
         </div>
     </body>
@@ -1340,10 +1317,10 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                 <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
                     <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
                 </div>
-                <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 14px 30px; text-align: center;">
-                    <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW TRIP PLANNER REQUEST</p>
+                <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW TRIP PLANNER REQUEST</p>
                 </div>
-                <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
                     <table style="width: 100%; border-collapse: collapse;">
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Name</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.name}</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.email}</td></tr>
@@ -1356,6 +1333,10 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                         {services_html}
                     </table>
                     {special_requests_html}
+                </div>
+                <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Golfinmallorca.com</p>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
                 </div>
             </div>
         </body>
@@ -1623,8 +1604,8 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
                     <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
                         <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 200px; height: auto; display: block; margin: 0 auto;" />
                     </div>
-                    <div style="background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%); padding: 14px 30px; text-align: center;">
-                        <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
+                    <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
+                        <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
                     </div>
                     
                     <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
@@ -1635,26 +1616,14 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
                         </div>
                         
                         <div style="text-align: center; margin: 32px 0;">
-                            <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #2D2D2D; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px;">Book Your Tee Time</a>
-                        </div>
-                        
-                        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E5E5;">
-                            <p style="color: #2D2D2D; font-size: 15px; margin: 0;">
-                                Best regards,<br>
-                                <strong style="color: #2D2D2D;">The Golfinmallorca.com Team</strong>
-                            </p>
+                            <a href="https://golfinmallorca.greenfee365.com" style="display: inline-block; background-color: #6B7B8C; color: white; padding: 16px 40px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px;">Book Your Tee Time</a>
                         </div>
                     </div>
                     
-                    <div style="background-color: #2D2D2D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                        <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin: 0 0 8px 0;">
-                            Since 2003, connecting golfers with the finest courses in Mallorca
-                        </p>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 13px; margin: 0;">
-                            <a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">contact@golfinmallorca.com</a>
-                            <span style="color: rgba(255,255,255,0.4); margin: 0 10px;">|</span>
-                            +34 620 987 575
-                        </p>
+                    <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                        <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Contact us at</p>
+                        <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
+                        <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
                     </div>
                 </div>
             </body>
@@ -1930,9 +1899,10 @@ async def send_payment_link_email(payment: dict, payment_link: str):
                 Or copy this link: <a href="{payment_link}" style="color: #6B7B8C;">{payment_link}</a>
             </p>
         </div>
-        <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">
-            Secure payment powered by Stripe &middot; golfinmallorca.com
-        </p>
+        <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Secure payment powered by Stripe</p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+        </div>
     </div></body></html>"""
     try:
         await asyncio.to_thread(resend.Emails.send, {
@@ -1952,7 +1922,7 @@ async def send_payment_confirmation_emails(payment: dict):
     sym = CURRENCY_SYMBOLS.get(payment.get("currency", "eur"), "EUR")
     stype = "Package Payment" if payment.get("service_type") == "package" else "Reservation Deposit"
 
-    # --- Email to ADMIN ---
+    # --- Email to ADMIN (Style B - notification with green subheader) ---
     admin_html = f"""
     <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
@@ -1962,7 +1932,7 @@ async def send_payment_confirmation_emails(payment: dict):
         <div style="background: linear-gradient(135deg, #2D7D46 0%, #3A9958 100%); padding: 14px 30px; text-align: center;">
             <p style="color: white; margin: 0; font-size: 12px; letter-spacing: 2px;">PAYMENT RECEIVED</p>
         </div>
-        <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
             <p style="color: #2D2D2D; font-size: 16px; font-weight: 600; margin: 0 0 20px;">
                 {payment.get("customer_name", "A customer")} just paid {sym}{payment.get("amount", 0):.2f}
             </p>
@@ -1979,35 +1949,38 @@ async def send_payment_confirmation_emails(payment: dict):
                     <td style="padding: 10px 0; color: #2D2D2D; font-size: 14px;">{payment.get("description", "")}</td></tr>
             </table>
         </div>
-        <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">golfinmallorca.com</p>
+        <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Golfinmallorca.com</p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+        </div>
     </div></body></html>"""
 
-    # --- Email to CUSTOMER ---
+    # --- Email to CUSTOMER (Style A - warm confirmation like trip planner) ---
     customer_html = f"""
     <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
             <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
         </div>
-        <div style="background: linear-gradient(135deg, #2D7D46 0%, #3A9958 100%); padding: 14px 30px; text-align: center;">
-            <p style="color: white; margin: 0; font-size: 12px; letter-spacing: 2px;">PAYMENT CONFIRMATION</p>
+        <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
+            <h1 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0;">Thank you, {payment.get("customer_name", "")}!</h1>
+            <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">Your payment has been received successfully. Here's your receipt:</p>
         </div>
-        <div style="background-color: white; padding: 40px 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-            <p style="color: #2D2D2D; font-size: 16px; margin: 0 0 8px;">Thank you, {payment.get("customer_name", "")}!</p>
-            <p style="color: #6B7B8C; font-size: 14px; line-height: 1.6; margin: 0 0 24px;">
-                Your payment has been received successfully. Here's your receipt:
-            </p>
-            <div style="background-color: #F5F2EB; padding: 20px; border-radius: 8px; margin-bottom: 24px;">
-                <p style="color: #6B7B8C; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Description</p>
-                <p style="color: #2D2D2D; font-size: 15px; font-weight: 500; margin: 0 0 12px;">{payment.get("description", "")}</p>
-                <p style="color: #6B7B8C; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Amount Paid</p>
-                <p style="color: #2D2D2D; font-size: 24px; font-weight: 700; margin: 0;">{sym}{payment.get("amount", 0):.2f}</p>
+        <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
+            <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
+                <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Payment Receipt</p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Description</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{payment.get("description", "")}</td></tr>
+                    <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Type</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{stype}</td></tr>
+                    <tr><td style="padding: 10px 0; color: #8B8680; font-size: 13px;">Amount Paid</td><td style="padding: 10px 0; color: #2D2D2D; font-size: 20px; font-weight: 700;">{sym}{payment.get("amount", 0):.2f}</td></tr>
+                </table>
             </div>
-            <p style="color: #6B7B8C; font-size: 13px; line-height: 1.6; margin: 0;">
-                If you have any questions, contact us at <a href="mailto:contact@golfinmallorca.com" style="color: #6B7B8C;">contact@golfinmallorca.com</a>
-            </p>
         </div>
-        <p style="color: #9CA3AF; font-size: 11px; text-align: center; margin-top: 24px;">golfinmallorca.com</p>
+        <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
+            <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+        </div>
     </div></body></html>"""
 
     try:
