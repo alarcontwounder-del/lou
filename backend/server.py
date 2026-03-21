@@ -537,7 +537,7 @@ GOLF_COURSES = [
             "fr": "Le plus ancien parcours de Majorque, Son Vida offre une expérience de golf classique avec vue panoramique sur la baie de Palma.",
             "se": "Den äldsta banan på Mallorca, Son Vida erbjuder en klassisk golfupplevelse med panoramautsikt över Palmabukten."
         },
-        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/son-vida-golf/son-vida-golf",
+        "image": "https://customer-assets.emergentagent.com/job_0fbbd441-c00e-428a-bb6e-219f78598e7b/artifacts/vu761c3u_sonvidacp.jpg",
         "holes": 18,
         "par": 72,
         "price_from": 47,
@@ -622,7 +622,7 @@ GOLF_COURSES = [
             "fr": "Situé dans le magnifique nord-est de Majorque, Capdepera offre des vues côtières époustouflantes.",
             "se": "Belägen i den vackra nordöstra delen av Mallorca, Capdepera erbjuder fantastisk kustutsikt och utmärkta förhållanden."
         },
-        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/capdepera-golf/capdepera-golf",
+        "image": "https://customer-assets.emergentagent.com/job_0fbbd441-c00e-428a-bb6e-219f78598e7b/artifacts/ie33ilmf_capdepera0_023625_full%20copia%202%20copy.jpg",
         "holes": 18,
         "par": 72,
         "price_from": 59,
@@ -707,7 +707,7 @@ GOLF_COURSES = [
             "fr": "Une expérience VIP unique sur le seul club de golf d'Ibiza, avec 18 trous stimulants à travers vallées côtières et montagnes, ouvert 365 jours par an.",
             "se": "En unik VIP-upplevelse på Ibizas enda golfklubb, med 18 utmanande hål genom kustvallarna och bergen, öppet 365 dagar om året."
         },
-        "image": "https://res.cloudinary.com/greenfee365/image/upload/w_800,h_600,c_fill/courses/golf-ibiza-by-azuinehotels/golf-ibiza-by-azuinehotels",
+        "image": "https://customer-assets.emergentagent.com/job_0fbbd441-c00e-428a-bb6e-219f78598e7b/artifacts/k7bo5ql7_SonQuint1cp_main.jpg",
         "holes": 18,
         "par": 72,
         "price_from": 140,
