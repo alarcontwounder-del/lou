@@ -3588,7 +3588,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Palma.",
             "se": "Fin matupplevelse med samtida medelhavskök i Palma.",
         },
-        "image": "https://labodeguilla.com/publico/img/obras/ImpresionAmanecer.jpg",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/nc7tigd2_la%20bodeguilla.jpg",
         "location": "Palma",
         "full_address": "Carrer de Sant Jaume 3, 07012 Palma, Mallorca, Spain",
         "deal": {
@@ -3916,7 +3916,7 @@ PARTNER_OFFERS = [
             "fr": "Gourmet méditerranéen exclusif à l'élégant Puerto Portals. Célèbre Wellies Burger, Burger & Lobster, champagnes et cocktails créatifs avec vue sur le port.",
             "se": "Exklusiv medelhavsgourmet i eleganta Puerto Portals. Kända Wellies Burger, Burger & Lobster, champagne och kreativa cocktails med hamnutsikt.",
         },
-        "image": "https://images.unsplash.com/photo-1758420661769-0bbd7feb5621?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/pm1em6wt_wellies.jpg",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals Loc. 22, 07818 Portals Nous, Mallorca",
         "deal": {
