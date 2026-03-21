@@ -315,7 +315,8 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     setForm(prev => ({
       ...prev,
       services: prev.services.includes(id) ? prev.services.filter(s => s !== id) : [...prev.services, id],
-      ...(id === 'golf_groups' && isDeselecting ? { group_type: '', number_of_players: '', transfer_type: '', group_name: '' } : {}),
+      ...(id === 'golf_groups' && !isDeselecting ? { group_type: 'friends', number_of_players: '4-8', group_size: 4 } : {}),
+      ...(id === 'golf_groups' && isDeselecting ? { group_type: '', number_of_players: '', transfer_type: '', group_name: '', group_size: 2 } : {}),
     }));
     if (isDeselecting) {
       setItinerary(prev => {
@@ -333,11 +334,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
   const isGolfGroup = form.services.includes('golf_groups');
 
   const canNext = () => {
-    if (step === 1) {
-      if (form.services.length === 0 || !form.budget) return false;
-      if (isGolfGroup && (!form.group_type || !form.number_of_players)) return false;
-      return true;
-    }
+    if (step === 1) return form.services.length > 0 && !!form.budget;
     if (step === 2) return form.date?.from;
     if (step === 3) return true;
     if (step === 4) return form.name && form.email;
@@ -404,10 +401,8 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     if (step !== 1) return null;
     const missing = [];
     if (form.services.length === 0) missing.push('a service');
-    if (isGolfGroup && !form.group_type) missing.push('group type');
-    if (isGolfGroup && !form.number_of_players) missing.push('number of players');
     if (form.services.length > 0 && !form.budget) missing.push('budget');
-    return missing.length > 0 ? `Select ${missing.join(', ')}` : null;
+    return missing.length > 0 ? `Select ${missing.join(' and ')}` : null;
   };
 
   if (!isOpen) return null;
