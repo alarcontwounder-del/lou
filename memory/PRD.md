@@ -14,7 +14,9 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Blog section, Reviews, Weather widget
 
 ## Recently Implemented (March 21, 2026)
-- **Stripe Payment Integration**: Admin creates payment requests (reservation deposits or full packages) from the dashboard, gets a unique shareable link. Customer visits /pay/:id, clicks Pay, completes via Stripe Checkout. Tested (iteration_21).
+- **Stripe Payment Integration**: Admin creates payment requests from dashboard, gets shareable link. Customer visits /pay/:id, pays via Stripe Checkout. Tested (iteration_21).
+- **Payment Auto-Emails**: Payment link auto-sent to customer on creation. Confirmation emails to both admin (contact@golfinmallorca.com) and customer on payment completion. Tested (iteration_22).
+- **Payment Dashboard**: Admin Payments tab with stats summary (collected, pending, total), search, create/delete/copy link. Redesigned payment page matching site branding. Tested (iteration_22).
 - **Drag-and-Drop Image Upload**: Admin can upload images via drag-and-drop or file picker. Uses Emergent Object Storage. Fully tested (iteration_20).
 - **Golf Groups**: New Trip Planner category with group type, player count, per-person/day budget, vehicle type
 - **Admin Partner Images tab**: Self-service image editing for all partner cards (URL paste + drag-and-drop upload)
