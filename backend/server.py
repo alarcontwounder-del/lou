@@ -139,7 +139,7 @@ class TripPlannerRequest(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = None
-    services: List[str]  # e.g. ["hotel", "restaurant", "beach_club", "transfer"]
+    services: List[str]  # e.g. ["hotel", "restaurant", "beach_club", "transfer", "golf_groups"]
     budget: Optional[str] = None  # "moderate", "premium", "luxury"
     preferred_hotel: Optional[str] = None
     preferred_restaurant: Optional[str] = None
@@ -152,6 +152,9 @@ class TripPlannerRequest(BaseModel):
     schedule: Optional[dict] = None
     group_size: int = 2
     special_requests: Optional[str] = None
+    group_type: Optional[str] = None  # "society" or "friends"
+    group_name: Optional[str] = None
+    transfer_type: Optional[str] = None  # "sedan", "minibus", "coach"
 
 class TripPlannerEntry(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -172,6 +175,9 @@ class TripPlannerEntry(BaseModel):
     schedule: Optional[dict] = None
     group_size: int = 2
     special_requests: Optional[str] = None
+    group_type: Optional[str] = None
+    group_name: Optional[str] = None
+    transfer_type: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
@@ -4009,7 +4015,7 @@ PARTNER_OFFERS = [
             "fr": "Le point de rencontre de référence à Puerto Portals. Célèbre pour ses cafés exceptionnels, cocktails et cuisine méditerranéenne du matin au soir.",
             "se": "Referensmötesplatsen i Puerto Portals. Känd för exceptionella kaffedrycker, cocktails och medelhavskök från morgon till sent.",
         },
-        "image": "https://images.unsplash.com/photo-1765045038226-43d7cd5cfd29?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/7igu7oa3_Cappuccino-portals_9123.jpg",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals, 1, 07181 Portals Nous, Mallorca",
         "hours": "8:30 - 00:00 (Fri-Sat until 01:00)",
@@ -5339,6 +5345,11 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
     """Send notification email when a new trip planner request is received."""
     try:
         services_html = ""
+        if entry.group_type:
+            group_label = "Golf Society" if entry.group_type == "society" else "Friends Golf Trip"
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Group Type</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{group_label}</td></tr>'
+        if entry.group_name:
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Group Name</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.group_name}</td></tr>'
         if entry.preferred_hotel:
             services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Hotel</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_hotel}</td></tr>'
         if entry.preferred_restaurant:
@@ -5346,7 +5357,11 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
         if entry.preferred_beach_club:
             services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Beach Club</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.preferred_beach_club}</td></tr>'
         if entry.transfer_pickup:
-            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Transfer</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.transfer_pickup} → {entry.transfer_dropoff or "TBD"}</td></tr>'
+            transfer_info = f"{entry.transfer_pickup} → {entry.transfer_dropoff or 'TBD'}"
+            if entry.transfer_type:
+                type_labels = {'sedan': 'Mercedes S-Class', 'minibus': 'Luxury Minibus', 'coach': 'Premium Coach'}
+                transfer_info += f" ({type_labels.get(entry.transfer_type, entry.transfer_type)})"
+            services_html += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Transfer</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{transfer_info}</td></tr>'
         
         special_requests_html = ""
         if entry.special_requests:
@@ -5398,7 +5413,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
         params = {
             "from": SENDER_EMAIL,
             "to": [SENDER_EMAIL],
-            "subject": f"Trip Planner: {entry.name} - {', '.join(entry.services)}",
+            "subject": f"{'GOLF GROUP: ' if entry.group_type else ''}Trip Planner: {entry.name} - {', '.join(entry.services)}",
             "html": html_content,
         }
         await asyncio.to_thread(resend.Emails.send, params)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, ChevronDown, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles, Mail, Copy } from 'lucide-react';
+import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, ChevronDown, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles, Mail, Copy, Bus } from 'lucide-react';
 import { Calendar } from './ui/calendar';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -11,12 +11,31 @@ const SERVICES = [
   { id: 'restaurant', label: 'Michelin Dining', icon: UtensilsCrossed, desc: 'Fine dining experience' },
   { id: 'beach_club', label: 'Beach Club', icon: Umbrella, desc: 'Exclusive day pass' },
   { id: 'transfer', label: 'Premium Transfer', icon: Car, desc: 'Private luxury transport' },
+  { id: 'golf_groups', label: 'Golf Groups', icon: Users, desc: 'Societies & friends trips' },
 ];
 
 const BUDGETS = [
-  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', desc: 'Great value experiences' },
-  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', desc: 'Upscale comfort' },
-  { id: 'luxury', label: 'Luxury', range: '€4,000+', desc: 'The finest Mallorca offers' },
+  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', rangePerPerson: '€150 – €300', desc: 'Great value experiences' },
+  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', rangePerPerson: '€300 – €500', desc: 'Upscale comfort' },
+  { id: 'luxury', label: 'Luxury', range: '€4,000+', rangePerPerson: '€500+', desc: 'The finest Mallorca offers' },
+];
+
+const GROUP_TYPES = [
+  { id: 'society', label: 'Golf Society' },
+  { id: 'friends', label: 'Friends Trip' },
+];
+
+const PLAYER_COUNTS = [
+  { id: '4-8', label: '4 – 8', min: 4 },
+  { id: '8-12', label: '8 – 12', min: 8 },
+  { id: '12-20', label: '12 – 20', min: 12 },
+  { id: '20+', label: '20+', min: 20 },
+];
+
+const TRANSFER_TYPES = [
+  { id: 'sedan', label: 'Mercedes S-Class', desc: 'Up to 3 passengers per car' },
+  { id: 'minibus', label: 'Luxury Minibus', desc: 'Up to 12 passengers' },
+  { id: 'coach', label: 'Premium Coach', desc: '12+ passengers' },
 ];
 
 const TIMES = [
@@ -114,11 +133,11 @@ function ServiceButton({ opt, selected, onToggle }) {
   );
 }
 
-function BudgetButton({ b, selected, onSelect }) {
+function BudgetButton({ b, selected, onSelect, isPerPerson }) {
   return (
     <button onClick={onSelect} className={`flex-1 p-3 rounded-xl border-2 text-center transition-all ${selected ? 'border-stone-600 bg-stone-700/10' : 'border-stone-300 hover:border-stone-400 bg-stone-50'}`} data-testid={`budget-${b.id}`}>
       <p className={`font-semibold text-sm ${selected ? 'text-stone-800' : 'text-stone-600'}`}>{b.label}</p>
-      <p className={`text-xs mt-0.5 ${selected ? 'text-stone-600' : 'text-stone-400'}`}>{b.range}</p>
+      <p className={`text-xs mt-0.5 ${selected ? 'text-stone-600' : 'text-stone-400'}`}>{isPerPerson ? b.rangePerPerson : b.range}</p>
     </button>
   );
 }
@@ -156,18 +175,23 @@ function SuccessView({ onClose, form, itinerary, formatDate }) {
   const [copied, setCopied] = useState(false);
 
   const generateShareText = () => {
-    const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.range || '';
+    const isGolfGroup = form.services.includes('golf_groups');
+    const budgetLabel = isGolfGroup ? (BUDGETS.find(b => b.id === form.budget)?.rangePerPerson || '') + ' /person' : (BUDGETS.find(b => b.id === form.budget)?.range || '');
     const lines = [
-      'Golf Trip to Mallorca',
+      isGolfGroup ? `Golf ${form.group_type === 'society' ? 'Society' : 'Group'} Trip to Mallorca` : 'Golf Trip to Mallorca',
       `Dates: ${formatDate(form.date)}`,
-      `Group: ${form.group_size} ${form.group_size === 1 ? 'person' : 'people'}`,
+      isGolfGroup ? `Players: ${form.number_of_players}` : `Group: ${form.group_size} ${form.group_size === 1 ? 'person' : 'people'}`,
       `Budget: ${budgetLabel}`,
       '',
     ];
+    if (form.group_name) lines.push(`Group: ${form.group_name}`);
     if (form.services.includes('hotel') && itinerary.hotel) lines.push(`Hotel: ${itinerary.hotel.name}`);
     if (form.services.includes('restaurant') && itinerary.restaurant) lines.push(`Restaurant: ${itinerary.restaurant.name}`);
     if (form.services.includes('beach_club') && itinerary.beach_club) lines.push(`Beach Club: ${itinerary.beach_club.name}`);
-    if (form.services.includes('transfer')) lines.push('Transfer: Mercedes S-Class');
+    if (form.services.includes('transfer')) {
+      const vehicle = isGolfGroup && form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.label || 'Mercedes S-Class') : 'Mercedes S-Class';
+      lines.push(`Transfer: ${vehicle}`);
+    }
     lines.push('', 'Plan your trip at golfinmallorca.com');
     return lines.join('\n');
   };
@@ -234,6 +258,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     date: null, schedule: {}, group_size: 2,
     transfer_pickup: '', transfer_dropoff: '',
     name: '', email: '', phone: '', special_requests: '',
+    group_type: '', number_of_players: '', transfer_type: '', group_name: '',
   });
 
   useEffect(() => {
@@ -279,6 +304,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     setForm(prev => ({
       ...prev,
       services: prev.services.includes(id) ? prev.services.filter(s => s !== id) : [...prev.services, id],
+      ...(id === 'golf_groups' && isDeselecting ? { group_type: '', number_of_players: '', transfer_type: '', group_name: '' } : {}),
     }));
     if (isDeselecting) {
       setItinerary(prev => {
@@ -293,8 +319,14 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 
   const totalSteps = 4;
 
+  const isGolfGroup = form.services.includes('golf_groups');
+
   const canNext = () => {
-    if (step === 1) return form.services.length > 0 && form.budget;
+    if (step === 1) {
+      if (form.services.length === 0 || !form.budget) return false;
+      if (isGolfGroup && (!form.group_type || !form.number_of_players)) return false;
+      return true;
+    }
     if (step === 2) return form.date?.from;
     if (step === 3) return true;
     if (step === 4) return form.name && form.email;
@@ -336,6 +368,9 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         departure_date: form.date?.to ? form.date.to.toISOString().split('T')[0] : null,
         schedule: Object.keys(form.schedule).length > 0 ? form.schedule : null, group_size: form.group_size,
         special_requests: form.special_requests || null,
+        group_type: form.group_type || null,
+        group_name: form.group_name || null,
+        transfer_type: form.transfer_type || null,
       });
       setSubmitted(true);
       toast.success('Trip request sent successfully!');
@@ -350,7 +385,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     setStep(1);
     setSubmitted(false);
     setItinerary({});
-    setForm({ services: [], budget: '', date: null, schedule: {}, group_size: 2, transfer_pickup: '', transfer_dropoff: '', name: '', email: '', phone: '', special_requests: '' });
+    setForm({ services: [], budget: '', date: null, schedule: {}, group_size: 2, transfer_pickup: '', transfer_dropoff: '', name: '', email: '', phone: '', special_requests: '', group_type: '', number_of_players: '', transfer_type: '', group_name: '' });
     onClose();
   };
 
@@ -363,7 +398,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="bg-stone-800 px-6 py-5 flex items-center justify-between flex-shrink-0">
           <div>
-            <h2 className="text-white font-heading text-lg sm:text-xl">Plan a Trip or Make a Reservation</h2>
+            <h2 className="text-white font-heading text-lg sm:text-xl">Trip Planner</h2>
             <p className="text-stone-400 text-xs mt-0.5">Step {step} of {totalSteps}</p>
           </div>
           <button onClick={handleClose} className="text-stone-400 hover:text-white transition-colors" data-testid="trip-planner-close"><X className="w-5 h-5" /></button>
@@ -416,6 +451,8 @@ export const TripPlanner = ({ isOpen, onClose }) => {
 /* ---- Step 1: Services + Budget ---- */
 
 function StepServices({ form, toggleService, setForm }) {
+  const isGolfGroup = form.services.includes('golf_groups');
+
   return (
     <div data-testid="trip-planner-step-1">
       <h3 className="font-heading text-lg text-stone-800 mb-1">What would you like?</h3>
@@ -426,10 +463,52 @@ function StepServices({ form, toggleService, setForm }) {
         ))}
       </div>
 
+      {/* Golf Groups details */}
+      {isGolfGroup && (
+        <div className="mt-4 space-y-3 p-4 bg-stone-100/60 rounded-xl border border-stone-200" data-testid="golf-groups-details">
+          <p className="text-stone-600 text-xs uppercase tracking-widest font-semibold">Group details</p>
+          <div className="flex gap-2">
+            {GROUP_TYPES.map(g => (
+              <button key={g.id} onClick={() => setForm(p => ({ ...p, group_type: g.id }))} className={`flex-1 py-2.5 px-3 rounded-lg border-2 text-sm font-medium transition-all ${form.group_type === g.id ? 'border-stone-600 bg-stone-700/10 text-stone-800' : 'border-stone-300 bg-stone-50 text-stone-500 hover:border-stone-400'}`} data-testid={`group-type-${g.id}`}>
+                {g.label}
+              </button>
+            ))}
+          </div>
+          <div>
+            <p className="text-stone-500 text-xs mb-1.5">Number of players</p>
+            <div className="flex gap-2">
+              {PLAYER_COUNTS.map(p => (
+                <button key={p.id} onClick={() => setForm(prev => ({ ...prev, number_of_players: p.id, group_size: p.min }))} className={`flex-1 py-2 rounded-lg border-2 text-sm font-medium transition-all ${form.number_of_players === p.id ? 'border-stone-600 bg-stone-700/10 text-stone-800' : 'border-stone-300 bg-stone-50 text-stone-500 hover:border-stone-400'}`} data-testid={`players-${p.id}`}>
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Transfer details */}
       {form.services.includes('transfer') && (
         <div className="mt-4 space-y-2.5">
           <p className="text-stone-500 text-xs uppercase tracking-widest">Transfer details</p>
+          {isGolfGroup && (
+            <div>
+              <p className="text-stone-500 text-xs mb-1.5">Vehicle type</p>
+              <div className="space-y-1.5">
+                {TRANSFER_TYPES.map(t => (
+                  <button key={t.id} onClick={() => setForm(p => ({ ...p, transfer_type: t.id }))} className={`w-full flex items-center gap-3 p-3 rounded-lg border-2 text-left transition-all ${form.transfer_type === t.id ? 'border-stone-600 bg-stone-700/10' : 'border-stone-300 bg-stone-50 hover:border-stone-400'}`} data-testid={`transfer-type-${t.id}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${form.transfer_type === t.id ? 'bg-stone-700' : 'bg-stone-200'}`}>
+                      {t.id === 'sedan' ? <Car className={`w-4 h-4 ${form.transfer_type === t.id ? 'text-white' : 'text-stone-500'}`} /> : <Bus className={`w-4 h-4 ${form.transfer_type === t.id ? 'text-white' : 'text-stone-500'}`} />}
+                    </div>
+                    <div>
+                      <p className={`text-sm font-medium ${form.transfer_type === t.id ? 'text-stone-800' : 'text-stone-600'}`}>{t.label}</p>
+                      <p className="text-xs text-stone-400">{t.desc}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           <input type="text" placeholder="Pickup location (e.g. Airport, Hotel name)" value={form.transfer_pickup} onChange={e => setForm(p => ({ ...p, transfer_pickup: e.target.value }))} className="w-full px-3 py-2.5 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400" data-testid="transfer-pickup" />
           <input type="text" placeholder="Drop-off location" value={form.transfer_dropoff} onChange={e => setForm(p => ({ ...p, transfer_dropoff: e.target.value }))} className="w-full px-3 py-2.5 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400" data-testid="transfer-dropoff" />
         </div>
@@ -438,13 +517,17 @@ function StepServices({ form, toggleService, setForm }) {
       {/* Budget */}
       {form.services.length > 0 && (
         <div className="mt-5">
-          <p className="text-stone-500 text-xs uppercase tracking-widest mb-2.5">Your budget range</p>
+          <p className="text-stone-500 text-xs uppercase tracking-widest mb-2.5">
+            {isGolfGroup ? 'Budget per person' : 'Your budget range'}
+          </p>
           <div className="flex gap-2">
             {BUDGETS.map(b => (
-              <BudgetButton key={b.id} b={b} selected={form.budget === b.id} onSelect={() => setForm(p => ({ ...p, budget: b.id }))} />
+              <BudgetButton key={b.id} b={b} selected={form.budget === b.id} onSelect={() => setForm(p => ({ ...p, budget: b.id }))} isPerPerson={isGolfGroup} />
             ))}
           </div>
-          <p className="text-stone-400 text-xs mt-2.5 italic">Approx. prices based on high season for 3 days.</p>
+          <p className="text-stone-400 text-xs mt-2.5 italic">
+            {isGolfGroup ? 'Approx. prices per person for a 3-day golf trip.' : 'Approx. prices based on high season for 3 days.'}
+          </p>
           <div className="mt-2 p-2.5 bg-stone-200/50 rounded-lg">
             <p className="text-stone-500 text-xs leading-relaxed">A 15% budget buffer is recommended for extras like the Balearic Sustainable Tourism Tax (€4.40/night).</p>
           </div>
@@ -457,6 +540,7 @@ function StepServices({ form, toggleService, setForm }) {
 /* ---- Step 2: Date / Time / Group ---- */
 
 function StepDateTime({ form, setForm }) {
+  const isGolfGroup = form.services.includes('golf_groups');
   const calendarClassNames = {
     day_selected: "bg-stone-700 text-white hover:bg-stone-800 hover:text-white focus:bg-stone-700 focus:text-white",
     day_today: "bg-stone-200 text-stone-800 font-bold",
@@ -548,6 +632,7 @@ function StepDateTime({ form, setForm }) {
         </div>
       )}
 
+      {!isGolfGroup && (
       <div>
         <label className="flex items-center gap-2 text-stone-500 text-xs uppercase tracking-widest mb-2"><Users className="w-3.5 h-3.5" /> Group size</label>
         <div className="flex items-center gap-3">
@@ -557,6 +642,12 @@ function StepDateTime({ form, setForm }) {
           <span className="text-sm text-stone-400">people</span>
         </div>
       </div>
+      )}
+      {isGolfGroup && (
+        <div className="p-3 bg-stone-100 rounded-lg border border-stone-200">
+          <p className="text-xs text-stone-500"><span className="font-semibold text-stone-700">{form.group_type === 'society' ? 'Golf Society' : 'Friends Trip'}</span> · {form.number_of_players} players</p>
+        </div>
+      )}
     </div>
   );
 }
@@ -565,6 +656,7 @@ function StepDateTime({ form, setForm }) {
 
 function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
   const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.label || '';
+  const isGolfGroup = form.services.includes('golf_groups');
 
   const matchGolfCourse = (hotel) => {
     if (!hotel?.nearest_golf || !golfCourses.length) return null;
@@ -610,12 +702,16 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
         {form.services.includes('transfer') && (
           <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-stone-200">
             <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
-              <img src={TRANSFER_IMAGE} alt="Mercedes S-Class" className="w-full h-full object-cover" />
+              <img src={TRANSFER_IMAGE} alt="Transfer" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
               <p className="text-xs text-stone-400 uppercase tracking-wider">Premium Transfer</p>
-              <p className="font-semibold text-stone-800 text-sm">Mercedes S-Class</p>
-              <p className="text-xs text-stone-500">Private luxury chauffeur service</p>
+              <p className="font-semibold text-stone-800 text-sm">
+                {isGolfGroup && form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.label || 'Mercedes S-Class') : 'Mercedes S-Class'}
+              </p>
+              <p className="text-xs text-stone-500">
+                {isGolfGroup && form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.desc || 'Private luxury chauffeur service') : 'Private luxury chauffeur service'}
+              </p>
               {form.transfer_pickup && <p className="text-xs text-stone-400 mt-0.5">{form.transfer_pickup} → {form.transfer_dropoff || 'TBD'}</p>}
             </div>
           </div>
@@ -632,6 +728,8 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
 function StepContact({ form, setForm, formatDate, itinerary }) {
   const serviceLabels = form.services.map(s => SERVICES.find(o => o.id === s)?.label).join(', ');
   const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.range || '';
+  const isGolfGroup = form.services.includes('golf_groups');
+  const budgetDisplay = isGolfGroup ? (BUDGETS.find(b => b.id === form.budget)?.rangePerPerson || '') + ' /person' : budgetLabel;
 
   return (
     <div data-testid="trip-planner-step-contact">
@@ -641,23 +739,33 @@ function StepContact({ form, setForm, formatDate, itinerary }) {
         <input type="text" placeholder="Full name *" value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))} className="w-full px-4 py-3 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400" data-testid="trip-name" />
         <input type="email" placeholder="Email address *" value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} className="w-full px-4 py-3 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400" data-testid="trip-email" />
         <input type="tel" placeholder="Phone (optional)" value={form.phone} onChange={e => setForm(p => ({ ...p, phone: e.target.value }))} className="w-full px-4 py-3 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400" data-testid="trip-phone" />
+        {isGolfGroup && (
+          <input type="text" placeholder={form.group_type === 'society' ? 'Society / Club name' : 'Group name (optional)'} value={form.group_name} onChange={e => setForm(p => ({ ...p, group_name: e.target.value }))} className="w-full px-4 py-3 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400" data-testid="trip-group-name" />
+        )}
         <textarea placeholder="Special requests (optional)" rows={2} value={form.special_requests} onChange={e => setForm(p => ({ ...p, special_requests: e.target.value }))} className="w-full px-4 py-3 text-sm border border-stone-300 rounded-lg bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400/30 placeholder:text-stone-400 resize-none" data-testid="trip-special" />
       </div>
       <div className="mt-4 p-4 bg-stone-100 rounded-xl border border-stone-200">
         <p className="text-xs text-stone-400 uppercase tracking-widest mb-2">Request Summary</p>
         <div className="space-y-1 text-sm">
           <p className="text-stone-600"><span className="text-stone-400">Services:</span> {serviceLabels}</p>
-          <p className="text-stone-600"><span className="text-stone-400">Budget:</span> {budgetLabel}</p>
+          {isGolfGroup && (
+            <>
+              <p className="text-stone-600"><span className="text-stone-400">Group Type:</span> {form.group_type === 'society' ? 'Golf Society' : 'Friends Trip'}</p>
+              <p className="text-stone-600"><span className="text-stone-400">Players:</span> {form.number_of_players}</p>
+              {form.group_name && <p className="text-stone-600"><span className="text-stone-400">Group Name:</span> {form.group_name}</p>}
+            </>
+          )}
+          <p className="text-stone-600"><span className="text-stone-400">Budget:</span> {budgetDisplay}</p>
           <p className="text-stone-600"><span className="text-stone-400">Dates:</span> {formatDate(form.date)}</p>
           {SCHEDULE_ITEMS.filter(item => form.services.includes(item.service) && (form.schedule[item.key]?.date || form.schedule[item.key]?.time)).map(item => {
             const s = form.schedule[item.key];
             return <p key={item.key} className="text-stone-500 text-xs"><span className="text-stone-400">{item.label}:</span> {s.date || ''}{s.time ? ` at ${s.time}` : ''}</p>;
           })}
-          <p className="text-stone-600"><span className="text-stone-400">Group:</span> {form.group_size} {form.group_size === 1 ? 'person' : 'people'}</p>
+          {!isGolfGroup && <p className="text-stone-600"><span className="text-stone-400">Group:</span> {form.group_size} {form.group_size === 1 ? 'person' : 'people'}</p>}
           {form.services.includes('hotel') && itinerary.hotel && <p className="text-stone-600"><span className="text-stone-400">Hotel:</span> {itinerary.hotel.name}</p>}
           {form.services.includes('restaurant') && itinerary.restaurant && <p className="text-stone-600"><span className="text-stone-400">Restaurant:</span> {itinerary.restaurant.name}</p>}
           {form.services.includes('beach_club') && itinerary.beach_club && <p className="text-stone-600"><span className="text-stone-400">Beach Club:</span> {itinerary.beach_club.name}</p>}
-          {form.services.includes('transfer') && <p className="text-stone-600"><span className="text-stone-400">Transfer:</span> {form.transfer_pickup ? `${form.transfer_pickup} → ${form.transfer_dropoff || 'TBD'}` : 'Mercedes S-Class'}</p>}
+          {form.services.includes('transfer') && <p className="text-stone-600"><span className="text-stone-400">Transfer:</span> {isGolfGroup && form.transfer_type ? TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.label : 'Mercedes S-Class'}{form.transfer_pickup ? ` · ${form.transfer_pickup} → ${form.transfer_dropoff || 'TBD'}` : ''}</p>}
         </div>
       </div>
     </div>
