@@ -15,9 +15,9 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', rangePerPerson: '€50 – €100', desc: 'Great value experiences' },
-  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', rangePerPerson: '€100 – €200', desc: 'Upscale comfort' },
-  { id: 'luxury', label: 'Luxury', range: '€4,000+', rangePerPerson: '€200+', desc: 'The finest Mallorca offers' },
+  { id: 'moderate', label: 'Moderate', range: '€1,000 – €2,500', rangePerPerson: '€150 – €300', desc: 'Great value experiences' },
+  { id: 'premium', label: 'Premium', range: '€2,500 – €4,000', rangePerPerson: '€300 – €500', desc: 'Upscale comfort' },
+  { id: 'luxury', label: 'Luxury', range: '€4,000+', rangePerPerson: '€500+', desc: 'The finest Mallorca offers' },
 ];
 
 const GROUP_TYPES = [
