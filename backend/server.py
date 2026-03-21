@@ -279,7 +279,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+                <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
             </div>
             <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
                 <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW CONTACT INQUIRY</p>
@@ -315,7 +315,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
                 </div>
             </div>
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Golfinmallorca.com</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">golfinmallorca.com</p>
                 <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
             </div>
         </div>
@@ -326,7 +326,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     params = {
         "from": SENDER_EMAIL,
         "to": ["contact@golfinmallorca.com"],
-        "subject": f"New Contact Inquiry from {inquiry.name} - Golfinmallorca.com",
+        "subject": f"New Contact Inquiry from {inquiry.name} - golfinmallorca.com",
         "html": html_content
     }
     
@@ -344,7 +344,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-                <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+                <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
             </div>
             <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
                 <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0; font-weight: 500;">Welcome, {name}!</h2>
@@ -369,7 +369,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                 <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Contact us at</p>
                 <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
             </div>
         </div>
     </body>
@@ -379,7 +379,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
     params = {
         "from": SENDER_EMAIL,
         "to": [email],
-        "subject": "Welcome to Golfinmallorca.com!",
+        "subject": "Welcome to golfinmallorca.com!",
         "html": html_content
     }
     
@@ -1315,7 +1315,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
         <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
             <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-                    <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+                    <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
                 </div>
                 <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
                     <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 12px; letter-spacing: 2px;">NEW TRIP PLANNER REQUEST</p>
@@ -1335,7 +1335,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                     {special_requests_html}
                 </div>
                 <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Golfinmallorca.com</p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">golfinmallorca.com</p>
                     <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
                 </div>
             </div>
@@ -1400,7 +1400,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
             <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <!-- Header with logo -->
                 <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-                    <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+                    <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
                 </div>
 
                 <!-- Greeting -->
@@ -1428,7 +1428,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
                 <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
                     <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com — Your Gateway to Luxury Golf in Mallorca</p>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com — Your Gateway to Luxury Golf in Mallorca</p>
                 </div>
             </div>
         </body>
@@ -1438,7 +1438,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
         params = {
             "from": SENDER_EMAIL,
             "to": [entry.email],
-            "subject": "Your Trip Request Confirmation — Golfinmallorca.com",
+            "subject": "Your Trip Request Confirmation — golfinmallorca.com",
             "html": html_content,
         }
         await asyncio.to_thread(resend.Emails.send, params)
@@ -1602,7 +1602,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
                 <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-                        <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 200px; height: auto; display: block; margin: 0 auto;" />
+                        <img src="{logo_url}" alt="golfinmallorca.com" style="width: 200px; height: auto; display: block; margin: 0 auto;" />
                     </div>
                     <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
                         <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 13px; font-style: italic;">Your Gateway to Luxury Golf in Mallorca</p>
@@ -1623,7 +1623,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
                     <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                         <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Contact us at</p>
                         <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-                        <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+                        <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
                     </div>
                 </div>
             </body>
@@ -1876,7 +1876,7 @@ async def send_payment_link_email(payment: dict, payment_link: str):
     <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-            <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+            <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
         </div>
         <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
             <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 12px; letter-spacing: 2px;">{stype.upper()}</p>
@@ -1896,7 +1896,7 @@ async def send_payment_link_email(payment: dict, payment_link: str):
                 <a href="{payment_link}" style="display: inline-block; background-color: #6B7B8C; color: white; text-decoration: none; padding: 14px 40px; border-radius: 8px; font-size: 14px; font-weight: 600;">Pay Now</a>
             </div>
             <p style="color: #9CA3AF; font-size: 12px; text-align: center; margin: 20px 0 0;">
-                Or copy this link: <a href="{payment_link}" style="color: #6B7B8C;">{payment_link}</a>
+                Or copy this link: <a href="{payment_link}" style="color: #3D3D3D;">{payment_link}</a>
             </p>
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
@@ -1927,9 +1927,9 @@ async def send_payment_confirmation_emails(payment: dict):
     <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-            <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+            <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
         </div>
-        <div style="background: linear-gradient(135deg, #2D7D46 0%, #3A9958 100%); padding: 14px 30px; text-align: center;">
+        <div style="background: linear-gradient(135deg, #6B7B8C 0%, #7D8D9C 100%); padding: 14px 30px; text-align: center;">
             <p style="color: white; margin: 0; font-size: 12px; letter-spacing: 2px;">PAYMENT RECEIVED</p>
         </div>
         <div style="background-color: white; padding: 40px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
@@ -1950,7 +1950,7 @@ async def send_payment_confirmation_emails(payment: dict):
             </table>
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Golfinmallorca.com</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">golfinmallorca.com</p>
             <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
         </div>
     </div></body></html>"""
@@ -1960,7 +1960,7 @@ async def send_payment_confirmation_emails(payment: dict):
     <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
-            <img src="{logo_url}" alt="Golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+            <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
         </div>
         <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
             <h1 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0;">Thank you, {payment.get("customer_name", "")}!</h1>
@@ -1979,7 +1979,7 @@ async def send_payment_confirmation_emails(payment: dict):
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
             <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
             <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">Golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
         </div>
     </div></body></html>"""
 
