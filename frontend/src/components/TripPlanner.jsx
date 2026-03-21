@@ -164,16 +164,16 @@ function TimeButton({ time, selected, onSelect }) {
 function ItineraryCard({ label, icon: Icon, item, onSwap }) {
   if (!item) return null;
   const golfInfo = item.nearest_golf ? `${item.distance_km || '?'}km to ${item.nearest_golf}` : null;
+  const subtitle = golfInfo ? `${item.location} · ${golfInfo}` : item.location;
   return (
-    <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 min-h-[88px]">
+    <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200">
       <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-xs text-stone-400 uppercase tracking-wider">{label}</p>
         <p className="font-semibold text-stone-800 text-sm truncate">{item.name}</p>
-        <p className="text-xs text-stone-500">{item.location}{item.michelin_stars ? ` · ${item.michelin_stars}` : ''}</p>
-        {golfInfo && <p className="text-xs text-stone-400 mt-0.5">{golfInfo}</p>}
+        <p className="text-xs text-stone-500 truncate">{subtitle}{item.michelin_stars ? ` · ${item.michelin_stars}` : ''}</p>
       </div>
       <button onClick={onSwap} className="p-1.5 rounded-lg hover:bg-stone-100 text-stone-400 hover:text-stone-600 transition-colors flex-shrink-0" title="Suggest another" data-testid={`swap-${label.toLowerCase().replace(' ', '-')}`}>
         <RefreshCw className="w-4 h-4" />
@@ -431,10 +431,8 @@ export const TripPlanner = ({ isOpen, onClose }) => {
           {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} golfCourses={golfCourses} />}
           {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
           {showScrollHint && !submitted && (
-            <div className="sticky bottom-0 -mx-6 -mb-6 pointer-events-none" data-testid="scroll-indicator">
-              <div className="h-10 bg-gradient-to-t from-[#F5F2EB] to-transparent flex items-end justify-center pb-2">
-                <span className="text-[10px] uppercase tracking-widest text-stone-400 animate-pulse">scroll ↓</span>
-              </div>
+            <div className="sticky bottom-2 flex justify-center pointer-events-none" data-testid="scroll-indicator">
+              <span className="bg-stone-700/70 text-white text-[10px] uppercase tracking-widest px-4 py-1 rounded-full backdrop-blur-sm shadow-sm">scroll ↓</span>
             </div>
           )}
         </div>
@@ -709,14 +707,14 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
           <ItineraryCard label="Hotel" icon={Hotel} item={itinerary.hotel} onSwap={() => swapSuggestion('hotel')} />
         )}
         {nearestGolf && (
-          <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 min-h-[88px]" data-testid="nearest-golf-card">
+          <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200" data-testid="nearest-golf-card">
             <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
               <img src={nearestGolf.image} alt={nearestGolf.name} className="w-full h-full object-cover" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[10px] text-stone-500 uppercase tracking-wider font-semibold">Nearest Golf Course</p>
+              <p className="text-xs text-stone-400 uppercase tracking-wider">Nearest Golf Course</p>
               <p className="text-sm font-semibold text-stone-800 truncate">{nearestGolf.name}</p>
-              <p className="text-xs text-stone-500">{itinerary.hotel.distance_km}km · {nearestGolf.holes} holes · Par {nearestGolf.par} · From €{nearestGolf.price_from}</p>
+              <p className="text-xs text-stone-500 truncate">{itinerary.hotel.distance_km}km · {nearestGolf.holes} holes · Par {nearestGolf.par} · From €{nearestGolf.price_from}</p>
             </div>
             <a href={nearestGolf.booking_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 text-[11px] bg-stone-500 text-white px-3 py-1.5 rounded-lg hover:bg-stone-600 transition-colors whitespace-nowrap" data-testid="book-tee-time">
               Book Tee Time
@@ -730,7 +728,7 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
           <ItineraryCard label="Beach Club" icon={Umbrella} item={itinerary.beach_club} onSwap={() => swapSuggestion('beach_club')} />
         )}
         {form.services.includes('transfer') && (
-          <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 min-h-[88px]">
+          <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200">
             <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
               <img src={TRANSFER_IMAGE} alt="Transfer" className="w-full h-full object-cover" />
             </div>
