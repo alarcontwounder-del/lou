@@ -2119,7 +2119,7 @@ PARTNER_OFFERS = [
             "fr": "Le point de rencontre le plus célèbre de Palma depuis 1936. Essentiel pour un café shopping.",
             "se": "Palmas mest kända mötesplats sedan 1936. Perfekt för en shoppingpaus med kaffe.",
         },
-        "image": "https://images.unsplash.com/photo-1664271842141-3420d8f89c28?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/myjp3lzi_bar%20Bosch.jpeg",
         "location": "Palma (Center)",
         "full_address": "Pl. del Rei Joan Carles I, 6, 07012 Palma, Mallorca",
         "hours": "7:30 - 22:00",
@@ -3663,7 +3663,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port de Pollença.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port de Pollença.",
         },
-        "image": "https://images.unsplash.com/photo-1748612224332-224014c0e105?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/8m8s0suc_Terrae.jpeg",
         "location": "Port de Pollença",
         "full_address": "Carrer d’Enmig, 07470 Port de Pollença, Mallorca, Spain",
         "deal": {
@@ -3763,7 +3763,7 @@ PARTNER_OFFERS = [
             "fr": "Expérience gastronomique avec cuisine méditerranéenne contemporaine à Port d’Andratx.",
             "se": "Fin matupplevelse med samtida medelhavskök i Port d’Andratx.",
         },
-        "image": "https://images.unsplash.com/photo-1768466045564-889116cf01b6?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/3t9vh20e_barlovento%20.jpeg",
         "location": "Port d’Andratx",
         "full_address": "Avinguda Mateo Bosch, 07157 Port d’Andratx, Mallorca, Spain",
         "deal": {
@@ -3841,7 +3841,7 @@ PARTNER_OFFERS = [
             "fr": "Un classique de Puerto Portals depuis 1987. Célèbre pour le hamburger Flanigan, steak tartare, fruits de mer frais et tapas avec vue sur la marina.",
             "se": "En Puerto Portals-klassiker sedan 1987. Känd för Flanigan-hamburgaren, steak tartare, färska skaldjur och tapas med marinautsikt.",
         },
-        "image": "https://images.unsplash.com/photo-1768341857441-9084cfd8676e?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/6gv56ttz_flanigan.jpg",
         "location": "Puerto Portals",
         "full_address": "Local 16, Puerto Portals, 07181 Calviá, Mallorca",
         "deal": {
@@ -3966,7 +3966,7 @@ PARTNER_OFFERS = [
             "fr": "Haute cuisine japonaise avec décoration exquise. Sushi, sashimi, temaki, gyoza, teppanyaki et tempura. Cabines en verre privées pour dîner exclusif.",
             "se": "Japansk haute cuisine med utsökt dekoration. Sushi, sashimi, temaki, gyoza, teppanyaki och tempura. Privata glashytter för exklusiv middag.",
         },
-        "image": "https://images.unsplash.com/photo-1770277365467-47fce11d6bc9?w=800&q=85",
+        "image": "https://customer-assets.emergentagent.com/job_7d1ccae5-fc69-4845-baca-ece95869e243/artifacts/b57oxsq8_tahini-sushi-bar-restaurant.jpg",
         "location": "Puerto Portals",
         "full_address": "Puerto Portals, 2, 07181 Portals Nous, Mallorca",
         "deal": {
