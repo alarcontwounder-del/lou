@@ -165,7 +165,7 @@ function ItineraryCard({ label, icon: Icon, item, onSwap }) {
   if (!item) return null;
   const golfInfo = item.nearest_golf ? `${item.distance_km || '?'}km to ${item.nearest_golf}` : null;
   return (
-    <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-stone-200">
+    <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 min-h-[88px]">
       <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
       </div>
@@ -432,7 +432,9 @@ export const TripPlanner = ({ isOpen, onClose }) => {
           {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
           {showScrollHint && !submitted && (
             <div className="sticky bottom-0 -mx-6 -mb-6 pointer-events-none" data-testid="scroll-indicator">
-              <div className="h-8 bg-gradient-to-t from-[#F5F2EB] to-transparent" />
+              <div className="h-10 bg-gradient-to-t from-[#F5F2EB] to-transparent flex items-end justify-center pb-2">
+                <span className="text-[10px] uppercase tracking-widest text-stone-400 animate-pulse">scroll ↓</span>
+              </div>
             </div>
           )}
         </div>
@@ -707,7 +709,7 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
           <ItineraryCard label="Hotel" icon={Hotel} item={itinerary.hotel} onSwap={() => swapSuggestion('hotel')} />
         )}
         {nearestGolf && (
-          <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-stone-200" data-testid="nearest-golf-card">
+          <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 min-h-[88px]" data-testid="nearest-golf-card">
             <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
               <img src={nearestGolf.image} alt={nearestGolf.name} className="w-full h-full object-cover" />
             </div>
@@ -716,7 +718,7 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
               <p className="text-sm font-semibold text-stone-800 truncate">{nearestGolf.name}</p>
               <p className="text-xs text-stone-500">{itinerary.hotel.distance_km}km · {nearestGolf.holes} holes · Par {nearestGolf.par} · From €{nearestGolf.price_from}</p>
             </div>
-            <a href={nearestGolf.booking_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 text-[11px] bg-stone-700 text-white px-3 py-1.5 rounded-lg hover:bg-stone-800 transition-colors whitespace-nowrap self-center" data-testid="book-tee-time">
+            <a href={nearestGolf.booking_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 text-[11px] bg-stone-500 text-white px-3 py-1.5 rounded-lg hover:bg-stone-600 transition-colors whitespace-nowrap" data-testid="book-tee-time">
               Book Tee Time
             </a>
           </div>
@@ -728,7 +730,7 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
           <ItineraryCard label="Beach Club" icon={Umbrella} item={itinerary.beach_club} onSwap={() => swapSuggestion('beach_club')} />
         )}
         {form.services.includes('transfer') && (
-          <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-stone-200">
+          <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 min-h-[88px]">
             <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
               <img src={TRANSFER_IMAGE} alt="Transfer" className="w-full h-full object-cover" />
             </div>
