@@ -14,6 +14,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Blog section, Reviews, Weather widget
 
 ## Recently Implemented (March 21, 2026)
+- **Stripe Payment Integration**: Admin creates payment requests (reservation deposits or full packages) from the dashboard, gets a unique shareable link. Customer visits /pay/:id, clicks Pay, completes via Stripe Checkout. Tested (iteration_21).
 - **Drag-and-Drop Image Upload**: Admin can upload images via drag-and-drop or file picker. Uses Emergent Object Storage. Fully tested (iteration_20).
 - **Golf Groups**: New Trip Planner category with group type, player count, per-person/day budget, vehicle type
 - **Admin Partner Images tab**: Self-service image editing for all partner cards (URL paste + drag-and-drop upload)
@@ -26,6 +27,8 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Frontend: React, Tailwind CSS, Shadcn UI
 - Backend: FastAPI, Motor (async MongoDB), Pydantic
 - Email: Resend SDK
+- Payments: Stripe via emergentintegrations (test key: sk_test_emergent)
+- Storage: Emergent Object Storage
 - DB: MongoDB (database: test_database)
 
 ## Architecture
@@ -57,6 +60,13 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - `PATCH /api/admin/partner/{id}/image`: Update partner image (writes to DB)
 - `POST /api/admin/upload-image`: Upload image file to Object Storage, returns {url, path}
 - `GET /api/images/{path}`: Serve uploaded image from Object Storage (cached 1yr)
+- `POST /api/admin/payment-request`: Create Stripe payment request (amount, customer, description)
+- `GET /api/admin/payments`: List all payment requests/transactions
+- `GET /api/payment/{id}`: Public payment details for customer page
+- `POST /api/payment/{id}/checkout`: Create Stripe checkout session
+- `GET /api/payment/status/{session_id}`: Poll Stripe payment status
+- `DELETE /api/admin/payment/{id}`: Delete unpaid payment request
+- `POST /api/webhook/stripe`: Stripe webhook handler
 - `POST /api/trip-planner`: Submit trip request
 - `GET /api/blog`: Blog posts
 
@@ -71,7 +81,7 @@ The DB name is `test_database` (from .env DB_NAME). When updating partner data:
 
 ## Future/Backlog (P2)
 - Golf Packages page
-- Stripe Payment Integration
+- Refactor TripPlanner.jsx (~800 lines)
 
 ## Blocked Items
 - Google Business Profile suspension (user action)
