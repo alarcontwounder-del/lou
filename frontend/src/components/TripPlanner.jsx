@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, ChevronDown, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles, Mail, Copy, Bus } from 'lucide-react';
+import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, CheckCircle, Clock, Loader2, Car, RefreshCw, Sparkles, Mail, Copy, Bus } from 'lucide-react';
 import { Calendar } from './ui/calendar';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -432,9 +432,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
           {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
           {showScrollHint && !submitted && (
             <div className="sticky bottom-0 -mx-6 -mb-6 pointer-events-none" data-testid="scroll-indicator">
-              <div className="h-12 bg-gradient-to-t from-[#F5F2EB] via-[#F5F2EB]/80 to-transparent flex items-end justify-center pb-1.5">
-                <ChevronDown className="w-5 h-5 text-stone-400 animate-bounce" />
-              </div>
+              <div className="h-8 bg-gradient-to-t from-[#F5F2EB] to-transparent" />
             </div>
           )}
         </div>
@@ -709,18 +707,18 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
           <ItineraryCard label="Hotel" icon={Hotel} item={itinerary.hotel} onSwap={() => swapSuggestion('hotel')} />
         )}
         {nearestGolf && (
-          <div className="ml-5 -mt-1 p-3 bg-stone-50 rounded-lg border border-stone-200 border-dashed" data-testid="nearest-golf-card">
-            <div className="flex items-center gap-3">
-              <img src={nearestGolf.image} alt={nearestGolf.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
-              <div className="flex-1 min-w-0">
-                <p className="text-[10px] text-green-700 uppercase tracking-wider font-semibold">Nearest Golf Course</p>
-                <p className="text-sm font-semibold text-stone-800 truncate">{nearestGolf.name}</p>
-                <p className="text-xs text-stone-500">{itinerary.hotel.distance_km}km · {nearestGolf.holes} holes · Par {nearestGolf.par} · From €{nearestGolf.price_from}</p>
-              </div>
-              <a href={nearestGolf.booking_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 text-[11px] bg-green-700 text-white px-3 py-1.5 rounded-lg hover:bg-green-800 transition-colors whitespace-nowrap" data-testid="book-tee-time">
-                Book Tee Time
-              </a>
+          <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-stone-200" data-testid="nearest-golf-card">
+            <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
+              <img src={nearestGolf.image} alt={nearestGolf.name} className="w-full h-full object-cover" />
             </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] text-stone-500 uppercase tracking-wider font-semibold">Nearest Golf Course</p>
+              <p className="text-sm font-semibold text-stone-800 truncate">{nearestGolf.name}</p>
+              <p className="text-xs text-stone-500">{itinerary.hotel.distance_km}km · {nearestGolf.holes} holes · Par {nearestGolf.par} · From €{nearestGolf.price_from}</p>
+            </div>
+            <a href={nearestGolf.booking_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 text-[11px] bg-stone-700 text-white px-3 py-1.5 rounded-lg hover:bg-stone-800 transition-colors whitespace-nowrap self-center" data-testid="book-tee-time">
+              Book Tee Time
+            </a>
           </div>
         )}
         {itinerary.restaurant && (
