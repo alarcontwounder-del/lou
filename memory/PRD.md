@@ -1,150 +1,74 @@
-# Golfinmallorca.com - Product Requirements Document
+# Golf in Mallorca - Product Requirements Document
 
 ## Original Problem Statement
-Build and refine the Golfinmallorca.com website - a full-featured golf travel portal for Mallorca (and Balearic Islands). The site should showcase golf courses, hotels, restaurants, beach clubs, and cafes/bars. Core goals: beautiful UI/UX, authentic images, comprehensive admin CMS, site-wide search, email system, and robust SEO/GEO targeting.
+Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive "Trip Planner" lead capture tool. The site must be visually consistent and highly responsive.
+
+## Core Features (Implemented)
+- Partner listings: Hotels, Restaurants, Cafe/Bars, Beach Clubs, Golf Courses
+- Contact/Newsletter forms via Resend
+- Trip Planner wizard: 4-step flow (Services → Dates → Itinerary → Contact)
+- Per-service dynamic scheduling (date/time rows for transfers, dining, etc.)
+- Golf Course Pairing: auto-suggests nearest course to selected hotel
+- Share Trip functionality (WhatsApp, Email, Copy)
+- Multi-language support (EN, DE, FR, SE)
+- Blog section, Reviews, Weather widget
+- Admin content manager
+
+## Recently Implemented (March 21, 2026)
+- **Golf Groups Feature**: New "Golf Groups" service category in Trip Planner
+  - Group type toggle: Golf Society / Friends Trip
+  - Player count: 4-8, 8-12, 12-20, 20+
+  - Budget per person pricing (Moderate €150-€300, Premium €300-€500, Luxury €500+)
+  - Vehicle type selector when combined with Transfer (Sedan, Minibus, Coach)
+  - Group/Society name field in contact step
+  - Backend models extended with group_type, group_name, transfer_type
+  - Email notifications flag golf group requests in subject line
+- **Renamed**: "Plan Trip / Reserve" → "Trip Planner" across navbar, hero, modal
+- **Cappuccino Grand Café**: Image updated to authentic photo
 
 ## Tech Stack
-- **Frontend:** React, Tailwind CSS, Shadcn/UI
-- **Backend:** FastAPI, MongoDB
-- **Email:** Resend API
-- **Auth:** Emergent-managed Google Auth (admin)
-- **Analytics:** PostHog
-- **SEO:** JSON-LD schemas, sitemap.xml, robots.txt, hreflang, OG tags
-
-## Core Features (Completed)
-- [x] Landing page with Hero, About, Golf Courses, Hotels, Restaurants, Beach Clubs, Cafes/Bars sections
-- [x] Partner cards with Quick View modal and flip-card interaction
-- [x] Admin Dashboard with full CMS (CRUD for all partner types)
-- [x] Admin image uploader
-- [x] Site-wide floating search
-- [x] Newsletter subscription + email via Resend
-- [x] Contact form with email notifications
-- [x] Reviews carousel + "Write a review" modal
-- [x] Multi-language support (EN, DE, SE, FR, ES)
-- [x] SEO foundation: sitemap.xml, robots.txt, llms.txt, schema-hub.json
-- [x] Google Search Console verified
-- [x] **Individual Golf Course Pages** (16 courses with SEO-optimized detail pages)
-- [x] **Keyword & Content Strategy Implementation** (March 2026)
-- [x] **Blog Content Expansion** (March 2026) — VERIFIED March 19
-- [x] **Nearest Golf Course Distance** on ALL partner categories (March 2026)
-- [x] **Bug Fixes — Search, Footer, Navigation, Design** (March 2026)
-- [x] **Blog Enhancements** (March 2026) — scroll hint, contextual CTA buttons
-- [x] **Hero Redesign** (March 2026) — frosted-glass trust badge, improved narrative flow
-- [x] **Weather Widget** (March 2026) — real-time Mallorca weather via Open-Meteo API
-- [x] **AdminDashboard Refactoring** (March 2026) — 886-line monolith broken into 5 components
-- [x] **Webpack Warning Fixes** (March 2026) — patched dev server config
-- [x] **Stock Photo Replacement** (March 2026) — ALL 140 partner listings updated:
-  - 19 hotels: authentic images from official hotel websites (Belmond, Hilton, Marriott, etc.)
-  - 12 beach clubs: authentic images from official venue websites (Purobeach, Nikki Beach, etc.)
-  - 54 restaurants: themed Unsplash images categorized by cuisine type
-  - 36 cafes/bars: themed Unsplash images categorized by venue type
-  - 9 restaurants with official images from their actual websites (Marc Fosh, DINS Santi Taura, etc.)
-  - Zero Pexels stock images remaining across all categories
-- [x] **Bug Fix: Nearest Golf Distance Restored** (March 2026) — Re-ran migration + updated seed script to auto-run migration after every seed
-- [x] **Bug Fix: QuickView (Eye Icon) Verified** (March 2026) — Working correctly across all partner categories
-- [x] **Data Cleanup: Duplicate Entry Removal** (March 2026) — Removed 6 duplicate restaurant entries (DINS Santi Taura, Zaranda, Es Fum, Es Verger, Izakaya Mallorca, Es Fanals duplicates)
-- [x] **Data Cleanup: Duplicate Image Deduplication** (March 2026) — Fixed 6 pairs of duplicate images (Mirabona, Es Guix, Ginbo, Altamar, Yara, Social Club)
-- [x] **Bug Fix: Broken Images Replaced** (March 2026) — Fixed 5 broken external images (DINS Santi Taura, Castillo Hotel Son Vida, Maca de Castro, Purobeach Illetas, Beso Beach)
-- [x] **Bug Fix: Lobster Club nearest_golf** (March 2026) — Added missing nearest_golf data for Lobster Club
-- [x] **Display Settings Admin Tab** (March 2026) — Added Display Settings panel to Admin Dashboard for toggling categories on/off and controlling venue display limits
-- [x] **Card Flip Delay Fix** (March 2026) — Increased transition-delay to 3s for usable card interactions
-- [x] **St. Regis Image Fix** (March 2026) — Replaced with optimized authentic image (66KB vs 440KB)
-- [x] **Email Logo Fix** (March 2026) — Replaced with user-provided logo, white header design
-- [x] **X (Twitter) Footer Icon** (March 2026) — Added X social media icon linking to https://x.com/Golfinmallorca
-- [x] **Scroll Dots Fix** (March 2026) — Fixed Tailwind dynamic class issue preventing desktop hover effect
-- [x] **Golf Trip Planner** (March 2026) — 3-step wizard modal: select services (Hotel/Michelin Dining/Beach Club), pick date/time/group size, submit contact details. Backend stores requests + sends email notification
-- [x] **Golf Trip Planner Bug Fixes** (March 2026) — Fixed 5 bugs:
-  - Next button now works for any single service or combination (transfer-only, hotel-only, etc.)
-  - Deselecting services clears them from the suggested itinerary
-  - Calendar now accepts date range (arrival + departure) using react-day-picker range mode
-  - Mercedes S-Class image added to transfer itinerary card
-  - Calendar selection colors changed from salmon to greyscale (stone palette)
-  - Wizard always shows 4 steps regardless of service selection
-  - Backend now accepts departure_date field for date ranges
-  - Email templates updated to show arrival → departure dates
-- [x] **Trip Planner UX Enhancements** (March 2026):
-  - Added sticky scroll-down indicator (bouncing chevron + gradient fade) when content overflows
-  - Updated budget ranges: Moderate €1,000–€2,500, Premium €2,500–€4,000, Luxury €4,000+
-  - Added pricing context note: "Approx. prices based on high season for 3 days"
-  - Added 15% budget buffer note referencing Balearic Sustainable Tourism Tax (€4.40/night)
-  - Replaced AI-generated Mercedes image with user's provided authentic S-Class photo
-- [x] **Per-Service Schedule System** (March 2026):
-  - Replaced single "Preferred Time" picker with "Your Schedule" — per-service date + time scheduling
-  - Transfer shows two entries: "Arrival Pickup" and "Departure Pickup" with date/time dropdowns
-  - Restaurant shows "Dinner Reservation", Beach Club shows "Beach Club" — each with date/time
-  - Hotel doesn't need scheduling (uses the date range for check-in/check-out)
-  - Date dropdowns constrained to the selected arrival-departure range
-  - Time range extended to 06:00–22:00 for early/late transfers
-  - Schedule entries are fully optional — team follows up on details
-  - Backend accepts schedule dict field, email templates show per-service schedule table
-  - Legacy `time` field maintained for backward compatibility
-- [x] **Golf Course Pairing in Itinerary** (March 2026):
-  - When a hotel is suggested in Step 3, the nearest golf course auto-pairs below it
-  - Shows course image, name, distance (km), holes, par, and green fee starting price
-  - "Book Tee Time" button links directly to GreenFee365 booking page
-  - Case-insensitive matching between hotel's nearest_golf field and golf-courses API data
-  - Golf card only appears when hotel is selected (not for restaurant/transfer-only)
-- [x] **Share Trip Plan** (March 2026):
-  - Success view after submission shows "Share with your travel group" section
-  - WhatsApp share: Opens wa.me with pre-formatted trip summary
-  - Email share: Opens mailto: with subject and body
-  - Copy to clipboard: Copies trip text with "Copied!" feedback
-  - Summary includes: dates, group size, budget, hotel, restaurant, beach club, transfer
-
-## Blocked
-- [ ] Google Business Profile reinstatement (user needs to change category)
-- [ ] Sitemap submission (pending production deployment)
-- [ ] External review links (pending user URLs)
-
-## Backlog / Future
-- [ ] SEO-friendly individual blog post routes (/blog/slug) instead of modal (P0 - recommended)
-- [ ] Hero video replacement (P1)
-- [ ] Golf Packages page with bundled course + hotel deals (P2)
-- [ ] Stripe payment integration for package deposits (P2)
+- Frontend: React, Tailwind CSS, Shadcn UI, react-day-picker
+- Backend: FastAPI, Motor (async MongoDB), Pydantic
+- Email: Resend SDK
+- LLM: Emergent LLM Key (OpenAI/Gemini)
 
 ## Architecture
 ```
 /app/
 ├── backend/
-│   ├── server.py              # API endpoints, partner data, blog data
-│   ├── seed_all_partners.py   # Seeds partner data to MongoDB
-│   └── tests/
-│       └── test_partner_images.py  # Image URL validation tests
-├── frontend/
-│   └── src/
-│       ├── components/
-│       │   ├── admin/              # Refactored admin sub-components
-│       │   ├── AdminDashboard.jsx  # Shell component
-│       │   ├── Blog.jsx            # Blog with scroll hint + CTA
-│       │   ├── Hero.jsx            # Redesigned with trust badge
-│       │   ├── Navbar.jsx          # Weather widget integrated
-│       │   ├── WeatherBadge.jsx    # Real-time weather component
-│       │   └── ...
-│       ├── context/DataContext.jsx  # Partner data + display settings
-│       └── App.js                  # Routes and navigation
-└── public/
-    ├── index.html, sitemap.xml, robots.txt, llms.txt, schema-hub.json
+│   ├── server.py               # Main FastAPI, data, email, models
+│   ├── seed_all_partners.py    # DB seeding
+│   └── models/
+└── frontend/src/
+    ├── components/
+    │   ├── TripPlanner.jsx     # Wizard with Golf Groups
+    │   ├── Navbar.jsx
+    │   ├── Hero.jsx
+    │   └── ui/
+    └── context/
 ```
 
 ## Key API Endpoints
-- `GET /api/hotels` - All hotels (38)
-- `GET /api/restaurants` - All restaurants (48)
-- `GET /api/cafe-bars` - All cafe/bars (36)
-- `GET /api/beach-clubs` - All beach clubs (12)
-- `GET /api/golf-courses` - All golf courses
-- `GET /api/search?q=<query>` - Site-wide search
-- `GET /api/blog` - All blog posts
-- `POST /api/newsletter/subscribe` - Newsletter signup
-- `POST /api/contact` - Contact form
-- `POST /api/trip-planner` - Trip Planner lead capture (accepts date + departure_date)
-- `GET /api/trip-planner` - Retrieve trip planner requests (admin)
-- `GET /api/auth/google` - Google OAuth
+- `POST /api/trip-planner`: Submit trip request (supports golf_groups fields)
+- `GET /api/all-partners`: Fetch all partner categories
+- `GET /api/golf-courses`: Fetch golf courses
+- `POST /api/contact`: Contact form
+- `POST /api/newsletter/subscribe`: Newsletter
 
-## Important Technical Notes
-- Navigation uses React Router state + requestAnimationFrame for scroll-to-section
-- Blog uses modal detail view (not separate routes — SEO improvement recommended)
-- GolfCourseLanding/GolfHolidaysPage/BookTeeTimesPage use React.lazy
-- Hero images: user-provided photos via HERO_IMAGE_OVERRIDE map
-- Navbar has `variant="light"` prop for content/landing pages
-- Multi-language feature was explicitly dropped by user
-- Partner data seeded from PARTNER_OFFERS in server.py → MongoDB via seed_all_partners.py
+## Upcoming Tasks (P1)
+- SEO-friendly blog routes: Convert modal blog to `/blog/[slug]` pages
+- Hero Video: Add hero video to homepage
+
+## Future/Backlog (P2)
+- Golf Packages page: Bundle course + hotel deals
+- Stripe Payment Integration: Deposit/booking flow
+
+## Blocked Items
+- Google Business Profile suspension (user action)
+- Sitemap submission (needs production deployment)
+- External review links (waiting on user URLs)
+
+## Refactoring Needs
+- TripPlanner.jsx (~700 lines): Split responsibilities
+- server.py (~6000 lines): Move hardcoded data to JSON/seed files
+- ESLint/Build warnings cleanup
