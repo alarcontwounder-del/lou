@@ -9,6 +9,7 @@ import logging
 import asyncio
 import resend
 import httpx
+import requests as sync_requests
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
@@ -24,6 +25,40 @@ load_dotenv(ROOT_DIR / '.env')
 # Resend email setup
 resend.api_key = os.environ.get('RESEND_API_KEY')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
+
+# Object Storage setup
+STORAGE_URL = "https://integrations.emergentagent.com/objstore/api/v1/storage"
+EMERGENT_KEY = os.environ.get("EMERGENT_LLM_KEY")
+APP_NAME = "mallorca-golf"
+_storage_key = None
+
+def init_storage():
+    global _storage_key
+    if _storage_key:
+        return _storage_key
+    resp = sync_requests.post(f"{STORAGE_URL}/init", json={"emergent_key": EMERGENT_KEY}, timeout=30)
+    resp.raise_for_status()
+    _storage_key = resp.json()["storage_key"]
+    return _storage_key
+
+def put_object(path: str, data: bytes, content_type: str) -> dict:
+    key = init_storage()
+    resp = sync_requests.put(
+        f"{STORAGE_URL}/objects/{path}",
+        headers={"X-Storage-Key": key, "Content-Type": content_type},
+        data=data, timeout=120
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+def get_object(path: str):
+    key = init_storage()
+    resp = sync_requests.get(
+        f"{STORAGE_URL}/objects/{path}",
+        headers={"X-Storage-Key": key}, timeout=60
+    )
+    resp.raise_for_status()
+    return resp.content, resp.headers.get("Content-Type", "application/octet-stream")
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
@@ -1090,6 +1125,32 @@ async def update_partner_image(partner_id: str, body: dict):
         upsert=True
     )
     return {"status": "ok", "partner_id": partner_id}
+
+
+# Admin: Upload partner image file
+@api_router.post("/admin/upload-image")
+async def upload_partner_image(file: UploadFile = File(...)):
+    """Upload an image to object storage and return the serve URL"""
+    allowed = {'image/jpeg', 'image/png', 'image/webp', 'image/gif'}
+    if file.content_type not in allowed:
+        raise HTTPException(status_code=400, detail="Only JPEG, PNG, WebP, and GIF images are allowed")
+    ext = file.filename.split(".")[-1] if "." in file.filename else "jpg"
+    storage_path = f"{APP_NAME}/partners/{uuid.uuid4()}.{ext}"
+    data = await file.read()
+    if len(data) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="File too large (max 10MB)")
+    result = await asyncio.to_thread(put_object, storage_path, data, file.content_type)
+    serve_url = f"/api/images/{result['path']}"
+    return {"url": serve_url, "path": result["path"]}
+
+
+# Serve uploaded images from object storage
+@api_router.get("/images/{path:path}")
+async def serve_image(path: str):
+    """Serve an image from object storage"""
+    data, content_type = await asyncio.to_thread(get_object, path)
+    return Response(content=data, media_type=content_type, headers={"Cache-Control": "public, max-age=31536000"})
+
 
 
 # Display Settings endpoints
