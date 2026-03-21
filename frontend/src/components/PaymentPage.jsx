@@ -82,7 +82,7 @@ export default function PaymentPage() {
   // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F5F2EB' }}>
         <Loader2 className="w-8 h-8 text-stone-400 animate-spin" />
       </div>
     );
@@ -91,13 +91,13 @@ export default function PaymentPage() {
   // Error state
   if (error && !payment) {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg border border-stone-200 p-8 max-w-md w-full text-center">
+      <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F5F2EB' }}>
+        <div className="rounded-2xl shadow-lg border border-stone-200 p-8 max-w-md w-full text-center" style={{ backgroundColor: '#F5F2EB' }}>
           <XCircle className="w-12 h-12 text-red-400 mx-auto mb-4" />
           <h1 className="text-xl font-bold text-stone-800 mb-2">Payment Not Found</h1>
           <p className="text-sm text-stone-500 mb-6">{error}</p>
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-stone-600 hover:text-stone-800">
-            <ArrowLeft className="w-4 h-4" /> Back to Golf in Mallorca
+            <ArrowLeft className="w-4 h-4" /> Back to golfinmallorca.com
           </Link>
         </div>
       </div>
@@ -107,8 +107,8 @@ export default function PaymentPage() {
   // Success state (paid)
   if (payment?.status === 'paid' || pollStatus === 'paid') {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg border border-stone-200 p-8 max-w-md w-full text-center" data-testid="payment-success">
+      <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F5F2EB' }}>
+        <div className="rounded-2xl shadow-lg border border-stone-200 p-8 max-w-md w-full text-center" style={{ backgroundColor: '#F5F2EB' }} data-testid="payment-success">
           <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-5">
             <CheckCircle2 className="w-9 h-9 text-emerald-600" />
           </div>
@@ -116,14 +116,14 @@ export default function PaymentPage() {
           <p className="text-sm text-stone-500 mb-6">
             Thank you, {payment.customer_name}! Your payment of <strong>{symbol}{payment.amount.toFixed(2)}</strong> has been received.
           </p>
-          <div className="bg-stone-50 rounded-xl p-4 text-left mb-6 border border-stone-100">
+          <div className="rounded-xl p-4 text-left mb-6 border border-stone-200" style={{ backgroundColor: '#EDE9E0' }}>
             <p className="text-xs text-stone-400 uppercase tracking-wide mb-1">Details</p>
             <p className="text-sm font-medium text-stone-700">{payment.description}</p>
             <p className="text-xs text-stone-400 mt-1">{payment.service_type === 'package' ? 'Full Package' : 'Reservation Deposit'}</p>
           </div>
           <p className="text-xs text-stone-400 mb-4">A confirmation will be sent to you shortly.</p>
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-stone-600 hover:text-stone-800">
-            <ArrowLeft className="w-4 h-4" /> Back to Golf in Mallorca
+            <ArrowLeft className="w-4 h-4" /> Back to golfinmallorca.com
           </Link>
         </div>
       </div>
@@ -133,8 +133,8 @@ export default function PaymentPage() {
   // Polling state
   if (pollStatus === 'polling') {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg border border-stone-200 p-8 max-w-md w-full text-center">
+      <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F5F2EB' }}>
+        <div className="rounded-2xl shadow-lg border border-stone-200 p-8 max-w-md w-full text-center" style={{ backgroundColor: '#F5F2EB' }}>
           <Loader2 className="w-10 h-10 text-stone-400 animate-spin mx-auto mb-4" />
           <h1 className="text-xl font-bold text-stone-800 mb-2">Processing Payment...</h1>
           <p className="text-sm text-stone-500">Please wait while we confirm your payment.</p>
@@ -145,19 +145,21 @@ export default function PaymentPage() {
 
   // Default: payment form
   return (
-    <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-lg border border-stone-200 max-w-md w-full overflow-hidden" data-testid="payment-page">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F5F2EB' }}>
+      <div className="rounded-2xl shadow-lg border border-stone-200 max-w-md w-full overflow-hidden" style={{ backgroundColor: '#F5F2EB' }} data-testid="payment-page">
         {/* Header */}
-        <div className="bg-gradient-to-br from-stone-800 to-stone-900 p-6 text-white">
+        <div className="p-6" style={{ backgroundColor: '#6B7B8C' }}>
           <div className="flex items-center gap-3 mb-4">
             <img src="https://mallorca-golf-travel.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
-              alt="Golf in Mallorca" className="h-8 w-auto rounded" onError={e => { e.target.style.display = 'none'; }} />
-            <span className="text-sm font-medium opacity-80">Golf in Mallorca</span>
+              alt="golfinmallorca.com" className="h-10 w-auto rounded"
+              style={{ mixBlendMode: 'multiply', filter: 'brightness(0.85) contrast(1.2)' }}
+              onError={e => { e.target.style.display = 'none'; }} />
+            <span className="text-sm font-medium text-white/90">golfinmallorca.com</span>
           </div>
-          <p className="text-stone-300 text-xs uppercase tracking-widest mb-1">
+          <p className="text-white/70 text-xs uppercase tracking-widest mb-1">
             {payment.service_type === 'package' ? 'Package Payment' : 'Reservation Deposit'}
           </p>
-          <p className="text-3xl font-bold">{symbol}{payment.amount.toFixed(2)}</p>
+          <p className="text-3xl font-bold text-white">{symbol}{payment.amount.toFixed(2)}</p>
         </div>
 
         {/* Details */}
@@ -178,7 +180,8 @@ export default function PaymentPage() {
           )}
 
           <button onClick={handlePay} disabled={redirecting}
-            className="w-full flex items-center justify-center gap-2 py-3.5 bg-stone-800 text-white text-sm font-semibold rounded-xl hover:bg-stone-900 transition-colors disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 py-3.5 text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+            style={{ backgroundColor: '#6B7B8C' }}
             data-testid="pay-now-btn">
             {redirecting ? (
               <><Loader2 className="w-4 h-4 animate-spin" /> Redirecting to Stripe...</>
