@@ -5197,6 +5197,15 @@ async def get_all_partners():
     if not cafe_bars:
         cafe_bars = [o for o in PARTNER_OFFERS if o["type"] == "cafe_bar"]
     
+    # Apply image overrides from DB
+    overrides = await db.image_overrides.find({}, {"_id": 0}).to_list(500)
+    if overrides:
+        override_map = {o["partner_id"]: o["image"] for o in overrides}
+        for collection in [golf_courses, hotels, restaurants, beach_clubs, cafe_bars]:
+            for item in collection:
+                if item.get("id") in override_map:
+                    item["image"] = override_map[item["id"]]
+    
     return {
         "golf_courses": golf_courses,
         "hotels": hotels,
@@ -5205,6 +5214,21 @@ async def get_all_partners():
         "cafe_bars": cafe_bars,
         "total_count": len(golf_courses) + len(hotels) + len(restaurants) + len(beach_clubs) + len(cafe_bars)
     }
+
+
+# Admin: Update partner image
+@api_router.patch("/admin/partner/{partner_id}/image")
+async def update_partner_image(partner_id: str, body: dict):
+    """Update a partner's image URL"""
+    image_url = body.get("image")
+    if not image_url:
+        raise HTTPException(status_code=400, detail="image URL is required")
+    await db.image_overrides.update_one(
+        {"partner_id": partner_id},
+        {"$set": {"partner_id": partner_id, "image": image_url}},
+        upsert=True
+    )
+    return {"status": "ok", "partner_id": partner_id}
 
 
 # Display Settings endpoints
