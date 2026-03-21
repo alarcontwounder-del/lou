@@ -14,8 +14,9 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Blog section, Reviews, Weather widget
 
 ## Recently Implemented (March 21, 2026)
+- **Drag-and-Drop Image Upload**: Admin can upload images via drag-and-drop or file picker. Uses Emergent Object Storage. Fully tested (iteration_20).
 - **Golf Groups**: New Trip Planner category with group type, player count, per-person/day budget, vehicle type
-- **Admin Partner Images tab**: Self-service image editing for all partner cards
+- **Admin Partner Images tab**: Self-service image editing for all partner cards (URL paste + drag-and-drop upload)
 - **Cappuccino, Wellies, La Bodeguilla, Bar Bosch, Terrae, Barlovento, Flanigan's, Tahini**: All images updated
 - **Refactoring**: server.py split from 5974 → 1833 lines. Data extracted to /app/backend/data/
 - **Lint cleanup**: All ESLint + Python lint errors resolved
@@ -54,6 +55,8 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 ## Key API Endpoints
 - `GET /api/all-partners`: All partners (reads DB, falls back to code, applies overrides)
 - `PATCH /api/admin/partner/{id}/image`: Update partner image (writes to DB)
+- `POST /api/admin/upload-image`: Upload image file to Object Storage, returns {url, path}
+- `GET /api/images/{path}`: Serve uploaded image from Object Storage (cached 1yr)
 - `POST /api/trip-planner`: Submit trip request
 - `GET /api/blog`: Blog posts
 
