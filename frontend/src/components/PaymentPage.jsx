@@ -150,7 +150,7 @@ export default function PaymentPage() {
         {/* Header */}
         <div className="p-6" style={{ backgroundColor: '#6B7B8C' }}>
           <div className="flex items-center gap-3 mb-4">
-            <img src="https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+            <img src="https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
               alt="golfinmallorca.com" className="h-10 w-auto rounded"
               style={{ mixBlendMode: 'multiply', filter: 'brightness(0.85) contrast(1.2)' }}
               onError={e => { e.target.style.display = 'none'; }} />

@@ -274,7 +274,7 @@ from data.partners import PARTNER_OFFERS, BLOG_POSTS
 # Email helper functions
 async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     """Send notification email to admin when new contact inquiry is received."""
-    logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+    logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
     html_content = f"""
     <html>
     <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
@@ -340,7 +340,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
 
 async def send_newsletter_welcome_email(name: str, email: str):
     """Send welcome email to new newsletter subscriber."""
-    logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+    logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
     html_content = f"""
     <html>
     <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
@@ -1312,7 +1312,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                     detail = f"{val.get('date', '')} {val.get('time', '')}".strip() or 'TBD'
                     schedule_rows += f'<tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">{label}</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{detail}</td></tr>'
 
-        logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+        logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
         html_content = f"""
         <html>
         <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
@@ -1397,7 +1397,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
                     detail = f"{val.get('date', '')} {val.get('time', '')}".strip() or 'TBD'
                     schedule_rows += f'<tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">{label}</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{detail}</td></tr>'
 
-        logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+        logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
         html_content = f"""
         <html>
         <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
@@ -1601,7 +1601,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
     
     for sub in subscribers:
         try:
-            logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+            logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
             html_content = f"""
             <html>
             <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
@@ -1875,7 +1875,7 @@ CURRENCY_SYMBOLS = {"eur": "\u20AC", "gbp": "\u00A3", "usd": "$"}
 
 async def send_payment_link_email(payment: dict, payment_link: str):
     """Send payment link to customer"""
-    logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+    logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
     sym = CURRENCY_SYMBOLS.get(payment["currency"], payment["currency"].upper())
     stype = "Package Payment" if payment["service_type"] == "package" else "Reservation Deposit"
     html = f"""
@@ -1924,7 +1924,7 @@ async def send_payment_link_email(payment: dict, payment_link: str):
 
 async def send_payment_confirmation_emails(payment: dict):
     """Send confirmation emails to both admin and customer after successful payment"""
-    logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
+    logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
     sym = CURRENCY_SYMBOLS.get(payment.get("currency", "eur"), "EUR")
     stype = "Package Payment" if payment.get("service_type") == "package" else "Reservation Deposit"
 
