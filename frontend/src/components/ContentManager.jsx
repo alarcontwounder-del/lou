@@ -797,6 +797,7 @@ export const ContentManager = () => {
   useEffect(() => {
     fetchPartners();
     fetchDisplaySettings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeType]);
 
   const fetchPartners = async () => {
@@ -894,7 +895,7 @@ export const ContentManager = () => {
   const currentLimit = displaySettings[activeType];
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex flex-col" data-testid="content-manager">
       {/* Type Tabs */}
       <div className="flex gap-1 p-2 bg-stone-100 rounded-lg mb-4 overflow-x-auto">
         {Object.entries(PARTNER_TYPES).map(([key, cfg]) => {
