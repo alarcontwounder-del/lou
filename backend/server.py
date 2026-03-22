@@ -292,7 +292,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
                     </tr>
                     <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
-                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;"><a href="mailto:{inquiry.email}" style="color: #6B7B8C; text-decoration: none;">{inquiry.email}</a></td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;"><a href="mailto:{inquiry.email}" style="color: #2D2D2D !important; text-decoration: none !important;"><span style="color: #2D2D2D !important;">{inquiry.email}</span></a></td>
                     </tr>
                     <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td>
@@ -315,8 +315,8 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
                 </div>
             </div>
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">golfinmallorca.com</p>
-                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.7) !important;">golfinmallorca.com</span></a></p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
             </div>
         </div>
     </body>
@@ -368,8 +368,8 @@ async def send_newsletter_welcome_email(name: str, email: str):
             </div>
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                 <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Contact us at</p>
-                <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+                <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff !important; font-size: 13px; text-decoration: none !important;"><span style="color: #ffffff !important;">contact@golfinmallorca.com</span></a>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">golfinmallorca.com</span></a> &mdash; Your Gateway to Luxury Golf in Mallorca</p>
             </div>
         </div>
     </body>
@@ -1335,8 +1335,8 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                     {special_requests_html}
                 </div>
                 <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">golfinmallorca.com</p>
-                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.7) !important;">golfinmallorca.com</span></a></p>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
                 </div>
             </div>
         </body>
@@ -1427,8 +1427,8 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
                 <!-- Footer -->
                 <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
-                    <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com — Your Gateway to Luxury Golf in Mallorca</p>
+                    <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff !important; font-size: 13px; text-decoration: none !important;"><span style="color: #ffffff !important;">contact@golfinmallorca.com</span></a>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">golfinmallorca.com</span></a> — Your Gateway to Luxury Golf in Mallorca</p>
                 </div>
             </div>
         </body>
@@ -1622,8 +1622,8 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
                     
                     <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                         <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Contact us at</p>
-                        <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-                        <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+                        <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff !important; font-size: 13px; text-decoration: none !important;"><span style="color: #ffffff !important;">contact@golfinmallorca.com</span></a>
+                        <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">golfinmallorca.com</span></a> &mdash; Your Gateway to Luxury Golf in Mallorca</p>
                     </div>
                 </div>
             </body>
@@ -1896,12 +1896,12 @@ async def send_payment_link_email(payment: dict, payment_link: str):
                 <a href="{payment_link}" style="display: inline-block; background-color: #6B7B8C; color: white; text-decoration: none; padding: 14px 40px; border-radius: 8px; font-size: 14px; font-weight: 600;">Pay Now</a>
             </div>
             <p style="color: #9CA3AF; font-size: 12px; text-align: center; margin: 20px 0 0;">
-                Or copy this link: <a href="{payment_link}" style="color: #3D3D3D;">{payment_link}</a>
+                Or copy this link: <a href="{payment_link}" style="color: #3D3D3D !important; text-decoration: none !important;"><span style="color: #3D3D3D !important;">{payment_link}</span></a>
             </p>
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
             <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Secure payment powered by Stripe</p>
-            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
         </div>
     </div></body></html>"""
     try:
@@ -1950,8 +1950,8 @@ async def send_payment_confirmation_emails(payment: dict):
             </table>
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">golfinmallorca.com</p>
-            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;">contact@golfinmallorca.com | +34 620 987 575</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.7) !important;">golfinmallorca.com</span></a></p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
         </div>
     </div></body></html>"""
 
@@ -1978,8 +1978,8 @@ async def send_payment_confirmation_emails(payment: dict):
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
             <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
-            <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff; font-size: 13px; text-decoration: none;">contact@golfinmallorca.com</a>
-            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;">golfinmallorca.com &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+            <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff !important; font-size: 13px; text-decoration: none !important;"><span style="color: #ffffff !important;">contact@golfinmallorca.com</span></a>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">golfinmallorca.com</span></a> &mdash; Your Gateway to Luxury Golf in Mallorca</p>
         </div>
     </div></body></html>"""
 
