@@ -13,7 +13,10 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin panel with Partner Image editing
 - Blog section, Reviews, Weather widget
 
-## Recently Implemented (March 21, 2026)
+## Recently Implemented (March 22, 2026)
+- **Email Footer Link Fix**: Removed all 21 nested `<span>` wrappers from 8 email templates in `server.py`. Styles now applied directly to `<a>` tags, restoring mobile clickability while preserving brand colors (no blue links). Phone number uses `tel:` href for dialability.
+
+## Previously Implemented (March 21, 2026)
 - **Stripe Payment Integration**: Admin creates payment requests from dashboard, gets shareable link. Customer visits /pay/:id, pays via Stripe Checkout. Tested (iteration_21).
 - **Payment Auto-Emails**: Payment link auto-sent to customer on creation. Confirmation emails to both admin (contact@golfinmallorca.com) and customer on payment completion. Tested (iteration_22).
 - **Payment Dashboard**: Admin Payments tab with stats summary (collected, pending, total), search, create/delete/copy link. Redesigned payment page matching site branding. Tested (iteration_22).
