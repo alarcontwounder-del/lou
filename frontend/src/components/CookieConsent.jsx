@@ -31,7 +31,7 @@ export function CookieConsent() {
       className="fixed bottom-6 left-6 z-[9999] animate-in fade-in slide-in-from-bottom-4 duration-500"
       data-testid="cookie-consent-banner"
     >
-      <div className="w-[260px] bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg border border-stone-200/60 p-5 text-center">
+      <div className="w-[260px] bg-white/40 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-5 text-center">
         <Cookie className="w-8 h-8 text-stone-700 mx-auto mb-3" strokeWidth={1.5} />
         <p className="text-stone-700 text-[13px] leading-relaxed mb-1">
           This website uses cookies to ensure you get the best experience.
