@@ -276,6 +276,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
     logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
     html_content = f"""
     <html>
+    <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
@@ -296,7 +297,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
                     </tr>
                     <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td>
-                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{inquiry.phone or 'Not provided'}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;"><a href="tel:{inquiry.phone}" style="color: #2D2D2D !important; text-decoration: none !important;">{inquiry.phone or 'Not provided'}</a></td>
                     </tr>
                     <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Country</td>
@@ -341,6 +342,7 @@ async def send_newsletter_welcome_email(name: str, email: str):
     logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
     html_content = f"""
     <html>
+    <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
@@ -1312,6 +1314,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
         logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
         html_content = f"""
         <html>
+        <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
         <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
             <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
@@ -1324,7 +1327,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                     <table style="width: 100%; border-collapse: collapse;">
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 140px;">Name</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{entry.name}</td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.email}</td></tr>
-                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.phone or 'N/A'}</td></tr>
+                        <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;"><a href="tel:{entry.phone}" style="color: #2D2D2D !important; text-decoration: none !important;">{entry.phone or 'N/A'}</a></td></tr>
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Date</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px; font-weight: 500;">{date_display}</td></tr>
                         {schedule_rows}
                         <tr><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #6B7B8C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Group Size</td><td style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; color: #2D2D2D; font-size: 15px;">{entry.group_size} people</td></tr>
@@ -1396,6 +1399,7 @@ async def send_trip_planner_confirmation(entry: TripPlannerEntry):
         logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
         html_content = f"""
         <html>
+        <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
         <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
             <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <!-- Header with logo -->
@@ -1599,6 +1603,7 @@ async def send_bulk_email(request: Request, subject: str = "", message: str = ""
             logo_url = "https://golf-trip-planner.preview.emergentagent.com/api/uploads/logo_email_v2.jpg"
             html_content = f"""
             <html>
+            <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
             <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
                 <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
@@ -1873,7 +1878,7 @@ async def send_payment_link_email(payment: dict, payment_link: str):
     sym = CURRENCY_SYMBOLS.get(payment["currency"], payment["currency"].upper())
     stype = "Package Payment" if payment["service_type"] == "package" else "Reservation Deposit"
     html = f"""
-    <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+    <html><head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
             <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
@@ -1924,7 +1929,7 @@ async def send_payment_confirmation_emails(payment: dict):
 
     # --- Email to ADMIN (Style B - notification with green subheader) ---
     admin_html = f"""
-    <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+    <html><head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
             <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
@@ -1957,7 +1962,7 @@ async def send_payment_confirmation_emails(payment: dict):
 
     # --- Email to CUSTOMER (Style A - warm confirmation like trip planner) ---
     customer_html = f"""
-    <html><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+    <html><head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head><body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
     <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
         <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
             <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
