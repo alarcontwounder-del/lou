@@ -75,9 +75,10 @@ export const Footer = () => {
               </a>
               <a href="https://www.savethemed.org/" target="_blank" rel="noopener noreferrer">
                 <img 
-                  src="https://static.prod-images.emergentagent.com/jobs/f4355d4a-db43-4988-9dcb-e470aa2aecb0/images/fc1cb8b3009a0ba0ab1abedc07c019715dfe4ccaa4e4b1c72ea87348fb24549d.png"
+                  src="https://customer-assets.emergentagent.com/job_f4355d4a-db43-4988-9dcb-e470aa2aecb0/artifacts/rlajf01p_logo-save-the-med.png"
                   alt="Save the Med Foundation"
-                  className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                  className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen"
+                  style={{ filter: 'grayscale(1) brightness(1.3)' }}
                 />
               </a>
             </div>
