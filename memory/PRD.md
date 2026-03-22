@@ -13,6 +13,10 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin panel with Partner Image editing
 - Blog section, Reviews, Weather widget
 
+## Bug Fixes (March 22, 2026 - Session 2)
+- **Content Manager Blank Page Fix**: Wrapped `new URL(bookingUrl).hostname` in try-catch in `ContentManager.jsx` PartnerCard component. Invalid URLs no longer crash the entire React component tree.
+- **Footer Cropping Investigation**: Tested all 7 internal pages (/terms, /privacy, /golf-holidays-mallorca, /book-tee-times, /blog/*, /golf-courses/*). All show full 673px footer — issue NOT reproducible. May have been browser/production-specific.
+
 ## Recently Implemented (March 22, 2026)
 - **SEO-Friendly Blog Routes**: Converted blog from modal-based to individual pages at `/blog/[slug]`. Full SEO: meta tags, JSON-LD schemas, 80+ keywords, AI discoverability.
 - **Cookie Consent Banner**: GDPR-compliant dark glass popup. Stores choice in localStorage, never reappears.
