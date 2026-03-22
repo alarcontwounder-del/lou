@@ -31,7 +31,7 @@ export function CookieConsent() {
       className="fixed bottom-6 left-6 z-[9999] animate-in fade-in slide-in-from-bottom-4 duration-500"
       data-testid="cookie-consent-banner"
     >
-      <div className="w-[260px] bg-white/15 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-5 text-center">
+      <div className="w-[260px] bg-black/50 backdrop-blur-md rounded-2xl shadow-lg border border-white/15 p-5 text-center">
         <Cookie className="w-8 h-8 text-white mx-auto mb-3" strokeWidth={1.5} />
         <p className="text-white/90 text-[13px] leading-relaxed mb-1">
           This website uses cookies to ensure you get the best experience.
@@ -41,7 +41,7 @@ export function CookieConsent() {
         </a>
         <button
           onClick={handleAccept}
-          className="w-full mt-4 border-2 border-white/40 text-white hover:bg-white/20 text-sm font-semibold py-2.5 rounded-lg transition-all duration-200"
+          className="w-full mt-4 border border-white/40 text-white hover:bg-white/15 text-sm font-semibold py-2.5 rounded-lg transition-all duration-200"
           data-testid="cookie-accept"
         >
           Accept

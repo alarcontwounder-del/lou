@@ -64,12 +64,17 @@ export const Footer = () => {
                 </svg>
               </a>
             </div>
-            {/* Partner Logo */}
-            <div className="flex items-center gap-6 flex-wrap">
+            {/* Partner Logos */}
+            <div className="flex items-center gap-4 flex-wrap">
               <img 
                 src="https://customer-assets.emergentagent.com/job_3acbb158-2abd-4ba8-b269-c69139d59c32/artifacts/agyb9uib_Logo_Illes_Balears_Sostenibles%20copy.png"
                 alt="Illes Balears Sostenibles"
                 className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen"
+              />
+              <img 
+                src="https://customer-assets.emergentagent.com/job_f4355d4a-db43-4988-9dcb-e470aa2aecb0/artifacts/dwwjf5sj_dce932_6a68b478b2c247bb97983ae089cee777~mv2.png"
+                alt="Save the Med Foundation"
+                className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
               />
             </div>
           </div>
