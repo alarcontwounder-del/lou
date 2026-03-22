@@ -205,7 +205,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           </DropdownMenu>
 
           {/* Weather Badge */}
-          <WeatherBadge isScrolled={isScrolled} />
+          <WeatherBadge isScrolled={isScrolled || isLight} />
 
           {/* Admin Button */}
           {!isCheckingAuth && (

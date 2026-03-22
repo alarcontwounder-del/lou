@@ -15,7 +15,8 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 
 ## Bug Fixes (March 22, 2026 - Session 2)
 - **Content Manager Blank Page Fix**: Wrapped `new URL(bookingUrl).hostname` in try-catch in `ContentManager.jsx` PartnerCard component. Invalid URLs no longer crash the entire React component tree.
-- **Footer Cropping Investigation**: Tested all 7 internal pages (/terms, /privacy, /golf-holidays-mallorca, /book-tee-times, /blog/*, /golf-courses/*). All show full 673px footer — issue NOT reproducible. May have been browser/production-specific.
+- **Footer Cropping Investigation**: Tested all 7 internal pages. All show full 673px footer — issue NOT reproducible.
+- **7-Day Weather Forecast Dropdown**: Expanded the nav weather badge into a clickable 7-day forecast using Open-Meteo API. Shows day names, weather icons, hi/lo temps, rain probability, and wind speed. Adapts between dark glassmorphism (homepage) and light white (internal pages) themes.
 
 ## Recently Implemented (March 22, 2026)
 - **SEO-Friendly Blog Routes**: Converted blog from modal-based to individual pages at `/blog/[slug]`. Full SEO: meta tags, JSON-LD schemas, 80+ keywords, AI discoverability.
