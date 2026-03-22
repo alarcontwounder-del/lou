@@ -316,7 +316,7 @@ async def send_contact_notification_email(inquiry: ContactInquiryCreate):
             </div>
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                 <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.7) !important;">golfinmallorca.com</span></a></p>
-                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | <a href="tel:+34620987575" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">+34 620 987 575</span></a></p>
             </div>
         </div>
     </body>
@@ -1336,7 +1336,7 @@ async def send_trip_planner_email(entry: TripPlannerEntry):
                 </div>
                 <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.7) !important;">golfinmallorca.com</span></a></p>
-                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | <a href="tel:+34620987575" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">+34 620 987 575</span></a></p>
                 </div>
             </div>
         </body>
@@ -1901,7 +1901,7 @@ async def send_payment_link_email(payment: dict, payment_link: str):
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
             <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Secure payment powered by Stripe</p>
-            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | <a href="tel:+34620987575" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">+34 620 987 575</span></a></p>
         </div>
     </div></body></html>"""
     try:
@@ -1951,7 +1951,7 @@ async def send_payment_confirmation_emails(payment: dict):
         </div>
         <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
             <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.7) !important;">golfinmallorca.com</span></a></p>
-            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | +34 620 987 575</p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">contact@golfinmallorca.com</span></a> | <a href="tel:+34620987575" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;"><span style="color: rgba(255,255,255,0.4) !important;">+34 620 987 575</span></a></p>
         </div>
     </div></body></html>"""
 
