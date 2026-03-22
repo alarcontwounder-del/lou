@@ -315,12 +315,17 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
                             <div className="w-14 h-14 rounded-lg bg-amber-600/20 flex items-center justify-center flex-shrink-0">
                               <FileText className="w-6 h-6 text-amber-400" />
                             </div>
-                          ) : (
+                          ) : result.image ? (
                             <img 
-                              src={result.image} 
+                              src={result.image.startsWith('/') ? BACKEND_URL + result.image : result.image} 
                               alt={result.name}
                               className="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+                              onError={(e) => { e.target.style.display = 'none'; }}
                             />
+                          ) : (
+                            <div className="w-14 h-14 rounded-lg bg-stone-700/50 flex items-center justify-center flex-shrink-0">
+                              <MapPin className="w-5 h-5 text-stone-400" />
+                            </div>
                           )}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">

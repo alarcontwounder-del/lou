@@ -142,8 +142,8 @@ export const Footer = () => {
           <div>
             <h4 className="font-medium text-lg mb-4">{t('footer.contactInfo')}</h4>
             <ul className="space-y-3 text-white/70">
-              <li>+34 620 987 575</li>
-              <li>contact@golfinmallorca.com</li>
+              <li><a href="tel:+34620987575" className="hover:text-white transition-colors">+34 620 987 575</a></li>
+              <li><a href="mailto:contact@golfinmallorca.com" className="hover:text-white transition-colors">contact@golfinmallorca.com</a></li>
               <li>Palma de Mallorca, IB, Spain</li>
               <li className="pt-2">
                 <span className="text-white/50">Website: </span>
