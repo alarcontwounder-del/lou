@@ -1,5 +1,9 @@
 /* Main App Styles */
 
+/* Hide Emergent badge */
+#emergent-badge { display: none !important; }
+
+
 /* Prevent horizontal overflow on all devices */
 #root {
   overflow-x: hidden;
