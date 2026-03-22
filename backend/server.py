@@ -37,6 +37,7 @@ _storage_key = None
 
 # Stripe setup
 STRIPE_API_KEY = os.environ.get("STRIPE_API_KEY")
+STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 
 def init_storage():
     global _storage_key
@@ -2096,7 +2097,7 @@ async def create_checkout_session(payment_id: str, request: Request):
     host_url = str(request.base_url).rstrip("/")
     webhook_url = f"{host_url}api/webhook/stripe"
 
-    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_secret=STRIPE_WEBHOOK_SECRET, webhook_url=webhook_url)
 
     success_url = f"{origin}/pay/{payment_id}?session_id={{CHECKOUT_SESSION_ID}}"
     cancel_url = f"{origin}/pay/{payment_id}"
@@ -2140,7 +2141,7 @@ async def get_payment_status(session_id: str, request: Request):
 
     host_url = str(request.base_url).rstrip("/")
     webhook_url = f"{host_url}api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_secret=STRIPE_WEBHOOK_SECRET, webhook_url=webhook_url)
 
     checkout_status: CheckoutStatusResponse = await stripe_checkout.get_checkout_status(session_id)
 
@@ -2177,7 +2178,7 @@ async def stripe_webhook(request: Request):
     host_url = str(request.base_url).rstrip("/")
     webhook_url = f"{host_url}api/webhook/stripe"
 
-    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_secret=STRIPE_WEBHOOK_SECRET, webhook_url=webhook_url)
     try:
         event = await stripe_checkout.handle_webhook(body, sig)
         if event.payment_status == "paid" and event.session_id:
