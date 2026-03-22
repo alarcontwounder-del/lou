@@ -14,7 +14,8 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Blog section, Reviews, Weather widget
 
 ## Recently Implemented (March 22, 2026)
-- **Email Footer Link Fix**: Removed all 21 nested `<span>` wrappers from 8 email templates in `server.py`. Styles now applied directly to `<a>` tags, restoring mobile clickability while preserving brand colors (no blue links). Phone number uses `tel:` href for dialability.
+- **SEO-Friendly Blog Routes**: Converted blog from modal-based to individual pages at `/blog/[slug]`. Each post has proper meta tags (description, keywords, OG, Twitter Cards), JSON-LD Article + BreadcrumbList schemas, canonical URLs, and AI discoverability features. 10 posts with custom SEO metadata. Tested (iteration_23).
+- **Email Footer Link Fix**: Removed all 21 nested `<span>` wrappers from 8 email templates. Phone numbers in body wrapped in styled `<a>` tags with `format-detection` meta to prevent Apple Mail blue links.
 
 ## Previously Implemented (March 21, 2026)
 - **Stripe Payment Integration**: Admin creates payment requests from dashboard, gets shareable link. Customer visits /pay/:id, pays via Stripe Checkout. Tested (iteration_21).
@@ -81,7 +82,6 @@ The DB name is `test_database` (from .env DB_NAME). When updating partner data:
 - The admin image editor handles this automatically via the API
 
 ## Upcoming Tasks (P1)
-- SEO-friendly blog routes (`/blog/[slug]` pages)
 - Hero Video on homepage
 
 ## Future/Backlog (P2)
