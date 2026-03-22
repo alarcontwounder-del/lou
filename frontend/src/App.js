@@ -19,6 +19,7 @@ import { Footer } from './components/Footer';
 import { AdminDashboard } from './components/AdminDashboard';
 import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
+import { CookieConsent } from './components/CookieConsent';
 import { FloatingSearch } from './components/FloatingSearch';
 import { SectionNavigator } from './components/SectionNavigator';
 import { TripPlanner } from './components/TripPlanner';
@@ -206,6 +207,7 @@ function App() {
       <LanguageProvider>
         <DataProvider>
           <AppRouter />
+          <CookieConsent />
         </DataProvider>
       </LanguageProvider>
     </BrowserRouter>
