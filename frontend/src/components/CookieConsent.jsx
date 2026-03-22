@@ -36,7 +36,7 @@ export function CookieConsent() {
         <p className="text-white/90 text-[13px] leading-relaxed mb-1">
           This website uses cookies to ensure you get the best experience.
         </p>
-        <a href="https://golfinmallorca.com" className="text-white/50 text-[11px] underline underline-offset-2 hover:text-white/80 transition-colors" data-testid="cookie-learn-more">
+        <a href="/privacy" className="text-white/50 text-[11px] underline underline-offset-2 hover:text-white/80 transition-colors" data-testid="cookie-learn-more">
           Learn more
         </a>
         <button

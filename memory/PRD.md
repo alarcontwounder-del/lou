@@ -14,8 +14,15 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Blog section, Reviews, Weather widget
 
 ## Recently Implemented (March 22, 2026)
-- **SEO-Friendly Blog Routes**: Converted blog from modal-based to individual pages at `/blog/[slug]`. Each post has proper meta tags (description, keywords, OG, Twitter Cards), JSON-LD Article + BreadcrumbList schemas, canonical URLs, and AI discoverability features. 10 posts with custom SEO metadata. Tested (iteration_23).
-- **Email Footer Link Fix**: Removed all 21 nested `<span>` wrappers from 8 email templates. Phone numbers in body wrapped in styled `<a>` tags with `format-detection` meta to prevent Apple Mail blue links.
+- **SEO-Friendly Blog Routes**: Converted blog from modal-based to individual pages at `/blog/[slug]`. Full SEO: meta tags, JSON-LD schemas, 80+ keywords, AI discoverability.
+- **Cookie Consent Banner**: GDPR-compliant dark glass popup. Stores choice in localStorage, never reappears.
+- **Terms of Service** (`/terms`): Adapted from Greenfee365 terms, covers bookings, payments, cancellations, liability, Stripe security.
+- **Privacy Policy** (`/privacy`): Full GDPR/LOPDGDD compliance — data controller, data types, retention periods, user rights, AEPD reference.
+- **Sitemap Updated**: Added 10 blog posts + 2 legal pages to `sitemap.xml` (38 URLs total).
+- **Stripe Live Keys**: Configured `sk_live` + `whsec` webhook secret. Payment flow is production-ready.
+- **Hardcoded URLs Fixed**: All email logo URLs now point to `golfinmallorca.com` instead of preview.
+- **Footer Updates**: Save the Med + Illes Balears logos with links. Privacy/Terms links now functional.
+- **Email Fixes**: Footer links clickable on mobile, phone numbers no longer blue in Apple Mail.
 
 ## Previously Implemented (March 21, 2026)
 - **Stripe Payment Integration**: Admin creates payment requests from dashboard, gets shareable link. Customer visits /pay/:id, pays via Stripe Checkout. Tested (iteration_21).
@@ -85,6 +92,12 @@ The DB name is `test_database` (from .env DB_NAME). When updating partner data:
 - Hero Video on homepage
 
 ## Future/Backlog (P2)
+- Refactor TripPlanner.jsx (~800 lines → smaller components)
+- Refactor server.py (extract email templates to separate module)
+- Golf Packages page (bundle deals)
+- Google Business Profile (resolve suspension — user action)
+- External review links (need URLs from user)
+- Google Search Console (submit sitemap after production deploy)
 - Golf Packages page
 - Refactor TripPlanner.jsx (~800 lines)
 
