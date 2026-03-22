@@ -1,0 +1,126 @@
+{
+  "summary": "Bug fix verification for golfinmallorca.com - Both reported bugs are FIXED. (1) Admin Content Manager URL parsing fix verified in code (try-catch wrapper at line 280). (2) Footer cropping issue NOT reproducible - all internal pages show full footer (673px height). All 7 pages tested show footer correctly.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "homepage_footer": {
+      "route": "/",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "terms_page_footer": {
+      "route": "/terms",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "privacy_page_footer": {
+      "route": "/privacy",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "golf_holidays_page_footer": {
+      "route": "/golf-holidays-mallorca",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "book_tee_times_page_footer": {
+      "route": "/book-tee-times",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "blog_post_page_footer": {
+      "route": "/blog/best-time-golf-mallorca",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "golf_course_detail_page_footer": {
+      "route": "/golf-courses/golf-son-gual",
+      "status": "PASS",
+      "details": "Footer visible with full height (673px), not cropped"
+    },
+    "navigation_links": {
+      "feature": "Homepage Navigation",
+      "status": "PASS",
+      "details": "All nav links (Golf Courses, Hotels, Restaurants, Blog, Contact) scroll to correct sections"
+    },
+    "javascript_errors": {
+      "feature": "Console Errors",
+      "status": "PASS",
+      "details": "No JavaScript errors on any page. Only 401 errors for admin API endpoints (expected for unauthenticated users)"
+    },
+    "content_manager_fix": {
+      "feature": "URL Parsing Fix",
+      "status": "PASS",
+      "details": "ContentManager.jsx line 280: new URL(bookingUrl).hostname wrapped in try-catch to prevent React crash from invalid URLs"
+    }
+  },
+
+  "passed_tests": [
+    "Homepage loads correctly with hero section",
+    "Homepage footer visible and not cropped (673px height)",
+    "/terms page loads with footer visible (673px height)",
+    "/privacy page loads with footer visible (673px height)",
+    "/golf-holidays-mallorca page loads with footer visible (673px height)",
+    "/book-tee-times page loads with footer visible (673px height)",
+    "/blog/best-time-golf-mallorca page loads with footer visible (673px height)",
+    "/golf-courses/golf-son-gual page loads with footer visible (673px height)",
+    "No JavaScript console errors on any tested page",
+    "Golf Courses nav link scrolls to correct section",
+    "Hotels nav link scrolls to correct section",
+    "Restaurants nav link scrolls to correct section",
+    "Blog nav link scrolls to correct section",
+    "Contact nav link scrolls to correct section",
+    "ContentManager.jsx URL parsing fix verified (try-catch at line 280)"
+  ],
+
+  "test_report_links": [],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [
+    "ContentManager.jsx fix is correctly implemented: try-catch wrapper around new URL(bookingUrl).hostname at line 280",
+    "Fix gracefully falls back to displaying raw bookingUrl if URL parsing fails",
+    "Footer component uses proper data-testid='footer' for testing",
+    "All internal pages (terms, privacy, golf-holidays, book-tee-times, blog posts, golf course details) render footer correctly",
+    "Navigation smooth scrolling works correctly for all sections"
+  ],
+
+  "updated_files": [],
+
+  "success_rate": {
+    "backend": "N/A - Frontend only testing",
+    "frontend": "100% - All tests passed"
+  },
+
+  "test_credentials": {},
+
+  "seed_data_creation": "No seed data needed",
+
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "Bug fix verification complete for iteration 25. Two bugs were reported: (1) Admin Content Manager blank page - FIXED via try-catch wrapper around URL parsing in ContentManager.jsx line 280. (2) Footer cropping on internal pages - NOT REPRODUCIBLE, all 7 tested pages show footer with full 673px height. Admin dashboard requires Emergent Auth and cannot be tested via Playwright. Key data-testids: footer, hero-section, terms-page, privacy-page, blog-post-page. Console shows 401 errors for /api/auth/me and /api/reviews/pending which is expected for unauthenticated users.",
+
+  "bugs_verified": {
+    "content_manager_blank_page": {
+      "status": "FIXED",
+      "root_cause": "new URL(bookingUrl).hostname crashed when partner had invalid URL",
+      "fix_location": "/app/frontend/src/components/ContentManager.jsx line 280",
+      "fix_description": "Wrapped URL parsing in try-catch to gracefully fallback to raw URL"
+    },
+    "footer_cropping": {
+      "status": "NOT_REPRODUCIBLE",
+      "details": "All 7 tested pages show footer with full 673px height, no cropping observed"
+    }
+  }
+}

@@ -275,18 +275,22 @@ const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive }) => {
           </p>
           
           {/* URL indicator */}
-          {bookingUrl && (
-            <a 
-              href={bookingUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-1 truncate"
-              title={bookingUrl}
-            >
-              <Link className="w-3 h-3 flex-shrink-0" />
-              <span className="truncate">{new URL(bookingUrl).hostname}</span>
-            </a>
-          )}
+          {bookingUrl && (() => {
+            let hostname = bookingUrl;
+            try { hostname = new URL(bookingUrl).hostname; } catch {}
+            return (
+              <a 
+                href={bookingUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-1 truncate"
+                title={bookingUrl}
+              >
+                <Link className="w-3 h-3 flex-shrink-0" />
+                <span className="truncate">{hostname}</span>
+              </a>
+            );
+          })()}
           
           {/* Tags */}
           <div className="flex items-center gap-1.5 mt-2 flex-wrap">
