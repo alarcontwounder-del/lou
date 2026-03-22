@@ -3342,6 +3342,8 @@ BLOG_POSTS = [
         "author": "Maria Santos",
         "category": "travel-tips",
         "tags": ["weather", "planning", "seasons", "golf holidays", "when to play"],
+        "meta_description": "When is the best time to play golf in Mallorca? Season-by-season guide covering weather, green fees, and crowd levels. Plan your perfect Mallorca golf trip from spring through winter.",
+        "seo_keywords": ['best time golf mallorca', 'mallorca golf weather', 'golf mallorca season', 'when to play golf mallorca', 'mallorca golf holiday planning', 'spring golf mallorca', 'winter golf mallorca', 'golf weather balearic islands'],
         "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2025-12-15T10:00:00Z"
@@ -3371,6 +3373,8 @@ BLOG_POSTS = [
         "author": "Carlos Martinez",
         "category": "course-guides",
         "tags": ["beginners", "courses", "tips", "cheap golf", "green fees"],
+        "meta_description": "Discover the 5 best golf courses in Mallorca for beginners and high handicappers. Wide fairways, affordable green fees, and welcoming clubs. Perfect for your first golf trip to Mallorca.",
+        "seo_keywords": ['beginner golf courses mallorca', 'easy golf mallorca', 'high handicap golf mallorca', 'best courses beginners mallorca', 'mallorca golf for beginners', 'affordable golf mallorca', 'learn golf mallorca'],
         "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2025-12-10T14:30:00Z"
@@ -3400,6 +3404,8 @@ BLOG_POSTS = [
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["food", "restaurants", "experiences", "Michelin", "gastronomy"],
+        "meta_description": "Combine world-class golf with Michelin-starred dining in Mallorca. Our guide to the best restaurants near golf courses, fine dining experiences, and gastronomy tours on the island.",
+        "seo_keywords": ['golf gastronomy mallorca', 'fine dining golf mallorca', 'michelin restaurants mallorca golf', 'golf and food mallorca', 'luxury golf dining mallorca', 'restaurants near golf courses mallorca'],
         "cta": {"label": "Explore Our Restaurant Partners", "url": "#restaurants"},
         "published": True,
         "created_at": "2025-12-05T09:15:00Z"
@@ -3429,6 +3435,8 @@ BLOG_POSTS = [
         "author": "James Thompson",
         "category": "course-guides",
         "tags": ["championship", "advanced", "challenge", "best courses"],
+        "meta_description": "Challenge yourself on Mallorca's top 4 championship golf courses. Tough layouts, stunning scenery, and world-class conditioning. Golf Alcanada, T-Golf, Son Gual and more.",
+        "seo_keywords": ['championship golf mallorca', 'best golf courses mallorca', 'difficult golf courses mallorca', 'son gual golf', 'golf alcanada', 'top golf courses mallorca', 'european golf courses mallorca'],
         "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2025-11-28T11:00:00Z"
@@ -3458,6 +3466,8 @@ BLOG_POSTS = [
         "author": "Maria Santos",
         "category": "travel-tips",
         "tags": ["golf guide", "planning", "tee times", "green fees", "mallorca golf"],
+        "meta_description": "The complete golf guide to Mallorca: 16 courses, green fee prices, best hotels, transfer tips, booking advice, and insider knowledge. Everything for planning your Mallorca golf trip.",
+        "seo_keywords": ['golf guide mallorca', 'mallorca golf guide', 'golf mallorca everything you need to know', 'golf courses mallorca list', 'green fees mallorca', 'book tee times mallorca', 'golf trip mallorca planning'],
         "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2026-01-15T10:00:00Z"
@@ -3487,6 +3497,8 @@ BLOG_POSTS = [
         "author": "Carlos Martinez",
         "category": "travel-tips",
         "tags": ["stay and play", "golf packages", "hotels", "golf holidays", "deals"],
+        "meta_description": "Save with Mallorca's best stay and play golf packages. Hotel + golf bundles from top resorts including Sheraton, Arabella, and Castillo Son Vida. Compare deals and book today.",
+        "seo_keywords": ['stay and play golf mallorca', 'golf packages mallorca', 'golf hotel packages mallorca', 'mallorca golf holiday deals', 'golf resort mallorca', 'golf break mallorca', 'cheap golf holiday mallorca'],
         "cta": {"label": "Explore Our Hotel Partners", "url": "#hotels"},
         "published": True,
         "created_at": "2026-01-22T09:00:00Z"
@@ -3516,6 +3528,8 @@ BLOG_POSTS = [
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["art", "culture", "galleries", "Palma", "Miro", "museums"],
+        "meta_description": "Beyond the fairways: explore Mallorca's art galleries, museums, and cultural gems. From Miro's studio to Palma's old town, the perfect complement to your golf trip.",
+        "seo_keywords": ['mallorca art culture', 'things to do mallorca besides golf', 'palma galleries museums', 'miro mallorca', 'mallorca culture guide', 'non-golf activities mallorca', 'what to do mallorca'],
         "cta": {"label": "Discover Cafes & Bars in Mallorca", "url": "#cafes-bars"},
         "published": True,
         "created_at": "2026-02-10T08:30:00Z"
@@ -3545,6 +3559,8 @@ BLOG_POSTS = [
         "author": "Elena Rossi",
         "category": "lifestyle",
         "tags": ["food", "culinary", "restaurants", "wine", "tapas", "Michelin"],
+        "meta_description": "A food lover's guide to Mallorca: Michelin stars, tapas bars, wine regions, market tours, and local specialties. The best restaurants and culinary experiences for golf travelers.",
+        "seo_keywords": ['mallorca food guide', 'best restaurants mallorca', 'mallorca culinary guide', 'tapas mallorca', 'wine mallorca', 'michelin restaurants mallorca', 'food tours mallorca', 'eat like a local mallorca'],
         "cta": {"label": "Explore Our Restaurant Partners", "url": "#restaurants"},
         "published": True,
         "created_at": "2026-02-18T10:00:00Z"
@@ -3574,6 +3590,8 @@ BLOG_POSTS = [
         "author": "Carlos Martinez",
         "category": "travel-tips",
         "tags": ["cheap golf", "budget", "discount", "green fees", "deals"],
+        "meta_description": "Play golf in Mallorca on a budget. Green fees from EUR47, twilight deals, multi-round discounts, and money-saving tips. Affordable Mallorca golf without compromising quality.",
+        "seo_keywords": ['cheap golf mallorca', 'budget golf mallorca', 'affordable golf mallorca', 'discount green fees mallorca', 'cheap tee times mallorca', 'mallorca golf deals', 'low cost golf mallorca', 'golf mallorca prices'],
         "cta": {"label": "Book your next Tee Time Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2026-03-01T11:00:00Z"
@@ -3603,6 +3621,8 @@ BLOG_POSTS = [
         "author": "Maria Santos",
         "category": "course-guides",
         "tags": ["Palma", "near Palma", "golf courses", "city golf", "location"],
+        "meta_description": "6 top golf courses within 20 minutes of Palma de Mallorca. Son Vida, Bendinat, Son Muntaner and more. Play world-class golf without leaving the city. Course details and booking info.",
+        "seo_keywords": ['golf near palma', 'golf courses palma mallorca', 'golf close to palma', 'son vida golf', 'bendinat golf', 'golf palma de mallorca', 'city golf mallorca', 'golf courses near palma airport'],
         "cta": {"label": "Book your next Tee Time in Palma Now!", "url": "/book-tee-times"},
         "published": True,
         "created_at": "2026-03-10T09:30:00Z"
