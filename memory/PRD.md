@@ -13,6 +13,12 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin panel with Partner Image editing
 - Blog section, Reviews, Weather widget
 
+## Bug Fixes (March 23, 2026 - Session 3)
+- **Content Manager Blank Page (FINAL FIX)**: Root cause found — API returns displaySettings as objects `{show: true, limit: 100}` but ContentManager tried to render them as React children, crashing with "Objects are not valid as a React child". Fixed normalization in `fetchDisplaySettings` and `handleSaveDisplaySettings`.
+- **St. Regis Image Fix**: Replaced test placeholder `example.com/hotel-test-image.jpg` with real Mediterranean resort Pexels image.
+- **Golf Favicon**: Generated golf ball favicon and added `<link rel="icon">` to index.html.
+- **Display Settings Format**: Fixed format mismatch between ContentManager (simple numbers) and DisplaySettingsTab (objects). Both now interoperate correctly.
+
 ## Bug Fixes (March 22, 2026 - Session 2)
 - **Content Manager Blank Page Fix**: Wrapped `new URL(bookingUrl).hostname` in try-catch in `ContentManager.jsx` PartnerCard component. Invalid URLs no longer crash the entire React component tree.
 - **Footer Cropping Investigation**: Tested all 7 internal pages. All show full 673px footer — issue NOT reproducible.
