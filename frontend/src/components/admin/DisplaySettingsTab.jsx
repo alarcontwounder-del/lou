@@ -225,6 +225,7 @@ export const DisplaySettingsTab = () => {
                       s.show ? c.toggle : 'bg-stone-300'
                     }`}
                     data-testid={`toggle-${key}`}
+                    title={s.show ? 'Click to hide this category on the website' : 'Click to show this category on the website'}
                   >
                     <span
                       className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
@@ -232,11 +233,6 @@ export const DisplaySettingsTab = () => {
                       }`}
                     />
                   </button>
-                  {s.show ? (
-                    <Eye className="w-4 h-4 text-stone-400" />
-                  ) : (
-                    <EyeOff className="w-4 h-4 text-stone-400" />
-                  )}
                 </div>
               </div>
             </div>

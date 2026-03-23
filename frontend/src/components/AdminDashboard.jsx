@@ -142,9 +142,9 @@ export const AdminDashboard = ({ onClose, user }) => {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="bg-gradient-to-r from-brand-charcoal to-brand-charcoalLight p-6 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-brand-charcoal to-brand-charcoalLight p-6 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
               <Users className="w-6 h-6 text-white" />
@@ -169,7 +169,7 @@ export const AdminDashboard = ({ onClose, user }) => {
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-stone-200 bg-stone-50">
+        <div className="border-b border-stone-200 bg-stone-50 flex-shrink-0">
           <div className="flex">
             {tabs.map(tab => (
               <button
@@ -192,7 +192,7 @@ export const AdminDashboard = ({ onClose, user }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 200px)' }}>
+        <div className="p-6 overflow-y-auto flex-1 min-h-0">
           {loading ? (
             <div className="text-center py-20">
               <div className="w-12 h-12 border-4 border-brand-charcoal border-t-transparent rounded-full animate-spin mx-auto"></div>

@@ -15,8 +15,10 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 
 ## Bug Fixes (March 23, 2026 - Session 3)
 - **Content Manager Blank Page (FINAL FIX)**: Root cause found — API returns displaySettings as objects `{show: true, limit: 100}` but ContentManager tried to render them as React children, crashing with "Objects are not valid as a React child". Fixed normalization in `fetchDisplaySettings` and `handleSaveDisplaySettings`.
+- **Admin Dashboard Footer Cropped**: Changed outer container from `overflow-hidden` to `flex flex-col` layout with `flex-1 min-h-0` content area. Added `flex-shrink-0` to header and tabs so they stay fixed. Now all content scrolls properly.
 - **St. Regis Image Fix**: Replaced test placeholder `example.com/hotel-test-image.jpg` with real Mediterranean resort Pexels image.
-- **Golf Favicon**: Generated golf ball favicon and added `<link rel="icon">` to index.html.
+- **Golf Favicon (Transparent)**: Generated transparent caddy boy favicon matching the brand. Added `<link rel="icon">` to index.html.
+- **Display Settings Eye Icon**: Removed confusing decorative eye icon from DisplaySettingsTab. Added tooltip to toggle button explaining its function.
 - **Display Settings Format**: Fixed format mismatch between ContentManager (simple numbers) and DisplaySettingsTab (objects). Both now interoperate correctly.
 
 ## Bug Fixes (March 22, 2026 - Session 2)
