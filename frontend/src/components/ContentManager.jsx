@@ -828,17 +828,35 @@ export const ContentManager = () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/display-settings`);
       if (response.data) {
-        setDisplaySettings(response.data);
+        // Normalize: API stores {key: {show, limit}} but we need {key: number|null}
+        var normalized = {};
+        Object.keys(PARTNER_TYPES).forEach(function(key) {
+          var val = response.data[key];
+          var limit = null;
+          if (val && typeof val === 'object') {
+            limit = val.limit || null;
+          } else if (typeof val === 'number') {
+            limit = val;
+          }
+          // Treat 100+ as "show all" (null)
+          normalized[key] = (limit && limit < 100) ? limit : null;
+        });
+        setDisplaySettings(normalized);
       }
     } catch (error) {
-      // Settings endpoint might not exist yet, use defaults
       console.log('Using default display settings');
     }
   };
 
   const handleSaveDisplaySettings = async (newSettings) => {
     try {
-      await axios.post(`${BACKEND_URL}/api/display-settings`, newSettings);
+      // Convert simple format {golf: 10} to API format {golf: {show: true, limit: 10}}
+      var apiFormat = {};
+      Object.keys(newSettings).forEach(function(key) {
+        var val = newSettings[key];
+        apiFormat[key] = { show: true, limit: val || 100 };
+      });
+      await axios.post(`${BACKEND_URL}/api/display-settings`, apiFormat);
       setDisplaySettings(newSettings);
     } catch (error) {
       console.error('Failed to save display settings:', error);
@@ -899,7 +917,7 @@ export const ContentManager = () => {
   const currentLimit = displaySettings[activeType];
 
   return (
-    <div className="flex flex-col" data-testid="content-manager">
+    <div data-testid="content-manager">
       {/* Type Tabs */}
       <div className="flex gap-1 p-2 bg-stone-100 rounded-lg mb-4 overflow-x-auto">
         {Object.entries(PARTNER_TYPES).map(([key, cfg]) => {
@@ -1006,7 +1024,7 @@ export const ContentManager = () => {
       </div>
 
       {/* Content Grid */}
-      <div className="flex-1 overflow-y-auto">
+      <div>
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <RefreshCw className="w-8 h-8 text-blue-600 animate-spin" />
