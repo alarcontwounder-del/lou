@@ -69,7 +69,7 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4" data-testid="booking-success-modal">
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-        <div className="relative bg-white rounded-2xl w-full max-w-sm p-8 text-center">
+        <div className="relative bg-[#F5F2EB] rounded-2xl w-full max-w-sm p-8 text-center">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="w-8 h-8 text-green-600" />
           </div>
@@ -88,7 +88,7 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" data-testid="booking-request-modal">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative bg-white rounded-2xl w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl">
+      <div className="relative bg-[#F5F2EB] rounded-2xl w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl">
         {/* Header */}
         <div className="flex items-center gap-3 p-5 pb-3 border-b border-stone-100 flex-shrink-0">
           <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
