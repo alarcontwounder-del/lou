@@ -2267,44 +2267,48 @@ async def send_booking_admin_email(booking: dict):
     <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <!-- Header with logo -->
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
                 <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
             </div>
+
+            <!-- Greeting -->
             <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
-                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0; font-weight: 500;">New Booking Request</h2>
+                <h1 style="color: #3D3D3D; font-size: 22px; margin: 0 0 8px 0;">New Booking Request</h1>
                 <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">A new reservation request has been submitted via golfinmallorca.com</p>
             </div>
+
+            <!-- Venue & Reservation Details -->
             <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
                 <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
-                    <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Venue Details</p>
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 120px;">Venue</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["venue_name"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Type</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["venue_type"].replace("_", " ").title()}</td></tr>
-                    </table>
-                </div>
-                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 12px;">
                     <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Reservation Details</p>
                     <table style="width: 100%; border-collapse: collapse;">
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 120px;">Date</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["date"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["time"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Guests</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["guests"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Venue</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["venue_name"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Type</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["venue_type"].replace("_", " ").title()}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["date"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["time"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Guests</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["guests"]}</td></tr>
                     </table>
                 </div>
+
                 <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 12px;">
                     <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Guest Information</p>
                     <table style="width: 100%; border-collapse: collapse;">
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 120px;">Name</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["guest_name"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Email</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;"><a href="mailto:{booking["guest_email"]}" style="color: #6B7B8C;">{booking["guest_email"]}</a></td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Phone</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;"><a href="tel:{booking["guest_phone"]}" style="color: #6B7B8C;">{booking["guest_phone"]}</a></td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Dietary</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{dietary_text}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Allergies</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{allergies_text}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Special Req.</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{special_text}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Name</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["guest_name"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Email</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;"><a href="mailto:{booking["guest_email"]}" style="color: #6B7B8C; text-decoration: none;">{booking["guest_email"]}</a></td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Phone</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;"><a href="tel:{booking["guest_phone"]}" style="color: #6B7B8C; text-decoration: none;">{booking["guest_phone"]}</a></td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Dietary</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{dietary_text}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Allergies</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px;">{allergies_text}</td></tr>
+                        <tr><td style="padding: 10px 0; color: #8B8680; font-size: 13px;">Special Req.</td><td style="padding: 10px 0; color: #3D3D3D; font-size: 14px;">{special_text}</td></tr>
                     </table>
                 </div>
             </div>
+
+            <!-- Footer -->
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;">golfinmallorca.com</a></p>
-                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;">contact@golfinmallorca.com</a> | <a href="tel:+34620987575" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;">+34 620 987 575</a></p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Reply to this email or contact the guest directly</p>
+                <a href="mailto:{booking["guest_email"]}" style="color: #ffffff !important; font-size: 13px; text-decoration: none !important;">{booking["guest_email"]}</a>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;">golfinmallorca.com</a> — Your Gateway to Luxury Golf in Mallorca</p>
             </div>
         </div>
     </body>
@@ -2329,38 +2333,48 @@ async def send_booking_confirmation_email(booking: dict):
     <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
     <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
         <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <!-- Header with logo -->
             <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
                 <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
             </div>
+
+            <!-- Greeting -->
             <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
-                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0; font-weight: 500;">Booking Request Received</h2>
-                <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">
-                    Thank you, {booking["guest_name"]}! We have received your reservation request and will get back to you shortly.
-                </p>
+                <h1 style="color: #3D3D3D; font-size: 22px; margin: 0 0 8px 0;">Thank you, {booking["guest_name"]}!</h1>
+                <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">We've received your reservation request and our team will get back to you shortly.</p>
             </div>
+
+            <!-- Reservation Summary -->
             <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
                 <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
                     <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Your Reservation Details</p>
                     <table style="width: 100%; border-collapse: collapse;">
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 100px;">Venue</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["venue_name"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["date"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["time"]}</td></tr>
-                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Guests</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["guests"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px; width: 120px;">Venue</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["venue_name"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["date"]}</td></tr>
+                        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 10px 0; border-bottom: 1px solid #E8E4DD; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["time"]}</td></tr>
+                        <tr><td style="padding: 10px 0; color: #8B8680; font-size: 13px;">Guests</td><td style="padding: 10px 0; color: #3D3D3D; font-size: 14px; font-weight: 500;">{booking["guests"]}</td></tr>
                     </table>
                 </div>
+
+                <!-- 72-hour notice -->
                 <div style="background: linear-gradient(135deg, #6B7B8C 0%, #8B9BAC 100%); border-radius: 12px; padding: 24px; margin-top: 16px; text-align: center;">
                     <p style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; margin: 0;">
                         <strong>Please note:</strong> All bookings are subject to the restaurant's availability. We will confirm your reservation within <strong>72 hours</strong>. In many cases, we'll get back to you much sooner.
                     </p>
                 </div>
+
                 <p style="color: #8B8680; font-size: 13px; line-height: 1.6; margin-top: 20px; text-align: center;">
                     If you have any questions, don't hesitate to contact us at<br/>
-                    <a href="mailto:contact@golfinmallorca.com" style="color: #6B7B8C;">contact@golfinmallorca.com</a> or
-                    <a href="tel:+34620987575" style="color: #6B7B8C;">+34 620 987 575</a>
+                    <a href="mailto:contact@golfinmallorca.com" style="color: #6B7B8C; text-decoration: none;">contact@golfinmallorca.com</a> or
+                    <a href="tel:+34620987575" style="color: #6B7B8C; text-decoration: none;">+34 620 987 575</a>
                 </p>
             </div>
+
+            <!-- Footer -->
             <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
-                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;">golfinmallorca.com</a> &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;">Questions? Reply to this email or contact us at</p>
+                <a href="mailto:contact@golfinmallorca.com" style="color: #ffffff !important; font-size: 13px; text-decoration: none !important;">contact@golfinmallorca.com</a>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 16px 0 0 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;">golfinmallorca.com</a> — Your Gateway to Luxury Golf in Mallorca</p>
             </div>
         </div>
     </body>
