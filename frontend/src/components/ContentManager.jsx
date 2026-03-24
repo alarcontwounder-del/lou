@@ -217,7 +217,7 @@ const ImageUploadField = ({ value, onChange }) => {
 };
 
 // Compact Partner Card with Active Toggle
-const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive }) => {
+const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive, onUpdateOrder }) => {
   const config = PARTNER_TYPES[type];
   const Icon = config.icon;
   const isActive = partner.is_active !== false;
@@ -228,6 +228,20 @@ const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive }) => {
       isActive ? 'border-stone-200 hover:shadow-md' : 'border-dashed border-stone-300 opacity-60'
     }`}>
       <div className="flex gap-3">
+        {/* Position */}
+        <div className="flex flex-col items-center gap-0.5 flex-shrink-0">
+          <input
+            type="number"
+            min="0"
+            value={partner.display_order ?? 0}
+            onChange={(e) => onUpdateOrder(partner, parseInt(e.target.value) || 0)}
+            className="w-10 h-8 text-center text-xs font-semibold border border-stone-200 rounded bg-stone-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            title="Position (lower = first)"
+            data-testid={`position-${partner.id}`}
+          />
+          <span className="text-[9px] text-stone-400">Pos</span>
+        </div>
+
         {/* Image */}
         <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100 relative">
           {partner.image ? (
@@ -879,12 +893,26 @@ export const ContentManager = () => {
       await axios.put(`${BACKEND_URL}${config.endpoint}/${partner.id}`, {
         is_active: newStatus
       });
-      // Update local state
       setPartners(partners.map(p => 
         p.id === partner.id ? { ...p, is_active: newStatus } : p
       ));
     } catch (error) {
       alert('Failed to update status: ' + (error.response?.data?.detail || error.message));
+    }
+  };
+
+  const handleUpdateOrder = async (partner, newOrder) => {
+    // Update local state immediately for responsive UI
+    setPartners(prev => prev.map(p => 
+      p.id === partner.id ? { ...p, display_order: newOrder } : p
+    ));
+    // Debounced save to backend
+    try {
+      await axios.put(`${BACKEND_URL}${config.endpoint}/${partner.id}`, {
+        display_order: newOrder
+      });
+    } catch (error) {
+      console.error('Failed to update position:', error);
     }
   };
 
@@ -1044,6 +1072,7 @@ export const ContentManager = () => {
                 onEdit={(p) => { setEditingPartner(p); setIsNewPartner(false); }}
                 onDelete={(p) => setDeleteConfirm(p)}
                 onToggleActive={handleToggleActive}
+                onUpdateOrder={handleUpdateOrder}
               />
             ))}
           </div>
