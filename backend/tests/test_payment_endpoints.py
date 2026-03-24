@@ -275,7 +275,7 @@ class TestPaymentEndpoints:
         # Create checkout session
         response = requests.post(
             f"{BASE_URL}/api/payment/{payment_id}/checkout",
-            headers={"origin": "https://mallorca-deploy-test.preview.emergentagent.com"}
+            headers={"origin": "https://booking-request-flow.preview.emergentagent.com"}
         )
         
         assert response.status_code == 200, f"Expected 200, got {response.status_code}: {response.text}"
@@ -292,7 +292,7 @@ class TestPaymentEndpoints:
         """Test checkout for non-existent payment"""
         response = requests.post(
             f"{BASE_URL}/api/payment/nonexistent123/checkout",
-            headers={"origin": "https://mallorca-deploy-test.preview.emergentagent.com"}
+            headers={"origin": "https://booking-request-flow.preview.emergentagent.com"}
         )
         
         assert response.status_code == 404
@@ -332,7 +332,7 @@ class TestPaymentEndpoints:
         # Create checkout session
         checkout_res = requests.post(
             f"{BASE_URL}/api/payment/{payment_id}/checkout",
-            headers={"origin": "https://mallorca-deploy-test.preview.emergentagent.com"}
+            headers={"origin": "https://booking-request-flow.preview.emergentagent.com"}
         )
         assert checkout_res.status_code == 200
         session_id = checkout_res.json()["session_id"]
@@ -420,7 +420,7 @@ class TestPaymentEndpoints:
         # 3. Create checkout session
         checkout_res = requests.post(
             f"{BASE_URL}/api/payment/{payment_id}/checkout",
-            headers={"origin": "https://mallorca-deploy-test.preview.emergentagent.com"}
+            headers={"origin": "https://booking-request-flow.preview.emergentagent.com"}
         )
         assert checkout_res.status_code == 200
         checkout_data = checkout_res.json()
