@@ -38,6 +38,11 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
   - Added canonical URLs to TermsPage and PrivacyPage (were missing)
   - Updated all sitemap lastmod dates
   - Sitemap now has 31 clean, real page URLs
+- **SEO Pre-rendering**: Added build-time pre-rendering for all 30 sub-pages
+  - Each route gets its own `index.html` with correct title, description, canonical, OG/Twitter tags
+  - Runs automatically after `craco build` via `postbuild` script (`prerender.js`)
+  - No puppeteer/browser dependency — pure Node.js string replacement
+  - Covers: 16 golf courses, 10 blog posts, 4 static pages
 
 ## Pending / Blocked Items
 - Google Business Profile suspended (user must appeal with Google)
