@@ -1,125 +1,66 @@
-# Golf in Mallorca - Product Requirements Document
+# Golf in Mallorca — Product Requirements Document
 
 ## Original Problem Statement
-Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive "Trip Planner" lead capture tool.
-
-## Core Features (Implemented)
-- Partner listings: Hotels, Restaurants, Cafe/Bars, Beach Clubs, Golf Courses
-- Contact/Newsletter forms via Resend
-- Trip Planner wizard with Golf Groups support
-- Per-service dynamic scheduling
-- Golf Course Pairing (auto-suggests nearest course to hotel)
-- Share Trip functionality
-- Admin panel with Partner Image editing
-- Blog section, Reviews, Weather widget
-
-## New Features (March 24, 2026 - Session 4)
-- **Booking Request System**: Full reservation flow for restaurants (48) and beach clubs (12). Users click eye icon → Quick View → Reserve Table → Booking Form. Collects: date, time, guests, name, email, phone, dietary preferences (vegetarian/vegan/gluten-free/dairy-free/halal/kosher), allergies, special requests. Sends admin notification + customer confirmation email with 72-hour response disclaimer. Stored in MongoDB `booking_requests` collection.
-- **Card Position Control**: Added "Pos" number input to each card in Content Manager. Lower number = appears first on site. Saves immediately via PUT endpoint.
-- **Quick View Modal Redesign**: Matched card design exactly — same image height, padding, typography. CTA button always visible (no cropping).
-
-## Bug Fixes (March 23, 2026 - Session 3)
-- **Content Manager Blank Page (FINAL FIX)**: Root cause found — API returns displaySettings as objects `{show: true, limit: 100}` but ContentManager tried to render them as React children, crashing with "Objects are not valid as a React child". Fixed normalization in `fetchDisplaySettings` and `handleSaveDisplaySettings`.
-- **Admin Dashboard Footer Cropped**: Changed outer container from `overflow-hidden` to `flex flex-col` layout with `flex-1 min-h-0` content area. Added `flex-shrink-0` to header and tabs so they stay fixed. Now all content scrolls properly.
-- **St. Regis Image Fix**: Replaced test placeholder `example.com/hotel-test-image.jpg` with real Mediterranean resort Pexels image.
-- **Golf Favicon (Transparent)**: Generated transparent caddy boy favicon matching the brand. Added `<link rel="icon">` to index.html.
-- **Display Settings Eye Icon**: Removed confusing decorative eye icon from DisplaySettingsTab. Added tooltip to toggle button explaining its function.
-- **Display Settings Format**: Fixed format mismatch between ContentManager (simple numbers) and DisplaySettingsTab (objects). Both now interoperate correctly.
-
-## Bug Fixes (March 22, 2026 - Session 2)
-- **Content Manager Blank Page Fix**: Wrapped `new URL(bookingUrl).hostname` in try-catch in `ContentManager.jsx` PartnerCard component. Invalid URLs no longer crash the entire React component tree.
-- **Footer Cropping Investigation**: Tested all 7 internal pages. All show full 673px footer — issue NOT reproducible.
-- **7-Day Weather Forecast Dropdown**: Expanded the nav weather badge into a clickable 7-day forecast using Open-Meteo API. Shows day names, weather icons, hi/lo temps, rain probability, and wind speed. Adapts between dark glassmorphism (homepage) and light white (internal pages) themes.
-
-## Recently Implemented (March 22, 2026)
-- **SEO-Friendly Blog Routes**: Converted blog from modal-based to individual pages at `/blog/[slug]`. Full SEO: meta tags, JSON-LD schemas, 80+ keywords, AI discoverability.
-- **Cookie Consent Banner**: GDPR-compliant dark glass popup. Stores choice in localStorage, never reappears.
-- **Terms of Service** (`/terms`): Adapted from Greenfee365 terms, covers bookings, payments, cancellations, liability, Stripe security.
-- **Privacy Policy** (`/privacy`): Full GDPR/LOPDGDD compliance — data controller, data types, retention periods, user rights, AEPD reference.
-- **Sitemap Updated**: Added 10 blog posts + 2 legal pages to `sitemap.xml` (38 URLs total).
-- **Stripe Live Keys**: Configured `sk_live` + `whsec` webhook secret. Payment flow is production-ready.
-- **Hardcoded URLs Fixed**: All email logo URLs now point to `golfinmallorca.com` instead of preview.
-- **Footer Updates**: Save the Med + Illes Balears logos with links. Privacy/Terms links now functional.
-- **Email Fixes**: Footer links clickable on mobile, phone numbers no longer blue in Apple Mail.
-
-## Previously Implemented (March 21, 2026)
-- **Stripe Payment Integration**: Admin creates payment requests from dashboard, gets shareable link. Customer visits /pay/:id, pays via Stripe Checkout. Tested (iteration_21).
-- **Payment Auto-Emails**: Payment link auto-sent to customer on creation. Confirmation emails to both admin (contact@golfinmallorca.com) and customer on payment completion. Tested (iteration_22).
-- **Payment Dashboard**: Admin Payments tab with stats summary (collected, pending, total), search, create/delete/copy link. Redesigned payment page matching site branding. Tested (iteration_22).
-- **Drag-and-Drop Image Upload**: Admin can upload images via drag-and-drop or file picker. Uses Emergent Object Storage. Fully tested (iteration_20).
-- **Golf Groups**: New Trip Planner category with group type, player count, per-person/day budget, vehicle type
-- **Admin Partner Images tab**: Self-service image editing for all partner cards (URL paste + drag-and-drop upload)
-- **Cappuccino, Wellies, La Bodeguilla, Bar Bosch, Terrae, Barlovento, Flanigan's, Tahini**: All images updated
-- **Refactoring**: server.py split from 5974 → 1833 lines. Data extracted to /app/backend/data/
-- **Lint cleanup**: All ESLint + Python lint errors resolved
-- **Trip Planner UI fixes**: Uniform card sizes, no green colors, floating pill scroll indicator
-
-## Tech Stack
-- Frontend: React, Tailwind CSS, Shadcn UI
-- Backend: FastAPI, Motor (async MongoDB), Pydantic
-- Email: Resend SDK
-- Payments: Stripe via emergentintegrations (test key: sk_test_emergent)
-- Storage: Emergent Object Storage
-- DB: MongoDB (database: test_database)
+Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive "Golf Trip Planner" lead capture tool. The site must be visually consistent and highly responsive.
 
 ## Architecture
-```
-/app/backend/
-├── server.py              # Routes + models (1833 lines)
-├── data/
-│   ├── partners.py        # PARTNER_OFFERS + BLOG_POSTS (3613 lines)
-│   ├── courses.py         # GOLF_COURSES (280 lines)
-│   └── reviews.py         # REVIEWS_DATA (259 lines)
-├── seed_all_partners.py
-└── .env
+- **Frontend**: React, Tailwind CSS, Shadcn UI, i18n multi-language
+- **Backend**: FastAPI, Motor (async MongoDB), Pydantic
+- **Storage**: Emergent Integrations Object Storage
+- **Communications**: Resend SDK (verified domain)
+- **Payments**: Stripe API (LIVE MODE)
+- **Database**: MongoDB
 
-/app/frontend/src/
-├── components/
-│   ├── TripPlanner.jsx
-│   ├── AdminDashboard.jsx
-│   ├── admin/
-│   │   ├── PartnerImagesTab.jsx  # NEW - self-service image editing
-│   │   ├── ContactsTab.jsx
-│   │   ├── DisplaySettingsTab.jsx
-│   │   └── ...
-│   └── ui/
-└── context/
-```
+## What's Been Implemented (Completed)
+- Full golf course catalog with 16 individual landing pages
+- Hotel, Restaurant, Beach Club, Café & Bar partner sections
+- Custom Booking Request system for Restaurants & Beach Clubs (with Resend emails)
+- Trip Planner lead capture tool
+- Live Stripe payment integration
+- Blog with 10 SEO-optimized articles
+- Multi-language support (EN, DE, FR, SV)
+- Newsletter signup
+- Admin Dashboard with Content Manager
+- Weather Widget (7-day forecast)
+- Review system with social proof
+- Cookie Consent (GDPR)
+- Transparent favicon
+- Venue display ordering (position control)
+- QuickView modal redesign
+- Schema.org structured data (Organization, GolfCourse, LocalBusiness)
+- SEO meta tags, OG tags, Twitter cards
+- Sitemap.xml and robots.txt
+
+## Recent Changes (March 24, 2026)
+- **SEO Indexing Fix**: Fixed Google Search Console "0 pages indexed" issue
+  - Removed 7 hash-based URLs from sitemap (Google can't index `/#section` fragments)
+  - Fixed duplicate canonical tags — all pages now update single `#main-canonical` element
+  - Added canonical URLs to TermsPage and PrivacyPage (were missing)
+  - Updated all sitemap lastmod dates
+  - Sitemap now has 31 clean, real page URLs
+
+## Pending / Blocked Items
+- Google Business Profile suspended (user must appeal with Google)
+- External review links for "Write a Review" modal (waiting for URLs from user)
+- Hero Video on homepage (waiting for user to provide video file)
+
+## Backlog (P2/P3)
+- Refactor `TripPlanner.jsx` (~800 lines → smaller components)
+- Refactor `server.py` (extract HTML email templates, >2300 lines)
+- Golf Packages page (bundle course + hotel deals)
+- TheFork B2B API integration (if user gets developer account)
 
 ## Key API Endpoints
-- `GET /api/all-partners`: All partners (reads DB, falls back to code, applies overrides)
-- `PATCH /api/admin/partner/{id}/image`: Update partner image (writes to DB)
-- `POST /api/admin/upload-image`: Upload image file to Object Storage, returns {url, path}
-- `GET /api/images/{path}`: Serve uploaded image from Object Storage (cached 1yr)
-- `POST /api/admin/payment-request`: Create Stripe payment request (amount, customer, description)
-- `GET /api/admin/payments`: List all payment requests/transactions
-- `GET /api/payment/{id}`: Public payment details for customer page
-- `POST /api/payment/{id}/checkout`: Create Stripe checkout session
-- `GET /api/payment/status/{session_id}`: Poll Stripe payment status
-- `DELETE /api/admin/payment/{id}`: Delete unpaid payment request
-- `POST /api/webhook/stripe`: Stripe webhook handler
-- `POST /api/trip-planner`: Submit trip request
-- `GET /api/blog`: Blog posts
+- `POST /api/booking-request` — Restaurant/Beach Club reservations + Resend emails
+- `POST /api/display-settings` — Content Manager visibility/limits
+- `GET /api/golf-courses/:id` — Individual course data
+- `GET /api/blog-posts` — Blog content
 
-## CRITICAL: Database Sync Note
-The DB name is `test_database` (from .env DB_NAME). When updating partner data:
-- Update BOTH the code (data/partners.py) AND the MongoDB collection
-- The admin image editor handles this automatically via the API
+## DB Collections
+- `golf_courses`, `hotels`, `restaurants`, `beach_clubs`, `cafe_bars` — with `display_order`, `is_active`
+- `booking_requests` — `{id, venue_id, venue_name, venue_type, date, time, guests, name, email, phone, dietary_preferences, allergies, special_requests, created_at}`
 
-## Upcoming Tasks (P1)
-- Hero Video on homepage
-
-## Future/Backlog (P2)
-- Refactor TripPlanner.jsx (~800 lines → smaller components)
-- Refactor server.py (extract email templates to separate module)
-- Golf Packages page (bundle deals)
-- Google Business Profile (resolve suspension — user action)
-- External review links (need URLs from user)
-- Google Search Console (submit sitemap after production deploy)
-- Golf Packages page
-- Refactor TripPlanner.jsx (~800 lines)
-
-## Blocked Items
-- Google Business Profile suspension (user action)
-- Sitemap submission (needs production deployment)
-- External review links (waiting on user URLs)
+## Critical Notes
+- **PRODUCTION ENVIRONMENT**: Stripe is in LIVE mode. Be extremely cautious.
+- **Deployment**: Changes must be pushed via "Deploy" → "Replace deployment" → "Existing database"
+- **After SEO fix deployment**: Resubmit sitemap in Google Search Console

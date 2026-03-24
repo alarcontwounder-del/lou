@@ -15,7 +15,12 @@ export default function PrivacyPage() {
     };
     setMeta('name', 'description', 'Privacy policy for golfinmallorca.com. Learn how we collect, use, and protect your personal data in compliance with GDPR and Spanish data protection law.');
     setMeta('name', 'robots', 'index, follow');
-    return function() { document.title = 'golfinmallorca.com | Your Gateway to Luxury Golf in Mallorca'; };
+    var mainCanonical = document.getElementById('main-canonical');
+    if (mainCanonical) mainCanonical.href = 'https://golfinmallorca.com/privacy';
+    return function() {
+      document.title = 'golfinmallorca.com | Your Gateway to Luxury Golf in Mallorca';
+      if (mainCanonical) mainCanonical.href = 'https://golfinmallorca.com/';
+    };
   }, []);
 
   return (

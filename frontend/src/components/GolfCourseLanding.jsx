@@ -59,14 +59,14 @@ export default function GolfCoursePage() {
     if (!schema) { schema = document.createElement('script'); schema.id = 'course-schema'; schema.type = 'application/ld+json'; document.head.appendChild(schema); }
     schema.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'GolfCourse', name: course.name, description: course.description?.en || '', image: course.image, url: url, address: { '@type': 'PostalAddress', addressLocality: course.location, addressRegion: 'Illes Balears', addressCountry: 'ES' }, numberOfHoles: course.holes, priceRange: 'From EUR' + course.price_from, provider: { '@id': 'https://golfinmallorca.com/#organization' } });
 
-    let canonical = document.getElementById('course-canonical');
-    if (!canonical) { canonical = document.createElement('link'); canonical.id = 'course-canonical'; canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = url;
+    const mainCanonical = document.getElementById('main-canonical');
+    const prevCanonical = mainCanonical ? mainCanonical.href : '';
+    if (mainCanonical) mainCanonical.href = url;
 
     return () => {
       document.title = 'Golf in Mallorca | Book Tee Times, Golf Holidays & Packages';
       const s = document.getElementById('course-schema'); if (s) s.remove();
-      const c = document.getElementById('course-canonical'); if (c) c.remove();
+      if (mainCanonical) mainCanonical.href = prevCanonical || 'https://golfinmallorca.com/';
     };
   }, [course]);
 

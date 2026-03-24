@@ -148,10 +148,10 @@ export default function BlogPostPage() {
     setMeta('name', 'twitter:description', description);
     setMeta('name', 'twitter:image', post.image);
 
-    var canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    var originalCanonical = canonical.href;
-    canonical.href = pageUrl;
+    var canonical = document.getElementById('main-canonical');
+    if (!canonical) { canonical = document.querySelector('link[rel="canonical"]'); }
+    var originalCanonical = canonical ? canonical.href : '';
+    if (canonical) canonical.href = pageUrl;
 
     var langCode = language === 'es' ? 'es-ES' : language === 'de' ? 'de-DE' : language === 'sv' ? 'sv-SE' : 'en-GB';
 
@@ -193,7 +193,7 @@ export default function BlogPostPage() {
 
     return function() {
       document.title = 'golfinmallorca.com | Your Gateway to Luxury Golf in Mallorca';
-      var can = document.querySelector('link[rel="canonical"]');
+      var can = document.getElementById('main-canonical') || document.querySelector('link[rel="canonical"]');
       if (can) can.href = originalCanonical || 'https://golfinmallorca.com/';
       var ids = ['blog-article-schema', 'blog-breadcrumb-schema'];
       ids.forEach(function(id) { var el = document.getElementById(id); if (el) el.remove(); });

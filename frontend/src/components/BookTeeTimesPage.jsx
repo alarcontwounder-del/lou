@@ -31,9 +31,8 @@ export default function BookTeeTimesPage() {
     setMeta('property', 'og:url', 'https://golfinmallorca.com/book-tee-times');
     setMeta('property', 'og:type', 'website');
 
-    let canonical = document.getElementById('booktee-canonical');
-    if (!canonical) { canonical = document.createElement('link'); canonical.id = 'booktee-canonical'; canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = 'https://golfinmallorca.com/book-tee-times';
+    const mainCanonical = document.getElementById('main-canonical');
+    if (mainCanonical) mainCanonical.href = 'https://golfinmallorca.com/book-tee-times';
 
     let schema = document.getElementById('booktee-schema');
     if (!schema) { schema = document.createElement('script'); schema.id = 'booktee-schema'; schema.type = 'application/ld+json'; document.head.appendChild(schema); }
@@ -58,7 +57,7 @@ export default function BookTeeTimesPage() {
     return () => {
       document.title = 'Golf in Mallorca | Book Tee Times, Golf Holidays & Packages';
       const s = document.getElementById('booktee-schema'); if (s) s.remove();
-      const c = document.getElementById('booktee-canonical'); if (c) c.remove();
+      const mc = document.getElementById('main-canonical'); if (mc) mc.href = 'https://golfinmallorca.com/';
     };
   }, []);
 

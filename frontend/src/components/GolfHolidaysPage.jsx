@@ -33,9 +33,8 @@ export default function GolfHolidaysPage() {
     setMeta('property', 'og:url', 'https://golfinmallorca.com/golf-holidays-mallorca');
     setMeta('property', 'og:type', 'website');
 
-    let canonical = document.getElementById('holidays-canonical');
-    if (!canonical) { canonical = document.createElement('link'); canonical.id = 'holidays-canonical'; canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = 'https://golfinmallorca.com/golf-holidays-mallorca';
+    const mainCanonical = document.getElementById('main-canonical');
+    if (mainCanonical) mainCanonical.href = 'https://golfinmallorca.com/golf-holidays-mallorca';
 
     let schema = document.getElementById('holidays-schema');
     if (!schema) { schema = document.createElement('script'); schema.id = 'holidays-schema'; schema.type = 'application/ld+json'; document.head.appendChild(schema); }
@@ -58,7 +57,7 @@ export default function GolfHolidaysPage() {
     return () => {
       document.title = 'Golf in Mallorca | Book Tee Times, Golf Holidays & Packages';
       const s = document.getElementById('holidays-schema'); if (s) s.remove();
-      const c = document.getElementById('holidays-canonical'); if (c) c.remove();
+      const mc = document.getElementById('main-canonical'); if (mc) mc.href = 'https://golfinmallorca.com/';
     };
   }, []);
 
