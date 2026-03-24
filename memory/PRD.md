@@ -13,6 +13,11 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin panel with Partner Image editing
 - Blog section, Reviews, Weather widget
 
+## New Features (March 24, 2026 - Session 4)
+- **Booking Request System**: Full reservation flow for restaurants (48) and beach clubs (12). Users click eye icon → Quick View → Reserve Table → Booking Form. Collects: date, time, guests, name, email, phone, dietary preferences (vegetarian/vegan/gluten-free/dairy-free/halal/kosher), allergies, special requests. Sends admin notification + customer confirmation email with 72-hour response disclaimer. Stored in MongoDB `booking_requests` collection.
+- **Card Position Control**: Added "Pos" number input to each card in Content Manager. Lower number = appears first on site. Saves immediately via PUT endpoint.
+- **Quick View Modal Redesign**: Matched card design exactly — same image height, padding, typography. CTA button always visible (no cropping).
+
 ## Bug Fixes (March 23, 2026 - Session 3)
 - **Content Manager Blank Page (FINAL FIX)**: Root cause found — API returns displaySettings as objects `{show: true, limit: 100}` but ContentManager tried to render them as React children, crashing with "Objects are not valid as a React child". Fixed normalization in `fetchDisplaySettings` and `handleSaveDisplaySettings`.
 - **Admin Dashboard Footer Cropped**: Changed outer container from `overflow-hidden` to `flex flex-col` layout with `flex-1 min-h-0` content area. Added `flex-shrink-0` to header and tabs so they stay fixed. Now all content scrolls properly.
