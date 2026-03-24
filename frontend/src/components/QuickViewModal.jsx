@@ -1,267 +1,187 @@
 import React from 'react';
-import { X, MapPin, Phone, ExternalLink, Navigation, Flag, Trophy, Wine, Utensils, Coffee, Umbrella, Clock, Croissant } from 'lucide-react';
+import { X, MapPin, Phone, ExternalLink, Navigation, Flag, Trophy, Utensils, Coffee, Umbrella, Clock, Croissant } from 'lucide-react';
 
 export const QuickViewModal = ({ isOpen, onClose, item, type, language, t }) => {
   if (!isOpen || !item) return null;
 
-  const getDescription = () => {
-    if (!item.description) return '';
-    return item.description[language] || item.description.en || '';
-  };
+  const desc = item.description ? (item.description[language] || item.description.en || '') : '';
+  const deal = item.deal ? (item.deal[language] || item.deal.en || '') : '';
+  const bookUrl = item.booking_url || item.contact_url || '#';
 
-  const getDeal = () => {
-    if (!item.deal) return '';
-    return item.deal[language] || item.deal.en || '';
-  };
+  const labels = { golf: 'Book Tee Time', hotel: 'Book Hotel', restaurant: 'Reserve Table', beach_club: 'Book Now', cafe_bar: 'View Details' };
+  const bookLabel = labels[type] || 'Book Now';
 
   const openMaps = () => {
-    const query = encodeURIComponent(item.full_address || item.name + ', ' + item.location + ', Mallorca');
-    window.open('https://www.google.com/maps/search/?api=1&query=' + query, '_blank');
-  };
-
-  const getBookingUrl = () => {
-    return item.booking_url || item.contact_url || '#';
-  };
-
-  const getBookingLabel = () => {
-    if (type === 'golf') return 'Book Tee Time';
-    if (type === 'hotel') return 'Book Hotel';
-    if (type === 'restaurant') return 'Reserve Table';
-    if (type === 'beach_club') return 'Book Now';
-    if (type === 'cafe_bar') return 'View Details';
-    return 'Book Now';
+    window.open('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.full_address || item.name + ', ' + item.location + ', Mallorca'), '_blank');
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      data-testid="quick-view-modal"
-    >
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      
-      {/* Modal */}
-      <div className="relative bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 transition-colors shadow-lg"
-          data-testid="quick-view-close"
-        >
-          <X className="w-5 h-5" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" data-testid="quick-view-modal">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+
+      <div className="relative bg-white rounded-xl w-full max-w-md max-h-[85vh] flex flex-col shadow-2xl">
+        {/* Close */}
+        <button onClick={onClose} className="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 shadow-md" data-testid="quick-view-close">
+          <X className="w-4 h-4" />
         </button>
 
         {/* Image */}
-        <div className="relative h-56 overflow-hidden rounded-t-2xl">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-full object-cover"
-          />
+        <div className="relative h-40 overflow-hidden rounded-t-xl flex-shrink-0">
+          <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
           {item.discount_percent && (
-            <div className="absolute top-4 left-4 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
+            <div className="absolute top-3 left-3 bg-brand-slate text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
               Save {item.discount_percent}%
             </div>
           )}
         </div>
 
-        {/* Content */}
-        <div className="p-6">
+        {/* Scrollable Content */}
+        <div className="p-4 overflow-y-auto flex-1 min-h-0">
           {/* Location */}
-          <button
-            onClick={openMaps}
-            className="flex items-center gap-2 text-stone-500 text-sm mb-2 hover:text-brand-slate transition-colors"
-          >
-            <MapPin className="w-4 h-4" />
+          <button onClick={openMaps} className="flex items-center gap-1.5 text-stone-500 text-xs mb-1.5 hover:text-brand-slate transition-colors">
+            <MapPin className="w-3 h-3" />
             <span>{item.location}</span>
-            <ExternalLink className="w-3 h-3" />
+            <ExternalLink className="w-2.5 h-2.5" />
           </button>
 
           {/* Name */}
-          <h3 className="font-heading text-2xl text-stone-900 mb-3">
-            {item.name}
-          </h3>
+          <h3 className="font-heading text-xl text-stone-900 mb-2">{item.name}</h3>
 
-          {/* Golf specific */}
+          {/* Golf */}
           {type === 'golf' && (
-            <>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-2 bg-stone-100 px-3 py-2 rounded-lg">
-                  <Flag className="w-4 h-4 text-stone-600" />
-                  <span className="text-sm font-medium">{item.holes} Holes</span>
-                </div>
-                <div className="flex items-center gap-2 bg-stone-100 px-3 py-2 rounded-lg">
-                  <span className="text-sm font-medium">Par {item.par}</span>
-                </div>
-              </div>
-              {item.price_from && (
-                <div className="flex items-center gap-2 bg-brand-slate/10 px-4 py-3 rounded-xl mb-4">
-                  <Trophy className="w-5 h-5 text-brand-slate" />
-                  <span className="font-semibold">Green Fee from €{item.price_from}</span>
-                </div>
-              )}
-            </>
-          )}
-
-          {/* Hotel specific */}
-          {type === 'hotel' && (
-            <>
-              {(item.category || item.region) && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {item.category && (
-                    <span className="text-xs px-3 py-1.5 bg-brand-slate/20 text-brand-charcoal font-medium rounded">
-                      {item.category}
-                    </span>
-                  )}
-                  {item.region && (
-                    <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded">
-                      {item.region}
-                    </span>
-                  )}
-                </div>
-              )}
-              {item.nearest_golf && (
-                <div className="flex items-center gap-2 mb-4" data-testid="modal-hotel-nearest-golf">
-                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
-                    <Navigation className="w-3.5 h-3.5" />
-                    {item.distance_km}km to {item.nearest_golf}
-                  </span>
-                </div>
-              )}
-              {item.offer_price && (
-                <div className="flex items-baseline gap-3 mb-4">
-                  <span className="text-xs uppercase tracking-wider text-stone-400">From</span>
-                  <span className="text-2xl font-bold text-stone-800">€{item.offer_price}</span>
-                  {item.original_price && (
-                    <span className="text-lg text-stone-400 line-through">€{item.original_price}</span>
-                  )}
-                </div>
-              )}
-            </>
-          )}
-
-          {/* Restaurant specific */}
-          {type === 'restaurant' && (
-            <>
-              {item.michelin_stars && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-3 py-1.5 bg-stone-800 text-white font-semibold rounded">
-                    {item.michelin_stars}
-                  </span>
-                </div>
-              )}
-              <div className="flex items-center gap-2 text-stone-600 mb-4">
-                <Utensils className="w-4 h-4" />
-                <span className="text-sm">Mediterranean Fine Dining</span>
-              </div>
-              {item.nearest_golf && (
-                <div className="flex items-center gap-2 mb-4" data-testid="modal-restaurant-nearest-golf">
-                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
-                    <Navigation className="w-3.5 h-3.5" />
-                    {item.distance_km}km to {item.nearest_golf}
-                  </span>
-                </div>
-              )}
-              {item.offer_price && (
-                <div className="flex items-baseline gap-3 mb-4">
-                  <span className="text-xs uppercase tracking-wider text-stone-400">From</span>
-                  <span className="text-2xl font-bold text-stone-800">€{item.offer_price}</span>
-                </div>
-              )}
-            </>
-          )}
-
-          {/* Beach Club specific */}
-          {type === 'beach_club' && (
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-xs px-3 py-1.5 bg-sky-100 text-sky-700 font-medium rounded-full flex items-center gap-1.5">
-                <Umbrella className="w-3.5 h-3.5" />
-                Beach Club
+            <div className="flex items-center gap-3 mb-3">
+              <span className="flex items-center gap-1.5 bg-stone-100 px-2.5 py-1.5 rounded-lg text-xs font-medium">
+                <Flag className="w-3 h-3 text-stone-600" /> {item.holes} Holes
               </span>
-              {item.nearest_golf && (
-                <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
-                  <Navigation className="w-3.5 h-3.5" />
-                  {item.distance_km}km to {item.nearest_golf}
+              {item.par && <span className="bg-stone-100 px-2.5 py-1.5 rounded-lg text-xs font-medium">Par {item.par}</span>}
+              {item.price_from && (
+                <span className="flex items-center gap-1.5 bg-brand-slate/10 px-2.5 py-1.5 rounded-lg text-xs font-semibold">
+                  <Trophy className="w-3 h-3 text-brand-slate" /> From €{item.price_from}
                 </span>
               )}
             </div>
           )}
 
-          {/* Cafe Bar specific */}
+          {/* Hotel */}
+          {type === 'hotel' && (
+            <div className="space-y-2 mb-3">
+              {(item.category || item.region) && (
+                <div className="flex flex-wrap gap-1.5">
+                  {item.category && <span className="text-[10px] px-2 py-1 bg-brand-slate/20 text-brand-charcoal font-medium rounded">{item.category}</span>}
+                  {item.region && <span className="text-[10px] px-2 py-1 bg-stone-100 text-stone-700 font-medium rounded">{item.region}</span>}
+                </div>
+              )}
+              {item.nearest_golf && (
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded-full">
+                  <Navigation className="w-3 h-3" /> {item.distance_km}km to {item.nearest_golf}
+                </span>
+              )}
+              {item.offer_price && (
+                <div className="flex items-baseline gap-2">
+                  <span className="text-[10px] uppercase tracking-wider text-stone-400">From</span>
+                  <span className="text-lg font-bold text-stone-800">€{item.offer_price}</span>
+                  {item.original_price && <span className="text-sm text-stone-400 line-through">€{item.original_price}</span>}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Restaurant */}
+          {type === 'restaurant' && (
+            <div className="space-y-2 mb-3">
+              <div className="flex flex-wrap gap-1.5">
+                {item.michelin_stars && <span className="text-[10px] px-2 py-1 bg-stone-800 text-white font-semibold rounded">{item.michelin_stars}</span>}
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-stone-100 text-stone-600 rounded">
+                  <Utensils className="w-3 h-3" /> Dining
+                </span>
+              </div>
+              {item.nearest_golf && (
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded-full">
+                  <Navigation className="w-3 h-3" /> {item.distance_km}km to {item.nearest_golf}
+                </span>
+              )}
+              {item.offer_price && (
+                <div className="flex items-baseline gap-2">
+                  <span className="text-[10px] uppercase tracking-wider text-stone-400">From</span>
+                  <span className="text-lg font-bold text-stone-800">€{item.offer_price}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Beach Club */}
+          {type === 'beach_club' && (
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-sky-100 text-sky-700 font-medium rounded-full">
+                <Umbrella className="w-3 h-3" /> Beach Club
+              </span>
+              {item.nearest_golf && (
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded-full">
+                  <Navigation className="w-3 h-3" /> {item.distance_km}km to {item.nearest_golf}
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Cafe Bar */}
           {type === 'cafe_bar' && (
-            <>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="text-xs px-3 py-1.5 bg-amber-100 text-amber-700 font-medium rounded-full flex items-center gap-1.5">
-                  <Coffee className="w-3.5 h-3.5" />
-                  {item.category || 'Café & Bar'}
+            <div className="space-y-2 mb-3">
+              <div className="flex flex-wrap gap-1.5">
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-amber-100 text-amber-700 font-medium rounded-full">
+                  <Coffee className="w-3 h-3" /> {item.category || 'Cafe & Bar'}
                 </span>
                 {item.specialty && (
-                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
-                    <Croissant className="w-3.5 h-3.5" />
-                    {item.specialty}
+                  <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded-full">
+                    <Croissant className="w-3 h-3" /> {item.specialty}
                   </span>
                 )}
               </div>
               {item.nearest_golf && (
-                <div className="flex items-center gap-2 mb-4" data-testid="modal-cafe-nearest-golf">
-                  <span className="text-xs px-3 py-1.5 bg-stone-100 text-stone-600 font-medium rounded-full flex items-center gap-1.5">
-                    <Navigation className="w-3.5 h-3.5" />
-                    {item.distance_km}km to {item.nearest_golf}
-                  </span>
-                </div>
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded-full">
+                  <Navigation className="w-3 h-3" /> {item.distance_km}km to {item.nearest_golf}
+                </span>
               )}
               {item.hours && (
-                <div className="flex items-center gap-2 text-stone-600 mb-4">
-                  <Clock className="w-4 h-4" />
-                  <span className="text-sm">{item.hours}</span>
+                <div className="flex items-center gap-1.5 text-stone-600 text-xs">
+                  <Clock className="w-3 h-3" /> {item.hours}
                 </div>
               )}
-            </>
+            </div>
           )}
 
           {/* Description */}
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            {getDescription()}
-          </p>
+          {desc && <p className="text-stone-600 text-xs leading-relaxed mb-3">{desc}</p>}
 
           {/* Deal */}
-          {getDeal() && (
-            <div className="bg-brand-charcoal/5 border border-brand-charcoal/10 rounded-xl p-4 mb-4">
-              <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">
-                Exclusive Offer
-              </p>
-              <p className="text-stone-800 font-medium text-sm">
-                {getDeal()}
-              </p>
+          {deal && (
+            <div className="bg-brand-charcoal/5 border border-brand-charcoal/10 rounded-lg p-3 mb-3">
+              <p className="text-[10px] uppercase tracking-wider text-stone-400 mb-0.5">Exclusive Offer</p>
+              <p className="text-stone-800 font-medium text-xs">{deal}</p>
             </div>
           )}
 
           {/* Phone */}
           {item.phone && (
-            <div className="flex items-center gap-3 text-stone-600 mb-4">
-              <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center">
-                <Phone className="w-4 h-4" />
+            <a href={'tel:' + item.phone} className="flex items-center gap-2 text-stone-600 mb-3 hover:text-brand-slate transition-colors">
+              <div className="w-8 h-8 bg-stone-100 rounded-full flex items-center justify-center">
+                <Phone className="w-3.5 h-3.5" />
               </div>
-              <div>
-                <p className="text-xs text-stone-400">Phone</p>
-                <p className="text-sm font-medium">{item.phone}</p>
-              </div>
-            </div>
+              <span className="text-xs font-medium">{item.phone}</span>
+            </a>
           )}
+        </div>
 
-          {/* CTA Button */}
+        {/* CTA - Fixed at bottom */}
+        <div className="p-4 pt-0 flex-shrink-0">
           <a
-            href={getBookingUrl()}
+            href={bookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 bg-brand-charcoal text-white px-6 py-3.5 rounded-full font-semibold hover:bg-brand-charcoal/90 transition-all"
+            className="w-full flex items-center justify-center gap-2 bg-brand-charcoal text-white px-5 py-3 rounded-full text-sm font-semibold hover:bg-brand-charcoal/90 transition-all"
             data-testid="quick-view-cta"
           >
-            {getBookingLabel()}
-            <ExternalLink className="w-4 h-4" />
+            {bookLabel}
+            <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
       </div>
