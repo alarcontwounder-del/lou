@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Umbrella, Navigation, Waves, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
+import { BookingRequestModal } from './BookingRequestModal';
 
 const BeachClubCard = ({ club, language, t, onQuickView }) => (
   <div
@@ -168,6 +169,7 @@ export const BeachClubPartners = () => {
   const { t, language } = useLanguage();
   const { beachClubs, loading, getDisplayedItems } = useData();
   const [quickViewItem, setQuickViewItem] = useState(null);
+  const [bookingItem, setBookingItem] = useState(null);
 
   // Apply display limit
   const displayedClubs = getDisplayedItems(beachClubs, 'beach_clubs');
@@ -231,6 +233,15 @@ export const BeachClubPartners = () => {
         type="beach_club"
         language={language}
         t={t}
+        onBooking={(item) => { setQuickViewItem(null); setBookingItem(item); }}
+      />
+
+      {/* Booking Request Modal */}
+      <BookingRequestModal
+        isOpen={!!bookingItem}
+        onClose={() => setBookingItem(null)}
+        venue={bookingItem}
+        venueType="beach_club"
       />
     </>
   );

@@ -128,6 +128,20 @@ class User(BaseModel):
     picture: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# Booking Request Models
+class BookingRequestCreate(BaseModel):
+    venue_name: str
+    venue_type: str
+    guest_name: str
+    guest_email: EmailStr
+    guest_phone: str
+    date: str
+    time: str
+    guests: int
+    dietary: List[str] = []
+    allergies: str = ""
+    special_requests: str = ""
+
 class UserSession(BaseModel):
     model_config = ConfigDict(extra="ignore")
     user_id: str
@@ -2208,6 +2222,20 @@ async def delete_payment_request(payment_id: str):
     return {"status": "deleted", "payment_id": payment_id}
 
 
+@api_router.post("/booking-request", response_model=dict)
+async def create_booking_request(booking: BookingRequestCreate):
+    """Submit a booking request for a restaurant or beach club."""
+    booking_dict = booking.model_dump()
+    booking_dict["id"] = str(uuid.uuid4())
+    booking_dict["status"] = "pending"
+    booking_dict["created_at"] = datetime.now(timezone.utc).isoformat()
+    await db.booking_requests.insert_one(booking_dict)
+    booking_dict.pop("_id", None)
+    asyncio.create_task(send_booking_admin_email(booking_dict))
+    asyncio.create_task(send_booking_confirmation_email(booking_dict))
+    return {"success": True, "id": booking_dict["id"], "message": "Booking request submitted successfully"}
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
@@ -2225,6 +2253,129 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# ============ BOOKING REQUEST ============
+
+async def send_booking_admin_email(booking: dict):
+    """Send booking request notification to admin."""
+    logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
+    dietary_text = ", ".join(booking.get("dietary", [])) if booking.get("dietary") else "None"
+    allergies_text = booking.get("allergies", "") or "None"
+    special_text = booking.get("special_requests", "") or "None"
+    html_content = f"""
+    <html>
+    <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
+    <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+            </div>
+            <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
+                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0; font-weight: 500;">New Booking Request</h2>
+                <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">A new reservation request has been submitted via golfinmallorca.com</p>
+            </div>
+            <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
+                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
+                    <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Venue Details</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 120px;">Venue</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["venue_name"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Type</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["venue_type"].replace("_", " ").title()}</td></tr>
+                    </table>
+                </div>
+                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 12px;">
+                    <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Reservation Details</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 120px;">Date</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["date"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["time"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Guests</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["guests"]}</td></tr>
+                    </table>
+                </div>
+                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 12px;">
+                    <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Guest Information</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 120px;">Name</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["guest_name"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Email</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;"><a href="mailto:{booking["guest_email"]}" style="color: #6B7B8C;">{booking["guest_email"]}</a></td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Phone</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;"><a href="tel:{booking["guest_phone"]}" style="color: #6B7B8C;">{booking["guest_phone"]}</a></td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Dietary</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{dietary_text}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Allergies</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{allergies_text}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Special Req.</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{special_text}</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;">golfinmallorca.com</a></p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 8px 0 0 0;"><a href="mailto:contact@golfinmallorca.com" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;">contact@golfinmallorca.com</a> | <a href="tel:+34620987575" style="color: rgba(255,255,255,0.4) !important; text-decoration: none !important;">+34 620 987 575</a></p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    try:
+        await asyncio.to_thread(resend.Emails.send, {
+            "from": SENDER_EMAIL,
+            "to": ["contact@golfinmallorca.com"],
+            "subject": f"Booking Request: {booking['venue_name']} - {booking['date']} ({booking['guests']} guests)",
+            "html": html_content
+        })
+    except Exception as e:
+        logger.error(f"Failed to send booking admin email: {e}")
+
+
+async def send_booking_confirmation_email(booking: dict):
+    """Send confirmation email to the customer."""
+    logo_url = "https://golfinmallorca.com/api/uploads/logo_email_v2.jpg"
+    html_content = f"""
+    <html>
+    <head><meta name="format-detection" content="telephone=no"><meta name="x-apple-disable-message-reformatting"></head>
+    <body style="font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0; margin: 0; background-color: #F5F2EB;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 16px 16px 0 0; text-align: center; border-bottom: 2px solid #E5E5E5;">
+                <img src="{logo_url}" alt="golfinmallorca.com" style="width: 180px; height: auto; display: block; margin: 0 auto;" />
+            </div>
+            <div style="background-color: #ffffff; padding: 30px 30px 10px 30px;">
+                <h2 style="color: #2D2D2D; font-size: 22px; margin: 0 0 8px 0; font-weight: 500;">Booking Request Received</h2>
+                <p style="color: #6B7B8C; font-size: 15px; line-height: 1.6; margin: 0;">
+                    Thank you, {booking["guest_name"]}! We have received your reservation request and will get back to you shortly.
+                </p>
+            </div>
+            <div style="background-color: #ffffff; padding: 10px 30px 30px 30px;">
+                <div style="background-color: #F5F2EB; border-radius: 12px; padding: 24px; margin-top: 16px;">
+                    <p style="color: #8B8680; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 16px 0;">Your Reservation Details</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px; width: 100px;">Venue</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px; font-weight: 600;">{booking["venue_name"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Date</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["date"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Time</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["time"]}</td></tr>
+                        <tr><td style="padding: 8px 0; color: #8B8680; font-size: 13px;">Guests</td><td style="padding: 8px 0; color: #2D2D2D; font-size: 14px;">{booking["guests"]}</td></tr>
+                    </table>
+                </div>
+                <div style="background: linear-gradient(135deg, #6B7B8C 0%, #8B9BAC 100%); border-radius: 12px; padding: 24px; margin-top: 16px; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; margin: 0;">
+                        <strong>Please note:</strong> All bookings are subject to the restaurant's availability. We will confirm your reservation within <strong>72 hours</strong>. In many cases, we'll get back to you much sooner.
+                    </p>
+                </div>
+                <p style="color: #8B8680; font-size: 13px; line-height: 1.6; margin-top: 20px; text-align: center;">
+                    If you have any questions, don't hesitate to contact us at<br/>
+                    <a href="mailto:contact@golfinmallorca.com" style="color: #6B7B8C;">contact@golfinmallorca.com</a> or
+                    <a href="tel:+34620987575" style="color: #6B7B8C;">+34 620 987 575</a>
+                </p>
+            </div>
+            <div style="background-color: #3D3D3D; padding: 24px 30px; border-radius: 0 0 16px 16px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin: 0 0 4px 0;"><a href="https://golfinmallorca.com" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important;">golfinmallorca.com</a> &mdash; Your Gateway to Luxury Golf in Mallorca</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    try:
+        await asyncio.to_thread(resend.Emails.send, {
+            "from": SENDER_EMAIL,
+            "to": [booking["guest_email"]],
+            "subject": f"Booking Request Received - {booking['venue_name']} | golfinmallorca.com",
+            "html": html_content
+        })
+    except Exception as e:
+        logger.error(f"Failed to send booking confirmation email: {e}")
+
 
 @app.on_event("shutdown")
 async def shutdown_db_client():

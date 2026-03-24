@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
+import { BookingRequestModal } from './BookingRequestModal';
 
 const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
   <div
@@ -201,6 +202,7 @@ export const RestaurantPartners = () => {
   const { language, t } = useLanguage();
   const { restaurants, loading, getDisplayedItems } = useData();
   const [quickViewItem, setQuickViewItem] = useState(null);
+  const [bookingItem, setBookingItem] = useState(null);
 
   // Apply display limit
   const displayedRestaurants = getDisplayedItems(restaurants, 'restaurants');
@@ -257,6 +259,15 @@ export const RestaurantPartners = () => {
         type="restaurant"
         language={language}
         t={t}
+        onBooking={(item) => { setQuickViewItem(null); setBookingItem(item); }}
+      />
+
+      {/* Booking Request Modal */}
+      <BookingRequestModal
+        isOpen={!!bookingItem}
+        onClose={() => setBookingItem(null)}
+        venue={bookingItem}
+        venueType="restaurant"
       />
     </>
   );

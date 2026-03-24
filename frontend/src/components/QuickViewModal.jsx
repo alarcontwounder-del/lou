@@ -1,7 +1,7 @@
 import React from 'react';
 import { X, MapPin, ExternalLink, Navigation, Flag, Trophy, Utensils, Coffee, Umbrella, Croissant } from 'lucide-react';
 
-export const QuickViewModal = ({ isOpen, onClose, item, type, language, t }) => {
+export const QuickViewModal = ({ isOpen, onClose, item, type, language, t, onBooking }) => {
   if (!isOpen || !item) return null;
 
   const desc = item.description ? (item.description[language] || item.description.en || '') : '';
@@ -103,16 +103,26 @@ export const QuickViewModal = ({ isOpen, onClose, item, type, language, t }) => 
           )}
 
           {/* CTA — replaces "Hover for details" */}
-          <a
-            href={bookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 bg-brand-charcoal text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-charcoal/90 transition-all"
-            data-testid="quick-view-cta"
-          >
-            {labels[type] || 'Book Now'}
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          {onBooking && (type === 'restaurant' || type === 'beach_club') ? (
+            <button
+              onClick={function() { onBooking(item); }}
+              className="w-full flex items-center justify-center gap-2 bg-brand-charcoal text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-charcoal/90 transition-all"
+              data-testid="quick-view-book"
+            >
+              {labels[type] || 'Book Now'}
+            </button>
+          ) : (
+            <a
+              href={bookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-brand-charcoal text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-charcoal/90 transition-all"
+              data-testid="quick-view-cta"
+            >
+              {labels[type] || 'Book Now'}
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
         </div>
       </div>
     </div>
