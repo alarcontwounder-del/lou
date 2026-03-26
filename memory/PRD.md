@@ -31,7 +31,12 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - SEO meta tags, OG tags, Twitter cards
 - Sitemap.xml and robots.txt
 
-## Recent Changes (March 24, 2026)
+## Recent Changes (March 26, 2026)
+- **Critical SEO Fix: Inline Route Script**: Added synchronous JavaScript in `index.html` `<head>` that sets correct canonical, title, description, OG, Twitter, and hreflang tags based on the URL path. This executes during Google's render phase, fixing the root cause of "Alternate page with proper canonical tag" (11 pages) and "Crawled - currently not indexed" (16 pages).
+- Root cause identified: Deployment serves the same `index.html` for all SPA routes (ignoring pre-rendered subdirectory files), so every page had homepage meta tags.
+- Added IDs to all hreflang tags for dynamic page-specific updates.
+
+## Changes from March 24, 2026
 - **SEO Indexing Fix**: Fixed Google Search Console "0 pages indexed" issue
   - Removed 7 hash-based URLs from sitemap (Google can't index `/#section` fragments)
   - Fixed duplicate canonical tags — all pages now update single `#main-canonical` element

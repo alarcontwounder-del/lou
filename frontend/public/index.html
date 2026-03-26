@@ -20,11 +20,11 @@
         <link rel="preload" as="image" href="https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG" />
         
         <!-- Hreflang for multi-language -->
-        <link rel="alternate" hreflang="en" href="https://golfinmallorca.com/" />
-        <link rel="alternate" hreflang="de" href="https://golfinmallorca.com/?lang=de" />
-        <link rel="alternate" hreflang="fr" href="https://golfinmallorca.com/?lang=fr" />
-        <link rel="alternate" hreflang="sv" href="https://golfinmallorca.com/?lang=sv" />
-        <link rel="alternate" hreflang="x-default" href="https://golfinmallorca.com/" />
+        <link id="hreflang-en" rel="alternate" hreflang="en" href="https://golfinmallorca.com/" />
+        <link id="hreflang-de" rel="alternate" hreflang="de" href="https://golfinmallorca.com/?lang=de" />
+        <link id="hreflang-fr" rel="alternate" hreflang="fr" href="https://golfinmallorca.com/?lang=fr" />
+        <link id="hreflang-sv" rel="alternate" hreflang="sv" href="https://golfinmallorca.com/?lang=sv" />
+        <link id="hreflang-default" rel="alternate" hreflang="x-default" href="https://golfinmallorca.com/" />
         
         <!-- Open Graph / Social Media -->
         <meta property="og:type" content="website" />
@@ -48,6 +48,44 @@
         <meta name="twitter:description" content="Book tee times at 16 premium golf courses in Mallorca. Golf holiday packages, luxury resorts & concierge service since 2003." />
         <meta name="twitter:image" content="https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG" />
         <meta name="twitter:image:alt" content="Golf Son Gual Mallorca - Beautiful championship golf course" />
+        
+        <!-- SEO Route Script: Sets correct meta tags per URL before Google extracts them -->
+        <script>
+        (function(){
+          var S='https://golfinmallorca.com',p=window.location.pathname,m=null;
+          function cap(s){return s.split('-').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1)}).join(' ')}
+          if(p.indexOf('/golf-courses/')===0){
+            var id=p.replace('/golf-courses/','').replace(/\/$/,'');
+            if(id){var n=cap(id);m={t:n+' | Golf in Mallorca - Book Tee Times',d:'Book tee times at '+n+' in Mallorca. Course details, green fees, reviews and expert golf concierge since 2003.',u:S+'/golf-courses/'+id,y:'place'};}
+          }else if(p.indexOf('/blog/')===0){
+            var sl=p.replace('/blog/','').replace(/\/$/,'');
+            if(sl){var bn=cap(sl);m={t:bn+' | golfinmallorca.com',d:bn+' - Expert golf travel tips and guides for Mallorca by golfinmallorca.com.',u:S+'/blog/'+sl,y:'article'};}
+          }else if(p==='/golf-holidays-mallorca'){
+            m={t:'Golf Holidays in Mallorca | Packages, Deals & Stay and Play',d:'Plan your perfect golf holiday in Mallorca. Stay and play packages, luxury golf resort deals, weekend breaks, group trips. Expert concierge since 2003.',u:S+'/golf-holidays-mallorca',y:'website'};
+          }else if(p==='/book-tee-times'){
+            m={t:'Book Tee Times in Mallorca | 16 Courses | Instant Confirmation',d:'Book tee times at 16 golf courses in Mallorca with instant confirmation. Green fees from EUR47. Discount tee times and group bookings.',u:S+'/book-tee-times',y:'website'};
+          }else if(p==='/terms'){
+            m={t:'Terms of Service | golfinmallorca.com',d:'Terms of service for golfinmallorca.com. Booking conditions, cancellation policies, payment terms.',u:S+'/terms',y:'website'};
+          }else if(p==='/privacy'){
+            m={t:'Privacy Policy | golfinmallorca.com',d:'Privacy policy for golfinmallorca.com. How we collect, use, and protect your personal data under GDPR.',u:S+'/privacy',y:'website'};
+          }
+          if(m){
+            document.title=m.t;
+            var c=document.getElementById('main-canonical');if(c)c.href=m.u;
+            function setM(a,n,v){var e=document.querySelector('meta['+a+'="'+n+'"]');if(e)e.setAttribute('content',v);}
+            setM('name','description',m.d);
+            setM('property','og:title',m.t);setM('property','og:description',m.d);
+            setM('property','og:url',m.u);setM('property','og:type',m.y);
+            setM('name','twitter:title',m.t);setM('name','twitter:description',m.d);
+            var base=m.u.replace(/\/$/,'');
+            var he=document.getElementById('hreflang-en');if(he)he.href=base;
+            var hd=document.getElementById('hreflang-de');if(hd)hd.href=base+'?lang=de';
+            var hf=document.getElementById('hreflang-fr');if(hf)hf.href=base+'?lang=fr';
+            var hs=document.getElementById('hreflang-sv');if(hs)hs.href=base+'?lang=sv';
+            var hx=document.getElementById('hreflang-default');if(hx)hx.href=base;
+          }
+        })();
+        </script>
         
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
