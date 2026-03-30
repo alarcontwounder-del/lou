@@ -31,7 +31,11 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - SEO meta tags, OG tags, Twitter cards
 - Sitemap.xml and robots.txt
 
-## Recent Changes (March 26, 2026)
+## Recent Changes (March 30, 2026)
+- **Language Dropdown Glass Effect**: Replaced Shadcn DropdownMenu with custom hover-based dropdown matching WeatherBadge's glass/translucent style (bg-white/10 backdrop-blur-xl on hero, bg-white/90 when scrolled)
+- **21 New Hotels Added**: Seeded 21 new hotels from user's PDF list (total now 59). All with multi-language descriptions (EN/DE/FR/SV), location, nearest golf course, distance, images. Added null-safe checks for `deal` and `description` fields across HotelPartners, RestaurantPartners, BeachClubPartners components.
+
+## Changes from March 26, 2026
 - **Critical SEO Fix: Inline Route Script**: Added synchronous JavaScript in `index.html` `<head>` that sets correct canonical, title, description, OG, Twitter, and hreflang tags based on the URL path. This executes during Google's render phase, fixing the root cause of "Alternate page with proper canonical tag" (11 pages) and "Crawled - currently not indexed" (16 pages).
 - Root cause identified: Deployment serves the same `index.html` for all SPA routes (ignoring pre-rendered subdirectory files), so every page had homepage meta tags.
 - Added IDs to all hreflang tags for dynamic page-specific updates.
