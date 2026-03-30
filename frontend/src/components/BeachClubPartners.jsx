@@ -75,14 +75,14 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
           </h3>
 
           <p className="text-stone-500 text-sm mb-4 line-clamp-2">
-            {club.description[language] || club.description.en}
+            {(club.description && club.description[language]) || (club.description && club.description.en) || ""}
           </p>
 
           {/* Deal Preview */}
           {club.deal && (
             <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
               <p className="text-xs font-medium text-stone-600 line-clamp-1">
-                {club.deal[language] || club.deal.en}
+                {(club.deal && club.deal[language]) || (club.deal && club.deal.en) || ""}
               </p>
             </div>
           )}
@@ -115,7 +115,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
           </div>
           
           <p className="text-stone-300 text-sm leading-relaxed mb-4">
-            {club.description[language] || club.description.en}
+            {(club.description && club.description[language]) || (club.description && club.description.en) || ""}
           </p>
 
           {/* Location - Clickable */}
@@ -136,7 +136,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4">
               <p className="text-white text-xs uppercase tracking-wider mb-1 opacity-80">{t('offers.exclusive')}</p>
               <p className="text-white font-semibold text-sm">
-                {club.deal[language] || club.deal.en}
+                {(club.deal && club.deal[language]) || (club.deal && club.deal.en) || ""}
               </p>
             </div>
           )}

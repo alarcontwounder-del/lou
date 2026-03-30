@@ -83,7 +83,7 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => (
           </h3>
 
           <p className="text-stone-500 text-sm mb-4 line-clamp-2">
-            {hotel.description[language] || hotel.description.en}
+            {(hotel.description && hotel.description[language]) || (hotel.description && hotel.description.en) || ''}
           </p>
 
           {/* Pricing */}
@@ -156,7 +156,7 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => (
           {/* Deal */}
           <div className="bg-white/10 rounded-lg p-3 mt-4">
             <p className="text-sm font-medium">
-              {hotel.deal[language] || hotel.deal.en}
+              {(hotel.deal && hotel.deal[language]) || (hotel.deal && hotel.deal.en) || ''}
             </p>
           </div>
 

@@ -84,7 +84,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
           </h3>
 
           <p className="text-stone-500 text-sm mb-4 line-clamp-2">
-            {restaurant.description[language] || restaurant.description.en}
+            {(restaurant.description && restaurant.description[language]) || (restaurant.description && restaurant.description.en) || ""}
           </p>
 
           {/* Pricing */}
@@ -169,7 +169,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
           <div className="bg-white/10 rounded-lg p-3 mt-4">
             <p className="text-sm font-medium flex items-center gap-2">
               <Wine className="w-4 h-4" />
-              {restaurant.deal[language] || restaurant.deal.en}
+              {(restaurant.deal && restaurant.deal[language]) || (restaurant.deal && restaurant.deal.en) || ""}
             </p>
           </div>
 

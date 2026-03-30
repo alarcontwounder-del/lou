@@ -3,12 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Menu, X, ChevronDown, Settings, Search } from 'lucide-react';
 import { WeatherBadge } from './WeatherBadge';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './ui/dropdown-menu';
 
 const languages = [
   { code: 'en', label: 'EN', flag: '🇬🇧' },
@@ -16,6 +10,62 @@ const languages = [
   { code: 'fr', label: 'FR', flag: '🇫🇷' },
   { code: 'se', label: 'SE', flag: '🇸🇪' },
 ];
+
+const LanguageDropdown = ({ languages, currentLang, language, changeLanguage, isScrolled, isLight }) => {
+  const [open, setOpen] = useState(false);
+  const light = isScrolled || isLight;
+
+  const panelClass = light
+    ? 'bg-white/90 backdrop-blur-xl border-stone-200/80 shadow-lg'
+    : 'bg-white/10 backdrop-blur-xl border-white/15 shadow-2xl';
+
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button
+        className={`flex items-center gap-1.5 px-4 py-2 rounded-full border transition-colors duration-300 text-sm ${
+          isScrolled
+            ? 'border-stone-200 text-stone-700 hover:border-brand-slate'
+            : 'border-white/50 text-white hover:border-white'
+        }`}
+        data-testid="language-selector"
+        onClick={() => setOpen(!open)}
+      >
+        <span className="text-sm font-semibold">{currentLang?.label}</span>
+        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open && (
+        <div
+          className={`absolute right-0 top-full mt-2 rounded-2xl border overflow-hidden z-50 w-36 ${panelClass}`}
+          data-testid="language-dropdown-panel"
+        >
+          <div className="py-1">
+            {languages.map((lang) => {
+              const isActive = language === lang.code;
+              const textClass = light
+                ? (isActive ? 'text-stone-900 font-semibold' : 'text-stone-700')
+                : (isActive ? 'text-white font-semibold' : 'text-white/80');
+              const hoverClass = light ? 'hover:bg-stone-100/50' : 'hover:bg-white/10';
+              const activeClass = isActive ? (light ? 'bg-stone-100/60' : 'bg-white/10') : '';
+
+              return (
+                <button
+                  key={lang.code}
+                  onClick={() => { changeLanguage(lang.code); setOpen(false); }}
+                  className={`w-full flex items-center gap-2.5 px-3.5 py-2 transition-colors cursor-pointer ${hoverClass} ${activeClass}`}
+                  data-testid={`lang-${lang.code}`}
+                >
+                  <span className="text-sm">{lang.flag}</span>
+                  <span className={`text-xs ${textClass}`}>{lang.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearchClick, onPlanTrip, variant }) => {
   const isLight = variant === 'light';
@@ -176,33 +226,15 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             {t('nav.contact')}
           </button>
 
-          {/* Language Selector */}
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full border transition-colors duration-300 text-sm ${
-                isScrolled
-                  ? 'border-stone-200 text-stone-700 hover:border-brand-slate'
-                  : 'border-white/50 text-white hover:border-white'
-              }`}
-              data-testid="language-selector"
-            >
-              <span className="text-sm font-semibold">{currentLang?.label}</span>
-              <ChevronDown className="w-4 h-4" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-white">
-              {languages.map((lang) => (
-                <DropdownMenuItem
-                  key={lang.code}
-                  onClick={() => changeLanguage(lang.code)}
-                  className={`cursor-pointer ${language === lang.code ? 'bg-brand-slate/20' : ''}`}
-                  data-testid={`lang-${lang.code}`}
-                >
-                  <span className="mr-2">{lang.flag}</span>
-                  {lang.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {/* Language Selector — Glass effect matching Weather dropdown */}
+          <LanguageDropdown
+            languages={languages}
+            currentLang={currentLang}
+            language={language}
+            changeLanguage={changeLanguage}
+            isScrolled={isScrolled}
+            isLight={isLight}
+          />
 
           {/* Weather Badge */}
           <WeatherBadge isScrolled={isScrolled || isLight} />
