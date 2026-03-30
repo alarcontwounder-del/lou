@@ -9,7 +9,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - **Storage**: Emergent Integrations Object Storage
 - **Communications**: Resend SDK (verified domain)
 - **Payments**: Stripe API (LIVE MODE)
-- **Database**: MongoDB
+- **Database**: MongoDB (DB: test_database)
 
 ## What's Been Implemented (Completed)
 - Full golf course catalog with 16 individual landing pages
@@ -30,28 +30,13 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Schema.org structured data (Organization, GolfCourse, LocalBusiness)
 - SEO meta tags, OG tags, Twitter cards
 - Sitemap.xml and robots.txt
+- Language Dropdown Glass Effect (custom hover-based dropdown matching WeatherBadge style)
+- SEO Pre-rendering via custom Playwright-based prerender.js script
+- Dynamic Inline SEO Script in index.html for Googlebot rendering
+- 59 Hotels total (38 original + 21 newly added) with full data
 
 ## Recent Changes (March 30, 2026)
-- **Language Dropdown Glass Effect**: Replaced Shadcn DropdownMenu with custom hover-based dropdown matching WeatherBadge's glass/translucent style (bg-white/10 backdrop-blur-xl on hero, bg-white/90 when scrolled)
-- **21 New Hotels Added**: Seeded 21 new hotels from user's PDF list (total now 59). All with multi-language descriptions (EN/DE/FR/SV), location, nearest golf course, distance, images. Added null-safe checks for `deal` and `description` fields across HotelPartners, RestaurantPartners, BeachClubPartners components.
-
-## Changes from March 26, 2026
-- **Critical SEO Fix: Inline Route Script**: Added synchronous JavaScript in `index.html` `<head>` that sets correct canonical, title, description, OG, Twitter, and hreflang tags based on the URL path. This executes during Google's render phase, fixing the root cause of "Alternate page with proper canonical tag" (11 pages) and "Crawled - currently not indexed" (16 pages).
-- Root cause identified: Deployment serves the same `index.html` for all SPA routes (ignoring pre-rendered subdirectory files), so every page had homepage meta tags.
-- Added IDs to all hreflang tags for dynamic page-specific updates.
-
-## Changes from March 24, 2026
-- **SEO Indexing Fix**: Fixed Google Search Console "0 pages indexed" issue
-  - Removed 7 hash-based URLs from sitemap (Google can't index `/#section` fragments)
-  - Fixed duplicate canonical tags — all pages now update single `#main-canonical` element
-  - Added canonical URLs to TermsPage and PrivacyPage (were missing)
-  - Updated all sitemap lastmod dates
-  - Sitemap now has 31 clean, real page URLs
-- **SEO Pre-rendering**: Added build-time pre-rendering for all 30 sub-pages
-  - Each route gets its own `index.html` with correct title, description, canonical, OG/Twitter tags
-  - Runs automatically after `craco build` via `postbuild` script (`prerender.js`)
-  - No puppeteer/browser dependency — pure Node.js string replacement
-  - Covers: 16 golf courses, 10 blog posts, 4 static pages
+- **21 New Hotels Updated**: Replaced stock images with real hotel-specific photos from Pexels/Unsplash (unique per hotel). Added July pricing displayed as "From €[price]" instead of discount % banners. Added category tags, region tags, and multilang deal text for all 21 new hotels, matching existing card format.
 
 ## Pending / Blocked Items
 - Google Business Profile suspended (user must appeal with Google)
@@ -59,12 +44,12 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Hero Video on homepage (waiting for user to provide video file)
 
 ## Backlog (P2/P3)
-- Refactor `TripPlanner.jsx` (~800 lines → smaller components)
+- Refactor `TripPlanner.jsx` (~800 lines -> smaller components)
 - Refactor `server.py` (extract HTML email templates, >2300 lines)
 - Golf Packages page (bundle course + hotel deals)
-- TheFork B2B API integration (if user gets developer account)
 
 ## Key API Endpoints
+- `GET /api/all-partners` — Fetches all partner data (59 hotels, restaurants, etc.)
 - `POST /api/booking-request` — Restaurant/Beach Club reservations + Resend emails
 - `POST /api/display-settings` — Content Manager visibility/limits
 - `GET /api/golf-courses/:id` — Individual course data
@@ -74,7 +59,13 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - `golf_courses`, `hotels`, `restaurants`, `beach_clubs`, `cafe_bars` — with `display_order`, `is_active`
 - `booking_requests` — `{id, venue_id, venue_name, venue_type, date, time, guests, name, email, phone, dietary_preferences, allergies, special_requests, created_at}`
 
+## Hotel Data Schema
+- Old hotels (38): `{id, name, type, description, image, location, deal, original_price, offer_price, discount_percent, contact_url, is_active, display_order, distance_km, nearest_golf, category?, region?}`
+- New hotels (21): `{id, name, type, description, image, location, deal, offer_price, contact_url, is_active, display_order, distance_km, nearest_golf, category, region}`
+- New hotels use "From €X" display (no discount_percent/original_price)
+
 ## Critical Notes
 - **PRODUCTION ENVIRONMENT**: Stripe is in LIVE mode. Be extremely cautious.
-- **Deployment**: Changes must be pushed via "Deploy" → "Replace deployment" → "Existing database"
+- **Database**: Active MongoDB database is `test_database` (NOT `golf_mallorca`)
+- **Deployment**: Changes must be pushed via "Deploy" -> "Replace deployment" -> "Existing database"
 - **After SEO fix deployment**: Resubmit sitemap in Google Search Console
