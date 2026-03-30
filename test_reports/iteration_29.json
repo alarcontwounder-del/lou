@@ -1,0 +1,83 @@
+{
+  "summary": "Comprehensive testing of 21 new hotels update complete. All 59 hotels render correctly. New hotels display 'FROM €[price]' pricing (not discount badges), show category and region tags, have unique real photos from Pexels/Unsplash, and deal text on card back. Old hotels retain 'Save X%' discount badges. QuickView modal works for new hotels.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "backend_api": {
+      "all_partners_endpoint": "PASS - Returns 200 with 59 hotels",
+      "hotels_endpoint": "PASS - Returns 200 with 59 hotels",
+      "new_hotels_present": "PASS - All 21 new hotel IDs found",
+      "new_hotels_offer_price": "PASS - All 21 have offer_price field",
+      "new_hotels_no_discount": "PASS - None have discount_percent",
+      "new_hotels_category": "PASS - All 21 have category field",
+      "new_hotels_region": "PASS - All 21 have region field",
+      "new_hotels_deal": "PASS - All 21 have multilang deal dict",
+      "new_hotels_unique_images": "PASS - All 21 have unique image URLs",
+      "old_hotels_discount": "PASS - All 38 old hotels have discount_percent"
+    },
+    "frontend_ui": {
+      "hotels_section_renders": "PASS - 59 hotel cards displayed",
+      "new_hotels_from_pricing": "PASS - Shows 'FROM €X' text",
+      "new_hotels_category_tags": "PASS - Category tags visible (e.g., 'Ultra Luxury', '5-Star Golf Resort')",
+      "new_hotels_region_tags": "PASS - Region tags visible (e.g., 'North', 'Southwest')",
+      "old_hotels_save_badge": "PASS - 'Save 25%' badge visible on st-regis",
+      "quickview_modal": "PASS - Opens for new hotels, shows category/region/price",
+      "no_console_errors": "PASS - No JavaScript errors"
+    }
+  },
+
+  "passed_tests": [
+    "17/17 backend pytest tests passed",
+    "6/6 frontend Playwright tests passed",
+    "59 hotels render on homepage",
+    "21 new hotels have 'FROM €X' pricing",
+    "21 new hotels have category and region tags",
+    "21 new hotels have unique images (no duplicates)",
+    "21 new hotels have multilang deal text",
+    "38 old hotels retain 'Save X%' discount badges",
+    "QuickView modal works for new hotels",
+    "No console errors on page load"
+  ],
+
+  "test_report_links": [
+    "/app/backend/tests/test_hotels_update.py",
+    "/app/test_reports/pytest/pytest_hotels_update.xml"
+  ],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [
+    "HotelPartners.jsx correctly handles both pricing scenarios: offer_price shows 'FROM €X', discount_percent shows 'Save X%' badge",
+    "Category and region tags render conditionally when fields exist (lines 46-58)",
+    "Deal text displays on card back with null check (line 159)",
+    "All 21 new hotels have real photos from Pexels/Unsplash (no stock placeholders)"
+  ],
+
+  "updated_files": [
+    "/app/backend/tests/test_hotels_update.py"
+  ],
+
+  "success_rate": {
+    "backend": "100% - 17/17 tests passed",
+    "frontend": "100% - 6/6 tests passed"
+  },
+
+  "test_credentials": {},
+
+  "seed_data_creation": "21 new hotels updated via update_new_hotels.py (images, offer_price) and update_hotel_extras.py (category, region, deal)",
+
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "All 59 hotels (38 old + 21 new) fully tested. New hotels use offer_price for 'FROM €X' display, old hotels use discount_percent for 'Save X%' badges. QuickView modal shows category, region, deal, and pricing. All images are unique real photos from Pexels/Unsplash."
+}
