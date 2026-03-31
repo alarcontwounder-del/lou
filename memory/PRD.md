@@ -36,6 +36,9 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
 ## Recent Changes (March 31, 2026)
+- **Google Analytics GA4**: Integrated measurement ID `G-FZ31E87PHL` in index.html
+- **Hotels Dashboard Tab**: Added "Hotels" tab to admin backoffice with on/off toggles, search, and active/inactive filters (57 active, 2 inactive)
+- **Cookie Popup Transparency**: Restored to `bg-stone-900/60` (was incorrectly changed to `/85`)
 - **Code Quality Refactoring (March 31)**: Applied all fixes from automated Code Quality Report:
   - Replaced all `var` with `const`/`let` in `WeatherBadge.jsx`
   - Fixed array-index-as-key anti-patterns in `GolfCourses.jsx`, `GolfCourseLanding.jsx`, `BlogPostPage.jsx`, `ReviewSection.jsx`
@@ -54,7 +57,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 
 ## Backlog (P2/P3)
 - Refactor `TripPlanner.jsx` (~800 lines -> smaller components)
-- Refactor `server.py` (extract HTML email templates, >2300 lines)
+- Refactor `server.py` (>2300 lines, could be split)
 - Golf Packages page (bundle course + hotel deals)
 
 ## Key API Endpoints
