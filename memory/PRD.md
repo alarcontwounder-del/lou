@@ -36,6 +36,12 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
 ## Recent Changes (March 31, 2026)
+- **Code Quality Refactoring (March 31)**: Applied all fixes from automated Code Quality Report:
+  - Replaced all `var` with `const`/`let` in `WeatherBadge.jsx`
+  - Fixed array-index-as-key anti-patterns in `GolfCourses.jsx`, `GolfCourseLanding.jsx`, `BlogPostPage.jsx`, `ReviewSection.jsx`
+  - Fixed `useEffect` dependency in `use-toast.js`
+  - Fixed Python test linting: F541 (f-strings without placeholders), E712 (boolean comparisons), E722 (bare except)
+  - All ESLint and ruff linting passes clean
 - **Price Range Filter**: Added to hotels section — "All", "Under €200", "€200–€400", "€400+" filter pills + "Sort by Price" toggle (cycles asc/desc/off). Shows hotel count.
 - **Greyed-Out Inactive Cards**: When admin sets `is_active=false` on any partner (hotel/restaurant/beach club/café), the card turns grayscale, shows "Coming Soon" badge, disables flip animation, QuickView, booking links, and maps. Inactive cards sort to end of grid. Applied across all 4 partner types.
 - **Search Fix**: Hotel search results now open hotel websites on click (added `contact_url` fallback to search API).
