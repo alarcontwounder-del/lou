@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from './ui/select';
 import axios from 'axios';
+import { trackEvent } from '../lib/analytics';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -45,6 +46,7 @@ export const Contact = () => {
         inquiry_type: 'general',
       });
       setSuccess(true);
+      trackEvent('contact_form_submit', { country: formData.country });
       toast.success(t('contact.success'));
       setFormData({ name: '', email: '', phone: '', country: '', message: '' });
     } catch (error) {

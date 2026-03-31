@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Calendar, Clock, Users, User, Mail, Phone, UtensilsCrossed, AlertCircle, MessageSquare, Check, Loader2 } from 'lucide-react';
 import axios from 'axios';
+import { trackEvent } from '../lib/analytics';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -58,6 +59,7 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
       special_requests: form.special_requests
     }).then(function() {
       setStatus('success');
+      trackEvent('booking_request_submit', { venue: venue.name, venue_type: venueType, guests: form.guests });
     }).catch(function() {
       setStatus('error');
     });

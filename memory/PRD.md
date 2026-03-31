@@ -36,7 +36,13 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
 ## Recent Changes (March 31, 2026)
-- **Google Analytics GA4**: Integrated measurement ID `G-FZ31E87PHL` in index.html
+- **Google Analytics GA4**: Integrated measurement ID `G-FZ31E87PHL` in index.html with custom conversion events:
+  - `book_tee_time_click` (Hero CTA)
+  - `trip_planner_open` / `trip_planner_submit` (Trip Planner)
+  - `booking_request_submit` (Restaurant/Beach Club reservations)
+  - `contact_form_submit` (Contact form)
+  - `newsletter_signup` (Newsletter)
+  - `course_booking_click` (Golf course card bookings)
 - **Hotels Dashboard Tab**: Added "Hotels" tab to admin backoffice with on/off toggles, search, and active/inactive filters (57 active, 2 inactive)
 - **Cookie Popup Transparency**: Restored to `bg-stone-900/60` (was incorrectly changed to `/85`)
 - **Code Quality Refactoring (March 31)**: Applied all fixes from automated Code Quality Report:

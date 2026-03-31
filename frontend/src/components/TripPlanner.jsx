@@ -3,6 +3,7 @@ import { X, Hotel, UtensilsCrossed, Umbrella, Users, ChevronRight, ChevronLeft, 
 import { Calendar } from './ui/calendar';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { trackEvent } from '../lib/analytics';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -381,6 +382,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         transfer_type: form.transfer_type || null,
       });
       setSubmitted(true);
+      trackEvent('trip_planner_submit', { services: form.services.join(','), budget: form.budget, group_size: form.group_size });
       toast.success('Trip request sent successfully!');
     } catch {
       toast.error('Something went wrong. Please try again.');

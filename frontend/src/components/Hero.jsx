@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { CalendarDays } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 export const Hero = ({ onPlanTrip }) => {
   const { t } = useLanguage();
@@ -10,6 +11,15 @@ export const Hero = ({ onPlanTrip }) => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleBookTeeTime = () => {
+    trackEvent('book_tee_time_click', { location: 'hero' });
+  };
+
+  const handlePlanTrip = () => {
+    trackEvent('trip_planner_open', { location: 'hero' });
+    onPlanTrip();
   };
 
   return (
@@ -59,6 +69,7 @@ export const Hero = ({ onPlanTrip }) => {
                 href="https://golfinmallorca.greenfee365.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleBookTeeTime}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-white text-stone-800 hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl"
                 data-testid="hero-book-tee-time"
               >
@@ -66,7 +77,7 @@ export const Hero = ({ onPlanTrip }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
               <button
-                onClick={onPlanTrip}
+                onClick={handlePlanTrip}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-white/15 backdrop-blur-md text-white border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-lg"
                 data-testid="hero-plan-trip"
               >

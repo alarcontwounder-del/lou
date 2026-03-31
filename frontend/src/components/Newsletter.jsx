@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, User, Globe, ArrowRight, CheckCircle } from 'lucide-react';
 import axios from 'axios';
 import { toast, Toaster } from 'sonner';
+import { trackEvent } from '../lib/analytics';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -39,6 +40,7 @@ export const Newsletter = () => {
         duration: 5000,
         icon: <CheckCircle className="w-5 h-5 text-brand-charcoal" />
       });
+      trackEvent('newsletter_signup', { country: formData.country });
 
       // Reset form
       setFormData({ email: '', name: '', country: '' });

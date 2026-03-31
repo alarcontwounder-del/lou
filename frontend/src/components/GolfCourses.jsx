@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
+import { trackEvent } from '../lib/analytics';
 
 export const CourseCard = ({ course, language, t, onQuickView }) => (
   <div
@@ -171,6 +172,7 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
             href={course.booking_url}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('course_booking_click', { course: course.name, course_id: course.id })}
             className="inline-flex items-center justify-center gap-1.5 bg-white text-stone-800 px-4 py-2 rounded-full text-xs font-semibold hover:bg-white/90 transition-all"
             data-testid={`course-book-${course.id}`}
           >
