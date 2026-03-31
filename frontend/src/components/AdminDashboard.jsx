@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Mail, Users, MessageSquare, LogOut, Star, LayoutGrid, Settings, Image, CreditCard } from 'lucide-react';
+import { X, Mail, Users, MessageSquare, LogOut, Star, LayoutGrid, Settings, Image, CreditCard, Hotel } from 'lucide-react';
 import axios from 'axios';
 import { ContentManager } from './ContentManager';
 import { ContactsTab } from './admin/ContactsTab';
@@ -9,6 +9,7 @@ import { DeleteModal } from './admin/DeleteModal';
 import { DisplaySettingsTab } from './admin/DisplaySettingsTab';
 import { PartnerImagesTab } from './admin/PartnerImagesTab';
 import { PaymentsTab } from './admin/PaymentsTab';
+import { HotelsTab } from './admin/HotelsTab';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -134,6 +135,7 @@ export const AdminDashboard = ({ onClose, user }) => {
     { id: 'contacts', label: 'Contacts', icon: MessageSquare, count: contacts.length },
     { id: 'subscribers', label: 'Subscribers', icon: Mail, count: subscribers.length },
     { id: 'reviews', label: 'Pending Reviews', icon: Star, count: pendingReviews.length },
+    { id: 'hotels', label: 'Hotels', icon: Hotel },
     { id: 'content', label: 'Content Manager', icon: LayoutGrid },
     { id: 'images', label: 'Partner Images', icon: Image },
     { id: 'payments', label: 'Payments', icon: CreditCard },
@@ -227,6 +229,7 @@ export const AdminDashboard = ({ onClose, user }) => {
                   onReject={handleRejectReview}
                 />
               )}
+              {activeTab === 'hotels' && <HotelsTab />}
               {activeTab === 'content' && <ContentManager />}
               {activeTab === 'images' && <PartnerImagesTab />}
               {activeTab === 'payments' && <PaymentsTab />}
