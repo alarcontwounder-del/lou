@@ -139,7 +139,7 @@ body {
   transition: transform 0.6s ease-in-out 0s; /* No delay on flip back */
 }
 
-/* Inactive card: no flip, darker grayscale appearance */
+/* Inactive card: no flip, only image goes B&W */
 .flip-card.inactive-card:hover .flip-card-inner {
   transform: none;
 }
@@ -148,9 +148,8 @@ body {
   pointer-events: none;
 }
 
-.flip-card.inactive-card .flip-card-front {
-  filter: grayscale(100%) brightness(0.55) contrast(0.9);
-  opacity: 0.75;
+.flip-card.inactive-card .flip-card-front img {
+  filter: grayscale(100%) brightness(0.7) contrast(0.95);
 }
 
 .flip-card.inactive-card .location-link {
