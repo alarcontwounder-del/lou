@@ -14,7 +14,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
   >
     <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
-      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl ${inactive ? 'grayscale opacity-60' : ''}`}>
+      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl`}>
         {/* Discount Badge */}
         {!inactive && restaurant.discount_percent && (
           <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -129,7 +129,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
       </div>
 
       {/* Back of Card */}
-      <div className={`flip-card-back rounded-2xl p-6 text-white ${inactive ? 'grayscale opacity-60' : ''}`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+      <div className={`flip-card-back rounded-2xl p-6 text-white`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
         <h3 className="font-heading text-2xl mb-6">{restaurant.name}</h3>
         
         {inactive ? (

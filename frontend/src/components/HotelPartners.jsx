@@ -21,7 +21,7 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => {
     >
       <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
         {/* Front of Card */}
-        <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl ${inactive ? 'grayscale opacity-60' : ''}`}>
+        <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl`}>
           {/* Discount Badge */}
           {!inactive && hotel.discount_percent && (
             <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -139,7 +139,7 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => {
         </div>
 
         {/* Back of Card - only for active */}
-        <div className={`flip-card-back rounded-2xl p-6 text-white ${inactive ? 'grayscale opacity-60' : ''}`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+        <div className={`flip-card-back rounded-2xl p-6 text-white`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
           <h3 className="font-heading text-2xl mb-6">{hotel.name}</h3>
           
           {inactive ? (
@@ -290,16 +290,16 @@ export const HotelPartners = () => {
 
           {/* Price Filter Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8" data-testid="hotel-price-filter">
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 bg-white/40 backdrop-blur-xl border border-stone-200/60 rounded-full p-1.5 shadow-sm">
               {PRICE_FILTERS.map((filter) => (
                 <button
                   key={filter.key}
                   onClick={() => setPriceFilter(filter.key)}
                   data-testid={`price-filter-${filter.key}`}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     priceFilter === filter.key
-                      ? 'bg-stone-800 text-white border-stone-800'
-                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400 hover:text-stone-800'
+                      ? 'bg-stone-800 text-white shadow-md'
+                      : 'text-stone-600 hover:bg-white/70 hover:text-stone-800'
                   }`}
                 >
                   {filter.label[language] || filter.label.en}
@@ -311,10 +311,10 @@ export const HotelPartners = () => {
               <button
                 onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc')}
                 data-testid="price-sort-toggle"
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium transition-all border ${
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all backdrop-blur-xl border shadow-sm ${
                   sortOrder
                     ? 'bg-stone-800 text-white border-stone-800'
-                    : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                    : 'bg-white/40 text-stone-600 border-stone-200/60 hover:bg-white/70 hover:text-stone-800'
                 }`}
               >
                 <ArrowUpDown className="w-3.5 h-3.5" />
