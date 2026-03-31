@@ -1,0 +1,87 @@
+{
+  "summary": "Comprehensive testing of price filter, sort by price, inactive partners, and search booking_url features. All 19 backend tests passed. All 12 frontend tests passed. Price filter pills work correctly, sort toggle cycles through states, 59 hotels displayed, search returns booking_url from contact_url fallback.",
+
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+
+  "test_results": {
+    "backend_api": {
+      "all_partners_endpoint": "PASS - Returns 200 with 59 hotels, all have is_active field",
+      "all_partners_includes_inactive": "PASS - Returns all partners (no is_active filter)",
+      "hotels_under_200": "PASS - 12 hotels with offer_price < €200",
+      "hotels_200_to_400": "PASS - 8 hotels with offer_price €200-€400",
+      "hotels_over_400": "PASS - 4 hotels with offer_price >= €400",
+      "new_hotels_offer_price": "PASS - 21+ new hotels have offer_price (no discount_percent)",
+      "old_hotels_discount": "PASS - 38 old hotels have discount_percent",
+      "search_steigenberger": "PASS - Returns result with booking_url = https://www.steigenberger.com",
+      "search_booking_url_fallback": "PASS - booking_url populated from contact_url",
+      "search_active_only": "PASS - Search returns only active partners"
+    },
+    "frontend_ui": {
+      "hotels_section_visible": "PASS - Hotels section renders",
+      "price_filter_bar": "PASS - All 4 filter pills visible (All, Under €200, €200-€400, €400+)",
+      "sort_toggle": "PASS - Sort by Price toggle visible and cycles: null → asc → desc → null",
+      "hotel_count_59": "PASS - Shows '59 hotels' in filter bar",
+      "filter_click_active": "PASS - Clicking filter changes active state (bg-stone-800)",
+      "hotel_cards_rendered": "PASS - 59 hotel cards displayed",
+      "no_console_errors": "PASS - No JavaScript errors on page"
+    }
+  },
+
+  "passed_tests": [
+    "19/19 backend pytest tests passed",
+    "12/12 frontend Playwright tests passed",
+    "Price filter pills (All, Under €200, €200-€400, €400+) work correctly",
+    "Sort by Price toggle cycles: Sort by Price → Price ↑ → Price ↓ → Sort by Price",
+    "59 hotels displayed with '59 hotels' count in filter bar",
+    "New hotels show 'FROM €X' pricing",
+    "Old hotels show 'Save X%' discount badges",
+    "/api/all-partners returns all partners including inactive (is_active field present)",
+    "/api/search returns only active partners with booking_url from contact_url fallback",
+    "Search 'steigenberger' returns result with booking_url = https://www.steigenberger.com",
+    "Inactive card CSS rules present (.inactive-card with grayscale, no flip, pointer-events-none)",
+    "All partner components (Hotels, Restaurants, BeachClubs, CafeBars) have inactive card handling",
+    "No console errors on homepage"
+  ],
+
+  "test_report_links": [
+    "/app/backend/tests/test_price_filter_inactive.py",
+    "/app/test_reports/pytest/pytest_price_filter.xml"
+  ],
+
+  "action_items": [],
+
+  "critical_code_review_comments": [
+    "HotelPartners.jsx correctly implements price filter with PRICE_FILTERS array and useMemo for filtering",
+    "Sort toggle cycles through null → 'asc' → 'desc' → null correctly",
+    "Inactive cards sorted to end via getDisplayedItems in DataContext.jsx",
+    "All 4 partner components (Hotels, Restaurants, BeachClubs, CafeBars) have consistent inactive card handling",
+    "Search endpoint correctly uses booking_url || contact_url fallback (line 995 in server.py)"
+  ],
+
+  "updated_files": [
+    "/app/backend/tests/test_price_filter_inactive.py"
+  ],
+
+  "success_rate": {
+    "backend": "100% - 19/19 tests passed",
+    "frontend": "100% - 12/12 tests passed"
+  },
+
+  "test_credentials": {},
+
+  "seed_data_creation": "No new seed data created. All 59 hotels are currently active. To test inactive card display, use admin API to set is_active=false on a hotel.",
+
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+
+  "context_for_next_testing_agent": "Price filter and sort features fully tested. All 59 hotels active (no inactive hotels to test greyed-out display). Inactive card CSS and component logic verified in code. Search booking_url fallback from contact_url working. To test inactive card visually, set a hotel to is_active=false via PUT /api/hotels/{id}."
+}

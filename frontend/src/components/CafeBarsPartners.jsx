@@ -4,18 +4,25 @@ import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Coffee, Clock, Croissant, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 
-const CafeBarCard = ({ place, language, t, onQuickView }) => (
+const CafeBarCard = ({ place, language, t, onQuickView }) => {
+  const inactive = place.is_active === false;
+  return (
   <div
-    className="flip-card"
+    className={`flip-card ${inactive ? 'inactive-card' : ''}`}
     data-testid={`cafe-bar-card-${place.id}`}
   >
-    <div className="flip-card-inner">
+    <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
-      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
+      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl ${inactive ? 'grayscale opacity-60' : ''}`}>
         {/* Discount Badge */}
-        {place.discount_percent && (
+        {!inactive && place.discount_percent && (
           <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {place.discount_percent}%
+          </div>
+        )}
+        {inactive && (
+          <div className="absolute top-6 right-6 z-10 bg-stone-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+            Coming Soon
           </div>
         )}
 
@@ -34,6 +41,7 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
             </span>
           </div>
           {/* Quick View Button */}
+          {!inactive && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -45,6 +53,7 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
           >
             <Eye className="w-4 h-4" />
           </button>
+          )}
         </div>
 
         {/* Content */}
@@ -97,9 +106,12 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
           )}
 
           {/* Hover Indicator */}
+          {!inactive && (
           <p className="text-xs text-stone-400 text-center mt-2 italic hidden md:block">
             {t('card.hoverForDetails') || 'Hover for details'}
           </p>
+          )}
+          {!inactive && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -110,11 +122,21 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
             <Eye className="w-3 h-3" />
             View Details
           </button>
+          )}
         </div>
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-2xl p-6 flex flex-col justify-between text-white" style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+      <div className={`flip-card-back rounded-2xl p-6 flex flex-col justify-between text-white ${inactive ? 'grayscale opacity-60' : ''}`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+        {inactive ? (
+          <div className="flex flex-col items-center justify-center h-full">
+            <Coffee className="w-5 h-5 text-stone-300 mb-3" />
+            <h3 className="text-white text-xl font-heading font-semibold mb-4">{place.name}</h3>
+            <p className="text-white/70 text-sm text-center">This partner is not yet available.</p>
+            <p className="text-white/50 text-xs mt-2 text-center">Check back soon for availability.</p>
+          </div>
+        ) : (
+        <>
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Coffee className="w-5 h-5 text-stone-300" />
@@ -177,10 +199,13 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => (
           {t('offers.viewDetails') || 'View Details'}
           <ExternalLink className="w-4 h-4" />
         </a>
+        </>
+        )}
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export const CafeBarsPartners = () => {
   const { t, language } = useLanguage();

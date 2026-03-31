@@ -5,18 +5,25 @@ import { MapPin, ExternalLink, Umbrella, Navigation, Waves, Eye } from 'lucide-r
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
 
-const BeachClubCard = ({ club, language, t, onQuickView }) => (
+const BeachClubCard = ({ club, language, t, onQuickView }) => {
+  const inactive = club.is_active === false;
+  return (
   <div
-    className="flip-card"
+    className={`flip-card ${inactive ? 'inactive-card' : ''}`}
     data-testid={`beach-club-card-${club.id}`}
   >
-    <div className="flip-card-inner">
+    <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
-      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
+      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl ${inactive ? 'grayscale opacity-60' : ''}`}>
         {/* Discount Badge */}
-        {club.discount_percent && (
+        {!inactive && club.discount_percent && (
           <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {club.discount_percent}%
+          </div>
+        )}
+        {inactive && (
+          <div className="absolute top-6 right-6 z-10 bg-stone-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+            Coming Soon
           </div>
         )}
 
@@ -33,6 +40,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
             <span className="text-xs font-medium text-stone-700">Beach Club</span>
           </div>
           {/* Quick View Button */}
+          {!inactive && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -44,6 +52,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
           >
             <Eye className="w-4 h-4" />
           </button>
+          )}
         </div>
 
         {/* Content */}
@@ -88,9 +97,12 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
           )}
 
           {/* Hover Indicator */}
+          {!inactive && (
           <p className="text-xs text-stone-400 text-center mt-2 italic hidden md:block">
             {t('card.hoverForDetails') || 'Hover for details'}
           </p>
+          )}
+          {!inactive && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -101,11 +113,20 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
             <Eye className="w-3 h-3" />
             View Details
           </button>
+          )}
         </div>
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-2xl p-6 flex flex-col justify-between text-white" style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+      <div className={`flip-card-back rounded-2xl p-6 flex flex-col justify-between text-white ${inactive ? 'grayscale opacity-60' : ''}`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+        {inactive ? (
+          <div className="flex flex-col items-center justify-center h-full">
+            <h3 className="text-white text-xl font-heading font-semibold mb-4">{club.name}</h3>
+            <p className="text-white/70 text-sm text-center">This partner is not yet available.</p>
+            <p className="text-white/50 text-xs mt-2 text-center">Check back soon for availability.</p>
+          </div>
+        ) : (
+        <>
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Waves className="w-5 h-5 text-stone-300" />
@@ -160,10 +181,13 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => (
           {t('offers.bookNow')}
           <ExternalLink className="w-4 h-4" />
         </a>
+        </>
+        )}
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export const BeachClubPartners = () => {
   const { t, language } = useLanguage();

@@ -53,14 +53,21 @@ export const DataProvider = ({ children }) => {
     fetchAllData();
   }, []);
 
-  // Helper to get displayed items based on limits
+  // Helper to get displayed items based on limits, with inactive sorted to end
   const getDisplayedItems = (items, limitKey) => {
     const setting = data.displaySettings[limitKey];
-    if (!setting) return items;
-    if (typeof setting === 'object' && setting.show === false) return [];
-    if (typeof setting === 'number') return items.slice(0, setting);
-    if (typeof setting === 'object' && setting.limit) return items.slice(0, setting.limit);
-    return items;
+    let filtered = items;
+    if (setting) {
+      if (typeof setting === 'object' && setting.show === false) return [];
+      if (typeof setting === 'number') filtered = items.slice(0, setting);
+      else if (typeof setting === 'object' && setting.limit) filtered = items.slice(0, setting.limit);
+    }
+    // Sort: active first, inactive last
+    return [...filtered].sort((a, b) => {
+      const aActive = a.is_active !== false ? 0 : 1;
+      const bActive = b.is_active !== false ? 0 : 1;
+      return aActive - bActive;
+    });
   };
 
   return (

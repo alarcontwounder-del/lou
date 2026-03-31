@@ -662,31 +662,31 @@ async def get_partner_offers(type: Optional[str] = None):
     """Get partner offers from MongoDB, falls back to hardcoded data if empty"""
     
     if type == "hotel":
-        cursor = db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-        items = await cursor.to_list(length=100)
+        cursor = db.hotels.find({}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=200)
         if items:
             return items
     elif type == "restaurant":
-        cursor = db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-        items = await cursor.to_list(length=100)
+        cursor = db.restaurants.find({}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=200)
         if items:
             return items
     elif type == "beach_club":
-        cursor = db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-        items = await cursor.to_list(length=100)
+        cursor = db.beach_clubs.find({}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=200)
         if items:
             return items
     elif type == "cafe_bar":
-        cursor = db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1)
-        items = await cursor.to_list(length=100)
+        cursor = db.cafe_bars.find({}, {"_id": 0}).sort("display_order", 1)
+        items = await cursor.to_list(length=200)
         if items:
             return items
     elif type is None:
         # Return all partners combined
-        hotels = await db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-        restaurants = await db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-        beach_clubs = await db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-        cafe_bars = await db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+        hotels = await db.hotels.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+        restaurants = await db.restaurants.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+        beach_clubs = await db.beach_clubs.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+        cafe_bars = await db.cafe_bars.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
         
         all_partners = hotels + restaurants + beach_clubs + cafe_bars
         if all_partners:
@@ -992,7 +992,7 @@ async def search_partners(q: str = "", category: str = "all"):
                     "location": item.get("location"),
                     "image": item.get("image"),
                     "description": item.get("description"),
-                    "booking_url": item.get("booking_url"),
+                    "booking_url": item.get("booking_url") or item.get("contact_url"),
                     "price_from": item.get("price_from"),
                     "offer_price": item.get("offer_price"),
                     "discount_percent": item.get("discount_percent"),
@@ -1068,12 +1068,12 @@ async def search_partners(q: str = "", category: str = "all"):
 
 @api_router.get("/all-partners", response_model=dict)
 async def get_all_partners():
-    """Get all partners grouped by type"""
-    golf_courses = await db.golf_courses.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-    hotels = await db.hotels.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-    restaurants = await db.restaurants.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-    beach_clubs = await db.beach_clubs.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
-    cafe_bars = await db.cafe_bars.find({"is_active": True}, {"_id": 0}).sort("display_order", 1).to_list(100)
+    """Get all partners grouped by type (includes inactive for greyed-out display)"""
+    golf_courses = await db.golf_courses.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+    hotels = await db.hotels.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+    restaurants = await db.restaurants.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+    beach_clubs = await db.beach_clubs.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
+    cafe_bars = await db.cafe_bars.find({}, {"_id": 0}).sort("display_order", 1).to_list(200)
     
     # Fallback to hardcoded data if collections are empty
     if not golf_courses:

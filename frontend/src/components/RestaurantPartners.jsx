@@ -5,18 +5,25 @@ import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation, Eye } f
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
 
-const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
+const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
+  const inactive = restaurant.is_active === false;
+  return (
   <div
-    className="flip-card"
+    className={`flip-card ${inactive ? 'inactive-card' : ''}`}
     data-testid={`restaurant-card-${restaurant.id}`}
   >
-    <div className="flip-card-inner">
+    <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
-      <div className="flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl">
+      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl ${inactive ? 'grayscale opacity-60' : ''}`}>
         {/* Discount Badge */}
-        {restaurant.discount_percent && (
+        {!inactive && restaurant.discount_percent && (
           <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
             {t('offers.save')} {restaurant.discount_percent}%
+          </div>
+        )}
+        {inactive && (
+          <div className="absolute top-6 right-6 z-10 bg-stone-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+            Coming Soon
           </div>
         )}
 
@@ -28,6 +35,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
             className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
           />
           {/* Quick View Button */}
+          {!inactive && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -39,6 +47,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
           >
             <Eye className="w-4 h-4" />
           </button>
+          )}
         </div>
 
         {/* Content */}
@@ -103,7 +112,8 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
           )}
 
           {/* Hover hint */}
-          <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>
+          {!inactive && <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>}
+          {!inactive && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -114,13 +124,21 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
             <Eye className="w-3 h-3" />
             View Details
           </button>
+          )}
         </div>
       </div>
 
       {/* Back of Card */}
-      <div className="flip-card-back rounded-2xl p-6 text-white" style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
+      <div className={`flip-card-back rounded-2xl p-6 text-white ${inactive ? 'grayscale opacity-60' : ''}`} style={{ background: 'linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%)' }}>
         <h3 className="font-heading text-2xl mb-6">{restaurant.name}</h3>
         
+        {inactive ? (
+          <div className="flex flex-col items-center justify-center h-48">
+            <p className="text-white/70 text-sm text-center">This partner is not yet available.</p>
+            <p className="text-white/50 text-xs mt-2 text-center">Check back soon for availability.</p>
+          </div>
+        ) : (
+        <>
         <div className="space-y-4">
           {/* Location - Clickable */}
           <div 
@@ -193,10 +211,13 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => (
           {t('restaurants.reserve')}
           <ExternalLink className="w-3.5 h-3.5" />
         </a>
+        </>
+        )}
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export const RestaurantPartners = () => {
   const { language, t } = useLanguage();
