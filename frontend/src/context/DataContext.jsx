@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import axios from 'axios';
 
 const API = process.env.REACT_APP_BACKEND_URL;
@@ -26,7 +26,6 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        // Fetch all data in parallel with a single batch
         const [partnersRes, settingsRes] = await Promise.all([
           axios.get(`${API}/api/all-partners`),
           axios.get(`${API}/api/display-settings`).catch(() => ({ data: {} }))
@@ -51,10 +50,9 @@ export const DataProvider = ({ children }) => {
     };
 
     fetchAllData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Helper to get displayed items based on limits, with inactive sorted to end
-  const getDisplayedItems = (items, limitKey) => {
+  const getDisplayedItems = useCallback((items, limitKey) => {
     const setting = data.displaySettings[limitKey];
     let filtered = items;
     if (setting) {
@@ -62,21 +60,22 @@ export const DataProvider = ({ children }) => {
       if (typeof setting === 'number') filtered = items.slice(0, setting);
       else if (typeof setting === 'object' && setting.limit) filtered = items.slice(0, setting.limit);
     }
-    // Sort: active first, inactive last
     return [...filtered].sort((a, b) => {
       const aActive = a.is_active !== false ? 0 : 1;
       const bActive = b.is_active !== false ? 0 : 1;
       return aActive - bActive;
     });
-  };
+  }, [data.displaySettings]);
+
+  const contextValue = useMemo(() => ({ 
+    ...data, 
+    loading, 
+    error,
+    getDisplayedItems
+  }), [data, loading, error, getDisplayedItems]);
 
   return (
-    <DataContext.Provider value={{ 
-      ...data, 
-      loading, 
-      error,
-      getDisplayedItems
-    }}>
+    <DataContext.Provider value={contextValue}>
       {children}
     </DataContext.Provider>
   );

@@ -18,11 +18,8 @@ load_dotenv(ROOT_DIR / '.env')
 
 async def get_partners_from_server():
     """Extract partner data from server.py PARTNER_OFFERS"""
-    # Import the data directly from server.py
-    import sys
-    sys.path.insert(0, str(ROOT_DIR))
+    import ast
     
-    # We need to read and parse the PARTNER_OFFERS from server.py
     server_path = ROOT_DIR / 'server.py'
     with open(server_path, 'r') as f:
         content = f.read()
@@ -44,12 +41,12 @@ async def get_partners_from_server():
                 end_idx = start_idx + i + 1
                 break
     
-    # Execute the extracted code to get the data
-    partner_code = content[start_idx:end_idx]
-    local_vars = {}
-    exec(partner_code, {}, local_vars)
+    # Safely parse the list using ast.literal_eval
+    list_code = content[start_idx:end_idx]
+    list_str = list_code.split('=', 1)[1].strip()
+    partner_offers = ast.literal_eval(list_str)
     
-    return local_vars['PARTNER_OFFERS']
+    return partner_offers
 
 
 async def seed_all_partners():

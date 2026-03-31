@@ -6,20 +6,20 @@ const STORAGE_KEY = 'gim_cookie_consent';
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
-  useEffect(function() {
-    var consent = localStorage.getItem(STORAGE_KEY);
+  useEffect(() => {
+    const consent = localStorage.getItem(STORAGE_KEY);
     if (!consent) {
-      var timer = setTimeout(function() { setVisible(true); }, 1500);
-      return function() { clearTimeout(timer); };
+      const timer = setTimeout(() => setVisible(true), 1500);
+      return () => clearTimeout(timer);
     }
   }, []);
 
-  var handleAccept = function() {
+  const handleAccept = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ accepted: true, date: new Date().toISOString() }));
     setVisible(false);
   };
 
-  var handleDecline = function() {
+  const handleDecline = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ accepted: false, date: new Date().toISOString() }));
     setVisible(false);
   };
