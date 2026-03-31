@@ -290,16 +290,16 @@ export const HotelPartners = () => {
 
           {/* Price Filter Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8" data-testid="hotel-price-filter">
-            <div className="flex flex-wrap items-center gap-1.5 bg-stone-100 border border-stone-200 rounded-full p-1.5 shadow-[inset_0_1px_3px_rgba(0,0,0,0.08)]">
+            <div className="flex flex-wrap items-center gap-2">
               {PRICE_FILTERS.map((filter) => (
                 <button
                   key={filter.key}
                   onClick={() => setPriceFilter(filter.key)}
                   data-testid={`price-filter-${filter.key}`}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                     priceFilter === filter.key
-                      ? 'bg-stone-800 text-white shadow-md'
-                      : 'text-stone-600 hover:bg-white/80 hover:text-stone-800'
+                      ? 'bg-stone-800 text-white shadow-sm'
+                      : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700'
                   }`}
                 >
                   {filter.label[language] || filter.label.en}
@@ -311,10 +311,10 @@ export const HotelPartners = () => {
               <button
                 onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc')}
                 data-testid="price-sort-toggle"
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all border shadow-sm ${
+                className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                   sortOrder
-                    ? 'bg-stone-800 text-white border-stone-800'
-                    : 'bg-stone-200/50 text-stone-600 border-stone-200 shadow-[inset_0_1px_3px_rgba(0,0,0,0.08)] hover:bg-stone-200/80 hover:text-stone-800'
+                    ? 'bg-stone-800 text-white shadow-sm'
+                    : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700'
                 }`}
               >
                 <ArrowUpDown className="w-3.5 h-3.5" />
