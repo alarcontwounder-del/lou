@@ -7,7 +7,7 @@ import requests
 import os
 from collections import Counter
 
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://golf-getaway-finder.preview.emergentagent.com').rstrip('/')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://mallorca-golf-portal-1.preview.emergentagent.com').rstrip('/')
 
 class TestAllPartnersEndpoint:
     """Tests for the /api/all-partners endpoint"""
@@ -138,8 +138,8 @@ class TestNearestGolfData:
         lobster = next((b for b in beach_clubs if 'lobster' in b.get('name', '').lower()), None)
         
         assert lobster is not None, "Lobster Club not found in beach_clubs"
-        assert lobster.get('nearest_golf'), f"Lobster Club missing nearest_golf"
-        assert lobster.get('distance_km'), f"Lobster Club missing distance_km"
+        assert lobster.get('nearest_golf'), "Lobster Club missing nearest_golf"
+        assert lobster.get('distance_km'), "Lobster Club missing distance_km"
         
         print(f"✓ Lobster Club: {lobster['distance_km']}km to {lobster['nearest_golf']}")
 
@@ -159,7 +159,7 @@ class TestPartnerDataIntegrity:
             for field in required_fields:
                 assert field in hotel, f"{hotel.get('name', 'Unknown')}: missing {field}"
         
-        print(f"✓ First 10 hotels have all required fields")
+        print("✓ First 10 hotels have all required fields")
     
     def test_restaurants_have_required_fields(self):
         """Verify restaurants have all required fields"""
@@ -173,7 +173,7 @@ class TestPartnerDataIntegrity:
             for field in required_fields:
                 assert field in restaurant, f"{restaurant.get('name', 'Unknown')}: missing {field}"
         
-        print(f"✓ First 10 restaurants have all required fields")
+        print("✓ First 10 restaurants have all required fields")
     
     def test_images_are_not_pexels(self):
         """Verify no images are from Pexels (per previous cleanup)"""
@@ -189,7 +189,7 @@ class TestPartnerDataIntegrity:
                         pexels_urls.append((key, item.get('name'), image))
         
         assert len(pexels_urls) == 0, f"Pexels URLs found: {pexels_urls}"
-        print(f"✓ No Pexels URLs found in any partner")
+        print("✓ No Pexels URLs found in any partner")
 
 
 class TestIndividualEndpoints:

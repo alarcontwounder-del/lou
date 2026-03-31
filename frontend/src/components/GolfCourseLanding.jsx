@@ -190,8 +190,8 @@ function FeaturesSection({ features }) {
     <section data-testid="course-features">
       <h2 className="font-heading text-2xl text-stone-900 mb-6">Facilities & Features</h2>
       <div className="flex flex-wrap gap-3">
-        {features.map((f, i) => (
-          <span key={i} className="px-4 py-2 bg-white border border-stone-200 rounded-full text-stone-700 text-sm font-medium shadow-sm">{f}</span>
+        {features.map((f) => (
+          <span key={f} className="px-4 py-2 bg-white border border-stone-200 rounded-full text-stone-700 text-sm font-medium shadow-sm">{f}</span>
         ))}
       </div>
     </section>

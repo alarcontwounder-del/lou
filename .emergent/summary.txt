@@ -1,156 +1,155 @@
 <analysis>**original_problem_statement**: 
-PRODUCT REQUIREMENTS: Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive Golf Trip Planner lead capture tool. The site must be visually consistent and highly responsive.
+PRODUCT REQUIREMENTS: Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, and a comprehensive Golf Trip Planner lead capture tool. The site must be visually consistent, highly responsive, support active/inactive partner states seamlessly, and be fully optimized for production deployment.
 
-**User's preferred language**: English
-(Note for next agent: You MUST automatically detect the user's primary language from their messages inside the trajectory and INSTRUCT next agent to respond in the user's preferred language only)
+**User's preferred language**: Spanish
+(INSTRUCT NEXT AGENT: The user switched to Spanish in their most recent messages: *Me dice que mejore la calidad del código, ¿lo hago?*. You MUST respond in Spanish to align with their current language preference).
 
 **what currently exists?** 
-A full-stack React/FastAPI application for a golf travel website. Features include partner listings, an advanced Trip Planner wizard with a specific Golf Groups flow, automated itinerary generation prioritizing hotels near golf courses, and an Admin Dashboard with a Partner Images management tab. The backend data layer has been recently refactored to separate hardcoded data from routing logic.
+A production-ready React/FastAPI SPA with MongoDB. It features live Stripe payments, Resend emails, robust SEO handling (clean sitemap), a Trip Planner, 59 hotel partners (newly updated with From €[Price] pricing and real photos), price filtering, and a fully functional Inactive Card state (grayscale images, disabled buttons, sorted to bottom) across all partner types. The app is currently undergoing a final code quality cleanup before a production redeployment to .
 
 **Last working item**: 
-    - Last item agent was working: Implementing drag-and-drop image upload functionality in the Admin Dashboard's Partner Images tab using the  object storage playbook.
+    - Last item agent was working: Applying fixes from an automated Code Quality Report provided by the user just before deployment.
     - Status: IN PROGRESS
-    - Agent Testing Done: N
-    - Which testing method agent to use? Both (Use curl to test the backend  endpoint, and screenshot tool/testing subagent to test the frontend Drag & Drop interaction in the Admin UI).
+    - Agent Testing Done: N (for the refactoring specifically; previous features were tested)
+    - Which testing method agent to use? Both (Run frontend linting/tests and backend API checks after refactoring is completed).
     - User Testing Done: N
 
 **All Pending/In progress Issue list**: 
-
-  Issue 1: Test and Finalize Drag-and-Drop Image Upload (P0)
-  Issue 2: Google Business Profile is suspended (P1)
-  Issue 3: Sitemap submission to Google Search Console (P1)
-  Issue 4: Get external review links for Write a review modal (P2)
-
-  Issues Detail:
-  - Issue 1: 
-     - Attempted fixes: Agent updated  with the storage helper and upload endpoints, and overwrote  with drag-and-drop logic. The session ended before testing.
-     - Next debug checklist: Verify the backend endpoint works correctly with the  library. Verify the frontend correctly handles file selection, upload, and state update.
-     - Why fix this issue and what will be achieved with the fix? Completes the user-approved enhancement to make image management easier.
+  Issue 1: Resolve Code Quality Report Warnings (P0)
+     - Attempted fixes: Agent successfully applied  and dependency fixes to , , and , and fixed the  vulnerability in  right as the session ended.
+     - Next debug checklist: 
+        1. Fix missing React Hook dependencies in , , , and .
+        2. Fix Array Index as Key anti-patterns in , , , .
+        3. Replace  with / in .
+        4. Replace  with  for constant comparisons in multiple python test files.
+        5. Refactor expensive computations and high-complexity functions if deemed safe before deployment (e.g., ).
+     - Why fix this issue and what will be achieved with the fix? User explicitly requested to apply these fixes before hitting Deploy to ensure maximum stability and security in production.
      - Status: IN PROGRESS
      - Is recurring issue? N
      - Should Test frontend/backend/both after fix? Both
      - Blocked on other issue: None
-  - Issue 2: 
-     - Attempted fixes: Agent previously provided guidance.
-     - Next debug checklist: Awaiting user action to resolve directly with Google.
-     - Why fix this issue and what will be achieved with the fix? Critical for GEO SEO.
+
+  Issue 2: Google Business Profile is suspended (P1)
+     - Attempted fixes: N/A
+     - Next debug checklist: Await user confirmation on their appeal to Google.
+     - Why fix this issue and what will be achieved with the fix? Required for business visibility.
      - Status: BLOCKED
      - Is recurring issue? N
      - Should Test frontend/backend/both after fix? NA
-  - Issue 3: 
-     - Status: BLOCKED (Waiting on production deployment).
-  - Issue 4: 
-     - Status: BLOCKED (Waiting on user to provide URLs).
+     - Blocked on other issue: User action required.
+
+  Issue 3: External review links for Write a review modal missing (P2)
+     - Attempted fixes: N/A
+     - Next debug checklist: Await user to provide the review URLs.
+     - Why fix this issue and what will be achieved with the fix? Completes the review loop functionality.
+     - Status: BLOCKED
+     - Is recurring issue? N
+     - Should Test frontend/backend/both after fix? Frontend
+     - Blocked on other issue: User action required.
 
 **In progress Task List**: 
-  Task 1: Drag-and-Drop Admin Image Upload
-     - Where to resume:  and . Verify the integration logic is sound, run the app, and test uploading an image via the Admin Panel.
-     - What will be achieved with this? Allows admins to upload photos directly from their computer instead of pasting URLs.
-     - Status: IN PROGRESS
-     - Should Test frontend/backend/both after fix? Both
-     - Blocked on something: None
+  None beyond the Code Quality Refactoring listed in Issue 1.
 
 **Upcoming and Future Tasks**
     Upcoming Tasks:
-    - (P0) SEO-friendly blog routes: Convert the blog from the current modal-based view to individual, indexable pages (e.g., ).
-    - (P1) Hero Video: Add Hero Video to homepage.
+    - (P1) Add Hero Video to homepage (Waiting for the user to provide the video file).
+    - (P2) Partner Status Dashboard: Add an admin view to easily see active vs Coming Soon partner counts (Suggested to user, needs confirmation).
+    
     Future Tasks:
-    - (P2) Refactor : This file is currently ~800 lines and handles too many responsibilities (wizard steps, itinerary generation, API calls). Needs to be broken down into smaller components.
-    - (P2) Golf Packages page: Add a dedicated page to bundle course and hotel deals (Suggested by agent, needs user validation).
-    - (P2) Stripe Payment Integration: Add a simple deposit/booking fee flow via Stripe for packages and the Trip Planner.
+    - (P2) Refactor : Break down the ~800 line file into smaller components.
+    - (P2) Refactor : Extract HTML email templates into a separate module.
+    - (P2) Golf Packages page: Add a dedicated page to bundle course and hotel deals.
 
 **Completed work in this session**
-- Image Updates: Swapped stock images for authentic photos for Cappuccino, Terrae, Flanigan, Barlovento, Bar Bosch, Tahini, Wellies, and La Bodeguilla. (Code + DB synced). (DONE)
-- Trip Planner Golf Groups: Renamed UI to Trip Planner, added specific Golf Groups category with per-person/per-day budget logic, auto-defaults, and nearest-golf-course hotel prioritization. (DONE)
-- Trip Planner UI Fixes: Standardized card sizes in Step 3, removed all green colors (swapped to grey), removed dashed borders, and replaced intrusive scroll gradient with a subtle floating pill. (DONE)
-- Admin Partner Images Tab: Built a new tab in the Admin Dashboard allowing the user to override partner images by pasting URLs. Data saves to MongoDB. (DONE)
-- Backend Refactoring: Reduced  from ~5974 lines to ~1833 lines by extracting all hardcoded data to  (partners.py, reviews.py, courses.py). Fixed all Python linting errors. (DONE)
+- Update 21 new hotels with From €[Price] format, category/region tags, and real unique photos (DONE).
+- Implement Price Filter & Sort Toggle for hotels section (DONE).
+- Inactive Partner Card UI: Added logic across all 4 partner types to render inactive items as grayscale images with white text, no interaction, and sorted to the bottom of the grid (DONE).
+- Fixed Safari 3D cylinder CSS bug on filter pills (DONE).
+- Restored original production image URLs after mistakenly replacing them with stock photos due to local hotlink protection errors (DONE).
+- Fixed Finca Serena broken image using an updated URL from their new domain (DONE).
+- Executed initial Code Quality/Security fixes in , , and Context files (DONE).
 
 **Earlier issues found/mentioned but not fixed**
-   - Issue 1: Frontend Build Fragility / ESLint Warnings
-   - Debug checklist: Check  (exhaustive-deps warning for ).
-   - Why to solve this issue and what will be achieved with this? Keeps the build stable and prevents future compilation failures as components grow.
-   - Should Test frontend/backend/both after fix: Frontend
-   - Is recurring issue? Y
+   None.
 
 **Known issue recurrence from previous fork**
-  - Issue recurrence in previous fork: Webpack/Babel build warnings.
-  - Recurrence count: 2
-  - Status: IN PROGRESS
+  - Issue recurrence in previous fork: None
+  - Recurrence count: 0
+  - Status: RESOLVED
 
 **Code Architecture**
-
+is==
 
 **Key Technical Concepts**
 - Frontend: React, Tailwind CSS, Shadcn UI.
-- Backend: FastAPI, Motor (async MongoDB), Pydantic.
-- Storage: Emergent Integrations Object Storage (Installed this session for file uploads).
-- Communications: Resend SDK for transactional emails.
+- Backend: FastAPI, Motor (async MongoDB).
+- Architecture: Single Page Application with dynamic SEO routing script in .
+- Payments: Stripe API (LIVE MODE).
 
 **key DB schema**
-  - Database name:  (Note: ensure you are checking this DB, not ).
-  - : Stores lead capture data.
-  -  /  /  / : Core partner collections.
-  - : Newly added collection to track admin image edits.
+  - , , , : . Inactive items () are now explicitly sorted to the bottom of the frontend UI and display specially.
 
 **changes in tech stack**
-  - Added  for Object Storage (File Uploads).
+  - None
 
 **All files of reference** 
-- : Contains the newly written drag-and-drop upload logic (Needs testing).
-- : Contains the newly added storage helper and upload endpoint  (Needs testing).
-- : New directory containing all extracted hardcoded data.
-- : Heavily modified for Golf Groups and UI fixes. Ripe for future refactoring.
+-  (Updated this session)
+-  (Contains new price filtering logic)
+-  (Contains specific  overrides)
+-  (Latest successful agent test report before Code Quality review)
 
 **Areas that need refactoring**: 
--  (~800 lines) is still handling too many responsibilities. The backend refactor was successful, but the frontend refactor is pending.
+-  (Convert  to /)
+- React components using Array Index as Keys (, , , )
+- Overly large components/functions (, ,  )
 
 **key api endpoints**
-- : New endpoint for drag-and-drop image uploads.
-- : Endpoint for URL-based image overrides.
+- : Grouped partner data
+- : Global search (now correctly falls back to  if  is missing)
 
 **Critical Info for New Agent** 
-- **Database Identity:** The backend connects to a database named  (verified via MongoDB URL parsing). Ensure you are querying the correct DB when verifying changes.
-- **Refactoring:**  no longer contains the massive lists of dictionaries. They are imported from .
-- **Integrations:** The  playbook was used to set up object storage. The backend and frontend logic was written, but the session timed out before it could be tested. **Testing this is your immediate priority.**
+- **PRODUCTION DEPLOYMENT IMMINENT:** The user is attempting to deploy to their live domain (). Keep all fixes extremely safe and non-breaking.
+- **IMAGES:** The images for the original 38 hotels/partners might show as broken in the *Preview* environment due to hotlink protection, but they work perfectly in *Production*. **DO NOT** replace them with stock photos again.
+- **LANGUAGE:** Respond to the user in **Spanish**, as their final prompts were in Spanish asking for guidance on the Code Quality report and deployment.
 
 **documents and test reports created in this job** 
-  - /app/test_reports/iteration_17.json (Tested Golf Groups functionality)
-  - /app/test_reports/iteration_18.json (Tested Golf Groups bug fixes)
-  - /app/test_reports/iteration_19.json (Tested Trip Planner Next button logic)
-  - /app/memory/PRD.md
+  - 
+  - 
+  - 
 
 **Last 10 User Messages and any pending HUMAN messages** 
- 1. User requested adding a Golf Groups category to the trip planner and renaming Plan Trip to Trip Planner. (Done)
- 2. User asked for a test link. (Done)
- 3. User reported bugs with the Golf Groups budget (needed per person/day), Next button state, and missing hotel suggestions. (Done)
- 4. User asked for test link. (Done)
- 5. User reported Next button still not working. (Done - added auto-defaults).
- 6. User reported UI inconsistencies in Step 3 cards (different sizes, green colors, ugly scroll indicator) and uploaded screenshots. (Done)
- 7. User uploaded 5 authentic images to replace stock photos for restaurants/bars. (Done)
- 8. User uploaded 2 more images and asked if they can change card pictures themselves to save time. (Done - built Admin tab).
- 9. User authorized moving forward with backend refactoring. (Done - extracted  data).
- 10. User accepted agent's suggestion to enhance the new Admin image tab with Drag-and-Drop file uploads. (In Progress - needs testing).
+ 1. User reported images were missing for several hotels and beach clubs.
+ 2. Agent replaced broken links with stock photos.
+ 3. User got upset: The real images worked perfectly on the deployed production site, and they wanted them back.
+ 4. Agent apologized, retrieved original URLs from production, and restored them.
+ 5. User asked for a test link.
+ 6. Agent provided it.
+ 7. User stated they need to re-deploy now.
+ 8. Agent provided deployment instructions via Support Agent.
+ 9. User asked for the new sitemap, which agent provided.
+ 10. User reported minor UI bugs on the deployed site (Safari 3D pill glitch, Finca Serena image broken, hotel count wrong). Agent fixed all of them.
+ 11. **PENDING HUMAN MESSAGE:** User pasted an automated Code Quality Report and asked in Spanish: *Me dice que mejore la calidad del código, ¿lo hago? ¿Luego que he de hacer, clickear en sí, desplegar?* (Agent started fixing the files via tool calls but needs to finish and reply to the user).
 
 **Project Health Check:**
-- Mocked/Untested: Drag-and-Drop Admin Image Upload feature.
-- Healthy: Core Trip Planner, API endpoints, Email flows.
+- Broken: None. 
+- Mocked: None.
+- Healthy: Live Payments, Emails, Admin Dashboard, Partner Cards, Search.
 
-**3rd Party Integrations**
+**3rd Party Integrations** 
 	 •	OpenAI/Emergent LLMs — uses Emergent LLM Key
 	 •	Gemini (Image Gen) — uses Emergent LLM Key
-     •	Emergent Object Storage (File Uploads) — uses Emergent LLM Key
-	 •	Resend (Emails) — requires User API Key
-	 •	Stripe (Payments) — requires User API Key (Upcoming)
+	 •	Emergent Object Storage (File Uploads) — uses Emergent LLM Key
+	 •	Resend (Emails) — requires User API Key (Domain verified)
+	 •	Stripe (Payments) — requires User API Key (**LIVE KEY IS ACTIVE**)
 
 **Testing status**
-  - Testing agent used after significant changes: YES
+  - Testing agent used after significant changes: YES (iteration 30)
   - Troubleshoot agent used after agent stuck in loop: NO
-  - Test files created: /app/test_reports/iteration_17.json, iteration_18.json, iteration_19.json
-  - Known regressions: None currently known, but the Admin Image Upload feature is completely untested.
+  - Test files created: 
+  - Known regressions: None, but currently in the middle of code refactoring.
 
 **Credentials to test flow:**
-None required (Resend is in the backend ).
+None required to test locally. Admin login goes through Emergent Auth. 
 
 **What agent forgot to execute**
-The agent modified  and  to implement the drag-and-drop object storage upload, but the session ended immediately after writing the frontend file. The agent forgot to actually run the frontend, test the upload endpoint, verify the drag-and-drop interaction, and ensure the DB updates correctly upon upload. Furthermore, the agent pushed back the refactoring of  to prioritize .</analysis>
+The agent initiated parallel tool calls to fix the first batch of issues from the Code Quality Report (, , etc.) but ran out of context before finishing the rest of the report (React dependencies, Array keys, python test equality fixes) and before actually answering the user's Spanish question about the deployment step.</analysis>

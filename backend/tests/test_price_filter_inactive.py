@@ -190,7 +190,7 @@ class TestInactivePartners:
         data = response.json()
         
         # All returned hotels should be active
-        inactive_hotels = [h for h in data if h.get('is_active') == False]
+        inactive_hotels = [h for h in data if h.get('is_active') is False]
         assert len(inactive_hotels) == 0, f"Found {len(inactive_hotels)} inactive hotels in default response"
         print("PASS: /api/hotels filters inactive by default")
     

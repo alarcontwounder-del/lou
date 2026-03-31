@@ -208,7 +208,7 @@ class TestAllPartnersEndpoint:
             assert category in data, f"Missing category: {category}"
             assert isinstance(data[category], list), f"{category} should be a list"
         
-        print(f"✓ All categories present:")
+        print("✓ All categories present:")
         print(f"  - Golf courses: {len(data['golf_courses'])}")
         print(f"  - Hotels: {len(data['hotels'])}")
         print(f"  - Restaurants: {len(data['restaurants'])}")
@@ -246,7 +246,7 @@ class TestEndToEndImageUploadFlow:
         full_url = f"{BASE_URL}{upload_data['url']}"
         serve_response = requests.get(full_url)
         assert serve_response.status_code == 200, f"Serve failed: {serve_response.status_code}"
-        print(f"Step 2: Image served successfully")
+        print("Step 2: Image served successfully")
         
         # Step 3: Update partner with the new image URL
         partner_id = "golf-son-gual"
@@ -265,7 +265,7 @@ class TestEndToEndImageUploadFlow:
         
         if partner:
             assert partner.get('image') == image_url, f"Partner image not updated. Expected: {image_url}, Got: {partner.get('image')}"
-            print(f"Step 4: Verified partner image is updated")
+            print("Step 4: Verified partner image is updated")
         
         print("✓ Complete E2E flow successful!")
 

@@ -22,7 +22,7 @@ class TestBlogAPI:
         response = requests.get(f"{BASE_URL}/api/blog")
         posts = response.json()
         assert len(posts) == 10, f"Expected 10 posts, got {len(posts)}"
-        print(f"PASS: Blog returns 10 posts")
+        print("PASS: Blog returns 10 posts")
     
     def test_blog_posts_have_required_fields(self):
         """Test each blog post has required fields"""
@@ -49,7 +49,7 @@ class TestBlogAPI:
                 print(f"  - {post['slug']}: '{post['cta']['label']}' -> {post['cta']['url']}")
         
         assert posts_with_cta == 10, f"Expected 10 posts with CTA, got {posts_with_cta}"
-        print(f"PASS: All 10 posts have CTA buttons")
+        print("PASS: All 10 posts have CTA buttons")
     
     def test_golf_near_palma_cta(self):
         """Test Golf Near Palma post has correct CTA"""
@@ -131,7 +131,7 @@ class TestPartnersAPI:
         response = requests.get(f"{BASE_URL}/api/all-partners")
         data = response.json()
         assert len(data['golf_courses']) == 16, f"Expected 16 golf courses, got {len(data['golf_courses'])}"
-        print(f"PASS: 16 golf courses returned")
+        print("PASS: 16 golf courses returned")
     
     def test_hotels_count(self):
         """Test hotels count"""

@@ -36,7 +36,7 @@ class TestAllPartnersEndpoint:
         data = response.json()
         hotels = data.get('hotels', [])
         assert len(hotels) == 59, f"Expected 59 hotels, got {len(hotels)}"
-        print(f"PASS: 59 hotels returned")
+        print("PASS: 59 hotels returned")
     
     def test_all_21_new_hotels_present(self):
         """Verify all 21 new hotels are in the response"""
@@ -47,7 +47,7 @@ class TestAllPartnersEndpoint:
         
         missing = [hid for hid in NEW_HOTEL_IDS if hid not in hotel_ids]
         assert len(missing) == 0, f"Missing new hotels: {missing}"
-        print(f"PASS: All 21 new hotels present")
+        print("PASS: All 21 new hotels present")
 
 
 class TestNewHotelsHaveOfferPrice:
@@ -62,7 +62,7 @@ class TestNewHotelsHaveOfferPrice:
         
         missing_price = [h.get('id') for h in new_hotels if not h.get('offer_price')]
         assert len(missing_price) == 0, f"Hotels missing offer_price: {missing_price}"
-        print(f"PASS: All 21 new hotels have offer_price")
+        print("PASS: All 21 new hotels have offer_price")
     
     def test_new_hotels_no_discount_percent(self):
         """Verify new hotels do NOT have discount_percent (no Save X% badge)"""
@@ -73,7 +73,7 @@ class TestNewHotelsHaveOfferPrice:
         
         with_discount = [h.get('id') for h in new_hotels if h.get('discount_percent')]
         assert len(with_discount) == 0, f"Hotels should NOT have discount_percent: {with_discount}"
-        print(f"PASS: No new hotels have discount_percent")
+        print("PASS: No new hotels have discount_percent")
     
     def test_new_hotels_no_original_price(self):
         """Verify new hotels do NOT have original_price"""
@@ -84,7 +84,7 @@ class TestNewHotelsHaveOfferPrice:
         
         with_original = [h.get('id') for h in new_hotels if h.get('original_price')]
         assert len(with_original) == 0, f"Hotels should NOT have original_price: {with_original}"
-        print(f"PASS: No new hotels have original_price")
+        print("PASS: No new hotels have original_price")
 
 
 class TestNewHotelsHaveCategoryRegion:
@@ -99,7 +99,7 @@ class TestNewHotelsHaveCategoryRegion:
         
         missing_category = [h.get('id') for h in new_hotels if not h.get('category')]
         assert len(missing_category) == 0, f"Hotels missing category: {missing_category}"
-        print(f"PASS: All 21 new hotels have category")
+        print("PASS: All 21 new hotels have category")
     
     def test_new_hotels_have_region(self):
         """Verify all 21 new hotels have region field"""
@@ -110,7 +110,7 @@ class TestNewHotelsHaveCategoryRegion:
         
         missing_region = [h.get('id') for h in new_hotels if not h.get('region')]
         assert len(missing_region) == 0, f"Hotels missing region: {missing_region}"
-        print(f"PASS: All 21 new hotels have region")
+        print("PASS: All 21 new hotels have region")
 
 
 class TestNewHotelsHaveDeal:
@@ -125,7 +125,7 @@ class TestNewHotelsHaveDeal:
         
         missing_deal = [h.get('id') for h in new_hotels if not h.get('deal')]
         assert len(missing_deal) == 0, f"Hotels missing deal: {missing_deal}"
-        print(f"PASS: All 21 new hotels have deal")
+        print("PASS: All 21 new hotels have deal")
     
     def test_deal_is_multilang_dict(self):
         """Verify deal field is a multilang dict with en, de, fr, sv keys"""
@@ -143,7 +143,7 @@ class TestNewHotelsHaveDeal:
                 invalid_deal.append(f"{h.get('id')} (missing 'en')")
         
         assert len(invalid_deal) == 0, f"Hotels with invalid deal format: {invalid_deal}"
-        print(f"PASS: All deals are multilang dicts with 'en' key")
+        print("PASS: All deals are multilang dicts with 'en' key")
 
 
 class TestNewHotelsHaveUniqueImages:
@@ -158,7 +158,7 @@ class TestNewHotelsHaveUniqueImages:
         
         missing_image = [h.get('id') for h in new_hotels if not h.get('image')]
         assert len(missing_image) == 0, f"Hotels missing image: {missing_image}"
-        print(f"PASS: All 21 new hotels have image")
+        print("PASS: All 21 new hotels have image")
     
     def test_new_hotels_unique_images(self):
         """Verify no duplicate image URLs among the 21 new hotels"""
@@ -171,7 +171,7 @@ class TestNewHotelsHaveUniqueImages:
         unique_images = set(images)
         
         assert len(images) == len(unique_images), f"Duplicate images found! {len(images)} total, {len(unique_images)} unique"
-        print(f"PASS: All 21 new hotels have unique images")
+        print("PASS: All 21 new hotels have unique images")
     
     def test_images_are_real_urls(self):
         """Verify images are real URLs (pexels or unsplash)"""
@@ -187,7 +187,7 @@ class TestNewHotelsHaveUniqueImages:
                 invalid_urls.append(f"{h.get('id')}: {img[:50]}")
         
         assert len(invalid_urls) == 0, f"Hotels with non-pexels/unsplash images: {invalid_urls}"
-        print(f"PASS: All images are from pexels or unsplash")
+        print("PASS: All images are from pexels or unsplash")
 
 
 class TestOldHotelsStillHaveDiscountBadges:
@@ -212,7 +212,7 @@ class TestOldHotelsStillHaveDiscountBadges:
         old_hotels = [h for h in hotels if h.get('id') not in NEW_HOTEL_IDS]
         
         assert len(old_hotels) == 38, f"Expected 38 old hotels, got {len(old_hotels)}"
-        print(f"PASS: 38 old hotels present")
+        print("PASS: 38 old hotels present")
 
 
 class TestHotelsEndpoint:
@@ -229,7 +229,7 @@ class TestHotelsEndpoint:
         response = requests.get(f"{BASE_URL}/api/hotels")
         hotels = response.json()
         assert len(hotels) == 59, f"Expected 59, got {len(hotels)}"
-        print(f"PASS: /api/hotels returns 59 hotels")
+        print("PASS: /api/hotels returns 59 hotels")
 
 
 if __name__ == "__main__":

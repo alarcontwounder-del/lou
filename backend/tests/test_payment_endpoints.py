@@ -29,7 +29,7 @@ class TestPaymentEndpoints:
         for payment_id in cls.created_payment_ids:
             try:
                 requests.delete(f"{BASE_URL}/api/admin/payment/{payment_id}")
-            except:
+            except Exception:
                 pass
     
     # ─── POST /api/admin/payment-request ─────────────────────────────────────────
@@ -275,7 +275,7 @@ class TestPaymentEndpoints:
         # Create checkout session
         response = requests.post(
             f"{BASE_URL}/api/payment/{payment_id}/checkout",
-            headers={"origin": "https://golf-getaway-finder.preview.emergentagent.com"}
+            headers={"origin": "https://mallorca-golf-portal-1.preview.emergentagent.com"}
         )
         
         assert response.status_code == 200, f"Expected 200, got {response.status_code}: {response.text}"
@@ -292,7 +292,7 @@ class TestPaymentEndpoints:
         """Test checkout for non-existent payment"""
         response = requests.post(
             f"{BASE_URL}/api/payment/nonexistent123/checkout",
-            headers={"origin": "https://golf-getaway-finder.preview.emergentagent.com"}
+            headers={"origin": "https://mallorca-golf-portal-1.preview.emergentagent.com"}
         )
         
         assert response.status_code == 404
@@ -332,7 +332,7 @@ class TestPaymentEndpoints:
         # Create checkout session
         checkout_res = requests.post(
             f"{BASE_URL}/api/payment/{payment_id}/checkout",
-            headers={"origin": "https://golf-getaway-finder.preview.emergentagent.com"}
+            headers={"origin": "https://mallorca-golf-portal-1.preview.emergentagent.com"}
         )
         assert checkout_res.status_code == 200
         session_id = checkout_res.json()["session_id"]
@@ -420,7 +420,7 @@ class TestPaymentEndpoints:
         # 3. Create checkout session
         checkout_res = requests.post(
             f"{BASE_URL}/api/payment/{payment_id}/checkout",
-            headers={"origin": "https://golf-getaway-finder.preview.emergentagent.com"}
+            headers={"origin": "https://mallorca-golf-portal-1.preview.emergentagent.com"}
         )
         assert checkout_res.status_code == 200
         checkout_data = checkout_res.json()
@@ -441,7 +441,7 @@ class TestPaymentEndpoints:
         payments = list_res.json()
         found = any(p["payment_id"] == payment_id for p in payments)
         assert found, "Payment should appear in admin list"
-        print(f"  5. Payment found in admin list")
+        print("  5. Payment found in admin list")
         
         print("✓ Full payment flow completed successfully")
 
@@ -498,7 +498,7 @@ class TestPaymentStats:
         assert stats["pending_count"] == pending_count, \
             f"Stats pending_count ({stats['pending_count']}) doesn't match actual ({pending_count})"
         
-        print(f"✓ Stats are consistent with payments list")
+        print("✓ Stats are consistent with payments list")
 
 
 class TestExistingPayments:
@@ -514,7 +514,7 @@ class TestExistingPayments:
             assert "amount" in data
             print(f"✓ Existing payment vh5xif0w found: {data['amount']} {data.get('currency', 'EUR')}")
         else:
-            print(f"⊘ Payment vh5xif0w not found (may have been deleted)")
+            print("⊘ Payment vh5xif0w not found (may have been deleted)")
     
     def test_existing_payment_clsl6u2p(self):
         """Test fetching existing payment clsl6u2p"""
@@ -526,7 +526,7 @@ class TestExistingPayments:
             assert "amount" in data
             print(f"✓ Existing payment clsl6u2p found: {data['amount']} {data.get('currency', 'EUR')}")
         else:
-            print(f"⊘ Payment clsl6u2p not found (may have been deleted)")
+            print("⊘ Payment clsl6u2p not found (may have been deleted)")
 
 
 if __name__ == "__main__":

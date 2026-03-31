@@ -27,11 +27,11 @@ function ContentRenderer({ text }) {
     if (/^\*\*[^*]+\*\*$/.test(trimmed)) {
       const heading = trimmed.replace(/\*\*/g, '');
       elements.push(
-        <h2 key={i} className="font-heading text-xl md:text-2xl text-stone-900 mt-10 mb-4">{heading}</h2>
+        <h2 key={`heading-${i}`} className="font-heading text-xl md:text-2xl text-stone-900 mt-10 mb-4">{heading}</h2>
       );
     } else {
       elements.push(
-        <p key={i} className="text-stone-700 leading-[1.9] text-[16px] mb-5">
+        <p key={`para-${i}`} className="text-stone-700 leading-[1.9] text-[16px] mb-5">
           <FormattedText text={trimmed} />
         </p>
       );
@@ -260,8 +260,8 @@ export default function BlogPostPage() {
     }
   };
 
-  var tagElements = (post.tags || []).map(function(tag, i) {
-    return <span key={i} className="text-xs text-stone-500 bg-stone-100 px-3 py-1.5 rounded-full">{tag}</span>;
+  var tagElements = (post.tags || []).map(function(tag) {
+    return <span key={tag} className="text-xs text-stone-500 bg-stone-100 px-3 py-1.5 rounded-full">{tag}</span>;
   });
 
   var relatedElements = related.map(function(p) {

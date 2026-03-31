@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Cloud, CloudRain, CloudSnow, CloudLightning, CloudDrizzle, Wind, ChevronDown } from 'lucide-react';
 
-var API_URL = 'https://api.open-meteo.com/v1/forecast?latitude=39.5696&longitude=2.6502&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max&timezone=Europe/Madrid&forecast_days=7';
+const API_URL = 'https://api.open-meteo.com/v1/forecast?latitude=39.5696&longitude=2.6502&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max&timezone=Europe/Madrid&forecast_days=7';
 
-var getWeatherInfo = function(code) {
+const getWeatherInfo = function(code) {
   if (code === 0) return { icon: Sun, color: 'text-amber-400' };
   if (code <= 3) return { icon: Cloud, color: 'text-white/60' };
   if (code <= 49) return { icon: Cloud, color: 'text-white/60' };
@@ -15,7 +15,7 @@ var getWeatherInfo = function(code) {
   return { icon: CloudLightning, color: 'text-purple-400' };
 };
 
-var getWeatherInfoLight = function(code) {
+const getWeatherInfoLight = function(code) {
   if (code === 0) return { icon: Sun, color: 'text-amber-500' };
   if (code <= 3) return { icon: Cloud, color: 'text-stone-400' };
   if (code <= 49) return { icon: Cloud, color: 'text-stone-400' };
@@ -27,13 +27,13 @@ var getWeatherInfoLight = function(code) {
   return { icon: CloudLightning, color: 'text-purple-500' };
 };
 
-var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-export var WeatherBadge = function({ isScrolled }) {
-  var ref = useRef(null);
-  var _w = useState(null); var weather = _w[0]; var setWeather = _w[1];
-  var _f = useState(null); var forecast = _f[0]; var setForecast = _f[1];
-  var _o = useState(false); var open = _o[0]; var setOpen = _o[1];
+export const WeatherBadge = function({ isScrolled }) {
+  const ref = useRef(null);
+  const [weather, setWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(function() {
     fetch(API_URL)
@@ -45,24 +45,24 @@ export var WeatherBadge = function({ isScrolled }) {
       .catch(function() {});
   }, []);
 
-  var hideTimer = useRef(null);
+  const hideTimer = useRef(null);
 
-  var handleEnter = function() {
+  const handleEnter = function() {
     if (hideTimer.current) { clearTimeout(hideTimer.current); hideTimer.current = null; }
     setOpen(true);
   };
-  var handleLeave = function() {
+  const handleLeave = function() {
     hideTimer.current = setTimeout(function() { setOpen(false); }, 200);
   };
 
   if (!weather) return null;
 
-  var info = getWeatherInfo(weather.weather_code);
-  var CurrentIcon = info.icon;
-  var temp = Math.round(weather.temperature_2m);
-  var light = isScrolled;
+  const info = getWeatherInfo(weather.weather_code);
+  const CurrentIcon = info.icon;
+  const temp = Math.round(weather.temperature_2m);
+  const light = isScrolled;
 
-  var badgeClass = light
+  const badgeClass = light
     ? 'bg-stone-100 text-stone-600 hover:bg-stone-200'
     : 'bg-white/10 backdrop-blur-sm border border-white/15 text-white/80 hover:bg-white/20';
 
@@ -85,14 +85,14 @@ export var WeatherBadge = function({ isScrolled }) {
 };
 
 function ForecastPanel({ forecast, weather, light }) {
-  var rows = buildRows(forecast, light);
+  const rows = buildRows(forecast, light);
 
-  var panelClass = light
+  const panelClass = light
     ? 'bg-white/90 backdrop-blur-xl border-stone-200/80 shadow-lg'
     : 'bg-white/10 backdrop-blur-xl border-white/15 shadow-2xl';
 
-  var footerBorder = light ? 'border-stone-200/50' : 'border-white/10';
-  var footerText = light ? 'text-stone-400' : 'text-white/40';
+  const footerBorder = light ? 'border-stone-200/50' : 'border-white/10';
+  const footerText = light ? 'text-stone-400' : 'text-white/40';
 
   return (
     <div
@@ -114,21 +114,21 @@ function ForecastPanel({ forecast, weather, light }) {
 }
 
 function buildRows(forecast, light) {
-  var result = [];
-  var times = forecast.time;
-  for (var i = 0; i < times.length; i++) {
-    var date = times[i];
-    var d = new Date(date + 'T00:00:00');
-    var dayName = i === 0 ? 'Today' : DAYS[d.getDay()];
-    var wInfo = light ? getWeatherInfoLight(forecast.weather_code[i]) : getWeatherInfo(forecast.weather_code[i]);
-    var DayIcon = wInfo.icon;
-    var hi = Math.round(forecast.temperature_2m_max[i]);
-    var lo = Math.round(forecast.temperature_2m_min[i]);
+  const result = [];
+  const times = forecast.time;
+  for (let i = 0; i < times.length; i++) {
+    const date = times[i];
+    const d = new Date(date + 'T00:00:00');
+    const dayName = i === 0 ? 'Today' : DAYS[d.getDay()];
+    const wInfo = light ? getWeatherInfoLight(forecast.weather_code[i]) : getWeatherInfo(forecast.weather_code[i]);
+    const DayIcon = wInfo.icon;
+    const hi = Math.round(forecast.temperature_2m_max[i]);
+    const lo = Math.round(forecast.temperature_2m_min[i]);
 
-    var dayClass = light ? 'text-stone-700' : 'text-white/90';
-    var hiClass = light ? 'text-stone-800' : 'text-white/90';
-    var loClass = light ? 'text-stone-400' : 'text-white/40';
-    var rowHover = light ? 'hover:bg-stone-100/50' : 'hover:bg-white/10';
+    const dayClass = light ? 'text-stone-700' : 'text-white/90';
+    const hiClass = light ? 'text-stone-800' : 'text-white/90';
+    const loClass = light ? 'text-stone-400' : 'text-white/40';
+    const rowHover = light ? 'hover:bg-stone-100/50' : 'hover:bg-white/10';
 
     result.push(
       <div key={date} className={'flex items-center justify-between px-3 py-1.5 transition-colors ' + rowHover} data-testid={'forecast-day-' + i}>

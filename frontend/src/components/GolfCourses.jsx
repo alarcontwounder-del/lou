@@ -143,9 +143,9 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
           {/* Features */}
           {course.features && course.features.length > 0 && (
             <div className="flex flex-wrap gap-1.5 mt-3">
-              {course.features.slice(0, 3).map((feature, i) => (
+              {course.features.slice(0, 3).map((feature) => (
                 <span
-                  key={i}
+                  key={feature}
                   className="text-xs px-2 py-1 bg-white/15 rounded-full"
                 >
                   {feature}

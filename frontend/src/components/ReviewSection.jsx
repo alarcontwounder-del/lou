@@ -129,8 +129,8 @@ const ReviewCard = ({ review }) => {
 
       {/* Rating */}
       <div className="flex gap-0.5 mb-3">
-        {[...Array(5)].map((_, i) => (
-          <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star key={star} size={14} className="fill-amber-400 text-amber-400" />
         ))}
       </div>
 

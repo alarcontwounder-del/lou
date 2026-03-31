@@ -38,7 +38,7 @@ class TestBookingRequestEndpoint:
         
         # Data assertions
         data = response.json()
-        assert data.get("success") == True, "Expected success: true"
+        assert data.get("success") is True, "Expected success: true"
         assert "id" in data, "Expected booking ID in response"
         assert isinstance(data["id"], str), "Booking ID should be a string"
         assert len(data["id"]) > 0, "Booking ID should not be empty"
@@ -67,7 +67,7 @@ class TestBookingRequestEndpoint:
         
         assert response.status_code == 200, f"Expected 200, got {response.status_code}: {response.text}"
         data = response.json()
-        assert data.get("success") == True
+        assert data.get("success") is True
         assert "id" in data
         print(f"✓ Beach club booking created with ID: {data['id']}")
     
@@ -236,7 +236,7 @@ class TestBookingRequestEndpoint:
         
         assert response.status_code == 200, f"Expected 200, got {response.status_code}: {response.text}"
         data = response.json()
-        assert data.get("success") == True
+        assert data.get("success") is True
         print(f"✓ Booking with empty optional fields created: {data['id']}")
 
 

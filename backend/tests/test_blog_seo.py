@@ -149,7 +149,7 @@ class TestBlogDetailEndpoint:
         response = requests.get(f"{BASE_URL}/api/blog/{slug}")
         assert response.status_code == 200, f"Slug {slug} returned {response.status_code}"
         data = response.json()
-        assert data['slug'] == slug, f"Returned slug doesn't match requested"
+        assert data['slug'] == slug, "Returned slug doesn't match requested"
         print(f"PASS: Blog post /{slug} accessible")
 
 

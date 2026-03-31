@@ -11,7 +11,7 @@ import pytest
 import requests
 import os
 
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://golf-getaway-finder.preview.emergentagent.com')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://mallorca-golf-portal-1.preview.emergentagent.com')
 
 
 class TestDisplaySettings:
@@ -76,7 +76,7 @@ class TestHotelToggle:
         assert response.status_code == 200
         
         data = response.json()
-        assert data['is_active'] == False
+        assert data['is_active'] is False
         assert data['id'] == 'st-regis'
     
     def test_toggle_hotel_active(self):
@@ -88,7 +88,7 @@ class TestHotelToggle:
         assert response.status_code == 200
         
         data = response.json()
-        assert data['is_active'] == True
+        assert data['is_active'] is True
         assert data['id'] == 'st-regis'
     
     def test_inactive_hotel_excluded_from_default_list(self):

@@ -32,8 +32,8 @@ class TestGolfCoursesAPI:
         data = response.json()
         for course in data:
             assert "booking_url" in course, f"Course {course.get('name')} missing booking_url"
-            assert course["booking_url"].startswith("https://"), f"booking_url should be HTTPS"
-            assert "greenfee365" in course["booking_url"], f"booking_url should point to greenfee365"
+            assert course["booking_url"].startswith("https://"), "booking_url should be HTTPS"
+            assert "greenfee365" in course["booking_url"], "booking_url should point to greenfee365"
     
     def test_golf_course_has_holes_par_price(self):
         """Test that golf courses have holes, par, and price_from fields"""
@@ -47,9 +47,9 @@ class TestGolfCoursesAPI:
             assert "price_from" in course, f"Course {course.get('name')} missing price_from"
             
             # Validate values
-            assert course["holes"] in [9, 18], f"Holes should be 9 or 18"
-            assert 35 <= course["par"] <= 72, f"Par should be between 35 and 72"
-            assert course["price_from"] > 0, f"price_from should be positive"
+            assert course["holes"] in [9, 18], "Holes should be 9 or 18"
+            assert 35 <= course["par"] <= 72, "Par should be between 35 and 72"
+            assert course["price_from"] > 0, "price_from should be positive"
     
     def test_golf_course_has_image(self):
         """Test that golf courses have image field"""
@@ -59,7 +59,7 @@ class TestGolfCoursesAPI:
         data = response.json()
         for course in data:
             assert "image" in course, f"Course {course.get('name')} missing image"
-            assert len(course["image"]) > 0, f"Image URL should not be empty"
+            assert len(course["image"]) > 0, "Image URL should not be empty"
     
     def test_real_golf_bendinat_exists(self):
         """Test that Real Golf De Bendinat exists (used in hotel pairing)"""
@@ -131,7 +131,7 @@ class TestHotelsWithGolfPairing:
         for hotel in hotels:
             if hotel.get("nearest_golf"):
                 assert "distance_km" in hotel, f"Hotel {hotel.get('name')} has nearest_golf but missing distance_km"
-                assert hotel["distance_km"] > 0, f"distance_km should be positive"
+                assert hotel["distance_km"] > 0, "distance_km should be positive"
     
     def test_st_regis_has_bendinat_golf(self):
         """Test St. Regis Mardavall is paired with Real Golf De Bendinat"""

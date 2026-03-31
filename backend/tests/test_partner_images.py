@@ -54,7 +54,7 @@ class TestHotelsImages:
                 print(f"  - {h['name']}: {h['image']}")
         
         assert len(pexels_hotels) == 0, f"Found {len(pexels_hotels)} hotels with Pexels URLs"
-        print(f"✓ No Pexels URLs in hotels")
+        print("✓ No Pexels URLs in hotels")
     
     def test_hotels_have_valid_images(self):
         """Verify all hotels have non-empty image URLs"""
@@ -110,7 +110,7 @@ class TestRestaurantsImages:
                 print(f"  - {r['name']}: {r['image']}")
         
         assert len(pexels_restaurants) == 0, f"Found {len(pexels_restaurants)} restaurants with Pexels URLs"
-        print(f"✓ No Pexels URLs in restaurants")
+        print("✓ No Pexels URLs in restaurants")
     
     def test_restaurants_have_valid_images(self):
         """Verify all restaurants have non-empty image URLs"""
@@ -166,7 +166,7 @@ class TestCafeBarsImages:
                 print(f"  - {c['name']}: {c['image']}")
         
         assert len(pexels_cafes) == 0, f"Found {len(pexels_cafes)} cafe/bars with Pexels URLs"
-        print(f"✓ No Pexels URLs in cafe/bars")
+        print("✓ No Pexels URLs in cafe/bars")
     
     def test_cafe_bars_have_valid_images(self):
         """Verify all cafe/bars have non-empty image URLs"""
@@ -222,7 +222,7 @@ class TestBeachClubsImages:
                 print(f"  - {b['name']}: {b['image']}")
         
         assert len(pexels_clubs) == 0, f"Found {len(pexels_clubs)} beach clubs with Pexels URLs"
-        print(f"✓ No Pexels URLs in beach clubs")
+        print("✓ No Pexels URLs in beach clubs")
     
     def test_beach_clubs_have_valid_images(self):
         """Verify all beach clubs have non-empty image URLs"""
@@ -254,7 +254,7 @@ class TestAllPartnersEndpoint:
         assert 'beach_clubs' in data, "Missing beach_clubs in all-partners"
         assert 'cafe_bars' in data, "Missing cafe_bars in all-partners"
         
-        print(f"All-partners endpoint returns:")
+        print("All-partners endpoint returns:")
         print(f"  - Hotels: {len(data.get('hotels', []))}")
         print(f"  - Restaurants: {len(data.get('restaurants', []))}")
         print(f"  - Beach Clubs: {len(data.get('beach_clubs', []))}")
@@ -285,7 +285,7 @@ class TestAllPartnersEndpoint:
                 print(f"  - [{p['category']}] {p['name']}: {p['image']}")
         
         assert len(pexels_found) == 0, f"Found {len(pexels_found)} items with Pexels URLs in all-partners"
-        print(f"✓ No Pexels URLs found in all-partners endpoint")
+        print("✓ No Pexels URLs found in all-partners endpoint")
 
 
 class TestImageSourceAnalysis:
