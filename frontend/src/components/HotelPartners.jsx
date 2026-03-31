@@ -289,16 +289,16 @@ export const HotelPartners = () => {
           </div>
 
           {/* Price Filter Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8" data-testid="hotel-price-filter">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8" style={{ transform: 'translateZ(0)', transformStyle: 'flat' }} data-testid="hotel-price-filter">
             <div className="flex flex-wrap items-center gap-2">
               {PRICE_FILTERS.map((filter) => (
                 <button
                   key={filter.key}
                   onClick={() => setPriceFilter(filter.key)}
                   data-testid={`price-filter-${filter.key}`}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                     priceFilter === filter.key
-                      ? 'bg-stone-800 text-white shadow-sm'
+                      ? 'bg-stone-800 text-white'
                       : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700'
                   }`}
                 >
@@ -311,9 +311,9 @@ export const HotelPartners = () => {
               <button
                 onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc')}
                 data-testid="price-sort-toggle"
-                className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   sortOrder
-                    ? 'bg-stone-800 text-white shadow-sm'
+                    ? 'bg-stone-800 text-white'
                     : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700'
                 }`}
               >
