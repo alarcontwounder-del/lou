@@ -23,20 +23,23 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin Dashboard with Content Manager
 - Weather Widget (7-day forecast)
 - Review system with social proof
-- Cookie Consent (GDPR)
+- Cookie Consent (GDPR) — fixed glass-effect artifact
 - Transparent favicon
 - Venue display ordering (position control)
 - QuickView modal redesign
 - Schema.org structured data (Organization, GolfCourse, LocalBusiness)
 - SEO meta tags, OG tags, Twitter cards
 - Sitemap.xml and robots.txt
-- Language Dropdown Glass Effect (custom hover-based dropdown matching WeatherBadge style)
+- Language Dropdown Glass Effect
 - SEO Pre-rendering via custom Playwright-based prerender.js script
 - Dynamic Inline SEO Script in index.html for Googlebot rendering
-- 59 Hotels total (38 original + 21 newly added) with full data
+- 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
-## Recent Changes (March 30, 2026)
-- **21 New Hotels Updated**: Replaced stock images with real hotel-specific photos from Pexels/Unsplash (unique per hotel). Added July pricing displayed as "From €[price]" instead of discount % banners. Added category tags, region tags, and multilang deal text for all 21 new hotels, matching existing card format.
+## Recent Changes (March 31, 2026)
+- **Price Range Filter**: Added to hotels section — "All", "Under €200", "€200–€400", "€400+" filter pills + "Sort by Price" toggle (cycles asc/desc/off). Shows hotel count.
+- **Greyed-Out Inactive Cards**: When admin sets `is_active=false` on any partner (hotel/restaurant/beach club/café), the card turns grayscale, shows "Coming Soon" badge, disables flip animation, QuickView, booking links, and maps. Inactive cards sort to end of grid. Applied across all 4 partner types.
+- **Search Fix**: Hotel search results now open hotel websites on click (added `contact_url` fallback to search API).
+- **Cookie Popup Fix**: Increased opacity to `bg-stone-900/85` to eliminate hero content bleeding through glass effect.
 
 ## Pending / Blocked Items
 - Google Business Profile suspended (user must appeal with Google)
@@ -49,23 +52,19 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Golf Packages page (bundle course + hotel deals)
 
 ## Key API Endpoints
-- `GET /api/all-partners` — Fetches all partner data (59 hotels, restaurants, etc.)
+- `GET /api/all-partners` — Returns ALL partners (including inactive) with `is_active` field
+- `GET /api/partner-offers` — Returns ALL partners (including inactive)
+- `GET /api/search?q=&category=` — Returns only ACTIVE partners; includes `contact_url` fallback for `booking_url`
 - `POST /api/booking-request` — Restaurant/Beach Club reservations + Resend emails
 - `POST /api/display-settings` — Content Manager visibility/limits
-- `GET /api/golf-courses/:id` — Individual course data
-- `GET /api/blog-posts` — Blog content
-
-## DB Collections
-- `golf_courses`, `hotels`, `restaurants`, `beach_clubs`, `cafe_bars` — with `display_order`, `is_active`
-- `booking_requests` — `{id, venue_id, venue_name, venue_type, date, time, guests, name, email, phone, dietary_preferences, allergies, special_requests, created_at}`
 
 ## Hotel Data Schema
 - Old hotels (38): `{id, name, type, description, image, location, deal, original_price, offer_price, discount_percent, contact_url, is_active, display_order, distance_km, nearest_golf, category?, region?}`
 - New hotels (21): `{id, name, type, description, image, location, deal, offer_price, contact_url, is_active, display_order, distance_km, nearest_golf, category, region}`
 - New hotels use "From €X" display (no discount_percent/original_price)
+- `is_active=false` triggers greyed-out card treatment across all partner types
 
 ## Critical Notes
 - **PRODUCTION ENVIRONMENT**: Stripe is in LIVE mode. Be extremely cautious.
 - **Database**: Active MongoDB database is `test_database` (NOT `golf_mallorca`)
-- **Deployment**: Changes must be pushed via "Deploy" -> "Replace deployment" -> "Existing database"
-- **After SEO fix deployment**: Resubmit sitemap in Google Search Console
+- **Inactive Cards**: Admin toggle `is_active` now shows/hides card functionality (not visibility)
