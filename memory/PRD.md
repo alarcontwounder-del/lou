@@ -36,7 +36,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
 ## Recent Changes (March 31, 2026)
-- **Google Analytics GA4**: Integrated measurement ID `G-FZ31E87PHL` in index.html with custom conversion events:
+- **SEO Canonical Fix (April 3)**: Fixed "Alternate page with proper canonical tag" Google Search Console error. Root cause: static canonical in HTML always pointed to homepage regardless of URL. Fixed by making canonical, og:url, and hreflang tags dynamic via inline scripts that execute immediately based on `window.location.pathname`. Each page now has its own correct canonical URL from the first byte of HTML.
   - `book_tee_time_click` (Hero CTA)
   - `trip_planner_open` / `trip_planner_submit` (Trip Planner)
   - `booking_request_submit` (Restaurant/Beach Club reservations)

@@ -13,8 +13,15 @@
         <meta name="author" content="Golfinmallorca.com" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
-        <!-- Canonical URL -->
-        <link id="main-canonical" rel="canonical" href="https://golfinmallorca.com/" />
+        <!-- Canonical URL - Set dynamically based on current path -->
+        <script>
+        (function(){
+          var base='https://golfinmallorca.com';
+          var p=window.location.pathname;
+          var href=base+(p==='/'?'/':p.replace(/\/$/,''));
+          document.write('<link id="main-canonical" rel="canonical" href="'+href+'" />');
+        })();
+        </script>
         
         <!-- Preload hero image for faster first paint -->
         <link rel="preload" as="image" href="https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG" />
@@ -28,16 +35,31 @@
           gtag('config', 'G-FZ31E87PHL');
         </script>
         
-        <!-- Hreflang for multi-language -->
-        <link id="hreflang-en" rel="alternate" hreflang="en" href="https://golfinmallorca.com/" />
-        <link id="hreflang-de" rel="alternate" hreflang="de" href="https://golfinmallorca.com/?lang=de" />
-        <link id="hreflang-fr" rel="alternate" hreflang="fr" href="https://golfinmallorca.com/?lang=fr" />
-        <link id="hreflang-sv" rel="alternate" hreflang="sv" href="https://golfinmallorca.com/?lang=sv" />
-        <link id="hreflang-default" rel="alternate" hreflang="x-default" href="https://golfinmallorca.com/" />
+        <!-- Hreflang for multi-language - Set dynamically based on current path -->
+        <script>
+        (function(){
+          var base='https://golfinmallorca.com';
+          var p=window.location.pathname;
+          var path=p==='/'?'':p.replace(/\/$/,'');
+          var u=base+path;
+          document.write('<link id="hreflang-en" rel="alternate" hreflang="en" href="'+u+'" />');
+          document.write('<link id="hreflang-de" rel="alternate" hreflang="de" href="'+u+'?lang=de" />');
+          document.write('<link id="hreflang-fr" rel="alternate" hreflang="fr" href="'+u+'?lang=fr" />');
+          document.write('<link id="hreflang-sv" rel="alternate" hreflang="sv" href="'+u+'?lang=sv" />');
+          document.write('<link id="hreflang-default" rel="alternate" hreflang="x-default" href="'+u+'" />');
+        })();
+        </script>
         
         <!-- Open Graph / Social Media -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://golfinmallorca.com/" />
+        <script>
+        (function(){
+          var base='https://golfinmallorca.com';
+          var p=window.location.pathname;
+          var href=base+(p==='/'?'/':p.replace(/\/$/,''));
+          document.write('<meta property="og:url" content="'+href+'" />');
+        })();
+        </script>
         <meta property="og:site_name" content="Golfinmallorca.com" />
         <meta property="og:title" content="Golf in Mallorca | Book Tee Times, Golf Holidays & Packages" />
         <meta property="og:description" content="Book tee times at 16 premium golf courses in Mallorca. Golf holiday packages, luxury resorts, stay and play deals. The island's only exclusive golf operator since 2003." />
