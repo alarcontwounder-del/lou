@@ -150,13 +150,13 @@ export const Footer = () => {
                   golfgatecatalunya.es
                 </a>
               </li>
-              <li className="flex items-center gap-2">
+              <li>
                 <span className="text-white/35">teetimescancun.net</span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Coming soon</span>
+                <span className="block text-[10px] uppercase tracking-wider font-semibold text-white/30 mt-1">Coming soon</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li>
                 <span className="text-white/35">teetimespuntacana.com</span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Coming soon</span>
+                <span className="block text-[10px] uppercase tracking-wider font-semibold text-white/30 mt-1">Coming soon</span>
               </li>
             </ul>
           </div>
