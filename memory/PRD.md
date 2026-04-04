@@ -36,6 +36,9 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
 ## Recent Changes (March 31, 2026)
+- **Hotel Booking Inquiry Form (April 4)**: All hotel "Book" buttons now open the BookingRequestModal form (check-in/check-out, guests, name, email, phone, message) instead of linking to external hotel websites. Same approved design as restaurants.
+- **Blog Share Buttons (April 4)**: Added WhatsApp, Twitter, Facebook share buttons to every blog article.
+- **Footer Other Destinations (April 4)**: New "Other Destinations" section with golfgatecatalunya.es (active) and teetimescancun.net / teetimespuntacana.com (coming soon).
 - **SEO Canonical Fix (April 3)**: Fixed "Alternate page with proper canonical tag" Google Search Console error. Root cause: static canonical in HTML always pointed to homepage regardless of URL. Fixed by making canonical, og:url, and hreflang tags dynamic via inline scripts that execute immediately based on `window.location.pathname`. Each page now has its own correct canonical URL from the first byte of HTML.
   - `book_tee_time_click` (Hero CTA)
   - `trip_planner_open` / `trip_planner_submit` (Trip Planner)
