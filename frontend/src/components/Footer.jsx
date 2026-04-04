@@ -151,6 +151,32 @@ export const Footer = () => {
               </li>
             </ul>
           </div>
+
+          {/* Other Destinations */}
+          <div data-testid="footer-other-destinations">
+            <h4 className="font-medium text-lg mb-4">Other Destinations</h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://golfgatecatalunya.es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition-colors"
+                  data-testid="footer-link-golfgatecatalunya"
+                >
+                  golfgatecatalunya.es
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-white/35">teetimescancun.net</span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Soon</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-white/35">teetimespuntacana.com</span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Soon</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom */}
