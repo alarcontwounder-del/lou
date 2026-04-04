@@ -84,7 +84,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links + Services */}
           <div>
             <h4 className="font-medium text-lg mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
@@ -114,11 +114,8 @@ export const Footer = () => {
                 </button>
               </li>
             </ul>
-          </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-medium text-lg mb-4">Services</h4>
+            <h4 className="font-medium text-lg mb-4 mt-8">Services</h4>
             <ul className="space-y-3">
               <li>
                 <a href="https://golfinmallorca.greenfee365.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors font-medium">
@@ -134,20 +131,6 @@ export const Footer = () => {
                 <Link to="/golf-holidays-mallorca" className="text-white/70 hover:text-white transition-colors">
                   Golf Holiday Packages
                 </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-medium text-lg mb-4">{t('footer.contactInfo')}</h4>
-            <ul className="space-y-3 text-white/70">
-              <li><a href="tel:+34620987575" className="hover:text-white transition-colors">+34 620 987 575</a></li>
-              <li><a href="mailto:contact@golfinmallorca.com" className="hover:text-white transition-colors">contact@golfinmallorca.com</a></li>
-              <li>Palma de Mallorca, IB, Spain</li>
-              <li className="pt-2">
-                <span className="text-white/50">Website: </span>
-                <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors">golfinmallorca.com</a>
               </li>
             </ul>
           </div>
@@ -174,6 +157,20 @@ export const Footer = () => {
               <li className="flex items-center gap-2">
                 <span className="text-white/35">teetimespuntacana.com</span>
                 <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Soon</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-medium text-lg mb-4">{t('footer.contactInfo')}</h4>
+            <ul className="space-y-3 text-white/70">
+              <li><a href="tel:+34620987575" className="hover:text-white transition-colors">+34 620 987 575</a></li>
+              <li><a href="mailto:contact@golfinmallorca.com" className="hover:text-white transition-colors">contact@golfinmallorca.com</a></li>
+              <li>Palma de Mallorca, IB, Spain</li>
+              <li className="pt-2">
+                <span className="text-white/50">Website: </span>
+                <a href="https://golfinmallorca.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors">golfinmallorca.com</a>
               </li>
             </ul>
           </div>
