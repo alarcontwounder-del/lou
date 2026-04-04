@@ -136,7 +136,8 @@ class BookingRequestCreate(BaseModel):
     guest_email: EmailStr
     guest_phone: str
     date: str
-    time: str
+    time: Optional[str] = ""  # Optional for hotels (check-in/check-out instead)
+    date_checkout: Optional[str] = None  # For hotels only
     guests: int
     dietary: List[str] = []
     allergies: str = ""

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, Users, User, Mail, Phone, UtensilsCrossed, AlertCircle, MessageSquare, Check, Loader2 } from 'lucide-react';
+import { X, Calendar, Clock, Users, User, Mail, Phone, UtensilsCrossed, AlertCircle, MessageSquare, Check, Loader2, BedDouble } from 'lucide-react';
 import axios from 'axios';
 import { trackEvent } from '../lib/analytics';
 
@@ -20,9 +20,10 @@ const TIME_SLOTS = [
 ];
 
 export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
+  var isHotel = venueType === 'hotel';
   var _s = useState('idle'); var status = _s[0]; var setStatus = _s[1];
   var _f = useState({
-    guest_name: '', guest_email: '', guest_phone: '', date: '', time: '',
+    guest_name: '', guest_email: '', guest_phone: '', date: '', date_checkout: '', time: '',
     guests: 2, dietary: [], allergies: '', special_requests: ''
   }); var form = _f[0]; var setForm = _f[1];
 
@@ -43,7 +44,8 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
 
   var handleSubmit = function(e) {
     e.preventDefault();
-    if (!form.guest_name || !form.guest_email || !form.guest_phone || !form.date || !form.time) return;
+    if (!form.guest_name || !form.guest_email || !form.guest_phone || !form.date) return;
+    if (!isHotel && !form.time) return;
     setStatus('loading');
     axios.post(BACKEND_URL + '/api/booking-request', {
       venue_name: venue.name,
@@ -52,10 +54,11 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
       guest_email: form.guest_email,
       guest_phone: form.guest_phone,
       date: form.date,
-      time: form.time,
+      date_checkout: isHotel ? form.date_checkout : undefined,
+      time: isHotel ? undefined : form.time,
       guests: form.guests,
-      dietary: form.dietary,
-      allergies: form.allergies,
+      dietary: isHotel ? [] : form.dietary,
+      allergies: isHotel ? '' : form.allergies,
       special_requests: form.special_requests
     }).then(function() {
       setStatus('success');
@@ -76,8 +79,8 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
             <Check className="w-8 h-8 text-green-600" />
           </div>
           <h3 className="font-heading text-xl text-stone-900 mb-2">Request Sent!</h3>
-          <p className="text-stone-500 text-sm mb-2">Your booking request for <strong>{venue.name}</strong> has been submitted.</p>
-          <p className="text-stone-400 text-xs mb-6">We'll confirm your reservation within 72 hours. Check your email for details.</p>
+          <p className="text-stone-500 text-sm mb-2">Your {isHotel ? 'inquiry' : 'booking request'} for <strong>{venue.name}</strong> has been submitted.</p>
+          <p className="text-stone-400 text-xs mb-6">We'll get back to you within 72 hours. Check your email for details.</p>
           <button onClick={onClose} className="w-full bg-brand-charcoal text-white py-3 rounded-full text-sm font-semibold hover:bg-brand-charcoal/90 transition-all" data-testid="booking-success-close">
             Done
           </button>
@@ -108,34 +111,57 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-5 pt-4 overflow-y-auto flex-1 min-h-0 space-y-4">
           {/* Date & Time */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
-                <Calendar className="w-3 h-3" /> Date
-              </label>
-              <input type="date" required min={today} value={form.date}
-                onChange={function(e) { updateField('date', e.target.value); }}
-                className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none" data-testid="booking-date"
-              />
+          {isHotel ? (
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
+                  <Calendar className="w-3 h-3" /> Check-in
+                </label>
+                <input type="date" required min={today} value={form.date}
+                  onChange={function(e) { updateField('date', e.target.value); }}
+                  className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none" data-testid="booking-date"
+                />
+              </div>
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
+                  <Calendar className="w-3 h-3" /> Check-out
+                </label>
+                <input type="date" min={form.date || today} value={form.date_checkout}
+                  onChange={function(e) { updateField('date_checkout', e.target.value); }}
+                  className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none" data-testid="booking-date-checkout"
+                />
+              </div>
             </div>
-            <div>
-              <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
-                <Clock className="w-3 h-3" /> Time
-              </label>
-              <select required value={form.time}
-                onChange={function(e) { updateField('time', e.target.value); }}
-                className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none bg-white" data-testid="booking-time"
-              >
-                <option value="">Select</option>
-                {TIME_SLOTS.map(function(t) { return <option key={t} value={t}>{t}</option>; })}
-              </select>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
+                  <Calendar className="w-3 h-3" /> Date
+                </label>
+                <input type="date" required min={today} value={form.date}
+                  onChange={function(e) { updateField('date', e.target.value); }}
+                  className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none" data-testid="booking-date"
+                />
+              </div>
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
+                  <Clock className="w-3 h-3" /> Time
+                </label>
+                <select required value={form.time}
+                  onChange={function(e) { updateField('time', e.target.value); }}
+                  className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none bg-white" data-testid="booking-time"
+                >
+                  <option value="">Select</option>
+                  {TIME_SLOTS.map(function(t) { return <option key={t} value={t}>{t}</option>; })}
+                </select>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Guests */}
           <div>
             <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
-              <Users className="w-3 h-3" /> Number of Guests
+              {isHotel ? <BedDouble className="w-3 h-3" /> : <Users className="w-3 h-3" />} {isHotel ? 'Number of Guests' : 'Number of Guests'}
             </label>
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5, 6, 7, 8].map(function(n) {
@@ -183,7 +209,8 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
             </div>
           </div>
 
-          {/* Dietary */}
+          {/* Dietary - only for dining */}
+          {!isHotel && (
           <div>
             <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-2">
               <UtensilsCrossed className="w-3 h-3" /> Dietary Preferences
@@ -200,8 +227,10 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
               })}
             </div>
           </div>
+          )}
 
-          {/* Allergies */}
+          {/* Allergies - only for dining */}
+          {!isHotel && (
           <div>
             <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
               <AlertCircle className="w-3 h-3" /> Allergies
@@ -211,13 +240,14 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
               className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none" data-testid="booking-allergies"
             />
           </div>
+          )}
 
           {/* Special Requests */}
           <div>
             <label className="flex items-center gap-1.5 text-xs font-medium text-stone-500 mb-1.5">
-              <MessageSquare className="w-3 h-3" /> Special Requests
+              <MessageSquare className="w-3 h-3" /> {isHotel ? 'Message / Special Requests' : 'Special Requests'}
             </label>
-            <textarea value={form.special_requests} placeholder="Birthday celebration, outdoor seating, high chair..."
+            <textarea value={form.special_requests} placeholder={isHotel ? 'Room type preferences, airport transfer, special occasions...' : 'Birthday celebration, outdoor seating, high chair...'}
               onChange={function(e) { updateField('special_requests', e.target.value); }}
               rows={2}
               className="w-full px-3 py-2.5 border border-stone-200 rounded-lg text-sm focus:ring-2 focus:ring-brand-slate/30 focus:border-brand-slate outline-none resize-none" data-testid="booking-special"
@@ -226,7 +256,9 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
 
           {/* Disclaimer */}
           <p className="text-[10px] text-stone-400 leading-relaxed">
-            Bookings are subject to the restaurant's availability. We will confirm your reservation within 72 hours, often sooner. By submitting, you agree to our terms.
+            {isHotel
+              ? 'Availability is subject to confirmation. We will get back to you within 72 hours, often sooner. By submitting, you agree to our terms.'
+              : 'Bookings are subject to the restaurant\'s availability. We will confirm your reservation within 72 hours, often sooner. By submitting, you agree to our terms.'}
           </p>
 
           {/* Error */}
@@ -242,7 +274,7 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
             {status === 'loading' ? (
               <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</>
             ) : (
-              'Request Reservation'
+              isHotel ? 'Send Inquiry' : 'Request Reservation'
             )}
           </button>
         </form>

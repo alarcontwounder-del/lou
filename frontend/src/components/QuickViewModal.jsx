@@ -103,7 +103,7 @@ export const QuickViewModal = ({ isOpen, onClose, item, type, language, t, onBoo
           )}
 
           {/* CTA — replaces "Hover for details" */}
-          {onBooking && (type === 'restaurant' || type === 'beach_club') ? (
+          {onBooking && (type === 'restaurant' || type === 'beach_club' || type === 'hotel') ? (
             <button
               onClick={function() { onBooking(item); }}
               className="w-full flex items-center justify-center gap-2 bg-brand-charcoal text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-charcoal/90 transition-all"

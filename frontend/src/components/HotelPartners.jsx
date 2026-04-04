@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Navigation, Eye, ArrowUpDown } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
+import { BookingRequestModal } from './BookingRequestModal';
 
 const PRICE_FILTERS = [
   { key: 'all', label: { en: 'All', de: 'Alle', fr: 'Tous', sv: 'Alla' } },
@@ -11,7 +12,7 @@ const PRICE_FILTERS = [
   { key: 'over400', label: { en: '€400+', de: '€400+', fr: '€400+', sv: '€400+' }, min: 400 },
 ];
 
-const HotelCard = ({ hotel, language, t, onQuickView }) => {
+const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
   const inactive = hotel.is_active === false;
 
   return (
@@ -194,16 +195,13 @@ const HotelCard = ({ hotel, language, t, onQuickView }) => {
                 )}
               </div>
 
-              <a
-                href={hotel.contact_url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={(e) => { e.stopPropagation(); onBooking(hotel); }}
                 className="mt-6 inline-flex items-center justify-center gap-2 bg-white text-stone-800 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-white/90 transition-all"
                 data-testid={`hotel-book-${hotel.id}`}
               >
                 {t('offers.bookHotel')}
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              </button>
             </>
           )}
         </div>
@@ -216,6 +214,7 @@ export const HotelPartners = () => {
   const { language, t } = useLanguage();
   const { hotels, loading, getDisplayedItems } = useData();
   const [quickViewItem, setQuickViewItem] = useState(null);
+  const [bookingItem, setBookingItem] = useState(null);
   const [priceFilter, setPriceFilter] = useState('all');
   const [sortOrder, setSortOrder] = useState(null); // null, 'asc', 'desc'
 
@@ -332,6 +331,7 @@ export const HotelPartners = () => {
                 language={language} 
                 t={t}
                 onQuickView={setQuickViewItem}
+                onBooking={setBookingItem}
               />
             ))}
           </div>
@@ -345,6 +345,14 @@ export const HotelPartners = () => {
         type="hotel"
         language={language}
         t={t}
+        onBooking={(item) => { setQuickViewItem(null); setBookingItem(item); }}
+      />
+
+      <BookingRequestModal
+        isOpen={!!bookingItem}
+        onClose={() => setBookingItem(null)}
+        venue={bookingItem}
+        venueType="hotel"
       />
     </>
   );
