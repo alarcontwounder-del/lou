@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Star, Languages, Search, X, Quote } from 'lucide-react';
 import axios from 'axios';
 
@@ -189,7 +189,7 @@ export const ReviewSection = () => {
   const countries = ['All Countries', ...Object.keys(stats.by_country || {})];
 
   // Filter reviews
-  const filteredReviews = reviews.filter((review) => {
+  const filteredReviews = useMemo(() => reviews.filter((review) => {
     const platformMatch = activeFilter === 'All' || review.platform === activeFilter;
     const countryMatch = countryFilter === 'All Countries' || review.country === countryFilter;
     const searchMatch = searchQuery === '' || 
@@ -197,7 +197,7 @@ export const ReviewSection = () => {
       review.platform.toLowerCase().includes(searchQuery.toLowerCase()) ||
       review.user_name.toLowerCase().includes(searchQuery.toLowerCase());
     return platformMatch && countryMatch && searchMatch;
-  });
+  }), [reviews, activeFilter, countryFilter, searchQuery]);
 
   if (loading) {
     return (

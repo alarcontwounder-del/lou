@@ -36,6 +36,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - 59 Hotels total (38 original + 21 newly added) with full data, real photos, and pricing
 
 ## Recent Changes (March 31, 2026)
+- **Code Quality Report v2 (April 4)**: Applied fixes — empty catch blocks (PaymentsTab, TripPlanner), useMemo for ReviewSection filtered reviews, email templates adapted for hotel/restaurant. Security (eval→ast.literal_eval) was already fixed. Hook dependencies verified as correct (use module constants + stable setState).
 - **Hotel Booking Inquiry Form (April 4)**: All hotel "Book" buttons now open the BookingRequestModal form (check-in/check-out, guests, name, email, phone, message) instead of linking to external hotel websites. Same approved design as restaurants.
 - **Blog Share Buttons (April 4)**: Added WhatsApp, Twitter, Facebook share buttons to every blog article.
 - **Footer Other Destinations (April 4)**: New "Other Destinations" section with golfgatecatalunya.es (active) and teetimescancun.net / teetimespuntacana.com (coming soon).

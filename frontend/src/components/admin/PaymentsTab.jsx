@@ -48,7 +48,7 @@ export const PaymentsTab = () => {
     try {
       const res = await axios.get(`${BACKEND_URL}/api/admin/payment-stats`, { withCredentials: true });
       setStats(res.data);
-    } catch { /* silent */ }
+    } catch { toast.error('Failed to load payment stats'); }
   };
 
   const handleCreate = async (e) => {

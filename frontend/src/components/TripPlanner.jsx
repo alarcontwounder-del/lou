@@ -221,7 +221,7 @@ function SuccessView({ onClose, form, itinerary, formatDate }) {
       await navigator.clipboard.writeText(generateShareText());
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (e) { /* clipboard API may fail in some contexts */ }
+    } catch (e) { console.error('Clipboard API failed:', e); }
   };
 
   return (
@@ -285,7 +285,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
         beach_clubs: partnersRes.data.beach_clubs || [],
       });
       setGolfCourses(coursesRes.data || []);
-    }).catch(() => {});
+    }).catch((err) => { console.error('Failed to load trip planner data:', err); });
   }, [isOpen]);
 
   useEffect(() => {
