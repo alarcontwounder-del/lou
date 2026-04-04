@@ -118,8 +118,8 @@ export const Footer = () => {
             <h4 className="font-medium text-lg mb-4 mt-8">Services</h4>
             <ul className="space-y-3">
               <li>
-                <a href="https://golfinmallorca.greenfee365.com" target="_blank" rel="noopener noreferrer" className="text-brand-slate hover:text-white transition-colors font-medium">
-                  {t('hero.bookTeeTime')}
+                <a href="https://golfinmallorca.greenfee365.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
+                  {t('hero.bookTeeTime')}!
                 </a>
               </li>
               <li>
@@ -152,11 +152,11 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-white/35">teetimescancun.net</span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Soon</span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Coming soon</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-white/35">teetimespuntacana.com</span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Soon</span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-white/30 bg-white/8 px-2 py-0.5 rounded-full">Coming soon</span>
               </li>
             </ul>
           </div>
