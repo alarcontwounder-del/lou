@@ -53,7 +53,7 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
           {!inactive && (
             <FavoriteButton 
               item={{ id: restaurant.id, type: 'restaurant', name: restaurant.name, image: restaurant.image, location: restaurant.location }}
-              className="absolute top-3 right-3"
+              className="absolute bottom-3 right-3 z-10"
             />
           )}
         </div>

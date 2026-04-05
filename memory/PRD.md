@@ -13,7 +13,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 ## What's Been Implemented
 - 16 Golf Course partner cards with flip animations, SEO landing pages
 - 59 Hotel partner cards with internal BookingRequestModal (not external links)
-- Restaurant, Beach Club, Café & Bar partner sections
+- Restaurant, Beach Club, Cafe & Bar partner sections
 - Trip Planner (multi-step wizard with AI itinerary generation)
 - Contact form with Resend email integration
 - Blog with CMS, social sharing (WhatsApp, Twitter, Facebook)
@@ -27,27 +27,42 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Weather badge
 - Section Navigator (right-side dots)
 - Floating Search
-- Code Quality improvements (var→let/const, React Hook deps, useMemo)
+- Code Quality improvements (var->let/const, React Hook deps, useMemo)
+- **Session-based Favorites System** (sessionStorage) - heart icons on all card types, floating button with counter, sliding panel with grouped items
 
-## Recent Fixes (Apr 5, 2026)
+## Recent Changes (Apr 5, 2026)
+### Mobile UI Bug Fixes
 - Fixed: Scroll indicator overlapping Trip Planner pill on mobile (hidden on <640px)
 - Fixed: "Play Golf Wherever You Are" banner mobile layout (full-width button, smaller text)
-- Fixed: Contact form "Book Your Mallorca Golf Holiday" cut off on right (overflow-hidden, decorative element hidden on mobile)
+- Fixed: Contact form "Book Your Mallorca Golf Holiday" cut off on right (overflow-hidden)
 - Improved: Added decoding="async" to card images for faster mobile loading
 
+### NEW: Session Favorites System
+- Created FavoritesContext (sessionStorage - clears on browser close)
+- Heart icon buttons on ALL card types: golf (top-left), hotels/restaurants/beach clubs/cafes (bottom-right)
+- Floating heart button (bottom-right) with count badge
+- Sliding panel "My List" with items grouped by type, remove buttons, clear all
+- Full-width panel on mobile, 384px sidebar on desktop
+
 ## Confirmed Working (User Verified)
-- Logo on mobile navbar ✅
-- SectionNavigator dots on right side ✅
-- Hotel Booking Flow ✅
-- GA4 Tracking ✅
-- SEO Canonicals ✅
-- Emails ✅
-- Admin Dashboard ✅
+- Logo on mobile navbar
+- SectionNavigator dots on right side
+- Hotel Booking Flow
+- GA4 Tracking
+- SEO Canonicals
+- Emails
+- Admin Dashboard
+
+## Files Reference for Favorites System
+- `/app/frontend/src/context/FavoritesContext.jsx` - Context + sessionStorage
+- `/app/frontend/src/components/FavoriteButton.jsx` - Heart icon component
+- `/app/frontend/src/components/FavoritesPanel.jsx` - Sliding panel
+- `/app/frontend/src/App.js` - Provider wrapper + floating button
 
 ## Pending/Upcoming Tasks
 ### P1 - Awaiting User Input
 - Add Hero Video to homepage (waiting for video file)
-- Add "From €[Price]" to 35 remaining hotels (waiting for pricing list)
+- Add "From [Price]" to 35 remaining hotels (waiting for pricing list)
 - External review links for "Write a review" modal (waiting for URLs)
 
 ### P2
@@ -70,3 +85,4 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - DO NOT tell user images were lost - 36 real images are safe in DB
 - Hotel images may appear broken in preview due to hotlink protection
 - LIVE Stripe key is active
+- Favorites use sessionStorage (key: gim_session_favorites) — data clears when browser closes

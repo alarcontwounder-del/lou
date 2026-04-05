@@ -63,7 +63,7 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
             {!inactive && (
               <FavoriteButton 
                 item={{ id: hotel.id, type: 'hotel', name: hotel.name, image: hotel.image, location: hotel.location, price_from: hotel.price_from, category: hotel.category }}
-                className="absolute top-3 right-3"
+                className="absolute bottom-3 right-3 z-10"
               />
             )}
           </div>

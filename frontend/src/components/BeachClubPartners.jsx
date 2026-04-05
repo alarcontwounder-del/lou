@@ -58,7 +58,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
           {!inactive && (
             <FavoriteButton 
               item={{ id: club.id, type: 'beach_club', name: club.name, image: club.image, location: club.location }}
-              className="absolute top-3 right-3"
+              className="absolute bottom-3 right-3 z-10"
             />
           )}
         </div>

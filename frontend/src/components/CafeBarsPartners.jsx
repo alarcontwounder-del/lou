@@ -59,7 +59,7 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => {
           {!inactive && (
             <FavoriteButton 
               item={{ id: place.id, type: 'cafe_bar', name: place.name, image: place.image, location: place.location }}
-              className="absolute top-3 right-3"
+              className="absolute bottom-3 right-3 z-10"
             />
           )}
         </div>
