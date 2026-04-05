@@ -125,7 +125,7 @@ export const Newsletter = () => {
                 <select
                   value={formData.country}
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-stone-200 border border-stone-300 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 appearance-none cursor-pointer"
+                  className="w-full pl-12 pr-10 py-4 rounded-xl bg-stone-200 border border-stone-300 focus:outline-none focus:border-brand-slate focus:ring-2 focus:ring-brand-slate/20 transition-all text-stone-700 appearance-none cursor-pointer text-sm sm:text-base"
                   data-testid="newsletter-country"
                   required
                 >

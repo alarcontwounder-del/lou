@@ -128,7 +128,7 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           data-testid="logo"
         >
           <img 
-            src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
+            src="/api/uploads/logo_dark_transparent_v2.png"
             alt="Golf in Mallorca Spain"
             className={`${isLight ? 'h-24 sm:h-28' : 'h-32 sm:h-36 md:h-44'} w-auto object-contain transition-all duration-300 ${isLight ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}
             style={isLight ? {} : { filter: 'brightness(0) invert(1) drop-shadow(0 2px 3px rgba(0,0,0,0.4))' }}

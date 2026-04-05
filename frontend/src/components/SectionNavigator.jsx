@@ -67,9 +67,9 @@ export const SectionNavigator = () => {
         onMouseLeave={() => setIsHoveringZone(false)}
       />
       
-      {/* Navigation dots - always visible on mobile, ghost effect on desktop */}
+      {/* Navigation dots - hidden on mobile, ghost effect on desktop */}
       <nav 
-        className={`fixed right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-1.5 sm:gap-2 transition-all duration-300 ease-out ${
+        className={`fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-end gap-1.5 md:gap-2 transition-all duration-300 ease-out ${
           isHoveringZone ? 'lg:opacity-100 lg:translate-x-0' : 'lg:opacity-0 lg:translate-x-4 lg:pointer-events-none'
         }`}
         aria-label="Section navigation"
@@ -86,7 +86,7 @@ export const SectionNavigator = () => {
             onClick={() => scrollToSection(section.id)}
             onMouseEnter={() => setHoveredSection(section.id)}
             onMouseLeave={() => setHoveredSection(null)}
-            className="group flex items-center gap-2 transition-all duration-200 p-1"
+            className="group flex items-center gap-2 transition-all duration-200 p-0.5 sm:p-1"
             title={section.label}
             data-testid={`nav-dot-${section.id}`}
           >
@@ -99,12 +99,12 @@ export const SectionNavigator = () => {
               {section.label}
             </span>
 
-            {/* Simple dot - larger when active */}
+            {/* Simple dot - smaller on mobile */}
             <div 
               className={`rounded-full transition-all duration-200 ${
                 isActive 
-                  ? 'w-3 h-3 sm:w-4 sm:h-4 bg-stone-600' 
-                  : 'w-2 h-2 sm:w-2.5 sm:h-2.5 bg-stone-400 hover:bg-stone-500 hover:w-2.5 hover:h-2.5 sm:hover:w-3 sm:hover:h-3'
+                  ? 'w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-stone-600' 
+                  : 'w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 bg-stone-400 hover:bg-stone-500'
               }`}
             />
           </button>
