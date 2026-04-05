@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Umbrella, Navigation, Waves, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
+import { FavoriteButton } from './FavoriteButton';
 
 const BeachClubCard = ({ club, language, t, onQuickView }) => {
   const inactive = club.is_active === false;
@@ -52,6 +53,13 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
           >
             <Eye className="w-4 h-4" />
           </button>
+          )}
+          {/* Favorite Button */}
+          {!inactive && (
+            <FavoriteButton 
+              item={{ id: club.id, type: 'beach_club', name: club.name, image: club.image, location: club.location }}
+              className="absolute top-3 right-3"
+            />
           )}
         </div>
 

@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Navigation, Eye, ArrowUpDown } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
+import { FavoriteButton } from './FavoriteButton';
 
 const PRICE_FILTERS = [
   { key: 'all', label: { en: 'All', de: 'Alle', fr: 'Tous', sv: 'Alla' } },
@@ -57,6 +58,13 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
               >
                 <Eye className="w-4 h-4" />
               </button>
+            )}
+            {/* Favorite Button */}
+            {!inactive && (
+              <FavoriteButton 
+                item={{ id: hotel.id, type: 'hotel', name: hotel.name, image: hotel.image, location: hotel.location, price_from: hotel.price_from, category: hotel.category }}
+                className="absolute top-3 right-3"
+              />
             )}
           </div>
 

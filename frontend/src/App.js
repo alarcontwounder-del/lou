@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-ro
 import '@/App.css';
 import { LanguageProvider } from './context/LanguageContext';
 import { DataProvider } from './context/DataContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -23,6 +24,9 @@ import { CookieConsent } from './components/CookieConsent';
 import { FloatingSearch } from './components/FloatingSearch';
 import { SectionNavigator } from './components/SectionNavigator';
 import { TripPlanner } from './components/TripPlanner';
+import { FavoritesPanel } from './components/FavoritesPanel';
+import { useFavorites } from './context/FavoritesContext';
+import { Heart } from 'lucide-react';
 import DesignPreview from './pages/DesignPreview';
 const GolfCoursePage = React.lazy(() => import('./components/GolfCourseLanding'));
 const GolfHolidaysPage = React.lazy(() => import('./components/GolfHolidaysPage'));
@@ -43,7 +47,9 @@ function MainContent() {
   const [user, setUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [showTripPlanner, setShowTripPlanner] = useState(false);
+  const [showFavorites, setShowFavorites] = useState(false);
   const searchRef = useRef(null);
+  const { count: favCount } = useFavorites();
 
   useEffect(() => {
     // Check if user was passed from AuthCallback
@@ -151,6 +157,23 @@ function MainContent() {
       {/* Trip Planner Modal */}
       <TripPlanner isOpen={showTripPlanner} onClose={() => setShowTripPlanner(false)} />
       
+      {/* Favorites Panel */}
+      <FavoritesPanel isOpen={showFavorites} onClose={() => setShowFavorites(false)} />
+      
+      {/* Floating Favorites Button */}
+      <button
+        onClick={() => setShowFavorites(true)}
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white rounded-full shadow-lg border border-stone-200 flex items-center justify-center hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+        data-testid="floating-favorites-btn"
+      >
+        <Heart className={`w-5 h-5 transition-colors duration-300 ${favCount > 0 ? 'text-red-500 fill-red-500' : 'text-stone-400 group-hover:text-red-400'}`} />
+        {favCount > 0 && (
+          <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center" data-testid="favorites-count-badge">
+            {favCount}
+          </span>
+        )}
+      </button>
+      
       {showAdmin && user && (
         <AdminDashboard 
           onClose={() => setShowAdmin(false)} 
@@ -218,8 +241,10 @@ function App() {
     <BrowserRouter>
       <LanguageProvider>
         <DataProvider>
-          <AppRouter />
-          <CookieConsent />
+          <FavoritesProvider>
+            <AppRouter />
+            <CookieConsent />
+          </FavoritesProvider>
         </DataProvider>
       </LanguageProvider>
     </BrowserRouter>

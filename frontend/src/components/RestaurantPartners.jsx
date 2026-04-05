@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
+import { FavoriteButton } from './FavoriteButton';
 
 const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
   const inactive = restaurant.is_active === false;
@@ -47,6 +48,13 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
           >
             <Eye className="w-4 h-4" />
           </button>
+          )}
+          {/* Favorite Button */}
+          {!inactive && (
+            <FavoriteButton 
+              item={{ id: restaurant.id, type: 'restaurant', name: restaurant.name, image: restaurant.image, location: restaurant.location }}
+              className="absolute top-3 right-3"
+            />
           )}
         </div>
 

@@ -5,6 +5,7 @@ import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { trackEvent } from '../lib/analytics';
+import { FavoriteButton } from './FavoriteButton';
 
 export const CourseCard = ({ course, language, t, onQuickView }) => (
   <div
@@ -43,6 +44,11 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
               <Eye className="w-4 h-4" />
             </button>
           )}
+          {/* Favorite Button */}
+          <FavoriteButton 
+            item={{ id: course.id, type: 'golf', name: course.name, image: course.image, location: course.location, price_from: course.price_from }}
+            className="absolute top-3 left-3"
+          />
         </div>
 
         {/* Content */}

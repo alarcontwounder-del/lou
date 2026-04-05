@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Coffee, Clock, Croissant, Navigation, Eye } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
+import { FavoriteButton } from './FavoriteButton';
 
 const CafeBarCard = ({ place, language, t, onQuickView }) => {
   const inactive = place.is_active === false;
@@ -53,6 +54,13 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => {
           >
             <Eye className="w-4 h-4" />
           </button>
+          )}
+          {/* Favorite Button */}
+          {!inactive && (
+            <FavoriteButton 
+              item={{ id: place.id, type: 'cafe_bar', name: place.name, image: place.image, location: place.location }}
+              className="absolute top-3 right-3"
+            />
           )}
         </div>
 
