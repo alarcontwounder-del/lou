@@ -89,10 +89,10 @@ export const Hero = ({ onPlanTrip }) => {
         </div>
       </div>
 
-      {/* Scroll Indicator - Elegant phantom arrow */}
+      {/* Scroll Indicator - Hidden on mobile to avoid overlapping Trip Planner pill */}
       <button
         onClick={() => scrollToSection('about')}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 group"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 group hidden sm:flex"
         data-testid="scroll-indicator"
       >
         <div className="flex flex-col items-center gap-2">

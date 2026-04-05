@@ -67,9 +67,9 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-brand-cream" data-testid="contact-section">
+    <section id="contact" className="section-padding bg-brand-cream overflow-hidden" data-testid="contact-section">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left Side - Form */}
           <div>
             <p className="text-brand-slate text-sm uppercase tracking-[0.2em] mb-4" data-testid="contact-subtitle">
@@ -170,18 +170,19 @@ export const Contact = () => {
           </div>
 
           {/* Right Side - Contact Info & Image */}
-          <div>
+          <div className="overflow-hidden">
             <div className="relative mb-12">
               <div className="img-zoom overflow-hidden rounded-2xl shadow-xl">
                 <img
                   src="/api/static/images/contact-golf.jpg"
                   alt="Luxury golf in Mallorca"
+                  loading="lazy"
                   className="w-full h-auto object-contain"
                   data-testid="contact-image"
                 />
               </div>
-              {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-slate/10 -z-10 rounded-2xl" />
+              {/* Decorative element - hidden on mobile to prevent overflow */}
+              <div className="hidden lg:block absolute -bottom-4 -right-4 w-32 h-32 bg-brand-slate/10 -z-10 rounded-2xl" />
             </div>
 
             {/* Contact Info */}
@@ -202,7 +203,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-stone-400 mb-1">Email</p>
-                  <p className="text-stone-900 font-medium">contact@golfinmallorca.com</p>
+                  <p className="text-stone-900 font-medium break-all">contact@golfinmallorca.com</p>
                 </div>
               </div>
 

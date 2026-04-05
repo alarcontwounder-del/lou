@@ -20,6 +20,7 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
             src={course.image}
             alt={course.name}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
           />
           {/* Price Badge */}
@@ -254,22 +255,22 @@ export const GolfCourses = () => {
               backgroundImage: `url('https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG')`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/95 via-brand-charcoal/85 to-brand-charcoal/70" />
+          <div className="absolute inset-0 bg-brand-charcoal/85 md:bg-gradient-to-r md:from-brand-charcoal/95 md:via-brand-charcoal/85 md:to-brand-charcoal/70" />
           
           {/* Content */}
-          <div className="relative z-10 px-8 py-12 md:px-16 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="relative z-10 px-5 py-10 md:px-16 md:py-16 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
             <div className="text-center md:text-left max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4">
                 <Globe className="w-4 h-4 text-brand-gold" />
-                <span className="text-white/90 text-sm font-medium">Worldwide Tee Times</span>
+                <span className="text-white/90 text-xs sm:text-sm font-medium">Worldwide Tee Times</span>
               </div>
-              <h3 className="font-heading text-3xl md:text-4xl text-white mb-4">
+              <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white mb-3 md:mb-4">
                 {language === 'de' ? 'Golf spielen, wo immer Sie sind' :
                  language === 'fr' ? 'Jouez au golf où que vous soyez' :
                  language === 'se' ? 'Spela golf var du än är' :
                  'Play Golf Wherever You Are'}
               </h3>
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed">
                 {language === 'de' ? 'Planen Sie Ihre Reise? Buchen Sie Abschlagszeiten in Ihrem Heimatland, Ihrer Zielstadt oder fast überall auf der Welt – bevor oder während Ihrer Reise.' :
                  language === 'fr' ? 'Vous planifiez votre voyage ? Réservez des départs dans votre pays, votre ville de destination ou presque partout dans le monde – avant ou pendant votre voyage.' :
                  language === 'se' ? 'Planerar du din resa? Boka starttider i ditt hemland, din destinationsstad eller nästan var som helst i världen – före eller under din resa.' :
@@ -277,12 +278,12 @@ export const GolfCourses = () => {
               </p>
             </div>
             
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 w-full md:w-auto">
               <a
                 href="https://golfinmallorca.greenfee365.com/es-ES/search?query=all_clubs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="group inline-flex items-center justify-center gap-2 bg-white text-brand-charcoal px-5 py-3 rounded-full font-semibold text-xs sm:text-sm hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full md:w-auto"
                 data-testid="worldwide-golf-btn"
               >
                 <span>
@@ -291,9 +292,9 @@ export const GolfCourses = () => {
                    language === 'se' ? 'Utforska & boka starttider världen över' :
                    'Explore Courses & Book Tee Times Worldwide'}
                 </span>
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ExternalLink className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
               </a>
-              <span className="text-white/60 text-sm">
+              <span className="text-white/60 text-xs sm:text-sm">
                 {language === 'de' ? 'Über 3.000 Golfplätze verfügbar' :
                  language === 'fr' ? 'Plus de 3 000 parcours disponibles' :
                  language === 'se' ? 'Över 3 000 banor tillgängliga' :

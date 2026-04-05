@@ -39,7 +39,7 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
 
           {/* Image */}
           <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
-            <img loading="lazy"
+            <img loading="lazy" decoding="async"
               src={hotel.image}
               alt={hotel.name}
               className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
