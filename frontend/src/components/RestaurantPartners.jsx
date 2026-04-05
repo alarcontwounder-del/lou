@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation, Eye } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Wine, Clock, Utensils, Navigation, Eye, ChevronDown } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
 import { FavoriteButton } from './FavoriteButton';
+import { CardSkeleton } from './CardSkeleton';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const RestaurantCard = ({ restaurant, language, t, onQuickView }) => {
   const inactive = restaurant.is_active === false;
@@ -232,16 +234,27 @@ export const RestaurantPartners = () => {
   const { restaurants, loading, getDisplayedItems } = useData();
   const [quickViewItem, setQuickViewItem] = useState(null);
   const [bookingItem, setBookingItem] = useState(null);
+  const [expanded, setExpanded] = useState(false);
+  const isMobile = useIsMobile();
+  const MOBILE_LIMIT = 6;
 
   // Apply display limit
   const displayedRestaurants = getDisplayedItems(restaurants, 'restaurants');
+  const visibleRestaurants = (isMobile && !expanded && displayedRestaurants.length > MOBILE_LIMIT)
+    ? displayedRestaurants.slice(0, MOBILE_LIMIT)
+    : displayedRestaurants;
+  const hasMore = isMobile && !expanded && displayedRestaurants.length > MOBILE_LIMIT;
 
   if (loading) {
     return (
       <section id="restaurants" className="section-padding bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center py-20">
-            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          <div className="text-center mb-8">
+            <div className="h-4 bg-stone-200 rounded w-40 mx-auto mb-4 animate-pulse" />
+            <div className="h-10 bg-stone-200 rounded w-72 mx-auto mb-4 animate-pulse" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={i} />)}
           </div>
         </div>
       </section>
@@ -267,7 +280,7 @@ export const RestaurantPartners = () => {
 
           {/* Restaurants Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayedRestaurants.map((restaurant) => (
+            {visibleRestaurants.map((restaurant) => (
               <RestaurantCard 
                 key={restaurant.id} 
                 restaurant={restaurant} 
@@ -277,6 +290,20 @@ export const RestaurantPartners = () => {
               />
             ))}
           </div>
+
+          {/* View All button - mobile only */}
+          {hasMore && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setExpanded(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-stone-200 rounded-full text-sm font-medium text-stone-600 hover:border-stone-400 hover:text-stone-800 transition-colors shadow-sm"
+                data-testid="restaurants-view-all"
+              >
+                View all {displayedRestaurants.length} restaurants
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

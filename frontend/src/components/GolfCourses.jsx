@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation, Eye } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Flag, Ruler, Trophy, Globe, Navigation, Eye, ChevronDown } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { trackEvent } from '../lib/analytics';
 import { FavoriteButton } from './FavoriteButton';
+import { CardSkeleton } from './CardSkeleton';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 export const CourseCard = ({ course, language, t, onQuickView }) => (
   <div
@@ -203,16 +205,28 @@ export const GolfCourses = () => {
   const { language, t } = useLanguage();
   const { golfCourses, loading, getDisplayedItems } = useData();
   const [quickViewItem, setQuickViewItem] = useState(null);
+  const [expanded, setExpanded] = useState(false);
+  const isMobile = useIsMobile();
+  const MOBILE_LIMIT = 6;
 
   // Apply display limit
   const displayedCourses = getDisplayedItems(golfCourses, 'golf');
+  const visibleCourses = (isMobile && !expanded && displayedCourses.length > MOBILE_LIMIT)
+    ? displayedCourses.slice(0, MOBILE_LIMIT)
+    : displayedCourses;
+  const hasMore = isMobile && !expanded && displayedCourses.length > MOBILE_LIMIT;
 
   if (loading) {
     return (
       <section id="courses" className="section-padding bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center py-20">
-            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          <div className="text-center mb-8">
+            <div className="h-4 bg-stone-200 rounded w-40 mx-auto mb-4 animate-pulse" />
+            <div className="h-10 bg-stone-200 rounded w-72 mx-auto mb-4 animate-pulse" />
+            <div className="h-4 bg-stone-200 rounded w-96 mx-auto animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={i} />)}
           </div>
         </div>
       </section>
@@ -238,7 +252,7 @@ export const GolfCourses = () => {
 
           {/* Grid - 3 cards per row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayedCourses.map((course) => (
+            {visibleCourses.map((course) => (
               <CourseCard 
                 key={course.id} 
                 course={course} 
@@ -248,6 +262,20 @@ export const GolfCourses = () => {
               />
           ))}
         </div>
+
+          {/* View All button - mobile only */}
+          {hasMore && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setExpanded(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-stone-200 rounded-full text-sm font-medium text-stone-600 hover:border-stone-400 hover:text-stone-800 transition-colors shadow-sm"
+                data-testid="courses-view-all"
+              >
+                View all {displayedCourses.length} courses
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+          )}
 
         {/* Worldwide Booking CTA */}
         <div 

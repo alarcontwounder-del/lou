@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
-import { MapPin, ExternalLink, Phone, Navigation, Eye, ArrowUpDown } from 'lucide-react';
+import { MapPin, ExternalLink, Phone, Navigation, Eye, ArrowUpDown, ChevronDown } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 import { BookingRequestModal } from './BookingRequestModal';
 import { FavoriteButton } from './FavoriteButton';
+import { CardSkeleton } from './CardSkeleton';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const PRICE_FILTERS = [
   { key: 'all', label: { en: 'All', de: 'Alle', fr: 'Tous', sv: 'Alla' } },
@@ -224,7 +226,10 @@ export const HotelPartners = () => {
   const [quickViewItem, setQuickViewItem] = useState(null);
   const [bookingItem, setBookingItem] = useState(null);
   const [priceFilter, setPriceFilter] = useState('all');
-  const [sortOrder, setSortOrder] = useState(null); // null, 'asc', 'desc'
+  const [sortOrder, setSortOrder] = useState(null);
+  const [expanded, setExpanded] = useState(false);
+  const isMobile = useIsMobile();
+  const MOBILE_LIMIT = 6;
 
   const displayedHotels = getDisplayedItems(hotels, 'hotels');
 
@@ -270,8 +275,13 @@ export const HotelPartners = () => {
     return (
       <section id="hotels" className="section-padding bg-brand-cream">
         <div className="container-custom">
-          <div className="text-center py-20">
-            <div className="inline-block w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+          <div className="text-center mb-8">
+            <div className="h-4 bg-stone-200 rounded w-40 mx-auto mb-4 animate-pulse" />
+            <div className="h-10 bg-stone-200 rounded w-80 mx-auto mb-4 animate-pulse" />
+            <div className="h-4 bg-stone-200 rounded w-96 mx-auto animate-pulse" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={i} />)}
           </div>
         </div>
       </section>
@@ -332,7 +342,10 @@ export const HotelPartners = () => {
 
           {/* Hotels Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredHotels.map((hotel) => (
+            {(isMobile && !expanded && filteredHotels.length > MOBILE_LIMIT
+              ? filteredHotels.slice(0, MOBILE_LIMIT)
+              : filteredHotels
+            ).map((hotel) => (
               <HotelCard 
                 key={hotel.id} 
                 hotel={hotel} 
@@ -343,6 +356,20 @@ export const HotelPartners = () => {
               />
             ))}
           </div>
+
+          {/* View All button - mobile only */}
+          {isMobile && !expanded && filteredHotels.length > MOBILE_LIMIT && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setExpanded(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-stone-200 rounded-full text-sm font-medium text-stone-600 hover:border-stone-400 hover:text-stone-800 transition-colors shadow-sm"
+                data-testid="hotels-view-all"
+              >
+                View all {filteredHotels.length} hotels
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
