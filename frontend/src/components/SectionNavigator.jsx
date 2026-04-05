@@ -20,9 +20,10 @@ export const SectionNavigator = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show navigator after scrolling past hero
+      // Always show on mobile, show after scrolling past hero on desktop
       const scrollY = window.scrollY;
-      setIsVisible(scrollY > 300);
+      const isMobileView = window.innerWidth < 1024;
+      setIsVisible(isMobileView || scrollY > 300);
 
       // Determine active section
       const sectionElements = sections
@@ -40,8 +41,12 @@ export const SectionNavigator = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
