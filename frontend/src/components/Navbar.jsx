@@ -128,11 +128,23 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           <img 
             src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
             alt="Golf in Mallorca Spain"
-            className={`${isLight ? 'h-16 sm:h-24 md:h-32' : 'h-20 sm:h-32 md:h-36 lg:h-44'} w-auto object-contain transition-all duration-300`}
+            className="h-20 sm:h-32 md:h-36 lg:h-44 w-auto object-contain transition-all duration-300"
             style={isLight ? {} : { filter: 'invert(1)', mixBlendMode: 'screen' }}
           />
         </a>
 
+        {/* Subpage: only Back to Home */}
+        {isLight ? (
+          <a
+            href="/"
+            className="flex items-center gap-2 text-sm sm:text-base font-medium text-brand-slate hover:text-brand-charcoal transition-colors"
+            data-testid="back-to-home"
+          >
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span>Back to Home</span>
+          </a>
+        ) : (
+          <>
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-3 lg:gap-4">
           <button
@@ -270,47 +282,28 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           )}
 
           {/* Back to Home - subpages only */}
-          {isLight && (
-            <a
-              href="/"
-              className="flex items-center gap-1.5 text-sm font-medium text-brand-slate hover:text-brand-charcoal transition-colors whitespace-nowrap"
-              data-testid="back-to-home"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Home
-            </a>
-          )}
 
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden p-2 ${isScrolled || isLight ? 'text-brand-charcoal' : 'text-white'}`}
+          className={`md:hidden p-2 ${isScrolled ? 'text-brand-charcoal' : 'text-white'}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-testid="mobile-menu-btn"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
+        </>
+        )}
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
+      {/* Mobile Menu - only for homepage */}
+      {!isLight && mobileMenuOpen && (
         <div
           className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-6 px-6 animate-slide-in-right"
           data-testid="mobile-menu"
         >
           <div className="flex flex-col gap-4">
-            {/* Back to Home - mobile subpages */}
-            {isLight && (
-              <a
-                href="/"
-                className="flex items-center gap-2 py-2 text-brand-slate font-semibold border-b border-stone-100 pb-4 mb-2"
-                data-testid="back-to-home-mobile"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Home
-              </a>
-            )}
             <button
               onClick={() => scrollToSection('courses')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"
