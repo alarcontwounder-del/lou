@@ -75,7 +75,7 @@ export const Blog = () => {
               data-testid={'blog-card-' + post.slug}
             >
               <Link to={`/blog/${post.slug}`} className="block">
-                <div className="img-zoom aspect-[3/2]">
+                <div className="img-zoom aspect-[3/2] m-3 mb-0 rounded-xl overflow-hidden">
                   <img
                     src={post.image}
                     alt={getTitle(post)}

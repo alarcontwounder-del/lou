@@ -62,7 +62,7 @@ function RelatedCard({ post, language }) {
       className="group bg-brand-cream rounded-2xl overflow-hidden hover:shadow-lg transition-shadow"
       data-testid={'blog-related-' + post.slug}
     >
-      <div className="aspect-[3/2] overflow-hidden">
+      <div className="aspect-[3/2] m-3 mb-0 rounded-xl overflow-hidden">
         <img src={post.image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
       </div>
       <div className="p-5">
