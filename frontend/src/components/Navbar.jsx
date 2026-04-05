@@ -119,11 +119,9 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
       } py-2`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-        {/* Logo - links to homepage on course pages, booking site on homepage */}
+        {/* Logo - always links to homepage */}
         <a
-          href={isLight ? '/' : 'https://golfinmallorca.greenfee365.com'}
-          target={isLight ? '_self' : '_blank'}
-          rel={isLight ? undefined : 'noopener noreferrer'}
+          href="/"
           className="transition-all duration-300 flex-shrink-0"
           data-testid="logo"
         >

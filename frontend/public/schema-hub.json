@@ -84,8 +84,7 @@
         "https://www.facebook.com/golfinmallorca",
         "https://www.instagram.com/golfinmallorca",
         "https://x.com/golfinmallorca",
-        "https://www.linkedin.com/company/golfinmallorca",
-        "https://golfinmallorca.greenfee365.com"
+        "https://www.linkedin.com/company/golfinmallorca"
       ],
       "makesOffer": [
         {"@id": "https://golfinmallorca.com/#golf-booking-service"},
