@@ -39,12 +39,12 @@ export const Hero = ({ onPlanTrip }) => {
           <div className="max-w-3xl">
             {/* Badge */}
             <div
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-5 sm:mb-6 opacity-0 animate-fade-in-up stagger-1"
+              className="inline-flex items-center gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-5 sm:mb-6 opacity-0 animate-fade-in-up stagger-1"
               data-testid="hero-subtitle"
             >
-              <span className="text-white font-semibold text-sm sm:text-base tracking-wide">Est. 2003</span>
-              <span className="w-px h-5 bg-white/50"></span>
-              <span className="text-white font-semibold text-sm sm:text-base tracking-wide">Mallorca's First Golf Agency</span>
+              <span className="text-white font-semibold text-xs sm:text-sm tracking-wide">Est. 2003</span>
+              <span className="w-px h-4 sm:h-5 bg-white/50"></span>
+              <span className="text-white font-semibold text-xs sm:text-sm tracking-wide">Mallorca's First Golf Agency</span>
             </div>
 
             {/* Brand story */}
