@@ -203,7 +203,7 @@ export default function BlogPostPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-brand-cream">
-        <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} />
+        <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} variant="light" />
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin" />
         </div>
@@ -214,7 +214,7 @@ export default function BlogPostPage() {
   if (error || !post) {
     return (
       <div className="min-h-screen bg-brand-cream">
-        <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} />
+        <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} variant="light" />
         <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
           <h1 className="font-heading text-3xl text-stone-900 mb-4">Article Not Found</h1>
           <p className="text-stone-600 mb-8">The blog post you are looking for does not exist.</p>
@@ -270,7 +270,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-brand-cream" data-testid="blog-post-page">
-      <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} />
+      <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} variant="light" />
 
       <Breadcrumbs title={title} />
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Menu, X, ChevronDown, Settings, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, Settings, Search, ArrowLeft } from 'lucide-react';
 import { WeatherBadge } from './WeatherBadge';
 
 const languages = [
@@ -269,11 +269,23 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
             </button>
           )}
 
+          {/* Back to Home - subpages only */}
+          {isLight && (
+            <a
+              href="/"
+              className="flex items-center gap-1.5 text-sm font-medium text-brand-slate hover:text-brand-charcoal transition-colors whitespace-nowrap"
+              data-testid="back-to-home"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </a>
+          )}
+
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden p-2 ${isScrolled ? 'text-brand-charcoal' : 'text-white'}`}
+          className={`md:hidden p-2 ${isScrolled || isLight ? 'text-brand-charcoal' : 'text-white'}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-testid="mobile-menu-btn"
         >
@@ -288,6 +300,17 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           data-testid="mobile-menu"
         >
           <div className="flex flex-col gap-4">
+            {/* Back to Home - mobile subpages */}
+            {isLight && (
+              <a
+                href="/"
+                className="flex items-center gap-2 py-2 text-brand-slate font-semibold border-b border-stone-100 pb-4 mb-2"
+                data-testid="back-to-home-mobile"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+              </a>
+            )}
             <button
               onClick={() => scrollToSection('courses')}
               className="text-left py-2 text-stone-700 hover:text-brand-slate font-medium"

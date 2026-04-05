@@ -25,7 +25,7 @@ export default function TermsPage() {
 
   return (
     <div className="min-h-screen bg-brand-cream" data-testid="terms-page">
-      <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} />
+      <Navbar onAdminClick={function(){}} isAuthenticated={false} isCheckingAuth={true} onSearchClick={function(){}} onPlanTrip={function(){}} variant="light" />
 
       <nav className="max-w-3xl mx-auto px-4 pt-28 pb-2">
         <ol className="flex items-center gap-1.5 text-xs text-stone-400">
