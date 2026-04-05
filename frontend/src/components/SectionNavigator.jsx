@@ -67,9 +67,9 @@ export const SectionNavigator = () => {
         onMouseLeave={() => setIsHoveringZone(false)}
       />
       
-      {/* Navigation dots - hidden on mobile, ghost effect on desktop */}
+      {/* Navigation dots - small on mobile, ghost effect on desktop */}
       <nav 
-        className={`fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-end gap-1.5 md:gap-2 transition-all duration-300 ease-out ${
+        className={`fixed right-1.5 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end gap-1.5 sm:gap-2 transition-all duration-300 ease-out ${
           isHoveringZone ? 'lg:opacity-100 lg:translate-x-0' : 'lg:opacity-0 lg:translate-x-4 lg:pointer-events-none'
         }`}
         aria-label="Section navigation"
