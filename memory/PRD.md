@@ -13,7 +13,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 ## What's Been Implemented
 - 16 Golf Course partner cards with flip animations, SEO landing pages
 - 59 Hotel partner cards with internal BookingRequestModal (not external links)
-- Restaurant, Beach Club, Cafe & Bar partner sections
+- Restaurant (48), Beach Club (12), Cafe & Bar (36) partner sections
 - Trip Planner (multi-step wizard with AI itinerary generation)
 - Contact form with Resend email integration
 - Blog with CMS, social sharing (WhatsApp, Twitter, Facebook)
@@ -29,6 +29,8 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Floating Search
 - Code Quality improvements (var->let/const, React Hook deps, useMemo)
 - **Session-based Favorites System** (sessionStorage) - heart icons on all card types, floating button with counter, sliding panel with grouped items
+- **Mobile Card Limit (6 per section)** - Shows 6 cards on mobile with "View All" expand button, all cards on desktop
+- **Skeleton Loading States** - Animated skeleton cards during data loading for all sections
 
 ## Recent Changes (Apr 5, 2026)
 ### Mobile UI Bug Fixes
@@ -37,14 +39,20 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Fixed: Contact form "Book Your Mallorca Golf Holiday" cut off on right (overflow-hidden)
 - Improved: Added decoding="async" to card images for faster mobile loading
 
-### NEW: Session Favorites System
+### Session Favorites System
 - Created FavoritesContext (sessionStorage - clears on browser close)
 - Heart icon buttons on ALL card types: golf (top-left), hotels/restaurants/beach clubs/cafes (bottom-right)
 - Floating heart button (bottom-right) with count badge
 - Sliding panel "My List" with items grouped by type, remove buttons, clear all
-- Full-width panel on mobile, 384px sidebar on desktop
 
-## Confirmed Working (User Verified)
+### Mobile Card Limit + Skeleton Loading
+- All 5 sections limited to 6 cards on mobile (<768px)
+- "View all X items" button expands to show all cards
+- Desktop shows all cards, no limit, no button
+- Skeleton loading placeholders (animate-pulse) while data loads
+- Custom `useIsMobile` hook with matchMedia for responsive detection
+
+## Confirmed Working (User + Testing Agent Verified)
 - Logo on mobile navbar
 - SectionNavigator dots on right side
 - Hotel Booking Flow
@@ -52,12 +60,19 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - SEO Canonicals
 - Emails
 - Admin Dashboard
+- Favorites System (iteration 35)
+- Mobile Card Limit (iteration 36)
 
-## Files Reference for Favorites System
-- `/app/frontend/src/context/FavoritesContext.jsx` - Context + sessionStorage
-- `/app/frontend/src/components/FavoriteButton.jsx` - Heart icon component
-- `/app/frontend/src/components/FavoritesPanel.jsx` - Sliding panel
-- `/app/frontend/src/App.js` - Provider wrapper + floating button
+## Files Reference
+### Favorites System
+- `/app/frontend/src/context/FavoritesContext.jsx`
+- `/app/frontend/src/components/FavoriteButton.jsx`
+- `/app/frontend/src/components/FavoritesPanel.jsx`
+
+### Mobile Limit + Skeleton
+- `/app/frontend/src/hooks/useIsMobile.js`
+- `/app/frontend/src/components/CardSkeleton.jsx`
+- Modified: GolfCourses.jsx, HotelPartners.jsx, RestaurantPartners.jsx, BeachClubPartners.jsx, CafeBarsPartners.jsx
 
 ## Pending/Upcoming Tasks
 ### P1 - Awaiting User Input
@@ -76,13 +91,9 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 ## Key DB Schema
 - `hotels`: 59 total (57 active, 2 inactive). 36 real photos, 23 stock. 24 have prices, 35 do not.
 
-## Key API Endpoints
-- `POST /api/booking-request`: Handles hotel inquiries
-- `POST /api/contact`: General contact form
-- `GET /api/partners/{type}`: Fetch partners by type
-
 ## Important Notes
 - DO NOT tell user images were lost - 36 real images are safe in DB
 - Hotel images may appear broken in preview due to hotlink protection
 - LIVE Stripe key is active
 - Favorites use sessionStorage (key: gim_session_favorites) — data clears when browser closes
+- Mobile limit is 6 cards, hardcoded as MOBILE_LIMIT constant in each section component
