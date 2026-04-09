@@ -7,7 +7,7 @@ import requests
 import os
 from collections import Counter
 
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://mallorca-golf-fix.preview.emergentagent.com').rstrip('/')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://golfer-hub-mallorca.preview.emergentagent.com').rstrip('/')
 
 class TestAllPartnersEndpoint:
     """Tests for the /api/all-partners endpoint"""

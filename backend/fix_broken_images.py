@@ -40,7 +40,7 @@ async def check_image_in_browser(session, url):
     try:
         headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-            "Referer": "https://mallorca-golf-fix.preview.emergentagent.com/",
+            "Referer": "https://golfer-hub-mallorca.preview.emergentagent.com/",
             "Accept": "image/webp,image/apng,image/*,*/*;q=0.8",
         }
         async with session.get(url, timeout=aiohttp.ClientTimeout(total=15), headers=headers, allow_redirects=True) as resp:
