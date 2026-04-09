@@ -16,41 +16,34 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Restaurant (48), Beach Club (12), Cafe & Bar (36) partner sections
 - Trip Planner (multi-step wizard with AI itinerary generation)
 - Contact form with Resend email integration
-- Blog with CMS, social sharing (WhatsApp, Twitter, Facebook)
+- Blog with CMS, social sharing (WhatsApp, Twitter, Facebook) — **11 posts total**
 - Admin Dashboard with Hotels tab
 - Google Analytics 4 with 6 custom conversion events
-- SEO: Dynamic canonical tags, golf course landing pages
+- SEO: Dynamic canonical tags, golf course landing pages, sitemap.xml
 - Cookie Consent popup
 - Newsletter subscription
 - Stripe payment integration
 - Multi-language support (EN, DE, FR, SE)
 - Weather badge
 - Section Navigator (right-side dots)
-- Floating Search
+- Floating Search with **fuzzy matching** (Levenshtein distance)
 - Code Quality improvements (var->let/const, React Hook deps, useMemo)
-- **Session-based Favorites System** (sessionStorage) - heart icons on all card types, floating button with counter, sliding panel with grouped items
-- **Mobile Card Limit (6 per section)** - Shows 6 cards on mobile with "View All" expand button, all cards on desktop
-- **Skeleton Loading States** - Animated skeleton cards during data loading for all sections
+- **Session-based Favorites System** (sessionStorage)
+- **Mobile Card Limit (6 per section)** with Skeleton loaders
+- **"New Features" Blog Post** with composite Desktop+Mobile hero image
 
-## Recent Changes (Apr 5, 2026)
-### Mobile UI Bug Fixes
-- Fixed: Scroll indicator overlapping Trip Planner pill on mobile (hidden on <640px)
-- Fixed: "Play Golf Wherever You Are" banner mobile layout (full-width button, smaller text)
-- Fixed: Contact form "Book Your Mallorca Golf Holiday" cut off on right (overflow-hidden)
-- Improved: Added decoding="async" to card images for faster mobile loading
+## Recent Changes (Apr 9, 2026)
+### Search Bug Fix
+- Fixed: Mobile search panel overflow (panel was cropped on left side on small screens)
+- Added: Fuzzy search matching (Levenshtein distance) — tolerates typos like "Gimbo" finding "Ginbo"
+- Threshold scales with word length: 1 edit for 4-6 char words, 2 edits for 7+ char words
 
-### Session Favorites System
-- Created FavoritesContext (sessionStorage - clears on browser close)
-- Heart icon buttons on ALL card types: golf (top-left), hotels/restaurants/beach clubs/cafes (bottom-right)
-- Floating heart button (bottom-right) with count badge
-- Sliding panel "My List" with items grouped by type, remove buttons, clear all
-
-### Mobile Card Limit + Skeleton Loading
-- All 5 sections limited to 6 cards on mobile (<768px)
-- "View all X items" button expands to show all cards
-- Desktop shows all cards, no limit, no button
-- Skeleton loading placeholders (animate-pulse) while data loads
-- Custom `useIsMobile` hook with matchMedia for responsive detection
+### New Blog Post: "What's New on golfinmallorca.com"
+- Created blog post in English announcing 6 new site features (from LinkedIn capsules)
+- Generated composite hero image: Desktop + Mobile screenshots side-by-side with phone frame
+- Added to sitemap.xml
+- Slug: `new-features-golfinmallorca-2026`
+- Features covered: 24/7 Tee Times, Luxury Hotels, AI Trip Planner, Favourites, Google Maps, Gastronomy Guide
 
 ## Confirmed Working (User + Testing Agent Verified)
 - Logo on mobile navbar
@@ -62,8 +55,19 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin Dashboard
 - Favorites System (iteration 35)
 - Mobile Card Limit (iteration 36)
+- Fuzzy Search (Apr 9)
+- New Features Blog Post (Apr 9)
 
 ## Files Reference
+### Search
+- `/app/frontend/src/components/FloatingSearch.jsx` (mobile-responsive fix)
+- `/app/backend/server.py` (fuzzy search `_fuzzy_match()` function)
+
+### Blog
+- `/app/backend/data/partners.py` (BLOG_POSTS array — 11 posts)
+- `/app/backend/uploads/blog_new_features_hero.jpg` (composite hero image)
+- `/app/frontend/public/sitemap.xml` (updated with new blog URL)
+
 ### Favorites System
 - `/app/frontend/src/context/FavoritesContext.jsx`
 - `/app/frontend/src/components/FavoriteButton.jsx`
@@ -72,12 +76,11 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 ### Mobile Limit + Skeleton
 - `/app/frontend/src/hooks/useIsMobile.js`
 - `/app/frontend/src/components/CardSkeleton.jsx`
-- Modified: GolfCourses.jsx, HotelPartners.jsx, RestaurantPartners.jsx, BeachClubPartners.jsx, CafeBarsPartners.jsx
 
 ## Pending/Upcoming Tasks
 ### P1 - Awaiting User Input
 - Add Hero Video to homepage (waiting for video file)
-- Add "From [Price]" to 35 remaining hotels (waiting for pricing list)
+- Add "From €[Price]" to 35 remaining hotels (waiting for pricing list or user approval to web-scrape)
 - External review links for "Write a review" modal (waiting for URLs)
 
 ### P2
@@ -89,11 +92,16 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Golf Packages page (bundle course and hotel deals)
 
 ## Key DB Schema
-- `hotels`: 59 total (57 active, 2 inactive). 36 real photos, 23 stock. 24 have prices, 35 do not.
+- `hotels`: 59 total (57 active, 2 inactive). 22 have prices, 35 do not.
+- `golf_courses`: 16 total, all active, all with prices
+- `restaurants`: 48 total (47 active, 1 inactive)
+- `beach_clubs`: 12 total (11 active, 1 inactive)
+- `cafe_bars`: 36 total (35 active, 1 inactive)
 
 ## Important Notes
-- DO NOT tell user images were lost - 36 real images are safe in DB
 - Hotel images may appear broken in preview due to hotlink protection
 - LIVE Stripe key is active
-- Favorites use sessionStorage (key: gim_session_favorites) — data clears when browser closes
-- Mobile limit is 6 cards, hardcoded as MOBILE_LIMIT constant in each section component
+- Favorites use sessionStorage (key: gim_session_favorites)
+- Mobile limit is 6 cards per section
+- `greenfee365.com` is used for "Book a tee time" links (correct and intended)
+- Search now supports fuzzy matching for typo tolerance
