@@ -945,10 +945,44 @@ async def delete_cafe_bar(cafe_bar_id: str):
     return None
 
 
+# Fuzzy matching helper for search
+def _fuzzy_match(query: str, text: str) -> bool:
+    """Check if query approximately matches any word in text (Levenshtein distance).
+    Threshold scales with word length: 1 for 4-6 chars, 2 for 7+ chars."""
+    if not query or not text:
+        return False
+    query_words = query.split()
+    text_words = text.split()
+    for qw in query_words:
+        if len(qw) < 4:
+            continue
+        max_dist = 1 if len(qw) < 7 else 2
+        for tw in text_words:
+            if len(tw) < 3:
+                continue
+            if abs(len(qw) - len(tw)) > max_dist:
+                continue
+            if len(qw) <= len(tw):
+                short, long_ = qw, tw
+            else:
+                short, long_ = tw, qw
+            distances = list(range(len(short) + 1))
+            for c2 in long_:
+                new_distances = [distances[0] + 1]
+                for i1, c1 in enumerate(short):
+                    if c1 == c2:
+                        new_distances.append(distances[i1])
+                    else:
+                        new_distances.append(1 + min(distances[i1], distances[i1 + 1], new_distances[-1]))
+                distances = new_distances
+            if distances[-1] <= max_dist:
+                return True
+    return False
+
 # Combined search endpoint for all partners
 @api_router.get("/search")
 async def search_partners(q: str = "", category: str = "all"):
-    """Search across all partner types"""
+    """Search across all partner types with fuzzy matching"""
     query = q.lower().strip()
     
     # Results grouped by priority
@@ -984,8 +1018,8 @@ async def search_partners(q: str = "", category: str = "all"):
             else:
                 desc_text = str(description).lower()
             
-            # Check if query matches
-            if not query or query in name or query in location or query in desc_text:
+            # Check exact substring match first, then fuzzy match on name/location
+            if not query or query in name or query in location or query in desc_text or _fuzzy_match(query, name) or _fuzzy_match(query, location):
                 result_item = {
                     "id": item.get("id"),
                     "type": partner_type,

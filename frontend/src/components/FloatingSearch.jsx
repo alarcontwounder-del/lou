@@ -195,7 +195,7 @@ export const FloatingSearch = forwardRef(({ showButton = true }, ref) => {
         <div 
           ref={searchRef}
           data-testid="floating-search-expanded"
-          className="fixed top-36 right-8 z-50 w-full max-w-md"
+          className="fixed top-36 left-4 right-4 sm:left-auto sm:right-8 z-50 w-auto sm:w-full sm:max-w-md"
         >
           <div className="bg-stone-800/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-stone-700">
             {/* Search Input Row */}
