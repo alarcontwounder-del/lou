@@ -2447,6 +2447,42 @@ async def send_booking_confirmation_email(booking: dict):
         logger.error(f"Failed to send booking confirmation email: {e}")
 
 
+@app.on_event("startup")
+async def ensure_hotels_seeded():
+    """Ensure all hotels from seed scripts exist in DB on every startup."""
+    try:
+        from seed_hotels import NEW_HOTELS
+        from update_new_hotels import HOTEL_UPDATES
+        
+        existing_count = await db.hotels.count_documents({})
+        if existing_count >= 59:
+            logger.info(f"Hotels already seeded: {existing_count} found")
+            return
+        
+        added = 0
+        for hotel in NEW_HOTELS:
+            found = await db.hotels.find_one({"id": hotel["id"]})
+            if not found:
+                now = datetime.now(timezone.utc)
+                doc = {**hotel, "is_active": True, "display_order": 0, "created_at": now, "updated_at": now}
+                await db.hotels.insert_one(doc)
+                added += 1
+        
+        updated = 0
+        for hotel_id, data in HOTEL_UPDATES.items():
+            result = await db.hotels.update_one(
+                {"id": hotel_id},
+                {"$set": {"image": data["image"], "offer_price": data["offer_price"], "updated_at": datetime.now(timezone.utc)}}
+            )
+            if result.modified_count > 0:
+                updated += 1
+        
+        final_count = await db.hotels.count_documents({})
+        logger.info(f"Hotel seed complete: added={added}, updated={updated}, total={final_count}")
+    except Exception as e:
+        logger.error(f"Hotel seed error: {e}")
+
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
