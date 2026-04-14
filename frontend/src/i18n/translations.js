@@ -40,7 +40,13 @@ export const translations = {
       from: "From",
       save: "Save",
       viewDeal: "View Deal",
-      bookHotel: "Book Now"
+      bookHotel: "Book Now",
+      exclusive: "Exclusive Offer",
+      viewDetails: "View Details",
+      bookNow: "Book Now"
+    },
+    card: {
+      hoverForDetails: "Tap for details"
     },
     hotels: {
       subtitle: "Golf Resorts & Hotels",
@@ -162,7 +168,13 @@ export const translations = {
       from: "Ab",
       save: "Sparen Sie",
       viewDeal: "Angebot Ansehen",
-      bookHotel: "Jetzt Buchen"
+      bookHotel: "Jetzt Buchen",
+      exclusive: "Exklusives Angebot",
+      viewDetails: "Details Ansehen",
+      bookNow: "Jetzt Buchen"
+    },
+    card: {
+      hoverForDetails: "Tippen für Details"
     },
     hotels: {
       subtitle: "Hotel Partner",
@@ -284,7 +296,13 @@ export const translations = {
       from: "À partir de",
       save: "Économisez",
       viewDeal: "Voir l'Offre",
-      bookHotel: "Réserver"
+      bookHotel: "Réserver",
+      exclusive: "Offre Exclusive",
+      viewDetails: "Voir les Détails",
+      bookNow: "Réserver"
+    },
+    card: {
+      hoverForDetails: "Appuyez pour les détails"
     },
     hotels: {
       subtitle: "Hôtels Partenaires",
@@ -406,7 +424,13 @@ export const translations = {
       from: "Från",
       save: "Spara",
       viewDeal: "Se Erbjudande",
-      bookHotel: "Boka Nu"
+      bookHotel: "Boka Nu",
+      exclusive: "Exklusivt Erbjudande",
+      viewDetails: "Visa Detaljer",
+      bookNow: "Boka Nu"
+    },
+    card: {
+      hoverForDetails: "Tryck för detaljer"
     },
     hotels: {
       subtitle: "Hotellpartners",
