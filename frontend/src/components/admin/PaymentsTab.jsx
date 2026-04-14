@@ -34,7 +34,7 @@ export const PaymentsTab = () => {
     service_type: 'reservation',
   });
 
-  useEffect(() => { fetchPayments(); fetchStats(); }, []);
+  useEffect(() => { fetchPayments(); fetchStats(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchPayments = async () => {
     try {

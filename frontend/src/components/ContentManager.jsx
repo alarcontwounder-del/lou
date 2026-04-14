@@ -843,10 +843,10 @@ export const ContentManager = () => {
       const response = await axios.get(`${BACKEND_URL}/api/display-settings`);
       if (response.data) {
         // Normalize: API stores {key: {show, limit}} but we need {key: number|null}
-        var normalized = {};
+        const normalized = {};
         Object.keys(PARTNER_TYPES).forEach(function(key) {
-          var val = response.data[key];
-          var limit = null;
+          const val = response.data[key];
+          let limit = null;
           if (val && typeof val === 'object') {
             limit = val.limit || null;
           } else if (typeof val === 'number') {
@@ -857,17 +857,17 @@ export const ContentManager = () => {
         });
         setDisplaySettings(normalized);
       }
-    } catch (error) {
-      console.log('Using default display settings');
+    } catch {
+      // Default display settings will be used
     }
   };
 
   const handleSaveDisplaySettings = async (newSettings) => {
     try {
       // Convert simple format {golf: 10} to API format {golf: {show: true, limit: 10}}
-      var apiFormat = {};
+      const apiFormat = {};
       Object.keys(newSettings).forEach(function(key) {
-        var val = newSettings[key];
+        const val = newSettings[key];
         apiFormat[key] = { show: true, limit: val || 100 };
       });
       await axios.post(`${BACKEND_URL}/api/display-settings`, apiFormat);

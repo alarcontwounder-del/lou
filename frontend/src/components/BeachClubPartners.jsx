@@ -222,7 +222,7 @@ export const BeachClubPartners = () => {
             <div className="h-10 bg-stone-200 rounded w-64 mx-auto mb-4 animate-pulse" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={i} />)}
+            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={`beachclub-skeleton-${i}`} />)}
           </div>
         </div>
       </section>

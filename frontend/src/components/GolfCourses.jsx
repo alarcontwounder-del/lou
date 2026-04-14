@@ -226,7 +226,7 @@ export const GolfCourses = () => {
             <div className="h-4 bg-stone-200 rounded w-96 mx-auto animate-pulse" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={i} />)}
+            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={`golf-skeleton-${i}`} />)}
           </div>
         </div>
       </section>

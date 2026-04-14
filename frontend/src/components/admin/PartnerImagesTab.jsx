@@ -23,7 +23,7 @@ export const PartnerImagesTab = () => {
   const [activeCategory, setActiveCategory] = useState('hotels');
   const [search, setSearch] = useState('');
 
-  useEffect(() => { fetchPartners(); }, []);
+  useEffect(() => { fetchPartners(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchPartners = async () => {
     try {
@@ -93,7 +93,7 @@ export const PartnerImagesTab = () => {
     } else {
       toast.error('Please drop an image file');
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleFileSelect = (e, partnerId) => {
     const file = e.target.files?.[0];

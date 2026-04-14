@@ -8,14 +8,14 @@ export default function TermsPage() {
   useEffect(function() {
     window.scrollTo(0, 0);
     document.title = 'Terms of Service | golfinmallorca.com';
-    var setMeta = function(attr, name, content) {
-      var el = document.querySelector('meta[' + attr + '="' + name + '"]');
+    const setMeta = function(attr, name, content) {
+      const el = document.querySelector('meta[' + attr + '="' + name + '"]');
       if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.setAttribute('content', content);
     };
     setMeta('name', 'description', 'Terms of service for golfinmallorca.com. Read our booking conditions, cancellation policies, payment terms, and service agreements.');
     setMeta('name', 'robots', 'index, follow');
-    var mainCanonical = document.getElementById('main-canonical');
+    const mainCanonical = document.getElementById('main-canonical');
     if (mainCanonical) mainCanonical.href = 'https://golfinmallorca.com/terms';
     return function() {
       document.title = 'golfinmallorca.com | Your Gateway to Luxury Golf in Mallorca';

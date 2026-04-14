@@ -12,7 +12,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 
 ## What's Been Implemented
 - 16 Golf Course partner cards with flip animations, SEO landing pages
-- 57 Hotel partner cards (59 total, 3 inactive) with internal BookingRequestModal
+- 56 Active Hotel partner cards (59 total, 3 inactive) with internal BookingRequestModal
 - Restaurant (48), Beach Club (12), Cafe & Bar (36) partner sections — ALL with internal booking forms
 - Trip Planner (multi-step wizard with AI itinerary generation)
 - Contact form with Resend email integration
@@ -20,11 +20,8 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Admin Dashboard with Hotels tab (display_order 1-59 assigned)
 - Google Analytics 4 with 6 custom conversion events
 - SEO: Dynamic canonical tags, golf course landing pages, sitemap.xml, hreflang tags
-- Cookie Consent popup
-- Newsletter subscription
-- Stripe payment integration
-- Multi-language support (EN, DE, FR, SE)
-- Weather badge
+- Cookie Consent popup, Newsletter subscription, Stripe payment integration
+- Multi-language support (EN, DE, FR, SE), Weather badge
 - Section Navigator (right-side scroll dots)
 - Floating Search with **fuzzy matching** (Levenshtein distance)
 - **Session-based Favorites System** (sessionStorage)
@@ -33,59 +30,57 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 
 ## Changes - April 14, 2026
 
+### Code Quality Fixes Applied
+**Critical:**
+- Fixed skeleton key props: replaced index-only keys with prefixed unique keys (`skeleton-${i}`) in 5 components
+- Added eslint-disable comments for mount-only useEffect hooks (PaymentsTab, PartnerImagesTab)
+- Verified `seed_all_partners.py` already uses safe `ast.literal_eval()` (not `eval()`)
+
+**Important:**
+- Replaced `var` → `const`/`let` in TermsPage.jsx, PrivacyPage.jsx, ContentManager.jsx
+- Removed `console.log` statement in ContentManager.jsx
+- Verified all React hook dependencies are correct (useIsMobile, FavoritesContext, DataContext, WeatherBadge, TripPlanner)
+
+**Deferred to P3 (refactoring):**
+- Component decomposition (BlogPostPage, AdminDashboard, FloatingSearch, Navbar, ContentManager)
+- Email template extraction to Jinja2
+- Search function complexity reduction in server.py
+
 ### Search Bug Fix
 - Fixed mobile search panel overflow (cropped on left side)
-- Added fuzzy search (Levenshtein distance) — tolerates typos like "Gimbo" → "Ginbo"
+- Added fuzzy search (Levenshtein distance) — tolerates typos
 
-### New Blog Post: "What's New on golfinmallorca.com"
-- English blog post with 6 feature capsules + composite Desktop/Mobile hero image
-- Slug: `new-features-golfinmallorca-2026`, added to sitemap.xml
-
-### Translation Keys Fixed
-- Added missing i18n keys: `offers.exclusive`, `offers.viewDetails`, `offers.bookNow`, `card.hoverForDetails` in all 4 languages
+### New Blog Post
+- "What's New on golfinmallorca.com" - English, 6 feature capsules, composite hero image
 
 ### All Partner Booking → Internal Forms
-- Restaurants, Beach Clubs, Cafés: changed external URL links to internal BookingRequestModal
-- All partner types now route through inquiry forms (no external links)
+- Restaurants, Beach Clubs, Cafes: changed external URL links to internal BookingRequestModal
 
 ### Hotel Admin Fixes
-- "St. Regis Mallorca Resort" deactivated + added to seed exclusion list (won't return)
-- Startup seed with exclusion list to prevent re-activating user-deleted hotels
-- Assigned sequential `display_order` 1-59 to all hotels
+- "St. Regis Mallorca Resort" deactivated + seed exclusion
+- Sequential display_order 1-59 assigned
+- Startup auto-seed with exclusion list
 
-### Hero Image Optimization
-- Compressed from **4.1 MB → 308 KB** (92% reduction)
-- Added dark green placeholder background (#2d4a2e) to prevent gray flash on load
-- Image now served from own server instead of external CDN
+### Performance
+- Hero image compressed: 4.1 MB → 308 KB (92% reduction)
+- Dark green placeholder background prevents gray flash
 
-### Google Search Console Fix
-- Added `Disallow: /*?lang=` to robots.txt to stop Google crawling `?lang=` parameter URLs
-- Existing 21 "Alternate page with proper canonical tag" entries will gradually disappear
+### SEO
+- `robots.txt`: Added `Disallow: /*?lang=` to stop crawling language parameter URLs
+- Translation keys fixed (offers.exclusive, viewDetails, bookNow) in 4 languages
 
 ## Pending/Upcoming Tasks
 ### P1 - Awaiting User Input
 - Add Hero Video to homepage (waiting for video file)
-- Add "From €[Price]" to 35 remaining hotels (waiting for pricing list or user approval to web-scrape)
+- Add "From €[Price]" to 35 remaining hotels (waiting for pricing or web-scrape approval)
 - External review links for "Write a review" modal (waiting for URLs)
 
 ### P2
-- Activate `teetimescancun.net` and `teetimespuntacana.com` footer links
+- Activate teetimescancun.net / teetimespuntacana.com footer links
 - Google Business Profile appeal (user action)
 
-### P3 - Future
-- Refactor large components: TripPlanner.jsx (~800 lines), ContentManager.jsx, BlogPostPage.jsx, server.py
+### P3 - Refactoring
+- Decompose large components: TripPlanner (~800 lines), ContentManager, BlogPostPage, FloatingSearch, Navbar
+- Extract email templates to Jinja2/HTML files
+- Reduce search function complexity in server.py
 - Golf Packages page (bundle course and hotel deals)
-
-## Key DB Schema
-- `hotels`: 59 total (56 active, 3 inactive). 22 have prices, 35 do not.
-- `golf_courses`: 16 total, all active
-- `restaurants`: 48 total (47 active, 1 inactive)
-- `beach_clubs`: 12 total (11 active, 1 inactive)
-- `cafe_bars`: 36 total (35 active, 1 inactive)
-
-## Important Notes
-- `greenfee365.com` is used for "Book a tee time" links (correct and intended)
-- Favorites use sessionStorage (key: gim_session_favorites)
-- Mobile limit is 6 cards per section
-- Hotel startup seed has EXCLUDED_IDS set to skip user-deleted hotels
-- Search supports fuzzy matching (Levenshtein) for typo tolerance

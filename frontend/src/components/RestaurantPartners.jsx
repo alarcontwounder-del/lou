@@ -252,7 +252,7 @@ export const RestaurantPartners = () => {
             <div className="h-10 bg-stone-200 rounded w-72 mx-auto mb-4 animate-pulse" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={i} />)}
+            {[...Array(isMobile ? 3 : 6)].map((_, i) => <CardSkeleton key={`restaurant-skeleton-${i}`} />)}
           </div>
         </div>
       </section>
