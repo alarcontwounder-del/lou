@@ -24,11 +24,12 @@ export const Hero = ({ onPlanTrip }) => {
 
   return (
     <section id="hero" className="hero-section grain-overlay" data-testid="hero-section">
-      {/* Background Image */}
+      {/* Background Image - optimized with dark green placeholder */}
       <div
         className="hero-bg"
         style={{
-          backgroundImage: `url('https://customer-assets.emergentagent.com/job_422d7e07-6f75-490f-aee9-3e5fef6c152e/artifacts/42pl3jtx_golf%20son-gual%20mallorca%20portada%20hole13-%20copy.JPG')`,
+          backgroundColor: '#2d4a2e',
+          backgroundImage: `url('${process.env.REACT_APP_BACKEND_URL}/api/uploads/hero_golf_mallorca.jpg')`,
         }}
       />
       <div className="hero-overlay" />

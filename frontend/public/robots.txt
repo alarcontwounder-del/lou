@@ -11,6 +11,9 @@ Sitemap: https://golfinmallorca.com/sitemap.xml
 Disallow: /api/
 Disallow: /admin/
 
+# Prevent crawling of language parameter URLs (content is client-side rendered)
+Disallow: /*?lang=
+
 # Allow search engine crawlers
 User-agent: Googlebot
 Allow: /
