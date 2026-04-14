@@ -12,70 +12,55 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 
 ## What's Been Implemented
 - 16 Golf Course partner cards with flip animations, SEO landing pages
-- 59 Hotel partner cards with internal BookingRequestModal (not external links)
-- Restaurant (48), Beach Club (12), Cafe & Bar (36) partner sections
+- 57 Hotel partner cards (59 total, 3 inactive) with internal BookingRequestModal
+- Restaurant (48), Beach Club (12), Cafe & Bar (36) partner sections — ALL with internal booking forms
 - Trip Planner (multi-step wizard with AI itinerary generation)
 - Contact form with Resend email integration
-- Blog with CMS, social sharing (WhatsApp, Twitter, Facebook) — **11 posts total**
-- Admin Dashboard with Hotels tab
+- Blog with CMS, social sharing — **11 posts total** (incl. "New Features" post)
+- Admin Dashboard with Hotels tab (display_order 1-59 assigned)
 - Google Analytics 4 with 6 custom conversion events
-- SEO: Dynamic canonical tags, golf course landing pages, sitemap.xml
+- SEO: Dynamic canonical tags, golf course landing pages, sitemap.xml, hreflang tags
 - Cookie Consent popup
 - Newsletter subscription
 - Stripe payment integration
 - Multi-language support (EN, DE, FR, SE)
 - Weather badge
-- Section Navigator (right-side dots)
+- Section Navigator (right-side scroll dots)
 - Floating Search with **fuzzy matching** (Levenshtein distance)
-- Code Quality improvements (var->let/const, React Hook deps, useMemo)
 - **Session-based Favorites System** (sessionStorage)
 - **Mobile Card Limit (6 per section)** with Skeleton loaders
-- **"New Features" Blog Post** with composite Desktop+Mobile hero image
+- **Startup hotel auto-seed** (ensures all hotels exist on deploy)
 
-## Recent Changes (Apr 9, 2026)
+## Changes - April 14, 2026
+
 ### Search Bug Fix
-- Fixed: Mobile search panel overflow (panel was cropped on left side on small screens)
-- Added: Fuzzy search matching (Levenshtein distance) — tolerates typos like "Gimbo" finding "Ginbo"
-- Threshold scales with word length: 1 edit for 4-6 char words, 2 edits for 7+ char words
+- Fixed mobile search panel overflow (cropped on left side)
+- Added fuzzy search (Levenshtein distance) — tolerates typos like "Gimbo" → "Ginbo"
 
 ### New Blog Post: "What's New on golfinmallorca.com"
-- Created blog post in English announcing 6 new site features (from LinkedIn capsules)
-- Generated composite hero image: Desktop + Mobile screenshots side-by-side with phone frame
-- Added to sitemap.xml
-- Slug: `new-features-golfinmallorca-2026`
-- Features covered: 24/7 Tee Times, Luxury Hotels, AI Trip Planner, Favourites, Google Maps, Gastronomy Guide
+- English blog post with 6 feature capsules + composite Desktop/Mobile hero image
+- Slug: `new-features-golfinmallorca-2026`, added to sitemap.xml
 
-## Confirmed Working (User + Testing Agent Verified)
-- Logo on mobile navbar
-- SectionNavigator dots on right side
-- Hotel Booking Flow
-- GA4 Tracking
-- SEO Canonicals
-- Emails
-- Admin Dashboard
-- Favorites System (iteration 35)
-- Mobile Card Limit (iteration 36)
-- Fuzzy Search (Apr 9)
-- New Features Blog Post (Apr 9)
+### Translation Keys Fixed
+- Added missing i18n keys: `offers.exclusive`, `offers.viewDetails`, `offers.bookNow`, `card.hoverForDetails` in all 4 languages
 
-## Files Reference
-### Search
-- `/app/frontend/src/components/FloatingSearch.jsx` (mobile-responsive fix)
-- `/app/backend/server.py` (fuzzy search `_fuzzy_match()` function)
+### All Partner Booking → Internal Forms
+- Restaurants, Beach Clubs, Cafés: changed external URL links to internal BookingRequestModal
+- All partner types now route through inquiry forms (no external links)
 
-### Blog
-- `/app/backend/data/partners.py` (BLOG_POSTS array — 11 posts)
-- `/app/backend/uploads/blog_new_features_hero.jpg` (composite hero image)
-- `/app/frontend/public/sitemap.xml` (updated with new blog URL)
+### Hotel Admin Fixes
+- "St. Regis Mallorca Resort" deactivated + added to seed exclusion list (won't return)
+- Startup seed with exclusion list to prevent re-activating user-deleted hotels
+- Assigned sequential `display_order` 1-59 to all hotels
 
-### Favorites System
-- `/app/frontend/src/context/FavoritesContext.jsx`
-- `/app/frontend/src/components/FavoriteButton.jsx`
-- `/app/frontend/src/components/FavoritesPanel.jsx`
+### Hero Image Optimization
+- Compressed from **4.1 MB → 308 KB** (92% reduction)
+- Added dark green placeholder background (#2d4a2e) to prevent gray flash on load
+- Image now served from own server instead of external CDN
 
-### Mobile Limit + Skeleton
-- `/app/frontend/src/hooks/useIsMobile.js`
-- `/app/frontend/src/components/CardSkeleton.jsx`
+### Google Search Console Fix
+- Added `Disallow: /*?lang=` to robots.txt to stop Google crawling `?lang=` parameter URLs
+- Existing 21 "Alternate page with proper canonical tag" entries will gradually disappear
 
 ## Pending/Upcoming Tasks
 ### P1 - Awaiting User Input
@@ -92,16 +77,15 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Golf Packages page (bundle course and hotel deals)
 
 ## Key DB Schema
-- `hotels`: 59 total (57 active, 2 inactive). 22 have prices, 35 do not.
-- `golf_courses`: 16 total, all active, all with prices
+- `hotels`: 59 total (56 active, 3 inactive). 22 have prices, 35 do not.
+- `golf_courses`: 16 total, all active
 - `restaurants`: 48 total (47 active, 1 inactive)
 - `beach_clubs`: 12 total (11 active, 1 inactive)
 - `cafe_bars`: 36 total (35 active, 1 inactive)
 
 ## Important Notes
-- Hotel images may appear broken in preview due to hotlink protection
-- LIVE Stripe key is active
+- `greenfee365.com` is used for "Book a tee time" links (correct and intended)
 - Favorites use sessionStorage (key: gim_session_favorites)
 - Mobile limit is 6 cards per section
-- `greenfee365.com` is used for "Book a tee time" links (correct and intended)
-- Search now supports fuzzy matching for typo tolerance
+- Hotel startup seed has EXCLUDED_IDS set to skip user-deleted hotels
+- Search supports fuzzy matching (Levenshtein) for typo tolerance
