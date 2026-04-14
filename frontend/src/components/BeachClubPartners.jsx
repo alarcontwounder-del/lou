@@ -182,15 +182,13 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
         </div>
 
         {/* CTA */}
-        <a
-          href={club.contact_url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={(e) => { e.stopPropagation(); onBooking(club); }}
           className="w-full py-3 mt-4 bg-white text-stone-800 text-center rounded-xl font-semibold hover:bg-stone-100 transition-colors flex items-center justify-center gap-2"
         >
           {t('offers.bookNow')}
           <ExternalLink className="w-4 h-4" />
-        </a>
+        </button>
         </>
         )}
       </div>
@@ -264,6 +262,7 @@ export const BeachClubPartners = () => {
                 language={language}
                 t={t}
                 onQuickView={setQuickViewItem}
+                onBooking={setBookingItem}
               />
             ))}
           </div>

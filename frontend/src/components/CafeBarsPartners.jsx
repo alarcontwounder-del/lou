@@ -3,11 +3,12 @@ import { useLanguage } from '../context/LanguageContext';
 import { useData } from '../context/DataContext';
 import { MapPin, ExternalLink, Coffee, Clock, Croissant, Navigation, Eye, ChevronDown } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
+import { BookingRequestModal } from './BookingRequestModal';
 import { FavoriteButton } from './FavoriteButton';
 import { CardSkeleton } from './CardSkeleton';
 import { useIsMobile } from '../hooks/useIsMobile';
 
-const CafeBarCard = ({ place, language, t, onQuickView }) => {
+const CafeBarCard = ({ place, language, t, onQuickView, onBooking }) => {
   const inactive = place.is_active === false;
   return (
   <div
@@ -200,15 +201,13 @@ const CafeBarCard = ({ place, language, t, onQuickView }) => {
         </div>
 
         {/* CTA */}
-        <a
-          href={place.contact_url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={(e) => { e.stopPropagation(); onBooking(place); }}
           className="w-full py-3 mt-4 bg-white text-stone-800 text-center rounded-xl font-semibold hover:bg-stone-100 transition-colors flex items-center justify-center gap-2"
         >
           {t('offers.viewDetails') || 'View Details'}
           <ExternalLink className="w-4 h-4" />
-        </a>
+        </button>
         </>
         )}
       </div>
@@ -221,6 +220,7 @@ export const CafeBarsPartners = () => {
   const { t, language } = useLanguage();
   const { cafeBars, loading, getDisplayedItems } = useData();
   const [quickViewItem, setQuickViewItem] = useState(null);
+  const [bookingItem, setBookingItem] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const isMobile = useIsMobile();
   const MOBILE_LIMIT = 6;
@@ -309,6 +309,15 @@ export const CafeBarsPartners = () => {
         type="cafe_bar"
         language={language}
         t={t}
+        onBooking={(item) => { setQuickViewItem(null); setBookingItem(item); }}
+      />
+
+      {/* Booking Request Modal */}
+      <BookingRequestModal
+        isOpen={!!bookingItem}
+        onClose={() => setBookingItem(null)}
+        venue={bookingItem}
+        venueType="cafe_bar"
       />
     </>
   );

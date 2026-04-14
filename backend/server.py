@@ -2449,10 +2449,14 @@ async def send_booking_confirmation_email(booking: dict):
 
 @app.on_event("startup")
 async def ensure_hotels_seeded():
-    """Ensure all hotels from seed scripts exist in DB on every startup."""
+    """Ensure all hotels from seed scripts exist in DB on every startup.
+    Respects user deactivations: never re-inserts or re-activates hotels the user has managed."""
     try:
         from seed_hotels import NEW_HOTELS
         from update_new_hotels import HOTEL_UPDATES
+        
+        # IDs the user has explicitly removed/deactivated — never re-insert these
+        EXCLUDED_IDS = {"st-regis-mallorca-resort"}
         
         existing_count = await db.hotels.count_documents({})
         if existing_count >= 59:
@@ -2461,6 +2465,8 @@ async def ensure_hotels_seeded():
         
         added = 0
         for hotel in NEW_HOTELS:
+            if hotel["id"] in EXCLUDED_IDS:
+                continue
             found = await db.hotels.find_one({"id": hotel["id"]})
             if not found:
                 now = datetime.now(timezone.utc)
@@ -2470,6 +2476,8 @@ async def ensure_hotels_seeded():
         
         updated = 0
         for hotel_id, data in HOTEL_UPDATES.items():
+            if hotel_id in EXCLUDED_IDS:
+                continue
             result = await db.hotels.update_one(
                 {"id": hotel_id},
                 {"$set": {"image": data["image"], "offer_price": data["offer_price"], "updated_at": datetime.now(timezone.utc)}}
