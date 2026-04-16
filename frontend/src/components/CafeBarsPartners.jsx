@@ -36,6 +36,7 @@ const CafeBarCard = ({ place, language, t, onQuickView, onBooking }) => {
             src={place.image}
             alt={place.name}
             className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
+            onError={(e) => { e.target.onerror = null; e.target.src = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=600&fit=crop'; }}
           />
           {/* Category Icon Overlay */}
           <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1.5">

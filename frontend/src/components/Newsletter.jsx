@@ -59,9 +59,9 @@ export const Newsletter = () => {
     <>
       <Toaster position="top-right" richColors closeButton />
       
-      <section className="section-padding relative overflow-hidden" data-testid="newsletter-section">
+      <section className="section-padding relative overflow-hidden" style={{ backgroundColor: '#4A4A4A' }} data-testid="newsletter-section">
         {/* Premium Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-charcoal via-brand-charcoal/90 to-brand-charcoalLight"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-charcoal via-brand-charcoal/90 to-brand-charcoalLight" style={{ background: 'linear-gradient(to bottom right, #4A4A4A, rgba(74,74,74,0.9), #3D3D3D)' }}></div>
         
         {/* Subtle Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">

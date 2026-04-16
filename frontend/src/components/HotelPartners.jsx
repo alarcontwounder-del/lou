@@ -46,6 +46,7 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
               src={hotel.image}
               alt={hotel.name}
               className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
+              onError={(e) => { e.target.onerror = null; e.target.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop'; }}
             />
             {/* Quick View Button - only when active */}
             {!inactive && (

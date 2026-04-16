@@ -51,6 +51,7 @@ export const Hero = ({ onPlanTrip }) => {
             {/* Brand story */}
             <p
               className="text-white text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl opacity-0 animate-fade-in-up stagger-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] font-medium"
+              style={{ color: '#ffffff' }}
               data-testid="hero-brand-story"
             >
               Leaders in innovation with the island's first 24/7 real-time booking system service.
@@ -59,6 +60,7 @@ export const Hero = ({ onPlanTrip }) => {
             {/* Title */}
             <h1
               className="font-heading text-4xl sm:text-5xl md:text-7xl text-white font-medium leading-tight mb-8 sm:mb-10 opacity-0 animate-fade-in-up stagger-3 drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]"
+              style={{ color: '#ffffff' }}
               data-testid="hero-title"
             >
               {t('hero.title')}

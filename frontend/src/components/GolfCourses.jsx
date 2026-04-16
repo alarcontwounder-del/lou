@@ -25,6 +25,7 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
+            onError={(e) => { e.target.onerror = null; e.target.src = 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&h=600&fit=crop'; }}
           />
           {/* Price Badge */}
           {course.price_from && (

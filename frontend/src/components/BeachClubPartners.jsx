@@ -36,6 +36,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
             src={club.image}
             alt={club.name}
             className="w-full h-full object-cover object-center transition-transform duration-500 rounded-xl"
+            onError={(e) => { e.target.onerror = null; e.target.src = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop'; }}
           />
           {/* Beach Club Icon Overlay */}
           <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1.5">
