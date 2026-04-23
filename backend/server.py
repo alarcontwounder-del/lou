@@ -2449,73 +2449,77 @@ async def send_booking_confirmation_email(booking: dict):
 
 @app.on_event("startup")
 async def ensure_hotels_seeded():
-    """Ensure all hotels from seed scripts exist in DB on every startup.
-    Respects user deactivations: never re-inserts or re-activates hotels the user has managed."""
-    try:
-        from seed_hotels import NEW_HOTELS
-        from update_new_hotels import HOTEL_UPDATES
-        
-        # IDs the user has explicitly removed/deactivated — never re-insert these
-        EXCLUDED_IDS = {"st-regis-mallorca-resort"}
-        
-        existing_count = await db.hotels.count_documents({})
-        if existing_count >= 59:
-            logger.info(f"Hotels already seeded: {existing_count} found")
-            return
-        
-        added = 0
-        for hotel in NEW_HOTELS:
-            if hotel["id"] in EXCLUDED_IDS:
-                continue
-            found = await db.hotels.find_one({"id": hotel["id"]})
-            if not found:
-                now = datetime.now(timezone.utc)
-                doc = {**hotel, "is_active": True, "display_order": 0, "created_at": now, "updated_at": now}
-                await db.hotels.insert_one(doc)
-                added += 1
-        
-        updated = 0
-        for hotel_id, data in HOTEL_UPDATES.items():
-            if hotel_id in EXCLUDED_IDS:
-                continue
-            result = await db.hotels.update_one(
-                {"id": hotel_id},
-                {"$set": {"image": data["image"], "offer_price": data["offer_price"], "updated_at": datetime.now(timezone.utc)}}
-            )
-            if result.modified_count > 0:
-                updated += 1
-        
-        final_count = await db.hotels.count_documents({})
-        logger.info(f"Hotel seed complete: added={added}, updated={updated}, total={final_count}")
-    except Exception as e:
-        logger.error(f"Hotel seed error: {e}")
+    """Schedule hotel seed as background task so startup completes immediately (health-check safe)."""
+    async def _run_seed():
+        try:
+            from seed_hotels import NEW_HOTELS
+            from update_new_hotels import HOTEL_UPDATES
+
+            # IDs the user has explicitly removed/deactivated — never re-insert these
+            EXCLUDED_IDS = {"st-regis-mallorca-resort"}
+
+            existing_count = await db.hotels.count_documents({})
+            if existing_count >= 59:
+                logger.info(f"Hotels already seeded: {existing_count} found")
+                return
+
+            added = 0
+            for hotel in NEW_HOTELS:
+                if hotel["id"] in EXCLUDED_IDS:
+                    continue
+                found = await db.hotels.find_one({"id": hotel["id"]})
+                if not found:
+                    now = datetime.now(timezone.utc)
+                    doc = {**hotel, "is_active": True, "display_order": 0, "created_at": now, "updated_at": now}
+                    await db.hotels.insert_one(doc)
+                    added += 1
+
+            updated = 0
+            for hotel_id, data in HOTEL_UPDATES.items():
+                if hotel_id in EXCLUDED_IDS:
+                    continue
+                result = await db.hotels.update_one(
+                    {"id": hotel_id},
+                    {"$set": {"image": data["image"], "offer_price": data["offer_price"], "updated_at": datetime.now(timezone.utc)}}
+                )
+                if result.modified_count > 0:
+                    updated += 1
+
+            final_count = await db.hotels.count_documents({})
+            logger.info(f"Hotel seed complete: added={added}, updated={updated}, total={final_count}")
+        except Exception as e:
+            logger.error(f"Hotel seed error: {e}")
+
+    asyncio.create_task(_run_seed())
 
 
 @app.on_event("startup")
 async def ensure_new_golf_courses_seeded():
-    """Ensure the 3 golf courses added on 2026-04-23 exist in DB on every startup.
-    Never re-activates courses the user has manually deactivated."""
-    try:
-        from new_golf_courses import NEW_GOLF_COURSES
+    """Schedule golf course seed as background task so startup completes immediately (health-check safe)."""
+    async def _run_seed():
+        try:
+            from new_golf_courses import NEW_GOLF_COURSES
 
-        # IDs the user has explicitly removed/deactivated — never re-insert these
-        EXCLUDED_IDS = set()
+            # IDs the user has explicitly removed/deactivated — never re-insert these
+            EXCLUDED_IDS = set()
 
-        added = 0
-        for course in NEW_GOLF_COURSES:
-            if course["id"] in EXCLUDED_IDS:
-                continue
-            found = await db.golf_courses.find_one({"id": course["id"]})
-            if not found:
-                now = datetime.now(timezone.utc)
-                doc = {**course, "is_active": True, "created_at": now, "updated_at": now}
-                await db.golf_courses.insert_one(doc)
-                added += 1
+            added = 0
+            for course in NEW_GOLF_COURSES:
+                if course["id"] in EXCLUDED_IDS:
+                    continue
+                found = await db.golf_courses.find_one({"id": course["id"]})
+                if not found:
+                    now = datetime.now(timezone.utc)
+                    doc = {**course, "is_active": True, "created_at": now, "updated_at": now}
+                    await db.golf_courses.insert_one(doc)
+                    added += 1
 
-        total = await db.golf_courses.count_documents({})
-        logger.info(f"Golf course seed check: new_added={added}, total={total}")
-    except Exception as e:
-        logger.error(f"Golf course seed error: {e}")
+            total = await db.golf_courses.count_documents({})
+            logger.info(f"Golf course seed check: new_added={added}, total={total}")
+        except Exception as e:
+            logger.error(f"Golf course seed error: {e}")
+
+    asyncio.create_task(_run_seed())
 
 
 @app.on_event("shutdown")
