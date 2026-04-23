@@ -2491,6 +2491,33 @@ async def ensure_hotels_seeded():
         logger.error(f"Hotel seed error: {e}")
 
 
+@app.on_event("startup")
+async def ensure_new_golf_courses_seeded():
+    """Ensure the 3 golf courses added on 2026-04-23 exist in DB on every startup.
+    Never re-activates courses the user has manually deactivated."""
+    try:
+        from new_golf_courses import NEW_GOLF_COURSES
+
+        # IDs the user has explicitly removed/deactivated — never re-insert these
+        EXCLUDED_IDS = set()
+
+        added = 0
+        for course in NEW_GOLF_COURSES:
+            if course["id"] in EXCLUDED_IDS:
+                continue
+            found = await db.golf_courses.find_one({"id": course["id"]})
+            if not found:
+                now = datetime.now(timezone.utc)
+                doc = {**course, "is_active": True, "created_at": now, "updated_at": now}
+                await db.golf_courses.insert_one(doc)
+                added += 1
+
+        total = await db.golf_courses.count_documents({})
+        logger.info(f"Golf course seed check: new_added={added}, total={total}")
+    except Exception as e:
+        logger.error(f"Golf course seed error: {e}")
+
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
