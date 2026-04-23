@@ -158,7 +158,7 @@ export default function GolfHolidaysPage() {
           <h2 className="font-heading text-2xl md:text-3xl text-stone-900 mb-3">Why Choose Mallorca for Your Golf Holiday?</h2>
           <p className="text-stone-500 mb-10 max-w-2xl">Mallorca is one of Europe's premier golf travel destinations, offering the perfect combination of world-class courses, year-round sunshine, and Mediterranean lifestyle.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <WhyCard title="16 Premium Golf Courses" text="From championship layouts like Golf Son Gual to scenic coastal courses like Golf Alcanada, Mallorca offers diverse golf for every handicap and budget. Green fees from EUR47." />
+            <WhyCard title="19 Premium Golf Courses" text="From championship layouts like Golf Son Gual to scenic coastal courses like Golf Alcanada, Mallorca offers diverse golf for every handicap and budget. Green fees from EUR47." />
             <WhyCard title="Year-Round Sunshine" text="Over 300 days of sunshine per year. Play golf in Mallorca in spring, summer, autumn, or even mild winters. The peak golf seasons are March-May and September-November." />
             <WhyCard title="Easy European Access" text="Direct flights from most European cities in 2-3 hours. Palma airport is 15-30 minutes from the best courses. Perfect for golf weekends and last-minute breaks." />
             <WhyCard title="Luxury Beyond Golf" text="5-star hotels, Michelin-starred restaurants, exclusive beach clubs, and stunning Mediterranean beaches. Mallorca delivers a complete luxury holiday experience." />

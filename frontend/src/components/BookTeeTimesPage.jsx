@@ -19,14 +19,14 @@ export default function BookTeeTimesPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Book Tee Times in Mallorca | 16 Courses | Instant Confirmation | Golfinmallorca.com';
+    document.title = 'Book Tee Times in Mallorca | 19 Courses | Instant Confirmation | Golfinmallorca.com';
     const setMeta = (attr, name, content) => {
       let el = document.querySelector('meta[' + attr + '="' + name + '"]');
       if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.setAttribute('content', content);
     };
     setMeta('name', 'description', 'Book tee times at 16 golf courses in Mallorca with instant confirmation. Green fees from EUR47. Discount tee times, last-minute deals, and group bookings. The island\'s leading golf booking service since 2003.');
-    setMeta('property', 'og:title', 'Book Tee Times in Mallorca | 16 Courses | Instant Confirmation');
+    setMeta('property', 'og:title', 'Book Tee Times in Mallorca | 19 Courses | Instant Confirmation');
     setMeta('property', 'og:description', 'Book tee times at 16 premium golf courses in Mallorca. Instant confirmation, best rates, discount deals. Expert booking service since 2003.');
     setMeta('property', 'og:url', 'https://golfinmallorca.com/book-tee-times');
     setMeta('property', 'og:type', 'website');

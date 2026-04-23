@@ -7,72 +7,48 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - **Frontend**: React, Tailwind CSS, Shadcn UI
 - **Backend**: FastAPI, Motor (async MongoDB)
 - **Architecture**: SPA with dynamic SEO routing
-- **Tracking**: GA4 custom events
-- **Integrations**: OpenAI/Emergent LLMs, Gemini Image Gen, Emergent Object Storage, Resend (Emails), Stripe (Payments), Google Analytics 4
+- **Integrations**: OpenAI/Emergent LLMs, Resend (Emails), Stripe (Payments), Google Analytics 4
 
 ## What's Been Implemented
-- 16 Golf Course partner cards with flip animations, SEO landing pages
+- **19 Golf Course** partner cards with flip animations, SEO landing pages
 - 56 Active Hotel partner cards (59 total, 3 inactive) with internal BookingRequestModal
 - Restaurant (48), Beach Club (12), Cafe & Bar (36) partner sections — ALL with internal booking forms
 - Trip Planner (multi-step wizard with AI itinerary generation)
 - Contact form with Resend email integration
-- Blog with CMS, social sharing — **11 posts total** (incl. "New Features" post)
-- Admin Dashboard with Hotels tab (display_order 1-59 assigned)
-- Google Analytics 4 with 6 custom conversion events
-- SEO: Dynamic canonical tags, golf course landing pages, sitemap.xml, hreflang tags
-- Cookie Consent popup, Newsletter subscription, Stripe payment integration
-- Multi-language support (EN, DE, FR, SE), Weather badge
-- Section Navigator (right-side scroll dots)
-- Floating Search with **fuzzy matching** (Levenshtein distance)
-- **Session-based Favorites System** (sessionStorage)
-- **Mobile Card Limit (6 per section)** with Skeleton loaders
-- **Startup hotel auto-seed** (ensures all hotels exist on deploy)
+- Blog with CMS, social sharing — **11 posts total**
+- Admin Dashboard with Hotels tab (display_order 1-59)
+- Google Analytics 4, SEO canonicals, sitemap.xml, hreflang tags
+- Cookie Consent, Newsletter, Stripe, Multi-language (EN/DE/FR/SE)
+- Floating Search with fuzzy matching (Levenshtein distance)
+- Session-based Favorites (sessionStorage), Mobile Card Limit (6/section)
+- Startup hotel auto-seed with exclusion list
+- Image fallback (onError) on ALL card components
+- Hero image optimized (4.1MB → 308KB)
+- Logo uses reliable `brightness(0) invert(1)` instead of `mix-blend-mode: screen`
 
-## Changes - April 14, 2026
+## Latest Changes - April 23, 2026
 
-### Code Quality Fixes Applied
-**Critical:**
-- Fixed skeleton key props: replaced index-only keys with prefixed unique keys (`skeleton-${i}`) in 5 components
-- Added eslint-disable comments for mount-only useEffect hooks (PaymentsTab, PartnerImagesTab)
-- Verified `seed_all_partners.py` already uses safe `ast.literal_eval()` (not `eval()`)
+### 3 New Golf Courses Added
+- **Golf de Andratx** — Camp de Mar | 18H Par 72 | From €140 | Cloudinary image
+- **Golf Maioris** — Llucmajor | 18H Par 72 | From €63 | Cloudinary image
+- **Golf Son Termes** — Bunyola | 18H Par 70 | From €85 | Cloudinary image
+- All booking URLs linked to `golfinmallorca.greenfee365.com`
+- Updated references from "16 Courses" → "19 Courses" in landing pages
 
-**Important:**
-- Replaced `var` → `const`/`let` in TermsPage.jsx, PrivacyPage.jsx, ContentManager.jsx
-- Removed `console.log` statement in ContentManager.jsx
-- Verified all React hook dependencies are correct (useIsMobile, FavoritesContext, DataContext, WeatherBadge, TripPlanner)
+### Previous Session Fixes (April 14-16)
+- Fuzzy search, blog post "New Features", translation keys, internal booking forms
+- Hotel admin fixes, hero optimization, mobile reliability fixes
+- Code quality: skeleton keys, var→const, console.log cleanup
 
-**Deferred to P3 (refactoring):**
-- Component decomposition (BlogPostPage, AdminDashboard, FloatingSearch, Navbar, ContentManager)
-- Email template extraction to Jinja2
-- Search function complexity reduction in server.py
-
-### Search Bug Fix
-- Fixed mobile search panel overflow (cropped on left side)
-- Added fuzzy search (Levenshtein distance) — tolerates typos
-
-### New Blog Post
-- "What's New on golfinmallorca.com" - English, 6 feature capsules, composite hero image
-
-### All Partner Booking → Internal Forms
-- Restaurants, Beach Clubs, Cafes: changed external URL links to internal BookingRequestModal
-
-### Hotel Admin Fixes
-- "St. Regis Mallorca Resort" deactivated + seed exclusion
-- Sequential display_order 1-59 assigned
-- Startup auto-seed with exclusion list
-
-### Performance
-- Hero image compressed: 4.1 MB → 308 KB (92% reduction)
-- Dark green placeholder background prevents gray flash
-
-### SEO
-- `robots.txt`: Added `Disallow: /*?lang=` to stop crawling language parameter URLs
-- Translation keys fixed (offers.exclusive, viewDetails, bookNow) in 4 languages
+## DB Schema
+- `golf_courses`: **19 total**, all active, all with prices and booking URLs
+- `hotels`: 59 total (56 active, 3 inactive). 22 have prices, 35 do not
+- `restaurants`: 48 total (47 active), `beach_clubs`: 12 (11 active), `cafe_bars`: 36 (35 active)
 
 ## Pending/Upcoming Tasks
 ### P1 - Awaiting User Input
-- Add Hero Video to homepage (waiting for video file)
-- Add "From €[Price]" to 35 remaining hotels (waiting for pricing or web-scrape approval)
+- Hero Video homepage (waiting for video file)
+- "From €[Price]" for 35 remaining hotels (waiting for pricing or web-scrape approval)
 - External review links for "Write a review" modal (waiting for URLs)
 
 ### P2
@@ -80,7 +56,6 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Google Business Profile appeal (user action)
 
 ### P3 - Refactoring
-- Decompose large components: TripPlanner (~800 lines), ContentManager, BlogPostPage, FloatingSearch, Navbar
-- Extract email templates to Jinja2/HTML files
-- Reduce search function complexity in server.py
-- Golf Packages page (bundle course and hotel deals)
+- Decompose large components (TripPlanner, ContentManager, BlogPostPage)
+- Extract email templates to HTML/Jinja2
+- Golf Packages page
