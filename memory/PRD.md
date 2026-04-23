@@ -26,6 +26,18 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Hero image optimized (4.1MB → 308KB)
 - Logo uses reliable `brightness(0) invert(1)` instead of `mix-blend-mode: screen`
 
+## Latest Changes - Feb 14, 2026
+
+### SEO Indexing Fix (Google Search Console)
+- **Root cause**: `hreflang` tags pointed to `?lang=de|fr|sv` URLs that served identical English HTML → Google flagged as duplicates + robots.txt blocked them → "Alternate page / Blocked by robots" errors.
+- Removed `hreflang` entries for `de`/`fr`/`sv` (content is client-side only, not server-translated). Kept `en` + `x-default` only.
+- Replaced `document.write()` canonical with **static `<link rel="canonical">` + JS refinement** so Googlebot sees canonical in initial HTML parse.
+- Made `og:url` static with JS update (same pattern).
+- Removed `og:locale:alternate` entries for DE/FR/SV.
+- Removed `Disallow: /*?lang=` from `robots.txt` (no longer needed).
+- Updated `sitemap.xml`: added 3 new courses (golf-de-andratx, golf-maioris, golf-son-termens), refreshed `lastmod` to 2026-02-14.
+- Updated "16 courses" → "19 courses" in meta description, OG, Twitter, schema.org `ItemList` (numberOfItems), `Service.description`, and 3 FAQ answers.
+
 ## Latest Changes - April 23, 2026
 
 ### 3 New Golf Courses Added
@@ -59,3 +71,7 @@ Build a full-featured golf travel portal for Mallorca with authentic images, per
 - Decompose large components (TripPlanner, ContentManager, BlogPostPage)
 - Extract email templates to HTML/Jinja2
 - Golf Packages page
+
+### Future - Real Multi-Language SEO (Phase 2)
+- Currently site is English-only server-side (i18n is client JS only).
+- To actually rank in DE/FR/SV: need SSG/SSR routes `/de/`, `/fr/`, `/sv/` with translated HTML, then re-introduce real `hreflang` annotations. Large effort — deferred until business confirms priority.

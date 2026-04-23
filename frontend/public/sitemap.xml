@@ -2,197 +2,215 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://golfinmallorca.com/</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- Landing Pages -->
   <url>
     <loc>https://golfinmallorca.com/golf-holidays-mallorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/book-tee-times</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Individual Golf Course Pages -->
   <url>
     <loc>https://golfinmallorca.com/golf-courses/golf-alcanada</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/golf-son-gual</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/pula-golf-resort</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/son-vida-golf</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/son-muntaner-golf</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/son-quint-golf</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/son-antem-east</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/son-antem-west</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/capdepera-golf</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/golf-santa-ponsa</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/golf-son-servera</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/vall-dor-golf</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/real-golf-bendinat</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://golfinmallorca.com/golf-courses/golf-de-andratx</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://golfinmallorca.com/golf-courses/golf-maioris</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://golfinmallorca.com/golf-courses/golf-son-termens</loc>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/golf-ibiza</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/roca-llisa-ibiza</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/golf-courses/golf-son-parc-menorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Blog Posts -->
   <url>
     <loc>https://golfinmallorca.com/blog/best-time-golf-mallorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/top-5-courses-beginners</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/golf-and-gastronomy-mallorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/championship-courses-mallorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/ultimate-golf-guide-mallorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/stay-and-play-golf-packages-mallorca</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/art-culture-mallorca-golfers</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/culinary-mallorca-food-guide</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/cheap-golf-mallorca-budget</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/golf-near-palma-courses</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/blog/new-features-golfinmallorca-2026</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Legal Pages -->
   <url>
     <loc>https://golfinmallorca.com/privacy</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://golfinmallorca.com/terms</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
