@@ -27,7 +27,7 @@ export default function GolfHolidaysPage() {
       if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.setAttribute('content', content);
     };
-    setMeta('name', 'description', 'Plan your perfect golf holiday in Mallorca. Stay and play packages, luxury golf resort deals, weekend breaks, group trips, and corporate golf events. 16 courses, expert concierge service since 2003.');
+    setMeta('name', 'description', 'Plan your perfect golf holiday in Mallorca. Stay and play packages, luxury golf resort deals, weekend breaks, group trips, and corporate golf events. 19 courses, expert concierge service since 2003.');
     setMeta('property', 'og:title', 'Golf Holidays in Mallorca | Packages, Deals & Stay and Play');
     setMeta('property', 'og:description', 'Custom golf holiday packages in Mallorca — stay and play deals, luxury resort packages, weekend breaks, and group golf trips. Expert concierge since 2003.');
     setMeta('property', 'og:url', 'https://golfinmallorca.com/golf-holidays-mallorca');
@@ -49,7 +49,7 @@ export default function GolfHolidaysPage() {
         '@type': 'AggregateOffer',
         priceCurrency: 'EUR',
         lowPrice: '199',
-        offerCount: '16',
+        offerCount: '19',
         availability: 'https://schema.org/InStock'
       }
     });
@@ -179,7 +179,7 @@ export default function GolfHolidaysPage() {
         </div>
         <div className="text-center mt-10">
           <button onClick={() => navigate('/', { state: { scrollTo: 'courses' } })} className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 font-medium transition-colors">
-            View all 16 golf courses<ChevronRight className="w-4 h-4" />
+            View all 19 golf courses<ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </section>

@@ -25,9 +25,9 @@ export default function BookTeeTimesPage() {
       if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.setAttribute('content', content);
     };
-    setMeta('name', 'description', 'Book tee times at 16 golf courses in Mallorca with instant confirmation. Green fees from EUR47. Discount tee times, last-minute deals, and group bookings. The island\'s leading golf booking service since 2003.');
+    setMeta('name', 'description', 'Book tee times at 19 golf courses in Mallorca with instant confirmation. Green fees from EUR47. Discount tee times, last-minute deals, and group bookings. The island\'s leading golf booking service since 2003.');
     setMeta('property', 'og:title', 'Book Tee Times in Mallorca | 19 Courses | Instant Confirmation');
-    setMeta('property', 'og:description', 'Book tee times at 16 premium golf courses in Mallorca. Instant confirmation, best rates, discount deals. Expert booking service since 2003.');
+    setMeta('property', 'og:description', 'Book tee times at 19 premium golf courses in Mallorca. Instant confirmation, best rates, discount deals. Expert booking service since 2003.');
     setMeta('property', 'og:url', 'https://golfinmallorca.com/book-tee-times');
     setMeta('property', 'og:type', 'website');
 
@@ -40,7 +40,7 @@ export default function BookTeeTimesPage() {
       '@context': 'https://schema.org',
       '@type': 'Service',
       name: 'Book Tee Times in Mallorca',
-      description: 'Instant tee time booking at 16 golf courses in Mallorca, Ibiza, and Menorca. Best rates guaranteed.',
+      description: 'Instant tee time booking at 19 golf courses in Mallorca, Ibiza, and Menorca. Best rates guaranteed.',
       provider: { '@id': 'https://golfinmallorca.com/#organization' },
       serviceType: 'Golf Tee Time Booking',
       areaServed: { '@id': 'https://golfinmallorca.com/#mallorca' },
@@ -49,7 +49,7 @@ export default function BookTeeTimesPage() {
         priceCurrency: 'EUR',
         lowPrice: '47',
         highPrice: '175',
-        offerCount: '16',
+        offerCount: '19',
         availability: 'https://schema.org/InStock'
       }
     });
@@ -79,7 +79,7 @@ export default function BookTeeTimesPage() {
             Book Tee Times in Mallorca
           </h1>
           <p className="text-stone-300 text-lg max-w-2xl mb-8">
-            Instant online booking at 16 golf courses across Mallorca, Ibiza, and Menorca. Best rates guaranteed with free cancellation options. Green fees from EUR47.
+            Instant online booking at 19 golf courses across Mallorca, Ibiza, and Menorca. Best rates guaranteed with free cancellation options. Green fees from EUR47.
           </p>
           <a
             href="https://golfinmallorca.greenfee365.com"
@@ -111,7 +111,7 @@ export default function BookTeeTimesPage() {
       <section className="bg-white py-16" data-testid="price-overview">
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <h2 className="font-heading text-2xl md:text-3xl text-stone-900 mb-3">Mallorca Golf Course Green Fees</h2>
-          <p className="text-stone-500 mb-10 max-w-2xl">Quick overview of green fees at all 16 courses. Click any course name for full details, photos, and more info.</p>
+          <p className="text-stone-500 mb-10 max-w-2xl">Quick overview of green fees at all 19 courses. Click any course name for full details, photos, and more info.</p>
           
           {/* Course Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-testid="price-grid">
@@ -189,7 +189,7 @@ export default function BookTeeTimesPage() {
       <section className="bg-brand-charcoal text-white py-16" data-testid="booktee-cta">
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
           <h2 className="font-heading text-2xl md:text-3xl mb-4">Ready to Book Your Round?</h2>
-          <p className="text-stone-300 mb-8">Choose from 16 courses across Mallorca, Ibiza, and Menorca. Instant confirmation, best rates, expert local support.</p>
+          <p className="text-stone-300 mb-8">Choose from 19 courses across Mallorca, Ibiza, and Menorca. Instant confirmation, best rates, expert local support.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="https://golfinmallorca.greenfee365.com"

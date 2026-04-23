@@ -10,7 +10,7 @@ export const translations = {
     hero: {
       subtitle: "Established in 2003 as Mallorca's first golf agency. Leaders in innovation with the island's first 24/7 real-time booking system service.",
       title: "Play the Best Golf Courses in Mallorca",
-      description: "Leaders in innovation with the island's first 24/7 real-time booking system. Book tee times, golf holiday packages, and luxury stay & play deals at 16 premium courses.",
+      description: "Leaders in innovation with the island's first 24/7 real-time booking system. Book tee times, golf holiday packages, and luxury stay & play deals at 19 premium courses.",
       bookTeeTime: "Book a tee time now",
       cta: "Start Your Journey",
       ctaSecondary: "View golf courses in Mallorca"
@@ -19,13 +19,13 @@ export const translations = {
       subtitle: "Your Golf Concierge",
       title: "The Leading Golf Agency in Mallorca",
       description: "Since 2003, we are the only exclusive golf operator based on the island. From booking tee times and arranging golf holiday packages to recommending luxury resorts and fine dining, we handle every detail of your Mallorca golf trip.",
-      point1: "16 championship golf courses across Mallorca & the Balearic Islands",
+      point1: "19 championship golf courses across Mallorca & the Balearic Islands",
       point2: "Luxury golf hotel packages & stay and play deals",
       point3: "Personalized golf concierge service in your language"
     },
     courses: {
       subtitle: "Golf Courses in Mallorca",
-      title: "Book Tee Times at 16 Premium Courses",
+      title: "Book Tee Times at 19 Premium Courses",
       description: "From championship layouts to scenic coastal courses, explore the best golf courses in Mallorca, Ibiza & Menorca with instant tee time confirmation.",
       holes: "Holes",
       par: "Par",
@@ -154,7 +154,7 @@ export const translations = {
     courses: {
       subtitle: "Golfplätze",
       title: "Weltklasse-Plätze Erwarten Sie",
-      description: "Buchen Sie Abschlagzeiten auf 16 Premium-Golfplätzen auf Mallorca, Ibiza & Menorca mit sofortiger Bestätigung.",
+      description: "Buchen Sie Abschlagzeiten auf 19 Premium-Golfplätzen auf Mallorca, Ibiza & Menorca mit sofortiger Bestätigung.",
       holes: "Löcher",
       par: "Par",
       from: "Ab",
@@ -282,7 +282,7 @@ export const translations = {
     courses: {
       subtitle: "Parcours de Golf",
       title: "Des Parcours de Classe Mondiale",
-      description: "Réservez des départs sur 16 parcours de golf premium à Majorque, Ibiza & Minorque avec confirmation instantanée.",
+      description: "Réservez des départs sur 19 parcours de golf premium à Majorque, Ibiza & Minorque avec confirmation instantanée.",
       holes: "Trous",
       par: "Par",
       from: "À partir de",
@@ -410,7 +410,7 @@ export const translations = {
     courses: {
       subtitle: "Golfbanor",
       title: "Världsklassbanor Väntar",
-      description: "Boka tee times på 16 premiumbanaor på Mallorca, Ibiza & Menorca med omedelbar bekräftelse.",
+      description: "Boka tee times på 19 premiumbanaor på Mallorca, Ibiza & Menorca med omedelbar bekräftelse.",
       holes: "Hål",
       par: "Par",
       from: "Från",
