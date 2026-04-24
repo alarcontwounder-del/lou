@@ -559,8 +559,18 @@ async def logout(request: Request, response: Response):
 
 # Routes
 @api_router.get("/")
+@api_router.post("/")
+@api_router.head("/")
 async def root():
-    return {"message": "Mallorca Golf Exclusive API"}
+    """Root endpoint — also serves as a health check probe.
+    Accepts GET/POST/HEAD so Emergent K8s health checks succeed regardless of method."""
+    return {"status": "ok", "message": "Mallorca Golf Exclusive API"}
+
+@api_router.get("/health")
+@api_router.post("/health")
+async def health():
+    """Lightweight health endpoint for Kubernetes liveness/readiness probes."""
+    return {"status": "ok"}
 
 @api_router.get("/golf-courses", response_model=List[dict])
 async def get_golf_courses(include_inactive: bool = False):
