@@ -1176,6 +1176,34 @@ async def update_partner_image(partner_id: str, body: dict):
     return {"status": "ok", "partner_id": partner_id}
 
 
+@api_router.post("/admin/hotels/resequence")
+async def resequence_hotels():
+    """Manually re-sequence hotel display_order to 1..N, removing duplicates and zeros.
+    Preserves current relative ordering (sorted by current display_order asc, then created_at)."""
+    hotels = await db.hotels.find({}, {"_id": 0, "id": 1, "display_order": 1, "created_at": 1}).to_list(500)
+    if not hotels:
+        return {"status": "ok", "updated": 0, "total": 0}
+
+    def sort_key(h):
+        order = h.get("display_order") or 0
+        if order == 0:
+            order = 999999
+        created = h.get("created_at") or datetime.min.replace(tzinfo=timezone.utc)
+        return (order, created)
+
+    hotels_sorted = sorted(hotels, key=sort_key)
+    updated = 0
+    now = datetime.now(timezone.utc)
+    for idx, h in enumerate(hotels_sorted, start=1):
+        if h.get("display_order") != idx:
+            await db.hotels.update_one(
+                {"id": h["id"]},
+                {"$set": {"display_order": idx, "updated_at": now}}
+            )
+            updated += 1
+    return {"status": "ok", "updated": updated, "total": len(hotels_sorted)}
+
+
 # Admin: Upload partner image file
 @api_router.post("/admin/upload-image")
 async def upload_partner_image(file: UploadFile = File(...)):
@@ -2512,28 +2540,53 @@ async def ensure_hotels_seeded():
 
 @app.on_event("startup")
 async def normalize_hotel_display_order():
-    """Resequence any hotel with display_order=0 (or missing) to the end so back-office stays clean."""
+    """Resequence hotel display_order on startup:
+    - Fixes hotels with display_order=0 (missing/orphans) by pushing to end
+    - Fixes duplicate positions (two hotels sharing same order) by re-sequencing everything 1..N
+    Preserves current relative ordering as much as possible (sorted by current display_order, then created_at).
+    """
     async def _run():
         try:
-            # Find hotels with missing/zero display_order
-            orphans = await db.hotels.find(
-                {"$or": [{"display_order": 0}, {"display_order": {"$exists": False}}, {"display_order": None}]},
-                {"_id": 0, "id": 1}
-            ).to_list(200)
-            if not orphans:
+            # Fetch all hotels sorted by current order, then created_at for stable tie-break
+            hotels = await db.hotels.find(
+                {}, {"_id": 0, "id": 1, "display_order": 1, "created_at": 1}
+            ).to_list(500)
+            if not hotels:
                 return
-            # Find current max order
-            last = await db.hotels.find({}, {"display_order": 1}).sort("display_order", -1).limit(1).to_list(1)
-            next_order = (last[0].get("display_order", 0) if last else 0) + 1
+
+            # Check if resequencing is needed: any zero/missing OR any duplicate
+            orders = [h.get("display_order") or 0 for h in hotels]
+            has_zero_or_missing = any(o == 0 for o in orders)
+            has_duplicates = len(set(orders)) != len(orders)
+
+            if not has_zero_or_missing and not has_duplicates:
+                return  # Nothing to fix
+
+            # Sort: by display_order asc (but treat 0/None as infinity so they go to end), then created_at asc
+            def sort_key(h):
+                order = h.get("display_order") or 0
+                if order == 0:
+                    order = 999999  # push orphans to the end
+                created = h.get("created_at") or datetime.min.replace(tzinfo=timezone.utc)
+                return (order, created)
+
+            hotels_sorted = sorted(hotels, key=sort_key)
+
+            # Re-sequence 1..N
             updated = 0
-            for orphan in orphans:
-                await db.hotels.update_one(
-                    {"id": orphan["id"]},
-                    {"$set": {"display_order": next_order, "updated_at": datetime.now(timezone.utc)}}
-                )
-                next_order += 1
-                updated += 1
-            logger.info(f"Hotel display_order normalized: fixed {updated} orphans")
+            now = datetime.now(timezone.utc)
+            for idx, h in enumerate(hotels_sorted, start=1):
+                if h.get("display_order") != idx:
+                    await db.hotels.update_one(
+                        {"id": h["id"]},
+                        {"$set": {"display_order": idx, "updated_at": now}}
+                    )
+                    updated += 1
+
+            logger.info(
+                f"Hotel display_order normalized: resequenced {updated} hotels "
+                f"(had_zero={has_zero_or_missing}, had_duplicates={has_duplicates}, total={len(hotels_sorted)})"
+            )
         except Exception as e:
             logger.error(f"Hotel display_order normalizer error: {e}")
 
