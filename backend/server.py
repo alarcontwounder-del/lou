@@ -765,7 +765,11 @@ async def create_hotel(hotel: dict):
     now = datetime.now(timezone.utc)
     hotel["type"] = "hotel"
     hotel["is_active"] = True
-    hotel["display_order"] = hotel.get("display_order", 0)
+    # Auto-assign display_order as max+1 so new hotels get sequential numbering (1, 2, 3...)
+    if "display_order" not in hotel or not hotel["display_order"]:
+        last = await db.hotels.find({}, {"display_order": 1}).sort("display_order", -1).limit(1).to_list(1)
+        max_order = last[0].get("display_order", 0) if last else 0
+        hotel["display_order"] = max_order + 1
     hotel["created_at"] = now
     hotel["updated_at"] = now
     
@@ -2480,7 +2484,10 @@ async def ensure_hotels_seeded():
                 found = await db.hotels.find_one({"id": hotel["id"]})
                 if not found:
                     now = datetime.now(timezone.utc)
-                    doc = {**hotel, "is_active": True, "display_order": 0, "created_at": now, "updated_at": now}
+                    # Auto-assign next display_order so new hotels get sequential numbering
+                    last = await db.hotels.find({}, {"display_order": 1}).sort("display_order", -1).limit(1).to_list(1)
+                    next_order = (last[0].get("display_order", 0) if last else 0) + 1
+                    doc = {**hotel, "is_active": True, "display_order": next_order, "created_at": now, "updated_at": now}
                     await db.hotels.insert_one(doc)
                     added += 1
 
@@ -2501,6 +2508,36 @@ async def ensure_hotels_seeded():
             logger.error(f"Hotel seed error: {e}")
 
     asyncio.create_task(_run_seed())
+
+
+@app.on_event("startup")
+async def normalize_hotel_display_order():
+    """Resequence any hotel with display_order=0 (or missing) to the end so back-office stays clean."""
+    async def _run():
+        try:
+            # Find hotels with missing/zero display_order
+            orphans = await db.hotels.find(
+                {"$or": [{"display_order": 0}, {"display_order": {"$exists": False}}, {"display_order": None}]},
+                {"_id": 0, "id": 1}
+            ).to_list(200)
+            if not orphans:
+                return
+            # Find current max order
+            last = await db.hotels.find({}, {"display_order": 1}).sort("display_order", -1).limit(1).to_list(1)
+            next_order = (last[0].get("display_order", 0) if last else 0) + 1
+            updated = 0
+            for orphan in orphans:
+                await db.hotels.update_one(
+                    {"id": orphan["id"]},
+                    {"$set": {"display_order": next_order, "updated_at": datetime.now(timezone.utc)}}
+                )
+                next_order += 1
+                updated += 1
+            logger.info(f"Hotel display_order normalized: fixed {updated} orphans")
+        except Exception as e:
+            logger.error(f"Hotel display_order normalizer error: {e}")
+
+    asyncio.create_task(_run())
 
 
 @app.on_event("startup")

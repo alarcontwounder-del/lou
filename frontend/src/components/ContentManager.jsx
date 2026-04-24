@@ -84,7 +84,7 @@ const ImageUploadField = ({ value, onChange }) => {
       const formData = new FormData();
       formData.append('file', file);
       
-      const response = await axios.post(`${BACKEND_URL}/api/upload-image`, formData, {
+      const response = await axios.post(`${BACKEND_URL}/api/admin/upload-image`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       
@@ -232,9 +232,9 @@ const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive, onUpdate
         <div className="flex flex-col items-center gap-0.5 flex-shrink-0">
           <input
             type="number"
-            min="0"
-            value={partner.display_order ?? 0}
-            onChange={(e) => onUpdateOrder(partner, parseInt(e.target.value) || 0)}
+            min="1"
+            value={partner.display_order ?? ''}
+            onChange={(e) => onUpdateOrder(partner, parseInt(e.target.value) || 1)}
             className="w-10 h-8 text-center text-xs font-semibold border border-stone-200 rounded bg-stone-50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             title="Position (lower = first)"
             data-testid={`position-${partner.id}`}
