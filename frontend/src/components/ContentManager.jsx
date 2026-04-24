@@ -291,7 +291,7 @@ const PartnerCard = ({ partner, type, onEdit, onDelete, onToggleActive, onUpdate
           {/* URL indicator */}
           {bookingUrl && (() => {
             let hostname = bookingUrl;
-            try { hostname = new URL(bookingUrl).hostname; } catch {}
+            try { hostname = new URL(bookingUrl).hostname; } catch (e) { console.warn('Invalid booking URL:', bookingUrl, e); }
             return (
               <a 
                 href={bookingUrl} 
@@ -857,8 +857,8 @@ export const ContentManager = () => {
         });
         setDisplaySettings(normalized);
       }
-    } catch {
-      // Default display settings will be used
+    } catch (e) {
+      console.warn('Failed to load display settings, using defaults:', e);
     }
   };
 

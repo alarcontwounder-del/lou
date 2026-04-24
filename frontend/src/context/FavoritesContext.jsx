@@ -8,7 +8,8 @@ function loadFavorites() {
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : [];
-  } catch {
+  } catch (e) {
+    console.warn('Failed to load favorites from sessionStorage:', e);
     return [];
   }
 }

@@ -20,29 +20,29 @@ const TIME_SLOTS = [
 ];
 
 export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
-  var isHotel = venueType === 'hotel';
-  var _s = useState('idle'); var status = _s[0]; var setStatus = _s[1];
-  var _f = useState({
+  const isHotel = venueType === 'hotel';
+  const [status, setStatus] = useState('idle');
+  const [form, setForm] = useState({
     guest_name: '', guest_email: '', guest_phone: '', date: '', date_checkout: '', time: '',
     guests: 2, dietary: [], allergies: '', special_requests: ''
-  }); var form = _f[0]; var setForm = _f[1];
+  });
 
   if (!isOpen || !venue) return null;
 
-  var updateField = function(field, value) {
-    setForm(function(prev) { var next = Object.assign({}, prev); next[field] = value; return next; });
+  const updateField = (field, value) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  var toggleDietary = function(id) {
-    setForm(function(prev) {
-      var list = prev.dietary.includes(id)
-        ? prev.dietary.filter(function(d) { return d !== id; })
-        : prev.dietary.concat([id]);
-      return Object.assign({}, prev, { dietary: list });
+  const toggleDietary = (id) => {
+    setForm((prev) => {
+      const list = prev.dietary.includes(id)
+        ? prev.dietary.filter((d) => d !== id)
+        : [...prev.dietary, id];
+      return { ...prev, dietary: list };
     });
   };
 
-  var handleSubmit = function(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.guest_name || !form.guest_email || !form.guest_phone || !form.date) return;
     if (!isHotel && !form.time) return;
@@ -60,15 +60,15 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
       dietary: isHotel ? [] : form.dietary,
       allergies: isHotel ? '' : form.allergies,
       special_requests: form.special_requests
-    }).then(function() {
+    }).then(() => {
       setStatus('success');
       trackEvent('booking_request_submit', { venue: venue.name, venue_type: venueType, guests: form.guests });
-    }).catch(function() {
+    }).catch(() => {
       setStatus('error');
     });
   };
 
-  var today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split('T')[0];
 
   if (status === 'success') {
     return (
