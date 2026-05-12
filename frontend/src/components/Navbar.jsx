@@ -126,10 +126,12 @@ export const Navbar = ({ onAdminClick, isAuthenticated, isCheckingAuth, onSearch
           data-testid="logo"
         >
           <img 
-            src="https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
+            src={isLight 
+              ? "https://customer-assets.emergentagent.com/job_9bf3074f-8ae7-4117-9cd1-ef20d6439f53/artifacts/f3ma6byf_2.png"
+              : "/logo-white-transparent.png"
+            }
             alt="Golf in Mallorca Spain"
             className="h-20 sm:h-32 md:h-36 lg:h-44 w-auto object-contain transition-all duration-300"
-            style={isLight ? {} : { filter: 'brightness(0) invert(1)' }}
           />
         </a>
 
