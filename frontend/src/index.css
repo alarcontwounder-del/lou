@@ -166,15 +166,20 @@ body {
   backface-visibility: hidden;
   border-radius: 16px;
   overflow: hidden;
+  /* Force GPU compositing so backface-visibility is reliably applied across Chrome/Safari/Firefox */
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  isolation: isolate;
 }
 
 .flip-card-front {
   z-index: 2;
-  /* background controlled by Tailwind classes */
+  /* Explicit identity transform so the front gets its own 3D layer in Chrome */
+  transform: rotateY(0deg) translate3d(0, 0, 0);
 }
 
 .flip-card-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translate3d(0, 0, 0);
   z-index: 1;
 }
 
