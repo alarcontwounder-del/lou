@@ -39,7 +39,7 @@ export const Hero = ({ onPlanTrip }) => {
   };
 
   const handleBookTeeTime = () => {
-    trackEvent('book_tee_time_click', { location: 'hero' });
+    trackEvent('book_tee_time_click', { location: 'hero', destination: 'greenfee365_home' });
   };
 
   const handlePlanTrip = () => {

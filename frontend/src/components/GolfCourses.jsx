@@ -185,7 +185,10 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
             href={course.booking_url}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent('course_booking_click', { course: course.name, course_id: course.id })}
+            onClick={() => {
+              trackEvent('course_booking_click', { course: course.name, course_id: course.id });
+              trackEvent('book_tee_time_click', { location: 'course_card', destination: 'greenfee365_course', course_name: course.name });
+            }}
             className="inline-flex items-center justify-center gap-1.5 bg-white text-stone-800 px-4 py-2 rounded-full text-xs font-semibold hover:bg-white/90 transition-all"
             data-testid={`course-book-${course.id}`}
           >
@@ -321,6 +324,7 @@ export const GolfCourses = () => {
                 href="https://golfinmallorca.greenfee365.com/es-ES/search?query=all_clubs"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('book_tee_time_click', { location: 'worldwide_banner', destination: 'greenfee365_worldwide' })}
                 className="group inline-flex items-center justify-center gap-2 bg-white text-brand-charcoal px-5 py-3 rounded-full font-semibold text-xs sm:text-sm hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full md:w-auto"
                 data-testid="worldwide-golf-btn"
               >

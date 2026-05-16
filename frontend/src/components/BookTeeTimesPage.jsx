@@ -7,6 +7,7 @@ import { Footer } from '../components/Footer';
 import { Newsletter } from '../components/Newsletter';
 import { CourseCard } from '../components/GolfCourses';
 import { ChevronRight, ExternalLink, Clock, Shield, CreditCard, Headphones, Tag, Calendar } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 export default function BookTeeTimesPage() {
   const { language, t } = useLanguage();
@@ -85,6 +86,7 @@ export default function BookTeeTimesPage() {
             href="https://golfinmallorca.greenfee365.com"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('book_tee_time_click', { location: 'booktee_hero', destination: 'greenfee365_home' })}
             className="inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all shadow-lg"
             data-testid="booktee-main-btn"
           >
@@ -195,6 +197,7 @@ export default function BookTeeTimesPage() {
               href="https://golfinmallorca.greenfee365.com"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('book_tee_time_click', { location: 'booktee_bottom', destination: 'greenfee365_home' })}
               className="inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
               data-testid="booktee-bottom-btn"
             >

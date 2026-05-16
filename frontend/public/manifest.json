@@ -1,0 +1,18 @@
+{
+  "short_name": "Golfinmallorca",
+  "name": "Golf in Mallorca - Book Tee Times & Golf Holidays",
+  "description": "Book tee times at 19 premium golf courses in Mallorca. The island's only exclusive golf operator since 2003.",
+  "icons": [
+    { "src": "favicon.ico", "sizes": "64x64 32x32 24x24 16x16", "type": "image/x-icon" },
+    { "src": "logo192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },
+    { "src": "logo512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1a1a1a",
+  "background_color": "#fafaf9",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["sports", "travel", "lifestyle"]
+}

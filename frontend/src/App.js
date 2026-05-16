@@ -21,6 +21,7 @@ import { AdminDashboard } from './components/AdminDashboard';
 import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
 import { CookieConsent } from './components/CookieConsent';
+import PWAInstallBanner from './components/PWAInstallBanner';
 import { FloatingSearch } from './components/FloatingSearch';
 import { SectionNavigator } from './components/SectionNavigator';
 import { TripPlanner } from './components/TripPlanner';
@@ -244,6 +245,7 @@ function App() {
           <FavoritesProvider>
             <AppRouter />
             <CookieConsent />
+            <PWAInstallBanner />
           </FavoritesProvider>
         </DataProvider>
       </LanguageProvider>

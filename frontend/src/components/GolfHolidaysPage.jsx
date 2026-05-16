@@ -7,6 +7,7 @@ import { Footer } from '../components/Footer';
 import { Newsletter } from '../components/Newsletter';
 import { CourseCard } from '../components/GolfCourses';
 import { ChevronRight, ExternalLink, MapPin, Sun, Users, Plane, Hotel, UtensilsCrossed, Car } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 const API = process.env.REACT_APP_BACKEND_URL;
 
@@ -86,6 +87,7 @@ export default function GolfHolidaysPage() {
               href="https://golfinmallorca.greenfee365.com"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('book_tee_time_click', { location: 'holidays_hero', destination: 'greenfee365_home' })}
               className="inline-flex items-center gap-2 bg-white text-brand-charcoal px-6 py-3 rounded-full font-semibold text-sm hover:bg-stone-100 transition-all"
               data-testid="holidays-book-btn"
             >

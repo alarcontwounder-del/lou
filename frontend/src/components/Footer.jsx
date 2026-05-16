@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Instagram, Facebook } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 export const Footer = () => {
   const { t } = useLanguage();
@@ -118,7 +119,7 @@ export const Footer = () => {
             <h4 className="font-medium text-lg mb-4 mt-8">Services</h4>
             <ul className="space-y-3">
               <li>
-                <a href="https://golfinmallorca.greenfee365.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
+                <a href="https://golfinmallorca.greenfee365.com" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('book_tee_time_click', { location: 'footer', destination: 'greenfee365_home' })} className="text-white/70 hover:text-white transition-colors">
                   {t('hero.bookTeeTime')}!
                 </a>
               </li>

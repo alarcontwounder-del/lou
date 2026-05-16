@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Star, Languages, Search, X, Quote, ChevronDown, ChevronLeft, ChevronRight, ArrowRight, Globe, Users, Award } from 'lucide-react';
 import axios from 'axios';
+import { trackEvent } from '../lib/analytics';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -471,6 +472,7 @@ export const ReviewCarousel = () => {
                 href="https://golfinmallorca.greenfee365.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('book_tee_time_click', { location: 'reviews_cta', destination: 'greenfee365_home' })}
                 className="inline-flex items-center gap-3 bg-white text-brand-charcoal font-bold text-lg px-10 py-5 rounded-full hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
                 data-testid="booking-cta-button"
               >
