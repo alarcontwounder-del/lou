@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { CalendarDays } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
+import { HERO_LQIP } from '../lib/hero-lqip';
 
 export const Hero = ({ onPlanTrip }) => {
   const { t } = useLanguage();
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  const heroUrl = `${process.env.REACT_APP_BACKEND_URL}/api/uploads/hero_golf_mallorca.jpg`;
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = heroUrl;
+    img.onload = () => setHeroLoaded(true);
+    return () => { img.onload = null; };
+  }, [heroUrl]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -24,12 +35,18 @@ export const Hero = ({ onPlanTrip }) => {
 
   return (
     <section id="hero" className="hero-section grain-overlay" data-testid="hero-section">
-      {/* Background Image - optimized with dark green placeholder */}
+      {/* Low-quality blurred placeholder - shows instantly, then fades out */}
       <div
-        className="hero-bg"
+        className="hero-bg hero-bg-lqip"
+        style={{ backgroundImage: `url('${HERO_LQIP}')` }}
+        aria-hidden="true"
+      />
+      {/* Full-resolution hero image - fades in when loaded */}
+      <div
+        className="hero-bg hero-bg-full"
         style={{
-          backgroundColor: '#2d4a2e',
-          backgroundImage: `url('${process.env.REACT_APP_BACKEND_URL}/api/uploads/hero_golf_mallorca.jpg')`,
+          backgroundImage: `url('${heroUrl}')`,
+          opacity: heroLoaded ? 1 : 0,
         }}
       />
       <div className="hero-overlay" />
