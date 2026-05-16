@@ -30,8 +30,8 @@
 
 /* Blurred low-quality placeholder — renders instantly */
 .hero-bg-lqip {
-  filter: blur(20px) brightness(0.85) saturate(1.1);
-  transform: scale(1.1); /* Hide blurred edges */
+  filter: blur(10px) brightness(0.9) saturate(1.1);
+  transform: scale(1.05); /* Hide blurred edges */
   z-index: 1;
 }
 

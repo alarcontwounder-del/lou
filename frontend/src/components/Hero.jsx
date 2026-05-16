@@ -8,14 +8,21 @@ export const Hero = ({ onPlanTrip }) => {
   const { t } = useLanguage();
   const [heroLoaded, setHeroLoaded] = useState(false);
 
-  const heroUrl = `${process.env.REACT_APP_BACKEND_URL}/api/uploads/hero_golf_mallorca.jpg`;
+  const heroUrl = '/hero-golf-mallorca.webp';
+  const heroFallback = '/hero-golf-mallorca.jpg';
 
   useEffect(() => {
+    // Preload via Image; supports WebP, falls back to JPG if WebP unsupported
     const img = new Image();
     img.src = heroUrl;
     img.onload = () => setHeroLoaded(true);
-    return () => { img.onload = null; };
-  }, [heroUrl]);
+    img.onerror = () => {
+      const fallback = new Image();
+      fallback.src = heroFallback;
+      fallback.onload = () => setHeroLoaded(true);
+    };
+    return () => { img.onload = null; img.onerror = null; };
+  }, [heroUrl, heroFallback]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
