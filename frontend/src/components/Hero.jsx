@@ -6,23 +6,30 @@ import { HERO_LQIP } from '../lib/hero-lqip';
 
 export const Hero = ({ onPlanTrip }) => {
   const { t } = useLanguage();
-  const [heroLoaded, setHeroLoaded] = useState(false);
-
-  const heroUrl = '/hero-golf-mallorca.webp';
-  const heroFallback = '/hero-golf-mallorca.jpg';
+  // Start with LQIP; swap to full URL when it has finished loading
+  const [bgUrl, setBgUrl] = useState(HERO_LQIP);
 
   useEffect(() => {
-    // Preload via Image; supports WebP, falls back to JPG if WebP unsupported
-    const img = new Image();
-    img.src = heroUrl;
-    img.onload = () => setHeroLoaded(true);
-    img.onerror = () => {
-      const fallback = new Image();
-      fallback.src = heroFallback;
-      fallback.onload = () => setHeroLoaded(true);
+    const webp = '/hero-golf-mallorca.webp';
+    const jpg = '/hero-golf-mallorca.jpg';
+    let cancelled = false;
+
+    const tryLoad = (src, onSuccess, onFail) => {
+      const i = new Image();
+      i.onload = () => { if (!cancelled) onSuccess(src); };
+      i.onerror = onFail;
+      i.src = src;
     };
-    return () => { img.onload = null; img.onerror = null; };
-  }, [heroUrl, heroFallback]);
+
+    tryLoad(webp,
+      (src) => setBgUrl(src),
+      () => tryLoad(jpg, (src) => setBgUrl(src), () => {})
+    );
+
+    return () => { cancelled = true; };
+  }, []);
+
+  const isFullLoaded = bgUrl !== HERO_LQIP;
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -42,19 +49,10 @@ export const Hero = ({ onPlanTrip }) => {
 
   return (
     <section id="hero" className="hero-section grain-overlay" data-testid="hero-section">
-      {/* Low-quality blurred placeholder - shows instantly, then fades out */}
+      {/* Single hero background — starts as blurred LQIP, swaps to full image when loaded */}
       <div
-        className="hero-bg hero-bg-lqip"
-        style={{ backgroundImage: `url('${HERO_LQIP}')` }}
-        aria-hidden="true"
-      />
-      {/* Full-resolution hero image - fades in when loaded */}
-      <div
-        className="hero-bg hero-bg-full"
-        style={{
-          backgroundImage: `url('${heroUrl}')`,
-          opacity: heroLoaded ? 1 : 0,
-        }}
+        className={`hero-bg ${isFullLoaded ? 'hero-bg-loaded' : 'hero-bg-lqip'}`}
+        style={{ backgroundImage: `url('${bgUrl}')` }}
       />
       <div className="hero-overlay" />
 
