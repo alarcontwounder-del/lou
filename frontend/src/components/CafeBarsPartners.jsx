@@ -17,7 +17,7 @@ const CafeBarCard = ({ place, language, t, onQuickView, onBooking }) => {
   >
     <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
-      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl`}>
+      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl flex flex-col`}>
         {/* Discount Badge */}
         {!inactive && place.discount_percent && (
           <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -31,7 +31,7 @@ const CafeBarCard = ({ place, language, t, onQuickView, onBooking }) => {
         )}
 
         {/* Image */}
-        <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+        <div className="h-56 flex-shrink-0 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img loading="lazy"
             src={place.image}
             alt={place.name}
@@ -69,24 +69,26 @@ const CafeBarCard = ({ place, language, t, onQuickView, onBooking }) => {
         </div>
 
         {/* Content */}
-        <div className="p-5 pt-4">
-          {/* Specialty Tags */}
-          {place.specialty && (
-            <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <div className="p-5 pt-4 flex flex-col flex-1">
+          {/* Specialty Tags - fixed-height row */}
+          <div className="flex items-center gap-2 mb-2 flex-wrap min-h-[26px]">
+            {place.specialty && (
               <span className="text-xs px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded flex items-center gap-1">
                 <Croissant className="w-3 h-3" />
                 {place.specialty}
               </span>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Nearest Golf Course */}
-          {place.nearest_golf && (
-            <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2" data-testid={`cafe-nearest-golf-${place.id}`}>
-              <Navigation className="w-3 h-3" />
-              <span>{place.distance_km}km to {place.nearest_golf}</span>
-            </div>
-          )}
+          {/* Nearest Golf Course - fixed-height row */}
+          <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2 min-h-[18px]" data-testid={`cafe-nearest-golf-${place.id}`}>
+            {place.nearest_golf && (
+              <>
+                <Navigation className="w-3 h-3" />
+                <span>{place.distance_km}km to {place.nearest_golf}</span>
+              </>
+            )}
+          </div>
           
           <div 
             className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
@@ -108,33 +110,36 @@ const CafeBarCard = ({ place, language, t, onQuickView, onBooking }) => {
             {place.description[language] || place.description.en}
           </p>
 
-          {/* Deal Preview */}
-          {place.deal && (
-            <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
-              <p className="text-xs font-medium text-stone-600 line-clamp-1">
-                {place.deal[language] || place.deal.en}
-              </p>
-            </div>
-          )}
+          {/* Spacer pushes deal + hover hint to the bottom for layout consistency */}
+          <div className="mt-auto">
+            {/* Deal Preview */}
+            {place.deal && (
+              <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
+                <p className="text-xs font-medium text-stone-600 line-clamp-1">
+                  {place.deal[language] || place.deal.en}
+                </p>
+              </div>
+            )}
 
-          {/* Hover Indicator */}
-          {!inactive && (
-          <p className="text-xs text-stone-400 text-center mt-2 italic hidden md:block">
-            {t('card.hoverForDetails') || 'Hover for details'}
-          </p>
-          )}
-          {!inactive && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView(place);
-            }}
-            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto mt-2"
-          >
-            <Eye className="w-3 h-3" />
-            View Details
-          </button>
-          )}
+            {/* Hover Indicator */}
+            {!inactive && (
+            <p className="text-xs text-stone-400 text-center italic hidden md:block">
+              {t('card.hoverForDetails') || 'Hover for details'}
+            </p>
+            )}
+            {!inactive && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickView(place);
+              }}
+              className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto"
+            >
+              <Eye className="w-3 h-3" />
+              View Details
+            </button>
+            )}
+          </div>
         </div>
       </div>
 

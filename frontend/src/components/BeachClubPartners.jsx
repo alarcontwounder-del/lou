@@ -17,7 +17,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
   >
     <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
-      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl`}>
+      <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl flex flex-col`}>
         {/* Discount Badge */}
         {!inactive && club.discount_percent && (
           <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -31,7 +31,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
         )}
 
         {/* Image */}
-        <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+        <div className="h-56 flex-shrink-0 overflow-hidden rounded-t-2xl relative m-3 mb-0">
           <img loading="lazy"
             src={club.image}
             alt={club.name}
@@ -67,16 +67,16 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
         </div>
 
         {/* Content */}
-        <div className="p-5 pt-4">
-          {/* Nearest Golf Tag */}
-          {club.nearest_golf && (
-            <div className="flex items-center gap-2 mb-2">
+        <div className="p-5 pt-4 flex flex-col flex-1">
+          {/* Nearest Golf Tag - fixed-height row */}
+          <div className="flex items-center gap-2 mb-2 min-h-[26px]">
+            {club.nearest_golf && (
               <span className="text-xs px-2 py-1 bg-stone-100 text-stone-600 font-medium rounded flex items-center gap-1">
                 <Navigation className="w-3 h-3" />
                 {club.distance_km}km to {club.nearest_golf}
               </span>
-            </div>
-          )}
+            )}
+          </div>
           
           <div 
             className="location-link flex items-center gap-2 text-stone-400 text-xs mb-2 cursor-pointer hover:text-brand-slate transition-colors"
@@ -98,33 +98,36 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
             {(club.description && club.description[language]) || (club.description && club.description.en) || ""}
           </p>
 
-          {/* Deal Preview */}
-          {club.deal && (
-            <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
-              <p className="text-xs font-medium text-stone-600 line-clamp-1">
-                {(club.deal && club.deal[language]) || (club.deal && club.deal.en) || ""}
-              </p>
-            </div>
-          )}
+          {/* Spacer pushes deal + hover hint to the bottom for layout consistency */}
+          <div className="mt-auto">
+            {/* Deal Preview */}
+            {club.deal && (
+              <div className="bg-stone-50 border border-stone-100 rounded-lg p-3 mb-3">
+                <p className="text-xs font-medium text-stone-600 line-clamp-1">
+                  {(club.deal && club.deal[language]) || (club.deal && club.deal.en) || ""}
+                </p>
+              </div>
+            )}
 
-          {/* Hover Indicator */}
-          {!inactive && (
-          <p className="text-xs text-stone-400 text-center mt-2 italic hidden md:block">
-            {t('card.hoverForDetails') || 'Hover for details'}
-          </p>
-          )}
-          {!inactive && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView(club);
-            }}
-            className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto mt-2"
-          >
-            <Eye className="w-3 h-3" />
-            View Details
-          </button>
-          )}
+            {/* Hover Indicator */}
+            {!inactive && (
+            <p className="text-xs text-stone-400 text-center italic hidden md:block">
+              {t('card.hoverForDetails') || 'Hover for details'}
+            </p>
+            )}
+            {!inactive && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickView(club);
+              }}
+              className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto"
+            >
+              <Eye className="w-3 h-3" />
+              View Details
+            </button>
+            )}
+          </div>
         </div>
       </div>
 

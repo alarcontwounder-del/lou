@@ -25,7 +25,7 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
     >
       <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
         {/* Front of Card */}
-        <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl`}>
+        <div className={`flip-card-front bg-white border border-stone-100 shadow-sm rounded-2xl flex flex-col`}>
           {/* Discount Badge */}
           {!inactive && hotel.discount_percent && (
             <div className="absolute top-6 right-6 z-10 bg-brand-slate text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -41,7 +41,7 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
           )}
 
           {/* Image */}
-          <div className="h-56 overflow-hidden rounded-t-2xl relative m-3 mb-0">
+          <div className="h-56 flex-shrink-0 overflow-hidden rounded-t-2xl relative m-3 mb-0">
             <img loading="lazy" decoding="async"
               src={hotel.image}
               alt={hotel.name}
@@ -72,30 +72,30 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
           </div>
 
           {/* Content */}
-          <div className="p-5 pt-4">
-            {/* Category & Region Tags */}
-            {(hotel.category || hotel.region) && (
-              <div className="flex items-center gap-2 mb-2">
-                {hotel.category && (
-                  <span className="text-xs px-2 py-1 bg-brand-slate/20 text-brand-charcoal font-medium rounded">
-                    {hotel.category}
-                  </span>
-                )}
-                {hotel.region && (
-                  <span className="text-xs px-2 py-1 bg-brand-charcoal/10 text-brand-charcoal font-medium rounded">
-                    {hotel.region}
-                  </span>
-                )}
-              </div>
-            )}
+          <div className="p-5 pt-4 flex flex-col flex-1">
+            {/* Category & Region Tags - fixed-height row for layout consistency */}
+            <div className="flex items-center gap-2 mb-2 min-h-[26px]">
+              {hotel.category && (
+                <span className="text-xs px-2 py-1 bg-brand-slate/20 text-brand-charcoal font-medium rounded">
+                  {hotel.category}
+                </span>
+              )}
+              {hotel.region && (
+                <span className="text-xs px-2 py-1 bg-brand-charcoal/10 text-brand-charcoal font-medium rounded">
+                  {hotel.region}
+                </span>
+              )}
+            </div>
 
-            {/* Nearest Golf Course */}
-            {hotel.nearest_golf && (
-              <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2" data-testid={`hotel-nearest-golf-${hotel.id}`}>
-                <Navigation className="w-3 h-3" />
-                <span>{hotel.distance_km}km to {hotel.nearest_golf}</span>
-              </div>
-            )}
+            {/* Nearest Golf Course - fixed-height row */}
+            <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-2 min-h-[18px]" data-testid={`hotel-nearest-golf-${hotel.id}`}>
+              {hotel.nearest_golf && (
+                <>
+                  <Navigation className="w-3 h-3" />
+                  <span>{hotel.distance_km}km to {hotel.nearest_golf}</span>
+                </>
+              )}
+            </div>
             
             <div 
               className={`location-link flex items-center gap-2 text-stone-400 text-xs mb-2 ${inactive ? '' : 'cursor-pointer hover:text-brand-slate'} transition-colors`}
@@ -118,35 +118,38 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
               {(hotel.description && hotel.description[language]) || (hotel.description && hotel.description.en) || ''}
             </p>
 
-            {/* Pricing */}
-            {!inactive && hotel.offer_price && (
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-xs uppercase tracking-wider text-stone-400">{t('offers.from')}</span>
-                <span className="text-xl font-semibold text-stone-800">
-                  €{hotel.offer_price}
-                </span>
-                {hotel.original_price && (
-                  <span className="text-sm text-stone-400 line-through">
-                    €{hotel.original_price}
+            {/* Spacer pushes price & hover hint to the bottom of every card */}
+            <div className="mt-auto">
+              {/* Pricing - falls back to price_from if no offer_price (consistent across cards) */}
+              {!inactive && (hotel.offer_price || hotel.price_from) && (
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="text-xs uppercase tracking-wider text-stone-400">{t('offers.from')}</span>
+                  <span className="text-xl font-semibold text-stone-800">
+                    €{hotel.offer_price || hotel.price_from}
                   </span>
-                )}
-              </div>
-            )}
+                  {hotel.offer_price && hotel.original_price && (
+                    <span className="text-sm text-stone-400 line-through">
+                      €{hotel.original_price}
+                    </span>
+                  )}
+                </div>
+              )}
 
-            {/* Hover hint */}
-            {!inactive && <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>}
-            {!inactive && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onQuickView(hotel);
-                }}
-                className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
-              >
-                <Eye className="w-3 h-3" />
-                View Details
-              </button>
-            )}
+              {/* Hover hint */}
+              {!inactive && <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>}
+              {!inactive && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onQuickView(hotel);
+                  }}
+                  className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
+                >
+                  <Eye className="w-3 h-3" />
+                  View Details
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
