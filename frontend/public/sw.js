@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const STATIC_CACHE = `gim-static-${CACHE_VERSION}`;
 
 self.addEventListener('install', (event) => {
