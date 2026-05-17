@@ -22,6 +22,7 @@ import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
 import { CookieConsent } from './components/CookieConsent';
 import PWAInstallBanner from './components/PWAInstallBanner';
+import MobileStickyCta from './components/MobileStickyCta';
 import { FloatingSearch } from './components/FloatingSearch';
 import { SectionNavigator } from './components/SectionNavigator';
 import { TripPlanner } from './components/TripPlanner';
@@ -246,6 +247,7 @@ function App() {
             <AppRouter />
             <CookieConsent />
             <PWAInstallBanner />
+            <MobileStickyCta />
           </FavoritesProvider>
         </DataProvider>
       </LanguageProvider>
