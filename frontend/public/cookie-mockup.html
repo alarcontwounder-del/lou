@@ -86,7 +86,7 @@
   // ============ CUADRO (260px, centrado, glass) ============
   function cookieBoxHTML() {
     return (
-      '<div class="w-[260px] max-w-full bg-black/50 backdrop-blur-md rounded-2xl shadow-lg border border-white/15 p-5 text-center" data-testid="cookie-box">' +
+      '<div class="w-[260px] max-w-full bg-black/30 backdrop-blur-xl rounded-2xl shadow-lg border border-white/15 p-5 text-center" data-testid="cookie-box">' +
         '<div class="mx-auto mb-3 w-8 h-8 flex items-center justify-center">' + whiteCookieIconHTML(32, 'cookieBoxBite') + '</div>' +
         '<p class="text-white/90 text-[13px] leading-relaxed mb-1">This website uses cookies to enhance your experience.</p>' +
         '<a href="/privacy" class="text-white/55 text-[11px] underline underline-offset-2 hover:text-white/90 transition-colors" data-testid="cookie-learn-more">Learn more</a>' +
@@ -126,7 +126,7 @@
     if (state.expanded) {
       html += (
         '<div id="cookie-modal-backdrop" data-testid="cookie-consent-mobile" ' +
-          'class="md:hidden fixed inset-0 z-[9999] bg-black/45 backdrop-blur-sm flex items-center justify-center p-4">' +
+          'class="md:hidden fixed inset-0 z-[9999] bg-black/30 backdrop-blur-md flex items-center justify-center p-4">' +
           cookieBoxHTML() +
         '</div>'
       );
