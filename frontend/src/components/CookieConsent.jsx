@@ -89,9 +89,9 @@ export function CookieConsent() {
         </button>
       )}
 
-      {/* Cuadro desktop — siempre visible bottom-left (glass actual conservado) */}
+      {/* Cuadro desktop — siempre visible bottom-right (glass actual conservado) */}
       <div
-        className="hidden md:block fixed bottom-6 left-6 z-[9999] animate-in fade-in slide-in-from-bottom-4 duration-500"
+        className="hidden md:block fixed bottom-6 right-6 z-[9999] animate-in fade-in slide-in-from-bottom-4 duration-500"
         data-testid="cookie-consent-banner"
       >
         {renderCookieBox('desktop')}
