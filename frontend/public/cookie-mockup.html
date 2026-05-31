@@ -3,99 +3,66 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Mobile Cookie Pill — Mockup</title>
+<title>Mobile Cookie Pill — Mockup v2 (glass)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   html, body { margin: 0; padding: 0; height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  body {
-    background: #0a0a0a;
-    color: #fff;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  /* Fake hero with golf course image to test contrast over real photo */
+  body { background: #0a0a0a; color: #fff; min-height: 100vh; overflow-x: hidden; }
+
+  /* Hero deliberately BUSY + SHARP so the glass blur is unmistakable */
   .hero {
     position: relative;
     height: 100vh;
     background-image:
-      linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.55)),
-      url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1600&q=80');
+      linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.45) 60%, rgba(0,0,0,.65) 100%),
+      url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1800&q=85');
     background-size: cover;
     background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
     padding: 0 24px;
   }
-  .hero h1 {
-    font-size: clamp(32px, 8vw, 64px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    max-width: 90%;
-  }
-  .hero p {
-    margin-top: 16px;
-    font-size: 16px;
-    opacity: .85;
-    max-width: 90%;
-  }
-  /* Fake sticky CTA at bottom (like real site) so we can verify pill stacks above it */
+  .hero h1 { font-size: clamp(32px, 8vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .hero p  { margin-top: 16px; font-size: 15px; opacity: .9; max-width: 90%; }
+
+  /* Fake mobile sticky CTA so we verify the pill stacks above it */
   .sticky-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9000;
-    background: #fff;
-    color: #000;
-    text-align: center;
-    padding: 14px 16px;
-    font-weight: 600;
-    font-size: 15px;
-    box-shadow: 0 -4px 14px rgba(0,0,0,.25);
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 9000;
+    background: #fff; color: #000; text-align: center; padding: 14px 16px;
+    font-weight: 600; font-size: 15px; box-shadow: 0 -4px 14px rgba(0,0,0,.25);
   }
-  @media (min-width: 768px) {
-    .sticky-cta { display: none; }
-  }
-  /* Force desktop preview toggle */
-  .device-toggle {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 99999;
-    background: rgba(255,255,255,.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,.2);
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 12px;
-    color: #fff;
-    cursor: pointer;
+  @media (min-width: 768px) { .sticky-cta { display: none; } }
+
+  /* Tiny reminder label */
+  .hint {
+    position: fixed; top: 12px; left: 12px; z-index: 99999;
+    background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.2); border-radius: 999px;
+    padding: 6px 12px; font-size: 11px; color: #fff;
   }
 </style>
 </head>
 <body>
 
+<div class="hint">Toca la 🍪 · Pulsa "R" para reiniciar</div>
+
 <div class="hero">
   <h1>Mallorca Golf Hub</h1>
-  <p>Validación visual del Cookie Pill móvil — toca la galleta en la esquina inferior derecha.</p>
-  <p style="margin-top:24px; font-size:13px; opacity:.7;">
-    📱 Abre esta página desde tu móvil para validar el comportamiento real.<br/>
-    💻 En desktop (≥ 768px) verás el cuadro completo abajo a la izquierda.
+  <p>Mockup v2 — réplica exacta del código final. Glass/blur reforzado.</p>
+  <p style="margin-top:24px; font-size:12px; opacity:.7;">
+    📱 Móvil (&lt; 768px): galleta flotante → modal con backdrop blur.<br/>
+    💻 Desktop (≥ 768px): cuadro fijo bottom-left con glass.
   </p>
 </div>
 
 <div class="sticky-cta">Book a Tee Time</div>
 
-<!-- ===========================================================
-     COOKIE COMPONENT — réplica exacta del comportamiento pedido
-     =========================================================== -->
+<!-- ============================================================
+     COOKIE COMPONENT — réplica fiel del JSX final del usuario
+     ============================================================ -->
 <div id="cookie-root"></div>
 
 <script>
-  // ============ ICONO GALLETA BLANCA SÓLIDA ============
+  // ============ ICONO GALLETA BLANCA SÓLIDA (mismo SVG del prompt) ============
   function whiteCookieIconHTML(size, maskId) {
     return (
       '<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
@@ -116,23 +83,15 @@
     );
   }
 
-  // ============ CUADRO COMPLETO (texto + botones) ============
+  // ============ CUADRO (260px, centrado, glass) ============
   function cookieBoxHTML() {
     return (
-      '<div class="bg-black/50 backdrop-blur-md border border-white/15 rounded-2xl p-5 text-white max-w-sm w-full shadow-2xl" data-testid="cookie-box">' +
-        '<div class="flex items-start gap-3 mb-3">' +
-          '<div class="shrink-0 mt-0.5">' + whiteCookieIconHTML(32, 'cookieBoxBite') + '</div>' +
-          '<div>' +
-            '<p class="text-sm leading-relaxed">' +
-              'We use cookies to enhance your experience, analyze traffic and personalize content. ' +
-              '<a href="#" class="text-white/55 underline" data-testid="cookie-learn-more">Learn more</a>' +
-            '</p>' +
-          '</div>' +
-        '</div>' +
-        '<div class="flex items-center gap-3 mt-4">' +
-          '<button data-testid="cookie-accept-btn" class="cookie-accept border border-white text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-colors">Accept</button>' +
-          '<button data-testid="cookie-preferences-btn" class="cookie-preferences text-white/55 text-sm hover:text-white/80 transition-colors">Preferences</button>' +
-        '</div>' +
+      '<div class="w-[260px] max-w-full bg-black/50 backdrop-blur-md rounded-2xl shadow-lg border border-white/15 p-5 text-center" data-testid="cookie-box">' +
+        '<div class="mx-auto mb-3 w-8 h-8 flex items-center justify-center">' + whiteCookieIconHTML(32, 'cookieBoxBite') + '</div>' +
+        '<p class="text-white/90 text-[13px] leading-relaxed mb-1">This website uses cookies to enhance your experience.</p>' +
+        '<a href="/privacy" class="text-white/55 text-[11px] underline underline-offset-2 hover:text-white/90 transition-colors" data-testid="cookie-learn-more">Learn more</a>' +
+        '<button class="cookie-accept w-full mt-4 border border-white/40 text-white hover:bg-white/15 text-sm font-semibold py-2.5 rounded-lg transition-all duration-200" data-testid="cookie-accept-btn">Accept</button>' +
+        '<button class="cookie-preferences w-full mt-2 text-white/55 hover:text-white/90 text-xs font-medium py-1.5 transition-colors">Preferences</button>' +
       '</div>'
     );
   }
@@ -143,32 +102,27 @@
 
   function render() {
     if (!state.show) { root.innerHTML = ''; return; }
-
     var html = '';
 
     // PILL móvil (solo si NO expandido)
     if (!state.expanded) {
       html += (
-        '<button ' +
-          'id="cookie-pill-btn" ' +
-          'data-testid="cookie-pill" ' +
-          'aria-label="Cookie consent" ' +
+        '<button id="cookie-pill-btn" data-testid="cookie-pill" aria-label="Cookie consent" ' +
           'class="md:hidden fixed bottom-20 right-4 z-[9999] w-12 h-12 flex items-center justify-center bg-transparent border-none p-0 cursor-pointer hover:scale-110 active:scale-95 transition-transform" ' +
-          'style="filter: drop-shadow(0 4px 10px rgba(0,0,0,.55)) drop-shadow(0 2px 4px rgba(0,0,0,.4));"' +
-        '>' +
+          'style="filter: drop-shadow(0 4px 10px rgba(0,0,0,.55)) drop-shadow(0 2px 4px rgba(0,0,0,.4));">' +
           whiteCookieIconHTML(48, 'cookiePillBite') +
         '</button>'
       );
     }
 
-    // DESKTOP: cuadro siempre bottom-left
+    // DESKTOP cuadro fijo
     html += (
       '<div class="hidden md:block fixed bottom-6 left-6 z-[9999]" data-testid="cookie-consent">' +
         cookieBoxHTML() +
       '</div>'
     );
 
-    // MÓVIL expandido: modal centrado con backdrop
+    // MÓVIL expandido — modal con backdrop glass blur
     if (state.expanded) {
       html += (
         '<div id="cookie-modal-backdrop" data-testid="cookie-consent-mobile" ' +
@@ -192,7 +146,6 @@
         if (e.target === backdrop) { state.expanded = false; render(); }
       });
     }
-
     document.querySelectorAll('.cookie-accept, .cookie-preferences').forEach(function (btn) {
       btn.addEventListener('click', function () { state.show = false; render(); });
     });
@@ -200,11 +153,8 @@
 
   render();
 
-  // Reset helper (para testing — pulsa "R" para reiniciar el banner)
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'r' || e.key === 'R') {
-      state.show = true; state.expanded = false; render();
-    }
+    if (e.key === 'r' || e.key === 'R') { state.show = true; state.expanded = false; render(); }
   });
 </script>
 
