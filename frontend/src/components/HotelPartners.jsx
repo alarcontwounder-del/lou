@@ -110,7 +110,7 @@ const HotelCard = ({ hotel, language, t, onQuickView, onBooking }) => {
               <span>{hotel.location}</span>
             </div>
 
-            <h3 className="font-heading text-xl text-stone-900 mb-2">
+            <h3 className="font-heading text-xl text-stone-900 mb-2 line-clamp-2">
               {hotel.name}
             </h3>
 

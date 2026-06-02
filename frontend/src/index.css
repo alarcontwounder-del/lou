@@ -123,6 +123,25 @@ body {
   perspective: 1000px;
 }
 
+/* MOBILE: auto-height to prevent clipping. Back face never visible on touch devices. */
+@media (max-width: 767px) {
+  .flip-card {
+    height: auto;
+    min-height: 520px;
+  }
+  .flip-card-inner {
+    height: auto;
+  }
+  .flip-card-front {
+    position: relative !important;
+    height: auto !important;
+    min-height: 520px;
+  }
+  .flip-card-back {
+    display: none !important;
+  }
+}
+
 .flip-card-inner {
   position: relative;
   width: 100%;

@@ -90,7 +90,7 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
             <span>{club.location}</span>
           </div>
 
-          <h3 className="font-heading text-xl text-stone-900 mb-2">
+          <h3 className="font-heading text-xl text-stone-900 mb-2 line-clamp-2">
             {club.name}
           </h3>
 
