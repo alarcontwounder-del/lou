@@ -22,7 +22,7 @@ function detectLanguage() {
     if (fromStorage && COPY[fromStorage]) return fromStorage;
     const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
     if (COPY[nav]) return nav;
-  } catch (e) { /* ignore */ }
+  } catch (e) { console.warn('PWA: language detection failed', e); }
   return 'en';
 }
 
@@ -91,7 +91,7 @@ export default function PWAInstallBanner() {
   const dismiss = () => {
     setVisible(false);
     trackEvent('pwa_install_dismissed', { platform: isIos() ? 'ios_safari' : 'android_chrome' });
-    try { window.sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignore */ }
+    try { window.sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { console.warn('PWA: failed to persist dismissal', e); }
   };
 
   const install = async () => {
@@ -104,9 +104,9 @@ export default function PWAInstallBanner() {
       setVisible(false);
       if (choice && choice.outcome !== 'accepted') {
         trackEvent('pwa_install_os_dismissed', { platform: 'android_chrome' });
-        try { window.sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignore */ }
+        try { window.sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { console.warn('PWA: failed to persist dismissal', e); }
       }
-    } catch (e) { setVisible(false); }
+    } catch (e) { console.error('PWA install failed:', e); setVisible(false); }
   };
 
   if (!visible) return null;

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 const FavoritesContext = createContext();
 
@@ -55,15 +55,17 @@ export function FavoritesProvider({ children }) {
     setFavorites([]);
   }, []);
 
+  const value = useMemo(() => ({
+    favorites,
+    toggleFavorite,
+    isFavorite,
+    removeFavorite,
+    clearAll,
+    count: favorites.length,
+  }), [favorites, toggleFavorite, isFavorite, removeFavorite, clearAll]);
+
   return (
-    <FavoritesContext.Provider value={{ 
-      favorites, 
-      toggleFavorite, 
-      isFavorite, 
-      removeFavorite, 
-      clearAll,
-      count: favorites.length 
-    }}>
+    <FavoritesContext.Provider value={value}>
       {children}
     </FavoritesContext.Provider>
   );

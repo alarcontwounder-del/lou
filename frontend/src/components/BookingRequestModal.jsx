@@ -217,7 +217,7 @@ export const BookingRequestModal = ({ isOpen, onClose, venue, venueType }) => {
             </label>
             <div className="flex flex-wrap gap-2">
               {DIETARY_OPTIONS.map(function(opt) {
-                var selected = form.dietary.includes(opt.id);
+                const selected = form.dietary.includes(opt.id);
                 return (
                   <button key={opt.id} type="button" onClick={function() { toggleDietary(opt.id); }}
                     className={'px-3 py-1.5 rounded-full text-xs font-medium transition-all border ' + (selected ? 'bg-brand-charcoal text-white border-brand-charcoal' : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300')}
