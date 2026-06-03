@@ -9,10 +9,16 @@ import { FavoriteButton } from './FavoriteButton';
 import { CardSkeleton } from './CardSkeleton';
 import { useIsMobile } from '../hooks/useIsMobile';
 
-export const CourseCard = ({ course, language, t, onQuickView }) => (
+export const CourseCard = ({ course, language, t, onQuickView }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  return (
   <div
-    className="flip-card"
+    className={`flip-card ${isFlipped ? 'flipped' : ''}`}
     data-testid={`course-card-${course.id}`}
+    onClick={(e) => {
+      if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.location-link')) return;
+      setIsFlipped(!isFlipped);
+    }}
   >
     <div className="flip-card-inner">
       {/* Front of Card */}
@@ -89,20 +95,11 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
               <span className="text-xl font-semibold text-stone-800">{course.par}</span>
             </div>
 
-            {/* Quick View hint for mobile */}
-            <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>
-            {onQuickView && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onQuickView(course);
-                }}
-                className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
-              >
-                <Eye className="w-3 h-3" />
-                View Details
-              </button>
-            )}
+            {/* Hover hint (desktop) / Tap hint (móvil) */}
+            <p className="text-xs text-stone-400 italic">
+              <span className="hidden md:inline">Hover for details →</span>
+              <span className="md:hidden">Tap for details →</span>
+            </p>
           </div>
         </div>
       </div>
@@ -206,7 +203,8 @@ export const CourseCard = ({ course, language, t, onQuickView }) => (
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export const GolfCourses = () => {
   const { language, t } = useLanguage();
