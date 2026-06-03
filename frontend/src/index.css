@@ -119,7 +119,7 @@ body {
 /* Flip Card Styles - 3D rotateY flip (works on desktop hover + mobile tap) */
 .flip-card {
   position: relative;
-  height: 480px;
+  height: 540px;
   perspective: 1000px;
 }
 
@@ -127,7 +127,7 @@ body {
 @media (max-width: 767px) {
   .flip-card {
     height: auto;
-    min-height: 520px;
+    min-height: 540px;
   }
 }
 
