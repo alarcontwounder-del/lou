@@ -8,12 +8,18 @@ import { FavoriteButton } from './FavoriteButton';
 import { CardSkeleton } from './CardSkeleton';
 import { useIsMobile } from '../hooks/useIsMobile';
 
-const BeachClubCard = ({ club, language, t, onQuickView }) => {
+const BeachClubCard = ({ club, language, t, onQuickView, onBooking }) => {
   const inactive = club.is_active === false;
+  const [isFlipped, setIsFlipped] = useState(false);
   return (
   <div
-    className={`flip-card ${inactive ? 'inactive-card' : ''}`}
+    className={`flip-card ${inactive ? 'inactive-card' : ''} ${isFlipped ? 'flipped' : ''}`}
     data-testid={`beach-club-card-${club.id}`}
+    onClick={(e) => {
+      if (inactive) return;
+      if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.location-link')) return;
+      setIsFlipped(!isFlipped);
+    }}
   >
     <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
@@ -109,23 +115,12 @@ const BeachClubCard = ({ club, language, t, onQuickView }) => {
               </div>
             )}
 
-            {/* Hover Indicator */}
+            {/* Hover hint (desktop) / Tap hint (móvil) */}
             {!inactive && (
-            <p className="text-xs text-stone-400 text-center italic hidden md:block">
-              {t('card.hoverForDetails') || 'Hover for details'}
+            <p className="text-xs text-stone-400 text-center italic">
+              <span className="hidden md:inline">{t('card.hoverForDetails') || 'Hover for details'}</span>
+              <span className="md:hidden">Tap for details →</span>
             </p>
-            )}
-            {!inactive && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onQuickView(club);
-              }}
-              className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1 mx-auto"
-            >
-              <Eye className="w-3 h-3" />
-              View Details
-            </button>
             )}
           </div>
         </div>

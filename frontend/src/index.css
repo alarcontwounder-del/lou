@@ -116,29 +116,18 @@ body {
   color: white;
 }
 
-/* Flip Card Styles - Cross-browser bulletproof using opacity (no 3D mirroring possible) */
+/* Flip Card Styles - 3D rotateY flip (works on desktop hover + mobile tap) */
 .flip-card {
   position: relative;
   height: 480px;
   perspective: 1000px;
 }
 
-/* MOBILE: auto-height to prevent clipping. Back face never visible on touch devices. */
+/* MOBILE: auto-height para que no se corte el contenido del reverso */
 @media (max-width: 767px) {
   .flip-card {
     height: auto;
     min-height: 520px;
-  }
-  .flip-card-inner {
-    height: auto;
-  }
-  .flip-card-front {
-    position: relative !important;
-    height: auto !important;
-    min-height: 520px;
-  }
-  .flip-card-back {
-    display: none !important;
   }
 }
 
@@ -146,10 +135,12 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: inherit;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 
-/* Inactive card: no flip, only image goes B&W */
+/* Inactive card: no flip */
 .flip-card.inactive-card .flip-card-inner {
   pointer-events: none;
 }
@@ -170,58 +161,42 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  min-height: inherit;
   border-radius: 16px;
   overflow: hidden;
-  /* Smooth opacity-based flip */
-  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .flip-card-front {
-  opacity: 1;
-  visibility: visible;
   z-index: 2;
 }
 
 .flip-card-back {
-  opacity: 0;
-  visibility: hidden;
+  transform: rotateY(180deg);
   z-index: 1;
 }
 
-/* On hover (after a small delay so users can click front buttons) */
-.flip-card:hover .flip-card-front {
-  transition-delay: 1.5s;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.flip-card:hover .flip-card-back {
-  transition-delay: 1.5s;
-  opacity: 1;
-  visibility: visible;
-  z-index: 3;
-}
-
-/* Touch devices: no hover behaviour needed (cards open via Quick View button) */
-@media (hover: none) {
-  .flip-card:hover .flip-card-front {
-    opacity: 1;
-    visibility: visible;
+/* DESKTOP: hover gira la tarjeta (con delay para permitir clicks en botones del frente) */
+@media (hover: hover) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    transition-delay: 1.5s;
   }
-  .flip-card:hover .flip-card-back {
-    opacity: 0;
-    visibility: hidden;
+  .flip-card:not(:hover) .flip-card-inner {
+    transition-delay: 0s;
   }
 }
 
-/* Inactive cards: never flip */
-.flip-card.inactive-card:hover .flip-card-front {
-  opacity: 1;
-  visibility: visible;
+/* MOBILE / TAP: clase .flipped voltea la tarjeta */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }
-.flip-card.inactive-card:hover .flip-card-back {
-  opacity: 0;
-  visibility: hidden;
+
+/* Inactive cards: nunca flipean */
+.flip-card.inactive-card:hover .flip-card-inner,
+.flip-card.inactive-card.flipped .flip-card-inner {
+  transform: none;
 }
 
 /* Location icon styling - clickable on both front and back */

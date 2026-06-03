@@ -10,10 +10,16 @@ import { useIsMobile } from '../hooks/useIsMobile';
 
 const RestaurantCard = ({ restaurant, language, t, onQuickView, onBooking }) => {
   const inactive = restaurant.is_active === false;
+  const [isFlipped, setIsFlipped] = useState(false);
   return (
   <div
-    className={`flip-card ${inactive ? 'inactive-card' : ''}`}
+    className={`flip-card ${inactive ? 'inactive-card' : ''} ${isFlipped ? 'flipped' : ''}`}
     data-testid={`restaurant-card-${restaurant.id}`}
+    onClick={(e) => {
+      if (inactive) return;
+      if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.location-link')) return;
+      setIsFlipped(!isFlipped);
+    }}
   >
     <div className={`flip-card-inner ${inactive ? 'pointer-events-none' : ''}`}>
       {/* Front of Card */}
@@ -124,19 +130,12 @@ const RestaurantCard = ({ restaurant, language, t, onQuickView, onBooking }) => 
               </div>
             )}
 
-            {/* Hover hint */}
-            {!inactive && <p className="text-xs text-stone-400 italic hidden md:block">Hover for details →</p>}
+            {/* Hover hint (desktop) / Tap hint (móvil) */}
             {!inactive && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onQuickView(restaurant);
-              }}
-              className="md:hidden text-xs text-brand-slate font-medium flex items-center gap-1"
-            >
-              <Eye className="w-3 h-3" />
-              View Details
-            </button>
+              <p className="text-xs text-stone-400 italic">
+                <span className="hidden md:inline">Hover for details →</span>
+                <span className="md:hidden">Tap for details →</span>
+              </p>
             )}
           </div>
         </div>
