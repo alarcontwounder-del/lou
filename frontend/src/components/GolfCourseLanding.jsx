@@ -21,17 +21,34 @@ export default function GolfCoursePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fromContext = golfCourses.find(c => c.id === courseId);
-    if (fromContext) {
-      setCourse(fromContext);
-      setLoading(false);
-    } else {
-      axios.get(API + '/api/golf-courses/' + courseId)
-        .then(res => setCourse(res.data))
-        .catch(() => navigate('/'))
-        .finally(() => setLoading(false));
-    }
+    let active = true;
     window.scrollTo(0, 0);
+    const loadCourse = async () => {
+      if (!active) return;
+      const fromContext = golfCourses.find(c => c.id === courseId);
+      if (fromContext) {
+        setCourse(fromContext);
+        setLoading(false);
+        return;
+      }
+      try {
+        const res = await axios.get(API + '/api/golf-courses/' + courseId);
+        if (!active) return;
+        setCourse(res.data);
+      } catch (err) {
+        // Soft-404 fix: invalid course slug → tell crawlers NOT to index this URL
+        // BEFORE redirecting away. Googlebot may capture the initial 200 response.
+        let robotsEl = document.querySelector('meta[name="robots"]');
+        if (!robotsEl) { robotsEl = document.createElement('meta'); robotsEl.setAttribute('name', 'robots'); document.head.appendChild(robotsEl); }
+        robotsEl.setAttribute('content', 'noindex, nofollow');
+        document.title = 'Course Not Found | golfinmallorca.com';
+        navigate('/');
+      } finally {
+        if (active) setLoading(false);
+      }
+    };
+    loadCourse();
+    return () => { active = false; };
   }, [courseId, golfCourses, navigate]);
 
   useEffect(() => {

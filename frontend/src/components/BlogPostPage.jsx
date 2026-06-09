@@ -98,21 +98,48 @@ export default function BlogPostPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    let active = true;
     window.scrollTo(0, 0);
-    setLoading(true);
-    setError(false);
-    Promise.all([
-      axios.get(API + '/api/blog/' + slug),
-      axios.get(API + '/api/blog')
-    ]).then(function(results) {
-      setPost(results[0].data);
-      setAllPosts(results[1].data);
-      setLoading(false);
-    }).catch(function() {
-      setError(true);
-      setLoading(false);
-    });
+    const fetchPost = async () => {
+      if (!active) return;
+      setLoading(true);
+      setError(false);
+      try {
+        const [postRes, listRes] = await Promise.all([
+          axios.get(API + '/api/blog/' + slug),
+          axios.get(API + '/api/blog')
+        ]);
+        if (!active) return;
+        setPost(postRes.data);
+        setAllPosts(listRes.data);
+        setLoading(false);
+      } catch (err) {
+        if (!active) return;
+        setError(true);
+        setLoading(false);
+      }
+    };
+    fetchPost();
+    return () => { active = false; };
   }, [slug]);
+
+  // Soft-404 fix: when slug doesn't exist, tell crawlers NOT to index this URL.
+  // This applies to both old URLs Google still has cached and any future broken slug.
+  useEffect(() => {
+    if (!error) return;
+    const setMeta = (attr, name, content) => {
+      let el = document.querySelector('meta[' + attr + '="' + name + '"]');
+      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+      el.setAttribute('content', content);
+    };
+    const robotsEl = document.querySelector('meta[name="robots"]');
+    const originalRobots = robotsEl ? robotsEl.getAttribute('content') : null;
+    setMeta('name', 'robots', 'noindex, nofollow');
+    document.title = 'Article Not Found | golfinmallorca.com';
+    return () => {
+      if (originalRobots) setMeta('name', 'robots', originalRobots);
+    };
+  }, [error]);
 
   useEffect(() => {
     if (!post) return;
