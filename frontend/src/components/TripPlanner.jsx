@@ -176,8 +176,15 @@ function ItineraryCard({ label, icon: Icon, item, onSwap }) {
         <p className="font-semibold text-stone-800 text-sm truncate">{item.name}</p>
         <p className="text-xs text-stone-500 truncate">{subtitle}{item.michelin_stars ? ` · ${item.michelin_stars}` : ''}</p>
       </div>
-      <button onClick={onSwap} className="p-1.5 rounded-lg hover:bg-stone-100 text-stone-400 hover:text-stone-600 transition-colors flex-shrink-0" title="Suggest another" data-testid={`swap-${label.toLowerCase().replace(' ', '-')}`}>
+      <button
+        onClick={onSwap}
+        className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-stone-800 text-white hover:bg-stone-900 active:bg-stone-950 transition-colors flex-shrink-0 shadow-sm"
+        title="Suggest another"
+        aria-label={`Suggest another ${label}`}
+        data-testid={`swap-${label.toLowerCase().replace(' ', '-')}`}
+      >
         <RefreshCw className="w-4 h-4" />
+        <span className="text-xs font-medium">Change</span>
       </button>
     </div>
   );
@@ -228,7 +235,7 @@ function SuccessView({ onClose, form, itinerary, formatDate }) {
     <div className="text-center py-8" data-testid="trip-planner-success">
       <CheckCircle className="w-14 h-14 text-stone-600 mx-auto mb-4" />
       <h3 className="font-heading text-2xl text-stone-800 mb-2">Request Received!</h3>
-      <p className="text-stone-500 text-sm mb-6">We've received your personalised itinerary request. Our team will get back to you within 24 hours.</p>
+      <p className="text-stone-500 text-sm mb-6">We&apos;ve received your personalised itinerary request. Our team will get back to you within 24 hours.</p>
 
       <div className="mb-6">
         <p className="text-stone-400 text-xs uppercase tracking-widest mb-3">Share with your travel group</p>
@@ -699,8 +706,8 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
       </div>
       <p className="text-stone-500 text-sm mb-5">
         {isGolfGroup
-          ? <>Hotels nearest to golf courses for your <span className="font-medium text-stone-700">{budgetLabel}</span> group. Tap refresh for alternatives.</>
-          : <>Based on your <span className="font-medium text-stone-700">{budgetLabel}</span> budget, here's what we suggest. Tap the refresh icon to see alternatives.</>
+          ? <>Hotels nearest to golf courses for your <span className="font-medium text-stone-700">{budgetLabel}</span> group. Tap <span className="font-medium text-stone-700">Change</span> for alternatives.</>
+          : <>Based on your <span className="font-medium text-stone-700">{budgetLabel}</span> budget, here&apos;s what we suggest. Tap <span className="font-medium text-stone-700">Change</span> to see alternatives.</>
         }
       </p>
 
@@ -748,7 +755,7 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
         )}
       </div>
 
-      <p className="text-xs text-stone-400 mt-4 text-center">Not quite right? Use the refresh buttons above or our team can further personalise your plan.</p>
+      <p className="text-xs text-stone-400 mt-4 text-center">Not quite right? Use the <span className="font-medium text-stone-600">Change</span> buttons above or our team can further personalise your plan.</p>
     </div>
   );
 }
