@@ -369,6 +369,13 @@ export const TripPlanner = ({ isOpen, onClose }) => {
     setItinerary(prev => ({ ...prev, ...newItinerary }));
   };
 
+  const swapTransfer = () => {
+    const current = form.transfer_type || 'sedan';
+    const idx = TRANSFER_TYPES.findIndex(t => t.id === current);
+    const next = TRANSFER_TYPES[(idx + 1) % TRANSFER_TYPES.length];
+    setForm(prev => ({ ...prev, transfer_type: next.id }));
+  };
+
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
@@ -437,7 +444,7 @@ export const TripPlanner = ({ isOpen, onClose }) => {
           {submitted && <SuccessView onClose={handleClose} form={form} itinerary={itinerary} formatDate={formatDate} />}
           {!submitted && step === 1 && <StepServices form={form} toggleService={toggleService} setForm={setForm} />}
           {!submitted && step === 2 && <StepDateTime form={form} setForm={setForm} />}
-          {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} golfCourses={golfCourses} />}
+          {!submitted && step === 3 && <StepItinerary itinerary={itinerary} form={form} swapSuggestion={swapSuggestion} swapTransfer={swapTransfer} golfCourses={golfCourses} />}
           {!submitted && step === 4 && <StepContact form={form} setForm={setForm} formatDate={formatDate} itinerary={itinerary} />}
           {showScrollHint && !submitted && (
             <div className="sticky bottom-2 flex justify-center pointer-events-none" data-testid="scroll-indicator">
@@ -686,7 +693,7 @@ function StepDateTime({ form, setForm }) {
 
 /* ---- Step 3: Suggested Itinerary ---- */
 
-function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
+function StepItinerary({ itinerary, form, swapSuggestion, swapTransfer, golfCourses }) {
   const budgetLabel = BUDGETS.find(b => b.id === form.budget)?.label || '';
   const isGolfGroup = form.services.includes('golf_groups');
 
@@ -741,16 +748,26 @@ function StepItinerary({ itinerary, form, swapSuggestion, golfCourses }) {
             <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-stone-100">
               <img src={TRANSFER_IMAGE} alt="Transfer" className="w-full h-full object-cover" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <p className="text-xs text-stone-400 uppercase tracking-wider">Premium Transfer</p>
-              <p className="font-semibold text-stone-800 text-sm">
-                {isGolfGroup && form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.label || 'Mercedes S-Class') : 'Mercedes S-Class'}
+              <p className="font-semibold text-stone-800 text-sm truncate">
+                {form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.label || 'Mercedes S-Class') : 'Mercedes S-Class'}
               </p>
-              <p className="text-xs text-stone-500">
-                {isGolfGroup && form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.desc || 'Private luxury chauffeur service') : 'Private luxury chauffeur service'}
+              <p className="text-xs text-stone-500 truncate">
+                {form.transfer_type ? (TRANSFER_TYPES.find(t => t.id === form.transfer_type)?.desc || 'Private luxury chauffeur service') : 'Private luxury chauffeur service'}
               </p>
-              {form.transfer_pickup && <p className="text-xs text-stone-400 mt-0.5">{form.transfer_pickup} → {form.transfer_dropoff || 'TBD'}</p>}
+              {form.transfer_pickup && <p className="text-xs text-stone-400 mt-0.5 truncate">{form.transfer_pickup} → {form.transfer_dropoff || 'TBD'}</p>}
             </div>
+            <button
+              onClick={swapTransfer}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-stone-800 text-white hover:bg-stone-900 active:bg-stone-950 transition-colors flex-shrink-0 shadow-sm"
+              title="Change vehicle type"
+              aria-label="Change transfer vehicle"
+              data-testid="swap-transfer"
+            >
+              <RefreshCw className="w-4 h-4" />
+              <span className="text-xs font-medium">Change</span>
+            </button>
           </div>
         )}
       </div>
