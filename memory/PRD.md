@@ -6,14 +6,26 @@
 - **Name:** Golf In Mallorca
 - **Founded:** 2003 (23+ years operating)
 - **HQ:** Mallorca, Balearic Islands, Spain
-- **Category:** Golf concierge + Online golf reservations
+- **Category:** Golf concierge + Online golf reservations platform
 
 **Unique Selling Propositions (USP) — verbatim from founder:**
 1. **LONGEST-established** golf concierge in Mallorca (since 2003, 23+ years)
 2. **ONLY local operator on the island** offering 24/7 online golf reservations
-3. Direct B2B partnerships with **hotel chains** and **tour operators (TTOOs)**
+3. Direct B2B partnerships with **hotel chains and tour operators (TTOOs)**
 4. Coverage: **Mallorca + all Balearic Islands + Spanish mainland + 2,000+ golf courses worldwide**
 5. **Local Mallorca-based team** with direct course relationships
+
+**Named B2B partners (confidentiality — use for context, do NOT list publicly unless approved case-by-case):**
+- Hotel chains: **Iberostar**, **Viva Hoteles**
+- Tour Operators: **W2M**
+- Boutique + luxury rural hotels across the entire island
+
+**Booking platform capabilities (24/7 online — key differentiator):**
+- **Who books:** hotels/receptions/concierges AND direct end-customers self-service
+- **When:** 24/7, any time of day, via the online app (not a call centre)
+- **Advance booking window:** up to **8 months** ahead
+- **Flow:** just **2 simple steps** with **immediate confirmation** (equivalent to booking a flight or hotel)
+- **Scope:** all golf courses in Mallorca, Balearic Islands, Spanish mainland, and 2,000+ courses worldwide
 
 **Canonical brand statement (use across the site):**
 > "Golf In Mallorca is Mallorca's longest-established golf concierge and golf holiday specialist, operating since 2003. As the only local operator on the island offering 24/7 online golf reservations, we serve individual travelers, hotel chains and tour operators across Mallorca, the Balearic Islands, mainland Spain and 2,000+ golf courses worldwide."
