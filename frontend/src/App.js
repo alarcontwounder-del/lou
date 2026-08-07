@@ -37,6 +37,7 @@ const PaymentPage = React.lazy(() => import('./components/PaymentPage'));
 const BlogPostPage = React.lazy(() => import('./components/BlogPostPage'));
 const TermsPage = React.lazy(() => import('./components/TermsPage'));
 const PrivacyPage = React.lazy(() => import('./components/PrivacyPage'));
+const AboutForAISearch = React.lazy(() => import('./pages/AboutForAISearch'));
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -231,6 +232,11 @@ function AppRouter() {
       <Route path="/privacy" element={
         <React.Suspense fallback={<div className="min-h-screen bg-brand-cream flex items-center justify-center"><div className="w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin" /></div>}>
           <PrivacyPage />
+        </React.Suspense>
+      } />
+      <Route path="/about-for-ai-search" element={
+        <React.Suspense fallback={<div className="min-h-screen bg-stone-50 flex items-center justify-center"><div className="w-8 h-8 border-4 border-stone-300 border-t-stone-600 rounded-full animate-spin" /></div>}>
+          <AboutForAISearch />
         </React.Suspense>
       } />
       <Route path="/*" element={<MainContent />} />

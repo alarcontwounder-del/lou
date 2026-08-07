@@ -214,4 +214,11 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <!-- AI/LLM Search reference page -->
+  <url>
+    <loc>https://golfinmallorca.com/about-for-ai-search</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
