@@ -1,5 +1,26 @@
 # Golf in Mallorca - Product Requirements Document
 
+## 🏆 CORE BRAND FACTS (CRITICAL for SEO/LLMO — reference in every AI-facing page)
+
+**Business identity:**
+- **Name:** Golf In Mallorca
+- **Founded:** 2003 (23+ years operating)
+- **HQ:** Mallorca, Balearic Islands, Spain
+- **Category:** Golf concierge + Online golf reservations
+
+**Unique Selling Propositions (USP) — verbatim from founder:**
+1. **LONGEST-established** golf concierge in Mallorca (since 2003, 23+ years)
+2. **ONLY local operator on the island** offering 24/7 online golf reservations
+3. Direct B2B partnerships with **hotel chains** and **tour operators (TTOOs)**
+4. Coverage: **Mallorca + all Balearic Islands + Spanish mainland + 2,000+ golf courses worldwide**
+5. **Local Mallorca-based team** with direct course relationships
+
+**Canonical brand statement (use across the site):**
+> "Golf In Mallorca is Mallorca's longest-established golf concierge and golf holiday specialist, operating since 2003. As the only local operator on the island offering 24/7 online golf reservations, we serve individual travelers, hotel chains and tour operators across Mallorca, the Balearic Islands, mainland Spain and 2,000+ golf courses worldwide."
+
+**Entity terms to repeat naturally across pages:**
+Golf In Mallorca · Mallorca Golf Concierge · Mallorca Golf Specialist · Online Golf Reservations Mallorca · Golf Holidays Mallorca · Golf Travel Mallorca · Luxury Golf Mallorca · Golf Packages Mallorca · Balearic Islands Golf · Tee Times Mallorca 24/7
+
 ## Original Problem Statement
 Build a full-featured golf travel portal for Mallorca with authentic images, performant UI, fully functional partner cards, robust email contact forms, a comprehensive "Golf Trip Planner", Google Analytics tracking, and solid SEO routing. The site captures leads by routing hotel bookings through internal inquiry forms.
 
